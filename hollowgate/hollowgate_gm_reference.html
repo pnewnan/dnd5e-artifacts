@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GM Reference — Hollowgate Investigation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9;
+    --parchment-dark: #dbc99a;
+    --parchment-shadow: #b89d5e;
+    --ink: #1a1108;
+    --dim: #2e200e;
+    --faded: #5a4a2e;
+    --blood: #7a1f1f;
+    --purple: #5b2d8e;
+    --dc-low: #2a5c1e;
+    --dc-mid: #7a5000;
+    --dc-high: #7a1f1f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1209;
+    font-family: 'IM Fell English', serif;
+    color: var(--ink);
+    padding: 1.5rem 1rem 3rem;
+    min-height: 100vh;
+  }
+  .page {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #f2e8c9;
+    border: 2px solid var(--parchment-shadow);
+    box-shadow: 0 0 0 6px #1a1209, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8);
+    padding: 2.5rem 2.5rem 3rem;
+  }
+
+  /* ── PAGE TITLE ── */
+  .page-title {
+    text-align: center;
+    border-bottom: 2px solid var(--parchment-shadow);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .gm-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: var(--blood);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .page-title h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .page-title .subtitle {
+    font-style: italic;
+    color: var(--faded);
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+  }
+
+  /* ── QUICK REF ── */
+  .quick-ref {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem 1rem;
+    background: rgba(26,17,8,0.05);
+    border: 1px solid var(--parchment-shadow);
+  }
+  .qr-item { flex: 1; min-width: 140px; border-right: 1px solid rgba(180,140,60,0.3); padding: 0 0.8rem 0 0.3rem; }
+  .qr-item:last-child { border-right: none; }
+  .qr-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--faded); text-transform: uppercase; display: block; margin-bottom: 0.2rem; }
+  .qr-value { font-size: 0.85rem; color: var(--ink); line-height: 1.4; }
+  .missing-items { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.3rem; }
+  .badge { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.08em; padding: 0.1rem 0.45rem; background: rgba(122,31,31,0.08); border: 1px solid rgba(122,31,31,0.25); color: var(--blood); }
+
+  /* ── ACCORDION ── */
+  .accordion { margin-bottom: 0.6rem; }
+
+  .accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid var(--parchment-shadow);
+    border-left: 4px solid var(--parchment-shadow);
+    background: rgba(180,140,60,0.08);
+    transition: background 0.2s;
+    gap: 1rem;
+  }
+  .accordion-header:hover { background: rgba(180,140,60,0.15); }
+  .accordion-header.open { background: rgba(180,140,60,0.15); }
+
+  .accordion-header.color-house   { border-left-color: var(--dc-low); }
+  .accordion-header.color-dc      { border-left-color: var(--dc-mid); }
+  .accordion-header.color-aurelia { border-left-color: var(--purple); }
+  .accordion-header.color-office  { border-left-color: var(--dc-low); }
+  .accordion-header.color-body    { border-left-color: var(--blood); }
+
+  .accordion-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .accordion-subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--faded);
+    margin-top: 0.1rem;
+  }
+  .accordion-arrow {
+    font-size: 0.7rem;
+    color: var(--faded);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .accordion-header.open .accordion-arrow { transform: rotate(180deg); }
+
+  .accordion-body {
+    display: none;
+    border: 1px solid var(--parchment-shadow);
+    border-top: none;
+    padding: 1.2rem 1.2rem 0.8rem;
+    background: rgba(242,232,200,0.4);
+  }
+  .accordion-body.open { display: block; }
+
+  /* two-col inside accordion */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* ── SHARED CONTENT STYLES ── */
+  .section-head {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(91,45,142,0.2);
+    padding-bottom: 0.2rem;
+  }
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    color: var(--dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0.8rem 0 0.3rem;
+  }
+  p { font-size: 0.88rem; line-height: 1.65; color: var(--dim); margin-bottom: 0.4rem; }
+  .block { margin-bottom: 1.2rem; }
+
+  .dc {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    margin-bottom: 0.4rem;
+    vertical-align: middle;
+  }
+  .dc-10 { background: rgba(42,92,30,0.12);  color: var(--dc-low);  border: 1px solid rgba(42,92,30,0.3); }
+  .dc-12 { background: rgba(122,80,0,0.1);   color: var(--dc-mid);  border: 1px solid rgba(122,80,0,0.3); }
+  .dc-14 { background: rgba(122,31,31,0.1);  color: var(--dc-high); border: 1px solid rgba(122,31,31,0.3); }
+  .dc-16 { background: rgba(122,31,31,0.15); color: var(--dc-high); border: 1px solid rgba(122,31,31,0.4); }
+
+  .discovery {
+    padding: 0.65rem 0.9rem;
+    margin-bottom: 0.6rem;
+    border-left: 3px solid var(--parchment-shadow);
+    background: rgba(180,140,60,0.1);
+  }
+  .dc-low-bg  { border-left-color: var(--dc-low)  !important; background: rgba(42,92,30,0.07)   !important; }
+  .dc-mid-bg  { border-left-color: var(--dc-mid)  !important; background: rgba(122,80,0,0.07)   !important; }
+  .dc-high-bg { border-left-color: var(--dc-high) !important; background: rgba(122,31,31,0.07)  !important; }
+  .dc-top-bg  { border-left-color: var(--blood)   !important; background: rgba(122,31,31,0.09)  !important; }
+
+  .discovery-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.25rem;
+  }
+  .discovery p { margin-bottom: 0.25rem; }
+
+  ul.find-list { margin: 0.25rem 0 0.25rem 1rem; font-size: 0.84rem; color: var(--dim); line-height: 1.6; }
+  ul.find-list li { margin-bottom: 0.1rem; }
+
+  .annotation {
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--blood);
+    padding: 0.25rem 0.6rem;
+    border-left: 2px solid var(--blood);
+    margin: 0.35rem 0;
+    background: rgba(122,31,31,0.04);
+  }
+
+  .insight {
+    padding: 0.65rem 0.9rem;
+    margin-bottom: 0.6rem;
+    background: rgba(91,45,142,0.05);
+    border: 1px solid rgba(91,45,142,0.2);
+    border-top: 2px solid var(--purple);
+  }
+  .insight-q {
+    font-family: 'Cinzel', serif;
+    font-size: 0.73rem;
+    font-weight: 700;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+  .insight-stat { font-family: 'Cinzel', serif; font-size: 0.68rem; font-weight: 700; color: var(--faded); letter-spacing: 0.1em; display: block; margin-bottom: 0.3rem; }
+  .insight p { font-size: 0.84rem; margin-bottom: 0.25rem; }
+  .insight ul { margin-left: 1rem; font-size: 0.82rem; color: var(--dim); line-height: 1.6; }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1rem 0;
+    color: var(--parchment-shadow);
+  }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
+  .divider span { font-size: 0.9rem; }
+
+  .conclusion {
+    margin-top: 1.2rem;
+    background: rgba(26,17,8,0.06);
+    border: 1px solid var(--parchment-shadow);
+    border-top: 2px solid var(--ink);
+    padding: 1rem 1.2rem;
+  }
+  .conclusion h3 { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--ink); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem; }
+  .conclusion ul { margin-left: 1.1rem; font-size: 0.87rem; color: var(--dim); line-height: 1.7; }
+
+  /* ── ITEM REFERENCE TABLE ── */
+  .item-ref {
+    margin-bottom: 1.2rem;
+    border: 1px solid var(--parchment-shadow);
+    border-top: 2px solid var(--ink);
+  }
+  .item-ref-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 0.5rem 1rem;
+    background: rgba(26,17,8,0.06);
+    border-bottom: 1px solid var(--parchment-shadow);
+  }
+  .item-ref table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+  }
+  .item-ref thead th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding: 0.4rem 0.8rem;
+    border-bottom: 1px solid var(--parchment-shadow);
+    text-align: left;
+    background: rgba(180,140,60,0.06);
+  }
+  .item-ref tbody tr:hover td { background: rgba(180,140,60,0.08); }
+  .item-ref tbody td {
+    padding: 0.35rem 0.8rem;
+    border-bottom: 1px solid rgba(180,140,60,0.2);
+    color: var(--dim);
+    vertical-align: middle;
+  }
+  .item-ref tbody tr:last-child td { border-bottom: none; }
+  .item-ref td:first-child { font-style: italic; color: var(--ink); }
+  .item-ref td:nth-child(2) { font-size: 0.78rem; color: var(--faded); }
+  .item-ref .dc-pill {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.1rem 0.4rem;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .pill-none  { color: var(--faded); }
+  .pill-low   { background: rgba(42,92,30,0.1);   color: var(--dc-low);  border: 1px solid rgba(42,92,30,0.25); }
+  .pill-mid   { background: rgba(122,80,0,0.1);   color: var(--dc-mid);  border: 1px solid rgba(122,80,0,0.25); }
+  .pill-high  { background: rgba(122,31,31,0.1);  color: var(--dc-high); border: 1px solid rgba(122,31,31,0.25); }
+  .pill-top   { background: rgba(122,31,31,0.15); color: var(--blood);   border: 1px solid rgba(122,31,31,0.35); font-weight: 900; }
+  .loc-house  { color: var(--dc-low); }
+  .loc-office { color: var(--dc-mid); }
+  .loc-body   { color: var(--blood); }
+  .item-ref tbody tr { cursor: pointer; transition: background 0.15s; }
+
+  /* ── MAP MINI + OVERLAY ── */
+  .map-mini-wrap {
+    margin-bottom: 1.2rem;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid var(--parchment-shadow);
+    border-top: 2px solid var(--ink);
+    overflow: hidden;
+  }
+  .map-mini-wrap:hover .map-mini-overlay-hint { opacity: 1; }
+  .map-mini-img {
+    display: block;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    object-position: center center;
+    filter: sepia(15%) contrast(1.05);
+    transition: filter 0.2s;
+  }
+  .map-mini-wrap:hover .map-mini-img { filter: sepia(5%) contrast(1.1) brightness(1.05); }
+  .map-mini-overlay-hint {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(26,17,8,0.35);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .map-mini-overlay-hint span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #f2e8c9;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+  }
+  .map-mini-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 0.4rem 1rem;
+    background: rgba(26,17,8,0.06);
+    border-top: 1px solid var(--parchment-shadow);
+  }
+
+  .map-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: rgba(5,3,1,0.92);
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+  }
+  .map-overlay.active { display: flex; }
+  .map-overlay-inner {
+    display: flex;
+    gap: 1.2rem;
+    max-width: 980px;
+    width: 100%;
+    align-items: flex-start;
+    cursor: default;
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.25s ease;
+  }
+  .map-overlay.active .map-overlay-inner { transform: scale(1); opacity: 1; }
+  .map-overlay-img {
+    flex: 1;
+    min-width: 0;
+    display: block;
+    width: 100%;
+    border: 2px solid var(--parchment-shadow);
+    box-shadow: 0 0 0 4px #1a1209, 0 0 0 6px var(--parchment-shadow);
+    filter: sepia(10%) contrast(1.05);
+  }
+  .map-legend {
+    width: 200px;
+    flex-shrink: 0;
+    background-color: #f2e8c9;
+    border: 2px solid var(--parchment-shadow);
+    box-shadow: 0 0 0 4px #1a1209, 0 0 0 6px var(--parchment-shadow);
+    padding: 1rem;
+  }
+  .map-legend-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 1px solid var(--parchment-shadow);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.6rem;
+  }
+  .map-legend ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .map-legend ol li {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    font-size: 0.82rem;
+    color: var(--dim);
+    padding: 0.25rem 0;
+    border-bottom: 1px solid rgba(180,140,60,0.2);
+    line-height: 1.3;
+  }
+  .map-legend ol li:last-child { border-bottom: none; }
+  .map-legend .loc-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--blood);
+    min-width: 1.2rem;
+    flex-shrink: 0;
+  }
+  .map-legend .loc-key { font-style: italic; color: var(--faded); font-size: 0.75rem; display: block; }
+  .map-close {
+    position: fixed;
+    top: 1rem;
+    right: 1.2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: rgba(242,232,200,0.6);
+    cursor: pointer;
+    z-index: 301;
+  }
+  .map-close:hover { color: #f2e8c9; }
+  @media (max-width: 680px) {
+    .map-overlay-inner { flex-direction: column; }
+    .map-legend { width: 100%; }
+  }
+  .item-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(5,3,1,0.85);
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+  }
+  .item-modal-overlay.active { display: flex; }
+  .item-modal {
+    background-color: #f2e8c9;
+    border: 2px solid var(--parchment-shadow);
+    box-shadow: 0 0 0 4px #1a1209, 0 0 0 6px var(--parchment-shadow), 0 10px 40px rgba(0,0,0,0.8);
+    max-width: 560px;
+    width: 100%;
+    cursor: default;
+    transform: scale(0.93) translateY(10px);
+    opacity: 0;
+    transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease;
+    position: relative;
+  }
+  .item-modal-overlay.active .item-modal { transform: scale(1) translateY(0); opacity: 1; }
+  .item-modal-header {
+    padding: 0.9rem 2.5rem 0.9rem 1.1rem;
+    border-bottom: 1px solid var(--parchment-shadow);
+    background: rgba(26,17,8,0.05);
+  }
+  .item-modal-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .item-modal-meta { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--faded); }
+  .item-modal-body { padding: 1rem 1.1rem 1.2rem; font-size: 0.88rem; line-height: 1.65; color: var(--dim); }
+  .item-modal-body ul { margin-left: 1.1rem; margin-top: 0.3rem; line-height: 1.65; }
+  .item-modal-body li { margin-bottom: 0.15rem; }
+  .item-modal-body em { color: var(--blood); font-style: italic; }
+  .item-modal-body .note {
+    display: block;
+    margin-top: 0.6rem;
+    font-style: italic;
+    font-size: 0.83rem;
+    color: var(--blood);
+    padding: 0.25rem 0.6rem;
+    border-left: 2px solid var(--blood);
+    background: rgba(122,31,31,0.04);
+  }
+  .item-modal-close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.8rem;
+    font-size: 1rem;
+    color: var(--faded);
+    cursor: pointer;
+    opacity: 0.6;
+    line-height: 1;
+  }
+  .item-modal-close:hover { opacity: 1; }
+
+  @media (max-width: 680px) {
+    .two-col { grid-template-columns: 1fr; }
+    .page { padding: 1.5rem 1.2rem 2rem; }
+  }
+  @media print { body { background: white; padding: 0; } .page { box-shadow: none; border: none; } .accordion-body { display: block !important; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TITLE -->
+  <div class="page-title">
+    <span class="gm-label">GM Reference · Hollowgate</span>
+    <h1>Eric Huwithakay — Investigation</h1>
+    <p class="subtitle">Missing Sarynthian intelligence contact · House search · Aurelia's briefing</p>
+  </div>
+
+  <!-- QUICK REF -->
+  <div class="quick-ref">
+    <div class="qr-item">
+      <span class="qr-label">Subject</span>
+      <span class="qr-value">Eric Huwithakay — public scribe, covert Sarynthian contact</span>
+    </div>
+    <div class="qr-item">
+      <span class="qr-label">Status</span>
+      <span class="qr-value">Missing. Correspondence ceased. Departed intentionally.</span>
+    </div>
+    <div class="qr-item">
+      <span class="qr-label">Atmosphere</span>
+      <span class="qr-value">Paused mid-task. Ink, parchment, lamp oil, tea.</span>
+    </div>
+    <div class="qr-item">
+      <span class="qr-label">Missing Items</span>
+      <div class="missing-items">
+        <span class="badge">Traveling Cloak</span>
+        <span class="badge">Outdoor Boots</span>
+        <span class="badge">Satchel</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MINI MAP -->
+  <div class="map-mini-wrap" onclick="openMap()">
+    <img class="map-mini-img" src="hollowgate_map.png" alt="Hollowgate Map">
+    <div class="map-mini-overlay-hint"><span>Click to expand map</span></div>
+    <div class="map-mini-label">Hollowgate · Pop. 1100 — Click to view full map &amp; legend</div>
+  </div>
+
+  <!-- ITEM REFERENCE TABLE -->
+  <div class="item-ref">
+    <div class="item-ref-title">Item Reference — What Can Be Found &amp; Where</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Location</th>
+          <th>DC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-name="Vanya's Mission Briefing" data-loc="Vanya — Faction" data-dc="—" data-detail="A gate scribe in this town has begun asking questions about recent convoy records. This individual is the one currently assigned to the gate, who replaced the previous scribe now missing. The former scribe is no longer a concern. This one is becoming one.&#10;• Secure relevant records before acting&#10;• Take anything related to disrupted convoys&#10;• Remove the scribe cleanly and quietly&#10;• Confirm the correct target before acting&#10;'You were not chosen because you are ready. You were chosen to determine if you are. Do not fail.'"><td>Vanya's Mission Briefing</td><td style="color:var(--blood);">Vanya — Faction</td><td><span class="dc-pill pill-none">—</span></td></tr>
+        <tr data-name="Jeffrey — Gate Attendant" data-loc="Scribe's Office — Day" data-dc="—" data-detail="Jeffrey is the current gate attendant. He wears grey and blue — memorial colors for Eric, missing two weeks. He is visibly affected and willing to talk.&#10;• Eric has been missing for two weeks&#10;• Several convoys have failed to arrive recently&#10;• Active reward of 400 gp for the safe return of the latest missing convoy&#10;Access to Eric's desk: Persuasion DC 16 during business hours, or Lockpick DC 12 after hours."><td>Jeffrey — Gate Attendant</td><td class="loc-office">Scribe's Office — Day</td><td><span class="dc-pill pill-none">—</span></td></tr>
+        <tr data-name="Work Desk &amp; Convoy Maps" data-loc="House — Front Room" data-dc="—" data-detail="The desk is covered in convoy manifests, tariff declarations, trade ledgers, and customs reports. Margin notes include 'WHY?', 'Duplicate?', 'No decree attached.', and 'Declared missing before arrival.' A wall map nearby shows convoy routes with colored thread connecting disappearance locations in patterns that appear deliberate rather than random."><td>Work Desk &amp; Convoy Maps</td><td class="loc-house">House — Front Room</td><td><span class="dc-pill pill-none">—</span></td></tr>
+        <tr data-name="Signs of Departure" data-loc="House — Front Room" data-dc="—" data-detail="Traveling cloak, outdoor boots, and satchel are missing. Nothing is overturned. The house feels paused mid-task — a cold kettle, papers mid-sort, a chair pulled slightly back. Eric appears to have left intentionally and quickly."><td>Signs of Departure</td><td class="loc-house">House — Front Room</td><td><span class="dc-pill pill-none">—</span></td></tr>
+        <tr data-name="Desk Notes &amp; Shipment Records" data-loc="Office — Desk" data-dc="—" data-detail="Specific shipments logged with growing concern:&#10;• Grain caravan — 6 wagons expected. Never arrived.&#10;• Salt shipment from the southern coast — Delayed 12 days.&#10;• Iron tools shipment — Held at checkpoint. Reason unclear.&#10;Notes indicate the pattern is not random — someone is interfering with specific shipments."><td>Desk Notes &amp; Shipment Records</td><td class="loc-office">Office — Desk</td><td><span class="dc-pill pill-none">—</span></td></tr>
+        <tr data-name="Merchant Complaint Slips" data-loc="Office — Desk" data-dc="—" data-detail="Several short written statements from merchants:&#10;• 'The border officials claim the taxes are temporary wartime measures, but no war has been declared.'&#10;• 'Three of our wagons were turned away for inspection delays while another caravan passed without issue.'&#10;Rates are inconsistent — some caravans taxed heavily, others not at all."><td>Merchant Complaint Slips</td><td class="loc-office">Office — Desk</td><td><span class="dc-pill pill-none">—</span></td></tr>
+        <tr data-name="Trade Analysis Notes" data-loc="House — Desk" data-dc="DC 10" data-detail="Scattered notes comparing declared cargo weights, taxes collected, missing shipments, and changing toll rates. Conclusions grow increasingly alarmed:&#10;• 'Artificial scarcity?'&#10;• 'Prepared as if for wartime.'&#10;• 'Too coordinated for simple corruption.'"><td>Trade Analysis Notes</td><td class="loc-house">House — Desk</td><td><span class="dc-pill pill-low">DC 10</span></td></tr>
+        <tr data-name="Burn Tray" data-loc="House — Desk" data-dc="DC 10" data-detail="A small iron tray near the desk contains partially burned correspondence. Legible fragments:&#10;• '…increased patrol movement…'&#10;• '…not officially declared…'&#10;• '…merchants refusing northern roads…'&#10;Someone destroyed sensitive papers in haste."><td>Burn Tray</td><td class="loc-house">House — Desk</td><td><span class="dc-pill pill-low">DC 10</span></td></tr>
+        <tr data-name="Cipher Habit (ledgers)" data-loc="House — Desk" data-dc="DC 10" data-detail="Several ledgers contain subtly altered dates, oddly repeated phrases, and slight ink markings. Eric was embedding coded intelligence communications into mundane trade records — not criminal activity, but professional tradecraft."><td>Cipher Habit (ledgers)</td><td class="loc-house">House — Desk</td><td><span class="dc-pill pill-low">DC 10</span></td></tr>
+        <tr data-name="Signs of Prior Search" data-loc="House — General" data-dc="DC 10" data-detail="A careful observer notices: dust disturbed on one shelf, one drawer closed improperly, stacked papers returned in the wrong order. Someone else has already searched this house carefully — and tried to hide that they did."><td>Signs of Prior Search</td><td class="loc-house">House — General</td><td><span class="dc-pill pill-low">DC 10</span></td></tr>
+        <tr data-name="Date-Shift Cipher Key" data-loc="House — Book Spine" data-dc="DC 12" data-detail="Hidden inside the spine lining of a trade law book: a folded parchment containing a date-shift cipher reference, substitution patterns, and encoded scheduling references. The cipher appears professional and practical rather than sinister."><td>Date-Shift Cipher Key</td><td class="loc-house">House — Book Spine</td><td><span class="dc-pill pill-mid">DC 12</span></td></tr>
+        <tr data-name="Personal Journal" data-loc="House — Under Papers" data-dc="DC 12" data-detail="A small journal hidden beneath loose paperwork. Entries show a progression of concern:&#10;• Early: 'Likely bookkeeping incompetence.'&#10;• Later: 'Three disappearances in twelve days.'&#10;• Near end: 'Someone is manipulating regional supply flow.'&#10;• Final entry: 'I believe someone entered the house while I was gone.'"><td>Personal Journal</td><td class="loc-house">House — Under Papers</td><td><span class="dc-pill pill-mid">DC 12</span></td></tr>
+        <tr data-name="Weather &amp; Road Log" data-loc="House — Desk" data-dc="DC 12" data-detail="Eric kept detailed records of storms, flooding, road washouts, and caravan delays — methodically attempting to eliminate natural explanations for the disappearances. One margin note reads: 'Road conditions clear. Convoy still vanished.'"><td>Weather &amp; Road Log</td><td class="loc-house">House — Desk</td><td><span class="dc-pill pill-mid">DC 12</span></td></tr>
+        <tr data-name="Sealed Letter (Sarynthia)" data-loc="House — Documents" data-dc="DC 12" data-detail="A letter addressed to the Office of Trade Observations. Eric writes that he must accelerate his previous report — matters are increasingly irregular. He notes caravan failures, unsustainable export taxes, and selective tariff increases. Final line: 'If I am correct, the disruptions are not merely trade disputes. Someone is manipulating supply routes deliberately.'"><td>Sealed Letter (Sarynthia)</td><td class="loc-house">House — Documents</td><td><span class="dc-pill pill-mid">DC 12</span></td></tr>
+        <tr data-name="Charcoal Regional Map" data-loc="House — Documents" data-dc="DC 12" data-detail="A map of the surrounding region with several trade routes marked in charcoal. Two routes bear X marks where caravans vanished. One of the marks is very close to the city. Written beside it: 'If wagons are disappearing here, someone must be diverting them.'"><td>Charcoal Regional Map</td><td class="loc-house">House — Documents</td><td><span class="dc-pill pill-mid">DC 12</span></td></tr>
+        <tr data-name="Hidden Correspondence Slot" data-loc="House — Bookshelf" data-dc="DC 14" data-detail="Behind a slightly protruding bookshelf volume: coded correspondence, copied manifests, and sealed notes intended for Sarynthia. Contents cover suspicious tariff patterns, convoy disappearances, escalating border tensions, and unusual resource movements. Nothing here suggests sabotage — Eric was gathering intelligence, not committing crimes."><td>Hidden Correspondence Slot</td><td class="loc-house">House — Bookshelf</td><td><span class="dc-pill pill-high">DC 14</span></td></tr>
+        <tr data-name="Emergency Go-Bag Cache" data-loc="House — Floorboard" data-dc="DC 14" data-detail="A compact cache hidden beneath a loose floorboard near the bed. The cache feels practical and prepared — not greedy.&#10;• 18 gp · 37 sp · 4 Sarynthian silver marks&#10;• Waterproof tinderbox&#10;• Compact whetstone&#10;• 3 days dried rations&#10;• Travel writing charcoal&#10;• Sealed antiseptic herbs&#10;• Oilcloth-wrapped spare socks&#10;• Simple travel razor&#10;• Folded evacuation route map&#10;• Durable dagger&#10;• Small silver ring bearing a subtle Sarynthian crest"><td>Emergency Go-Bag Cache</td><td class="loc-house">House — Floorboard</td><td><span class="dc-pill pill-high">DC 14</span></td></tr>
+        <tr data-name="Intelligence Pattern Board" data-loc="House — Under Maps" data-dc="DC 16" data-detail="Tucked beneath stacked maps: cross-referenced notes tying together tariff increases, convoy disappearances, changing guard rotations, redirected steel shipments, and restricted road access. Two key annotations:&#10;• 'The region is behaving as though conflict is expected before anyone is willing to admit it.'&#10;• 'Someone is controlling movement through fear and scarcity.'&#10;No definitive culprit is identified."><td>Intelligence Pattern Board</td><td class="loc-house">House — Under Maps</td><td><span class="dc-pill pill-top">DC 16</span></td></tr>
+        <tr data-name="Bronze Signet Stamp" data-loc="On Body — Satchel" data-dc="—" data-detail="A small bronze signet stamp engraved with the Sarynthian administrative seal and the name E. Huwithakay. Confirms Eric's identity as a Sarynthian intelligence operative — not merely a civilian scribe."><td>Bronze Signet Stamp</td><td class="loc-body">On Body — Satchel</td><td><span class="dc-pill pill-none">—</span></td></tr>
+        <tr data-name="Partial Tunnel Map" data-loc="On Body — Satchel" data-dc="—" data-detail="A partially drawn map of tunnel passages. Eric clearly started mapping them before he died — the lines are careful and methodical, not hurried. The map is incomplete but shows entry points near the city."><td>Partial Tunnel Map</td><td class="loc-body">On Body — Satchel</td><td><span class="dc-pill pill-none">—</span></td></tr>
+        <tr data-name="Final Note (Kobolds)" data-loc="On Body — Satchel" data-dc="—" data-detail="A loose scrap of parchment inside the satchel. His last written words:&#10;&#10;'Tunnels confirmed. Creatures using them — Kobolds. If caravans are being diverted through here then someone must be paying them.'&#10;&#10;'Need proof before sending report.'"><td>Final Note (Kobolds)</td><td class="loc-body">On Body — Satchel</td><td><span class="dc-pill pill-none">—</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══ ACCORDION 1: A Diplomat's Knowledge ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-aurelia" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">A Diplomat's Knowledge — Princess Aurelia</div>
+        <div class="accordion-subtitle">What she knows · Insight prompts</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">What Aurelia Knows</p>
+            <p>Aurelia knows Eric is Sarynthia's covert contact in Hollowgate. He sends monthly intelligence reports. Recently his messages became more frequent and alarmed — then stopped entirely.</p>
+            <h3>From His Last Reports</h3>
+            <ul class="find-list">
+              <li>Border villages in Fastingbreak experiencing food shortages</li>
+              <li>Elkenquay levying very high export taxes on goods destined for Fastingbreak</li>
+              <li>Shipments becoming smaller, delayed, or unprofitable</li>
+              <li>Entire convoys failing to depart or arrive — cause unknown</li>
+              <li>Eric believed something larger was developing</li>
+              <li><strong>His correspondence has now stopped entirely.</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">Princess Insight Prompts</p>
+            <div class="insight">
+              <div class="insight-q">Would Elkenquay realistically extort trade shipments from Fastingbreak?</div>
+              <span class="insight-stat">WIS 15+</span>
+              <p>It smells like propaganda. If stories about "extortion taxes" are spreading, someone benefits from people believing Elkenquay is the villain. <strong>Who benefits from that anger?</strong></p>
+            </div>
+            <div class="insight">
+              <div class="insight-q">Why would people sent to gather information stop returning?</div>
+              <span class="insight-stat">WIS 15+</span>
+              <p>Someone powerful is likely silencing questions. Could be:</p>
+              <ul>
+                <li>A faction inside Fastingbreak</li>
+                <li>Agents from Elkenquay</li>
+                <li>A third party benefiting from the confusion</li>
+              </ul>
+            </div>
+            <div class="insight">
+              <div class="insight-q">If tensions are rising, what is the most likely cause?</div>
+              <span class="insight-stat">WIS 15+</span>
+              <p>Tensions often grow not from direct conflict but manipulation. A rival power, merchant consortium, or hidden faction may be pushing both sides toward hostility.</p>
+            </div>
+            <div class="insight">
+              <div class="insight-q">What strategic advantage would Elkenquay gain from harming Fastingbreak economically?</div>
+              <span class="insight-stat">INT 10</span>
+              <p>Weakening Fastingbreak could help Elkenquay dominate regional trade.</p>
+            </div>
+            <div class="insight">
+              <div class="insight-q">If the tariffs are real, how might they be happening?</div>
+              <span class="insight-stat">INT 10</span>
+              <p>Elkenquay could simply have increased border taxes through normal administrative channels.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION 2: Eric's House — Documents Found ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-house" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Eric's House — Documents Found</div>
+        <div class="accordion-subtitle">Sealed letter · Charcoal map · Go-bag cache</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <h2>1. Sealed Letter — To the Office of Trade Observations</h2>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Contents</div>
+              <p>I regret that I must accelerate my previous report. Matters here are increasingly irregular.</p>
+              <p>Over the past several weeks I have observed inconsistencies in caravan manifests and border taxes. Several shipments expected to pass through have failed to arrive, though no official notice of delay has been issued.</p>
+              <p>Several merchants have quietly complained that export taxes have risen to levels that would make trade unsustainable. <em>Selective tariffs have increased again.</em></p>
+              <p>I hesitate to speculate, but these actions could create significant strain between our nations should they continue. I intend to investigate further.</p>
+              <div class="annotation">"If I am correct, the disruptions are not merely trade disputes. Someone is manipulating supply routes deliberately."</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <h2>2. Charcoal-Marked Regional Map</h2>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Map Markings</div>
+              <ul class="find-list">
+                <li>Several trade routes marked in charcoal.</li>
+                <li><strong>Two routes bear X marks</strong> where caravans vanished.</li>
+                <li>One X mark is very close to the city.</li>
+              </ul>
+              <div class="annotation">"If wagons are disappearing here, someone must be diverting them."</div>
+            </div>
+          </div>
+          <div class="block">
+            <h2>3. Emergency Go-Bag Cache <span class="dc dc-14">DC 14</span></h2>
+            <div class="discovery dc-high-bg">
+              <div class="discovery-name">Beneath a loose floorboard near the bed</div>
+              <ul class="find-list">
+                <li>18 gp · 37 sp · 4 Sarynthian silver marks</li>
+                <li>Waterproof tinderbox, compact whetstone</li>
+                <li>3 days dried rations, travel writing charcoal</li>
+                <li>Sealed antiseptic herbs, spare socks, simple razor</li>
+                <li>Folded evacuation route map &amp; durable dagger</li>
+                <li><strong>Small silver ring bearing a subtle Sarynthian crest</strong></li>
+              </ul>
+              <div class="annotation">Practical. Prepared. Not greedy.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION 2: Eric's House — Discoveries by DC ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-dc" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Eric's House — Discoveries by DC</div>
+        <div class="accordion-subtitle">Investigation checks · Cipher · Pattern board</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <h2>Immediate · No Check</h2>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">The Work Desk</div>
+              <p>Convoy manifests, tariff declarations, trade ledgers, customs reports. Margin notes throughout:</p>
+              <ul class="find-list">
+                <li>"WHY?" / "Duplicate?" / "No decree attached."</li>
+                <li>"Declared missing before arrival."</li>
+                <li>Shipment routes between Hollowgate and Fastingbreak circled repeatedly.</li>
+              </ul>
+              <div class="annotation">Eric was investigating trade irregularities.</div>
+            </div>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">The Convoy Maps</div>
+              <p>Wall map showing convoy routes, tariff checkpoints, disappearance locations, and revised patrol routes. Colored thread connects disappearances in patterns that appear deliberate.</p>
+            </div>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Signs of Departure</div>
+              <p>Traveling cloak, outdoor boots, and satchel are gone. Departure appears intentional and hurried.</p>
+            </div>
+          </div>
+
+          <div class="block">
+            <h2><span class="dc dc-10">DC 10 · Investigation</span></h2>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Trade Analysis Notes</div>
+              <ul class="find-list">
+                <li>"Artificial scarcity?"</li>
+                <li>"Prepared as if for wartime."</li>
+                <li>"Too coordinated for simple corruption."</li>
+              </ul>
+            </div>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Burn Tray</div>
+              <p>Partially burned correspondence near the desk. Fragments:</p>
+              <ul class="find-list">
+                <li>"…increased patrol movement…"</li>
+                <li>"…not officially declared…"</li>
+                <li>"…merchants refusing northern roads…"</li>
+              </ul>
+              <div class="annotation">Sensitive papers destroyed in haste.</div>
+            </div>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">The Cipher Habit</div>
+              <p>Subtly altered dates, oddly repeated phrases, slight ink markings. Eric was embedding coded intelligence communications into mundane trade records.</p>
+            </div>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Signs of a Search</div>
+              <p>Dust disturbed on one shelf. One drawer closed improperly. Papers returned in the wrong order. <strong>Someone else has already searched this house carefully.</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="block">
+            <h2><span class="dc dc-12">DC 12 · Investigation</span></h2>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Hidden Date-Shift Cipher Key</div>
+              <p>Inside the spine lining of a trade law book: a date-shift cipher reference, substitution patterns, and encoded scheduling references. Professional and practical.</p>
+            </div>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Personal Journal</div>
+              <ul class="find-list">
+                <li><em>Early:</em> "Likely bookkeeping incompetence."</li>
+                <li><em>Later:</em> "Three disappearances in twelve days."</li>
+                <li><em>Near end:</em> "Someone is manipulating regional supply flow."</li>
+                <li><em>Final entry:</em> "I believe someone entered the house while I was gone."</li>
+              </ul>
+            </div>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Weather &amp; Road Conditions Log</div>
+              <p>Storms, flooding, road washouts, caravan delays — methodically eliminating natural explanations.</p>
+              <div class="annotation">"Road conditions clear. Convoy still vanished."</div>
+            </div>
+          </div>
+
+          <div class="block">
+            <h2><span class="dc dc-14">DC 14 · Investigation</span></h2>
+            <div class="discovery dc-high-bg">
+              <div class="discovery-name">Hidden Correspondence Slot</div>
+              <p>Behind a slightly protruding bookshelf volume: coded correspondence, copied manifests, and sealed notes intended for Sarynthia.</p>
+              <ul class="find-list">
+                <li>Suspicious tariff patterns</li>
+                <li>Convoy disappearances &amp; escalating border tensions</li>
+                <li>Unusual resource movements</li>
+              </ul>
+              <div class="annotation">Eric was a legitimate intelligence gatherer, not a saboteur.</div>
+            </div>
+          </div>
+
+          <div class="block">
+            <h2><span class="dc dc-16">DC 16 · Investigation</span></h2>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">Intelligence Pattern Board</div>
+              <p>Cross-referenced notes: tariff increases, convoy disappearances, changing guard rotations, redirected steel shipments, restricted road access.</p>
+              <ul class="find-list">
+                <li>"The region is behaving as though conflict is expected before anyone is willing to admit it."</li>
+                <li>"Someone is controlling movement through fear and scarcity."</li>
+                <li>Several names and merchant groups appear repeatedly — no definitive culprit identified.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Vanya's Mission ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-body" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Vanya's Mission</div>
+        <div class="accordion-subtitle">Faction briefing · Target · Instructions</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="discovery dc-top-bg" style="margin-bottom:0.8rem;">
+        <div class="discovery-name">Mission Briefing — Received by Vanya</div>
+        <p>"A gate scribe in this town has begun asking questions about recent convoy records — questions that suggest they are noticing inconsistencies others have missed. This individual is the one currently assigned to the gate, who replaced the previous scribe now missing. The former scribe is no longer a concern. This one is becoming one. Ensure you have the correct target before acting."</p>
+        <p style="margin-top:0.5rem;">"Before you act, you will secure any records, copies, or notes relevant to the disrupted convoy. What matters may not be obvious. Take what you judge to be important. Once you have done so, the scribe is to be removed. Cleanly. Quietly. Without drawing attention to the work."</p>
+        <p style="margin-top:0.5rem;">"You were not chosen because you are ready. You were chosen to determine if you are."</p>
+        <div class="annotation">"Do not confuse the two — and do not fail."</div>
+      </div>
+      <div class="two-col">
+        <div class="discovery dc-high-bg">
+          <div class="discovery-name">Target</div>
+          <ul class="find-list">
+            <li>The <strong>current gate scribe</strong> — the one who replaced Eric</li>
+            <li>Eric himself is described as "the former scribe, no longer a concern"</li>
+            <li>Mission emphasizes: <strong>confirm the correct target before acting</strong></li>
+          </ul>
+        </div>
+        <div class="discovery dc-mid-bg">
+          <div class="discovery-name">Orders</div>
+          <ul class="find-list">
+            <li>Secure relevant records <strong>before</strong> acting</li>
+            <li>Take anything related to disrupted convoys</li>
+            <li>Remove the scribe cleanly and quietly</li>
+            <li>This is Vanya's proving mission — she was chosen to be tested</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Investigating the Scribe's Office — During Business Hours ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-office" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Investigating the Scribe's Office — During Business Hours</div>
+        <div class="accordion-subtitle">Jeffrey the gate attendant · Convoy reward · Persuasion DC 16</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <h2>Jeffrey — Gate Attendant</h2>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Appearance &amp; Demeanor</div>
+              <p>Jeffrey is the current gate attendant. He wears a <strong>grey and blue tunic</strong> — the colors are memorial dress for Eric, who has been missing for two weeks. He is visibly affected by Eric's disappearance.</p>
+            </div>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">What Jeffrey Freely Shares</div>
+              <ul class="find-list">
+                <li>Eric has been missing for <strong>two weeks</strong></li>
+                <li>Several convoys have failed to arrive in recent weeks</li>
+                <li>There is an active <strong>reward of 400 gp</strong> for the safe return of the latest missing convoy</li>
+                <li>He is clearly worried and willing to talk to anyone who seems to care</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <h2>Access to Eric's Office Desk</h2>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name"><span class="dc dc-16" style="margin-bottom:0;">Persuasion DC 16</span> — During Business Hours</div>
+              <p>On a successful Persuasion check, Jeffrey grants access to Eric's office and his desk. He trusts the party means well and wants Eric found.</p>
+              <p style="margin-top:0.4rem;">On a failure, he apologizes but says he cannot allow access to official records without authorization.</p>
+            </div>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">After Hours — Lockpick</div>
+              <p>The office can be accessed without Jeffrey present.</p>
+              <div class="annotation"><span class="dc dc-12" style="margin-bottom:0;">Lockpick DC 12</span> to enter the office after hours.</div>
+            </div>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">If Access is Granted</div>
+              <p>See <em>Found in His Office</em> accordion for full desk contents.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Found in His Office ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-office" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Found in His Office</div>
+        <div class="accordion-subtitle">Lockpick DC 12 · Persuasion DC 16 (business hours) · Desk notes · Merchant complaints</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <h2>1. Desk Notes</h2>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Specific Shipment Records</div>
+              <ul class="find-list">
+                <li><strong>Grain caravan</strong> — 6 wagons expected. Never arrived.</li>
+                <li><strong>Salt shipment</strong> from the southern coast — Delayed 12 days.</li>
+                <li><strong>Iron tools shipment</strong> — Held at checkpoint. Reason unclear.</li>
+              </ul>
+            </div>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Tax Inconsistency Notes</div>
+              <ul class="find-list">
+                <li>Several merchants report "temporary export taxes."</li>
+                <li>Rates inconsistent — some caravans taxed heavily, others not at all.</li>
+              </ul>
+              <div class="annotation">"Not random. Someone interfering with specific shipments."</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <h2>2. Merchant Complaints</h2>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Written Statement — Merchant A</div>
+              <div class="annotation">"The border officials claim the taxes are temporary wartime measures, but no war has been declared."</div>
+            </div>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Written Statement — Merchant B</div>
+              <div class="annotation">"Three of our wagons were turned away for 'inspection delays' while another caravan passed without issue."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION 5: When They Find His Body ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-body" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">When They Find His Body</div>
+        <div class="accordion-subtitle">Satchel contents · Signet stamp · Final note</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <h2>On His Person — Satchel Contents</h2>
+            <div class="discovery dc-high-bg">
+              <div class="discovery-name">Items Found</div>
+              <ul class="find-list">
+                <li><strong>Small bronze signet stamp</strong> — Sarynthian administrative seal, name <em>E. Huwithakay</em></li>
+                <li>Parchment notes &amp; charcoal for writing</li>
+                <li><strong>Partially drawn tunnel map</strong> — he was actively mapping the passages</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <h2>A Final Note — Loose Scrap in Satchel</h2>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">His Last Written Words</div>
+              <div class="annotation">"Tunnels confirmed. Creatures using them — Kobolds. If caravans are being diverted through here then someone must be paying them."</div>
+              <div class="annotation" style="margin-top:0.4rem;">"Need proof before sending report."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion">
+    <h3>GM Conclusion — What the Party Should Deduce</h3>
+    <ul>
+      <li>Eric Huwithakay was secretly operating as a Sarynthian intelligence contact under the cover of a scribe.</li>
+      <li>He was not sabotaging Hollowgate or committing crimes — he was investigating legitimate irregularities.</li>
+      <li>He traced missing caravans to tunnels beneath or near the city, used by Kobolds.</li>
+      <li><strong>Someone is paying the Kobolds to divert specific shipments</strong> — the targeting is deliberate, not opportunistic.</li>
+      <li>He went to gather proof before filing his report, and did not return.</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- MAP OVERLAY -->
+<div class="map-overlay" id="mapOverlay" onclick="closeMap()">
+  <span class="map-close" onclick="closeMap()">✕ Close</span>
+  <div class="map-overlay-inner" onclick="event.stopPropagation()">
+    <img class="map-overlay-img" src="hollowgate_map.png" alt="Hollowgate Map">
+    <div class="map-legend">
+      <div class="map-legend-title">Legend</div>
+      <ol>
+        <li><span class="loc-num">1</span><div>Town Gate &amp; Scribe's Office</div></li>
+        <li><span class="loc-num">2</span><div>Abandoned Mill</div></li>
+        <li><span class="loc-num">3</span><div>Stable</div></li>
+        <li><span class="loc-num">4</span><div>Tavern</div></li>
+        <li><span class="loc-num">5</span><div>General Store</div></li>
+        <li><span class="loc-num">6</span><div>Eric Huwithakay's House</div></li>
+        <li><span class="loc-num">7</span><div>Old Well</div></li>
+        <li><span class="loc-num">8</span><div>Graveyard</div></li>
+        <li><span class="loc-num">9</span><div>Fields</div></li>
+        <li><span class="loc-num">10</span><div>Mayor's Manor</div></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ITEM DETAIL MODAL -->
+<div class="item-modal-overlay" id="itemOverlay">
+  <div class="item-modal" id="itemModal">
+    <span class="item-modal-close" id="itemClose">✕</span>
+    <div class="item-modal-header">
+      <div class="item-modal-name" id="itemName"></div>
+      <div class="item-modal-meta" id="itemMeta"></div>
+    </div>
+    <div class="item-modal-body" id="itemBody"></div>
+  </div>
+</div>
+
+<script>
+  function toggle(header) {
+    header.classList.toggle('open');
+    header.nextElementSibling.classList.toggle('open');
+  }
+  document.querySelector('.accordion-header').click();
+
+  // Map overlay
+  const mapOverlay = document.getElementById('mapOverlay');
+  function openMap() {
+    mapOverlay.style.display = 'flex';
+    requestAnimationFrame(() => requestAnimationFrame(() => mapOverlay.classList.add('active')));
+  }
+  function closeMap() {
+    mapOverlay.classList.remove('active');
+    setTimeout(() => { mapOverlay.style.display = 'none'; }, 320);
+  }
+
+  // Item modal
+  const overlay = document.getElementById('itemOverlay');
+  const modal   = document.getElementById('itemModal');
+
+  function openItem(name, loc, dc, detail) {
+    document.getElementById('itemName').textContent = name;
+    document.getElementById('itemMeta').textContent = loc + (dc !== '—' ? '  ·  ' + dc : '');
+    // Convert newline-separated bullets to HTML
+    const lines = detail.split('\n');
+    let html = '';
+    let inList = false;
+    lines.forEach(line => {
+      if (line.startsWith('•')) {
+        if (!inList) { html += '<ul>'; inList = true; }
+        html += '<li>' + line.slice(1).trim() + '</li>';
+      } else {
+        if (inList) { html += '</ul>'; inList = false; }
+        if (line.trim()) html += '<p>' + line + '</p>';
+      }
+    });
+    if (inList) html += '</ul>';
+    document.getElementById('itemBody').innerHTML = html;
+    overlay.style.display = 'flex';
+    requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('active')));
+  }
+
+  function closeItem() {
+    overlay.classList.remove('active');
+    setTimeout(() => { overlay.style.display = 'none'; }, 260);
+  }
+
+  overlay.addEventListener('click', closeItem);
+  modal.addEventListener('click', e => e.stopPropagation());
+  document.getElementById('itemClose').addEventListener('click', closeItem);
+
+  document.querySelectorAll('.item-ref tbody tr').forEach(row => {
+    row.addEventListener('click', () => {
+      openItem(
+        row.dataset.name,
+        row.dataset.loc,
+        row.dataset.dc,
+        row.dataset.detail
+      );
+    });
+  });
+</script>
+</body>
+</html>
