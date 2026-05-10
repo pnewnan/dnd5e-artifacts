@@ -437,6 +437,57 @@
     font-size: 0.78rem;
   }
 
+  /* === POSTER OVERLAY === */
+  .poster-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(5,3,1,0.85);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .poster-overlay.active {
+    display: flex;
+  }
+  .poster-wrap {
+    perspective: 1200px;
+    max-width: min(480px, 90vw);
+    width: 100%;
+  }
+  .poster-inner {
+    width: 100%;
+    transform-origin: left center;
+    transform: rotateY(-90deg) scaleX(0.6);
+    opacity: 0;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+    box-shadow: -12px 0 40px rgba(0,0,0,0.7), 4px 4px 30px rgba(180,140,60,0.15);
+  }
+  .poster-overlay.active .poster-inner {
+    transform: rotateY(0deg) scaleX(1);
+    opacity: 1;
+  }
+  .poster-inner img {
+    width: 100%;
+    display: block;
+    border: 3px solid var(--parchment-shadow);
+  }
+  .poster-hint {
+    text-align: center;
+    margin-top: 0.8rem;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: rgba(220,190,120,0.5);
+    letter-spacing: 0.1em;
+  }
+
+  /* clickable title */
+  .shop-title { cursor: pointer; }
+  .shop-title:hover { text-shadow: 0 0 12px rgba(180,80,80,0.4); }
+  .hero-img { cursor: pointer; }
+
   /* === HERO IMAGE === */
   .hero-img {
     display: block;
@@ -861,7 +912,37 @@
 
 </div><!-- /parchment -->
 </div><!-- /page-wrap -->
+<!-- POSTER OVERLAY -->
+<div class="poster-overlay" id="posterOverlay">
+  <div class="poster-wrap">
+    <div class="poster-inner">
+      <img src="mm_poster.png" alt="Moonlit Mirage Carnival Poster">
+    </div>
+    <p class="poster-hint">click anywhere to close</p>
+  </div>
+</div>
+
 <script>
+  // Poster overlay
+  const overlay = document.getElementById('posterOverlay');
+
+  function openPoster() {
+    overlay.style.display = 'flex';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => overlay.classList.add('active'));
+    });
+  }
+
+  function closePoster() {
+    overlay.classList.remove('active');
+    setTimeout(() => { overlay.style.display = 'none'; }, 560);
+  }
+
+  document.querySelector('.shop-title').addEventListener('click', openPoster);
+  document.querySelector('.hero-img').addEventListener('click', openPoster);
+  overlay.addEventListener('click', closePoster);
+
+  // Trinket/featured card image expand
   document.querySelectorAll('.trinket-card img, .featured-card img').forEach(img => {
     img.addEventListener('click', e => {
       e.stopPropagation();
