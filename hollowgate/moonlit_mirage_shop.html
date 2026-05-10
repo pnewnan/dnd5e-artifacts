@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moonlit Mirage Carnival — Curiosities & Prize Counter</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1108;
+    --parchment: #e8d9b0;
+    --parchment-dark: #d4be8a;
+    --parchment-shadow: #b89d5e;
+    --blood: #7a1f1f;
+    --gold: #c09a2e;
+    --gold-bright: #e8c23a;
+    --silver: #9ba8b0;
+    --dim: #3d2e1a;
+    --faded: #5a4a2e;
+    --accent-teal: #2e6b6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: #0d0a06;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, #1a1005 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, #0a0d14 0%, transparent 60%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    font-family: 'IM Fell English', serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  /* Ambient stars */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 15% 10%, rgba(255,240,180,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 25%, rgba(255,240,180,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 55% 8%, rgba(255,240,180,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 18%, rgba(255,240,180,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 5%, rgba(255,240,180,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 8% 40%, rgba(255,240,180,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 92% 45%, rgba(255,240,180,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 70%, rgba(255,240,180,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 80%, rgba(255,240,180,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 82% 90%, rgba(255,240,180,0.4) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  /* === PARCHMENT SHEET === */
+  .parchment {
+    background-color: var(--parchment);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.35' numOctaves='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.1'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23p)' opacity='0.18'/%3E%3C/svg%3E"),
+      linear-gradient(to bottom, var(--parchment-dark) 0%, var(--parchment) 8%, var(--parchment) 92%, var(--parchment-dark) 100%),
+      linear-gradient(to right, var(--parchment-dark) 0%, var(--parchment) 5%, var(--parchment) 95%, var(--parchment-dark) 100%);
+    border: 2px solid var(--parchment-shadow);
+    box-shadow:
+      0 0 0 6px #0d0a06,
+      0 0 0 8px var(--parchment-shadow),
+      0 0 40px rgba(0,0,0,0.8),
+      inset 0 0 60px rgba(180,140,60,0.15);
+    padding: 3rem 3.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+    animation: unfurl 0.8s ease-out both;
+  }
+
+  @keyframes unfurl {
+    from { opacity: 0; transform: scaleY(0.96) translateY(-10px); }
+    to   { opacity: 1; transform: scaleY(1) translateY(0); }
+  }
+
+  /* Corner decorations */
+  .parchment::before, .parchment::after {
+    content: '✦';
+    position: absolute;
+    color: var(--parchment-shadow);
+    font-size: 1.4rem;
+    opacity: 0.6;
+  }
+  .parchment::before { top: 1rem; left: 1.2rem; }
+  .parchment::after  { top: 1rem; right: 1.2rem; }
+
+  .corner-br, .corner-bl {
+    position: absolute;
+    bottom: 1rem;
+    color: var(--parchment-shadow);
+    font-size: 1.4rem;
+    opacity: 0.6;
+  }
+  .corner-br { right: 1.2rem; }
+  .corner-bl { left: 1.2rem; }
+
+  /* === HEADER === */
+  .shop-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .crescent {
+    display: block;
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+    opacity: 0.85;
+    animation: glimmer 4s ease-in-out infinite;
+  }
+
+  @keyframes glimmer {
+    0%, 100% { opacity: 0.7; text-shadow: none; }
+    50% { opacity: 1; text-shadow: 0 0 12px rgba(200,160,40,0.5); }
+  }
+
+  .shop-title {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    color: var(--blood);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.15);
+  }
+
+  .shop-subtitle {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.85rem;
+    color: var(--faded);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 1.2rem 0;
+    color: var(--parchment-shadow);
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent);
+  }
+  .divider span { font-size: 1rem; opacity: 0.7; white-space: nowrap; }
+
+  .intro-text {
+    font-style: italic;
+    color: var(--dim);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 2rem;
+  }
+
+  /* === SECTION HEADERS === */
+  .section-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    text-align: center;
+    margin: 2.5rem 0 0.3rem;
+  }
+
+  .section-title {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: var(--blood);
+    text-align: center;
+    margin-bottom: 0.3rem;
+  }
+
+  .section-note {
+    font-style: italic;
+    color: var(--faded);
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  /* === TRINKET GRID === */
+  .trinket-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+  }
+
+  .trinket-card {
+    background: rgba(180,140,60,0.08);
+    border: 1px solid rgba(180,140,60,0.3);
+    padding: 0.7rem 0.9rem;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .trinket-card:hover {
+    background: rgba(180,140,60,0.15);
+  }
+
+  .trinket-num {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    color: var(--parchment-shadow);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+  }
+
+  .trinket-name {
+    font-size: 0.88rem;
+    font-weight: bold;
+    color: var(--dim);
+    margin-bottom: 0.15rem;
+    line-height: 1.3;
+  }
+
+  .trinket-desc {
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--faded);
+    line-height: 1.4;
+  }
+
+  /* === FEATURED ITEMS (Brynn's picks) === */
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .featured-card {
+    background: rgba(155,168,176,0.1);
+    border: 1px solid rgba(155,168,176,0.35);
+    padding: 0.85rem 1rem;
+    position: relative;
+    transition: all 0.2s;
+  }
+  .featured-card:hover {
+    background: rgba(155,168,176,0.18);
+    border-color: rgba(155,168,176,0.6);
+  }
+
+  /* === MID-TIER ITEMS === */
+  .midtier-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .midtier-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    padding: 1rem 1.2rem;
+    background: rgba(120,80,30,0.07);
+    border: 1px solid rgba(130,100,40,0.3);
+    border-left: 3px solid var(--gold);
+    transition: background 0.2s;
+  }
+  .midtier-item:hover { background: rgba(120,80,30,0.13); }
+
+  /* === BIG TICKET ITEMS === */
+  .bigtick-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .bigtick-item {
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(135deg, rgba(100,60,20,0.1) 0%, rgba(180,140,60,0.06) 100%);
+    border: 1px solid rgba(180,140,60,0.4);
+    border-top: 2px solid var(--gold);
+    position: relative;
+    transition: all 0.25s;
+  }
+  .bigtick-item:hover {
+    background: linear-gradient(135deg, rgba(100,60,20,0.16) 0%, rgba(180,140,60,0.1) 100%);
+    box-shadow: 0 2px 12px rgba(180,140,60,0.15);
+  }
+  .bigtick-item::after {
+    content: '✦';
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+    color: var(--gold);
+    font-size: 0.7rem;
+    opacity: 0.5;
+  }
+
+  /* === SHARED ITEM PARTS === */
+  .item-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.35rem;
+  }
+
+  .item-name {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1rem;
+    color: var(--dim);
+    flex: 1;
+    min-width: 140px;
+  }
+  .bigtick-item .item-name { font-size: 1.1rem; }
+
+  .item-price {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.8rem;
+    color: var(--blood);
+    white-space: nowrap;
+    padding: 0.1rem 0.5rem;
+    border: 1px solid rgba(120,30,30,0.3);
+    background: rgba(120,30,30,0.06);
+  }
+  .featured-card .item-price { font-size: 0.75rem; }
+
+  .item-desc {
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--faded);
+    line-height: 1.65;
+  }
+  .bigtick-item .item-desc { font-size: 0.92rem; }
+
+  .item-rumor {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--accent-teal);
+    font-style: italic;
+  }
+
+  /* === FOOTER NOTE === */
+  .footer-note {
+    margin-top: 2.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--parchment-shadow);
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--faded);
+    text-align: center;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+
+  /* === PRICE TIER BADGE === */
+  .tier-badge {
+    display: inline-block;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--parchment);
+    background: var(--faded);
+    padding: 0.15rem 0.5rem;
+    margin-bottom: 0.4rem;
+    opacity: 0.8;
+  }
+
+  /* Roll table toggle */
+  .roll-table-toggle {
+    display: block;
+    width: 100%;
+    background: rgba(120,80,30,0.08);
+    border: 1px dashed rgba(130,100,40,0.4);
+    color: var(--faded);
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 0.5rem;
+    transition: all 0.2s;
+  }
+  .roll-table-toggle:hover {
+    background: rgba(120,80,30,0.15);
+    color: var(--dim);
+  }
+
+  .roll-table {
+    display: none;
+    margin-top: 0.5rem;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.8rem;
+  }
+  .roll-table.open { display: table; }
+  .roll-table th {
+    font-family: 'IM Fell English SC', serif;
+    font-weight: normal;
+    color: var(--faded);
+    border-bottom: 1px solid var(--parchment-shadow);
+    padding: 0.3rem 0.5rem;
+    text-align: left;
+    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+  }
+  .roll-table td {
+    padding: 0.3rem 0.5rem;
+    border-bottom: 1px solid rgba(180,140,60,0.15);
+    color: var(--dim);
+    vertical-align: top;
+  }
+  .roll-table td:first-child {
+    font-family: 'IM Fell English SC', serif;
+    color: var(--blood);
+    white-space: nowrap;
+    width: 3rem;
+  }
+  .roll-table td em {
+    color: var(--faded);
+    font-size: 0.78rem;
+  }
+
+  /* === EFFECT BLOCK === */
+  .item-effect {
+    margin-top: 0.75rem;
+    padding: 0.65rem 0.9rem;
+    background: rgba(46,107,107,0.07);
+    border-left: 2px solid var(--accent-teal);
+  }
+  .item-effect-label {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    color: var(--accent-teal);
+    margin-bottom: 0.3rem;
+    opacity: 0.85;
+  }
+  .item-effect p {
+    font-size: 0.83rem;
+    color: var(--dim);
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .item-effect p + p { margin-top: 0.3rem; }
+  .item-effect .caveat {
+    font-size: 0.78rem;
+    color: var(--faded);
+    margin-top: 0.35rem;
+  }
+
+  @media (max-width: 600px) {
+    .parchment { padding: 2rem 1.5rem 3rem; }
+    .trinket-grid { grid-template-columns: 1fr 1fr; }
+    .featured-grid { grid-template-columns: 1fr; }
+    .midtier-item { flex-direction: column; gap: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+<div class="parchment">
+  <span class="corner-br">✦</span>
+  <span class="corner-bl">✦</span>
+
+  <!-- HEADER -->
+  <div class="shop-header">
+    <span class="crescent">☽ ✦ ☾</span>
+    <h1 class="shop-title">Moonlit Mirage Carnival</h1>
+    <p class="shop-subtitle">Prize Counter &amp; Curiosities</p>
+  </div>
+
+  <div class="divider"><span>⁂</span></div>
+
+  <p class="intro-text">
+    The Moonlit Mirage travels between isolated villages, crossroads settlements, trade towns, and major cities.
+    Most games offer small novelty prizes worth only a few copper — but scattered among the wagons and locked display cases
+    are genuine curiosities, unusual artifacts, and rare oddities that attract collectors, thieves, and adventurers alike.
+  </p>
+
+  <!-- SECTION: TRINKETS -->
+  <p class="section-label">Prize Counter</p>
+  <h2 class="section-title">Common Curios &amp; Novelties</h2>
+  <p class="section-note">Hanging from hooks, stacked in bins, dangled by barkers — <em>just one more throw.</em><br>2–5 Copper each.</p>
+
+  <button class="roll-table-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.nextElementSibling.classList.contains('open') ? '▲ Hide d20 Roll Table' : '▼ Show as d20 Roll Table'">▼ Show as d20 Roll Table</button>
+
+  <table class="roll-table" id="trinket-table">
+    <thead><tr><th>d20</th><th>Item</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Painted Wooden Moon Whistle</td><td><em>Soft owl-like trill.</em></td></tr>
+      <tr><td>2</td><td>Tiny Clockwork Beetle</td><td><em>Walks in crooked circles ~30 seconds.</em></td></tr>
+      <tr><td>3</td><td>Velvet Ribbon Bracelet w/ Brass Stars</td><td><em>Cheap but beautiful in lantern light.</em></td></tr>
+      <tr><td>4</td><td>Glowmoth Jar</td><td><em>Thumb-sized vial; sleepy luminous moth inside.</em></td></tr>
+      <tr><td>5</td><td>Carnival Token Coin</td><td><em>Stamped with the crescent emblem.</em></td></tr>
+      <tr><td>6</td><td>Wax Fortune Slips</td><td><em>Rolled paper fortunes sealed in colored wax.</em></td></tr>
+      <tr><td>7</td><td>Polished River-Stone Dice</td><td><em>Poorly balanced but attractive.</em></td></tr>
+      <tr><td>8</td><td>Folded Paper Shadow Puppets</td><td><em>Monsters and circus animals in dark parchment.</em></td></tr>
+      <tr><td>9</td><td>Little Carved Griffon Figurine</td><td><em>Wings chipped on most of them.</em></td></tr>
+      <tr><td>10</td><td>Cheap Mirrored Pendant</td><td><em>Reflections always seem slightly dim.</em></td></tr>
+      <tr><td>11</td><td>Candied Fire Nuts</td><td><em>Spicy enough to make children cry.</em></td></tr>
+      <tr><td>12</td><td>Stuffed "Mini Owlbear"</td><td><em>Uneven stitching, one crooked eye.</em></td></tr>
+      <tr><td>13</td><td>Tin Bell Charm</td><td><em>Strangely soft tone.</em></td></tr>
+      <tr><td>14</td><td>Brass Spinning Top</td><td><em>Wobbles unnaturally long before falling.</em></td></tr>
+      <tr><td>15</td><td>Pocket Kaleidoscope Tube</td><td><em>Colored carnival glass inside.</em></td></tr>
+      <tr><td>16</td><td>Painted Paper Mask</td><td><em>Smiling face / crying face on reverse.</em></td></tr>
+      <tr><td>17</td><td>Mini Lantern Charm</td><td><em>Phosphorescent moss instead of flame.</em></td></tr>
+      <tr><td>18</td><td>Bone-and-String Wind Spinner</td><td><em>Clacks softly in moving air.</em></td></tr>
+      <tr><td>19</td><td>Tiny Puppet Marionette</td><td><em>Limbs twitch oddly while hanging still.</em></td></tr>
+      <tr><td>20</td><td>Sugar-Glass Candy Birds</td><td><em>Delicate and translucent.</em></td></tr>
+    </tbody>
+  </table>
+
+  <div class="trinket-grid" style="margin-top:0.7rem;">
+    <div class="trinket-card"><div class="trinket-num">No. 1</div><div class="trinket-name">Painted Wooden Moon Whistle</div><div class="trinket-desc">Makes a soft owl-like trill.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 2</div><div class="trinket-name">Tiny Clockwork Beetle</div><div class="trinket-desc">Walks in crooked circles for about thirty seconds.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 3</div><div class="trinket-name">Velvet Ribbon Bracelet w/ Brass Stars</div><div class="trinket-desc">Cheap but beautiful in lantern light.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 4</div><div class="trinket-name">Glowmoth Jar</div><div class="trinket-desc">A thumb-sized glass vial containing a sleepy luminous moth.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 5</div><div class="trinket-name">Carnival Token Coin</div><div class="trinket-desc">Stamped with the Moonlit Mirage crescent emblem.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 6</div><div class="trinket-name">Wax Fortune Slips</div><div class="trinket-desc">Rolled paper fortunes sealed in colored wax.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 7</div><div class="trinket-name">Polished River-Stone Dice</div><div class="trinket-desc">Poorly balanced but attractive.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 8</div><div class="trinket-name">Folded Paper Shadow Puppets</div><div class="trinket-desc">Monsters and circus animals folded from dark parchment.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 9</div><div class="trinket-name">Little Carved Griffon Figurine</div><div class="trinket-desc">Wings chipped on most of them.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 10</div><div class="trinket-name">Cheap Mirrored Pendant</div><div class="trinket-desc">Reflections always seem slightly dim.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 11</div><div class="trinket-name">Candied Fire Nuts</div><div class="trinket-desc">Spicy enough to make children cry.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 12</div><div class="trinket-name">Stuffed "Mini Owlbear"</div><div class="trinket-desc">Uneven stitching and one crooked eye.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 13</div><div class="trinket-name">Tin Bell Charm</div><div class="trinket-desc">Produces a strangely soft tone.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 14</div><div class="trinket-name">Brass Spinning Top</div><div class="trinket-desc">Wobbles unnaturally long before falling.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 15</div><div class="trinket-name">Pocket Kaleidoscope Tube</div><div class="trinket-desc">Filled with colored carnival glass.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 16</div><div class="trinket-name">Painted Paper Mask</div><div class="trinket-desc">Smiling face on one side, crying face on the reverse.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 17</div><div class="trinket-name">Mini Lantern Charm</div><div class="trinket-desc">Contains phosphorescent moss instead of flame.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 18</div><div class="trinket-name">Bone-and-String Wind Spinner</div><div class="trinket-desc">Clacks softly in moving air.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 19</div><div class="trinket-name">Tiny Puppet Marionette</div><div class="trinket-desc">Its limbs twitch oddly even while hanging still.</div></div>
+    <div class="trinket-card"><div class="trinket-num">No. 20</div><div class="trinket-name">Sugar-Glass Candy Birds</div><div class="trinket-desc">Delicate and translucent.</div></div>
+  </div>
+
+  <!-- SECTION: SHINY OBJECTS -->
+  <div class="divider" style="margin-top:2.5rem;"><span>✦</span></div>
+  <p class="section-label">Prize Counter</p>
+  <h2 class="section-title">Shiny Objects &amp; Eye-Catching Trinkets</h2>
+  <p class="section-note">Objects that catch the eye instinctively — through reflection, shimmer, or sound.</p>
+
+  <div class="featured-grid">
+    <div class="featured-card">
+      <div class="item-header">
+        <span class="item-name">Feathered Brass Sun Catcher</span>
+        <span class="item-price">4 cp</span>
+      </div>
+      <p class="item-desc">Polished brass feathers and colored glass that scatters lantern light beautifully when it turns.</p>
+    </div>
+    <div class="featured-card">
+      <div class="item-header">
+        <span class="item-name">Silvered Sky-Chimes</span>
+        <span class="item-price">5 cp</span>
+      </div>
+      <p class="item-desc">Tiny hanging chimes crafted from thin silver-coated metal shaped like wings.</p>
+    </div>
+    <div class="featured-card">
+      <div class="item-header">
+        <span class="item-name">Iridescent Flight Stones</span>
+        <span class="item-price">3 cp each</span>
+      </div>
+      <p class="item-desc">Smooth polished stones that shimmer blue-green-purple depending on the angle.</p>
+    </div>
+    <div class="featured-card">
+      <div class="item-header">
+        <span class="item-name">Mirrorfeather Hair Pins</span>
+        <span class="item-price">5 cp</span>
+      </div>
+      <p class="item-desc">Decorative feather pins made from mirrored metal.</p>
+    </div>
+    <div class="featured-card">
+      <div class="item-header">
+        <span class="item-name">Aerie Bells</span>
+        <span class="item-price">4 cp</span>
+      </div>
+      <p class="item-desc">Tiny ankle bells traditionally used by aerial performers.</p>
+    </div>
+  </div>
+
+  <!-- SECTION: MID-TIER -->
+  <div class="divider" style="margin-top:2.5rem;"><span>⁂</span></div>
+  <p class="section-label">Locked Display Cases</p>
+  <h2 class="section-title">Mid-Tier Curiosities</h2>
+  <p class="section-note">Not ordinary prizes. Most are displayed behind counters where collectors and wealthier travelers can admire them.</p>
+
+  <div class="midtier-list">
+    <div class="midtier-item">
+      <div style="flex:1">
+        <div class="item-header">
+          <span class="item-name">Preserved Six-Winged Raven</span>
+          <span class="item-price">8 gp</span>
+        </div>
+        <p class="item-desc">Mounted beneath a warped glass dome atop a black wooden base, the raven's feathers shimmer oil-slick blue in lantern light. Its six folded wings are arranged unnaturally neatly, and its eyes always appear wet, as though the creature died moments ago. Carnival rumor claims it was found frozen inside a glacier far to the north.</p>
+        <div class="item-effect">
+          <div class="item-effect-label">Minor Effect</div>
+          <p>Once per day, the owner may spend one uninterrupted minute studying the raven before sleep. That night, they gain unusually vivid dreams. The next morning, they gain advantage on one Insight or Perception check related to noticing hidden danger, betrayal, or deception.</p>
+          <p class="caveat">The raven itself never moves. Probably.</p>
+        </div>
+      </div>
+    </div>
+    <div class="midtier-item">
+      <div style="flex:1">
+        <div class="item-header">
+          <span class="item-name">Dwarven Ale Stein of Echoing Toasts</span>
+          <span class="item-price">12 gp</span>
+        </div>
+        <p class="item-desc">This heavy stoneware tankard is decorated with chipped enamel scenes of drunken dwarves dancing around a bonfire. When filled and raised in celebration, the mug softly repeats the last triumphant phrase ever shouted into it. The echo is faint, distant, and often slightly delayed.</p>
+        <div class="item-effect">
+          <div class="item-effect-label">Minor Effect</div>
+          <p>Once per long rest, after making a heartfelt toast or rallying speech while drinking from the stein, the owner and one nearby ally both gain +1 on their next saving throw against fear effects.</p>
+          <p class="caveat">The benefit fades after one hour if unused.</p>
+        </div>
+      </div>
+    </div>
+    <div class="midtier-item">
+      <div style="flex:1">
+        <div class="item-header">
+          <span class="item-name">Folding Brass Spyglass</span>
+          <span class="item-price">15 gp</span>
+        </div>
+        <p class="item-desc">An old collapsible spyglass etched with faded constellations and tiny moons along the brass tubing. Though worn and dented, the lenses remain surprisingly clear. A small engraving near the eyepiece reads: <em>"The horizon remembers."</em></p>
+        <div class="item-effect">
+          <div class="item-effect-label">Minor Effect</div>
+          <p>While observing distant terrain, creatures, ships, roads, or structures for at least one minute, the user gains advantage on checks related to spotting ambushes, hidden movement, or distant landmarks.</p>
+          <p class="caveat">Once per day, the user may also reroll a failed Survival check made for navigation.</p>
+        </div>
+      </div>
+    </div>
+    <div class="midtier-item">
+      <div style="flex:1">
+        <div class="item-header">
+          <span class="item-name">Sapphire Glass Music Box</span>
+          <span class="item-price">18 gp</span>
+        </div>
+        <p class="item-desc">A delicate hand-cranked music box crafted from blue-tinted glass panels reinforced with silver filigree. It plays a haunting carnival melody that seems familiar even to those hearing it for the first time. One note is permanently missing. Listeners often find themselves unconsciously waiting for it.</p>
+        <div class="item-effect">
+          <div class="item-effect-label">Minor Effect</div>
+          <p>When opened and played during a short rest, up to three listeners gain advantage on their next saving throw against being frightened or emotionally manipulated. The effect lasts until the next dawn.</p>
+          <p class="caveat">The mechanism is fragile. Only 10 plays remain before the spring finally fails. Each use produces slightly more distortion in the melody — as though the song itself is slowly being forgotten.</p>
+        </div>
+      </div>
+    </div>
+    <div class="midtier-item">
+      <div style="flex:1">
+        <div class="item-header">
+          <span class="item-name">Mask of the Laughing Court</span>
+          <span class="item-price">20 gp</span>
+        </div>
+        <p class="item-desc">A lacquered porcelain mask from a distant noble theater. The smiling expression changes subtly depending on the angle of the light. Some swear the mask reflects the wearer's true mood rather than the expression painted upon it.</p>
+        <div class="item-effect">
+          <div class="item-effect-label">Minor Effect</div>
+          <p>While worn during a conversation, performance, or social deception, the wearer gains advantage on one Deception or Performance check per day.</p>
+          <p class="caveat">After removing the mask, the wearer experiences a brief moment of emotional disorientation — as though they momentarily forgot which emotions were truly theirs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: BIG TICKET -->
+  <div class="divider" style="margin-top:2.5rem;"><span>✦</span></div>
+  <p class="section-label">Objects That Make Adventurers Stop Walking</p>
+  <h2 class="section-title">Big Ticket Items</h2>
+  <p class="section-note">The party likely cannot afford them yet — ideal for bargains, favors, performances, thefts, or future goals.</p>
+
+  <div class="bigtick-list">
+    <div class="bigtick-item">
+      <div class="item-header">
+        <span class="item-name">The Starfall Feather Cloak</span>
+        <span class="item-price">75 gp</span>
+      </div>
+      <p class="item-desc">A midnight-blue feathered traveling cloak stitched with reflective silver thread. The feathers subtly shimmer like distant stars whenever exposed to moonlight. The interior lining is impossibly soft and surprisingly warm. Rumor claims the feathers came from a sky-creature that once flew above the clouds.</p>
+      <div class="item-effect">
+        <div class="item-effect-label">Minor Effect</div>
+        <p>While worn outdoors at night, the wearer gains advantage on checks to resist cold weather and advantage on one Acrobatics check per night involving jumping, falling, gliding, or maintaining balance.</p>
+        <p class="caveat">For winged creatures, the cloak creates a dramatic silhouette while airborne — the silver-threaded feathers resembling a moving night sky.</p>
+      </div>
+    </div>
+    <div class="bigtick-item">
+      <div class="item-header">
+        <span class="item-name">The Moonglass Harp</span>
+        <span class="item-price">120 gp</span>
+      </div>
+      <p class="item-desc">A compact lap harp crafted from pale translucent crystal that softly glows beneath moonlight. The strings emit silver light while played, illuminating the musician's hands. The instrument produces unnaturally clear tones that seem to linger in the air a moment too long.</p>
+      <div class="item-effect">
+        <div class="item-effect-label">Minor Effect</div>
+        <p>A bard or musician performing with the harp gains advantage on one Performance check per day. Once per night, the harp may be played softly during a rest — those listening gain advantage on one saving throw against fear or despair before the next dawn.</p>
+      </div>
+    </div>
+    <div class="bigtick-item">
+      <div class="item-header">
+        <span class="item-name">The Whispering Compass</span>
+        <span class="item-price">90 gp</span>
+      </div>
+      <p class="item-desc">An ornate brass compass suspended within a glass-faced case. Its needle never points north. Instead, it slowly rotates toward places, people, or objects tied to the holder's strongest immediate desire. The compass is frustratingly imprecise — it does not distinguish between greed, fear, obsession, love, or curiosity.</p>
+      <div class="item-effect">
+        <div class="item-effect-label">Minor Effect</div>
+        <p>Once per day, while actively searching for a hidden object, specific person, exit, or desired location, the holder may consult the compass. The GM may provide a vague directional instinct, symbolic clue, emotional impression, or subtle narrative hint.</p>
+        <p class="caveat">The compass cannot identify exact locations. Sometimes the needle spins when near powerful magic or emotional turmoil.</p>
+      </div>
+    </div>
+    <div class="bigtick-item">
+      <div class="item-header">
+        <span class="item-name">The Griffon Rider's Bridle</span>
+        <span class="item-price">140 gp</span>
+      </div>
+      <p class="item-desc">Decorative ceremonial tack woven from silver-thread leather and adorned with polished skybird feathers. Though designed for a griffon, it appears usable for other intelligent flying beasts. The leather remains impossibly supple despite its age. The Feathered Prince becomes visibly agitated whenever the bridle is nearby.</p>
+      <div class="item-effect">
+        <div class="item-effect-label">Minor Effect</div>
+        <p>While openly carrying or displaying the bridle, the owner gains advantage on Animal Handling checks involving birds or flying creatures. Once per day, the owner may calm a panicked flying creature by speaking softly while holding the bridle.</p>
+        <p class="caveat">The effect does not magically control creatures, but it can briefly suppress panic or aggression.</p>
+      </div>
+    </div>
+    <div class="bigtick-item">
+      <div class="item-header">
+        <span class="item-name">The Marionette Noble</span>
+        <span class="item-price">110 gp</span>
+      </div>
+      <p class="item-desc">An exquisitely crafted puppet dressed like forgotten royalty. Its porcelain face is flawless. Its velvet clothing is untouched by dust. Its eyes appear to track movement almost imperceptibly. Nobody within the carnival admits to making it.</p>
+      <div class="item-effect">
+        <div class="item-effect-label">Minor Effect</div>
+        <p>A puppeteer, performer, or storyteller using the marionette gains advantage on one Performance or Persuasion check per day involving storytelling, distraction, or manipulation.</p>
+        <p class="caveat">In darkness, the puppet occasionally shifts position slightly when unobserved. It never moves while directly watched. Probably.</p>
+      </div>
+    </div>
+    <div class="bigtick-item">
+      <div class="item-header">
+        <span class="item-name">The Gilded Egg</span>
+        <span class="item-price">250 gp</span>
+      </div>
+      <p class="item-desc">A fist-sized black egg veined in delicate gold leaf and displayed inside a locked velvet case. The shell feels faintly warm. Sometimes the gold veining appears to pulse beneath lantern light. The carnival owner refuses to explain where it came from. Several performers become visibly uncomfortable when asked about it.</p>
+      <div class="item-effect">
+        <div class="item-effect-label">Minor Effect</div>
+        <p>While carrying the egg during sleep, the owner experiences intense symbolic dreams. Once per week, after sleeping beside the egg, the owner may ask the GM one cryptic question regarding the future, hidden danger, or an important choice. The answer arrives as dream imagery rather than direct words.</p>
+        <p class="caveat">Animals react strangely around the egg — some avoid it entirely, others stare at it for extended periods.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <p class="footer-note">
+    The deeper visitors travel into the carnival, the stranger the prizes become.<br>
+    Near the entrance: candy, ribbons, toys, whistles, masks, playful trinkets.<br>
+    Deeper in the Big Top: mirrors, preserved insects, bone carvings, fortune slips,<br>
+    dim reflections, old-looking objects, unsettling dolls — curiosities that seem older than the carnival itself.<br><br>
+    <em>The change is subtle enough that most guests never consciously notice it.</em>
+  </p>
+
+</div><!-- /parchment -->
+</div><!-- /page-wrap -->
+</body>
+</html>
