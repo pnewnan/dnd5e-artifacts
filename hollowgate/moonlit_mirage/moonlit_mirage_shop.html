@@ -295,6 +295,7 @@
     border-top: 2px solid var(--gold);
     position: relative;
     transition: all 0.25s;
+    overflow: hidden;
   }
   .bigtick-item:hover {
     background: linear-gradient(135deg, rgba(100,60,20,0.16) 0%, rgba(180,140,60,0.1) 100%);
@@ -436,6 +437,62 @@
     font-size: 0.78rem;
   }
 
+  /* === HERO IMAGE === */
+  .hero-img {
+    display: block;
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    object-position: center top;
+    border: 2px solid var(--parchment-shadow);
+    box-shadow: 0 0 0 6px #0d0a06, 0 0 0 8px var(--parchment-shadow), 0 8px 30px rgba(0,0,0,0.7);
+    margin-bottom: 2rem;
+    filter: sepia(10%) contrast(1.05);
+  }
+
+  /* === TRINKET CARD WITH IMAGE === */
+  .trinket-card img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(180,140,60,0.2);
+    filter: sepia(15%);
+  }
+
+  /* === FEATURED CARD WITH IMAGE === */
+  .featured-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(155,168,176,0.25);
+    filter: sepia(15%);
+  }
+
+  /* === ITEM IMAGE === */
+  .item-img {
+    width: 120px;
+    flex-shrink: 0;
+    border: 1px solid var(--parchment-shadow);
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    object-fit: cover;
+    display: block;
+    filter: sepia(15%);
+  }
+  .bigtick-img {
+    float: right;
+    margin: 0 0 0.8rem 1.2rem;
+    width: 150px;
+    border: 1px solid var(--parchment-shadow);
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.25);
+    object-fit: cover;
+    filter: sepia(15%);
+  }
+  .bigtick-item::after { content: none; } /* remove ✦ now images handle visual anchor */
+
   /* === EFFECT BLOCK === */
   .item-effect {
     margin-top: 0.75rem;
@@ -474,6 +531,7 @@
 </head>
 <body>
 <div class="page-wrap">
+<img class="hero-img" src="allitems.png" alt="Moonlit Mirage Prize Counter — all items on display">
 <div class="parchment">
   <span class="corner-br">✦</span>
   <span class="corner-bl">✦</span>
@@ -527,26 +585,26 @@
   </table>
 
   <div class="trinket-grid" style="margin-top:0.7rem;">
-    <div class="trinket-card"><div class="trinket-num">No. 1</div><div class="trinket-name">Painted Wooden Moon Whistle</div><div class="trinket-desc">Makes a soft owl-like trill.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 2</div><div class="trinket-name">Tiny Clockwork Beetle</div><div class="trinket-desc">Walks in crooked circles for about thirty seconds.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 3</div><div class="trinket-name">Velvet Ribbon Bracelet w/ Brass Stars</div><div class="trinket-desc">Cheap but beautiful in lantern light.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 4</div><div class="trinket-name">Glowmoth Jar</div><div class="trinket-desc">A thumb-sized glass vial containing a sleepy luminous moth.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 5</div><div class="trinket-name">Carnival Token Coin</div><div class="trinket-desc">Stamped with the Moonlit Mirage crescent emblem.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 6</div><div class="trinket-name">Wax Fortune Slips</div><div class="trinket-desc">Rolled paper fortunes sealed in colored wax.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 7</div><div class="trinket-name">Polished River-Stone Dice</div><div class="trinket-desc">Poorly balanced but attractive.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 8</div><div class="trinket-name">Folded Paper Shadow Puppets</div><div class="trinket-desc">Monsters and circus animals folded from dark parchment.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 9</div><div class="trinket-name">Little Carved Griffon Figurine</div><div class="trinket-desc">Wings chipped on most of them.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 10</div><div class="trinket-name">Cheap Mirrored Pendant</div><div class="trinket-desc">Reflections always seem slightly dim.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 11</div><div class="trinket-name">Candied Fire Nuts</div><div class="trinket-desc">Spicy enough to make children cry.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 12</div><div class="trinket-name">Stuffed "Mini Owlbear"</div><div class="trinket-desc">Uneven stitching and one crooked eye.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 13</div><div class="trinket-name">Tin Bell Charm</div><div class="trinket-desc">Produces a strangely soft tone.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 14</div><div class="trinket-name">Brass Spinning Top</div><div class="trinket-desc">Wobbles unnaturally long before falling.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 15</div><div class="trinket-name">Pocket Kaleidoscope Tube</div><div class="trinket-desc">Filled with colored carnival glass.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 16</div><div class="trinket-name">Painted Paper Mask</div><div class="trinket-desc">Smiling face on one side, crying face on the reverse.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 17</div><div class="trinket-name">Mini Lantern Charm</div><div class="trinket-desc">Contains phosphorescent moss instead of flame.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 18</div><div class="trinket-name">Bone-and-String Wind Spinner</div><div class="trinket-desc">Clacks softly in moving air.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 19</div><div class="trinket-name">Tiny Puppet Marionette</div><div class="trinket-desc">Its limbs twitch oddly even while hanging still.</div></div>
-    <div class="trinket-card"><div class="trinket-num">No. 20</div><div class="trinket-name">Sugar-Glass Candy Birds</div><div class="trinket-desc">Delicate and translucent.</div></div>
+    <div class="trinket-card"><img src="painted_wooden_moon_whistle.png" alt="Painted Wooden Moon Whistle"><div class="trinket-num">No. 1</div><div class="trinket-name">Painted Wooden Moon Whistle</div><div class="trinket-desc">Makes a soft owl-like trill.</div></div>
+    <div class="trinket-card"><img src="tiny_clockwork_beetle.png" alt="Tiny Clockwork Beetle"><div class="trinket-num">No. 2</div><div class="trinket-name">Tiny Clockwork Beetle</div><div class="trinket-desc">Walks in crooked circles for about thirty seconds.</div></div>
+    <div class="trinket-card"><img src="welvet_ribbon_bracelet.png" alt="Velvet Ribbon Bracelet"><div class="trinket-num">No. 3</div><div class="trinket-name">Velvet Ribbon Bracelet w/ Brass Stars</div><div class="trinket-desc">Cheap but beautiful in lantern light.</div></div>
+    <div class="trinket-card"><img src="glowmoth_jar.png" alt="Glowmoth Jar"><div class="trinket-num">No. 4</div><div class="trinket-name">Glowmoth Jar</div><div class="trinket-desc">A thumb-sized glass vial containing a sleepy luminous moth.</div></div>
+    <div class="trinket-card"><img src="carnival_token_coin.png" alt="Carnival Token Coin"><div class="trinket-num">No. 5</div><div class="trinket-name">Carnival Token Coin</div><div class="trinket-desc">Stamped with the Moonlit Mirage crescent emblem.</div></div>
+    <div class="trinket-card"><img src="wax_fortune_slips.png" alt="Wax Fortune Slips"><div class="trinket-num">No. 6</div><div class="trinket-name">Wax Fortune Slips</div><div class="trinket-desc">Rolled paper fortunes sealed in colored wax.</div></div>
+    <div class="trinket-card"><img src="river_stone_dice.png" alt="Polished River-Stone Dice"><div class="trinket-num">No. 7</div><div class="trinket-name">Polished River-Stone Dice</div><div class="trinket-desc">Poorly balanced but attractive.</div></div>
+    <div class="trinket-card"><img src="folded_paper_shadow_puppets.png" alt="Folded Paper Shadow Puppets"><div class="trinket-num">No. 8</div><div class="trinket-name">Folded Paper Shadow Puppets</div><div class="trinket-desc">Monsters and circus animals folded from dark parchment.</div></div>
+    <div class="trinket-card"><img src="little_carved_griffon.png" alt="Little Carved Griffon Figurine"><div class="trinket-num">No. 9</div><div class="trinket-name">Little Carved Griffon Figurine</div><div class="trinket-desc">Wings chipped on most of them.</div></div>
+    <div class="trinket-card"><img src="cheap_mirrored_pendant.png" alt="Cheap Mirrored Pendant"><div class="trinket-num">No. 10</div><div class="trinket-name">Cheap Mirrored Pendant</div><div class="trinket-desc">Reflections always seem slightly dim.</div></div>
+    <div class="trinket-card"><img src="candied_fire_nuts.png" alt="Candied Fire Nuts"><div class="trinket-num">No. 11</div><div class="trinket-name">Candied Fire Nuts</div><div class="trinket-desc">Spicy enough to make children cry.</div></div>
+    <div class="trinket-card"><img src="stuffed_mini_owlbear.png" alt="Stuffed Mini Owlbear"><div class="trinket-num">No. 12</div><div class="trinket-name">Stuffed "Mini Owlbear"</div><div class="trinket-desc">Uneven stitching and one crooked eye.</div></div>
+    <div class="trinket-card"><img src="tin_bell_charm.png" alt="Tin Bell Charm"><div class="trinket-num">No. 13</div><div class="trinket-name">Tin Bell Charm</div><div class="trinket-desc">Produces a strangely soft tone.</div></div>
+    <div class="trinket-card"><img src="brass_spinning_top.png" alt="Brass Spinning Top"><div class="trinket-num">No. 14</div><div class="trinket-name">Brass Spinning Top</div><div class="trinket-desc">Wobbles unnaturally long before falling.</div></div>
+    <div class="trinket-card"><img src="pocket_kaleidoscope.png" alt="Pocket Kaleidoscope Tube"><div class="trinket-num">No. 15</div><div class="trinket-name">Pocket Kaleidoscope Tube</div><div class="trinket-desc">Filled with colored carnival glass.</div></div>
+    <div class="trinket-card"><img src="painted_paper_mask.png" alt="Painted Paper Mask"><div class="trinket-num">No. 16</div><div class="trinket-name">Painted Paper Mask</div><div class="trinket-desc">Smiling face on one side, crying face on the reverse.</div></div>
+    <div class="trinket-card"><img src="mini_lantern_charm.png" alt="Mini Lantern Charm"><div class="trinket-num">No. 17</div><div class="trinket-name">Mini Lantern Charm</div><div class="trinket-desc">Contains phosphorescent moss instead of flame.</div></div>
+    <div class="trinket-card"><img src="bone_and_string_wind_spinner.png" alt="Bone-and-String Wind Spinner"><div class="trinket-num">No. 18</div><div class="trinket-name">Bone-and-String Wind Spinner</div><div class="trinket-desc">Clacks softly in moving air.</div></div>
+    <div class="trinket-card"><img src="tiny_puppet_marionette.png" alt="Tiny Puppet Marionette"><div class="trinket-num">No. 19</div><div class="trinket-name">Tiny Puppet Marionette</div><div class="trinket-desc">Its limbs twitch oddly even while hanging still.</div></div>
+    <div class="trinket-card"><img src="sugar_glass_candy_birds.png" alt="Sugar-Glass Candy Birds"><div class="trinket-num">No. 20</div><div class="trinket-name">Sugar-Glass Candy Birds</div><div class="trinket-desc">Delicate and translucent.</div></div>
   </div>
 
   <!-- SECTION: SHINY OBJECTS -->
@@ -557,6 +615,7 @@
 
   <div class="featured-grid">
     <div class="featured-card">
+      <img src="feathered_brass_sun_catcher.png" alt="Feathered Brass Sun Catcher">
       <div class="item-header">
         <span class="item-name">Feathered Brass Sun Catcher</span>
         <span class="item-price">4 cp</span>
@@ -564,6 +623,7 @@
       <p class="item-desc">Polished brass feathers and colored glass that scatters lantern light beautifully when it turns.</p>
     </div>
     <div class="featured-card">
+      <img src="silvered_sky_chimes.png" alt="Silvered Sky-Chimes">
       <div class="item-header">
         <span class="item-name">Silvered Sky-Chimes</span>
         <span class="item-price">5 cp</span>
@@ -571,6 +631,7 @@
       <p class="item-desc">Tiny hanging chimes crafted from thin silver-coated metal shaped like wings.</p>
     </div>
     <div class="featured-card">
+      <img src="iridescent_flight_stones.png" alt="Iridescent Flight Stones">
       <div class="item-header">
         <span class="item-name">Iridescent Flight Stones</span>
         <span class="item-price">3 cp each</span>
@@ -578,6 +639,7 @@
       <p class="item-desc">Smooth polished stones that shimmer blue-green-purple depending on the angle.</p>
     </div>
     <div class="featured-card">
+      <img src="mirrorfeather_hair_pins.png" alt="Mirrorfeather Hair Pins">
       <div class="item-header">
         <span class="item-name">Mirrorfeather Hair Pins</span>
         <span class="item-price">5 cp</span>
@@ -585,6 +647,7 @@
       <p class="item-desc">Decorative feather pins made from mirrored metal.</p>
     </div>
     <div class="featured-card">
+      <img src="aerie_bells.png" alt="Aerie Bells">
       <div class="item-header">
         <span class="item-name">Aerie Bells</span>
         <span class="item-price">4 cp</span>
@@ -601,6 +664,7 @@
 
   <div class="midtier-list">
     <div class="midtier-item">
+      <img class="item-img" src="preserved_raven.png" alt="Preserved Six-Winged Raven">
       <div style="flex:1">
         <div class="item-header">
           <span class="item-name">Preserved Six-Winged Raven</span>
@@ -615,6 +679,7 @@
       </div>
     </div>
     <div class="midtier-item">
+      <img class="item-img" src="dwarven_ale_stein.png" alt="Dwarven Ale Stein of Echoing Toasts">
       <div style="flex:1">
         <div class="item-header">
           <span class="item-name">Dwarven Ale Stein of Echoing Toasts</span>
@@ -629,6 +694,7 @@
       </div>
     </div>
     <div class="midtier-item">
+      <img class="item-img" src="spyglass.png" alt="Folding Brass Spyglass">
       <div style="flex:1">
         <div class="item-header">
           <span class="item-name">Folding Brass Spyglass</span>
@@ -643,6 +709,7 @@
       </div>
     </div>
     <div class="midtier-item">
+      <img class="item-img" src="glass_musicbox.png" alt="Sapphire Glass Music Box">
       <div style="flex:1">
         <div class="item-header">
           <span class="item-name">Sapphire Glass Music Box</span>
@@ -657,6 +724,7 @@
       </div>
     </div>
     <div class="midtier-item">
+      <img class="item-img" src="maskofthelaughingcourt.png" alt="Mask of the Laughing Court">
       <div style="flex:1">
         <div class="item-header">
           <span class="item-name">Mask of the Laughing Court</span>
@@ -680,6 +748,7 @@
 
   <div class="bigtick-list">
     <div class="bigtick-item">
+      <img class="bigtick-img" src="starfall_feather_cloak.png" alt="The Starfall Feather Cloak">
       <div class="item-header">
         <span class="item-name">The Starfall Feather Cloak</span>
         <span class="item-price">75 gp</span>
@@ -692,6 +761,7 @@
       </div>
     </div>
     <div class="bigtick-item">
+      <img class="bigtick-img" src="moonglassharp.png" alt="The Moonglass Harp">
       <div class="item-header">
         <span class="item-name">The Moonglass Harp</span>
         <span class="item-price">120 gp</span>
@@ -703,6 +773,7 @@
       </div>
     </div>
     <div class="bigtick-item">
+      <img class="bigtick-img" src="whispering_compass.png" alt="The Whispering Compass">
       <div class="item-header">
         <span class="item-name">The Whispering Compass</span>
         <span class="item-price">90 gp</span>
@@ -715,6 +786,7 @@
       </div>
     </div>
     <div class="bigtick-item">
+      <img class="bigtick-img" src="griffon_riders_bridle.png" alt="The Griffon Rider's Bridle">
       <div class="item-header">
         <span class="item-name">The Griffon Rider's Bridle</span>
         <span class="item-price">140 gp</span>
@@ -727,6 +799,7 @@
       </div>
     </div>
     <div class="bigtick-item">
+      <img class="bigtick-img" src="marionettenoble.png" alt="The Marionette Noble">
       <div class="item-header">
         <span class="item-name">The Marionette Noble</span>
         <span class="item-price">110 gp</span>
@@ -739,6 +812,7 @@
       </div>
     </div>
     <div class="bigtick-item">
+      <img class="bigtick-img" src="gilded_egg.png" alt="The Gilded Egg">
       <div class="item-header">
         <span class="item-name">The Gilded Egg</span>
         <span class="item-price">250 gp</span>
