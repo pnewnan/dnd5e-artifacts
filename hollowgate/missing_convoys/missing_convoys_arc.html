@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GM Reference — Missing Convoys Arc</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9;
+    --parchment-dark: #dbc99a;
+    --parchment-shadow: #b89d5e;
+    --ink: #1a1108;
+    --dim: #2e200e;
+    --faded: #5a4a2e;
+    --blood: #7a1f1f;
+    --purple: #5b2d8e;
+    --gold: #8a6a10;
+    --teal: #1e5f5f;
+    --forest: #2a4a1e;
+    --dc-low: #2a5c1e;
+    --dc-mid: #7a5000;
+    --dc-high: #7a1f1f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1209; font-family: 'IM Fell English', serif; color: var(--ink); padding: 1.5rem 1rem 3rem; min-height: 100vh; }
+
+  /* ── PAGE ── */
+  .page { max-width: 1000px; margin: 0 auto; background-color: #f2e8c9; border: 2px solid var(--parchment-shadow); box-shadow: 0 0 0 6px #1a1209, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8); padding: 2.5rem 2.5rem 3rem; }
+  .page-title { text-align: center; border-bottom: 2px solid var(--parchment-shadow); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+  .gm-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; color: var(--blood); text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+  .page-title h1 { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1.4rem, 3.5vw, 2.2rem); color: var(--ink); line-height: 1.2; }
+  .page-title .subtitle { font-style: italic; color: var(--faded); font-size: 0.9rem; margin-top: 0.3rem; }
+  .back-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faded); text-decoration: none; margin-top: 0.5rem; }
+  .back-link:hover { color: var(--blood); }
+
+  /* ── ACCORDION ── */
+  .accordion { margin-bottom: 0.6rem; }
+  .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; cursor: pointer; user-select: none; border: 1px solid var(--parchment-shadow); border-left: 4px solid var(--parchment-shadow); background: rgba(180,140,60,0.08); transition: background 0.2s; gap: 1rem; }
+  .accordion-header:hover, .accordion-header.open { background: rgba(180,140,60,0.15); }
+  .accordion-header.color-town    { border-left-color: var(--dc-low); }
+  .accordion-header.color-forest  { border-left-color: var(--forest); }
+  .accordion-header.color-caverns { border-left-color: var(--dc-mid); }
+  .accordion-header.color-npcs    { border-left-color: var(--purple); }
+  .accordion-header.color-crate   { border-left-color: var(--teal); }
+  .accordion-header.color-link    { border-left-color: var(--blood); }
+  .accordion-title { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); line-height: 1.3; }
+  .accordion-subtitle { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.78rem; color: var(--faded); margin-top: 0.1rem; }
+  .accordion-arrow { font-size: 0.7rem; color: var(--faded); transition: transform 0.25s; flex-shrink: 0; }
+  .accordion-header.open .accordion-arrow { transform: rotate(180deg); }
+  .accordion-body { display: none; border: 1px solid var(--parchment-shadow); border-top: none; padding: 1.2rem 1.2rem 0.8rem; background: rgba(242,232,200,0.4); }
+  .accordion-body.open { display: block; }
+
+  /* ── LAYOUT ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+  .section-head { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.4rem; border-bottom: 1px solid rgba(91,45,142,0.2); padding-bottom: 0.2rem; }
+  h2 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--ink); line-height: 1.3; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  h3 { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; margin: 0.8rem 0 0.3rem; }
+  p { font-size: 0.88rem; line-height: 1.65; color: var(--dim); margin-bottom: 0.4rem; }
+  .block { margin-bottom: 1.2rem; }
+  .quote { font-style: italic; font-size: 0.87rem; color: var(--dim); padding: 0.4rem 0.8rem; border-left: 2px solid var(--parchment-shadow); margin: 0.4rem 0; background: rgba(180,140,60,0.06); }
+  ul.find-list { margin: 0.25rem 0 0.25rem 1rem; font-size: 0.84rem; color: var(--dim); line-height: 1.6; }
+  ul.find-list li { margin-bottom: 0.1rem; }
+  .annotation { font-style: italic; font-size: 0.82rem; color: var(--blood); padding: 0.25rem 0.6rem; border-left: 2px solid var(--blood); margin: 0.35rem 0; background: rgba(122,31,31,0.04); }
+  .divider { display: flex; align-items: center; gap: 0.6rem; margin: 1rem 0; color: var(--parchment-shadow); }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
+  .divider span { font-size: 0.9rem; }
+
+  /* ── DISCOVERIES ── */
+  .discovery { padding: 0.65rem 0.9rem; margin-bottom: 0.6rem; border-left: 3px solid var(--parchment-shadow); background: rgba(180,140,60,0.1); }
+  .dc-low-bg  { border-left-color: var(--dc-low)  !important; background: rgba(42,92,30,0.07)  !important; }
+  .dc-mid-bg  { border-left-color: var(--dc-mid)  !important; background: rgba(122,80,0,0.07)  !important; }
+  .dc-high-bg { border-left-color: var(--dc-high) !important; background: rgba(122,31,31,0.07) !important; }
+  .dc-top-bg  { border-left-color: var(--blood)   !important; background: rgba(122,31,31,0.09) !important; }
+  .teal-bg    { border-left-color: var(--teal)    !important; background: rgba(30,95,95,0.07)  !important; }
+  .forest-bg  { border-left-color: var(--forest)  !important; background: rgba(42,74,30,0.07)  !important; }
+  .gold-bg    { border-left-color: var(--gold)    !important; background: rgba(138,106,16,0.07)!important; }
+  .discovery-name { font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 600; color: var(--ink); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem; }
+  .discovery p { margin-bottom: 0.25rem; }
+
+  /* ── DC TABLE ── */
+  .dc-table { width: 100%; border-collapse: collapse; margin-bottom: 0.6rem; }
+  .dc-table thead th { font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--faded); padding: 0.35rem 0.8rem; border-bottom: 1px solid var(--parchment-shadow); text-align: left; background: rgba(180,140,60,0.06); }
+  .dc-table tbody tr { cursor: pointer; transition: background 0.15s; }
+  .dc-table tbody tr:hover td { background: rgba(180,140,60,0.1); }
+  .dc-table tbody td { padding: 0.35rem 0.8rem; border-bottom: 1px solid rgba(180,140,60,0.2); color: var(--dim); font-size: 0.84rem; vertical-align: middle; }
+  .dc-table tbody tr:last-child td { border-bottom: none; }
+  .dc-pill { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.1rem 0.4rem; border-radius: 2px; white-space: nowrap; }
+  .pill-10 { background: rgba(42,92,30,0.12);  color: var(--dc-low);  border: 1px solid rgba(42,92,30,0.3); }
+  .pill-12 { background: rgba(42,92,30,0.12);  color: var(--dc-low);  border: 1px solid rgba(42,92,30,0.3); }
+  .pill-14 { background: rgba(122,80,0,0.1);   color: var(--dc-mid);  border: 1px solid rgba(122,80,0,0.3); }
+  .pill-15 { background: rgba(122,31,31,0.1);  color: var(--dc-high); border: 1px solid rgba(122,31,31,0.3); }
+  .pill-16 { background: rgba(122,31,31,0.1);  color: var(--dc-high); border: 1px solid rgba(122,31,31,0.3); }
+
+  /* ── NPC CARD ── */
+  .npc-card { border: 1px solid var(--parchment-shadow); border-top: 3px solid var(--blood); overflow: hidden; margin-bottom: 1rem; }
+  .npc-inner { padding: 1.2rem 1.4rem; overflow: hidden; }
+  .npc-inner::after { content: ''; display: table; clear: both; }
+  .npc-img { float: right; width: 220px; margin: 0 0 1rem 1.5rem; border: 1px solid var(--parchment-shadow); box-shadow: 3px 3px 10px rgba(0,0,0,0.2); filter: sepia(10%); display: block; }
+  .npc-img.left { float: left; margin: 0 1.5rem 1rem 0; }
+  .npc-img.wide { width: 100%; float: none; margin: 0 0 1rem 0; max-height: 260px; object-fit: cover; object-position: center top; }
+  .npc-name { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--blood); line-height: 1.1; margin-bottom: 0.1rem; }
+  .npc-type { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--faded); font-style: italic; margin-bottom: 0.6rem; }
+  .npc-flavor { font-style: italic; font-size: 0.87rem; color: var(--faded); margin-bottom: 0.8rem; border-left: 2px solid var(--parchment-shadow); padding-left: 0.7rem; line-height: 1.6; }
+  .npc-section { font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blood); border-bottom: 1px solid rgba(122,31,31,0.2); padding-bottom: 0.2rem; margin: 0.6rem 0 0.4rem; }
+  .npc-trait { margin-bottom: 0.4rem; font-size: 0.86rem; line-height: 1.6; color: var(--dim); }
+  .npc-trait-name { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; color: var(--ink); font-style: italic; }
+  .npc-quote { font-style: italic; font-size: 0.84rem; color: var(--dim); padding: 0.5rem 0.8rem; border-left: 3px solid var(--purple); margin: 0.5rem 0; background: rgba(91,45,142,0.04); line-height: 1.7; }
+  .npc-notes { background: rgba(26,17,8,0.05); border-top: 1px solid var(--parchment-shadow); padding: 0.8rem 1.4rem; }
+  .npc-notes-label { font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.4rem; }
+  .npc-notes ul { margin-left: 1rem; font-size: 0.85rem; color: var(--dim); line-height: 1.65; }
+  .npc-notes ul li { margin-bottom: 0.2rem; }
+
+  /* ── KOBOLD WORLD BOX ── */
+  .world-box { border: 1px solid rgba(42,74,30,0.4); border-left: 4px solid var(--forest); background: rgba(42,74,30,0.05); padding: 0.8rem 1rem; margin-bottom: 1.2rem; }
+  .world-box-label { font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--forest); margin-bottom: 0.4rem; }
+  .world-box p { font-size: 0.86rem; margin-bottom: 0.3rem; }
+  .world-box ul { margin-left: 1rem; font-size: 0.85rem; color: var(--dim); line-height: 1.6; }
+
+  /* ── CONCLUSION ── */
+  .conclusion { background: rgba(26,17,8,0.06); border: 1px solid var(--parchment-shadow); border-top: 2px solid var(--ink); padding: 1rem 1.2rem; margin-top: 1.2rem; }
+  .conclusion h3 { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--ink); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem; }
+  .conclusion ul { margin-left: 1.1rem; font-size: 0.87rem; color: var(--dim); line-height: 1.7; }
+
+  /* ── CAVEHOPPER SPRITE GALLERY ── */
+  .sprite-gallery {
+    width: 213px;
+    height: 340px;
+    background-image: url('cavehopper.png');
+    background-repeat: no-repeat;
+    background-size: 853px 681px;
+    background-position: 0px 0px;
+    border: 1px solid var(--parchment-shadow);
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .sprite-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.4rem;
+    width: 213px;
+  }
+  .sprite-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: var(--faded);
+    cursor: pointer;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid rgba(180,140,60,0.4);
+    background: rgba(180,140,60,0.08);
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .sprite-btn:hover { background: rgba(180,140,60,0.2); color: var(--ink); }
+  .sprite-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faded);
+    text-align: center;
+    flex: 1;
+    padding: 0 0.3rem;
+  }
+
+  /* cavehopper stat block wrapper */
+  .ch-block {
+    border: 1px solid var(--parchment-shadow);
+    border-top: 3px solid #4a0f0f;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+  }
+  .ch-inner {
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .ch-sprite-col { display: flex; flex-direction: column; align-items: center; }
+  .ch-text { flex: 1; min-width: 0; }
+
+  @media (max-width: 680px) {
+    .ch-inner { flex-direction: column; }
+    .sprite-gallery { width: 100%; max-width: 213px; }
+    .sprite-nav { width: 100%; max-width: 213px; }
+  }
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(5,3,1,0.85); justify-content: center; align-items: center; padding: 1.5rem; cursor: pointer; }
+  .modal-overlay.active { display: flex; }
+  .modal-card { background-color: #f2e8c9; border: 2px solid var(--parchment-shadow); box-shadow: 0 0 0 4px #1a1209, 0 0 0 6px var(--parchment-shadow), 0 10px 40px rgba(0,0,0,0.8); max-width: 520px; width: 100%; cursor: default; transform: scale(0.93) translateY(10px); opacity: 0; transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease; position: relative; max-height: 85vh; overflow-y: auto; }
+  .modal-overlay.active .modal-card { transform: scale(1) translateY(0); opacity: 1; }
+  .modal-header { padding: 0.9rem 2.5rem 0.9rem 1.1rem; border-bottom: 1px solid var(--parchment-shadow); background: rgba(26,17,8,0.05); position: sticky; top: 0; background-color: #f2e8c9; }
+  .modal-title { font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 0.2rem; }
+  .modal-meta { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--faded); }
+  .modal-body { padding: 1rem 1.1rem 1.2rem; font-size: 0.88rem; line-height: 1.65; color: var(--dim); }
+  .modal-body p { margin-bottom: 0.4rem; }
+  .modal-body .note { display: block; margin-top: 0.5rem; font-style: italic; font-size: 0.83rem; color: var(--blood); padding: 0.25rem 0.6rem; border-left: 2px solid var(--blood); background: rgba(122,31,31,0.04); }
+  .modal-close { position: absolute; top: 0.6rem; right: 0.8rem; font-size: 1rem; color: var(--faded); cursor: pointer; opacity: 0.6; line-height: 1; }
+  .modal-close:hover { opacity: 1; }
+
+  @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } .page { padding: 1.5rem 1.2rem 2rem; } .npc-img, .npc-img.left { float: none; width: 100%; margin: 0 0 1rem 0; } }
+  @media print { body { background: white; padding: 0; } .page { box-shadow: none; border: none; } .accordion-body { display: block !important; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-title">
+    <span class="gm-label">GM Reference · Hollowgate</span>
+    <h1>Missing Convoys Arc</h1>
+    <p class="subtitle">Investigation Arc · Kobold Tunnels · Eric Huwithakay · The Crate</p>
+    <a class="back-link" href="../hollowgate_gm_reference.html">← Return to Hollowgate GM Reference</a>
+  </div>
+
+  <!-- ══ ACCORDION: Overview ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-town" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Overview &amp; Core Situation</div>
+        <div class="accordion-subtitle">What's happening · What actually happened · Tone shift</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">Surface Problem</p>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Town Situation</div>
+              <ul class="find-list">
+                <li>Multiple supply convoys missing on roads near Hollowgate</li>
+                <li>Food variety disappearing, prices rising</li>
+                <li>Travelers nervous, parents warning children from the woods</li>
+                <li>Mayor frustrated and overwhelmed</li>
+                <li>Rumors spreading faster than facts</li>
+              </ul>
+            </div>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Intended Tone</div>
+              <p>Start grounded: hungry townsfolk, frustrated merchants, missing wagons. Then slowly shift into <em>"something about this is wrong."</em></p>
+              <p>This is the party's first "larger world" mystery. It should feel solvable at first — then reveal it never was just a kobold problem.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">What Actually Happened</p>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">The Truth</div>
+              <p>A mysterious human agent hired kobolds to ambush supply convoys. The kobolds were not interested in the food — they were instructed to retrieve a specific crate from one convoy.</p>
+              <ul class="find-list">
+                <li>The crate contains a strange old book tied to the deeper corruption storyline</li>
+                <li>The kobolds took the other wagons mostly because they could</li>
+                <li>The employer is now dying in the kobold den after being mauled by the kobolds' "pet"</li>
+              </ul>
+              <div class="annotation">This convoy theft intersects directly with Eric Huwithakay's investigation.</div>
+            </div>
+            <div class="discovery teal-bg">
+              <div class="discovery-name">The Alarming Detail</div>
+              <p>Kobolds don't normally do this. They scavenge, steal livestock, raid isolated farms. Coordinated convoy ambushes strongly suggest outside influence — which is exactly what should bother the mayor and Eric.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Town Hooks ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-town" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Town Hooks</div>
+        <div class="accordion-subtitle">Stable argument · Convoy driver · Mayor · Tavern</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">The Stable — Opening Scene</p>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">The Argument</div>
+              <p>The party witnesses a loud argument between a furious convoy driver and the stablemaster. The argument has clearly happened several times already. He looks exhausted: muddy boots, unshaven, bloodshot eyes, clothes not cleaned in days.</p>
+            </div>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Key Detail</div>
+              <p>The convoy animals survived and eventually wandered back. The wagons and cargo did not.</p>
+            </div>
+            <div class="block" style="margin-top:0.8rem;">
+              <p class="section-head">The Convoy Driver — Recurring NPC</p>
+              <div class="discovery dc-low-bg">
+                <div class="discovery-name">Personality</div>
+                <ul class="find-list">
+                  <li>Loud when emotional, not brave</li>
+                  <li>Overwhelmed, talks too much when stressed</li>
+                  <li>Genuinely worried about the town</li>
+                  <li>Rotates between the stable, mayor's office, and tavern</li>
+                </ul>
+              </div>
+              <div class="discovery dc-low-bg">
+                <div class="discovery-name">What He Knows</div>
+                <ul class="find-list">
+                  <li>Attackers were kobolds — many, organized, from the woods</li>
+                  <li>They ignored most of the food initially</li>
+                  <li>One crate seemed especially important — they specifically removed it</li>
+                  <li>They argued over it</li>
+                </ul>
+                <div class="annotation">"Boss wants shiny box."</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">The Mayor</p>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Reward — 400 gp</div>
+              <p>For stopping the attacks, recovering the latest convoy, and ensuring the roads become safe again.</p>
+              <div class="annotation">"Kobolds stealing livestock? Maybe. Chickens? Sure. But organized convoy attacks? No. Something's wrong."</div>
+            </div>
+          </div>
+          <div class="block">
+            <p class="section-head">The Tavern</p>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Food Situation</div>
+              <p>Meals increasingly limited: potatoes, salted vegetables, watered ale, stale bread. No fresh meat. No luxury ingredients. The tavern keeper allows the convoy driver to stay for free.</p>
+              <div class="annotation">"If the food wagons stop coming, we all suffer."</div>
+            </div>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Gossip</div>
+              <ul class="find-list">
+                <li>Farmers report strange noises and movement near fields at night</li>
+                <li>Parents increasingly warning children away from the forest</li>
+                <li>Sounds like normal danger gossip — but subtly reinforces the roads are becoming unsafe</li>
+              </ul>
+            </div>
+          </div>
+          <div class="block">
+            <p class="section-head">Wagon Investigation</p>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">The Food Was Not Taken</div>
+              <p>When the party finds the abandoned wagons, the supplies remain: sacks of potatoes, barrels of ale, grain, preserved food. This should feel wrong. Bandits steal valuables. Hungry kobolds should steal food. They didn't. They wanted something else.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Kobolds of Aelanthar ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-forest" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Kobolds of Aelanthar</div>
+        <div class="accordion-subtitle">Appearance · Movement · Culture · What makes them alarming</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <img src="kobolds.png" alt="Kobolds of Aelanthar" style="width:100%; display:block; margin-bottom:1.2rem; border:1px solid var(--parchment-shadow); filter:sepia(10%) contrast(1.05); max-height:280px; object-fit:cover; object-position:center 30%;">
+      <div class="two-col">
+        <div>
+          <div class="world-box">
+            <div class="world-box-label">Physiology</div>
+            <p>Small reptilian humanoids with avian traits suggesting ancient evolutionary divergence rather than draconic ancestry. 3½–4½ feet tall, upright and alert, with disproportionately powerful hind legs built for sudden bursts of speed, climbing, and leaping.</p>
+            <ul>
+              <li>Narrow torsos, long clawed fingers, thick digitigrade legs, heavy tails for balance</li>
+              <li>Scales: deep green, mossy olive, bruised purple, muddy teal, dark earthen tones</li>
+              <li>Bright feather plumes on head, spine, elbows, or tail — orange, turquoise, crimson, yellow, white</li>
+              <li>Plumes serve social signaling, intimidation, attraction, and status display</li>
+            </ul>
+          </div>
+          <div class="world-box">
+            <div class="world-box-label">Movement &amp; Presence</div>
+            <p>These kobolds move differently than goblins. They bob slightly while standing, make rapid head movements, chirp and hiss while speaking, leap sideways unnaturally fast.</p>
+            <ul>
+              <li>Heavy hind legs let them vault onto wagons, spring over obstacles, scramble up cave walls</li>
+              <li>When startled: instinctively flare neck feathers</li>
+              <li>When threatened: stomp, hiss, chatter, rapidly click teeth</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="world-box">
+            <div class="world-box-label">Status &amp; Decoration</div>
+            <p>Higher-status kobolds exaggerate their plumes heavily with dyed feathers, beads, bits of metal, fake jewelry, and scavenged decorations. The chieftain's "royal regalia" is essentially molted feathers, broken necklaces, polished trash, and fake gemstones — arranged with absolute sincerity.</p>
+          </div>
+          <div class="world-box">
+            <div class="world-box-label">Cultural Behavior — Why the Attacks Are Alarming</div>
+            <p>These kobolds are not naturally organized raiders. Normally they scavenge, trap small game, steal livestock, raid isolated farms, and avoid heavily armed targets.</p>
+            <p>The fact they coordinated convoy ambushes strongly suggests outside influence. Which is exactly what should bother the mayor and Eric.</p>
+            <div class="annotation">Someone organized them. That someone is now dying in their den.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Forest Investigation ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-forest" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Forest Investigation</div>
+        <div class="accordion-subtitle">Trail evidence · First encounter · Robyn</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">Trail Evidence</p>
+            <div class="discovery forest-bg">
+              <div class="discovery-name">What They Find</div>
+              <ul class="find-list">
+                <li>Wagon ruts and drag marks leading into the woods</li>
+                <li>Small reptilian footprints</li>
+                <li>Crude kobold territorial markings on trees</li>
+              </ul>
+            </div>
+            <div class="block" style="margin-top:0.8rem;">
+              <p class="section-head">First Kobold Encounter</p>
+              <div class="discovery dc-mid-bg">
+                <div class="discovery-name">Three Kobolds Ambush</div>
+                <p>Should feel chaotic, scrappy, more desperate than disciplined. This is not an elite raiding party — it's frightened scouts who were told to watch the road.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">Investigation Checks — Trail</p>
+            <table class="dc-table">
+              <thead><tr><th>DC</th><th>What They Find</th><th>Type</th></tr></thead>
+              <tbody>
+                <tr data-dc="DC 10" data-name="Wagon Ruts" data-type="Survival / Perception" data-detail="Clear wagon ruts and drag marks lead from the road into the treeline. The marks suggest heavy loads were pulled, not carried — the wagons themselves were moved, not looted in place. The trail is not hidden; whoever did this was either confident or in a hurry."><td><span class="dc-pill pill-10">DC 10</span></td><td>Wagon Ruts Into Trees</td><td>Survival</td></tr>
+                <tr data-dc="DC 12" data-name="Kobold Prints" data-type="Survival / Investigation" data-detail="Small reptilian three-toed footprints — dozens of them. They overlap in ways that suggest a coordinated group moving in formation rather than the chaotic scramble you'd expect from opportunistic raiders. Several sets of prints move independently, suggesting scouts or watchers positioned away from the main trail."><td><span class="dc-pill pill-12">DC 12</span></td><td>Kobold Prints — Formation, Not Chaos</td><td>Survival</td></tr>
+                <tr data-dc="DC 14" data-name="Territorial Markings" data-type="Investigation / Arcana" data-detail="Crude claw-marks on tree bark form a pattern that repeats at intervals — not random scratching, but deliberate territorial markers. A DC 14 Investigation or Nature check identifies these as kobold boundary markers, the kind used to claim tunnel territory rather than surface raiding territory. These kobolds have been operating in this area for weeks, not days."><td><span class="dc-pill pill-14">DC 14</span></td><td>Territorial Markers — Established, Not New</td><td>Investigation</td></tr>
+                <tr data-dc="DC 15" data-name="Crate Drag Marks" data-type="Investigation" data-detail="Among the general trail evidence, one set of marks stands out: a single object was dragged separately from the wagons, handled carefully, and taken on a different path than the bulk of the cargo. The drag marks are narrower and more deliberate — whatever was in the crate was important enough to transport with care rather than just hauling with the rest of the wagons."><td><span class="dc-pill pill-15">DC 15</span></td><td>The Crate Was Moved Separately</td><td>Investigation</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Key NPCs ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-npcs" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Key NPCs</div>
+        <div class="accordion-subtitle">Robyn · The Chieftain · The Dying Human</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+
+      <!-- ROBYN -->
+      <div class="npc-card">
+        <div class="npc-inner">
+          <img class="npc-img" src="robyn.png" alt="Robyn">
+          <div class="npc-name">Robyn</div>
+          <div class="npc-type">Kobold Scout / Outcast</div>
+          <div class="npc-flavor">Robyn doesn't fit in with the other kobolds. He's smaller, not as fierce, and gets picked on for it. He'd rather hide than fight. He speaks in a nervous, stammering tone — quickly, apologetically, and with the cadence of someone who expects to be interrupted at any moment.</div>
+
+          <div class="npc-section">Appearance</div>
+          <div class="npc-trait"><span class="npc-trait-name">Physique.</span> Smaller than other kobolds, with softer coloration and drooping, uneven feather plume. Faded colors. One feather appears badly dyed.</div>
+          <div class="npc-trait"><span class="npc-trait-name">Posture.</span> Slouches and avoids eye contact. Tail constantly twitching. Constantly fidgets. Flinches at loud sounds.</div>
+          <div class="npc-trait"><span class="npc-trait-name">First Impression.</span> He should look like a kobold who never successfully became "properly kobold" by the standards of his tribe.</div>
+
+          <div class="npc-section">Personality</div>
+          <div class="npc-trait"><span class="npc-trait-name">Voice.</span> Nervous, stammering, apologetic. Speaks quickly when frightened. Talks over himself. Bad at intimidation.</div>
+          <div class="npc-trait"><span class="npc-trait-name">Motivation.</span> Just wants to be left alone. Does not want to hurt anyone. Was coerced into participating — threatened with loss of tail feathers if he refused.</div>
+
+          <div class="npc-quote">"I-I didn't wanna come with 'em... They said if I didn't, they'd... they'd tear off my tail feathers... I-I just wanted to stay in the nest..."</div>
+
+          <div class="npc-section">What Robyn Reveals</div>
+          <div class="npc-trait"><span class="npc-trait-name">The Crate.</span> The kobolds were told to retrieve an "important crate." "Boss said special. Not food crate."</div>
+          <div class="npc-trait"><span class="npc-trait-name">The Employer.</span> A human hired them. The kobolds attacked convoys and stole wagons, but the crate was the primary objective.</div>
+          <div class="npc-trait"><span class="npc-trait-name">The Caverns.</span> Robyn can lead the party toward the kobold caverns — if they make him feel safe enough to do so.</div>
+        </div>
+        <div class="npc-notes">
+          <div class="npc-notes-label">GM Notes — Running Robyn</div>
+          <ul>
+            <li>Robyn should feel oddly sympathetic. Not heroic. Just not built for kobold life.</li>
+            <li>He responds much better to patience and kindness than intimidation — use his fear of the other kobolds as leverage if needed.</li>
+            <li>If the party treats him well, he becomes a useful recurring contact who can provide information about kobold movements and tunnel layouts.</li>
+            <li>He genuinely doesn't know what was in the crate — only that it mattered to "the boss."</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="divider"><span>✦</span></div>
+
+      <!-- CHIEFTAIN -->
+      <div class="npc-card">
+        <div class="npc-inner">
+          <img class="npc-img left" src="chieftain.png" alt="Kobold Chieftain">
+          <div class="npc-name">The Chieftain</div>
+          <div class="npc-type">Kobold Chieftain · Self-Declared King</div>
+          <div class="npc-flavor">Unexpectedly charismatic. Deep, rich, textured voice. Speaks like he believes he is a great king — because, by his own reckoning, he is. His "royal regalia" is essentially molted feathers, broken necklaces, polished trash, and fake gemstones, all arranged with absolute sincerity. He is simultaneously ridiculous and oddly compelling.</div>
+
+          <div class="npc-section">Appearance</div>
+          <div class="npc-trait"><span class="npc-trait-name">Regalia.</span> Huge feather crest — dyed, layered, magnificent by kobold standards. Gold-painted stones. Dangling trinkets. Layered shiny junk. Fake gemstones. Exaggerated posture.</div>
+          <div class="npc-trait"><span class="npc-trait-name">Den.</span> His throne room is absurdly regal by kobold standards: fake jewelry, painted stones, cracked goblets, glitter-covered junk. He believes it is magnificent.</div>
+
+          <div class="npc-section">Personality</div>
+          <div class="npc-trait"><span class="npc-trait-name">Voice.</span> Deep, deliberate, theatrical. He savors his own words.</div>
+          <div class="npc-trait"><span class="npc-trait-name">Pride.</span> Deeply offended that the crate contained only a book. He considers this a personal insult from the dying human.</div>
+          <div class="npc-trait"><span class="npc-trait-name">The Offer.</span> Rather than immediate combat, he offers the party a deal — fight the pet, survive, and leave. He finds this entertaining.</div>
+
+          <div class="npc-quote">"Little man hired us. Wanted shiny box. We took extra wagons too. Seemed fair."</div>
+          <div class="npc-quote">"Fight pet. If survive… you leave."</div>
+
+          <div class="npc-section">After the Fight</div>
+          <div class="npc-trait"><span class="npc-trait-name">Expulsion.</span> The chieftain becomes increasingly agitated and forces the party out through a different tunnel route — then the kobolds begin chasing them, shouting, throwing rocks and spears.</div>
+        </div>
+        <div class="npc-notes">
+          <div class="npc-notes-label">GM Notes — Running the Chieftain</div>
+          <ul>
+            <li>Play him as genuinely believing in his own grandeur — never winking at the camera. The comedy comes from his absolute sincerity.</li>
+            <li>He is not a villain. He took a job, got paid (or thought he would), and is now annoyed that the crate was worthless and his pet mauled the employer.</li>
+            <li>He will not fight the party directly unless they attack him. The pet encounter is his preferred method of handling guests.</li>
+            <li>His voice should feel incongruously deep and regal for a 4-foot reptile wearing glitter.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="divider"><span>✦</span></div>
+
+      <!-- DYING HUMAN -->
+      <div class="npc-card">
+        <div class="npc-inner">
+          <div class="npc-name">The Dying Human</div>
+          <div class="npc-type">Unknown Agent · Elkenquay-Associated</div>
+          <div class="npc-flavor">A human lies mauled and barely alive in the kobold den. He wears colors associated with Elkenquay. Most parties will not recognize this immediately. The kobolds' pet attacked him. The chieftain seems unconcerned.</div>
+
+          <div class="npc-section">Condition</div>
+          <div class="npc-trait"><span class="npc-trait-name">State.</span> Mauled, barely conscious, unlikely to survive without magical healing. If the party stabilizes him, he can provide fragments of information before slipping unconscious again.</div>
+          <div class="npc-trait"><span class="npc-trait-name">Markings.</span> Wears colors associated with Elkenquay. A DC 14 check identifies markings tied to Elkenquay. Characters with noble, military, merchant, diplomatic, or espionage backgrounds may recognize them automatically.</div>
+
+          <div class="npc-section">His Possessions</div>
+          <div class="npc-trait"><span class="npc-trait-name">Coinage.</span> Various Elkenquay currency.</div>
+          <div class="npc-trait"><span class="npc-trait-name">Documents.</span> Partially burned correspondence, coded ledger fragments, tariff records, convoy route maps, seal fragments — references to "adjusted taxation" and "diverted cargo."</div>
+
+          <div class="annotation">Nothing explicitly identifies a grand conspiracy yet. It should feel suspicious, incomplete, and political.</div>
+        </div>
+        <div class="npc-notes">
+          <div class="npc-notes-label">GM Notes</div>
+          <ul>
+            <li>This man connects the kobold attacks to the regional conspiracy — but that connection should feel circumstantial, not explicit, on first discovery.</li>
+            <li>If the party tries to question him, he can provide fragments: he was sent to retrieve the crate, he doesn't know exactly what's inside, he was told it was important to "certain arrangements."</li>
+            <li>Whether he lives or dies is up to the party — and their choice has consequences for what they can learn.</li>
+            <li>His Elkenquay markings are the same thread Aurelia's briefing hints at from the other direction.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: The Caverns ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-caverns" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">The Caverns</div>
+        <div class="accordion-subtitle">Environment · The caged creature · The den · The pet fight</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">Tunnel Atmosphere</p>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Environmental Feel</div>
+              <ul class="find-list">
+                <li>Cramped, smoky, claustrophobic</li>
+                <li>Low ceilings — full-sized humanoids must duck</li>
+                <li>Crude traps: tripwires, sharpened stakes, hanging bones</li>
+                <li>Flickering torchlight and scraping noises in distant tunnels</li>
+              </ul>
+            </div>
+          </div>
+          <div class="block">
+            <p class="section-head">The Caged Creature</p>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">Something Is Being Kept In</div>
+              <p>The party passes a guarded section where the guards seem more concerned with keeping something <em>in</em> than keeping intruders out. Behind bars and around a bend: scratching, soft growling, tiny squeaking noises. The creature is not fully visible.</p>
+              <p>If released early, it may later aid the party — or at minimum attack kobolds indiscriminately.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">The Den</p>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Contents</div>
+              <ul class="find-list">
+                <li>Roughly 12 kobolds + the chieftain + the dying human</li>
+                <li>Absurdly regal by kobold standards: fake jewelry, painted stones, cracked goblets, glitter-covered junk</li>
+                <li>The crate is here — opened and visibly disappointing</li>
+              </ul>
+            </div>
+            <div class="block" style="margin-top:0.8rem;">
+              <p class="section-head">The Pet</p>
+              <div class="discovery dc-top-bg">
+                <div class="discovery-name">First Impression → True Nature</div>
+                <p>Initially: bunny-like, twitchy, almost cute. Then: jaws split too wide, posture becomes unnatural, eyes become predatory, movement turns violently fast.</p>
+                <p>This should be the party's first strong "something unnatural is happening" moment. It is horrifying, adorable, and deeply aggressive.</p>
+                <div class="annotation">The same entity that mauled the dying human. The chieftain finds its behavior entertaining.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: The Crate & Resolution ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-crate" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">The Crate &amp; Resolution</div>
+        <div class="accordion-subtitle">The book · Eric's body · The transition moment</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">The Crate</p>
+            <div class="discovery teal-bg">
+              <div class="discovery-name">Contents</div>
+              <p>The kobolds are disappointed. The crate contains only an old book, wrapped carefully — non-metal, non-shiny. The chieftain finds this deeply insulting. He considers the human employer a fraud.</p>
+              <p>The book itself is tied to the deeper corruption storyline. Its significance is not immediately obvious — it looks old, carefully preserved, and not obviously valuable.</p>
+              <div class="annotation">What the book actually is remains for the GM to determine. The party should recognize it matters without knowing why.</div>
+            </div>
+          </div>
+          <div class="block">
+            <p class="section-head">Escaping the Caverns</p>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">The Chase</div>
+              <p>After the pet fight, the chieftain forces the party out through a different tunnel route. Soon: kobolds begin chasing them, shouting, throwing rocks and spears. The exit is disorienting and the kobolds know the tunnels far better than the party.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">Eric's Body — The Transition Moment</p>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">Found While Escaping</div>
+              <p>While escaping the caverns, the party discovers Eric Huwithakay's corpse. This should land heavily. He was investigating this, getting close to answers, and likely silenced.</p>
+              <p>His satchel is on him — containing the partial tunnel map, the final note about kobolds, and the bronze signet stamp.</p>
+              <div class="annotation">This is the major transition from "kobold problem" to "larger conspiracy."</div>
+            </div>
+            <div class="discovery teal-bg">
+              <div class="discovery-name">What His Presence Confirms</div>
+              <ul class="find-list">
+                <li>Eric traced the missing convoys to exactly this location</li>
+                <li>He entered the tunnels to gather proof before reporting</li>
+                <li>He did not survive what he found</li>
+                <li>His investigation and the party's are now the same investigation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Links ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-link" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Links to Other Arcs</div>
+        <div class="accordion-subtitle">Eric's investigation · Carnival arc · Regional conspiracy</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">Eric Huwithakay</p>
+            <div class="discovery teal-bg">
+              <div class="discovery-name">Shared Thread</div>
+              <p>Eric was investigating unusual tariffs, altered manifests, missing cargo, and suspicious trade movement. The convoy theft intersects directly with that investigation. His charcoal map, his final note, and his body in the tunnels are all found here.</p>
+              <p>See: <em>Hollowgate GM Reference → Eric Huwithakay Investigation</em></p>
+            </div>
+          </div>
+          <div class="block">
+            <p class="section-head">The Carnival Arc</p>
+            <div class="discovery teal-bg">
+              <div class="discovery-name">Same Tunnels</div>
+              <p>The same tunnels that diverted the trade convoys are connected to the Moonlit Mirage Carnival's missing supply convoys. Recovering the carnival's convoy and recovering the trade convoy may be the same objective.</p>
+              <p>The 400 gp reward from Jeffrey and the mayor's reward may both apply to the same investigation.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">The Dying Human &amp; Elkenquay</p>
+            <div class="discovery dc-high-bg">
+              <div class="discovery-name">The Larger Conspiracy</div>
+              <p>The dying human's Elkenquay markings connect this arc to the regional political conspiracy driving tensions between Elkenquay and Fastingbreak. His documents reference "adjusted taxation" and "diverted cargo" — the same patterns Eric was tracking.</p>
+              <p>Whether the convoy diversion and the artifact modification were carried out by the same actor is an open question that points outward from Hollowgate.</p>
+            </div>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Vanya's Mission</div>
+              <p>Vanya was sent to silence "the current gate scribe" — the person who replaced Eric and began noticing similar irregularities. The party resolving the convoy arc may bring them into direct conflict or collision with Vanya's timeline.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: The Cavehopper ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-caverns" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">The Cavehopper — The Chieftain's Pet</div>
+        <div class="accordion-subtitle">Small monstrosity · Stat block · Behavior states · Combat notes</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+
+      <div class="ch-block">
+        <div class="ch-inner">
+
+          <!-- SPRITE GALLERY -->
+          <div class="ch-sprite-col">
+            <div class="sprite-gallery" id="cavehopperSprite"></div>
+            <div class="sprite-nav">
+              <span class="sprite-btn" onclick="chPrev()">◀</span>
+              <span class="sprite-label" id="chLabel">Curious &amp; Cute</span>
+              <span class="sprite-btn" onclick="chNext()">▶</span>
+            </div>
+          </div>
+
+          <!-- STAT BLOCK -->
+          <div class="ch-text">
+            <div class="cb-name" style="font-family:'Cinzel Decorative',cursive;font-size:clamp(1.1rem,2.5vw,1.5rem);color:#4a0f0f;line-height:1.1;margin-bottom:0.1rem;">Cavehopper</div>
+            <div class="cb-type" style="font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);font-style:italic;margin-bottom:0.5rem;">Small Monstrosity · Unaligned</div>
+            <div class="cb-flavor" style="font-style:italic;font-size:0.87rem;color:var(--faded);margin-bottom:0.7rem;border-left:2px solid var(--parchment-shadow);padding-left:0.7rem;line-height:1.6;">Cavehoppers are twisted things bred for bloodsport and kept as status pets by kobolds. They are disarmingly cute — until they aren't. Lightning fast and merciless, they harass and tear at their foes with razor teeth and spiny quills.</div>
+
+            <div class="stat-bar" style="display:flex;gap:0;border:1px solid var(--parchment-shadow);margin-bottom:0.6rem;background:rgba(26,17,8,0.04);flex-wrap:wrap;">
+              <div class="stat-item" style="flex:1;min-width:55px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);">
+                <span class="stat-label" style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;">AC</span>
+                <span class="stat-val" style="font-family:'Cinzel',serif;font-size:0.82rem;font-weight:700;color:var(--ink);display:block;">14</span>
+              </div>
+              <div class="stat-item" style="flex:1;min-width:55px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);">
+                <span class="stat-label" style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;">HP</span>
+                <span class="stat-val" style="font-family:'Cinzel',serif;font-size:0.82rem;font-weight:700;color:var(--ink);display:block;">24 (4d6+8)</span>
+              </div>
+              <div class="stat-item" style="flex:1;min-width:80px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);">
+                <span class="stat-label" style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;">Speed</span>
+                <span class="stat-val" style="font-family:'Cinzel',serif;font-size:0.75rem;font-weight:700;color:var(--ink);display:block;">40 ft. · burrow 15 · jump 15</span>
+              </div>
+              <div class="stat-item" style="flex:1;min-width:55px;text-align:center;padding:0.4rem 0.3rem;">
+                <span class="stat-label" style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;">CR</span>
+                <span class="stat-val" style="font-family:'Cinzel',serif;font-size:0.82rem;font-weight:700;color:var(--ink);display:block;">1 (200 XP)</span>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:0.3rem;margin-bottom:0.5rem;flex-wrap:wrap;">
+              <div style="text-align:center;flex:1;min-width:45px;"><span style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;">STR</span><span style="font-family:'Cinzel',serif;font-size:0.8rem;font-weight:700;color:var(--ink);display:block;">10 (+0)</span></div>
+              <div style="text-align:center;flex:1;min-width:45px;"><span style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;">DEX</span><span style="font-family:'Cinzel',serif;font-size:0.8rem;font-weight:700;color:var(--ink);display:block;">16 (+3)</span></div>
+              <div style="text-align:center;flex:1;min-width:45px;"><span style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;">CON</span><span style="font-family:'Cinzel',serif;font-size:0.8rem;font-weight:700;color:var(--ink);display:block;">14 (+2)</span></div>
+              <div style="text-align:center;flex:1;min-width:45px;"><span style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;">INT</span><span style="font-family:'Cinzel',serif;font-size:0.8rem;font-weight:700;color:var(--ink);display:block;">2 (−4)</span></div>
+              <div style="text-align:center;flex:1;min-width:45px;"><span style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;">WIS</span><span style="font-family:'Cinzel',serif;font-size:0.8rem;font-weight:700;color:var(--ink);display:block;">12 (+1)</span></div>
+              <div style="text-align:center;flex:1;min-width:45px;"><span style="font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;">CHA</span><span style="font-family:'Cinzel',serif;font-size:0.8rem;font-weight:700;color:var(--ink);display:block;">6 (−2)</span></div>
+            </div>
+
+            <div style="font-size:0.82rem;color:var(--dim);margin-bottom:0.1rem;"><strong style="font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);">Saving Throws</strong> STR +2, DEX +5, CON +4</div>
+            <div style="font-size:0.82rem;color:var(--dim);margin-bottom:0.1rem;"><strong style="font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);">Skills</strong> Perception +3, Stealth +5</div>
+            <div style="font-size:0.82rem;color:var(--dim);margin-bottom:0.4rem;"><strong style="font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);">Senses</strong> Darkvision 60 ft., passive Perception 13</div>
+
+            <hr style="border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;">
+            <div style="font-family:'Cinzel',serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;">Traits</div>
+
+            <div style="margin-bottom:0.4rem;font-size:0.86rem;line-height:1.6;color:var(--dim);"><span style="font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);font-style:italic;">Twitchbound Leap.</span> The Cavehopper does not provoke opportunity attacks when it moves after making a Bite attack.</div>
+
+            <hr style="border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;">
+            <div style="font-family:'Cinzel',serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;">Actions</div>
+
+            <div style="margin-bottom:0.4rem;font-size:0.86rem;line-height:1.6;color:var(--dim);"><span style="font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);">Bite.</span> <em>Melee Weapon Attack:</em> +1 to hit, reach 5 ft., one target. <em>Hit:</em> 1d4+2 piercing damage.</div>
+            <div style="margin-bottom:0.4rem;font-size:0.86rem;line-height:1.6;color:var(--dim);"><span style="font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);">Quill Spit.</span> <em>Ranged Weapon Attack:</em> +2 to hit, range 15 ft., one target. <em>Hit:</em> 1d2 piercing damage. The Cavehopper spits a sharp quill.</div>
+          </div>
+        </div>
+
+        <!-- COMBAT NOTES -->
+        <div style="background:rgba(26,17,8,0.05);border-top:1px solid var(--parchment-shadow);padding:0.8rem 1.4rem;">
+          <div style="font-family:'Cinzel',serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink);margin-bottom:0.4rem;">Combat Notes — Running the Cavehopper</div>
+          <ul style="margin-left:1rem;font-size:0.85rem;color:var(--dim);line-height:1.65;">
+            <li>Open with the "cute" phase — twitching nose, cocked head. Let the party feel a moment of "is this really the threat?" before it attacks.</li>
+            <li>Use Twitchbound Leap aggressively — Bite then immediately reposition out of reach, forcing the party to chase it or eat Quill Spit on the next turn.</li>
+            <li>It uses terrain: vaults onto wagons, scrambles up walls, springs from shadows. The chieftain's den is designed for it, not for the party.</li>
+            <li>When bloodied, it becomes erratic and relentless — increase its movement and prioritize the most injured target.</li>
+            <li>It mauled the dying human employer. It is not just a trick. It is genuinely dangerous for a Level 1–2 party, especially in the cramped den.</li>
+            <li><strong>Kobold bloodsport note:</strong> Kobolds raise cavehoppers from nests on a diet of insects, meat, and arena-bred excitement. A well-fed cavehopper is a kobold's pride and joy — and often the last thing their enemies see.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="conclusion">
+    <h3>GM Summary — The Arc's Purpose</h3>
+    <ul>
+      <li>Start as a simple food shortage / bandit problem. Let it feel solvable. It isn't just a kobold problem.</li>
+      <li>The wagon food not being taken is the first real signal that something is wrong — reinforce it when the party finds the abandoned wagons.</li>
+      <li>Robyn is the emotional entry point into the kobold world. Treat him with care — he earns player sympathy quickly if played right.</li>
+      <li>The chieftain is comedy with weight. His absolute sincerity makes him memorable. He is not a villain.</li>
+      <li>The pet is the first genuine "something unnatural" moment. It should feel wrong before it feels dangerous.</li>
+      <li>Eric's body is the turning point. Everything after it is a different kind of story.</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-card" id="modalCard">
+    <span class="modal-close" id="modalClose">✕</span>
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-meta" id="modalMeta"></div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+  function toggle(header) {
+    header.classList.toggle('open');
+    header.nextElementSibling.classList.toggle('open');
+  }
+  document.querySelector('.accordion-header').click();
+
+  const overlay = document.getElementById('modalOverlay');
+  const card    = document.getElementById('modalCard');
+
+  function openModal(title, meta, detail) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalMeta').textContent = meta;
+    document.getElementById('modalBody').innerHTML = '<p>' + detail.replace(/\n/g, '</p><p>') + '</p>';
+    overlay.style.display = 'flex';
+    requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('active')));
+  }
+  function closeModal() {
+    overlay.classList.remove('active');
+    setTimeout(() => { overlay.style.display = 'none'; }, 260);
+  }
+  overlay.addEventListener('click', closeModal);
+  card.addEventListener('click', e => e.stopPropagation());
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+
+  // ── Cavehopper sprite gallery ──
+  const chTiles = [
+    { label: 'Curious & Cute',        x: 0,    y: 0   },
+    { label: 'Ambush Predator',        x: 213,  y: 0   },
+    { label: 'Quill Spit',             x: 426,  y: 0   },
+    { label: 'Frantic & Bloodhungry',  x: 639,  y: 0   },
+    { label: 'Bounding Leap',          x: 0,    y: 340 },
+    { label: 'Mid-Air Attack',         x: 213,  y: 340 },
+    { label: 'Quill Spit (Ranged)',    x: 426,  y: 340 },
+    { label: 'Retreat & Reposition',   x: 639,  y: 340 },
+  ];
+  let chIdx = 0;
+  const chSprite = document.getElementById('cavehopperSprite');
+  const chLabel  = document.getElementById('chLabel');
+
+  function chUpdate() {
+    const t = chTiles[chIdx];
+    chSprite.style.backgroundPosition = `-${t.x}px -${t.y}px`;
+    chLabel.innerHTML = t.label;
+  }
+  function chNext() { chIdx = (chIdx + 1) % chTiles.length; chUpdate(); }
+  function chPrev() { chIdx = (chIdx - 1 + chTiles.length) % chTiles.length; chUpdate(); }
+
+  document.querySelectorAll('.dc-table tbody tr').forEach(row => {
+    row.addEventListener('click', () => {
+      openModal(row.dataset.name, row.dataset.dc + (row.dataset.type ? '  ·  ' + row.dataset.type : ''), row.dataset.detail);
+    });
+  });
+</script>
+</body>
+</html>
