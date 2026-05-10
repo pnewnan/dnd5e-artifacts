@@ -199,7 +199,9 @@
   .modal-close { position: absolute; top: 0.6rem; right: 0.8rem; font-size: 1rem; color: var(--faded); cursor: pointer; opacity: 0.6; line-height: 1; }
   .modal-close:hover { opacity: 1; }
 
-  @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } .page { padding: 1.5rem 1.2rem 2rem; } .npc-img, .npc-img.left { float: none; width: 100%; margin: 0 0 1rem 0; } }
+  .modal-card.img-modal { max-width: 860px; }
+  .modal-card.img-modal .modal-body { padding: 0; }
+  .modal-card.img-modal img { width: 100%; display: block; }
   @media print { body { background: white; padding: 0; } .page { box-shadow: none; border: none; } .accordion-body { display: block !important; } }
 </style>
 </head>
@@ -360,7 +362,7 @@
       <span class="accordion-arrow">▼</span>
     </div>
     <div class="accordion-body">
-      <img src="kobolds.png" alt="Kobolds of Aelanthar" style="width:100%; display:block; margin-bottom:1.2rem; border:1px solid var(--parchment-shadow); filter:sepia(10%) contrast(1.05); max-height:280px; object-fit:cover; object-position:center 30%;">
+      <img id="koboldsImg" src="kobolds.png" alt="Kobolds of Aelanthar" style="width:100%; display:block; margin-bottom:1.2rem; border:1px solid var(--parchment-shadow); filter:sepia(10%) contrast(1.05); max-height:280px; object-fit:cover; object-position:center 30%; cursor:zoom-in;">
       <div class="two-col">
         <div>
           <div class="world-box">
@@ -511,20 +513,23 @@
           <div class="npc-section">Personality</div>
           <div class="npc-trait"><span class="npc-trait-name">Voice.</span> Deep, deliberate, theatrical. He savors his own words.</div>
           <div class="npc-trait"><span class="npc-trait-name">Pride.</span> Deeply offended that the crate contained only a book. He considers this a personal insult from the dying human.</div>
-          <div class="npc-trait"><span class="npc-trait-name">The Offer.</span> Rather than immediate combat, he offers the party a deal — fight the pet, survive, and leave. He finds this entertaining.</div>
+          <div class="npc-trait"><span class="npc-trait-name">The Show.</span> Rather than threatening the party, he proudly presents the cavehopper as his greatest treasure. He wants admiration. He is genuinely delighted by how cute it is. He does not anticipate what happens next — or if he does, he considers it the party's fault for not being still enough.</div>
 
           <div class="npc-quote">"Little man hired us. Wanted shiny box. We took extra wagons too. Seemed fair."</div>
-          <div class="npc-quote">"Fight pet. If survive… you leave."</div>
+          <div class="npc-quote">"Look. LOOK. Is beautiful, yes?"</div>
 
-          <div class="npc-section">After the Fight</div>
-          <div class="npc-trait"><span class="npc-trait-name">Expulsion.</span> The chieftain becomes increasingly agitated and forces the party out through a different tunnel route — then the kobolds begin chasing them, shouting, throwing rocks and spears.</div>
+          <div class="npc-section">After the Cavehopper Triggers</div>
+          <div class="npc-trait"><span class="npc-trait-name">Reaction.</span> Annoyed — not at the party, but at the situation. He wanted a demonstration, not a mess. He waves them out through a back tunnel with evident impatience.</div>
+          <div class="npc-trait"><span class="npc-trait-name">The Chase.</span> The kobolds who follow are herding, not hunting. Rocks and spears are thrown more out of embarrassment than genuine aggression. The chieftain stays behind.</div>
         </div>
         <div class="npc-notes">
           <div class="npc-notes-label">GM Notes — Running the Chieftain</div>
           <ul>
             <li>Play him as genuinely believing in his own grandeur — never winking at the camera. The comedy comes from his absolute sincerity.</li>
-            <li>He is not a villain. He took a job, got paid (or thought he would), and is now annoyed that the crate was worthless and his pet mauled the employer.</li>
-            <li>He will not fight the party directly unless they attack him. The pet encounter is his preferred method of handling guests.</li>
+            <li>He is not a villain. He took a job, is annoyed the crate was worthless, and mostly wants to show off his pet to these interesting strangers.</li>
+            <li>The cavehopper presentation should feel like a proud parent showing off a child. He is beaming. His court nods approvingly. It is genuinely a good moment — until it isn't.</li>
+            <li>He does not intervene when the cavehopper triggers. He watches. Whether he's amused, resigned, or disappointed in the party's poor stillness is up to the GM.</li>
+            <li>After the cavehopper fight, his annoyance is the annoyance of someone whose party trick went sideways. He wants the mess gone, not revenge.</li>
             <li>His voice should feel incongruously deep and regal for a 4-foot reptile wearing glitter.</li>
           </ul>
         </div>
@@ -608,12 +613,25 @@
               </ul>
             </div>
             <div class="block" style="margin-top:0.8rem;">
-              <p class="section-head">The Pet</p>
+              <p class="section-head">The Pet — The Reveal</p>
               <div class="discovery dc-top-bg">
-                <div class="discovery-name">First Impression → True Nature</div>
-                <p>Initially: bunny-like, twitchy, almost cute. Then: jaws split too wide, posture becomes unnatural, eyes become predatory, movement turns violently fast.</p>
-                <p>This should be the party's first strong "something unnatural is happening" moment. It is horrifying, adorable, and deeply aggressive.</p>
-                <div class="annotation">The same entity that mauled the dying human. The chieftain finds its behavior entertaining.</div>
+                <div class="discovery-name">The Chieftain Shows Off</div>
+                <p>Rather than threatening the party, the chieftain proudly presents his pet. He is showing off. This is his prize possession — his greatest treasure. He wants the party to admire it.</p>
+                <p>Initially: bunny-like, twitchy, enormous black eyes. Almost unbearably cute. The chieftain beams. His court murmurs approvingly.</p>
+                <p>The cavehopper investigates the party with its nose. It cocks its head. It makes a small chirping sound.</p>
+                <div class="annotation">Then someone moves. Or reaches for a weapon. Or takes a step. Or breathes wrong.</div>
+              </div>
+              <div class="discovery dc-top-bg">
+                <div class="discovery-name">The Trigger</div>
+                <p>Any sudden movement — standing up, drawing a weapon, stepping forward, reaching out to touch it — causes the cavehopper to snap. Jaws split too wide. Posture drops into a predatory crouch. Eyes go flat and predatory. It moves with violent, unnatural speed.</p>
+                <p>The chieftain does not intervene. He watches with the expression of someone watching their prize horse perform.</p>
+                <div class="annotation">This is the party's first strong "something unnatural is happening" moment.</div>
+              </div>
+              <div class="discovery dc-mid-bg">
+                <div class="discovery-name">The Chase</div>
+                <p>After the fight, the chieftain is annoyed — not at the party, but at the situation. He wanted a demonstration, not a mess. He waves them out impatiently through a back tunnel.</p>
+                <p>The kobolds chase them with rocks and spears more out of embarrassment than genuine pursuit. They are herding, not hunting.</p>
+                <div class="annotation">"Out. OUT. You ruin everything."</div>
               </div>
             </div>
           </div>
@@ -801,11 +819,12 @@
         <div style="background:rgba(26,17,8,0.05);border-top:1px solid var(--parchment-shadow);padding:0.8rem 1.4rem;">
           <div style="font-family:'Cinzel',serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink);margin-bottom:0.4rem;">Combat Notes — Running the Cavehopper</div>
           <ul style="margin-left:1rem;font-size:0.85rem;color:var(--dim);line-height:1.65;">
-            <li>Open with the "cute" phase — twitching nose, cocked head. Let the party feel a moment of "is this really the threat?" before it attacks.</li>
-            <li>Use Twitchbound Leap aggressively — Bite then immediately reposition out of reach, forcing the party to chase it or eat Quill Spit on the next turn.</li>
+            <li><strong>The cute phase is not an act.</strong> The cavehopper genuinely investigates the party with curiosity — nose twitching, head cocked, chirping softly. This makes the trigger more shocking, not less. Let the party relax into it.</li>
+            <li><strong>The trigger.</strong> Any sudden movement sets it off — standing, reaching, stepping forward, drawing a weapon, even an abrupt gesture. The GM decides the threshold, but err on the side of "surprisingly easy to trigger." The party should feel they were ambushed by their own instincts.</li>
+            <li>Use Twitchbound Leap aggressively once combat begins — Bite then immediately reposition, forcing the party to chase it or eat Quill Spit on the next turn.</li>
             <li>It uses terrain: vaults onto wagons, scrambles up walls, springs from shadows. The chieftain's den is designed for it, not for the party.</li>
             <li>When bloodied, it becomes erratic and relentless — increase its movement and prioritize the most injured target.</li>
-            <li>It mauled the dying human employer. It is not just a trick. It is genuinely dangerous for a Level 1–2 party, especially in the cramped den.</li>
+            <li>The chieftain watches the whole fight without intervening. Run him as genuinely uncertain whether this is a problem or entertainment.</li>
             <li><strong>Kobold bloodsport note:</strong> Kobolds raise cavehoppers from nests on a diet of insects, meat, and arena-bred excitement. A well-fed cavehopper is a kobold's pride and joy — and often the last thing their enemies see.</li>
           </ul>
         </div>
@@ -820,8 +839,9 @@
       <li>Start as a simple food shortage / bandit problem. Let it feel solvable. It isn't just a kobold problem.</li>
       <li>The wagon food not being taken is the first real signal that something is wrong — reinforce it when the party finds the abandoned wagons.</li>
       <li>Robyn is the emotional entry point into the kobold world. Treat him with care — he earns player sympathy quickly if played right.</li>
-      <li>The chieftain is comedy with weight. His absolute sincerity makes him memorable. He is not a villain.</li>
-      <li>The pet is the first genuine "something unnatural" moment. It should feel wrong before it feels dangerous.</li>
+      <li>The chieftain is comedy with weight. His absolute sincerity makes him memorable. He is not a villain — he just wanted to show off his pet.</li>
+      <li>The cavehopper trigger should feel like the party's fault, even when it isn't. That's the horror of it.</li>
+      <li>The kobold chase is embarrassed damage control, not aggression. Rocks and spears are thrown by kobolds who are mortified, not enraged.</li>
       <li>Eric's body is the turning point. Everything after it is a different kind of story.</li>
     </ul>
   </div>
@@ -859,7 +879,10 @@
   }
   function closeModal() {
     overlay.classList.remove('active');
-    setTimeout(() => { overlay.style.display = 'none'; }, 260);
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      document.getElementById('modalCard').classList.remove('img-modal');
+    }, 260);
   }
   overlay.addEventListener('click', closeModal);
   card.addEventListener('click', e => e.stopPropagation());
@@ -887,6 +910,15 @@
   }
   function chNext() { chIdx = (chIdx + 1) % chTiles.length; chUpdate(); }
   function chPrev() { chIdx = (chIdx - 1 + chTiles.length) % chTiles.length; chUpdate(); }
+
+  document.getElementById('koboldsImg').addEventListener('click', () => {
+    document.getElementById('modalTitle').textContent = 'Kobolds of Aelanthar';
+    document.getElementById('modalMeta').textContent = '';
+    document.getElementById('modalBody').innerHTML = '<img src="kobolds.png" alt="Kobolds of Aelanthar">';
+    document.getElementById('modalCard').classList.add('img-modal');
+    overlay.style.display = 'flex';
+    requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('active')));
+  });
 
   document.querySelectorAll('.dc-table tbody tr').forEach(row => {
     row.addEventListener('click', () => {
