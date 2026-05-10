@@ -464,7 +464,7 @@
       <!-- ROBYN -->
       <div class="npc-card">
         <div class="npc-inner">
-          <img class="npc-img" src="robyn.png" alt="Robyn">
+          <img id="robynImg" class="npc-img" src="robyn.png" alt="Robyn" style="cursor:zoom-in;">
           <div class="npc-name">Robyn</div>
           <div class="npc-type">Kobold Scout / Outcast</div>
           <div class="npc-flavor">Robyn doesn't fit in with the other kobolds. He's smaller, not as fierce, and gets picked on for it. He'd rather hide than fight. He speaks in a nervous, stammering tone — quickly, apologetically, and with the cadence of someone who expects to be interrupted at any moment.</div>
@@ -501,7 +501,7 @@
       <!-- CHIEFTAIN -->
       <div class="npc-card">
         <div class="npc-inner">
-          <img class="npc-img left" src="chieftain.png" alt="Kobold Chieftain">
+          <img id="chieftainImg" class="npc-img left" src="chieftain.png" alt="Kobold Chieftain" style="cursor:zoom-in;">
           <div class="npc-name">The Chieftain</div>
           <div class="npc-type">Kobold Chieftain · Self-Declared King</div>
           <div class="npc-flavor">Unexpectedly charismatic. Deep, rich, textured voice. Speaks like he believes he is a great king — because, by his own reckoning, he is. His "royal regalia" is essentially molted feathers, broken necklaces, polished trash, and fake gemstones, all arranged with absolute sincerity. He is simultaneously ridiculous and oddly compelling.</div>
@@ -912,13 +912,23 @@
   function chPrev() { chIdx = (chIdx - 1 + chTiles.length) % chTiles.length; chUpdate(); }
 
   document.getElementById('koboldsImg').addEventListener('click', () => {
-    document.getElementById('modalTitle').textContent = 'Kobolds of Aelanthar';
+    openImgModal('Kobolds of Aelanthar', 'kobolds.png');
+  });
+  document.getElementById('robynImg').addEventListener('click', () => {
+    openImgModal('Robyn — Kobold Scout / Outcast', 'robyn.png');
+  });
+  document.getElementById('chieftainImg').addEventListener('click', () => {
+    openImgModal('The Chieftain', 'chieftain.png');
+  });
+
+  function openImgModal(title, src) {
+    document.getElementById('modalTitle').textContent = title;
     document.getElementById('modalMeta').textContent = '';
-    document.getElementById('modalBody').innerHTML = '<img src="kobolds.png" alt="Kobolds of Aelanthar">';
+    document.getElementById('modalBody').innerHTML = '<img src="' + src + '" alt="' + title + '">';
     document.getElementById('modalCard').classList.add('img-modal');
     overlay.style.display = 'flex';
     requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('active')));
-  });
+  }
 
   document.querySelectorAll('.dc-table tbody tr').forEach(row => {
     row.addEventListener('click', () => {
