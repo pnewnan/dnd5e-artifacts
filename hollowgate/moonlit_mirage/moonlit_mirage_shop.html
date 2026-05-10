@@ -450,6 +450,30 @@
     filter: sepia(10%) contrast(1.05);
   }
 
+  /* === EXPANDED IMAGE STATE === */
+  .trinket-card.expanded,
+  .featured-card.expanded {
+    cursor: zoom-out;
+  }
+  .trinket-card.expanded img,
+  .featured-card.expanded img {
+    height: auto;
+    max-height: none;
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  .trinket-card.expanded .trinket-num,
+  .trinket-card.expanded .trinket-name,
+  .trinket-card.expanded .trinket-desc,
+  .featured-card.expanded .item-header,
+  .featured-card.expanded .item-desc {
+    display: none;
+  }
+  .trinket-card img,
+  .featured-card img {
+    cursor: zoom-in;
+  }
+
   /* === TRINKET CARD WITH IMAGE === */
   .trinket-card img {
     width: 100%;
@@ -837,5 +861,13 @@
 
 </div><!-- /parchment -->
 </div><!-- /page-wrap -->
+<script>
+  document.querySelectorAll('.trinket-card img, .featured-card img').forEach(img => {
+    img.addEventListener('click', e => {
+      e.stopPropagation();
+      img.closest('.trinket-card, .featured-card').classList.toggle('expanded');
+    });
+  });
+</script>
 </body>
 </html>
