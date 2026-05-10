@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GM Reference — Moonlit Mirage Arc</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9;
+    --parchment-dark: #dbc99a;
+    --parchment-shadow: #b89d5e;
+    --ink: #1a1108;
+    --dim: #2e200e;
+    --faded: #5a4a2e;
+    --blood: #7a1f1f;
+    --purple: #5b2d8e;
+    --gold: #8a6a10;
+    --teal: #1e5f5f;
+    --dc-low: #2a5c1e;
+    --dc-mid: #7a5000;
+    --dc-high: #7a1f1f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1209; font-family: 'IM Fell English', serif; color: var(--ink); padding: 1.5rem 1rem 3rem; min-height: 100vh; }
+  .page { max-width: 1000px; margin: 0 auto; background-color: #f2e8c9; border: 2px solid var(--parchment-shadow); box-shadow: 0 0 0 6px #1a1209, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8); padding: 2.5rem 2.5rem 3rem; }
+  .page-title { text-align: center; border-bottom: 2px solid var(--parchment-shadow); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+  .gm-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; color: var(--blood); text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+  .page-title h1 { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1.4rem, 3.5vw, 2.2rem); color: var(--ink); line-height: 1.2; }
+  .page-title .subtitle { font-style: italic; color: var(--faded); font-size: 0.9rem; margin-top: 0.3rem; }
+
+  /* PHASE STRIP */
+  .phase-strip { display: flex; gap: 0; margin-bottom: 1.5rem; border: 1px solid var(--parchment-shadow); overflow: hidden; }
+  .phase-block { flex: 1; padding: 0.7rem 1rem; text-align: center; border-right: 1px solid var(--parchment-shadow); }
+  .phase-block:last-child { border-right: none; }
+  .phase-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faded); display: block; margin-bottom: 0.2rem; }
+  .phase-title { font-family: 'Cinzel', serif; font-size: 0.8rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
+  .phase-note { font-style: italic; font-size: 0.75rem; color: var(--faded); margin-top: 0.15rem; }
+  .phase-block.phase-1 { background: rgba(42,92,30,0.06); }
+  .phase-block.phase-2 { background: rgba(122,31,31,0.06); }
+  .phase-block.phase-link { background: rgba(91,45,142,0.05); flex: 0.7; }
+
+  /* ACCORDION */
+  .accordion { margin-bottom: 0.6rem; }
+  .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; cursor: pointer; user-select: none; border: 1px solid var(--parchment-shadow); border-left: 4px solid var(--parchment-shadow); background: rgba(180,140,60,0.08); transition: background 0.2s; gap: 1rem; }
+  .accordion-header:hover, .accordion-header.open { background: rgba(180,140,60,0.15); }
+  .accordion-header.color-phase1  { border-left-color: var(--dc-low); }
+  .accordion-header.color-phase2  { border-left-color: var(--blood); }
+  .accordion-header.color-npcs   { border-left-color: var(--purple); }
+  .accordion-header.color-perc   { border-left-color: var(--dc-mid); }
+  .accordion-header.color-horror { border-left-color: var(--blood); }
+  .accordion-header.color-end    { border-left-color: var(--ink); }
+  .accordion-header.color-link   { border-left-color: var(--teal); }
+  .accordion-header.color-artifact { border-left-color: var(--gold); }
+  .accordion-title { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); line-height: 1.3; }
+  .accordion-subtitle { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.78rem; color: var(--faded); margin-top: 0.1rem; }
+  .accordion-arrow { font-size: 0.7rem; color: var(--faded); transition: transform 0.25s; flex-shrink: 0; }
+  .accordion-header.open .accordion-arrow { transform: rotate(180deg); }
+  .accordion-body { display: none; border: 1px solid var(--parchment-shadow); border-top: none; padding: 1.2rem 1.2rem 0.8rem; background: rgba(242,232,200,0.4); }
+  .accordion-body.open { display: block; }
+
+  /* LAYOUT */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+  .section-head { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.4rem; border-bottom: 1px solid rgba(91,45,142,0.2); padding-bottom: 0.2rem; }
+  h2 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--ink); line-height: 1.3; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  h3 { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; margin: 0.8rem 0 0.3rem; }
+  p { font-size: 0.88rem; line-height: 1.65; color: var(--dim); margin-bottom: 0.4rem; }
+  .block { margin-bottom: 1.2rem; }
+  .quote { font-style: italic; font-size: 0.87rem; color: var(--dim); padding: 0.4rem 0.8rem; border-left: 2px solid var(--parchment-shadow); margin: 0.4rem 0; background: rgba(180,140,60,0.06); }
+
+  /* DISCOVERY */
+  .discovery { padding: 0.65rem 0.9rem; margin-bottom: 0.6rem; border-left: 3px solid var(--parchment-shadow); background: rgba(180,140,60,0.1); }
+  .dc-low-bg  { border-left-color: var(--dc-low)  !important; background: rgba(42,92,30,0.07)  !important; }
+  .dc-mid-bg  { border-left-color: var(--dc-mid)  !important; background: rgba(122,80,0,0.07)  !important; }
+  .dc-high-bg { border-left-color: var(--dc-high) !important; background: rgba(122,31,31,0.07) !important; }
+  .dc-top-bg  { border-left-color: var(--blood)   !important; background: rgba(122,31,31,0.09) !important; }
+  .teal-bg    { border-left-color: var(--teal)    !important; background: rgba(30,95,95,0.07)  !important; }
+  .gold-bg    { border-left-color: var(--gold)    !important; background: rgba(138,106,16,0.07)!important; }
+  .discovery-name { font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 600; color: var(--ink); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem; }
+  .discovery p { margin-bottom: 0.25rem; }
+  ul.find-list { margin: 0.25rem 0 0.25rem 1rem; font-size: 0.84rem; color: var(--dim); line-height: 1.6; }
+  ul.find-list li { margin-bottom: 0.1rem; }
+  .annotation { font-style: italic; font-size: 0.82rem; color: var(--blood); padding: 0.25rem 0.6rem; border-left: 2px solid var(--blood); margin: 0.35rem 0; background: rgba(122,31,31,0.04); }
+
+  /* ACTS LIST */
+  .acts-list { list-style: none; padding: 0; margin: 0 0 0.8rem; }
+  .acts-list li { display: flex; gap: 0.7rem; align-items: baseline; padding: 0.35rem 0.6rem; border-bottom: 1px solid rgba(180,140,60,0.2); font-size: 0.86rem; color: var(--dim); }
+  .acts-list li:last-child { border-bottom: none; }
+  .act-num { font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; color: var(--blood); min-width: 1.4rem; flex-shrink: 0; }
+  .act-name { font-weight: bold; color: var(--ink); }
+  .act-desc { font-style: italic; color: var(--faded); font-size: 0.82rem; }
+  .act-unlisted { background: rgba(122,31,31,0.05); border-left: 2px solid var(--blood); }
+
+  /* DC TABLE */
+  .dc-table { width: 100%; border-collapse: collapse; margin-bottom: 0.6rem; }
+  .dc-table thead th { font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--faded); padding: 0.35rem 0.8rem; border-bottom: 1px solid var(--parchment-shadow); text-align: left; background: rgba(180,140,60,0.06); }
+  .dc-table tbody tr { cursor: pointer; transition: background 0.15s; }
+  .dc-table tbody tr:hover td { background: rgba(180,140,60,0.1); }
+  .dc-table tbody td { padding: 0.35rem 0.8rem; border-bottom: 1px solid rgba(180,140,60,0.2); color: var(--dim); font-size: 0.84rem; vertical-align: middle; }
+  .dc-table tbody tr:last-child td { border-bottom: none; }
+  .dc-pill { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.1rem 0.4rem; border-radius: 2px; white-space: nowrap; }
+  .pill-10 { background: rgba(42,92,30,0.12);  color: var(--dc-low);  border: 1px solid rgba(42,92,30,0.3); }
+  .pill-11 { background: rgba(42,92,30,0.12);  color: var(--dc-low);  border: 1px solid rgba(42,92,30,0.3); }
+  .pill-12 { background: rgba(42,92,30,0.12);  color: var(--dc-low);  border: 1px solid rgba(42,92,30,0.3); }
+  .pill-13 { background: rgba(122,80,0,0.1);   color: var(--dc-mid);  border: 1px solid rgba(122,80,0,0.3); }
+  .pill-14 { background: rgba(122,80,0,0.1);   color: var(--dc-mid);  border: 1px solid rgba(122,80,0,0.3); }
+  .pill-15 { background: rgba(122,31,31,0.1);  color: var(--dc-high); border: 1px solid rgba(122,31,31,0.3); }
+  .pill-16 { background: rgba(122,31,31,0.1);  color: var(--dc-high); border: 1px solid rgba(122,31,31,0.3); }
+  .pill-17 { background: rgba(122,31,31,0.15); color: var(--blood);   border: 1px solid rgba(122,31,31,0.35); }
+  .pill-18 { background: rgba(122,31,31,0.15); color: var(--blood);   border: 1px solid rgba(122,31,31,0.35); }
+  .pill-19 { background: rgba(122,31,31,0.2);  color: var(--blood);   border: 1px solid rgba(122,31,31,0.4); font-weight:900; }
+  .pill-20 { background: rgba(122,31,31,0.2);  color: var(--blood);   border: 1px solid rgba(122,31,31,0.4); font-weight:900; }
+
+  /* CLICKABLE ACT ROW */
+  .act-row { cursor: pointer; transition: background 0.15s; }
+  .act-row:hover { background: rgba(180,140,60,0.1); }
+
+  /* DIVIDER */
+  .divider { display: flex; align-items: center; gap: 0.6rem; margin: 1rem 0; color: var(--parchment-shadow); }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
+  .divider span { font-size: 0.9rem; }
+
+  /* CONCLUSION */
+  .conclusion { margin-top: 1.2rem; background: rgba(26,17,8,0.06); border: 1px solid var(--parchment-shadow); border-top: 2px solid var(--ink); padding: 1rem 1.2rem; }
+  .conclusion h3 { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--ink); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem; }
+  .conclusion ul { margin-left: 1.1rem; font-size: 0.87rem; color: var(--dim); line-height: 1.7; }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(5,3,1,0.85); justify-content: center; align-items: center; padding: 1.5rem; cursor: pointer; }
+  .modal-overlay.active { display: flex; }
+  .modal-card { background-color: #f2e8c9; border: 2px solid var(--parchment-shadow); box-shadow: 0 0 0 4px #1a1209, 0 0 0 6px var(--parchment-shadow), 0 10px 40px rgba(0,0,0,0.8); max-width: 560px; width: 100%; cursor: default; transform: scale(0.93) translateY(10px); opacity: 0; transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease; position: relative; max-height: 85vh; overflow-y: auto; }
+  .modal-overlay.active .modal-card { transform: scale(1) translateY(0); opacity: 1; }
+  .modal-header { padding: 0.9rem 2.5rem 0.9rem 1.1rem; border-bottom: 1px solid var(--parchment-shadow); background: rgba(26,17,8,0.05); position: sticky; top: 0; }
+  .modal-title { font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); margin-bottom: 0.2rem; }
+  .modal-meta { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--faded); }
+  .modal-body { padding: 1rem 1.1rem 1.2rem; font-size: 0.88rem; line-height: 1.65; color: var(--dim); }
+  .modal-body p { margin-bottom: 0.5rem; }
+  .modal-body ul { margin-left: 1.1rem; margin-top: 0.3rem; line-height: 1.65; margin-bottom: 0.5rem; }
+  .modal-body li { margin-bottom: 0.15rem; }
+  .modal-body .note { display: block; margin-top: 0.6rem; font-style: italic; font-size: 0.83rem; color: var(--blood); padding: 0.25rem 0.6rem; border-left: 2px solid var(--blood); background: rgba(122,31,31,0.04); }
+  .modal-body h4 { font-family: 'Cinzel', serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin: 0.7rem 0 0.3rem; }
+  .modal-close { position: absolute; top: 0.6rem; right: 0.8rem; font-size: 1rem; color: var(--faded); cursor: pointer; opacity: 0.6; line-height: 1; }
+  .modal-close:hover { opacity: 1; }
+
+  @media (max-width: 680px) { .two-col { grid-template-columns: 1fr; } .page { padding: 1.5rem 1.2rem 2rem; } }
+  @media print { body { background: white; padding: 0; } .page { box-shadow: none; border: none; } .accordion-body { display: block !important; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-title">
+    <span class="gm-label">GM Reference · Moonlit Mirage Carnival</span>
+    <h1>The Carnival Arc</h1>
+    <p class="subtitle">Phase One: Missing Convoys · Phase Two: The Pallor · Links to the Hollowgate Investigation</p>
+  </div>
+
+  <div class="phase-strip">
+    <div class="phase-block phase-1">
+      <span class="phase-label">Phase One</span>
+      <div class="phase-title">We Need Food</div>
+      <div class="phase-note">Practical · Investigation · Trust-building</div>
+    </div>
+    <div class="phase-block phase-link">
+      <span class="phase-label">Connects To</span>
+      <div class="phase-title">Eric's Investigation</div>
+      <div class="phase-note">Kobolds · Tunnels · Convoys</div>
+    </div>
+    <div class="phase-block phase-2">
+      <span class="phase-label">Phase Two</span>
+      <div class="phase-title">The Pallor</div>
+      <div class="phase-note">Horror · Artifact · Outbreak</div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Overview ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-phase1" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Overview &amp; Arc Structure</div>
+        <div class="accordion-subtitle">Two phases · The central twist · Emotional stakes</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">The Setup</p>
+            <p>The Moonlit Mirage Carnival arrives near Hollowgate during a period of regional instability. To the townsfolk it represents wonder and distraction. To the party it first appears to be a struggling traveling show suffering from the same problems affecting the rest of the region.</p>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Initial Carnival State</div>
+              <ul class="find-list">
+                <li>Subdued, exhausted, partially operational</li>
+                <li>Strangely melancholic beneath its cheerful exterior</li>
+                <li>The nighttime show has not yet begun</li>
+                <li>Many attractions remain closed; lanterns dimmed to conserve oil</li>
+                <li>Food stalls sparse, several performers unavailable</li>
+              </ul>
+            </div>
+            <div class="quote">"Once the convoy arrives, the true show can begin." — Chaelynn</div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">The Central Twist</p>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">The Players Enable the Horror</div>
+              <p>The party's success in saving the carnival — recovering the convoy, restoring supplies — is what enables Phase Two. Without a full crowd, the artifact's feeding cycle remains incomplete.</p>
+              <div class="annotation">The final tragedy: the creatures matured rapidly because the party succeeded.</div>
+            </div>
+            <div class="block" style="margin-top:0.8rem;">
+              <p class="section-head">Arc Phases</p>
+              <div class="discovery dc-low-bg">
+                <div class="discovery-name">Phase One — "We Need Food"</div>
+                <p>Grounds the story in practical problems. Missing convoys, kobolds, tunnels. Establishes trust with carnival NPCs.</p>
+              </div>
+              <div class="discovery dc-high-bg">
+                <div class="discovery-name">Phase Two — The Pallor</div>
+                <p>Slowly transforms the carnival into escalating supernatural horror. Triggered by Phase One success.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Key NPCs ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-npcs" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Key NPCs</div>
+        <div class="accordion-subtitle">Chaelynn · Magnus Eillin</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <h2>Chaelynn — Ringmaster</h2>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Who She Is</div>
+              <p>Joined as a performer years ago, became the person responsible for keeping the carnival alive. Charismatic, capable, fiercely protective of her people, and increasingly overwhelmed by the carnival's deteriorating condition.</p>
+            </div>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">What She Reveals — Initially</div>
+              <ul class="find-list">
+                <li>Missing supplies and exhausted workers</li>
+                <li>Postponed performances and morale concerns</li>
+              </ul>
+            </div>
+            <div class="discovery dc-high-bg">
+              <div class="discovery-name">What She Hides — Until Trust Is Earned</div>
+              <p>Her deeper fears about the pallor and the strange nighttime symptoms among workers. She will not reveal these without significant trust from the party.</p>
+            </div>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">Phase Two — Her Reaction</div>
+              <p>When the party investigates the artifact, Chaelynn's instinct is to protect it — it has been the carnival's most prized centerpiece for years and she has never seen it cause harm before. She will resist any attempt to damage or remove it unless she witnesses the connection herself.</p>
+              <div class="annotation">"You cannot stop the show." — Chaelynn, when Magnus urges intervention during Act 1.</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <h2>Magnus Eillin — Sideshow Storyteller</h2>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Who He Is</div>
+              <p>A traveling storyteller, bard, and sideshow performer. Wears a long blue coat adorned with golden stars. Entertains children with magical flourishes, exaggerated stories, and observations about the stars and the empty spaces between them.</p>
+              <div class="annotation">"It belongs in a library."</div>
+            </div>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">His Role in Phase Two</div>
+              <p>Magnus is perceptive — more than he lets on. During Act 1 of the Grand Performance, he pulls the party aside quietly and points them toward the artifact. He has noticed something is wrong with it but cannot articulate exactly what.</p>
+              <p>He will not confront Chaelynn directly. He knows she will not stop the show. But he believes the party might be able to do something about it — if they move quickly.</p>
+            </div>
+            <div class="discovery teal-bg">
+              <div class="discovery-name">Story Role — Pre-Zarathrax</div>
+              <p>This version of Magnus predates the larger Zarathrax storyline. He is here to establish warmth, character, and the feeling of a living world. Protect his role as an emotional anchor before the horror begins.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: The Artifact ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-artifact" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">The Artifact — Investigation &amp; Truth</div>
+        <div class="accordion-subtitle">Recent modification · What's inside · How to stop it</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">What It Appears To Be</p>
+            <div class="discovery gold-bg">
+              <div class="discovery-name">The Centerpiece</div>
+              <p>A crystalline lantern, mirrored astrolabe, or ornate "guiding star" at the center of the carnival. It has been the carnival's most prized possession for years — and for years it appeared to be nothing more than a beautiful, mildly magical object that made performances feel more vivid and audiences more engaged.</p>
+              <p>It caused no harm. No one suffered. The carnival flourished.</p>
+              <div class="annotation">Something changed recently. The artifact itself did not — but something was done to it.</div>
+            </div>
+          </div>
+          <div class="block">
+            <p class="section-head">Investigation — What They Find</p>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Arcana / Investigation — DC 14</div>
+              <p>The artifact has been modified. The external casing shows faint tool marks and residue from a recent opening — it has been taken apart and reassembled within the last few months. The magical signature around the seams is slightly misaligned, like a clock that has been wound too tightly.</p>
+            </div>
+            <div class="discovery dc-high-bg">
+              <div class="discovery-name">Arcana / Investigation — DC 17</div>
+              <p>Something inside the artifact is doing the actual work. The artifact itself is a conduit — an amplifier — but the parasitic intelligence driving the feeding cycle was inserted into it. The original artifact was genuinely benign. Whatever is inside it now is using it as a shell.</p>
+            </div>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">If Carefully Disassembled</div>
+              <p>Inside the artifact is a secondary object — a seed, a gem, a coiled thing — that does not belong. It pulses faintly. It is warm. It reacts to proximity by growing slightly brighter.</p>
+              <p>This is the true source. The artifact is innocent. The inserted object is not.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">The Key Question</p>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">Why Did It Only Start Recently?</div>
+              <p>The artifact has been with the carnival for years without causing harm. The pallor, the insects, the feeding cycle — all of these are recent. A sharp party will notice this and ask why.</p>
+              <p>The answer: the artifact was modified. Someone opened it, inserted something inside, and resealed it. The modification is subtle but detectable on close examination.</p>
+              <ul class="find-list">
+                <li>Who did this — and when — is a thread for further investigation</li>
+                <li>It was done recently enough that the convoy disruptions and the artifact modification may be connected</li>
+                <li>The same faction engineering regional instability may have also seeded the carnival</li>
+              </ul>
+              <div class="annotation">The artifact is a weapon that was pointed at the carnival from the outside.</div>
+            </div>
+          </div>
+          <div class="block">
+            <p class="section-head">How To Stop It</p>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Break the Artifact</div>
+              <p>Fastest. If the artifact is destroyed at any point during the Grand Performance — including during the Nightbloom — all creatures immediately die. The feeding cycle collapses instantly.</p>
+              <div class="annotation">Violent magical backlash. May damage the surrounding area.</div>
+            </div>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Remove or Destroy the Insert</div>
+              <p>If the party can disassemble the artifact carefully, they can remove the inserted object and destroy it separately. This ends the feeding cycle and preserves the original artifact — which is genuinely valuable and not evil.</p>
+            </div>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Sever the Resonance</div>
+              <p>Disrupt the music, lantern patterns, magical harmonics, or emotional amplification. This does not destroy the source but breaks the feeding cycle for the night — a temporary solution.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Phase One ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-phase1" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Phase One — Convoy Investigation</div>
+        <div class="accordion-subtitle">Missing supplies · Kobolds · Tunnels · Link to Eric</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">Investigation Trail</p>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">What the Party Discovers</div>
+              <ul class="find-list">
+                <li>Damaged caravans and missing merchants</li>
+                <li>Kobold activity in tunnel systems beneath the region</li>
+                <li>Strange infestations near tunnel entrances</li>
+                <li>Increasingly disturbing signs of corruption deeper in</li>
+              </ul>
+            </div>
+            <div class="discovery teal-bg">
+              <div class="discovery-name">Link to Eric Huwithakay</div>
+              <p>The same tunnels and kobold activity that diverted the carnival's convoys are what Eric traced in his investigation. His charcoal map X marks point toward the same tunnel entrances. His final note confirms kobolds and "someone paying them."</p>
+              <p>Eric likely died investigating the tunnel entrance. The carnival's missing convoys and Eric's investigation are the same thread.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">Purposes of Phase One</p>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">What This Arc Accomplishes</div>
+              <ul class="find-list">
+                <li>Establishes trust with Chaelynn and carnival characters</li>
+                <li>Introduces combat via kobolds and tunnel encounters</li>
+                <li>Grounds the mystery in practical, solvable stakes</li>
+                <li>Ties the carnival's problems to the regional conspiracy</li>
+                <li>Slowly introduces early pallor symptoms through environmental detail</li>
+              </ul>
+            </div>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Phase One Resolution</div>
+              <p>The party recovers the convoy and restores the carnival's supplies. This victory is real and earned. The carnival can finally reopen fully.</p>
+              <div class="annotation">And in doing so, the party unknowingly enables Phase Two.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Early Perception Checks ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-perc" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Early Perception Checks — Before the Show</div>
+        <div class="accordion-subtitle">Subdued carnival · Growing unease · Click rows for detail</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <p style="font-style:italic; font-size:0.84rem; color:var(--faded); margin-bottom:0.8rem;">These checks apply while the carnival is still in Phase One — before the convoy returns and the full show begins. Horror elements remain mostly hidden.</p>
+      <table class="dc-table">
+        <thead><tr><th>DC</th><th>What They Notice</th><th>Type</th></tr></thead>
+        <tbody>
+          <tr data-dc="DC 10" data-name="Exhausted Workers" data-type="Perception" data-detail="Several performers appear unusually tired despite trying to remain cheerful. Their smiles don't quite reach their eyes. When asked, they deflect with practiced ease — but the exhaustion is bone-deep, not merely physical. This is not the tiredness of travel."><td><span class="dc-pill pill-10">DC 10</span></td><td>Exhausted Workers</td><td>Perception</td></tr>
+          <tr data-dc="DC 10" data-name="Conserved Lanterns" data-type="Perception" data-detail="Many lanterns remain intentionally dimmed or extinguished even after sunset. The carnival feels darker than it should. Workers claim oil is being rationed due to delayed supply convoys — which is true, but there is a secondary reason: some workers are uncomfortable with how the shadows move near brightly lit areas."><td><span class="dc-pill pill-10">DC 10</span></td><td>Conserved Lanterns</td><td>Perception</td></tr>
+          <tr data-dc="DC 11" data-name="Lantern Insects" data-type="Perception" data-detail="Pale moths and thin-bodied insects gather around lanterns in unusually large numbers. Not a nuisance swarm — something more deliberate. They cluster in overlapping rings around each light source, barely moving. They do not scatter when disturbed."><td><span class="dc-pill pill-11">DC 11</span></td><td>Lantern Insects</td><td>Perception</td></tr>
+          <tr data-dc="DC 12" data-name="Uneven Shadows" data-type="Perception" data-detail="Shadows occasionally seem delayed by a fraction of a second when people move through lantern light. It is subtle — the kind of thing you notice in peripheral vision but cannot confirm when looking directly. The effect is more pronounced near the sealed main tent."><td><span class="dc-pill pill-12">DC 12</span></td><td>Uneven Shadows</td><td>Perception</td></tr>
+          <tr data-dc="DC 12" data-name="Closed Tent Hum" data-type="Perception" data-detail="A faint rhythmic hum emanates from the sealed main tent after dark. It is not mechanical. It has no consistent musical pitch — but it is rhythmic, like breathing. Pressing an ear to the canvas makes it stop immediately, as though something inside noticed."><td><span class="dc-pill pill-12">DC 12</span></td><td>Closed Tent Hum</td><td>Perception</td></tr>
+          <tr data-dc="DC 13" data-name="Strange Smell" data-type="Perception" data-detail="Some areas smell faintly earthy and damp beneath the carnival perfumes and cooking fires. The smell is strongest near the main tent and near shaded wagon interiors. It is the smell of deep tunnels — of soil that has not seen light in a long time."><td><span class="dc-pill pill-13">DC 13</span></td><td>Strange Smell</td><td>Perception</td></tr>
+          <tr data-dc="DC 13" data-name="Nervous Performers" data-type="Perception / Insight" data-detail="Several performers become visibly uncomfortable when discussing reopening the full nighttime show. They change the subject quickly, joke it off, or claim they 'just want the supplies to arrive first.' Their discomfort is genuine — but they cannot or will not articulate why."><td><span class="dc-pill pill-13">DC 13</span></td><td>Nervous Performers</td><td>Perception / Insight</td></tr>
+          <tr data-dc="DC 14" data-name="Performer Spacing Out" data-type="Perception / Insight" data-detail="A performer pauses mid-conversation and stares blankly into space for three to five seconds before continuing normally, as though nothing happened. If pressed, they seem genuinely unaware it occurred. This is an early symptom of memory gap formation — a sign the pallor is already present in some workers."><td><span class="dc-pill pill-14">DC 14</span></td><td>Performer Spacing Out</td><td>Perception / Insight</td></tr>
+          <tr data-dc="DC 14" data-name="Pale Moths at Main Tent" data-type="Perception" data-detail="Large clusters of pale moths gather specifically around the closed main tent. Unlike the insects near the lanterns, these do not move at all — they cling to the canvas in overlapping layers, perfectly still, all oriented toward the interior. The pattern they form almost resembles a face."><td><span class="dc-pill pill-14">DC 14</span></td><td>Pale Moths at Main Tent</td><td>Perception</td></tr>
+          <tr data-dc="DC 15" data-name="Pulsing Light" data-type="Perception" data-detail="A faint pulse of dim light briefly shines beneath the tent canvas — once, slowly, like a heartbeat. It does not repeat immediately. If the party waits and watches, it pulses again approximately 40 seconds later. The light shifts between pale gold and a deep, bruised purple."><td><span class="dc-pill pill-15">DC 15</span></td><td>Pulsing Light from Tent</td><td>Perception</td></tr>
+          <tr data-dc="DC 16" data-name="Worker Collapse" data-type="Perception" data-detail="A nearby carnival worker briefly becomes dizzy or collapses near the main tent. They recover quickly and insist they are fine — just overworked. This is partially true. But the collapse occurred within fifteen feet of the tent's main entrance, and the worker's skin is noticeably paler than it was earlier in the day."><td><span class="dc-pill pill-16">DC 16</span></td><td>Worker Collapse Near Tent</td><td>Perception</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Phase Two ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-phase2" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Phase Two — The Pallor</div>
+        <div class="accordion-subtitle">The affliction · The insects · Nighttime symptoms</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">The Affliction</p>
+            <div class="discovery dc-high-bg">
+              <div class="discovery-name">Pallor Symptoms</div>
+              <ul class="find-list">
+                <li>Exhaustion and emotional numbness</li>
+                <li>Insomnia and pale skin</li>
+                <li>Memory gaps and strange dreams</li>
+                <li>Increasing fear of darkness</li>
+                <li>Faint dark discoloration beneath the skin — branching from the chest</li>
+              </ul>
+              <div class="annotation">"The shadows feel hungry."</div>
+            </div>
+          </div>
+          <div class="block">
+            <p class="section-head">Nighttime Perception Checks</p>
+            <p style="font-style:italic; font-size:0.83rem; color:var(--faded); margin-bottom:0.6rem;">These apply during the nighttime carnival once Phase Two has begun — before the Grand Performance.</p>
+            <table class="dc-table">
+              <thead><tr><th>DC</th><th>What They Notice</th><th>Type</th></tr></thead>
+              <tbody>
+                <tr data-dc="DC 15" data-name="Insects Avoid Food" data-type="Perception / Investigation" data-detail="The insects seem drawn toward people and darkness rather than spilled food or refuse. A careful observer notices they cluster most densely around workers showing pallor symptoms — and almost completely ignore unafflicted individuals nearby. They are not feeding on food. They are feeding on something else."><td><span class="dc-pill pill-15">DC 15</span></td><td>Insects Avoid Food</td><td>Perception</td></tr>
+                <tr data-dc="DC 16" data-name="Bruising Beneath Skin" data-type="Medicine / Perception" data-detail="Afflicted workers display faint dark discoloration beneath the skin — not bruising from impact, but something spreading outward from the chest and collarbone in slow, branching patterns. In lantern light the patterns briefly appear to pulse. Workers are not aware of the discoloration."><td><span class="dc-pill pill-16">DC 16</span></td><td>Bruising Beneath Skin</td><td>Medicine</td></tr>
+                <tr data-dc="DC 17" data-name="Fear of Darkness" data-type="Insight" data-detail="Several workers refuse to walk through unlit sections of the carnival alone. One quietly admits: 'It is like something is watching from the dark parts. Something that knows you.' This is a late-stage pallor symptom — the creature inside is becoming aware and is pushing instinctive fear through its host's nervous system."><td><span class="dc-pill pill-17">DC 17</span></td><td>Fear of Darkness</td><td>Insight</td></tr>
+                <tr data-dc="DC 18" data-name="Insect Formations" data-type="Arcana / Investigation" data-detail="The insects gather into strange spirals and geometric clusters on wagon walls and canvas surfaces. A DC 18 Arcana check identifies faint resonance patterns — the formations mirror the harmonic structure of the artifact's energy field. The insects are orienting themselves relative to the artifact's pulse."><td><span class="dc-pill pill-18">DC 18</span></td><td>Insect Formations</td><td>Arcana</td></tr>
+                <tr data-dc="DC 19" data-name="Missing Time" data-type="Insight / Investigation" data-detail="A worker claims to have lost several hours unexpectedly — they remember working near the main tent at midday, then it was evening. No memory of the interval. The worker is not lying and not drunk. Advanced pallor: the creature inside is consuming contiguous memory, possibly using the gaps to act independently through its host."><td><span class="dc-pill pill-19">DC 19</span></td><td>Missing Time</td><td>Investigation</td></tr>
+                <tr data-dc="DC 20" data-name="Movement Beneath Skin" data-type="Perception / Medicine" data-detail="Tiny pale insects briefly move beneath an afflicted person's skin before disappearing again. The motion is unmistakable — a small ridge tracking just under the surface, moving with apparent intention, then gone. The host does not react. They cannot feel it. The creature is already deeply integrated with the host's nervous system."><td><span class="dc-pill pill-20">DC 20</span></td><td>Movement Beneath Skin</td><td>Perception / Medicine</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">The Insects</p>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">Behavior &amp; Presence</div>
+              <ul class="find-list">
+                <li>Moths, beetles, thin-bodied crawlers, parasitic entities</li>
+                <li>Gather near sleeping areas, shaded wagons, lanterns, emotionally charged spaces</li>
+                <li>Drawn toward people and darkness — not food</li>
+                <li>Behave unnaturally: geometric clustering, unnatural stillness</li>
+                <li>Do not burn when touching open flame near the artifact</li>
+                <li>In late stage: move beneath afflicted skin</li>
+              </ul>
+            </div>
+          </div>
+          <div class="block">
+            <p class="section-head">The Pallor — Key GM Notes</p>
+            <div class="discovery teal-bg">
+              <div class="discovery-name">Why Is This Happening Now?</div>
+              <p>The artifact is not new. The pallor is. A perceptive party should notice this contradiction and ask why the symptoms are recent.</p>
+              <p>The answer connects to the artifact's modification — something was inserted into it recently, and the pallor has been worsening since. Workers who spend the most time near the artifact are the most afflicted.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: The Grand Performance ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-horror" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">The Grand Performance — Opening Night</div>
+        <div class="accordion-subtitle">Act list · Magnus's warning · The Nightbloom · The outbreak</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+
+      <div class="block">
+        <p class="section-head">Center Ring Acts — Main Show</p>
+        <p style="font-size:0.84rem; color:var(--faded); font-style:italic; margin-bottom:0.6rem;">Acts rotate throughout the night. Click any act for GM notes on what the party can observe during it.</p>
+        <table class="dc-table">
+          <thead><tr><th>#</th><th>Act</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr data-dc="Act 1" data-name="The Ember Choir" data-type="Center Ring" data-detail="Fire performers who sing in eerie harmony while breathing flame. The act opens the show — lanterns across the carnival ignite in sequence as the Ember Choir takes the stage, their voices blending into something that feels almost devotional.\n\nGM Notes:\nThis is when Magnus pulls the party aside. He appears at their shoulder during the crowd's first burst of applause, speaking low and urgent. He has noticed the artifact responding to the crowd's emotion and wants them to look at it closely — but Chaelynn is watching from the wings, and 'you cannot stop the show.'\n\nDC 10 — Perception: The lanterns ignite with unnatural synchronization, almost like breathing.\nDC 12 — Perception: A faint low-frequency hum from the artifact, felt in the chest more than heard.\nDC 14 — Perception: Whenever the artifact brightens, afflicted workers momentarily appear worse — paler, briefly unfocused."><td><span class="act-num">1</span></td><td><strong>The Ember Choir</strong></td><td class="act-desc">Fire performers who sing in eerie harmony while breathing flame.</td></tr>
+            <tr data-dc="Act 2" data-name="The Wheel of Blades" data-type="Center Ring" data-detail="A knife thrower spins a blindfolded assistant on a massive wheel — and the assistant moves... just slightly. Enough to make it feel wrong. The crowd gasps with each throw.\n\nGM Notes:\nThe party has Act 2 to begin investigating the artifact. If they approach it during this act, describe it humming faintly, the external casing showing subtle tool marks on close inspection (DC 14 Investigation). The crowd is too focused on the Wheel of Blades to notice the party moving through the tent's edges.\n\nDC 13 — Perception: Several audience members stare at the artifact rather than the act, briefly entranced.\nDC 15 — Arcana: Thin strands of dim light drift from the crowd toward the artifact during sustained gasps."><td><span class="act-num">2</span></td><td><strong>The Wheel of Blades</strong></td><td class="act-desc">A knife thrower spins a blindfolded assistant who moves... just slightly.</td></tr>
+            <tr data-dc="Act 3" data-name="The Moonline Walker" data-type="Center Ring" data-detail="A performer walks impossibly high wires with nothing visible holding him up. He moves with the slow, dreaming confidence of someone who has forgotten gravity is a rule.\n\nGM Notes:\nThis is the party's clearest window to examine or attempt to interfere with the artifact. The crowd's attention is fully upward. A DC 17 Arcana check during this act reveals the artifact's internal modification — the magical signature is misaligned, and something inside it does not belong.\n\nDC 15 — Perception: The Moonline Walker pauses mid-wire and stares at the artifact for a full three seconds before continuing. He shows no sign of remembering it afterward.\nDC 16 — Perception: Pale moths gather around the artifact's casing and do not burn when contacting nearby flames."><td><span class="act-num">3</span></td><td><strong>The Moonline Walker</strong></td><td class="act-desc">Walks impossibly high wires with nothing to hold him up.</td></tr>
+            <tr data-dc="Act 4" data-name="Garrock's Distant Cousin (The Stonebreaker)" data-type="Center Ring" data-detail="A massive figure shatters boulders with his fists to thunderous crowd response. The act is raw, loud, and visceral — the crowd roars with each impact.\n\nGM Notes:\nThe emotional energy peaks during the Stonebreaker's act. The artifact brightens noticeably with each crowd roar. If the party has been watching it, they will see it physically react — pulsing in time with applause.\n\nDC 14 — Perception: Several workers near the artifact simultaneously flinch when the crowd roars, as though the sound physically hurts them.\nDC 16 — Perception: Veins of pale light briefly travel from two afflicted workers toward the artifact during the loudest crowd response."><td><span class="act-num">4</span></td><td><strong>Garrock's Distant Cousin</strong></td><td class="act-desc">The Stonebreaker shatters boulders with his fists.</td></tr>
+            <tr data-dc="Act 5" data-name="Seraphine and the Thousand Coils" data-type="Center Ring" data-detail="Seraphine dances with a massive serpent that never blinks. The act is hypnotic — slow, silent, deeply unsettling in a way the crowd cannot name. The serpent watches the audience.\n\nGM Notes:\nThe last act before the Nightbloom. If the party has not yet acted on the artifact, this is their final window. Seraphine's act produces a different kind of emotional response from the crowd — not joy or excitement but a deep, drifting unease that the artifact feeds on just as readily.\n\nDC 15 — Perception: The serpent's gaze tracks toward the artifact repeatedly, not toward the crowd.\nDC 17 — Arcana: The artifact's hum shifts in frequency during this act — lower, slower, almost anticipatory.\nDC 16 — Perception: Three workers near the stage simultaneously touch their chests and look confused, as though they felt something move inside them."><td><span class="act-num">5</span></td><td><strong>Seraphine and the Thousand Coils</strong></td><td class="act-desc">Dances with a serpent that never blinks.</td></tr>
+            <tr data-dc="Act 6" data-name="The Levitationist's Secret" data-type="Center Ring" data-detail="A robed figure floats mid-air... but the shadows on the ground suggest something else entirely is holding them up. The act is brief and deeply unsettling.\n\nGM Notes:\nThis act may or may not appear on the night depending on your pacing. It can serve as an additional window for the party or be cut if time is short. The shadow element makes it naturally horror-adjacent."><td><span class="act-num">6</span></td><td><strong>The Levitationist's Secret</strong></td><td class="act-desc">Floats mid-air... but shadows suggest something else at work.</td></tr>
+            <tr data-dc="Unlisted" data-name="The Nightbloom" data-type="Unlisted Finale — The Outbreak" data-detail="An unlisted act — added by Chaelynn to celebrate the convoy's return. A solo fire dancer who performs without music.\n\nThe act begins in total silence. She dances with a single torch that splits into many as the performance builds, until the entire center ring is ablaze in coordinated fire that moves as though alive. The crowd is hypnotized rather than merely entertained.\n\nAt its peak, the flames briefly form shapes — faces, wings, something with too many limbs.\n\nIF THE ARTIFACT HAS NOT BEEN DESTROYED:\nThe artifact reaches maximum brightness. The performer freezes mid-bow. Her body convulses. The creatures erupt from inside her — and simultaneously from two other afflicted workers in the crowd. The flames keep moving without her.\n\nInitially, some audience members think it is part of the act. Then blood hits the stage.\n\nPanic spreads. Panic feeds the artifact further.\n\nIF THE ARTIFACT IS DESTROYED DURING THE NIGHTBLOOM:\nAll creatures die immediately — mid-emergence. The feeding cycle collapses. The flames go out. The performer collapses but survives.\n\nIF THE ARTIFACT WAS DESTROYED BEFORE THE NIGHTBLOOM:\nThe Nightbloom is simply a fire act. The performer is safe. The crowd is awed. The night ends beautifully."><td><span class="dc-pill" style="background:rgba(122,31,31,0.15);color:var(--blood);border:1px solid rgba(122,31,31,0.4);font-weight:900;">UNLISTED</span></td><td><strong>The Nightbloom</strong></td><td class="act-desc" style="color:var(--blood);">Solo fire dancer. Added by Chaelynn. Unlisted on the bill.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="divider"><span>⁂</span></div>
+
+      <div class="block">
+        <p class="section-head">The Creatures — If The Outbreak Occurs</p>
+        <div class="two-col">
+          <div class="discovery dc-top-bg">
+            <div class="discovery-name">What Emerges</div>
+            <ul class="find-list">
+              <li>Malformed, newly born, insectoid</li>
+              <li>Wet, screaming, unstable — not elegant monsters</li>
+              <li>Something unfinished. Something wrong.</li>
+              <li>Three hosts: the Nightbloom performer + two workers in the crowd</li>
+            </ul>
+            <div class="annotation">If the artifact is destroyed at any point, all creatures die instantly.</div>
+          </div>
+          <div class="discovery dc-high-bg">
+            <div class="discovery-name">Encounter Objectives</div>
+            <ul class="find-list">
+              <li>Protect civilians from panicking crowd</li>
+              <li>Prevent further panic (which feeds the artifact if intact)</li>
+              <li>Fight the emerged creatures</li>
+              <li>Destroy or sever the artifact to end the cycle</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Endings ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-end" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Encounter Objectives &amp; Possible Endings</div>
+        <div class="accordion-subtitle">Three resolution paths · Aftermath</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">Resolution Paths</p>
+            <div class="discovery dc-low-bg">
+              <div class="discovery-name">Destroy the Artifact</div>
+              <p>Fastest. All creatures die immediately. Violent magical backlash — may damage part of the carnival. Definitive but costly. Chaelynn will grieve the artifact but understand.</p>
+            </div>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Remove the Insert</div>
+              <p>If the party disassembled the artifact earlier, they can destroy the inserted object specifically. This ends the cycle and preserves the original artifact — which is genuinely valuable and was never evil. The cleanest ending.</p>
+            </div>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Sever the Resonance</div>
+              <p>Disrupt the music, lanterns, or emotional amplification. Breaks the feeding cycle for the night but does not destroy the source. A temporary fix that buys time for a permanent solution.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">Aftermath</p>
+            <div class="discovery teal-bg">
+              <div class="discovery-name">Chaelynn</div>
+              <p>Whatever happens to the artifact, Chaelynn's reaction should reflect what the party has shown her. If they were honest with her, she is shaken but grateful. If they destroyed the artifact without explanation, she is devastated and furious before she understands.</p>
+              <p>She will want to know who modified the artifact — and why. This thread points outward toward the larger regional conspiracy.</p>
+            </div>
+            <div class="discovery teal-bg">
+              <div class="discovery-name">The Larger Thread</div>
+              <p>The same faction engineering regional instability between Elkenquay and Fastingbreak may have seeded the carnival with the artifact modification. The convoy disruption and the artifact modification may share a single origin. This is a thread for further investigation beyond Hollowgate.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: Arc Links ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-link" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">Links to the Hollowgate Investigation</div>
+        <div class="accordion-subtitle">Eric · Kobolds · Convoys · Vanya · Jeffrey's reward</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">Shared Threads</p>
+            <div class="discovery teal-bg">
+              <div class="discovery-name">The Tunnel Connection</div>
+              <p>The kobold tunnels that diverted the carnival's convoys are the same tunnels Eric traced. His X marks align with tunnel entrances near the city. His final note confirms kobolds and "someone paying them." The carnival's missing convoys are part of the same diversion operation.</p>
+            </div>
+            <div class="discovery teal-bg">
+              <div class="discovery-name">The 400gp Reward</div>
+              <p>Jeffrey offered 400gp for the return of the latest missing convoy. Recovering the carnival's supplies and recovering the convoy for Jeffrey may be the same objective — or closely linked ones that reward the party twice for the same investigation.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">Complications</p>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">Vanya's Mission — Still Active</div>
+              <p>Vanya's faction briefing refers to "the current gate scribe" as the target — not Eric. If the party is investigating the carnival arc, Vanya's mission is still running in parallel. Her target is still alive. The carnival arc may bring both threads to a head simultaneously.</p>
+            </div>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">Who Modified the Artifact?</div>
+              <p>The artifact was modified recently — within the last few months. The same window as the convoy disruptions. Whether the artifact modification and the convoy diversion were carried out by the same actor is an open question — and answering it points toward the larger conspiracy driving the Elkenquay/Fastingbreak tensions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ACCORDION: The Encounter ══ -->
+  <div class="accordion">
+    <div class="accordion-header color-horror" onclick="toggle(this)">
+      <div>
+        <div class="accordion-title">The Pallor Brood — Encounter Overview</div>
+        <div class="accordion-subtitle">Phase structure · Creature roles · Full encounter reference</div>
+      </div>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-body">
+      <div class="two-col">
+        <div>
+          <div class="block">
+            <p class="section-head">Phase One — The False Horror</p>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">The Velvet Husk</div>
+              <p>A performer whose transformation completed incorrectly. Fast-moving skirmisher. Flickers in dim light, teleports through shadows, pressures isolated targets. The party's first instinct is to focus on this — it is the most visible threat.</p>
+            </div>
+            <div class="discovery dc-mid-bg">
+              <div class="discovery-name">The Gorged Lanternling</div>
+              <p>A bloated larval feeder swollen with emotional energy. Slow at first, then frantic below half HP. Area denial, crowd disruption, and a Death Burst that triggers the phase transition when it dies.</p>
+            </div>
+            <div class="annotation">When either creature dies — the artifact pulses. The Broodmother tears into the world.</div>
+          </div>
+        </div>
+        <div>
+          <div class="block">
+            <p class="section-head">Phase Two — The True Horror</p>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">The Lantern Broodmother</div>
+              <p>The true source of the pallor. Battlefield controller and emotional parasite. Feeds on frightened creatures, spawns mites, drags targets into bite range. Slow but sustained. The crowd's panic literally heals it.</p>
+            </div>
+            <div class="discovery dc-high-bg">
+              <div class="discovery-name">Pallid Mites</div>
+              <p>Three appear at transition. More can be spawned. Individually trivial — in groups they stack disadvantage on Wisdom saves, compounding every other threat on the battlefield.</p>
+            </div>
+          </div>
+          <div class="block">
+            <p class="section-head">The Nuclear Option</p>
+            <div class="discovery dc-top-bg">
+              <div class="discovery-name">Destroy the Artifact</div>
+              <p>At any point during the encounter — all creatures die instantly. The party may race for it mid-combat if they piece it together. AC 12, HP 15. Magical backlash: DC 12 Dex save, 2d6 force in 10 ft radius.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:0.8rem; padding-top:0.8rem; border-top:1px solid var(--parchment-shadow);">
+        <a href="moonlit_mirage_encounter.html" style="font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--blood); text-decoration:none; padding:0.5rem 1.2rem; border:1px solid rgba(122,31,31,0.4); background:rgba(122,31,31,0.05);">Full Encounter Reference →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusion">
+    <h3>GM Summary — The Emotional Core</h3>
+    <ul>
+      <li>The carnival arc works because the players' success causes the horror. This must be earned, not telegraphed.</li>
+      <li>Magnus is the party's early warning — he notices something wrong but cannot stop the show alone. Give him a quiet, urgent moment during Act 1.</li>
+      <li>The artifact is innocent. What was done to it is not. This distinction matters for Chaelynn and for the larger conspiracy.</li>
+      <li>The kobold tunnels tie Phase One directly to the Hollowgate investigation. Same conspiracy, two different faces.</li>
+      <li>Phase Two should feel like a betrayal of the joy the players helped create. That is the point.</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-card" id="modalCard">
+    <span class="modal-close" id="modalClose">✕</span>
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-meta" id="modalMeta"></div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+  function toggle(header) {
+    header.classList.toggle('open');
+    header.nextElementSibling.classList.toggle('open');
+  }
+  document.querySelector('.accordion-header').click();
+
+  const overlay = document.getElementById('modalOverlay');
+  const card    = document.getElementById('modalCard');
+
+  function openModal(title, meta, detail) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalMeta').textContent = meta;
+    // Convert \n to paragraphs, handle DC lines as styled notes
+    const paras = detail.split('\n').filter(l => l.trim() !== '');
+    let html = '';
+    paras.forEach(line => {
+      if (line.startsWith('DC ') || line.startsWith('IF ')) {
+        html += '<p class="note">' + line + '</p>';
+      } else {
+        html += '<p>' + line + '</p>';
+      }
+    });
+    document.getElementById('modalBody').innerHTML = html;
+    overlay.style.display = 'flex';
+    requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('active')));
+  }
+
+  function closeModal() {
+    overlay.classList.remove('active');
+    setTimeout(() => { overlay.style.display = 'none'; }, 260);
+  }
+
+  overlay.addEventListener('click', closeModal);
+  card.addEventListener('click', e => e.stopPropagation());
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+
+  document.querySelectorAll('.dc-table tbody tr').forEach(row => {
+    row.addEventListener('click', () => {
+      const type = row.dataset.type || '';
+      openModal(
+        row.dataset.name,
+        row.dataset.dc + (type ? '  ·  ' + type : ''),
+        row.dataset.detail
+      );
+    });
+  });
+</script>
+</body>
+</html>

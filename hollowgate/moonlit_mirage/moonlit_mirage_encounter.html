@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encounter — The Pallor Brood</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9;
+    --parchment-dark: #dbc99a;
+    --parchment-shadow: #b89d5e;
+    --ink: #1a1108;
+    --dim: #2e200e;
+    --faded: #5a4a2e;
+    --blood: #7a1f1f;
+    --blood-dark: #4a0f0f;
+    --purple: #5b2d8e;
+    --gold: #8a6a10;
+    --dc-low: #2a5c1e;
+    --dc-mid: #7a5000;
+    --dc-high: #7a1f1f;
+    --phase1: #2a5c1e;
+    --phase2: #7a1f1f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d0a06; font-family: 'IM Fell English', serif; color: var(--ink); min-height: 100vh; }
+
+  /* ── HERO ── */
+  .hero {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+    filter: sepia(10%) contrast(1.05);
+  }
+  .hero-caption {
+    background: #0d0a06;
+    padding: 1rem 2rem 1.5rem;
+    text-align: center;
+  }
+  .hero-caption h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(1.6rem, 5vw, 2.8rem);
+    color: var(--parchment);
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+  }
+  .hero-caption .sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(220,190,120,0.6);
+    margin-top: 0.4rem;
+  }
+  .back-link {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(220,190,120,0.5);
+    text-decoration: none;
+    margin-top: 0.6rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: rgba(220,190,120,0.9); }
+
+  /* ── PAGE ── */
+  .page { max-width: 1050px; margin: 0 auto; background-color: #f2e8c9; border: 2px solid var(--parchment-shadow); box-shadow: 0 0 0 6px #0d0a06, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8); padding: 2.5rem 2.5rem 3rem; }
+
+  /* ── SHARED ── */
+  .section-head { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.4rem; border-bottom: 1px solid rgba(91,45,142,0.2); padding-bottom: 0.2rem; }
+  h2 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--ink); line-height: 1.3; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  p { font-size: 0.88rem; line-height: 1.65; color: var(--dim); margin-bottom: 0.4rem; }
+  .block { margin-bottom: 1.2rem; }
+  ul.find-list { margin: 0.25rem 0 0.25rem 1rem; font-size: 0.84rem; color: var(--dim); line-height: 1.6; }
+  ul.find-list li { margin-bottom: 0.1rem; }
+  .annotation { font-style: italic; font-size: 0.82rem; color: var(--blood); padding: 0.25rem 0.6rem; border-left: 2px solid var(--blood); margin: 0.35rem 0; background: rgba(122,31,31,0.04); }
+  .divider { display: flex; align-items: center; gap: 0.6rem; margin: 1.2rem 0; color: var(--parchment-shadow); }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
+  .divider span { font-size: 0.9rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+  .discovery { padding: 0.65rem 0.9rem; margin-bottom: 0.6rem; border-left: 3px solid var(--parchment-shadow); background: rgba(180,140,60,0.1); }
+  .dc-low-bg  { border-left-color: var(--dc-low)  !important; background: rgba(42,92,30,0.07)   !important; }
+  .dc-mid-bg  { border-left-color: var(--dc-mid)  !important; background: rgba(122,80,0,0.07)   !important; }
+  .dc-high-bg { border-left-color: var(--dc-high) !important; background: rgba(122,31,31,0.07)  !important; }
+  .dc-top-bg  { border-left-color: var(--blood)   !important; background: rgba(122,31,31,0.09)  !important; }
+  .discovery-name { font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 600; color: var(--ink); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem; }
+  .discovery p { margin-bottom: 0.25rem; }
+
+  /* ── PHASE HEADER ── */
+  .phase-header {
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .phase-header.p1 { border-left: 4px solid var(--phase1); background: rgba(42,92,30,0.07); border-top: 1px solid rgba(42,92,30,0.2); border-bottom: 1px solid rgba(42,92,30,0.2); border-right: 1px solid rgba(42,92,30,0.2); }
+  .phase-header.p2 { border-left: 4px solid var(--phase2); background: rgba(122,31,31,0.07); border-top: 1px solid rgba(122,31,31,0.2); border-bottom: 1px solid rgba(122,31,31,0.2); border-right: 1px solid rgba(122,31,31,0.2); }
+  .phase-tag { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; white-space: nowrap; }
+  .phase-header.p1 .phase-tag { color: var(--phase1); }
+  .phase-header.p2 .phase-tag { color: var(--phase2); }
+  .phase-header h2 { margin: 0; font-size: 1rem; }
+  .phase-sub { font-style: italic; font-size: 0.82rem; color: var(--faded); }
+
+  /* ── TRANSITION BOX ── */
+  .transition-box {
+    margin: 1.5rem 0;
+    padding: 1rem 1.2rem;
+    background: rgba(122,31,31,0.06);
+    border: 1px solid rgba(122,31,31,0.3);
+    border-top: 3px solid var(--blood);
+    text-align: center;
+  }
+  .transition-box .t-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blood); display: block; margin-bottom: 0.4rem; }
+  .transition-box h2 { margin-bottom: 0.4rem; font-size: 1.05rem; }
+  .transition-box p { font-style: italic; font-size: 0.87rem; max-width: 600px; margin: 0 auto 0.3rem; }
+
+  /* ── STAT BLOCK ── */
+  .creature-section { margin-bottom: 2.5rem; }
+  .creature-block {
+    border: 1px solid var(--parchment-shadow);
+    border-top: 3px solid var(--blood-dark);
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  /* image float */
+  .creature-img {
+    float: right;
+    width: 260px;
+    margin: 0 0 1rem 1.5rem;
+    border: 1px solid var(--parchment-shadow);
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    filter: sepia(12%);
+    display: block;
+  }
+  .creature-img.left {
+    float: left;
+    margin: 0 1.5rem 1rem 0;
+  }
+  .creature-img.small { width: 180px; }
+
+  .cb-inner { padding: 1.2rem 1.4rem; overflow: hidden; }
+  .cb-inner::after { content: ''; display: table; clear: both; }
+
+  /* name + type bar */
+  .cb-name {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: var(--blood-dark);
+    line-height: 1.1;
+    margin-bottom: 0.15rem;
+  }
+  .cb-type {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--faded);
+    font-style: italic;
+    margin-bottom: 0.6rem;
+  }
+  .cb-flavor {
+    font-style: italic;
+    font-size: 0.87rem;
+    color: var(--faded);
+    margin-bottom: 0.8rem;
+    border-left: 2px solid var(--parchment-shadow);
+    padding-left: 0.7rem;
+    line-height: 1.6;
+  }
+
+  /* stat bar */
+  .stat-bar {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--parchment-shadow);
+    margin-bottom: 0.8rem;
+    background: rgba(26,17,8,0.04);
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    flex: 1;
+    min-width: 60px;
+    text-align: center;
+    padding: 0.4rem 0.3rem;
+    border-right: 1px solid rgba(180,140,60,0.3);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--faded); display: block; margin-bottom: 0.1rem; }
+  .stat-val { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; color: var(--ink); display: block; }
+
+  /* attributes */
+  .attr-bar {
+    display: flex;
+    gap: 0.3rem;
+    margin-bottom: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .attr-item { text-align: center; flex: 1; min-width: 45px; }
+  .attr-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faded); display: block; }
+  .attr-val { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; color: var(--ink); display: block; }
+
+  /* divider rule */
+  .cb-rule { border: none; border-top: 1px solid var(--parchment-shadow); margin: 0.6rem 0; }
+
+  /* traits & actions */
+  .cb-section-label { font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blood); border-bottom: 1px solid rgba(122,31,31,0.2); padding-bottom: 0.2rem; margin: 0.6rem 0 0.4rem; }
+  .cb-trait { margin-bottom: 0.5rem; font-size: 0.86rem; line-height: 1.6; color: var(--dim); }
+  .cb-trait-name { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; color: var(--ink); font-style: italic; }
+  .cb-action { margin-bottom: 0.5rem; font-size: 0.86rem; line-height: 1.6; color: var(--dim); }
+  .cb-action-name { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; color: var(--ink); }
+  .cb-recharge { font-size: 0.72rem; color: var(--blood); font-style: italic; }
+
+  /* combat notes */
+  .combat-notes {
+    background: rgba(26,17,8,0.05);
+    border-top: 1px solid var(--parchment-shadow);
+    padding: 0.8rem 1.4rem;
+  }
+  .combat-notes-label { font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.4rem; }
+  .combat-notes ul { margin-left: 1rem; font-size: 0.85rem; color: var(--dim); line-height: 1.65; }
+  .combat-notes ul li { margin-bottom: 0.2rem; }
+
+  /* fire aversion shared trait box */
+  .shared-trait {
+    border: 1px solid rgba(180,140,60,0.4);
+    border-left: 4px solid var(--gold);
+    background: rgba(138,106,16,0.06);
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .shared-trait-label { font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .shared-trait p { font-size: 0.86rem; margin-bottom: 0.3rem; }
+  .shared-trait ul { margin-left: 1rem; font-size: 0.85rem; color: var(--dim); line-height: 1.6; }
+
+  /* secondary stats row: saves, skills, senses */
+  .cb-secondary { font-size: 0.82rem; color: var(--dim); margin-bottom: 0.15rem; }
+  .cb-secondary strong { font-family: 'Cinzel', serif; font-size: 0.72rem; color: var(--ink); font-weight: 700; }
+
+  /* encounter overview */
+  .enc-overview { margin-bottom: 1.8rem; }
+
+  /* conclusion */
+  .conclusion { background: rgba(26,17,8,0.06); border: 1px solid var(--parchment-shadow); border-top: 2px solid var(--ink); padding: 1rem 1.2rem; margin-top: 1.5rem; }
+  .conclusion h3 { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--ink); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem; }
+  .conclusion ul { margin-left: 1.1rem; font-size: 0.87rem; color: var(--dim); line-height: 1.7; }
+
+  @media (max-width: 680px) {
+    .two-col { grid-template-columns: 1fr; }
+    .page { padding: 1.5rem 1.2rem 2rem; }
+    .creature-img, .creature-img.left { float: none; width: 100%; margin: 0 0 1rem 0; }
+    .attr-bar { gap: 0.15rem; }
+  }
+  @media print { body { background: white; } .page { box-shadow: none; border: none; } }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <img class="hero" src="the_pallid_larvae.png" alt="The Pallor Brood — all creatures">
+  <div class="hero-caption">
+    <h1>The Pallor Brood</h1>
+    <p class="sub">Carnival Horror Encounter · Level 1–2 Party</p>
+    <a class="back-link" href="moonlit_mirage_arc.html">← Return to Carnival Arc Reference</a>
+  </div>
+
+<div class="page">
+
+  <!-- ENCOUNTER OVERVIEW -->
+  <div class="enc-overview">
+    <p class="section-head">Encounter Overview</p>
+    <div class="two-col">
+      <div>
+        <div class="discovery dc-low-bg">
+          <div class="discovery-name">Setting &amp; Tone</div>
+          <p>The outbreak occurs at the height of the Moonlit Mirage Carnival's first full nighttime performance. The battlefield is unstable: collapsing stage rigging, burning lanterns, screaming civilians, stampeding crowds, spreading insects, and pulsing magical light.</p>
+          <div class="annotation">"The carnival itself is coming apart."</div>
+        </div>
+        <div class="discovery dc-low-bg">
+          <div class="discovery-name">Encounter Design</div>
+          <ul class="find-list">
+            <li>Designed for a Level 1–2 party</li>
+            <li>Focus on panic, environmental chaos, crowd management</li>
+            <li>Positioning and escalating horror</li>
+            <li>Players should be rewarded for creative use of fire and the carnival environment</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="discovery dc-top-bg">
+          <div class="discovery-name">The Artifact — Key Fact</div>
+          <p>If the artifact is destroyed at any point during the encounter, all brood creatures die immediately. This applies even mid-emergence. The feeding cycle collapses instantly.</p>
+          <p>If the artifact was already destroyed before the Nightbloom, the outbreak does not occur.</p>
+        </div>
+        <div class="discovery dc-mid-bg">
+          <div class="discovery-name">Environmental Interaction</div>
+          <ul class="find-list">
+            <li>Throwing or breaking lanterns</li>
+            <li>Igniting curtains or stage rigging</li>
+            <li>Spilling oil and driving creatures toward flame</li>
+            <li>Collapsing burning rigging onto creatures</li>
+            <li>Using the crowd's movement as cover or distraction</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHARED TRAIT -->
+  <div class="shared-trait">
+    <div class="shared-trait-label">Shared Trait — All Brood Creatures: Fire Aversion</div>
+    <p>All brood creatures instinctively fear flame. Whenever one takes fire damage, it cannot take reactions until the start of its next turn. Additional per-creature effects:</p>
+    <ul>
+      <li><strong>Broodmother</strong> — loses Emotional Feeding until end of its next turn</li>
+      <li><strong>Velvet Husk</strong> — cannot use Shadow Glide until end of its next turn</li>
+      <li><strong>Gorged Lanternling</strong> — loses Unstable Body until end of its next turn</li>
+    </ul>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- PHASE ONE -->
+  <div class="phase-header p1">
+    <div>
+      <div class="phase-tag">Phase One — The False Horror</div>
+      <h2>The Velvet Husk &amp; The Gorged Lanternling</h2>
+      <div class="phase-sub">The creatures the party believes are the threat. They are wrong.</div>
+    </div>
+  </div>
+
+  <p style="font-size:0.87rem; color:var(--dim); font-style:italic; margin-bottom:1.2rem;">At the climax of the Nightbloom, the Velvet Husk erupts from the collapsing performer while the Gorged Lanternling tears free from beneath the floorboards. Some audience members initially mistake them for part of the act. Then blood hits the stage.</p>
+
+  <!-- VELVET HUSK -->
+  <div class="creature-section">
+    <div class="creature-block">
+      <div class="cb-inner">
+        <img class="creature-img" src="velvet_husk.png" alt="The Velvet Husk">
+        <div class="cb-name">The Velvet Husk</div>
+        <div class="cb-type">Medium Aberration</div>
+        <div class="cb-flavor">A performer whose transformation completed incorrectly. Tall and vaguely humanoid, its limbs bend backward unnaturally. Its face is frozen in a stretched carnival smile beneath splitting skin. Torn moth-like wings drag behind it like ruined velvet curtains. Its movements flicker unnervingly in dim light.</div>
+
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-label">AC</span><span class="stat-val">13</span></div>
+          <div class="stat-item"><span class="stat-label">HP</span><span class="stat-val">20</span></div>
+          <div class="stat-item"><span class="stat-label">Speed</span><span class="stat-val">35 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Role</span><span class="stat-val" style="font-size:0.72rem;">Skirmisher</span></div>
+        </div>
+
+        <div class="attr-bar">
+          <div class="attr-item"><span class="attr-label">STR</span><span class="attr-val">10 (+0)</span></div>
+          <div class="attr-item"><span class="attr-label">DEX</span><span class="attr-val">16 (+3)</span></div>
+          <div class="attr-item"><span class="attr-label">CON</span><span class="attr-val">12 (+1)</span></div>
+          <div class="attr-item"><span class="attr-label">INT</span><span class="attr-val">6 (−2)</span></div>
+          <div class="attr-item"><span class="attr-label">WIS</span><span class="attr-val">11 (+0)</span></div>
+          <div class="attr-item"><span class="attr-label">CHA</span><span class="attr-val">8 (−1)</span></div>
+        </div>
+
+        <div class="cb-secondary"><strong>Saving Throws</strong> DEX +5</div>
+        <div class="cb-secondary"><strong>Skills</strong> Stealth +5, Acrobatics +5</div>
+        <div class="cb-secondary"><strong>Senses</strong> Darkvision 60 ft., passive Perception 10</div>
+        <div class="cb-secondary"><strong>Languages</strong> Understands Common but cannot speak</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Abilities &amp; Traits</div>
+
+        <div class="cb-trait"><span class="cb-trait-name">Flickering Motion.</span> Opportunity attacks against the Husk are made with disadvantage.</div>
+        <div class="cb-trait"><span class="cb-trait-name">Shadow Glide.</span> If standing in dim light, the Husk may teleport 10 feet as a bonus action. If the Husk takes fire damage, it cannot use Shadow Glide until the end of its next turn.</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Actions</div>
+
+        <div class="cb-action"><span class="cb-action-name">Claw Swipe.</span> <em>Melee Attack:</em> 1d4+2 slashing damage.</div>
+        <div class="cb-action"><span class="cb-action-name">Maddening Smile <span class="cb-recharge">(Recharge 6).</span></span> One creature within 15 feet must make a <strong>DC 11 Wisdom save</strong>. Failure: disadvantage on next Perception or Insight check, and cannot take opportunity attacks until end of next turn.</div>
+      </div>
+      <div class="combat-notes">
+        <div class="combat-notes-label">Combat Notes</div>
+        <ul>
+          <li>Fast-moving skirmisher and ambusher. Pressures isolated targets and moves unpredictably through the battlefield chaos.</li>
+          <li>Prioritizes characters standing in dim light — uses Shadow Glide to flank and disengage.</li>
+          <li>Use Maddening Smile on spellcasters or characters with high Perception to blunt their awareness advantage.</li>
+          <li>Drives toward whatever is generating the most emotional energy — the crowd, a frightened NPC, or the artifact.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- GORGED LANTERNLING -->
+  <div class="creature-section">
+    <div class="creature-block">
+      <div class="cb-inner">
+        <img class="creature-img left" src="gorged_lanternling.png" alt="The Gorged Lanternling">
+        <div class="cb-name">The Gorged Lanternling</div>
+        <div class="cb-type">Small Aberration</div>
+        <div class="cb-flavor">Round, swollen, and dragging itself across the stage. Its translucent flesh glows softly beneath pale skin. It constantly leaks pale fluid and emits childlike chirping noises. When injured, its body writhes and splits. It is deceptively dangerous — slow at first, then frantic.</div>
+
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-label">AC</span><span class="stat-val">11</span></div>
+          <div class="stat-item"><span class="stat-label">HP</span><span class="stat-val">22</span></div>
+          <div class="stat-item"><span class="stat-label">Speed</span><span class="stat-val">15 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Role</span><span class="stat-val" style="font-size:0.72rem;">Area Denial</span></div>
+        </div>
+
+        <div class="attr-bar">
+          <div class="attr-item"><span class="attr-label">STR</span><span class="attr-val">12 (+1)</span></div>
+          <div class="attr-item"><span class="attr-label">DEX</span><span class="attr-val">6 (−2)</span></div>
+          <div class="attr-item"><span class="attr-label">CON</span><span class="attr-val">16 (+3)</span></div>
+          <div class="attr-item"><span class="attr-label">INT</span><span class="attr-val">2 (−4)</span></div>
+          <div class="attr-item"><span class="attr-label">WIS</span><span class="attr-val">10 (+0)</span></div>
+          <div class="attr-item"><span class="attr-label">CHA</span><span class="attr-val">5 (−3)</span></div>
+        </div>
+
+        <div class="cb-secondary"><strong>Saving Throws</strong> CON +5</div>
+        <div class="cb-secondary"><strong>Skills</strong> None</div>
+        <div class="cb-secondary"><strong>Senses</strong> Darkvision 30 ft., passive Perception 10</div>
+        <div class="cb-secondary"><strong>Languages</strong> None</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Abilities &amp; Traits</div>
+
+        <div class="cb-trait"><span class="cb-trait-name">Unstable Body.</span> When reduced below half HP, its speed doubles and it gains advantage on attack rolls. If the Lanternling takes fire damage, it loses Unstable Body until the end of its next turn.</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Actions</div>
+
+        <div class="cb-action"><span class="cb-action-name">Body Slam.</span> <em>Melee Attack:</em> 1d6+1 bludgeoning damage.</div>
+        <div class="cb-action"><span class="cb-action-name">Lantern Burst <span class="cb-recharge">(1/day).</span></span> Creatures within 10 feet must make a <strong>DC 11 Constitution save</strong>. Failure: blinded until end of next turn.</div>
+        <div class="cb-action"><span class="cb-action-name">Death Burst.</span> When killed, explodes into pale insects. Creatures within 5 feet must make a <strong>DC 10 Dexterity save</strong>. Failure: 1d4 piercing damage. <em>Note: if the Lanternling is the first Phase One creature killed, this triggers the Phase Transition.</em></div>
+      </div>
+      <div class="combat-notes">
+        <div class="combat-notes-label">Combat Notes</div>
+        <ul>
+          <li>Area denial and battlefield disruption. Creates movement pressure and environmental danger.</li>
+          <li>Let the party underestimate it while it's slow — Unstable Body below half HP dramatically changes its threat level.</li>
+          <li>Use Lantern Burst to blind a cluster of party members before it charges.</li>
+          <li>Position near civilians to force the party to split attention between combat and protection.</li>
+          <li>Death Burst deals modest damage but the panic it causes among the crowd is an additional effect at the GM's discretion.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSITION -->
+  <div class="transition-box">
+    <span class="t-label">Phase Transition</span>
+    <h2>The Birth of the Broodmother</h2>
+    <p>The moment either the Velvet Husk <em>or</em> the Gorged Lanternling is killed — the artifact emits a deafening pulse. Every lantern in the carnival flares white. The slain creature's corpse convulses violently before splitting open.</p>
+    <p style="margin-top:0.4rem;"><strong>The Lantern Broodmother tears its way into the world. Three Pallid Mites scatter outward from the rupture and immediately begin skittering through the battlefield.</strong></p>
+    <div class="annotation" style="max-width:500px; margin: 0.6rem auto 0;">Wet. Violent. Horrifying. The true source of the pallor has finally emerged.</div>
+  </div>
+
+  <div class="divider"><span>⁂</span></div>
+
+  <!-- PHASE TWO -->
+  <div class="phase-header p2">
+    <div>
+      <div class="phase-tag">Phase Two — The True Horror</div>
+      <h2>The Lantern Broodmother &amp; Pallid Mites</h2>
+      <div class="phase-sub">The creature the party has been unknowingly feeding all night. It brings its children with it.</div>
+    </div>
+  </div>
+
+  <!-- BROODMOTHER -->
+  <div class="creature-section">
+    <div class="creature-block">
+      <div class="cb-inner">
+        <img class="creature-img" src="lantern_broodmother.png" alt="The Lantern Broodmother">
+        <div class="cb-name">The Lantern Broodmother</div>
+        <div class="cb-type">Medium Aberration — Main Boss</div>
+        <div class="cb-flavor">A swollen larval horror born from the artifact's feeding cycle. Distended translucent abdomen, twitching vestigial arms, cloudy eyes, and a crown-like cluster of glowing antennae. Its body pulses with dim lantern-colored light. Shapes move beneath its translucent flesh. It drags itself forward with wet scraping motions.</div>
+
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-label">AC</span><span class="stat-val">12</span></div>
+          <div class="stat-item"><span class="stat-label">HP</span><span class="stat-val">32</span></div>
+          <div class="stat-item"><span class="stat-label">Speed</span><span class="stat-val">20 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Climb</span><span class="stat-val">20 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Role</span><span class="stat-val" style="font-size:0.72rem;">Controller</span></div>
+        </div>
+
+        <div class="attr-bar">
+          <div class="attr-item"><span class="attr-label">STR</span><span class="attr-val">14</span></div>
+          <div class="attr-item"><span class="attr-label">DEX</span><span class="attr-val">8</span></div>
+          <div class="attr-item"><span class="attr-label">CON</span><span class="attr-val">15</span></div>
+          <div class="attr-item"><span class="attr-label">INT</span><span class="attr-val">4</span></div>
+          <div class="attr-item"><span class="attr-label">WIS</span><span class="attr-val">12</span></div>
+          <div class="attr-item"><span class="attr-label">CHA</span><span class="attr-val">10</span></div>
+        </div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Abilities &amp; Traits</div>
+
+        <div class="cb-trait"><span class="cb-trait-name">Emotional Feeding.</span> Whenever a frightened creature begins its turn within 20 feet of the Broodmother, the Broodmother gains 2 temporary HP. If the Broodmother takes fire damage, it loses Emotional Feeding until the end of its next turn.</div>
+        <div class="cb-trait"><span class="cb-trait-name">Bloated Form.</span> The Broodmother has advantage on saves against being shoved or knocked prone.</div>
+        <div class="cb-trait"><span class="cb-trait-name">Lantern Pulse <span class="cb-recharge">(Recharge 5–6).</span></span> Creatures within 15 feet make a <strong>DC 11 Wisdom save</strong>. Failure: disadvantage on next attack roll and speed reduced by 10 feet until end of next turn. Creatures already frightened instead cannot take reactions until end of next turn.</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Actions</div>
+
+        <div class="cb-action"><span class="cb-action-name">Multiattack.</span> The Broodmother makes one Bite <em>or</em> two Tendril Lash attacks.</div>
+        <div class="cb-action"><span class="cb-action-name">Bite.</span> <em>Melee Attack:</em> 1d6+1 piercing damage. If target is frightened, target must succeed on a <strong>DC 11 Wisdom save</strong> or move 5 feet away from the Broodmother using their reaction.</div>
+        <div class="cb-action"><span class="cb-action-name">Tendril Lash.</span> <em>Melee Attack, 10 ft range:</em> 1d4+1 bludgeoning damage. Target must succeed on a <strong>DC 10 Strength save</strong> or be pulled 5 feet closer.</div>
+        <div class="cb-action"><span class="cb-action-name">Spawn Pallid Mites <span class="cb-recharge">(1/day).</span></span> The Broodmother spawns 2 Pallid Mites in adjacent spaces.</div>
+      </div>
+      <div class="combat-notes">
+        <div class="combat-notes-label">Combat Notes</div>
+        <ul>
+          <li>Battlefield controller and emotional parasite. Creates pressure through fear, positioning, and spawning lesser threats.</li>
+          <li>Emotional Feeding means keeping the crowd panicked actively heals the Broodmother — the party faces a choice between managing civilians and focusing fire.</li>
+          <li>Use Tendril Lash to drag isolated characters into Bite range. Prioritize anyone already frightened.</li>
+          <li>Save Spawn Pallid Mites for when the party is already overwhelmed — the extra bodies and Wisdom save debuff from the mites compound quickly.</li>
+          <li>Lantern Pulse is most devastating when the Broodmother has already caused fear — frightened targets losing reactions cannot disengage safely.</li>
+          <li>The Broodmother is slow. Ranged parties can kite it — compensate by using Tendril Lash to close the gap and forcing the party to choose between the mites and the boss.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PALLID MITES -->
+  <div class="creature-section">
+    <div class="creature-block">
+      <div class="cb-inner">
+        <img class="creature-img left small" src="pallid_mites.png" alt="Pallid Mites">
+        <div class="cb-name">Pallid Mites</div>
+        <div class="cb-type">Tiny Aberration — Supporting Minions</div>
+        <div class="cb-flavor">Tiny pale insect horrors spawned from the brood. Glistening, segmented, and fast. They appear at Phase Transition — three scatter from the Broodmother's birth rupture — and more can be spawned by the Broodmother's ability. Used primarily as environmental pressure and battlefield distraction.</div>
+
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-label">AC</span><span class="stat-val">12</span></div>
+          <div class="stat-item"><span class="stat-label">HP</span><span class="stat-val">4</span></div>
+          <div class="stat-item"><span class="stat-label">Speed</span><span class="stat-val">20 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Climb</span><span class="stat-val">20 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Role</span><span class="stat-val" style="font-size:0.72rem;">Swarm Pressure</span></div>
+        </div>
+
+        <div class="attr-bar">
+          <div class="attr-item"><span class="attr-label">STR</span><span class="attr-val">4 (−3)</span></div>
+          <div class="attr-item"><span class="attr-label">DEX</span><span class="attr-val">14 (+2)</span></div>
+          <div class="attr-item"><span class="attr-label">CON</span><span class="attr-val">10 (+0)</span></div>
+          <div class="attr-item"><span class="attr-label">INT</span><span class="attr-val">1 (−5)</span></div>
+          <div class="attr-item"><span class="attr-label">WIS</span><span class="attr-val">8 (−1)</span></div>
+          <div class="attr-item"><span class="attr-label">CHA</span><span class="attr-val">1 (−5)</span></div>
+        </div>
+
+        <div class="cb-secondary"><strong>Skills</strong> Stealth +4</div>
+        <div class="cb-secondary"><strong>Senses</strong> Darkvision 30 ft., passive Perception 9</div>
+        <div class="cb-secondary"><strong>Languages</strong> None</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Actions</div>
+
+        <div class="cb-action"><span class="cb-action-name">Bite.</span> <em>Melee Attack:</em> 1 piercing damage. If two or more mites hit the same target in one round, that target has disadvantage on their next Wisdom save.</div>
+      </div>
+      <div class="combat-notes">
+        <div class="combat-notes-label">Combat Notes</div>
+        <ul>
+          <li>Individually trivial. In groups, they compound the Broodmother's Wisdom-save pressure dramatically.</li>
+          <li>Three appear at Phase Transition; more can be spawned by the Broodmother. Track total mite count carefully.</li>
+          <li>Direct mites toward the most fear-resistant party member — stacking disadvantage on Wisdom saves opens them to Lantern Pulse and Broodmother Bite effects.</li>
+          <li>Mites are killed instantly by area fire damage. Remind players that burning debris, lantern oil, and torch sweeps can clear them efficiently.</li>
+          <li>Mites near civilians cause crowd panic. Use them to herd the crowd and force the party to split attention.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ENVIRONMENTAL TABLE -->
+  <div class="block">
+    <p class="section-head">Environmental Interaction — Carnival Battlefield</p>
+    <div class="two-col">
+      <div>
+        <div class="discovery dc-low-bg">
+          <div class="discovery-name">Fire Sources</div>
+          <ul class="find-list">
+            <li>Stage torches and performer's flame props</li>
+            <li>Hanging lanterns (throw to splash burning oil)</li>
+            <li>Nightbloom performer's coordinated fire (if still active)</li>
+            <li>Backstage oil barrels and candle banks</li>
+          </ul>
+        </div>
+        <div class="discovery dc-mid-bg">
+          <div class="discovery-name">Structural Hazards</div>
+          <ul class="find-list">
+            <li>Collapsing stage rigging (Athletics to cut or topple)</li>
+            <li>Canvas tent walls (can be ignited or torn for escape)</li>
+            <li>Unstable platform edges (Dexterity saves if shoved)</li>
+            <li>Crowd stampede zones (difficult terrain, risk of being knocked prone)</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="discovery dc-high-bg">
+          <div class="discovery-name">The Artifact</div>
+          <p>The artifact can be targeted directly at any point. Destroying it ends the encounter immediately — all creatures die. If the party realizes this during Phase One, they face a race against time while managing the active combat.</p>
+          <div class="annotation">AC 12, HP 15. Magical backlash on destruction: DC 12 Dexterity save, 2d6 force damage in 10 ft radius.</div>
+        </div>
+        <div class="discovery dc-low-bg">
+          <div class="discovery-name">Civilian Objectives</div>
+          <ul class="find-list">
+            <li>Audience members flee toward exits — stampede risk</li>
+            <li>3–4 unconscious workers near the stage need rescue</li>
+            <li>Chaelynn is near the wings — she will try to reach the artifact</li>
+            <li>Magnus is with the party's last known position — useful for coordination</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusion">
+    <h3>GM Summary — Running the Encounter</h3>
+    <ul>
+      <li>Phase One feels like a monster fight. Phase Two reveals it was never just a monster fight.</li>
+      <li>Emotional Feeding means the crowd's panic directly sustains the Broodmother — civilian protection has mechanical weight.</li>
+      <li>Fire is the great equalizer. Reward players who use the carnival environment creatively.</li>
+      <li>The artifact is always the nuclear option. If the party realizes it mid-fight, let them race for it.</li>
+      <li>The Pallid Mites are not a threat alone — they are a Wisdom-save delivery system for the Broodmother. Run them aggressively.</li>
+      <li>The encounter should end either with the artifact destroyed, the Broodmother dead, or both — not both sides exhausted and standing.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
