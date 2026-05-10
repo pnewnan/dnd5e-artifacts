@@ -436,6 +436,10 @@
     color: var(--faded);
     font-size: 0.78rem;
   }
+  .roll-table tbody tr:hover td {
+    background: rgba(180,140,60,0.1);
+    color: var(--dim);
+  }
 
   /* === POSTER OVERLAY === */
   .poster-overlay {
@@ -501,28 +505,89 @@
     filter: sepia(10%) contrast(1.05);
   }
 
-  /* === EXPANDED IMAGE STATE === */
-  .trinket-card.expanded,
-  .featured-card.expanded {
-    cursor: zoom-out;
-  }
-  .trinket-card.expanded img,
-  .featured-card.expanded img {
-    height: auto;
-    max-height: none;
-    margin-bottom: 0;
-    border-bottom: none;
-  }
-  .trinket-card.expanded .trinket-num,
-  .trinket-card.expanded .trinket-name,
-  .trinket-card.expanded .trinket-desc,
-  .featured-card.expanded .item-header,
-  .featured-card.expanded .item-desc {
+  /* === ITEM MODAL === */
+  .item-modal-overlay {
     display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 101;
+    background: rgba(5,3,1,0.88);
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
   }
-  .trinket-card img,
-  .featured-card img {
-    cursor: zoom-in;
+  .item-modal-overlay.active { display: flex; }
+
+  .item-modal {
+    background-color: var(--parchment);
+    background-image:
+      linear-gradient(to bottom, var(--parchment-dark) 0%, var(--parchment) 8%, var(--parchment) 92%, var(--parchment-dark) 100%),
+      linear-gradient(to right, var(--parchment-dark) 0%, var(--parchment) 5%, var(--parchment) 95%, var(--parchment-dark) 100%);
+    border: 2px solid var(--parchment-shadow);
+    box-shadow: 0 0 0 6px #0d0a06, 0 0 0 8px var(--parchment-shadow), 0 10px 50px rgba(0,0,0,0.8);
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    gap: 0;
+    cursor: default;
+    transform: scale(0.92) translateY(12px);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.25s ease;
+    max-height: 90vh;
+    overflow: hidden;
+  }
+  .item-modal-overlay.active .item-modal {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  .item-modal-img {
+    width: 240px;
+    flex-shrink: 0;
+    object-fit: cover;
+    display: block;
+    filter: sepia(15%);
+    border-right: 2px solid var(--parchment-shadow);
+  }
+  .item-modal-body {
+    padding: 1.6rem 1.8rem;
+    overflow-y: auto;
+    flex: 1;
+  }
+  .item-modal-body .item-header {
+    margin-bottom: 0.6rem;
+  }
+  .item-modal-body .item-name {
+    font-size: 1.2rem;
+  }
+  .item-modal-body .item-desc {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--dim);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+  .item-modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.7rem;
+    font-size: 1.1rem;
+    color: var(--faded);
+    cursor: pointer;
+    font-family: 'IM Fell English', serif;
+    opacity: 0.6;
+    line-height: 1;
+  }
+  .item-modal-close:hover { opacity: 1; }
+  .item-modal { position: relative; }
+
+  /* make all item cards clickable */
+  .trinket-card, .featured-card, .midtier-item, .bigtick-item { cursor: pointer; }
+  .trinket-card img, .featured-card img { cursor: pointer; }
+
+  @media (max-width: 600px) {
+    .item-modal { flex-direction: column; }
+    .item-modal-img { width: 100%; height: 200px; border-right: none; border-bottom: 2px solid var(--parchment-shadow); }
   }
 
   /* === TRINKET CARD WITH IMAGE === */
@@ -629,7 +694,7 @@
   <!-- SECTION: TRINKETS -->
   <p class="section-label">Prize Counter</p>
   <h2 class="section-title">Common Curios &amp; Novelties</h2>
-  <p class="section-note">Hanging from hooks, stacked in bins, dangled by barkers — <em>just one more throw.</em><br>2–5 Copper each.</p>
+  <p class="section-note">Hanging from hooks, stacked in bins, dangled by barkers — <em>just one more throw.</em><br>1 ticket · roll the dice to win.</p>
 
   <button class="roll-table-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.textContent = this.nextElementSibling.classList.contains('open') ? '▲ Hide d20 Roll Table' : '▼ Show as d20 Roll Table'">▼ Show as d20 Roll Table</button>
 
@@ -922,31 +987,151 @@
   </div>
 </div>
 
+<!-- ITEM MODAL -->
+<div class="item-modal-overlay" id="itemModalOverlay">
+  <div class="item-modal" id="itemModal">
+    <span class="item-modal-close" id="itemModalClose">✕</span>
+    <img class="item-modal-img" id="itemModalImg" src="" alt="">
+    <div class="item-modal-body" id="itemModalBody"></div>
+  </div>
+</div>
+
 <script>
-  // Poster overlay
-  const overlay = document.getElementById('posterOverlay');
-
+  // ── Poster overlay ──
+  const posterOverlay = document.getElementById('posterOverlay');
   function openPoster() {
-    overlay.style.display = 'flex';
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => overlay.classList.add('active'));
-    });
+    posterOverlay.style.display = 'flex';
+    requestAnimationFrame(() => requestAnimationFrame(() => posterOverlay.classList.add('active')));
   }
-
   function closePoster() {
-    overlay.classList.remove('active');
-    setTimeout(() => { overlay.style.display = 'none'; }, 560);
+    posterOverlay.classList.remove('active');
+    setTimeout(() => { posterOverlay.style.display = 'none'; }, 560);
   }
-
   document.querySelector('.shop-title').addEventListener('click', openPoster);
   document.querySelector('.hero-img').addEventListener('click', openPoster);
-  overlay.addEventListener('click', closePoster);
+  posterOverlay.addEventListener('click', closePoster);
 
-  // Trinket/featured card image expand
-  document.querySelectorAll('.trinket-card img, .featured-card img').forEach(img => {
-    img.addEventListener('click', e => {
-      e.stopPropagation();
-      img.closest('.trinket-card, .featured-card').classList.toggle('expanded');
+  // ── Item modal ──
+  const itemOverlay  = document.getElementById('itemModalOverlay');
+  const itemModal    = document.getElementById('itemModal');
+  const itemModalImg = document.getElementById('itemModalImg');
+  const itemModalBody = document.getElementById('itemModalBody');
+
+  function openItemModal(imgSrc, imgAlt, bodyHTML) {
+    itemModalImg.src = imgSrc;
+    itemModalImg.alt = imgAlt;
+    itemModalImg.style.display = imgSrc ? 'block' : 'none';
+    itemModalBody.innerHTML = bodyHTML;
+    itemOverlay.style.display = 'flex';
+    requestAnimationFrame(() => requestAnimationFrame(() => itemOverlay.classList.add('active')));
+  }
+  function closeItemModal() {
+    itemOverlay.classList.remove('active');
+    setTimeout(() => { itemOverlay.style.display = 'none'; }, 320);
+  }
+  itemOverlay.addEventListener('click', closeItemModal);
+  itemModal.addEventListener('click', e => e.stopPropagation());
+  document.getElementById('itemModalClose').addEventListener('click', closeItemModal);
+
+  // ── Wire up trinket cards ──
+  document.querySelectorAll('.trinket-card').forEach(card => {
+    const img  = card.querySelector('img');
+    const name = card.querySelector('.trinket-name')?.innerText || '';
+    const desc = card.querySelector('.trinket-desc')?.innerText || '';
+    const num  = card.querySelector('.trinket-num')?.innerText || '';
+    card.addEventListener('click', () => {
+      openItemModal(
+        img ? img.src : '',
+        name,
+        `<div class="item-header">
+           <span class="item-name">${name}</span>
+           <span class="item-price" style="font-size:0.75rem;color:var(--faded);border:none;background:none;">${num} · 1 ticket</span>
+         </div>
+         <p class="item-desc">${desc}</p>`
+      );
+    });
+  });
+
+  // ── Wire up featured cards ──
+  document.querySelectorAll('.featured-card').forEach(card => {
+    const img   = card.querySelector('img');
+    const name  = card.querySelector('.item-name')?.innerText || '';
+    const price = card.querySelector('.item-price')?.innerText || '';
+    const desc  = card.querySelector('.item-desc')?.innerText || '';
+    card.addEventListener('click', () => {
+      openItemModal(
+        img ? img.src : '',
+        name,
+        `<div class="item-header">
+           <span class="item-name">${name}</span>
+           <span class="item-price">${price}</span>
+         </div>
+         <p class="item-desc">${desc}</p>`
+      );
+    });
+  });
+
+  // ── Wire up mid-tier items ──
+  document.querySelectorAll('.midtier-item').forEach(card => {
+    const img    = card.querySelector('img');
+    const name   = card.querySelector('.item-name')?.innerText || '';
+    const price  = card.querySelector('.item-price')?.innerText || '';
+    const desc   = card.querySelector('.item-desc')?.innerHTML || '';
+    const effect = card.querySelector('.item-effect')?.outerHTML || '';
+    card.addEventListener('click', () => {
+      openItemModal(
+        img ? img.src : '',
+        name,
+        `<div class="item-header">
+           <span class="item-name">${name}</span>
+           <span class="item-price">${price}</span>
+         </div>
+         <p class="item-desc">${desc}</p>
+         ${effect}`
+      );
+    });
+  });
+
+  // ── Wire up d20 roll table rows ──
+  document.querySelectorAll('#trinket-table tbody tr').forEach((row, i) => {
+    row.style.cursor = 'pointer';
+    row.addEventListener('click', () => {
+      const card = document.querySelectorAll('.trinket-card')[i];
+      if (!card) return;
+      const img  = card.querySelector('img');
+      const name = card.querySelector('.trinket-name')?.innerText || '';
+      const desc = card.querySelector('.trinket-desc')?.innerText || '';
+      const num  = card.querySelector('.trinket-num')?.innerText || '';
+      openItemModal(
+        img ? img.src : '',
+        name,
+        `<div class="item-header">
+           <span class="item-name">${name}</span>
+           <span class="item-price" style="font-size:0.75rem;color:var(--faded);border:none;background:none;">${num} · 1 ticket</span>
+         </div>
+         <p class="item-desc">${desc}</p>`
+      );
+    });
+  });
+
+  // ── Wire up big ticket items ──
+  document.querySelectorAll('.bigtick-item').forEach(card => {
+    const img    = card.querySelector('img');
+    const name   = card.querySelector('.item-name')?.innerText || '';
+    const price  = card.querySelector('.item-price')?.innerText || '';
+    const desc   = card.querySelector('.item-desc')?.innerHTML || '';
+    const effect = card.querySelector('.item-effect')?.outerHTML || '';
+    card.addEventListener('click', () => {
+      openItemModal(
+        img ? img.src : '',
+        name,
+        `<div class="item-header">
+           <span class="item-name">${name}</span>
+           <span class="item-price">${price}</span>
+         </div>
+         <p class="item-desc">${desc}</p>
+         ${effect}`
+      );
     });
   });
 </script>
