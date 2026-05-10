@@ -295,7 +295,6 @@
     border-top: 2px solid var(--gold);
     position: relative;
     transition: all 0.25s;
-    overflow: hidden;
   }
   .bigtick-item:hover {
     background: linear-gradient(135deg, rgba(100,60,20,0.16) 0%, rgba(180,140,60,0.1) 100%);
@@ -436,27 +435,6 @@
     color: var(--faded);
     font-size: 0.78rem;
   }
-
-  /* === ITEM IMAGE === */
-  .item-img {
-    width: 120px;
-    flex-shrink: 0;
-    border: 1px solid var(--parchment-shadow);
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
-    object-fit: cover;
-    display: block;
-    filter: sepia(15%);
-  }
-  .bigtick-img {
-    float: right;
-    margin: 0 0 0.8rem 1.2rem;
-    width: 150px;
-    border: 1px solid var(--parchment-shadow);
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.25);
-    object-fit: cover;
-    filter: sepia(15%);
-  }
-  .bigtick-item::after { content: none; } /* remove ✦ now images handle visual anchor */
 
   /* === EFFECT BLOCK === */
   .item-effect {
@@ -623,7 +601,6 @@
 
   <div class="midtier-list">
     <div class="midtier-item">
-      <img class="item-img" src="preserved_raven.png" alt="Preserved Six-Winged Raven">
       <div style="flex:1">
         <div class="item-header">
           <span class="item-name">Preserved Six-Winged Raven</span>
@@ -638,7 +615,6 @@
       </div>
     </div>
     <div class="midtier-item">
-      <img class="item-img" src="dwarven_ale_stein.png" alt="Dwarven Ale Stein of Echoing Toasts">
       <div style="flex:1">
         <div class="item-header">
           <span class="item-name">Dwarven Ale Stein of Echoing Toasts</span>
@@ -653,7 +629,6 @@
       </div>
     </div>
     <div class="midtier-item">
-      <img class="item-img" src="spyglass.png" alt="Folding Brass Spyglass">
       <div style="flex:1">
         <div class="item-header">
           <span class="item-name">Folding Brass Spyglass</span>
@@ -668,7 +643,6 @@
       </div>
     </div>
     <div class="midtier-item">
-      <img class="item-img" src="glass_musicbox.png" alt="Sapphire Glass Music Box">
       <div style="flex:1">
         <div class="item-header">
           <span class="item-name">Sapphire Glass Music Box</span>
@@ -683,7 +657,6 @@
       </div>
     </div>
     <div class="midtier-item">
-      <img class="item-img" src="maskofthelaughingcourt.png" alt="Mask of the Laughing Court">
       <div style="flex:1">
         <div class="item-header">
           <span class="item-name">Mask of the Laughing Court</span>
@@ -707,7 +680,6 @@
 
   <div class="bigtick-list">
     <div class="bigtick-item">
-      <img class="bigtick-img" src="starfall_feather_cloak.png" alt="The Starfall Feather Cloak">
       <div class="item-header">
         <span class="item-name">The Starfall Feather Cloak</span>
         <span class="item-price">75 gp</span>
@@ -720,7 +692,6 @@
       </div>
     </div>
     <div class="bigtick-item">
-      <img class="bigtick-img" src="moonglassharp.png" alt="The Moonglass Harp">
       <div class="item-header">
         <span class="item-name">The Moonglass Harp</span>
         <span class="item-price">120 gp</span>
@@ -732,7 +703,6 @@
       </div>
     </div>
     <div class="bigtick-item">
-      <img class="bigtick-img" src="whispering_compass.png" alt="The Whispering Compass">
       <div class="item-header">
         <span class="item-name">The Whispering Compass</span>
         <span class="item-price">90 gp</span>
@@ -745,7 +715,6 @@
       </div>
     </div>
     <div class="bigtick-item">
-      <img class="bigtick-img" src="griffon_riders_bridle.png" alt="The Griffon Rider's Bridle">
       <div class="item-header">
         <span class="item-name">The Griffon Rider's Bridle</span>
         <span class="item-price">140 gp</span>
@@ -758,7 +727,6 @@
       </div>
     </div>
     <div class="bigtick-item">
-      <img class="bigtick-img" src="marionettenoble.png" alt="The Marionette Noble">
       <div class="item-header">
         <span class="item-name">The Marionette Noble</span>
         <span class="item-price">110 gp</span>
@@ -771,7 +739,6 @@
       </div>
     </div>
     <div class="bigtick-item">
-      <img class="bigtick-img" src="gilded_egg.png" alt="The Gilded Egg">
       <div class="item-header">
         <span class="item-name">The Gilded Egg</span>
         <span class="item-price">250 gp</span>
