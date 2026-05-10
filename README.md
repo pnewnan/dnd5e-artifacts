@@ -6,6 +6,10 @@ Handcrafted reference pages for the **Aelenthor** campaign.
 
 ## Hollowgate
 
+| Page | Description |
+|------|-------------|
+| [GM Reference — Hollowgate Investigation](https://pnewnan.github.io/dnd5e-artifacts/hollowgate/hollowgate_gm_reference.html) | Eric Huwithakay investigation · Vanya's mission · Aurelia's briefing · Town map |
+
 ### Moonlit Mirage Carnival
 
 | Page | Description |
