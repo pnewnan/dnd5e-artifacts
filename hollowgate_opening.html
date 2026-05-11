@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aelenthor — The Morning It Began</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1108;
+    --ink-light: #2e200e;
+    --faded: #5a4a2e;
+    --parchment: #f0e4c0;
+    --parchment-mid: #e6d5a8;
+    --parchment-dark: #d4be8a;
+    --parchment-shadow: #b89d5e;
+    --gold: #9a7a18;
+    --gold-bright: #c9a227;
+    --blood: #6a1a1a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: #0e0b07;
+    background-image:
+      radial-gradient(ellipse at 50% 0%, #1a1005 0%, transparent 70%),
+      radial-gradient(ellipse at 20% 100%, #0a0d06 0%, transparent 60%);
+    min-height: 100vh;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 1rem 6rem;
+  }
+
+  /* ── CANDLE STARS ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(255,240,180,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 6%, rgba(255,240,180,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 42% 15%, rgba(255,240,180,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 67% 8%, rgba(255,240,180,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 4%, rgba(255,240,180,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 18%, rgba(255,240,180,0.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5% 45%, rgba(255,240,180,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 55%, rgba(255,240,180,0.25) 0%, transparent 100%);
+    z-index: 0;
+  }
+
+  /* ── OUTER WRAPPER ── */
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 720px;
+  }
+
+  /* ── HEADER ORNAMENT ── */
+  .header-ornament {
+    text-align: center;
+    margin-bottom: 0;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.2s forwards;
+  }
+  .header-ornament .era {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: rgba(200,160,40,0.6);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+  .header-ornament .crescent {
+    font-size: 1.4rem;
+    color: rgba(200,160,40,0.4);
+    display: block;
+    margin-bottom: 0.5rem;
+    animation: glimmer 5s ease-in-out 2s infinite;
+  }
+
+  @keyframes glimmer {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.75; text-shadow: 0 0 20px rgba(200,160,40,0.3); }
+  }
+
+  /* ── PARCHMENT ── */
+  .parchment {
+    background-color: var(--parchment);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.1'/%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E"),
+      linear-gradient(170deg, var(--parchment-dark) 0%, var(--parchment) 20%, var(--parchment) 80%, var(--parchment-dark) 100%);
+    border: 1px solid var(--parchment-shadow);
+    box-shadow:
+      0 0 0 1px rgba(180,140,60,0.3),
+      0 0 0 8px #0e0b07,
+      0 0 0 9px rgba(180,140,60,0.2),
+      0 30px 80px rgba(0,0,0,0.85),
+      inset 0 0 80px rgba(180,140,60,0.07);
+    padding: 4rem 4.5rem 4.5rem;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 1.4s ease 0.6s forwards;
+  }
+
+  /* corner marks */
+  .parchment::before, .parchment::after {
+    content: '✦';
+    position: absolute;
+    font-size: 0.7rem;
+    color: var(--parchment-shadow);
+    opacity: 0.5;
+  }
+  .parchment::before { top: 1.4rem; left: 1.8rem; }
+  .parchment::after  { top: 1.4rem; right: 1.8rem; }
+  .corner-b { position: absolute; font-size: 0.7rem; color: var(--parchment-shadow); opacity: 0.5; }
+  .corner-bl { bottom: 1.4rem; left: 1.8rem; }
+  .corner-br { bottom: 1.4rem; right: 1.8rem; }
+
+  /* ── TITLE BLOCK ── */
+  .title-block {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid var(--parchment-shadow);
+    position: relative;
+  }
+  .title-block::after {
+    content: '⁂';
+    position: absolute;
+    bottom: -0.65rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--parchment);
+    padding: 0 0.6rem;
+    color: var(--parchment-shadow);
+    font-size: 0.8rem;
+  }
+
+  .world-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--faded);
+    display: block;
+    margin-bottom: 0.7rem;
+  }
+  .prose-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .prose-title em {
+    font-style: italic;
+    color: var(--blood);
+  }
+  .date-line {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-top: 0.8rem;
+  }
+
+  /* ── PROSE ── */
+  .prose {
+    font-size: clamp(1rem, 1.8vw, 1.12rem);
+    line-height: 1.9;
+    color: var(--ink-light);
+    font-weight: 300;
+  }
+
+  .prose p {
+    margin-bottom: 1.4em;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .prose p:first-child::first-letter {
+    font-family: 'Cinzel', serif;
+    font-size: 3.8em;
+    font-weight: 600;
+    float: left;
+    line-height: 0.8;
+    margin: 0.05em 0.08em 0 0;
+    color: var(--blood);
+    padding: 0.05em 0.05em 0 0;
+  }
+
+  .prose .em-line {
+    font-style: italic;
+    color: var(--faded);
+    font-size: 0.97em;
+  }
+
+  .prose .place-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9em;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+  }
+
+  .prose .year {
+    font-family: 'Cinzel', serif;
+    font-size: 0.88em;
+    color: var(--faded);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── SECTION BREAK ── */
+  .section-break {
+    text-align: center;
+    margin: 2rem 0;
+    color: var(--parchment-shadow);
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
+  }
+
+  /* ── CLOSING ORNAMENT ── */
+  .closing {
+    text-align: center;
+    margin-top: 2.5rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--parchment-shadow);
+    position: relative;
+  }
+  .closing::before {
+    content: '✦';
+    position: absolute;
+    top: -0.55rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--parchment);
+    padding: 0 0.5rem;
+    color: var(--parchment-shadow);
+    font-size: 0.7rem;
+  }
+  .closing-text {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--faded);
+    opacity: 0.7;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    margin-top: 2.5rem;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.6s forwards;
+  }
+  .page-footer span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(200,160,40,0.3);
+  }
+
+  @media (max-width: 600px) {
+    .parchment { padding: 2.5rem 2rem 3rem; }
+    body { padding: 2rem 0.8rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <div class="header-ornament">
+    <span class="era">The Age of Awakening · Year 313</span>
+    <span class="crescent">☽ ✦ ☾</span>
+  </div>
+
+  <div class="parchment">
+    <span class="corner-b corner-bl">✦</span>
+    <span class="corner-b corner-br">✦</span>
+
+    <div class="title-block">
+      <span class="world-name">Aelenthor</span>
+      <h1 class="prose-title">It Happened<br><em>A Long Time Ago</em></h1>
+      <div class="date-line">The Thirteenth Day of Amberfell</div>
+    </div>
+
+    <div class="prose">
+
+      <p>It happened a long time ago — or so the story says. In an age before names hardened into history, before choices were sorted neatly into victories and failures, there were three adventurers who found themselves standing at a fault line in the world.</p>
+
+      <p class="em-line">Not heroes. Not rulers. Not the ones whose faces would be carved into stone.</p>
+
+      <p>Just people — guards, specialists, travelers, locals — drawn into events larger than they understood, at a moment when the world was quietly changing.</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>At the time, few noticed. Trade still flowed through the Gulf of Everroth. Ports remained open. Courts exchanged pleasantries. The maps had not yet been redrawn.</p>
+
+      <p>But beneath that calm, tension was rising.</p>
+
+      <p>To the west stood <span class="place-name">Elkenquay</span>, a maritime republic ascendant — wealthy, innovative, and secure in its control of trade routes, naval power, and arcane infrastructure. To the east stood <span class="place-name">Fastingbreak</span>, an old kingdom with a proud past and a fragile present — struggling to adapt, struggling to remain sovereign, struggling not to become dependent on the very power it once stood beside as an equal.</p>
+
+      <p>No war had been declared. No banners raised. No lines crossed. Yet decisions were being made — quietly, carefully — and preparations were already underway.</p>
+
+      <p class="em-line">Most people believed the story was simple. That stability would hold. That any conflict was distant, avoidable, someone else's concern.</p>
+
+      <p>They were wrong.</p>
+
+      <p>And the three adventurers at the heart of this tale did not yet know the role they would play — but the morning itself had already begun.</p>
+
+      <div class="section-break">✦</div>
+
+      <p>It was the <span class="year">313th year of the Age of Awakening</span>, the thirteenth day of Amberfell, when the summer sun had already risen warm and patient over the eastern hills. The season had settled comfortably into that part of summer when the fields were green but the air carried the first quiet promise of harvest. Farmers had been awake for hours. Wagons had already creaked along the trade road. And the town of <span class="place-name">Hollowgate</span>, small though it was, stirred with the restless rhythm of a place that lived by the passing of caravans.</p>
+
+      <p><span class="place-name">Hollowgate</span> had never been a large town, nor a particularly grand one. It existed because the road existed. Trade passed through it, and where trade passed, people inevitably gathered — merchants, guards, scribes, gamblers, opportunists, and the occasional traveler who preferred the quiet safety of a small town to the dangers of the open road. Beneath its stone gatehouse, old tunnels wound through the earth, remnants of a much older age whose purposes had long since been forgotten. Some called them relics. Others called them smuggling routes. The town had learned not to ask too many questions about what moved beneath its streets.</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>This morning seemed ordinary enough.</p>
+
+      <p>The baker's oven had already been burning for hours. A pair of stable hands argued halfheartedly about whose turn it was to shovel the stalls. Somewhere near the <span class="place-name">Crooked Lantern</span>, a drunk who had chosen the wrong doorway to sleep in was being loudly encouraged to relocate. The sound of a distant hammer rang out from the wagon yard, steady and reassuring.</p>
+
+      <p>And leaning comfortably against the weathered rail outside the inn stood a traveler who, to anyone passing by, might have seemed entirely unremarkable.</p>
+
+      <p>She was new to <span class="place-name">Hollowgate</span>.</p>
+
+      <p>The woman took another bite from a bright red apple, the crisp sound echoing faintly in the warm morning air. Juice ran slightly down her fingers as she chewed, unhurried, her gaze drifting across the street with the casual curiosity of someone measuring a place for the first time.</p>
+
+      <p>She had arrived the previous evening, when the last light of day was still clinging stubbornly to the horizon. Like most travelers passing through <span class="place-name">Hollowgate</span>, she had taken a room at the <span class="place-name">Crooked Lantern</span>, paid in advance, and asked very few questions. The innkeeper had seen enough strangers to know when curiosity was unwelcome.</p>
+
+      <p class="em-line">Still, the town noticed new faces. Especially ones like hers.</p>
+
+      <p>Whether she had come for work, opportunity, escape, or simply because the road had led her here was a question <span class="place-name">Hollowgate</span> had not yet decided to ask.</p>
+
+      <p>For the moment, she stood quietly beneath the soft Amberfell sunlight, finishing her apple and watching the town wake.</p>
+
+      <div class="section-break">· · ·</div>
+
+      <p>A caravan bell rang faintly somewhere down the road beyond the gate. A dog barked once, then again.</p>
+
+      <p>The day had begun.</p>
+
+      <p>And though no one in <span class="place-name">Hollowgate</span> yet realized it, the events set in motion that morning would eventually be remembered as the first quiet tremor before the world itself began to shift.</p>
+
+    </div>
+
+    <div class="closing">
+      <span class="closing-text">Hollowgate · Amberfell · Year 313</span>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>Aelenthor Campaign · Age of Awakening</span>
+  </div>
+
+</div>
+
+</body>
+</html>

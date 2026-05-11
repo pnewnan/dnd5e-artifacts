@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aelenthor — The Chronicles</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1108;
+    --ink-light: #2e200e;
+    --faded: #5a4a2e;
+    --parchment: #f0e4c0;
+    --parchment-mid: #e6d5a8;
+    --parchment-dark: #d4be8a;
+    --parchment-shadow: #b89d5e;
+    --gold: #9a7a18;
+    --gold-bright: #c9a227;
+    --blood: #6a1a1a;
+    --dim: #3a2a14;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: #0e0b07;
+    background-image:
+      radial-gradient(ellipse at 50% 0%, #1a1005 0%, transparent 70%),
+      radial-gradient(ellipse at 20% 100%, #0a0d06 0%, transparent 60%);
+    min-height: 100vh;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 1rem 6rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(255,240,180,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 6%, rgba(255,240,180,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 42% 15%, rgba(255,240,180,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 67% 8%, rgba(255,240,180,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 4%, rgba(255,240,180,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 18%, rgba(255,240,180,0.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5% 45%, rgba(255,240,180,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 55%, rgba(255,240,180,0.25) 0%, transparent 100%);
+    z-index: 0;
+  }
+
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  /* ── HEADER ── */
+  .header-ornament {
+    text-align: center;
+    margin-bottom: 0;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.2s forwards;
+  }
+  .header-ornament .era {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: rgba(200,160,40,0.6);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+  .header-ornament .crescent {
+    font-size: 1.4rem;
+    color: rgba(200,160,40,0.4);
+    display: block;
+    margin-bottom: 0.5rem;
+    animation: glimmer 5s ease-in-out 2s infinite;
+  }
+
+  @keyframes glimmer {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.75; text-shadow: 0 0 20px rgba(200,160,40,0.3); }
+  }
+
+  /* ── PARCHMENT ── */
+  .parchment {
+    background-color: var(--parchment);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.1'/%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E"),
+      linear-gradient(170deg, var(--parchment-dark) 0%, var(--parchment) 20%, var(--parchment) 80%, var(--parchment-dark) 100%);
+    border: 1px solid var(--parchment-shadow);
+    box-shadow:
+      0 0 0 1px rgba(180,140,60,0.3),
+      0 0 0 8px #0e0b07,
+      0 0 0 9px rgba(180,140,60,0.2),
+      0 30px 80px rgba(0,0,0,0.85),
+      inset 0 0 80px rgba(180,140,60,0.07);
+    padding: 3.5rem 4rem 4rem;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 1.4s ease 0.6s forwards;
+  }
+
+  .parchment::before, .parchment::after {
+    content: '✦';
+    position: absolute;
+    font-size: 0.7rem;
+    color: var(--parchment-shadow);
+    opacity: 0.5;
+  }
+  .parchment::before { top: 1.4rem; left: 1.8rem; }
+  .parchment::after  { top: 1.4rem; right: 1.8rem; }
+  .corner-b { position: absolute; font-size: 0.7rem; color: var(--parchment-shadow); opacity: 0.5; }
+  .corner-bl { bottom: 1.4rem; left: 1.8rem; }
+  .corner-br { bottom: 1.4rem; right: 1.8rem; }
+
+  /* ── TITLE ── */
+  .title-block {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid var(--parchment-shadow);
+    position: relative;
+  }
+  .title-block::after {
+    content: '⁂';
+    position: absolute;
+    bottom: -0.65rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--parchment);
+    padding: 0 0.6rem;
+    color: var(--parchment-shadow);
+    font-size: 0.8rem;
+  }
+  .world-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--faded);
+    display: block;
+    margin-bottom: 0.7rem;
+  }
+  .page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+  .page-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-top: 0.6rem;
+    display: block;
+    opacity: 0.7;
+  }
+
+  /* ── AUDIO ENTRY ── */
+  .audio-entries { display: flex; flex-direction: column; gap: 2rem; }
+
+  .audio-entry {
+    border-left: 2px solid var(--parchment-shadow);
+    padding-left: 1.4rem;
+    position: relative;
+  }
+  .audio-entry::before {
+    content: '✦';
+    position: absolute;
+    left: -0.45rem;
+    top: 0.15rem;
+    font-size: 0.6rem;
+    color: var(--parchment-shadow);
+    background: var(--parchment);
+    padding: 0.1rem 0;
+  }
+
+  .entry-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--faded);
+    display: block;
+    margin-bottom: 0.3rem;
+    opacity: 0.8;
+  }
+
+  .entry-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--blood);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.01em;
+  }
+
+  .entry-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--faded);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* ── CUSTOM AUDIO PLAYER ── */
+  .audio-player {
+    width: 100%;
+  }
+
+  .audio-player audio {
+    display: none;
+  }
+
+  .player-ui {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.7rem 1rem;
+    background: rgba(26,17,8,0.05);
+    border: 1px solid var(--parchment-shadow);
+  }
+
+  .play-btn {
+    width: 2.2rem;
+    height: 2.2rem;
+    flex-shrink: 0;
+    border: 1px solid var(--parchment-shadow);
+    background: rgba(180,140,60,0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: var(--dim);
+    transition: background 0.2s, color 0.2s;
+    user-select: none;
+  }
+  .play-btn:hover { background: rgba(180,140,60,0.2); color: var(--ink); }
+  .play-btn.playing { background: rgba(106,26,26,0.1); border-color: var(--blood); color: var(--blood); }
+
+  .player-track {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(180,140,60,0.2);
+    cursor: pointer;
+    position: relative;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--blood);
+    width: 0%;
+    transition: width 0.1s linear;
+    pointer-events: none;
+  }
+
+  .time-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .time-current, .time-total {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    color: var(--faded);
+  }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    text-align: center;
+    margin: 2rem 0;
+    color: var(--parchment-shadow);
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    text-align: center;
+    margin-top: 2.5rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--parchment-shadow);
+    position: relative;
+  }
+  .closing::before {
+    content: '✦';
+    position: absolute;
+    top: -0.55rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--parchment);
+    padding: 0 0.5rem;
+    color: var(--parchment-shadow);
+    font-size: 0.7rem;
+  }
+  .closing-text {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--faded);
+    opacity: 0.7;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .page-footer {
+    margin-top: 2.5rem;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.6s forwards;
+  }
+  .page-footer span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(200,160,40,0.3);
+  }
+
+  @media (max-width: 600px) {
+    .parchment { padding: 2.5rem 1.8rem 3rem; }
+    body { padding: 2rem 0.8rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <div class="header-ornament">
+    <span class="era">The Age of Awakening · Year 313</span>
+    <span class="crescent">☽ ✦ ☾</span>
+  </div>
+
+  <div class="parchment">
+    <span class="corner-b corner-bl">✦</span>
+    <span class="corner-b corner-br">✦</span>
+
+    <div class="title-block">
+      <span class="world-name">Aelenthor</span>
+      <h1 class="page-title">The Chronicles</h1>
+      <span class="page-subtitle">Voiceover &amp; Session Recaps</span>
+    </div>
+
+    <div class="audio-entries">
+
+      <!-- INTRO -->
+      <div class="audio-entry">
+        <span class="entry-label">Campaign Introduction</span>
+        <div class="entry-title">Hold the Line</div>
+        <p class="entry-desc">The world before the story begins. A fault line in the Gulf of Everroth. Two powers, a quiet tension, and the morning it all started.</p>
+        <div class="audio-player">
+          <audio id="audio-intro" src="https://pnewnan.github.io/dnd5e-artifacts/audio/Intro to hold the line (en) v4.mp3" preload="none"></audio>
+          <div class="player-ui">
+            <div class="play-btn" id="btn-intro" onclick="togglePlay('intro')">▶</div>
+            <div class="player-track">
+              <div class="progress-bar" id="bar-intro" onclick="seek(event, 'intro')">
+                <div class="progress-fill" id="fill-intro"></div>
+              </div>
+              <div class="time-row">
+                <span class="time-current" id="cur-intro">0:00</span>
+                <span class="time-total" id="tot-intro">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-divider">· · ·</div>
+
+      <!-- SESSION 1 -->
+      <div class="audio-entry">
+        <span class="entry-label">Session One Recap</span>
+        <div class="entry-title">The Beginnings</div>
+        <p class="entry-desc">Hollowgate. The thirteenth day of Amberfell. What happened, what was found, and what the road ahead may hold.</p>
+        <div class="audio-player">
+          <audio id="audio-s1" src="https://pnewnan.github.io/dnd5e-artifacts/audio/Session 1 - The Beginnings (en) v2.mp3" preload="none"></audio>
+          <div class="player-ui">
+            <div class="play-btn" id="btn-s1" onclick="togglePlay('s1')">▶</div>
+            <div class="player-track">
+              <div class="progress-bar" id="bar-s1" onclick="seek(event, 's1')">
+                <div class="progress-fill" id="fill-s1"></div>
+              </div>
+              <div class="time-row">
+                <span class="time-current" id="cur-s1">0:00</span>
+                <span class="time-total" id="tot-s1">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="closing">
+      <span class="closing-text">Aelenthor · The Age of Awakening</span>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>Aelenthor Campaign · Chronicles</span>
+  </div>
+
+</div>
+
+<script>
+  const players = {
+    intro: { audio: document.getElementById('audio-intro'), btn: document.getElementById('btn-intro'), fill: document.getElementById('fill-intro'), cur: document.getElementById('cur-intro'), tot: document.getElementById('tot-intro'), bar: document.getElementById('bar-intro') },
+    s1:    { audio: document.getElementById('audio-s1'),    btn: document.getElementById('btn-s1'),    fill: document.getElementById('fill-s1'),    cur: document.getElementById('cur-s1'),    tot: document.getElementById('tot-s1'),    bar: document.getElementById('bar-s1') },
+  };
+
+  let current = null;
+
+  function fmt(s) {
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  function togglePlay(id) {
+    const p = players[id];
+    // pause any other playing
+    if (current && current !== id) {
+      const o = players[current];
+      o.audio.pause();
+      o.btn.textContent = '▶';
+      o.btn.classList.remove('playing');
+    }
+    if (p.audio.paused) {
+      p.audio.play();
+      p.btn.textContent = '■';
+      p.btn.classList.add('playing');
+      current = id;
+    } else {
+      p.audio.pause();
+      p.btn.textContent = '▶';
+      p.btn.classList.remove('playing');
+      current = null;
+    }
+  }
+
+  function seek(e, id) {
+    const p = players[id];
+    const rect = p.bar.getBoundingClientRect();
+    const ratio = (e.clientX - rect.left) / rect.width;
+    if (p.audio.duration) {
+      p.audio.currentTime = ratio * p.audio.duration;
+    }
+  }
+
+  Object.entries(players).forEach(([id, p]) => {
+    p.audio.addEventListener('loadedmetadata', () => {
+      p.tot.textContent = fmt(p.audio.duration);
+    });
+    p.audio.addEventListener('timeupdate', () => {
+      if (p.audio.duration) {
+        p.fill.style.width = (p.audio.currentTime / p.audio.duration * 100) + '%';
+        p.cur.textContent = fmt(p.audio.currentTime);
+      }
+    });
+    p.audio.addEventListener('ended', () => {
+      p.btn.textContent = '▶';
+      p.btn.classList.remove('playing');
+      p.fill.style.width = '0%';
+      p.cur.textContent = '0:00';
+      current = null;
+    });
+  });
+</script>
+</body>
+</html>
