@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aelenthor — Bestiary</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9;
+    --parchment-shadow: #b89d5e;
+    --ink: #1a1108;
+    --dim: #2e200e;
+    --faded: #5a4a2e;
+    --blood: #7a1f1f;
+    --purple: #5b2d8e;
+    --gold: #8a6a10;
+    --teal: #1e5f5f;
+    --sb-bg: #fdf1dc;
+    --sb-head: #7a1f1f;
+    --sb-border: #c9a84c;
+    --sb-rule: #9a2222;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1209;
+    background-image: radial-gradient(ellipse at 30% 0%, #2a1a08 0%, transparent 60%),
+                      radial-gradient(ellipse at 70% 100%, #0e1520 0%, transparent 60%);
+    font-family: 'IM Fell English', serif;
+    color: var(--ink);
+    padding: 2rem 1rem 4rem;
+    min-height: 100vh;
+  }
+  .page {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--parchment);
+    border: 2px solid var(--parchment-shadow);
+    box-shadow: 0 0 0 6px #1a1209, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8);
+    padding: 2.5rem 2.5rem 3rem;
+  }
+
+  /* ── HEADER ── */
+  .page-title {
+    text-align: center;
+    border-bottom: 2px solid var(--parchment-shadow);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .gm-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: var(--blood);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .page-title h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .page-title .subtitle {
+    font-style: italic;
+    color: var(--faded);
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(180,140,60,0.3);
+    align-items: center;
+  }
+  .filter-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-right: 0.2rem;
+  }
+  .filter-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.28rem 0.75rem;
+    border: 1px solid rgba(180,140,60,0.35);
+    background: rgba(180,140,60,0.06);
+    color: var(--faded);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { background: rgba(180,140,60,0.15); color: var(--ink); }
+  .filter-btn.active { background: var(--blood); border-color: var(--blood); color: var(--parchment); }
+
+  /* ── CREATURE ENTRY ── */
+  .creature-entry { margin-bottom: 3.5rem; }
+  .creature-entry:last-child { margin-bottom: 0; }
+
+  .creature-divider {
+    display: flex; align-items: center; gap: 0.6rem;
+    margin: 2.5rem 0; color: var(--parchment-shadow);
+  }
+  .creature-divider::before, .creature-divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent);
+  }
+  .creature-divider span { font-size: 0.85rem; }
+
+  /* Tags */
+  .tag-row { display: flex; gap: 0.35rem; margin-bottom: 0.8rem; flex-wrap: wrap; }
+  .tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.45rem;
+    border-radius: 2px;
+  }
+  .tag-monstrosity { background: rgba(30,95,95,0.1);   color: var(--teal);   border: 1px solid rgba(30,95,95,0.25); }
+  .tag-prologue    { background: rgba(91,45,142,0.1);  color: var(--purple); border: 1px solid rgba(91,45,142,0.25); }
+  .tag-mc          { background: rgba(122,31,31,0.1);  color: var(--blood);  border: 1px solid rgba(122,31,31,0.25); }
+  .tag-mm          { background: rgba(138,106,16,0.12);color: var(--gold);   border: 1px solid rgba(138,106,16,0.3); }
+
+  /* Main layout: image + stat block side by side */
+  .creature-main {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (max-width: 680px) { .creature-main { grid-template-columns: 1fr; } }
+
+  .creature-img {
+    width: 100%;
+    display: block;
+    border: 1px solid var(--parchment-shadow);
+    object-fit: cover;
+    max-height: 340px;
+    object-position: top center;
+    cursor: zoom-in;
+    transition: opacity 0.15s;
+  }
+  .creature-img:hover { opacity: 0.88; }
+
+  /* ── STAT BLOCK ── */
+  .stat-block {
+    background: var(--sb-bg);
+    border: 1px solid var(--sb-border);
+    border-top: 6px solid var(--sb-head);
+    padding: 0.8rem 1rem 0.9rem;
+  }
+  .sb-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--sb-head);
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+  }
+  .sb-type {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--dim);
+    margin-top: 0.05rem;
+    margin-bottom: 0.5rem;
+  }
+  .sb-rule     { height: 3px; background: linear-gradient(to right, var(--sb-rule), rgba(154,34,34,0.3)); border: none; margin: 0.5rem 0; }
+  .sb-thin     { height: 1px; background: rgba(154,34,34,0.25); border: none; margin: 0.35rem 0; }
+  .sb-prop     { font-size: 0.84rem; line-height: 1.45; margin-bottom: 0.18rem; }
+  .sb-prop b   { color: var(--sb-head); font-weight: 600; }
+
+  /* Ability scores */
+  .sb-scores {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    text-align: center;
+    margin: 0.5rem 0;
+    gap: 2px;
+  }
+  .sb-stat-head {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    font-weight: 700;
+    color: var(--sb-head);
+    letter-spacing: 0.05em;
+    padding-bottom: 0.1rem;
+  }
+  .sb-stat-val { font-size: 0.8rem; color: var(--ink); line-height: 1.4; }
+
+  /* Section headers inside stat block */
+  .sb-section {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sb-head);
+    margin-top: 0.6rem;
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid rgba(154,34,34,0.35);
+  }
+  .sb-entry { font-size: 0.83rem; line-height: 1.45; margin-bottom: 0.32rem; }
+  .sb-entry-name { font-style: italic; font-weight: 700; color: var(--ink); }
+
+  /* Description */
+  .creature-desc {
+    margin-top: 0.85rem;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--dim);
+    line-height: 1.65;
+    padding: 0.65rem 0.9rem;
+    border-left: 3px solid rgba(180,140,60,0.45);
+    background: rgba(180,140,60,0.04);
+  }
+
+  /* ── IMAGE ZOOM ── */
+  #imgModal {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.92); z-index: 2000;
+    align-items: center; justify-content: center;
+    cursor: zoom-out;
+  }
+  #imgModal.open { display: flex; }
+  #imgModal img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+
+  /* ── NAV BTN ── */
+  #aelNavBtn {
+    position: fixed; bottom: 1.2rem; right: 1.2rem; z-index: 1001;
+    font-family: 'Cinzel', serif; font-size: 0.58rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    background: rgba(26,18,9,0.9); border: 1px solid var(--parchment-shadow);
+    padding: 0.45rem 0.9rem; color: rgba(242,232,200,0.7);
+    cursor: pointer; user-select: none; transition: color 0.2s;
+  }
+  #aelNavBtn:hover { color: rgba(242,232,200,1); }
+
+  .loading { text-align: center; font-style: italic; color: var(--faded); padding: 3rem 0; font-size: 0.9rem; }
+  @media (max-width: 600px) { .page { padding: 1.5rem 1rem 2rem; } }
+</style>
+</head>
+<body>
+
+<!-- NAV PANEL -->
+<div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
+<div id="aelNavBtn" onclick="aelNavOpen()">&#9776; All Pages</div>
+<script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
+
+<!-- Image Zoom -->
+<div id="imgModal" onclick="closeModal()"><img id="modalImg" src="" alt=""></div>
+
+<div class="page">
+  <div class="page-title">
+    <span class="gm-label">GM Reference</span>
+    <h1>Bestiary</h1>
+    <p class="subtitle">Creatures of Aelenthor · All arcs · All known stat blocks</p>
+  </div>
+
+  <div class="filter-bar">
+    <span class="filter-label">Show:</span>
+    <button class="filter-btn active" data-filter="all"            onclick="setFilter('all')">All Creatures</button>
+    <button class="filter-btn"        data-filter="prologue"       onclick="setFilter('prologue')">The Prologue</button>
+    <button class="filter-btn"        data-filter="missing-convoys" onclick="setFilter('missing-convoys')">Missing Convoys</button>
+    <button class="filter-btn"        data-filter="moonlit-mirage" onclick="setFilter('moonlit-mirage')">Moonlit Mirage</button>
+  </div>
+
+  <div id="bestiaryRoot"><p class="loading">Loading…</p></div>
+</div>
+
+<script>
+const BASE = 'https://pnewnan.github.io/dnd5e-artifacts/';
+
+// ═══════════════════════════════════════════════════════════════
+//  BESTIARY DATA
+//  To add a creature: push a new object to this array.
+//  tags: any combo of 'prologue' | 'missing-convoys' | 'moonlit-mirage'
+// ═══════════════════════════════════════════════════════════════
+const BESTIARY = [
+  {
+    id: 'cavehopper',
+    name: 'Cavehopper',
+    size: 'Small', type: 'Monstrosity', alignment: 'Unaligned',
+    ac: '14', acNote: 'Natural Armor',
+    hp: '24', hpFormula: '2d10 + 4',
+    speed: '30 ft.',
+    str: 8, dex: 14, con: 14, int: 3, wis: 12, cha: 6,
+    saves:              'DEX +4, CON +4',
+    skills:             'Perception +5, Stealth +4',
+    senses:             'Darkvision 60 ft., Passive Perception 13',
+    languages:          'None',
+    cr: '1/2', xp: 100,
+    traits: [
+      { name: 'Spider Climb',
+        text: 'The cavehopper can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.' },
+      { name: 'Skittish Predator',
+        text: 'The cavehopper has advantage on Dexterity (Stealth) checks while in rocky terrain or dim light.' }
+    ],
+    actions: [
+      { name: 'Bite',
+        text: 'Melee Weapon Attack: +1 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage.' },
+      { name: 'Needle Spit',
+        text: 'Ranged Weapon Attack: +2 to hit, range 15/15 ft., one target. Hit: 1 (1d2) piercing damage.' }
+    ],
+    description: 'A squat, pale cave-beast with oversized forelimbs and glossy black eyes. Cavehoppers cling to walls and ceilings with unsettling ease, launching needle-like spines from fleshy sacs near their jawline. Kobolds prize them as guard beasts and tunnel hunters.',
+    image: 'hollowgate/missing_convoys/cavehopper-page.png',
+    tags: ['prologue', 'missing-convoys']
+  },
+  {
+    id: 'velvet-husk',
+    name: 'Velvet Husk',
+    size: 'Medium', type: 'Monstrosity', alignment: 'Unaligned',
+    ac: '13', acNote: '',
+    hp: '18', hpFormula: '2d10',
+    speed: '—',
+    str: 14, dex: 10, con: 14, int: 3, wis: 10, cha: 5,
+    saves:              'CON +4',
+    skills:             'Stealth +2',
+    vulnerabilities:    'Fire',
+    conditionImmunities:'Frightened',
+    senses:             'Darkvision, Passive Perception 10',
+    languages:          '—',
+    cr: '1/2', xp: 100,
+    traits: [
+      { name: 'Hollow Shell',
+        text: 'When the velvet husk takes fire damage, it cannot take reactions until the end of its next turn.' },
+      { name: 'Disturbing Form',
+        text: 'A creature that starts its turn within 5 feet of the velvet husk must succeed on a DC 11 Wisdom saving throw or have disadvantage on its next attack roll before the end of its turn.' }
+    ],
+    actions: [
+      { name: 'Slam',
+        text: 'Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) bludgeoning damage.' },
+      { name: 'Smothering Grasp',
+        text: 'Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 3 (1d4 + 1) necrotic damage.' }
+    ],
+    description: 'What first appears to be a performer wrapped in faded velvet and silk reveals itself to be something hollow beneath the fabric. Its limbs twitch at unnatural angles beneath layers of carnival costume and damp cloth. A faint wheezing escapes from within the folds as if something inside is trying to breathe through a body that no longer works.',
+    image: 'hollowgate/moonlit_mirage/velvet_husk.png',
+    tags: ['prologue', 'moonlit-mirage']
+  },
+  {
+    id: 'gorged-lanternling',
+    name: 'Gorged Lanternling',
+    size: 'Small', type: 'Monstrosity', alignment: 'Unaligned',
+    ac: '12', acNote: '',
+    hp: '16', hpFormula: '3d6 + 6',
+    speed: '25 ft., Climb 20 ft.',
+    str: 10, dex: 14, con: 14, int: 4, wis: 10, cha: 6,
+    saves:              'DEX +4, CON +4',
+    vulnerabilities:    'Fire',
+    conditionImmunities:'Frightened',
+    senses:             'Darkvision, Passive Perception 10',
+    languages:          '—',
+    cr: '1/2', xp: 100,
+    traits: [
+      { name: 'Distended Glow',
+        text: "Dim orange light leaks from swollen sacs beneath the lanternling's skin, shedding dim light in a 10-foot radius." },
+      { name: 'Volatile Body',
+        text: 'When the lanternling takes fire damage, it has disadvantage on attack rolls until the end of its next turn as its swollen body spasms violently.' }
+    ],
+    actions: [
+      { name: 'Gnashing Bite',
+        text: 'Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) piercing damage.' },
+      { name: 'Lantern Burst',
+        text: 'The gorged lanternling violently ruptures glowing sacs along its body. Each creature within 10 feet must succeed on a DC 11 Dexterity saving throw or take 4 (1d8) fire damage.' }
+    ],
+    description: 'A bloated insectoid creature covered in stretched translucent skin and glowing pustules. Its oversized jaw twitches constantly, spraying strings of saliva across the floor as dim orange light pulses beneath its flesh. Lanternlings scuttle through the dark in nervous bursts, drawn instinctively toward heat, noise, and movement.',
+    image: 'hollowgate/moonlit_mirage/gorged_lanternling.png',
+    tags: ['prologue', 'moonlit-mirage']
+  },
+  {
+    id: 'lantern-broodmother',
+    name: 'Lantern Broodmother',
+    size: 'Medium', type: 'Monstrosity', alignment: 'Unaligned',
+    ac: '12', acNote: 'Natural Armor',
+    hp: '24', hpFormula: '4d8 + 4',
+    speed: '25 ft., Climb 20 ft.',
+    str: 14, dex: 12, con: 12, int: 4, wis: 10, cha: 6,
+    skills:             'Perception +2',
+    vulnerabilities:    'Fire',
+    conditionImmunities:'Frightened',
+    senses:             'Darkvision 60 ft., Passive Perception 10',
+    languages:          '—',
+    cr: '1', xp: 200,
+    traits: [
+      { name: 'Distended Brood Sacs',
+        text: 'The lantern broodmother sheds dim orange light in a 10-foot radius.' },
+      { name: 'Fear of Flame',
+        text: 'When the lantern broodmother takes fire damage, it cannot take reactions until the end of its next turn.' }
+    ],
+    actions: [
+      { name: 'Crushing Mandibles',
+        text: 'Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage.' },
+      { name: 'Spawn Mites (Recharge 5–6)',
+        text: 'The lantern broodmother spawns 1 (1d2) pallid mite in an unoccupied space within 5 feet of her.' }
+    ],
+    description: 'Larger and slower than her offspring, the lantern broodmother moves with a low scraping gait, her swollen abdomen dragging against stone. Clusters of pale eggs cling to her underbelly, pulsing with the same faint orange light that seeps through her stretched skin. She does not retreat.',
+    image: 'hollowgate/moonlit_mirage/lantern_broodmother.png',
+    tags: ['prologue', 'moonlit-mirage']
+  },
+  {
+    id: 'pallid-mite',
+    name: 'Pallid Mite',
+    size: 'Tiny', type: 'Monstrosity', alignment: 'Unaligned',
+    ac: '11', acNote: '',
+    hp: '5', hpFormula: '2d4',
+    speed: '20 ft.',
+    str: 4, dex: 14, con: 10, int: 1, wis: 8, cha: 2,
+    vulnerabilities:    'Fire',
+    conditionImmunities:'Frightened',
+    senses:             'Darkvision, Passive Perception 9',
+    languages:          '—',
+    cr: '1/8', xp: 25,
+    traits: [
+      { name: 'Skittering Swarm',
+        text: 'The pallid mite can move through the space of any Medium or larger creature.' },
+      { name: 'Fear of Flame',
+        text: 'If the pallid mite takes fire damage, it cannot take reactions until the end of its next turn.' }
+    ],
+    actions: [
+      { name: 'Bite',
+        text: 'Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) piercing damage.' }
+    ],
+    description: 'A pale insectoid scavenger no larger than a cat, the pallid mite moves in frantic bursts across walls and floors alike. Its thin legs twitch constantly, and its translucent abdomen reveals pulsing veins beneath milky flesh. They gather in clusters around larger brood creatures, stripping meat from carcasses with unsettling speed.',
+    image: 'hollowgate/moonlit_mirage/pallid_mites.png',
+    tags: ['prologue', 'moonlit-mirage']
+  }
+];
+
+// ═══════════════════════════════════════════════════════════════
+//  RENDERER
+// ═══════════════════════════════════════════════════════════════
+let currentFilter = 'all';
+
+function setFilter(f) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.filter === f);
+  });
+  renderBestiary();
+}
+
+function mod(score) {
+  var m = Math.floor((score - 10) / 2);
+  return (m >= 0 ? '+' : '') + m;
+}
+
+function renderBestiary() {
+  var list = currentFilter === 'all'
+    ? BESTIARY
+    : BESTIARY.filter(function(c) { return c.tags.includes(currentFilter); });
+
+  if (!list.length) {
+    document.getElementById('bestiaryRoot').innerHTML = '<p class="loading">No creatures match this filter.</p>';
+    return;
+  }
+
+  var html = '';
+  list.forEach(function(c, i) {
+    if (i > 0) html += '<div class="creature-divider"><span>✦</span></div>';
+
+    // Tags
+    var tagHtml = '<div class="tag-row">'
+      + '<span class="tag tag-monstrosity">' + c.type + '</span>';
+    if (c.tags.includes('prologue'))        tagHtml += '<span class="tag tag-prologue">The Prologue</span>';
+    if (c.tags.includes('missing-convoys')) tagHtml += '<span class="tag tag-mc">Missing Convoys</span>';
+    if (c.tags.includes('moonlit-mirage'))  tagHtml += '<span class="tag tag-mm">Moonlit Mirage</span>';
+    tagHtml += '</div>';
+
+    // Ability scores
+    var STATS = ['str','dex','con','int','wis','cha'];
+    var scoresHtml = '<div class="sb-scores">';
+    STATS.forEach(function(s) {
+      scoresHtml += '<div>'
+        + '<div class="sb-stat-head">' + s.toUpperCase() + '</div>'
+        + '<div class="sb-stat-val">' + c[s] + '<br>(' + mod(c[s]) + ')</div>'
+        + '</div>';
+    });
+    scoresHtml += '</div>';
+
+    // Stat block
+    var sb = '<div class="stat-block">'
+      + '<div class="sb-name">' + c.name + '</div>'
+      + '<div class="sb-type">' + c.size + ' ' + c.type + ', ' + c.alignment + '</div>'
+      + '<hr class="sb-rule">'
+      + '<div class="sb-prop"><b>Armor Class</b> ' + c.ac + (c.acNote ? ' (' + c.acNote + ')' : '') + '</div>'
+      + '<div class="sb-prop"><b>Hit Points</b> ' + c.hp + ' (' + c.hpFormula + ')</div>'
+      + '<div class="sb-prop"><b>Speed</b> ' + c.speed + '</div>'
+      + '<hr class="sb-rule">'
+      + scoresHtml
+      + '<hr class="sb-rule">';
+
+    if (c.saves)               sb += '<div class="sb-prop"><b>Saving Throws</b> ' + c.saves + '</div>';
+    if (c.skills)              sb += '<div class="sb-prop"><b>Skills</b> ' + c.skills + '</div>';
+    if (c.vulnerabilities)     sb += '<div class="sb-prop"><b>Damage Vulnerabilities</b> ' + c.vulnerabilities + '</div>';
+    if (c.resistances)         sb += '<div class="sb-prop"><b>Damage Resistances</b> ' + c.resistances + '</div>';
+    if (c.immunities)          sb += '<div class="sb-prop"><b>Damage Immunities</b> ' + c.immunities + '</div>';
+    if (c.conditionImmunities) sb += '<div class="sb-prop"><b>Condition Immunities</b> ' + c.conditionImmunities + '</div>';
+    sb += '<div class="sb-prop"><b>Senses</b> ' + c.senses + '</div>'
+      +   '<div class="sb-prop"><b>Languages</b> ' + c.languages + '</div>'
+      +   '<hr class="sb-rule">'
+      +   '<div class="sb-prop"><b>Challenge</b> ' + c.cr + ' (' + c.xp + ' XP)&nbsp;&nbsp;&nbsp;<b>Proficiency Bonus</b> +2</div>';
+
+    // Traits
+    if (c.traits && c.traits.length) {
+      sb += '<div class="sb-section">Traits</div>';
+      c.traits.forEach(function(t) {
+        sb += '<div class="sb-entry"><span class="sb-entry-name">' + t.name + '.</span> ' + t.text + '</div>';
+      });
+    }
+
+    // Actions
+    if (c.actions && c.actions.length) {
+      sb += '<div class="sb-section">Actions</div>';
+      c.actions.forEach(function(a) {
+        sb += '<div class="sb-entry"><span class="sb-entry-name">' + a.name + '.</span> ' + a.text + '</div>';
+      });
+    }
+
+    // Bonus actions
+    if (c.bonusActions && c.bonusActions.length) {
+      sb += '<div class="sb-section">Bonus Actions</div>';
+      c.bonusActions.forEach(function(a) {
+        sb += '<div class="sb-entry"><span class="sb-entry-name">' + a.name + '.</span> ' + a.text + '</div>';
+      });
+    }
+
+    // Reactions
+    if (c.reactions && c.reactions.length) {
+      sb += '<div class="sb-section">Reactions</div>';
+      c.reactions.forEach(function(r) {
+        sb += '<div class="sb-entry"><span class="sb-entry-name">' + r.name + '.</span> ' + r.text + '</div>';
+      });
+    }
+
+    sb += '</div>'; // .stat-block
+
+    html += '<div class="creature-entry">'
+      + tagHtml
+      + '<div class="creature-main">'
+      + '<img class="creature-img" src="' + BASE + c.image + '" alt="' + c.name + '" onclick="openModal(\'' + BASE + c.image + '\')">'
+      + sb
+      + '</div>'
+      + (c.description ? '<div class="creature-desc">' + c.description + '</div>' : '')
+      + '</div>';
+  });
+
+  document.getElementById('bestiaryRoot').innerHTML = html;
+}
+
+function openModal(src) {
+  document.getElementById('modalImg').src = src;
+  document.getElementById('imgModal').classList.add('open');
+}
+function closeModal() { document.getElementById('imgModal').classList.remove('open'); }
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+renderBestiary();
+</script>
+</body>
+</html>

@@ -10,6 +10,12 @@
           "type": "player"
         },
         {
+          "name": "Bestiary",
+          "desc": "All creature stat blocks · Filterable by arc · Monstrosity, Prologue, and beyond",
+          "href": "bestiary.html",
+          "type": "gm"
+        },
+        {
           "name": "It Happened A Long Time Ago",
           "desc": "Opening prose · Hollowgate · 13 Amberfell, Year 313",
           "href": "hollowgate_opening.html",
