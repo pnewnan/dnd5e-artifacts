@@ -102,6 +102,15 @@
   }
   .filter-btn:hover { background: rgba(180,140,60,0.15); color: var(--ink); }
   .filter-btn.active { background: var(--blood); border-color: var(--blood); color: var(--parchment); }
+  .filter-sep {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(90,74,46,0.5);
+    padding: 0 0.2rem 0 0.5rem;
+    align-self: center;
+  }
 
   /* ── CREATURE ENTRY ── */
   .creature-entry { margin-bottom: 3.5rem; }
@@ -127,10 +136,11 @@
     padding: 0.1rem 0.45rem;
     border-radius: 2px;
   }
-  .tag-monstrosity { background: rgba(30,95,95,0.1);   color: var(--teal);   border: 1px solid rgba(30,95,95,0.25); }
-  .tag-prologue    { background: rgba(91,45,142,0.1);  color: var(--purple); border: 1px solid rgba(91,45,142,0.25); }
-  .tag-mc          { background: rgba(122,31,31,0.1);  color: var(--blood);  border: 1px solid rgba(122,31,31,0.25); }
-  .tag-mm          { background: rgba(138,106,16,0.12);color: var(--gold);   border: 1px solid rgba(138,106,16,0.3); }
+  /* Arc tags — fixed */
+  .tag-prologue { background: rgba(91,45,142,0.1);  color: var(--purple); border: 1px solid rgba(91,45,142,0.25); }
+  .tag-mc       { background: rgba(122,31,31,0.1);  color: var(--blood);  border: 1px solid rgba(122,31,31,0.25); }
+  .tag-mm       { background: rgba(138,106,16,0.12);color: var(--gold);   border: 1px solid rgba(138,106,16,0.3); }
+  /* Creature type tags — generated inline via JS TYPE_COLORS map */
 
   /* Main layout: image + stat block side by side */
   .creature-main {
@@ -268,13 +278,7 @@
     <p class="subtitle">Creatures of Aelenthor · All arcs · All known stat blocks</p>
   </div>
 
-  <div class="filter-bar">
-    <span class="filter-label">Show:</span>
-    <button class="filter-btn active" data-filter="all"            onclick="setFilter('all')">All Creatures</button>
-    <button class="filter-btn"        data-filter="prologue"       onclick="setFilter('prologue')">The Prologue</button>
-    <button class="filter-btn"        data-filter="missing-convoys" onclick="setFilter('missing-convoys')">Missing Convoys</button>
-    <button class="filter-btn"        data-filter="moonlit-mirage" onclick="setFilter('moonlit-mirage')">Moonlit Mirage</button>
-  </div>
+  <div id="filterBar" class="filter-bar"></div>
 
   <div id="bestiaryRoot"><p class="loading">Loading…</p></div>
 </div>
@@ -282,10 +286,35 @@
 <script>
 const BASE = 'https://pnewnan.github.io/dnd5e-artifacts/';
 
+// ── CREATURE TYPE COLOR MAP ──────────────────────────────────
+// bg, text, border — add new types here as needed
+const TYPE_COLORS = {
+  'Monstrosity': ['rgba(30,95,95,0.1)',    '#1e5f5f', 'rgba(30,95,95,0.25)'],
+  'Beast':       ['rgba(42,92,30,0.1)',    '#2a5c1e', 'rgba(42,92,30,0.25)'],
+  'Undead':      ['rgba(60,30,90,0.12)',   '#6b3fa0', 'rgba(60,30,90,0.28)'],
+  'Aberration':  ['rgba(20,60,100,0.12)',  '#1a5080', 'rgba(20,60,100,0.28)'],
+  'Fiend':       ['rgba(120,20,20,0.12)',  '#8a1515', 'rgba(120,20,20,0.28)'],
+  'Construct':   ['rgba(80,70,30,0.12)',   '#6a5c1a', 'rgba(80,70,30,0.28)'],
+  'Dragon':      ['rgba(140,60,10,0.12)',  '#8c3c0a', 'rgba(140,60,10,0.28)'],
+  'Fey':         ['rgba(100,20,80,0.12)',  '#7a1a60', 'rgba(100,20,80,0.28)'],
+  'Humanoid':    ['rgba(50,40,20,0.1)',    '#4a3a18', 'rgba(50,40,20,0.25)'],
+  'Elemental':   ['rgba(20,80,100,0.12)',  '#145060', 'rgba(20,80,100,0.28)'],
+  'Giant':       ['rgba(100,50,20,0.12)',  '#6a3214', 'rgba(100,50,20,0.28)'],
+  'Ooze':        ['rgba(40,80,20,0.12)',   '#285014', 'rgba(40,80,20,0.28)'],
+  'Plant':       ['rgba(20,70,30,0.12)',   '#14461e', 'rgba(20,70,30,0.28)'],
+  'Celestial':   ['rgba(180,150,20,0.12)', '#8a7010', 'rgba(180,150,20,0.28)'],
+};
+
+function typeTag(typeName) {
+  var c = TYPE_COLORS[typeName] || ['rgba(80,80,80,0.1)', '#555', 'rgba(80,80,80,0.25)'];
+  return '<span class="tag" style="background:' + c[0] + ';color:' + c[1] + ';border:1px solid ' + c[2] + ';">'
+    + typeName + '</span>';
+}
+
 // ═══════════════════════════════════════════════════════════════
 //  BESTIARY DATA
-//  To add a creature: push a new object to this array.
-//  tags: any combo of 'prologue' | 'missing-convoys' | 'moonlit-mirage'
+//  tags: include creature type (lowercase) + any arc tags
+//  e.g. ['monstrosity', 'prologue', 'missing-convoys']
 // ═══════════════════════════════════════════════════════════════
 const BESTIARY = [
   {
@@ -315,7 +344,7 @@ const BESTIARY = [
     ],
     description: 'A squat, pale cave-beast with oversized forelimbs and glossy black eyes. Cavehoppers cling to walls and ceilings with unsettling ease, launching needle-like spines from fleshy sacs near their jawline. Kobolds prize them as guard beasts and tunnel hunters.',
     image: 'hollowgate/missing_convoys/cavehopper-page.png',
-    tags: ['prologue', 'missing-convoys']
+    tags: ['monstrosity', 'prologue', 'missing-convoys']
   },
   {
     id: 'velvet-husk',
@@ -346,7 +375,7 @@ const BESTIARY = [
     ],
     description: 'What first appears to be a performer wrapped in faded velvet and silk reveals itself to be something hollow beneath the fabric. Its limbs twitch at unnatural angles beneath layers of carnival costume and damp cloth. A faint wheezing escapes from within the folds as if something inside is trying to breathe through a body that no longer works.',
     image: 'hollowgate/moonlit_mirage/velvet_husk.png',
-    tags: ['prologue', 'moonlit-mirage']
+    tags: ['monstrosity', 'prologue', 'moonlit-mirage']
   },
   {
     id: 'gorged-lanternling',
@@ -376,7 +405,7 @@ const BESTIARY = [
     ],
     description: 'A bloated insectoid creature covered in stretched translucent skin and glowing pustules. Its oversized jaw twitches constantly, spraying strings of saliva across the floor as dim orange light pulses beneath its flesh. Lanternlings scuttle through the dark in nervous bursts, drawn instinctively toward heat, noise, and movement.',
     image: 'hollowgate/moonlit_mirage/gorged_lanternling.png',
-    tags: ['prologue', 'moonlit-mirage']
+    tags: ['monstrosity', 'prologue', 'moonlit-mirage']
   },
   {
     id: 'lantern-broodmother',
@@ -406,7 +435,7 @@ const BESTIARY = [
     ],
     description: 'Larger and slower than her offspring, the lantern broodmother moves with a low scraping gait, her swollen abdomen dragging against stone. Clusters of pale eggs cling to her underbelly, pulsing with the same faint orange light that seeps through her stretched skin. She does not retreat.',
     image: 'hollowgate/moonlit_mirage/lantern_broodmother.png',
-    tags: ['prologue', 'moonlit-mirage']
+    tags: ['monstrosity', 'prologue', 'moonlit-mirage']
   },
   {
     id: 'pallid-mite',
@@ -433,20 +462,91 @@ const BESTIARY = [
     ],
     description: 'A pale insectoid scavenger no larger than a cat, the pallid mite moves in frantic bursts across walls and floors alike. Its thin legs twitch constantly, and its translucent abdomen reveals pulsing veins beneath milky flesh. They gather in clusters around larger brood creatures, stripping meat from carcasses with unsettling speed.',
     image: 'hollowgate/moonlit_mirage/pallid_mites.png',
-    tags: ['prologue', 'moonlit-mirage']
+    tags: ['monstrosity', 'prologue', 'moonlit-mirage']
   }
 ];
 
 // ═══════════════════════════════════════════════════════════════
-//  RENDERER
+//  FILTER SYSTEM — multi-select, OR logic
 // ═══════════════════════════════════════════════════════════════
-let currentFilter = 'all';
 
-function setFilter(f) {
-  currentFilter = f;
-  document.querySelectorAll('.filter-btn').forEach(function(b) {
-    b.classList.toggle('active', b.dataset.filter === f);
+// Arc tag display config (label + colors)
+const ARC_META = {
+  'prologue':        { label: 'The Prologue',    bg: 'rgba(91,45,142,0.15)',  color: '#5b2d8e', border: 'rgba(91,45,142,0.35)' },
+  'missing-convoys': { label: 'Missing Convoys', bg: 'rgba(122,31,31,0.15)', color: '#7a1f1f', border: 'rgba(122,31,31,0.35)' },
+  'moonlit-mirage':  { label: 'Moonlit Mirage',  bg: 'rgba(138,106,16,0.15)',color: '#8a6a10', border: 'rgba(138,106,16,0.35)' },
+};
+
+var activeFilters = new Set();
+
+function buildFilterBar() {
+  // Collect all unique tags from data
+  var arcTags = new Set(), typeTags = new Set();
+  BESTIARY.forEach(function(c) {
+    c.tags.forEach(function(t) {
+      if (ARC_META[t]) arcTags.add(t);
+      else typeTags.add(t);
+    });
   });
+
+  var html = '<span class="filter-label">Filter:</span>'
+    + '<button class="filter-btn active" data-tag="__all__" onclick="clearFilters()">All</button>';
+
+  if (arcTags.size) {
+    html += '<span class="filter-sep">Arc</span>';
+    arcTags.forEach(function(t) {
+      var m = ARC_META[t];
+      html += '<button class="filter-btn" data-tag="' + t + '" onclick="toggleFilter(\'' + t + '\')"'
+        + ' data-bg="' + m.bg + '" data-color="' + m.color + '" data-border="' + m.border + '">'
+        + m.label + '</button>';
+    });
+  }
+
+  if (typeTags.size) {
+    html += '<span class="filter-sep">Type</span>';
+    typeTags.forEach(function(t) {
+      var label = t.charAt(0).toUpperCase() + t.slice(1);
+      var key   = label; // match TYPE_COLORS
+      var tc    = TYPE_COLORS[key] || ['rgba(80,80,80,0.15)', '#555', 'rgba(80,80,80,0.35)'];
+      html += '<button class="filter-btn" data-tag="' + t + '" onclick="toggleFilter(\'' + t + '\')"'
+        + ' data-bg="' + tc[0] + '" data-color="' + tc[1] + '" data-border="' + tc[2] + '">'
+        + label + '</button>';
+    });
+  }
+
+  document.getElementById('filterBar').innerHTML = html;
+}
+
+function clearFilters() {
+  activeFilters.clear();
+  document.querySelectorAll('.filter-btn').forEach(function(b) {
+    b.classList.remove('active');
+    b.style.background = ''; b.style.color = ''; b.style.borderColor = '';
+  });
+  document.querySelector('[data-tag="__all__"]').classList.add('active');
+  renderBestiary();
+}
+
+function toggleFilter(tag) {
+  var allBtn = document.querySelector('[data-tag="__all__"]');
+  allBtn.classList.remove('active');
+  allBtn.style.background = ''; allBtn.style.color = ''; allBtn.style.borderColor = '';
+
+  if (activeFilters.has(tag)) {
+    activeFilters.delete(tag);
+    var btn = document.querySelector('[data-tag="' + tag + '"]');
+    btn.classList.remove('active');
+    btn.style.background = ''; btn.style.color = ''; btn.style.borderColor = '';
+  } else {
+    activeFilters.add(tag);
+    var btn = document.querySelector('[data-tag="' + tag + '"]');
+    btn.classList.add('active');
+    btn.style.background  = btn.dataset.bg;
+    btn.style.color       = btn.dataset.color;
+    btn.style.borderColor = btn.dataset.border;
+  }
+
+  if (activeFilters.size === 0) { clearFilters(); return; }
   renderBestiary();
 }
 
@@ -456,9 +556,11 @@ function mod(score) {
 }
 
 function renderBestiary() {
-  var list = currentFilter === 'all'
+  var list = activeFilters.size === 0
     ? BESTIARY
-    : BESTIARY.filter(function(c) { return c.tags.includes(currentFilter); });
+    : BESTIARY.filter(function(c) {
+        return c.tags.some(function(t) { return activeFilters.has(t); });
+      });
 
   if (!list.length) {
     document.getElementById('bestiaryRoot').innerHTML = '<p class="loading">No creatures match this filter.</p>';
@@ -471,7 +573,7 @@ function renderBestiary() {
 
     // Tags
     var tagHtml = '<div class="tag-row">'
-      + '<span class="tag tag-monstrosity">' + c.type + '</span>';
+      + typeTag(c.type);
     if (c.tags.includes('prologue'))        tagHtml += '<span class="tag tag-prologue">The Prologue</span>';
     if (c.tags.includes('missing-convoys')) tagHtml += '<span class="tag tag-mc">Missing Convoys</span>';
     if (c.tags.includes('moonlit-mirage'))  tagHtml += '<span class="tag tag-mm">Moonlit Mirage</span>';
@@ -565,6 +667,7 @@ function openModal(src) {
 function closeModal() { document.getElementById('imgModal').classList.remove('open'); }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
+buildFilterBar();
 renderBestiary();
 </script>
 </body>
