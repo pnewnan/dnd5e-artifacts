@@ -11,7 +11,7 @@
         },
         {
           "name": "Bestiary",
-          "desc": "All creature stat blocks · Filterable by arc · Monstrosity, Prologue, and beyond",
+          "desc": "All creature stat blocks · Filterable by arc and type · Monstrosity, Prologue, and beyond",
           "href": "bestiary.html",
           "type": "gm"
         },
