@@ -36,8 +36,6 @@
     box-shadow: 0 0 0 6px #1a1209, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8);
     padding: 2.5rem 2.5rem 3rem;
   }
-
-  /* ── TITLE ── */
   .page-title {
     text-align: center;
     border-bottom: 2px solid var(--parchment-shadow);
@@ -65,8 +63,6 @@
     font-size: 0.9rem;
     margin-top: 0.4rem;
   }
-
-  /* ── SECTION ── */
   .nav-section { margin-bottom: 2rem; }
   .nav-section-head {
     font-family: 'Cinzel', serif;
@@ -78,10 +74,7 @@
     padding-bottom: 0.3rem;
     margin-bottom: 0.8rem;
   }
-
-  /* ── NAV ENTRIES ── */
   .nav-entries { display: flex; flex-direction: column; gap: 0.4rem; }
-
   .nav-entry {
     display: flex;
     align-items: baseline;
@@ -97,7 +90,6 @@
   .nav-entry.player { border-left: 3px solid var(--teal); }
   .nav-entry.gm     { border-left: 3px solid var(--blood); }
   .nav-entry.asset  { border-left: 3px solid var(--gold); }
-
   .nav-tag {
     font-family: 'Cinzel', serif;
     font-size: 0.55rem;
@@ -111,7 +103,6 @@
   .tag-player { background: rgba(30,95,95,0.1);  color: var(--teal);   border: 1px solid rgba(30,95,95,0.25); }
   .tag-gm     { background: rgba(122,31,31,0.1); color: var(--blood);  border: 1px solid rgba(122,31,31,0.25); }
   .tag-asset  { background: rgba(138,106,16,0.1);color: var(--gold);   border: 1px solid rgba(138,106,16,0.25); }
-
   .nav-entry-text { flex: 1; min-width: 0; }
   .nav-entry-name {
     font-family: 'Cinzel', serif;
@@ -129,7 +120,6 @@
     margin-top: 0.1rem;
     line-height: 1.4;
   }
-
   .nav-arrow {
     font-family: 'Cinzel', serif;
     font-size: 0.65rem;
@@ -138,129 +128,56 @@
     transition: color 0.15s, transform 0.15s;
   }
   .nav-entry:hover .nav-arrow { color: var(--blood); transform: translateX(3px); }
-
-  /* ── DIVIDER ── */
   .divider { display: flex; align-items: center; gap: 0.6rem; margin: 1.5rem 0; color: var(--parchment-shadow); }
   .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
   .divider span { font-size: 0.8rem; }
-
+  .loading { text-align: center; font-style: italic; color: var(--faded); padding: 2rem 0; font-size: 0.9rem; }
   @media (max-width: 600px) { .page { padding: 1.5rem 1.2rem 2rem; } }
 </style>
 </head>
 <body>
 <div class="page">
-
   <div class="page-title">
     <span class="gm-label">Dungeon Master Navigation</span>
     <h1>Aelenthor</h1>
     <p class="subtitle">Campaign Reference · All Pages</p>
   </div>
-
-  <!-- CAMPAIGN OPENING -->
-  <div class="nav-section">
-    <div class="nav-section-head">Campaign Opening</div>
-    <div class="nav-entries">
-      <a class="nav-entry player" href="hollowgate_opening.html">
-        <span class="nav-tag tag-player">Player</span>
-        <div class="nav-entry-text">
-          <span class="nav-entry-name">It Happened A Long Time Ago</span>
-          <span class="nav-entry-desc">Opening prose · Hollowgate · 13 Amberfell, Year 313</span>
-        </div>
-        <span class="nav-arrow">→</span>
-      </a>
-      <a class="nav-entry player" href="chronicles.html">
-        <span class="nav-tag tag-player">Player</span>
-        <div class="nav-entry-text">
-          <span class="nav-entry-name">The Chronicles</span>
-          <span class="nav-entry-desc">Voiceover &amp; session recaps — Introduction · Session 1</span>
-        </div>
-        <span class="nav-arrow">→</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="divider"><span>✦</span></div>
-
-  <!-- HOLLOWGATE -->
-  <div class="nav-section">
-    <div class="nav-section-head">Hollowgate</div>
-    <div class="nav-entries">
-      <a class="nav-entry gm" href="hollowgate/hollowgate_gm_reference.html">
-        <span class="nav-tag tag-gm">GM</span>
-        <div class="nav-entry-text">
-          <span class="nav-entry-name">Hollowgate GM Reference</span>
-          <span class="nav-entry-desc">Eric Huwithakay · Vanya's mission · Aurelia's briefing · Town map · All arc links</span>
-        </div>
-        <span class="nav-arrow">→</span>
-      </a>
-      <a class="nav-entry gm" href="hollowgate/missing_convoys/missing_convoys_arc.html">
-        <span class="nav-tag tag-gm">GM</span>
-        <div class="nav-entry-text">
-          <span class="nav-entry-name">Missing Convoys Arc</span>
-          <span class="nav-entry-desc">Kobold investigation · Robyn · Krobb · The Chieftain · The Cavehopper · Eric's body</span>
-        </div>
-        <span class="nav-arrow">→</span>
-      </a>
-      <a class="nav-entry asset" href="hollowgate/missing_convoys/pit_trap.png" target="_blank">
-        <span class="nav-tag tag-asset">Asset</span>
-        <div class="nav-entry-text">
-          <span class="nav-entry-name">The Tunnels</span>
-          <span class="nav-entry-desc">Player handout · Kobold cavern atmosphere</span>
-        </div>
-        <span class="nav-arrow">→</span>
-      </a>
-      <a class="nav-entry asset" href="hollowgate/missing_convoys/trap_map.png" target="_blank">
-        <span class="nav-tag tag-asset">Asset</span>
-        <div class="nav-entry-text">
-          <span class="nav-entry-name">Krobb's Trap Map</span>
-          <span class="nav-entry-desc">Player handout · Kobold cavern traps · "If you read this, you're probably dead."</span>
-        </div>
-        <span class="nav-arrow">→</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="divider"><span>⁂</span></div>
-
-  <!-- MOONLIT MIRAGE -->
-  <div class="nav-section">
-    <div class="nav-section-head">Moonlit Mirage Carnival</div>
-    <div class="nav-entries">
-      <a class="nav-entry player" href="hollowgate/moonlit_mirage/moonlit_mirage_shop.html">
-        <span class="nav-tag tag-player">Player</span>
-        <div class="nav-entry-text">
-          <span class="nav-entry-name">Prize Counter &amp; Curiosities</span>
-          <span class="nav-entry-desc">Shop listing — trinkets, mid-tier curiosities, and big ticket items</span>
-        </div>
-        <span class="nav-arrow">→</span>
-      </a>
-      <a class="nav-entry gm" href="hollowgate/moonlit_mirage/moonlit_mirage_arc.html">
-        <span class="nav-tag tag-gm">GM</span>
-        <div class="nav-entry-text">
-          <span class="nav-entry-name">Carnival Arc Reference</span>
-          <span class="nav-entry-desc">Phase One &amp; Two · NPCs · Perception checks · Grand performance · Encounter overview</span>
-        </div>
-        <span class="nav-arrow">→</span>
-      </a>
-      <a class="nav-entry gm" href="hollowgate/moonlit_mirage/moonlit_mirage_encounter.html">
-        <span class="nav-tag tag-gm">GM</span>
-        <div class="nav-entry-text">
-          <span class="nav-entry-name">Pallor Brood — Encounter</span>
-          <span class="nav-entry-desc">Full encounter reference — stat blocks, phase structure, environmental interaction</span>
-        </div>
-        <span class="nav-arrow">→</span>
-      </a>
-      <a class="nav-entry asset" href="hollowgate/moonlit_mirage/BigTopFlyer.png">
-        <span class="nav-tag tag-asset">Asset</span>
-        <div class="nav-entry-text">
-          <span class="nav-entry-name">Big Top Flyer</span>
-          <span class="nav-entry-desc">Carnival flyer art</span>
-        </div>
-        <span class="nav-arrow">→</span>
-      </a>
-    </div>
-  </div>
-
+  <div id="navRoot"><p class="loading">Loading…</p></div>
 </div>
+
+<script>
+  const BASE = 'https://pnewnan.github.io/dnd5e-artifacts/';
+
+  fetch(BASE + 'nav.json')
+    .then(function(r) { return r.json(); })
+    .then(renderIndex)
+    .catch(function() {
+      document.getElementById('navRoot').innerHTML = '<p class="loading">Navigation unavailable — check console.</p>';
+    });
+
+  function renderIndex(data) {
+    var DIVIDERS = ['✦', '⁂', '✦', '⁂'];
+    var html = '';
+    data.sections.forEach(function(sec, i) {
+      if (i > 0) html += '<div class="divider"><span>' + (DIVIDERS[i] || '✦') + '</span></div>';
+      html += '<div class="nav-section">'
+            + '<div class="nav-section-head">' + sec.title + '</div>'
+            + '<div class="nav-entries">';
+      sec.entries.forEach(function(e) {
+        var tgt = e.type === 'asset' ? ' target="_blank"' : '';
+        html += '<a class="nav-entry ' + e.type + '" href="' + BASE + e.href + '"' + tgt + '>'
+              + '<span class="nav-tag tag-' + e.type + '">' + e.type + '</span>'
+              + '<div class="nav-entry-text">'
+              + '<span class="nav-entry-name">' + e.name + '</span>'
+              + '<span class="nav-entry-desc">' + e.desc + '</span>'
+              + '</div>'
+              + '<span class="nav-arrow">→</span>'
+              + '</a>';
+      });
+      html += '</div></div>';
+    });
+    document.getElementById('navRoot').innerHTML = html;
+  }
+</script>
 </body>
 </html>

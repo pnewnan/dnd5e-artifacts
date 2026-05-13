@@ -1,0 +1,79 @@
+{
+  "sections": [
+    {
+      "title": "Campaign Opening",
+      "entries": [
+        {
+          "name": "It Happened A Long Time Ago",
+          "desc": "Opening prose · Hollowgate · 13 Amberfell, Year 313",
+          "href": "hollowgate_opening.html",
+          "type": "player"
+        },
+        {
+          "name": "The Chronicles",
+          "desc": "Voiceover & session recaps — Introduction · Session 1",
+          "href": "chronicles.html",
+          "type": "player"
+        }
+      ]
+    },
+    {
+      "title": "Hollowgate",
+      "entries": [
+        {
+          "name": "Hollowgate GM Reference",
+          "desc": "Eric Huwithakay · Vanya's mission · Aurelia's briefing · Town map · All arc links",
+          "href": "hollowgate/hollowgate_gm_reference.html",
+          "type": "gm"
+        },
+        {
+          "name": "Missing Convoys Arc",
+          "desc": "Kobold investigation · Robyn · Krobb · The Chieftain · The Cavehopper · Eric's body",
+          "href": "hollowgate/missing_convoys/missing_convoys_arc.html",
+          "type": "gm"
+        },
+        {
+          "name": "The Tunnels",
+          "desc": "Player handout · Kobold cavern atmosphere",
+          "href": "hollowgate/missing_convoys/pit_trap.png",
+          "type": "asset"
+        },
+        {
+          "name": "Krobb's Trap Map",
+          "desc": "Player handout · Kobold cavern traps · \"If you read this, you're probably dead.\"",
+          "href": "hollowgate/missing_convoys/trap_map.png",
+          "type": "asset"
+        }
+      ]
+    },
+    {
+      "title": "Moonlit Mirage Carnival",
+      "entries": [
+        {
+          "name": "Prize Counter & Curiosities",
+          "desc": "Shop listing — trinkets, mid-tier curiosities, and big ticket items",
+          "href": "hollowgate/moonlit_mirage/moonlit_mirage_shop.html",
+          "type": "player"
+        },
+        {
+          "name": "Carnival Arc Reference",
+          "desc": "Phase One & Two · NPCs · Perception checks · Grand performance · Encounter overview",
+          "href": "hollowgate/moonlit_mirage/moonlit_mirage_arc.html",
+          "type": "gm"
+        },
+        {
+          "name": "Pallor Brood — Encounter",
+          "desc": "Full encounter reference — stat blocks, phase structure, environmental interaction",
+          "href": "hollowgate/moonlit_mirage/moonlit_mirage_encounter.html",
+          "type": "gm"
+        },
+        {
+          "name": "Big Top Flyer",
+          "desc": "Carnival flyer art",
+          "href": "hollowgate/moonlit_mirage/BigTopFlyer.png",
+          "type": "asset"
+        }
+      ]
+    }
+  ]
+}

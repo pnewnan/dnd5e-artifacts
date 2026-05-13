@@ -1203,9 +1203,9 @@
     });
   });
 </script>
-  <!-- NAV BAR -->
-  <div style="position:fixed;bottom:1rem;right:1rem;z-index:999;">
-    <a href="../../index.html" style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;background:rgba(13,10,6,0.88);border:1px solid rgba(180,140,60,0.4);padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);display:block;transition:color 0.2s;" onmouseover="this.style.color='rgba(242,232,200,1)'" onmouseout="this.style.color='rgba(242,232,200,0.7)'">☰ All Pages</a>
-  </div>
+  <!-- NAV PANEL -->
+  <div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
+  <div id="aelNavBtn" onclick="aelNavOpen()" style="position:fixed;bottom:1rem;right:1rem;z-index:1001;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(13,10,6,0.88);border:1px solid rgba(180,140,60,0.4);padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);cursor:pointer;user-select:none;transition:color 0.2s;" onmouseover="this.style.color='rgba(242,232,200,1)'" onmouseout="this.style.color='rgba(242,232,200,0.7)'">&#9776; All Pages</div>
+  <script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
 </body>
 </html>
