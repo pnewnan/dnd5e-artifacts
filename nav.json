@@ -4,6 +4,12 @@
       "title": "Campaign Opening",
       "entries": [
         {
+          "name": "Table of Contents",
+          "desc": "Full site index — all arcs, pages, and assets",
+          "href": "index.html",
+          "type": "player"
+        },
+        {
           "name": "It Happened A Long Time Ago",
           "desc": "Opening prose · Hollowgate · 13 Amberfell, Year 313",
           "href": "hollowgate_opening.html",
@@ -25,6 +31,7 @@
     },
     {
       "title": "Hollowgate",
+      "group": "The Prologue",
       "entries": [
         {
           "name": "Hollowgate GM Reference",
@@ -54,6 +61,7 @@
     },
     {
       "title": "Moonlit Mirage Carnival",
+      "group": "The Prologue",
       "entries": [
         {
           "name": "Prize Counter & Curiosities",

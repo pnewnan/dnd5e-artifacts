@@ -57,48 +57,77 @@
     });
   }
 
+  function _renderSec(sec,i){
+    var id='ael'+i;
+    var h='<div style="margin-bottom:0.3rem;">'
+      +'<div class="ael-acc-hdr open" id="'+id+'h" onclick="_aelToggle(\''+id+'\')">'
+      +'<span class="ael-acc-title">'+sec.title+'</span>'
+      +'<span class="ael-acc-chev">▲</span>'
+      +'</div>'
+      +'<div class="ael-acc-body open" id="'+id+'b">'
+      +'<div class="ael-acc-entries">';
+    sec.entries.forEach(function(e){
+      var t=_T[e.type]||_T.player;
+      var tgt=e.type==='asset'?' target="_blank"':'';
+      h+='<a href="'+_B+e.href+'"'+tgt
+        +' style="display:block;padding:0.42rem 0.5rem;border:1px solid rgba(180,140,60,0.1);'
+        +'border-left:3px solid '+t[1]+';background:rgba(242,232,200,0.02);'
+        +'text-decoration:none;transition:background 0.15s;"'
+        +' onmouseover="this.style.background=\'rgba(242,232,200,0.06)\'"'
+        +' onmouseout="this.style.background=\'rgba(242,232,200,0.02)\'">'
+        +'<span style="font-family:\'Cinzel\',serif;font-size:0.48rem;letter-spacing:0.1em;'
+        +'text-transform:uppercase;padding:0.05rem 0.25rem;border-radius:2px;'
+        +'background:'+t[0]+';color:'+t[1]+';border:1px solid '+t[2]+';">'+e.type+'</span>'
+        +'<span style="display:block;font-family:\'Cinzel\',serif;font-size:0.72rem;'
+        +'font-weight:600;color:rgba(242,232,200,0.88);margin-top:0.18rem;">'+e.name+'</span>'
+        +'<span style="display:block;font-family:\'IM Fell English\',serif;font-style:italic;'
+        +'font-size:0.68rem;color:rgba(242,232,200,0.38);margin-top:0.06rem;line-height:1.3;">'
+        +e.desc+'</span>'
+        +'</a>';
+    });
+    h+='</div></div></div>';
+    return h;
+  }
+
   function _render(data){
+    var ungrouped=[];
+    var arcMap={};
+    var arcOrder=[];
+    data.sections.forEach(function(sec){
+      if(sec.group){
+        if(!arcMap[sec.group]){arcMap[sec.group]=[];arcOrder.push(sec.group);}
+        arcMap[sec.group].push(sec);
+      }else{ungrouped.push(sec);}
+    });
+
     var html='';
-    data.sections.forEach(function(sec,i){
-      var id='ael'+i;
-      html+='<div style="margin-bottom:0.4rem;">'
-        +'<div class="ael-acc-hdr open" id="'+id+'h" onclick="_aelToggle('+i+')">'
-        +'<span class="ael-acc-title">'+sec.title+'</span>'
+    var idx=0;
+
+    ungrouped.forEach(function(sec){html+=_renderSec(sec,idx++);});
+
+    arcOrder.forEach(function(arcName,ai){
+      var aid='aelarc'+ai;
+      html+='<div style="margin-bottom:0.4rem;border:1px solid rgba(180,140,60,0.2);">'
+        +'<div class="ael-acc-hdr open" id="'+aid+'h" onclick="_aelToggle(\''+aid+'\')" '
+        +'style="background:rgba(180,140,60,0.08);">'
+        +'<span style="font-family:\'Cinzel\',serif;font-size:0.6rem;letter-spacing:0.15em;'
+        +'color:rgba(200,80,80,0.8);">'+arcName+'</span>'
         +'<span class="ael-acc-chev">▲</span>'
         +'</div>'
-        +'<div class="ael-acc-body open" id="'+id+'b">'
-        +'<div class="ael-acc-entries">';
-      sec.entries.forEach(function(e){
-        var t=_T[e.type]||_T.player;
-        var tgt=e.type==='asset'?' target="_blank"':'';
-        html+='<a href="'+_B+e.href+'"'+tgt
-          +' style="display:block;padding:0.42rem 0.5rem;border:1px solid rgba(180,140,60,0.1);'
-          +'border-left:3px solid '+t[1]+';background:rgba(242,232,200,0.02);'
-          +'text-decoration:none;transition:background 0.15s;"'
-          +' onmouseover="this.style.background=\'rgba(242,232,200,0.06)\'"'
-          +' onmouseout="this.style.background=\'rgba(242,232,200,0.02)\'">'
-          +'<span style="font-family:\'Cinzel\',serif;font-size:0.48rem;letter-spacing:0.1em;'
-          +'text-transform:uppercase;padding:0.05rem 0.25rem;border-radius:2px;'
-          +'background:'+t[0]+';color:'+t[1]+';border:1px solid '+t[2]+';">'+e.type+'</span>'
-          +'<span style="display:block;font-family:\'Cinzel\',serif;font-size:0.72rem;'
-          +'font-weight:600;color:rgba(242,232,200,0.88);margin-top:0.18rem;">'+e.name+'</span>'
-          +'<span style="display:block;font-family:\'IM Fell English\',serif;font-style:italic;'
-          +'font-size:0.68rem;color:rgba(242,232,200,0.38);margin-top:0.06rem;line-height:1.3;">'
-          +e.desc+'</span>'
-          +'</a>';
-      });
+        +'<div class="ael-acc-body open" id="'+aid+'b">'
+        +'<div style="padding:0.35rem 0.4rem 0.4rem;display:flex;flex-direction:column;gap:0.3rem;">';
+      arcMap[arcName].forEach(function(sec){html+=_renderSec(sec,idx++);});
       html+='</div></div></div>';
     });
+
     document.getElementById('aelNavContent').innerHTML=html;
   }
 
-  window._aelToggle=function(i){
-    var h=document.getElementById('ael'+i+'h');
-    var b=document.getElementById('ael'+i+'b');
-    if(b.classList.contains('open')){
-      b.classList.remove('open');h.classList.remove('open');
-    }else{
-      b.classList.add('open');h.classList.add('open');
-    }
+  window._aelToggle=function(id){
+    var h=document.getElementById(id+'h');
+    var b=document.getElementById(id+'b');
+    var open=b.classList.contains('open');
+    b.classList.toggle('open',!open);
+    h.classList.toggle('open',!open);
   };
 })();

@@ -63,47 +63,74 @@
     margin-top: 0.4rem;
   }
 
-  /* Accordion section */
-  .acc-section { margin-bottom: 0.6rem; border: 1px solid rgba(180,140,60,0.2); }
-  .acc-header {
+  /* Arc (outer accordion) */
+  .arc-section { margin-bottom: 0.8rem; border: 1px solid rgba(180,140,60,0.25); }
+  .arc-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.65rem 1rem;
+    padding: 0.7rem 1rem;
     cursor: pointer;
-    background: rgba(180,140,60,0.06);
+    background: rgba(180,140,60,0.08);
     border-bottom: 1px solid transparent;
     transition: background 0.15s;
     user-select: none;
   }
-  .acc-header:hover { background: rgba(180,140,60,0.12); }
-  .acc-header.open { background: rgba(180,140,60,0.1); border-bottom-color: rgba(180,140,60,0.2); }
-  .acc-title {
-    font-family: 'Cinzel', serif;
+  .arc-header:hover { background: rgba(180,140,60,0.14); }
+  .arc-header.open { border-bottom-color: rgba(180,140,60,0.2); }
+  .arc-title {
+    font-family: 'Cinzel Decorative', cursive;
     font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--purple);
+    letter-spacing: 0.1em;
+    color: var(--blood);
   }
-  .acc-chevron {
+  .arc-chevron {
     font-size: 0.65rem;
     color: var(--parchment-shadow);
     transition: transform 0.22s ease;
     line-height: 1;
   }
-  .acc-header.open .acc-chevron { transform: rotate(180deg); }
+  .arc-header.open .arc-chevron { transform: rotate(180deg); }
+  .arc-body { overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
+  .arc-body.open { max-height: 4000px; }
+  .arc-body-inner { padding: 0.6rem 0.7rem 0.7rem; display: flex; flex-direction: column; gap: 0.5rem; }
 
-  .acc-body {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.28s ease, padding 0.2s ease;
+  /* Inner accordion section */
+  .acc-section { border: 1px solid rgba(180,140,60,0.18); }
+  .acc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.55rem 0.85rem;
+    cursor: pointer;
+    background: rgba(180,140,60,0.04);
+    border-bottom: 1px solid transparent;
+    transition: background 0.15s;
+    user-select: none;
   }
+  .acc-header:hover { background: rgba(180,140,60,0.1); }
+  .acc-header.open { background: rgba(180,140,60,0.08); border-bottom-color: rgba(180,140,60,0.18); }
+  .acc-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple);
+  }
+  .acc-chevron {
+    font-size: 0.6rem;
+    color: var(--parchment-shadow);
+    transition: transform 0.22s ease;
+    line-height: 1;
+  }
+  .acc-header.open .acc-chevron { transform: rotate(180deg); }
+  .acc-body { overflow: hidden; max-height: 0; transition: max-height 0.28s ease; }
   .acc-body.open { max-height: 1200px; }
   .acc-entries {
     display: flex;
     flex-direction: column;
     gap: 0;
-    padding: 0.5rem 0.6rem 0.6rem;
+    padding: 0.4rem 0.5rem 0.5rem;
   }
 
   /* Entries */
@@ -217,43 +244,83 @@
     });
 
   function renderIndex(data) {
+    // Separate ungrouped sections from grouped ones
+    var ungrouped = [];
+    var arcMap = {}; // preserve insertion order
+    var arcOrder = [];
+    data.sections.forEach(function(sec) {
+      if (sec.group) {
+        if (!arcMap[sec.group]) { arcMap[sec.group] = []; arcOrder.push(sec.group); }
+        arcMap[sec.group].push(sec);
+      } else {
+        ungrouped.push(sec);
+      }
+    });
+
     var html = '';
-    data.sections.forEach(function(sec, i) {
-      var id = 'acc' + i;
-      html += '<div class="acc-section">'
-            + '<div class="acc-header open" id="hdr' + i + '" onclick="toggleAcc(' + i + ')">'
-            + '<span class="acc-title">' + sec.title + '</span>'
-            + '<span class="acc-chevron">▲</span>'
+    var idx = 0;
+
+    // Render ungrouped sections first (Campaign Opening etc.)
+    ungrouped.forEach(function(sec) {
+      html += renderSection(sec, idx++);
+    });
+
+    // Render arc groups
+    arcOrder.forEach(function(arcName, ai) {
+      var arcId = 'arc' + ai;
+      html += '<div class="arc-section">'
+            + '<div class="arc-header open" id="' + arcId + 'h" onclick="toggleArc(' + ai + ')">'
+            + '<span class="arc-title">' + arcName + '</span>'
+            + '<span class="arc-chevron">▲</span>'
             + '</div>'
-            + '<div class="acc-body open" id="body' + i + '">'
-            + '<div class="acc-entries">';
-      sec.entries.forEach(function(e) {
-        var tgt = e.type === 'asset' ? ' target="_blank"' : '';
-        html += '<a class="nav-entry ' + e.type + '" href="' + BASE + e.href + '"' + tgt + '>'
-              + '<span class="nav-tag tag-' + e.type + '">' + e.type + '</span>'
-              + '<div class="nav-entry-text">'
-              + '<span class="nav-entry-name">' + e.name + '</span>'
-              + '<span class="nav-entry-desc">' + e.desc + '</span>'
-              + '</div>'
-              + '<span class="nav-arrow">→</span>'
-              + '</a>';
+            + '<div class="arc-body open" id="' + arcId + 'b">'
+            + '<div class="arc-body-inner">';
+      arcMap[arcName].forEach(function(sec) {
+        html += renderSection(sec, idx++);
       });
       html += '</div></div></div>';
     });
+
     document.getElementById('navRoot').innerHTML = html;
+  }
+
+  function renderSection(sec, i) {
+    var html = '<div class="acc-section">'
+      + '<div class="acc-header open" id="hdr' + i + '" onclick="toggleAcc(' + i + ')">'
+      + '<span class="acc-title">' + sec.title + '</span>'
+      + '<span class="acc-chevron">▲</span>'
+      + '</div>'
+      + '<div class="acc-body open" id="body' + i + '">'
+      + '<div class="acc-entries">';
+    sec.entries.forEach(function(e) {
+      var tgt = e.type === 'asset' ? ' target="_blank"' : '';
+      html += '<a class="nav-entry ' + e.type + '" href="' + BASE + e.href + '"' + tgt + '>'
+            + '<span class="nav-tag tag-' + e.type + '">' + e.type + '</span>'
+            + '<div class="nav-entry-text">'
+            + '<span class="nav-entry-name">' + e.name + '</span>'
+            + '<span class="nav-entry-desc">' + e.desc + '</span>'
+            + '</div>'
+            + '<span class="nav-arrow">→</span>'
+            + '</a>';
+    });
+    html += '</div></div></div>';
+    return html;
   }
 
   function toggleAcc(i) {
     var hdr  = document.getElementById('hdr'  + i);
     var body = document.getElementById('body' + i);
-    var isOpen = body.classList.contains('open');
-    if (isOpen) {
-      body.classList.remove('open');
-      hdr.classList.remove('open');
-    } else {
-      body.classList.add('open');
-      hdr.classList.add('open');
-    }
+    var open = body.classList.contains('open');
+    body.classList.toggle('open', !open);
+    hdr.classList.toggle('open', !open);
+  }
+
+  function toggleArc(ai) {
+    var h = document.getElementById('arc' + ai + 'h');
+    var b = document.getElementById('arc' + ai + 'b');
+    var open = b.classList.contains('open');
+    b.classList.toggle('open', !open);
+    h.classList.toggle('open', !open);
   }
 </script>
 </body>
