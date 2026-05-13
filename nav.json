@@ -14,6 +14,12 @@
           "desc": "Voiceover & session recaps — Introduction · Session 1",
           "href": "chronicles.html",
           "type": "player"
+        },
+        {
+          "name": "Image Gallery",
+          "desc": "All campaign art in narrative order — scroll through every handout, map, and creature",
+          "href": "gallery.html",
+          "type": "player"
         }
       ]
     },

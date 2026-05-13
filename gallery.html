@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aelenthor — Image Gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0806;
+    color: #f2e8c9;
+    font-family: 'Cormorant Garamond', serif;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* ── STAGE ── */
+  #stage {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .slide img {
+    max-width: 100vw;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* ── CAPTION ── */
+  #caption {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.2rem 5rem 1.2rem 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  #caption-section {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(180,140,60,0.7);
+    margin-bottom: 0.2rem;
+  }
+  #caption-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(242,232,200,0.9);
+    line-height: 1.2;
+  }
+
+  /* ── COUNTER ── */
+  #counter {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: rgba(242,232,200,0.35);
+    transition: opacity 0.3s;
+  }
+
+  /* ── NAV ARROWS ── */
+  .nav-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(242,232,200,0.25);
+    font-size: 1.6rem;
+    transition: color 0.2s, background 0.2s;
+    border-radius: 2px;
+    z-index: 10;
+  }
+  .nav-arrow:hover {
+    color: rgba(242,232,200,0.85);
+    background: rgba(180,140,60,0.1);
+  }
+  #prev { left: 0.5rem; }
+  #next { right: 0.5rem; }
+
+  /* ── SECTION DIVIDER SLIDES ── */
+  .divider-slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, #1a1209 0%, #0a0806 70%);
+  }
+  .divider-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .divider-slide .div-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(180,140,60,0.5);
+    margin-bottom: 0.8rem;
+  }
+  .divider-slide .div-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    color: rgba(242,232,200,0.85);
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+  .divider-slide .div-rule {
+    width: 8rem;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(180,140,60,0.5), transparent);
+    margin-top: 1rem;
+  }
+
+  /* hide chrome on divider slides */
+  body.on-divider #caption,
+  body.on-divider #counter { opacity: 0; }
+</style>
+</head>
+<body>
+
+<div id="stage"></div>
+
+<div id="caption">
+  <div id="caption-section"></div>
+  <div id="caption-title"></div>
+</div>
+
+<div id="counter"></div>
+
+<div class="nav-arrow" id="prev" onclick="go(-1)">&#8249;</div>
+<div class="nav-arrow" id="next" onclick="go(1)">&#8250;</div>
+
+<!-- NAV PANEL -->
+<div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
+<div id="aelNavBtn" onclick="aelNavOpen()" style="position:fixed;bottom:1rem;right:1rem;z-index:1001;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(13,10,6,0.88);border:1px solid rgba(180,140,60,0.4);padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);cursor:pointer;user-select:none;transition:color 0.2s;" onmouseover="this.style.color='rgba(242,232,200,1)'" onmouseout="this.style.color='rgba(242,232,200,0.7)'">&#9776; All Pages</div>
+<script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
+
+<script>
+const BASE = 'https://pnewnan.github.io/dnd5e-artifacts/';
+
+const SLIDES = [
+  // ── HOLLOWGATE ──
+  { type: 'divider', title: 'Hollowgate' },
+  { src: 'hollowgate/hollowgate_map.png',                         title: 'Hollowgate',                    section: 'The Town' },
+
+  // ── MISSING CONVOYS ──
+  { type: 'divider', title: 'The Missing Convoys' },
+  { src: 'hollowgate/missing_convoys/kobolds.png',                title: 'Kobolds of Aelanthar',          section: 'Missing Convoys Arc' },
+  { src: 'hollowgate/missing_convoys/robyn.png',                  title: 'Robyn',                         section: 'Missing Convoys Arc' },
+  { src: 'hollowgate/missing_convoys/krobb_guard.png',            title: 'Krobb',                         section: 'Missing Convoys Arc' },
+  { src: 'hollowgate/missing_convoys/trap_map.png',               title: "Krobb's Trap Map",              section: 'Missing Convoys Arc' },
+  { src: 'hollowgate/missing_convoys/pit_trap.png',               title: 'The Tunnels',                   section: 'Missing Convoys Arc' },
+  { src: 'hollowgate/missing_convoys/chieftain.png',              title: 'The Chieftain',                 section: 'Missing Convoys Arc' },
+  { src: 'hollowgate/missing_convoys/cavehopper-page.png',        title: 'The Cavehopper',                section: 'Missing Convoys Arc' },
+
+  // ── MOONLIT MIRAGE ──
+  { type: 'divider', title: 'The Moonlit Mirage' },
+  { src: 'hollowgate/moonlit_mirage/BigTopFlyer.png',             title: 'The Moonlit Mirage Carnival',   section: 'Moonlit Mirage' },
+  { src: 'hollowgate/moonlit_mirage/mm_poster.png',               title: 'Carnival Poster',               section: 'Moonlit Mirage' },
+  { src: 'hollowgate/moonlit_mirage/allitems.png',                title: 'Prize Counter & Curiosities',   section: 'Moonlit Mirage' },
+
+  // ── THE PALLOR ──
+  { type: 'divider', title: 'The Pallor' },
+  { src: 'hollowgate/moonlit_mirage/the_pallid_larvae.png',       title: 'The Pallor Brood',              section: 'The Pallor' },
+  { src: 'hollowgate/moonlit_mirage/velvet_husk.png',             title: 'Velvet Husk',                   section: 'The Pallor' },
+  { src: 'hollowgate/moonlit_mirage/gorged_lanternling.png',      title: 'Gorged Lanternling',            section: 'The Pallor' },
+  { src: 'hollowgate/moonlit_mirage/lantern_broodmother.png',     title: 'Lantern Broodmother',           section: 'The Pallor' },
+  { src: 'hollowgate/moonlit_mirage/pallid_mites.png',            title: 'Pallid Mites',                  section: 'The Pallor' },
+
+  // ── CARNIVAL WARES ──
+  { type: 'divider', title: 'Carnival Wares' },
+  { src: 'hollowgate/moonlit_mirage/feathered_brass_sun_catcher.png',  title: 'Feathered Brass Sun Catcher',  section: 'Shiny Objects' },
+  { src: 'hollowgate/moonlit_mirage/glowmoth_jar.png',                 title: 'Glowmoth Jar',                 section: 'Shiny Objects' },
+  { src: 'hollowgate/moonlit_mirage/iridescent_flight_stones.png',     title: 'Iridescent Flight Stones',     section: 'Shiny Objects' },
+  { src: 'hollowgate/moonlit_mirage/mirrorfeather_hair_pins.png',      title: 'Mirrorfeather Hair Pins',      section: 'Shiny Objects' },
+  { src: 'hollowgate/moonlit_mirage/pocket_kaleidoscope.png',          title: 'Pocket Kaleidoscope',          section: 'Shiny Objects' },
+  { src: 'hollowgate/moonlit_mirage/glass_musicbox.png',               title: 'Glass Music Box',              section: 'Mid-Tier Curiosities' },
+  { src: 'hollowgate/moonlit_mirage/moonglassharp.png',                title: 'Moonglass Harp',               section: 'Mid-Tier Curiosities' },
+  { src: 'hollowgate/moonlit_mirage/spyglass.png',                     title: 'Spyglass',                     section: 'Mid-Tier Curiosities' },
+  { src: 'hollowgate/moonlit_mirage/whispering_compass.png',           title: 'Whispering Compass',           section: 'Mid-Tier Curiosities' },
+  { src: 'hollowgate/moonlit_mirage/griffon_riders_bridle.png',        title: "Griffon Rider's Bridle",       section: 'Mid-Tier Curiosities' },
+  { src: 'hollowgate/moonlit_mirage/maskofthelaughingcourt.png',       title: 'Mask of the Laughing Court',   section: 'Big Ticket' },
+  { src: 'hollowgate/moonlit_mirage/starfall_feather_cloak.png',       title: 'Starfall Feather Cloak',       section: 'Big Ticket' },
+  { src: 'hollowgate/moonlit_mirage/marionettenoble.png',              title: 'Marionette Noble',             section: 'Big Ticket' },
+  { src: 'hollowgate/moonlit_mirage/preserved_raven.png',              title: 'Preserved Raven',              section: 'Big Ticket' },
+  { src: 'hollowgate/moonlit_mirage/gilded_egg.png',                   title: 'Gilded Egg',                   section: 'Big Ticket' },
+  { src: 'hollowgate/moonlit_mirage/painted_wooden_moon_whistle.png',  title: 'Moon Whistle',                 section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/brass_spinning_top.png',           title: 'Brass Spinning Top',           section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/tin_bell_charm.png',               title: 'Tin Bell Charm',               section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/mini_lantern_charm.png',           title: 'Mini Lantern Charm',           section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/painted_paper_mask.png',           title: 'Painted Paper Mask',           section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/wax_fortune_slips.png',            title: 'Wax Fortune Slips',            section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/folded_paper_shadow_puppets.png',  title: 'Folded Paper Shadow Puppets',  section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/river_stone_dice.png',             title: 'River Stone Dice',             section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/cheap_mirrored_pendant.png',       title: 'Cheap Mirrored Pendant',       section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/carnival_token_coin.png',          title: 'Carnival Token Coin',          section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/stuffed_mini_owlbear.png',         title: 'Stuffed Mini Owlbear',         section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/sugar_glass_candy_birds.png',      title: 'Sugar Glass Candy Birds',      section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/candied_fire_nuts.png',            title: 'Candied Fire Nuts',            section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/bone_and_string_wind_spinner.png', title: 'Bone & String Wind Spinner',   section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/little_carved_griffon.png',        title: 'Little Carved Griffon',        section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/aerie_bells.png',                  title: 'Aerie Bells',                  section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/silver_sky_chimes.png',            title: 'Silvered Sky Chimes',          section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/tiny_clockwork_beetle.png',        title: 'Tiny Clockwork Beetle',        section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/tiny_puppet_marionette.png',       title: 'Tiny Puppet Marionette',       section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/welvet_ribbon_bracelet.png',       title: 'Velvet Ribbon Bracelet',       section: 'Trinkets' },
+  { src: 'hollowgate/moonlit_mirage/dwarven_ale_stein.png',            title: 'Dwarven Ale Stein',            section: 'Trinkets' },
+];
+
+// Count only image slides for the counter
+const imgSlides = SLIDES.filter(s => !s.type);
+let current = 0;
+let imgCounter = 0;
+
+function buildStage() {
+  const stage = document.getElementById('stage');
+  SLIDES.forEach((slide, i) => {
+    if (slide.type === 'divider') {
+      const el = document.createElement('div');
+      el.className = 'divider-slide';
+      el.dataset.index = i;
+      el.innerHTML = `<div class="div-label">Aelenthor Campaign</div><div class="div-title">${slide.title}</div><div class="div-rule"></div>`;
+      stage.appendChild(el);
+    } else {
+      const el = document.createElement('div');
+      el.className = 'slide';
+      el.dataset.index = i;
+      const img = document.createElement('img');
+      img.src = BASE + slide.src;
+      img.alt = slide.title;
+      el.appendChild(img);
+      stage.appendChild(el);
+    }
+  });
+}
+
+function show(index) {
+  // clamp
+  if (index < 0) index = 0;
+  if (index >= SLIDES.length) index = SLIDES.length - 1;
+  current = index;
+
+  document.querySelectorAll('.slide, .divider-slide').forEach(el => el.classList.remove('active'));
+  const target = document.querySelector(`[data-index="${current}"]`);
+  if (target) target.classList.add('active');
+
+  const slide = SLIDES[current];
+  if (slide.type === 'divider') {
+    document.body.classList.add('on-divider');
+  } else {
+    document.body.classList.remove('on-divider');
+    document.getElementById('caption-section').textContent = slide.section;
+    document.getElementById('caption-title').textContent = slide.title;
+    // update counter using only image slides
+    const imgIndex = imgSlides.indexOf(slide);
+    document.getElementById('counter').textContent = `${imgIndex + 1} / ${imgSlides.length}`;
+  }
+
+  document.getElementById('prev').style.opacity = current === 0 ? '0.2' : '1';
+  document.getElementById('next').style.opacity = current === SLIDES.length - 1 ? '0.2' : '1';
+}
+
+function go(dir) {
+  show(current + dir);
+}
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp')  go(-1);
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
+});
+
+// Touch swipe
+let touchX = null;
+document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  if (touchX === null) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+  touchX = null;
+});
+
+buildStage();
+show(0);
+</script>
+</body>
+</html>
