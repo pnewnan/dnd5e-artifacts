@@ -727,6 +727,10 @@
         <button class="filter-btn act-btn"        data-act="act-2"     onclick="setActFilter('act-2', this)">Act II</button>
       </div>
     </div>
+    <div class="view-toggle">
+      <button class="view-btn active" id="btnRef" onclick="switchView('ref')">&#9632; Reference</button>
+      <button class="view-btn" id="btnFlow" onclick="switchView('flow')">&#9654; Story Flow</button>
+    </div>
   </div>
 </header>
 
@@ -735,12 +739,19 @@
   <button onclick="clearArcFocus()">✕ Clear focus</button>
 </div>
 
-<main class="main">
-  <div class="results-count" id="resultsCount">Loading…</div>
-  <div class="card-grid" id="cardGrid">
-    <div class="empty-state">Loading campaign data…</div>
+<div id="refView">
+  <main class="main">
+    <div class="results-count" id="resultsCount">Loading…</div>
+    <div class="card-grid" id="cardGrid">
+      <div class="empty-state">Loading campaign data…</div>
+    </div>
+  </main>
+</div>
+<div id="flowView">
+  <div class="flow-scroll">
+    <div class="flow-inner" id="flowInner"></div>
   </div>
-</main>
+</div>
 
 <script>
 const BASE = 'https://pnewnan.github.io/dnd5e-artifacts/';
@@ -751,6 +762,8 @@ var activeAct  = 'all';
 var expandedId = null;
 var focusedArcId = null;
 var focusedRelatedIds = new Set();
+var currentView = 'ref';
+var openBeats = {};
 
 fetch(BASE + 'campaign.json')
   .then(function(r) { return r.json(); })
@@ -762,6 +775,16 @@ fetch(BASE + 'campaign.json')
     document.getElementById('cardGrid').innerHTML =
       '<div class="empty-state">Could not load campaign.json — check console.</div>';
   });
+
+/* ── View switching ── */
+function switchView(v) {
+  currentView = v;
+  document.getElementById('btnRef').classList.toggle('active', v === 'ref');
+  document.getElementById('btnFlow').classList.toggle('active', v === 'flow');
+  document.getElementById('refView').classList.toggle('hidden', v !== 'ref');
+  document.getElementById('flowView').classList.toggle('visible', v === 'flow');
+  if (v === 'flow') renderFlowView();
+}
 
 /* ── Filtering ── */
 function setTypeFilter(type, btn) {
@@ -842,6 +865,7 @@ function render() {
   }
 
   grid.innerHTML = filtered.map(function(e) { return buildCard(e); }).join('');
+  if (currentView === 'flow') renderFlowView();
 }
 
 /* ── Card builder ── */
@@ -1030,6 +1054,125 @@ function buildEntityBody(e) {
     + field('Destruction of Caldrath', e.caldrath)
     + field('Relevance to Campaign', e.relevance_to_campaign)
     + field('The Army', e.army ? JSON.stringify(e.army, null, 2).replace(/[{}"]/g,'').replace(/,/g,'') : '');
+}
+
+/* ── Story Flow renderer ── */
+function renderFlowView() {
+  if (!DATA) return;
+  var arcs = (DATA.arcs || []).filter(function(arc) {
+    if (activeAct === 'all') return true;
+    var acts = tagsToActs(arc.arc_tags || [arc.act]);
+    return acts.indexOf(activeAct) !== -1;
+  });
+
+  var inner = document.getElementById('flowInner');
+  if (!arcs.length) {
+    inner.innerHTML = '<div style="color:rgba(180,140,60,0.4);font-family:\'Cinzel\',serif;font-size:0.78rem;padding:2rem;font-style:italic;">No arcs match the current filters.</div>';
+    return;
+  }
+
+  inner.innerHTML = arcs.map(function(arc, idx) {
+    var isLast = idx === arcs.length - 1;
+    var connector = !isLast
+      ? '<div class="flow-arc-connector"><div class="flow-connector-line"></div></div>'
+      : '';
+
+    var refLinks = '';
+    if (arc.pages && arc.pages.length) {
+      refLinks = arc.pages.map(function(p) {
+        return '<a class="flow-arc-ref" href="' + BASE + p.href + '" onclick="event.stopPropagation()">' + esc(p.label) + '</a>';
+      }).join('<span style="color:rgba(242,232,200,0.2);margin:0 0.2rem;">·</span>');
+    } else if (arc.href) {
+      refLinks = '<a class="flow-arc-ref" href="' + BASE + arc.href + '" onclick="event.stopPropagation()">Ref →</a>';
+    }
+
+    var beats = (arc.beats || []).map(function(beat) {
+      return renderBeat(beat);
+    }).join('');
+
+    return '<div class="flow-arc">'
+      + '<div class="flow-arc-header" onclick="toggleFlowArcFocus(\'' + arc.id + '\')" title="Click to view in Reference grid">'
+        + '<span>' + esc(arc.title) + '</span>'
+        + (refLinks ? '<span>' + refLinks + '</span>' : '')
+      + '</div>'
+      + '<div class="flow-beats">' + (beats || '<div style="padding:0.5rem 0.7rem;font-style:italic;font-size:0.7rem;color:var(--faded);">No beats defined</div>') + '</div>'
+      + '</div>'
+      + connector;
+  }).join('');
+}
+
+function renderBeat(beat) {
+  var isOpen = !!openBeats[beat.id];
+  var typeClass = 'beat-type-' + (beat.type || 'scene');
+
+  var steps = (beat.steps || []).map(function(step) {
+    var npcRefs = (step.npc_refs || []).map(function(npcId) {
+      var npc = findEntry(npcId);
+      var label = npc ? npc.name : npcId;
+      return '<span class="flow-ref-chip npc" onclick="event.stopPropagation();jumpToRef(\'' + npcId + '\')" title="Jump to ' + esc(label) + ' in Reference">' + esc(label) + '</span>';
+    }).join('');
+    var artRefs = (step.artifact_refs || []).map(function(artId) {
+      var art = findEntry(artId);
+      var label = art ? art.name : artId;
+      return '<span class="flow-ref-chip artifact" onclick="event.stopPropagation();jumpToRef(\'' + artId + '\')" title="Jump to ' + esc(label) + ' in Reference">' + esc(label) + '</span>';
+    }).join('');
+    var refs = (npcRefs || artRefs) ? '<div class="flow-step-refs">' + npcRefs + artRefs + '</div>' : '';
+    var stepType = step.type ? '<div class="flow-step-type">' + esc(step.type) + '</div>' : '';
+    return '<div class="flow-step">'
+      + stepType
+      + '<div class="flow-step-label">' + esc(step.label) + '</div>'
+      + refs
+      + '</div>';
+  }).join('');
+
+  return '<div class="flow-beat' + (isOpen ? ' open' : '') + '" id="beat-' + beat.id + '">'
+    + '<div class="flow-beat-header" onclick="event.stopPropagation();toggleBeat(\'' + beat.id + '\')">'
+      + '<span class="flow-beat-type ' + typeClass + '">' + esc(beat.type || 'scene') + '</span>'
+      + '<span class="flow-beat-label">' + esc(beat.label) + '</span>'
+      + '<span class="flow-beat-chev">▲</span>'
+    + '</div>'
+    + '<div class="flow-steps">' + steps + '</div>'
+    + '</div>';
+}
+
+function toggleBeat(beatId) {
+  openBeats[beatId] = !openBeats[beatId];
+  renderFlowView();
+}
+
+/* Jump from flow chip → reference view, expand that card */
+function jumpToRef(id) {
+  activeType = 'all';
+  activeAct  = 'all';
+  document.querySelectorAll('.filter-btn[data-type]').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.type === 'all');
+  });
+  document.querySelectorAll('.filter-btn[data-act]').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.act === 'all');
+  });
+  expandedId = id;
+  focusedArcId = null;
+  focusedRelatedIds = new Set();
+  document.getElementById('arcFocusBar').classList.remove('visible');
+  switchView('ref');
+  render();
+  setTimeout(function() {
+    var el = document.getElementById('card-' + id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 80);
+}
+
+/* Click arc header in flow view → switch to reference and focus that arc */
+function toggleFlowArcFocus(arcId) {
+  var entry = findEntry(arcId);
+  expandedId = arcId;
+  if (entry) setArcFocus(entry);
+  switchView('ref');
+  render();
+  setTimeout(function() {
+    var el = document.getElementById('card-' + arcId);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 80);
 }
 
 /* ── Find entry by id ── */
