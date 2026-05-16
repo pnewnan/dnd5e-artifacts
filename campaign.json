@@ -97,15 +97,84 @@
 
   "npcs": [
     {
+      "id": "princess-aurelia",
+      "name": "Princess Aurelia",
+      "status": "alive",
+      "affiliations": ["sarynthia"],
+      "arc_tags": ["prologue", "missing-convoys"],
+      "party_knowledge": "party member — PC",
+      "description": "A PC. Princess of Sarynthia. Eric Huwithakay was Sarynthia's intelligence contact embedded in Hollowgate — Aurelia knows this, and his correspondence has gone silent. She has been waiting for news that hasn't come. When the party finds Eric's body in the kobold tunnels, she is the one who understands what it means: not just a death, but a failed mission that no one back home knows about yet.",
+      "gm_notes": "Aurelia's connection to Eric gives her personal stakes in the Hollowgate investigation beyond the rest of the party. Her Sarynthian background may allow her to automatically recognize Eric's signet stamp and the Elkenquay markings on the dying human. Her royal status and intelligence background should inform how she reads political situations as the campaign develops."
+    },
+    {
+      "id": "robyn",
+      "name": "Robyn",
+      "status": "alive",
+      "affiliations": [],
+      "arc_tags": ["prologue", "missing-convoys"],
+      "party_knowledge": "met",
+      "description": "A kobold scout and outcast from the cavern band near Hollowgate. Smaller than other kobolds, with softer coloration, a drooping uneven feather plume, and one badly-dyed feather. He was coerced into participating in the convoy raids — threatened with the loss of his tail feathers if he refused. He does not want to hurt anyone.",
+      "personality": "Nervous, stammering, apologetic. Speaks quickly when frightened, talks over himself, flinches at loud sounds. Slouches, avoids eye contact, tail constantly twitching. Failed to become 'properly kobold' by his tribe's standards and is picked on for it.",
+      "what_robyn_knows": "The kobolds were told to retrieve a specific crate — 'Boss said special. Not food crate.' A human hired them. He can lead the party toward the kobold caverns if they make him feel safe enough to do so.",
+      "key_quote": "\"I-I didn't wanna come with 'em... They said if I didn't, they'd... they'd tear off my tail feathers... I-I just wanted to stay in the nest...\"",
+      "gm_notes": "Robyn should feel oddly sympathetic — not heroic, just not built for kobold life. Responds much better to patience and kindness than intimidation. If the party treats him well, he becomes a useful recurring contact for kobold movements and tunnel layouts."
+    },
+    {
+      "id": "krobb",
+      "name": "Krobb",
+      "status": "alive",
+      "affiliations": [],
+      "arc_tags": ["prologue", "missing-convoys"],
+      "party_knowledge": "met",
+      "cover": "Kobold guard, entry post",
+      "description": "The kobold guard stationed at the entrance to the cavern tunnels. Asleep when the party arrives. Slightly soft around the middle, wearing a helmet too large for his head. A sign on the wall behind him reads GUARD DUTY = VERY IMPORTANT! (PROBABLY). Krobb designed the tunnel trap system himself, drew a meticulous map, and is absolutely certain no one could ever get through without it. He was asleep when the party arrived and the pit trap was visible from the doorway.",
+      "personality": "Absolute self-assurance about his trap designs, zero actual bravery. He believes his system is the finest in the tunnels, possibly the world. When genuinely threatened, this illusion evaporates instantly. His spear is somewhere. He will look for it. He will not find it in time.",
+      "what_krobb_knows": "All trap locations, jail area layout, that the cavehopper is behind the rocks, that the two guards at the jail hate their assignment, and that the chieftain has the crate. He does not know what the crate contains.",
+      "cooperation": "Immediate and total once threatened. Will describe every trap in loving detail, warn about the pit, confirm the cheese is not free, and describe the cavehopper's location in a hushed voice.",
+      "key_quotes": ["\"Traps are... very good traps. Cannot pass without map. I make them. Very hard. Very clever. You would not get past.\"", "\"Wait — where is spear? I had spear. Spear was HERE.\""],
+      "trap_map": "Hand-drawn on the back of a food manifest in charcoal. Misspelled throughout. Annotated with strong opinions about each trap's quality. At the bottom in larger letters: IF YOU READ THIS, YOU'RE PROBABLY DEAD. –KROBB",
+      "gm_notes": "Player handout exists: krobb's trap map. Krobb is comic relief with mechanical function — his cooperation gives the party real tactical advantage. If he survived, he could be a recurring minor character who respects anyone clever enough to get through his work."
+    },
+    {
+      "id": "kobold-chieftain",
+      "name": "The Chieftain",
+      "status": "alive",
+      "affiliations": [],
+      "arc_tags": ["prologue", "missing-convoys"],
+      "party_knowledge": "met",
+      "description": "The kobold chieftain of the cavern band — self-declared king. Unexpectedly charismatic, with a deep, rich, theatrical voice. Speaks like he believes he is a great king, because by his own reckoning he is. His royal regalia consists of molted feathers, broken necklaces, polished trash, and fake gemstones arranged with absolute sincerity. Simultaneously ridiculous and oddly compelling.",
+      "personality": "Deeply proud. Theatrical. Savors his own words. Genuinely offended that the crate contained only a book — considers it a personal insult from the dying human who hired him. Not a villain; he just wanted to show off his pet.",
+      "role_in_story": "Was hired by the dying human (a planted Concord false flag agent) to retrieve the specific crate. He knew the job, not the conspiracy — and the kobolds took the extra wagons because it seemed fair. His boss encounter is presenting the cavehopper as his greatest treasure. He wants admiration, not violence.",
+      "after_the_fight": "Annoyed at the situation rather than the party. Waves them out through a back tunnel with evident impatience. The kobolds who follow are herding, not hunting — rocks and spears thrown more out of embarrassment than aggression.",
+      "key_quotes": ["\"Little man hired us. Wanted shiny box. We took extra wagons too. Seemed fair.\"", "\"Look. LOOK. Is beautiful, yes?\""],
+      "gm_notes": "Comedy with weight. His absolute sincerity makes him memorable. He is not present at the entry post during the Krobb scene — he stays in the den. Run him as genuinely uncertain whether the cavehopper fight is a problem or entertainment."
+    },
+    {
+      "id": "dying-human",
+      "name": "The Dying Human",
+      "status": "dying — condition unknown after party encounter",
+      "affiliations": [],
+      "arc_tags": ["prologue", "missing-convoys"],
+      "party_knowledge": "met — likely dead",
+      "description": "A human found mauled and barely alive in the kobold chieftain's den. He wears colors associated with Elkenquay. Most parties will not recognize this immediately. He was the one who hired the kobolds and assigned them the crate retrieval — and the cavehopper, the chieftain's pet, turned on him afterward.",
+      "what_he_reveals": "If stabilized, can provide fragments before losing consciousness: that he hired the kobolds specifically to retrieve the crate, and that the crate was supposed to go somewhere specific. He cannot or will not say more.",
+      "items": "Elkenquay coinage. Partially burned correspondence. Coded ledger fragments. Tariff records. Convoy route maps. Seal fragments. References to 'adjusted taxation' and 'diverted cargo' — the same patterns Eric Huwithakay was tracking.",
+      "true_nature": "His Elkenquay markings are the Concord's planted false flag — designed to make the party believe Elkenquay agents orchestrated the convoy theft. A DC 14 check identifies the Elkenquay association. Characters with noble, military, merchant, diplomatic, or espionage backgrounds may recognize them automatically.",
+      "gm_notes": "This NPC is the anti-Elkenquay narrative made physical. His documents and appearance are manufactured evidence. He is the moment the party first begins to believe Elkenquay is the enemy — which is exactly what the Concord intended."
+    },
+    {
       "id": "eric-huwithakay",
       "name": "Eric Huwithakay",
       "status": "dead",
-      "affiliations": [],
+      "affiliations": ["sarynthia"],
       "arc_tags": ["prologue", "missing-convoys"],
-      "party_knowledge": "known — personal contact, now dead",
-      "description": "A contact of one of the party members who was independently investigating the missing convoys near Hollowgate before the campaign begins. His investigation brought him close enough to the truth that he was killed — likely by the kobolds or by Concord operatives cleaning up loose ends.",
-      "role_in_story": "His death is the personal hook that pulls the party into the Hollowgate investigation. Without Eric, this might be a job. With Eric, it is personal. Tomas Vale, the Concord's customs clerk, may have known him by name — a thread the party could pull if they investigate Eric's death deeply.",
-      "gm_notes": "Eric never knew what he was actually uncovering. He was following the money and the missing goods, not a conspiracy. His death should feel like the cost of asking the wrong questions in a place where the wrong people were watching."
+      "party_knowledge": "known — personal contact, found dead in the tunnels",
+      "description": "Not merely a contact — a Sarynthian intelligence operative embedded in Hollowgate, tracking unusual tariffs, altered manifests, and missing cargo. He got close enough to the truth that he was killed. The party finds his body in the kobold tunnels while escaping — already dead, satchel still on him. He never filed his final report.",
+      "what_is_found": "A bronze signet stamp — Sarynthian, though most party members won't recognize it immediately. A hand-drawn partial tunnel map, more detailed than Krobb's — he had been here before. A final note in tight, careful handwriting: 'Kobolds. Someone is paying them.' That is all he had time to write.",
+      "cause_of_death": "Not immediately clear. Not kobold weapons. The party may or may not connect this to the cavehopper on their own.",
+      "connection_to_aurelia": "Princess Aurelia (a PC) knows Eric was Sarynthia's contact in Hollowgate. His correspondence stopped. She has been waiting for news that hasn't come. The party now carries it.",
+      "role_in_story": "His death is the personal hook that pulls the party into the Hollowgate investigation. Finding him in the tunnels is the moment the convoy problem stops being a local nuisance and becomes something larger. Tomas Vale may have known him by name through customs work — a thread the party could pull.",
+      "gm_notes": "Eric never knew the full scope of what he was uncovering. His death should feel like the cost of asking the right questions in a place where the wrong people were watching. The moment the party finds him should land with weight."
     },
     {
       "id": "cael-darro",
@@ -486,7 +555,7 @@
       "summary": "Supply wagons have been disappearing near Hollowgate. Eric Huwithakay, a contact of one of the party members, was investigating and has been killed. The party takes over the investigation, tracks the missing goods to kobolds in caverns nearby, and recovers a sealed crate among the stolen goods.",
       "what_actually_happened": "The Concord, through Garrick Thorne, hired the kobolds to raid the caravans — creating shortages and instability, and intercepting one specific sealed crate (the Book of the Damned + the gem) before it could reach Dreknar. Eric Huwithakay was killed because he was getting too close to the truth.",
       "what_party_knows": "Kobolds were stealing the goods. Eric is dead. The crate is sealed and clearly significant. Evidence near the raid scene suggests Elkenquay involvement.",
-      "key_npcs": ["eric-huwithakay", "garrick-thorne"],
+      "key_npcs": ["eric-huwithakay", "robyn", "krobb", "kobold-chieftain", "dying-human", "garrick-thorne"],
       "key_artifacts": ["book-of-the-damned", "the-gem"],
       "outcomes": [
         "Party recovers grain, goods, and sealed crate intact",
@@ -512,6 +581,7 @@
       "what_party_knows": "Strange creatures attacked the carnival and were defeated. Chaelynn is here — a familiar and trusted face. Gems were found on the creatures (significance unclear).",
       "key_npcs": ["chaelynn", "cael-darro"],
       "key_artifacts": ["the-gem"],
+      "key_locations": ["hollowgate"],
       "outcomes": [
         "Party survives the Pallor Brood encounter",
         "First gems recovered from monstrosities",
@@ -534,6 +604,7 @@
       "what_party_knows": "Someone is manufacturing the anti-Elkenquay sentiment. A monstrosity attacked the city. The Concord saved them and appears to be the only organized group that knows what is actually happening.",
       "key_npcs": ["cael-darro", "chaelynn", "mirelle-voss"],
       "key_artifacts": ["the-gem"],
+      "key_locations": ["dunmore"],
       "outcomes": [
         "Party investigates propaganda printing operation",
         "Second gem artifact recovered from the Dunmore monstrosity",

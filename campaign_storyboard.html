@@ -234,6 +234,44 @@
     line-height: 1.45;
   }
 
+  /* ── Arc focus states ── */
+  .card.arc-related {
+    box-shadow: 0 0 0 2px rgba(180,140,60,0.7), 0 4px 20px rgba(0,0,0,0.6);
+    transform: translateY(-1px);
+  }
+  .card.arc-dimmed {
+    opacity: 0.35;
+    filter: grayscale(0.4);
+    pointer-events: none;
+  }
+  .arc-focus-bar {
+    background: rgba(180,140,60,0.1);
+    border-bottom: 1px solid rgba(180,140,60,0.2);
+    padding: 0.4rem 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(180,140,60,0.6);
+    display: none;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .arc-focus-bar.visible { display: flex; align-items: center; justify-content: space-between; }
+  .arc-focus-bar button {
+    background: none;
+    border: 1px solid rgba(180,140,60,0.3);
+    color: rgba(180,140,60,0.6);
+    font-family: 'Cinzel', serif;
+    font-size: 0.46rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .arc-focus-bar button:hover { color: rgba(242,232,200,0.8); border-color: rgba(180,140,60,0.6); }
+
   /* ── Reference link footer ── */
   .card-ref-link {
     display: flex;
@@ -463,6 +501,11 @@
   </div>
 </header>
 
+<div class="arc-focus-bar" id="arcFocusBar">
+  <span id="arcFocusLabel">Focusing arc</span>
+  <button onclick="clearArcFocus()">✕ Clear focus</button>
+</div>
+
 <main class="main">
   <div class="results-count" id="resultsCount">Loading…</div>
   <div class="card-grid" id="cardGrid">
@@ -477,6 +520,8 @@ var DATA = null;
 var activeType = 'all';
 var activeAct  = 'all';
 var expandedId = null;
+var focusedArcId = null;
+var focusedRelatedIds = new Set();
 
 fetch(BASE + 'campaign.json')
   .then(function(r) { return r.json(); })
@@ -607,7 +652,14 @@ function buildCard(e) {
     refLink = '<div class="card-ref-link"><a href="' + BASE + e.href + '" onclick="event.stopPropagation()">View Reference</a></div>';
   }
 
-  return '<div class="card type-' + e._type + (isExp ? ' expanded' : '') + '" id="card-' + id + '" onclick="toggleCard(\'' + id + '\')">'
+  var focusClass = '';
+  if (focusedArcId) {
+    if (id === focusedArcId) focusClass = '';
+    else if (focusedRelatedIds.has(id)) focusClass = ' arc-related';
+    else focusClass = ' arc-dimmed';
+  }
+
+  return '<div class="card type-' + e._type + (isExp ? ' expanded' : '') + focusClass + '" id="card-' + id + '" onclick="toggleCard(\'' + id + '\')">'
     + '<div class="card-top-bar"></div>'
     + '<div class="card-header">'
       + '<div class="card-badges">' + typeBadge + actBadges + '</div>'
@@ -751,9 +803,51 @@ function buildEntityBody(e) {
     + field('The Army', e.army ? JSON.stringify(e.army, null, 2).replace(/[{}"]/g,'').replace(/,/g,'') : '');
 }
 
+/* ── Find entry by id ── */
+function findEntry(id) {
+  if (!DATA) return null;
+  var all = allEntries(DATA);
+  for (var i = 0; i < all.length; i++) {
+    if (all[i].id === id) return all[i];
+  }
+  return null;
+}
+
+/* ── Arc focus ── */
+function clearArcFocus() {
+  focusedArcId = null;
+  focusedRelatedIds = new Set();
+  expandedId = null;
+  document.getElementById('arcFocusBar').classList.remove('visible');
+  render();
+}
+
+function setArcFocus(entry) {
+  focusedArcId = entry.id;
+  focusedRelatedIds = new Set();
+  var related = (entry.key_npcs || [])
+    .concat(entry.key_artifacts || [])
+    .concat(entry.key_locations || []);
+  related.forEach(function(rid) { focusedRelatedIds.add(rid); });
+  var bar = document.getElementById('arcFocusBar');
+  document.getElementById('arcFocusLabel').textContent = 'Showing connections for: ' + entry.title;
+  bar.classList.add('visible');
+}
+
 /* ── Toggle ── */
 function toggleCard(id) {
-  expandedId = (expandedId === id) ? null : id;
+  var entry = findEntry(id);
+  if (entry && entry._type === 'arc') {
+    if (expandedId === id) {
+      clearArcFocus();
+      return;
+    } else {
+      expandedId = id;
+      setArcFocus(entry);
+    }
+  } else {
+    expandedId = (expandedId === id) ? null : id;
+  }
   render();
   if (expandedId) {
     setTimeout(function() {
