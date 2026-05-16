@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aelenthor — Campaign Storyboard</title>
+<title>Aelenthor — Campaign Reference</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -464,6 +464,235 @@
     .card.expanded { grid-column: span 1; }
     .truth-block { grid-template-columns: 1fr; }
   }
+
+  /* ── View toggle ── */
+  .view-toggle {
+    display: flex;
+    gap: 0.3rem;
+    margin-left: auto;
+  }
+  .view-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid rgba(180,140,60,0.25);
+    background: transparent;
+    color: rgba(242,232,200,0.4);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+  .view-btn.active {
+    background: rgba(180,140,60,0.15);
+    border-color: rgba(180,140,60,0.5);
+    color: rgba(242,232,200,0.9);
+  }
+  .view-btn:hover { color: rgba(242,232,200,0.7); }
+
+  /* ── Story Flow (tree view) ── */
+  #flowView { display: none; }
+  #flowView.visible { display: block; }
+  #refView.hidden { display: none; }
+
+  .flow-scroll {
+    overflow-x: auto;
+    padding: 1.5rem 1.5rem 3rem;
+    max-width: 100%;
+  }
+  .flow-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+    min-width: max-content;
+  }
+
+  /* Arc column */
+  .flow-arc {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    flex-shrink: 0;
+  }
+  .flow-arc-connector {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 1.6rem;
+  }
+  .flow-connector-line {
+    width: 2rem;
+    height: 2px;
+    background: rgba(180,140,60,0.35);
+    margin-top: 0.7rem;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .flow-connector-line::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid rgba(180,140,60,0.5);
+  }
+
+  .flow-arc-header {
+    background: var(--blood);
+    color: rgba(242,232,200,0.92);
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    padding: 0.55rem 0.8rem;
+    border-radius: 2px 2px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+  }
+  .flow-arc-header:hover { background: #a03030; }
+  .flow-arc-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 0.44rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(242,232,200,0.5);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .flow-arc-ref:hover { color: rgba(242,232,200,0.9); }
+
+  .flow-beats {
+    border: 1px solid rgba(180,140,60,0.2);
+    border-top: none;
+    background: #f5edd8;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Beat */
+  .flow-beat {
+    border-bottom: 1px solid rgba(180,140,60,0.15);
+  }
+  .flow-beat:last-child { border-bottom: none; }
+  .flow-beat-header {
+    padding: 0.45rem 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    background: rgba(180,140,60,0.06);
+    border-left: 3px solid rgba(180,140,60,0.3);
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .flow-beat-header:hover { background: rgba(180,140,60,0.12); }
+  .flow-beat-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    flex: 1;
+  }
+  .flow-beat-type {
+    font-family: 'Cinzel', serif;
+    font-size: 0.42rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.05rem 0.25rem;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .beat-type-scene     { background: rgba(30,95,95,0.1);   color: var(--teal);   border: 1px solid rgba(30,95,95,0.25); }
+  .beat-type-encounter { background: rgba(122,31,31,0.1);  color: var(--blood);  border: 1px solid rgba(122,31,31,0.25); }
+  .beat-type-revelation{ background: rgba(91,45,142,0.1);  color: var(--purple); border: 1px solid rgba(91,45,142,0.25); }
+  .beat-type-discovery { background: rgba(138,106,16,0.1); color: var(--gold);   border: 1px solid rgba(138,106,16,0.25); }
+  .beat-type-dialogue  { background: rgba(42,92,30,0.1);   color: var(--green);  border: 1px solid rgba(42,92,30,0.25); }
+
+  .flow-beat-chev {
+    font-size: 0.42rem;
+    color: var(--parchment-shadow);
+    transition: transform 0.18s;
+    flex-shrink: 0;
+  }
+  .flow-beat.open .flow-beat-chev { transform: rotate(180deg); }
+
+  /* Steps */
+  .flow-steps {
+    display: none;
+    flex-direction: column;
+    background: rgba(242,232,200,0.5);
+  }
+  .flow-beat.open .flow-steps { display: flex; }
+
+  .flow-step {
+    padding: 0.32rem 0.7rem 0.32rem 1.2rem;
+    border-bottom: 1px solid rgba(180,140,60,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    position: relative;
+  }
+  .flow-step:last-child { border-bottom: none; }
+  .flow-step::before {
+    content: '';
+    position: absolute;
+    left: 0.7rem;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(180,140,60,0.2);
+  }
+  .flow-step::after {
+    content: '';
+    position: absolute;
+    left: 0.7rem;
+    top: 50%;
+    width: 0.35rem;
+    height: 1px;
+    background: rgba(180,140,60,0.35);
+  }
+
+  .flow-step-label {
+    font-size: 0.73rem;
+    color: var(--dim);
+    line-height: 1.4;
+    font-style: italic;
+  }
+  .flow-step-type {
+    font-family: 'Cinzel', serif;
+    font-size: 0.4rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(90,74,46,0.45);
+  }
+  .flow-step-refs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    margin-top: 0.1rem;
+  }
+  .flow-ref-chip {
+    font-family: 'Cinzel', serif;
+    font-size: 0.4rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.05rem 0.3rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    cursor: pointer;
+    border: 1px solid;
+  }
+  .flow-ref-chip:hover { opacity: 0.75; }
+  .flow-ref-chip.npc      { background: rgba(91,45,142,0.1);  color: var(--purple); border-color: rgba(91,45,142,0.3); }
+  .flow-ref-chip.artifact { background: rgba(42,92,30,0.1);   color: var(--green);  border-color: rgba(42,92,30,0.3); }
 </style>
 </head>
 <body>

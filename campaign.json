@@ -563,7 +563,63 @@
         "Planted or circumstantial evidence reinforces anti-Elkenquay narrative",
         "Party begins to believe Elkenquay is destabilizing the region"
       ],
-      "hooks_forward": "The crate becomes central in Act 1. The anti-Elkenquay narrative the party now partly believes is the Concord's manufactured justification for war."
+      "hooks_forward": "The crate becomes central in Act 1. The anti-Elkenquay narrative the party now partly believes is the Concord's manufactured justification for war.",
+      "beats": [
+        {
+          "id": "mc-hook",
+          "label": "The Hook",
+          "type": "scene",
+          "steps": [
+            { "label": "Mayor's briefing — convoys have gone missing", "type": "dialogue" },
+            { "label": "Eric Huwithakay is supposed to be here. He isn't.", "type": "discovery", "npc_refs": ["eric-huwithakay"] },
+            { "label": "Surviving convoy driver's account — kobolds, organized, from the woods", "type": "dialogue" }
+          ]
+        },
+        {
+          "id": "mc-trail",
+          "label": "The Trail",
+          "type": "scene",
+          "steps": [
+            { "label": "Abandoned wagons — food left behind. Bandits steal valuables. Something is wrong.", "type": "discovery" },
+            { "label": "Kobold prints in formation, not chaos", "type": "discovery" },
+            { "label": "Territorial markers — established weeks ago, not days", "type": "discovery" },
+            { "label": "First kobold encounter — three scouts ambush", "type": "encounter" },
+            { "label": "Robyn — coerced outcast, can lead party to the caverns", "type": "discovery", "npc_refs": ["robyn"] }
+          ]
+        },
+        {
+          "id": "mc-tunnels",
+          "label": "The Tunnels",
+          "type": "scene",
+          "steps": [
+            { "label": "Krobb — asleep at his post, trap architect, cooperates immediately when threatened", "type": "encounter", "npc_refs": ["krobb"] },
+            { "label": "Krobb's Trap Map — player handout", "type": "discovery", "artifact_refs": ["the-gem"] },
+            { "label": "Trap gauntlet — five traps, map gives advantage", "type": "encounter" },
+            { "label": "Two guards watching the cavehopper — panic, run to the chieftain", "type": "encounter" }
+          ]
+        },
+        {
+          "id": "mc-den",
+          "label": "The Chieftain's Den",
+          "type": "scene",
+          "steps": [
+            { "label": "The Chieftain presents the cavehopper as his greatest treasure", "type": "dialogue", "npc_refs": ["kobold-chieftain"] },
+            { "label": "Cavehopper encounter — multi-phase, the chieftain watches", "type": "encounter" },
+            { "label": "The Crate — opened. Just a book. The chieftain is deeply insulted.", "type": "revelation", "artifact_refs": ["book-of-the-damned"] },
+            { "label": "The Dying Human — mauled, Elkenquay markings, planted documents", "type": "discovery", "npc_refs": ["dying-human"] }
+          ]
+        },
+        {
+          "id": "mc-escape",
+          "label": "The Escape",
+          "type": "scene",
+          "steps": [
+            { "label": "Chieftain waves them out — kobolds pursue, herding not hunting", "type": "encounter" },
+            { "label": "Eric's body in the tunnels — not kobold wounds. Final note: 'Kobolds. Someone is paying them.'", "type": "revelation", "npc_refs": ["eric-huwithakay"] },
+            { "label": "The crate is recovered. The gem inside goes unnoticed.", "type": "discovery", "artifact_refs": ["book-of-the-damned", "the-gem"] }
+          ]
+        }
+      ]
     },
     {
       "id": "moonlit-mirage",
@@ -588,7 +644,48 @@
         "Chaelynn reestablished as a trusted party contact",
         "Concord's assessment of the party sharpens — Chaelynn's report goes to Cael"
       ],
-      "hooks_forward": "Chaelynn's report sets the Dunmore recruitment in motion. The gems will become significant once the party understands their connection to the crate."
+      "hooks_forward": "Chaelynn's report sets the Dunmore recruitment in motion. The gems will become significant once the party understands their connection to the crate.",
+      "beats": [
+        {
+          "id": "mm-arrival",
+          "label": "The Carnival Arrives",
+          "type": "scene",
+          "steps": [
+            { "label": "Carnival atmosphere — Phase One, games and performances", "type": "scene" },
+            { "label": "Chaelynn — long-lost contact, now a carnival worker", "type": "discovery", "npc_refs": ["chaelynn"] },
+            { "label": "Perception checks — something feels slightly off", "type": "discovery" }
+          ]
+        },
+        {
+          "id": "mm-performance",
+          "label": "The Grand Performance",
+          "type": "scene",
+          "steps": [
+            { "label": "Phase Two — the main show begins", "type": "scene" },
+            { "label": "The atmosphere shifts. Something is wrong.", "type": "revelation" }
+          ]
+        },
+        {
+          "id": "mm-encounter",
+          "label": "Pallor Brood Attack",
+          "type": "encounter",
+          "steps": [
+            { "label": "Phase 1 — first creatures emerge", "type": "encounter" },
+            { "label": "Phase 2 — escalation", "type": "encounter" },
+            { "label": "Phase 3 — final push, creatures defeated", "type": "encounter" },
+            { "label": "Gems found on defeated creatures — significance unknown", "type": "discovery", "artifact_refs": ["the-gem"] }
+          ]
+        },
+        {
+          "id": "mm-aftermath",
+          "label": "Aftermath",
+          "type": "scene",
+          "steps": [
+            { "label": "Chaelynn's reaction — she saw everything", "type": "dialogue", "npc_refs": ["chaelynn"] },
+            { "label": "Chaelynn reports to Cael Darro offscreen", "type": "revelation", "npc_refs": ["chaelynn", "cael-darro"] }
+          ]
+        }
+      ]
     },
     {
       "id": "dunmore-arc",
@@ -612,7 +709,52 @@
         "Cael Darro reveals the Concord and makes the recruitment pitch",
         "Party recruited — Prologue ends"
       ],
-      "hooks_forward": "Party now works for the Concord. Dreknar will be introduced. The Book's journey south begins. Act 1 opens."
+      "hooks_forward": "Party now works for the Concord. Dreknar will be introduced. The Book's journey south begins. Act 1 opens.",
+      "beats": [
+        {
+          "id": "dm-arrival",
+          "label": "Arrival in Dunmore",
+          "type": "scene",
+          "steps": [
+            { "label": "City in uproar — propaganda pamphlets everywhere", "type": "discovery" },
+            { "label": "Anti-Elkenquay sentiment at a boiling point", "type": "scene" },
+            { "label": "The energy of the crowd feels like it is looking for a reason", "type": "scene" }
+          ]
+        },
+        {
+          "id": "dm-investigation",
+          "label": "The Investigation",
+          "type": "scene",
+          "steps": [
+            { "label": "Who is printing and distributing the pamphlets?", "type": "scene" },
+            { "label": "Trace the printing operation — someone is manufacturing this", "type": "discovery" },
+            { "label": "Party realizes the tension is about to cause real violence", "type": "revelation" },
+            { "label": "Another artifact with a gem is found", "type": "discovery", "artifact_refs": ["the-gem"] }
+          ]
+        },
+        {
+          "id": "dm-monstrosity",
+          "label": "The Monstrosity",
+          "type": "encounter",
+          "steps": [
+            { "label": "Monstrosity breaks loose — overpowered, multi-phase boss", "type": "encounter" },
+            { "label": "Situation spirals beyond the party's control", "type": "revelation" },
+            { "label": "Gem artifact recovered from the creature", "type": "discovery", "artifact_refs": ["the-gem"] }
+          ]
+        },
+        {
+          "id": "dm-recruitment",
+          "label": "The Concord Reveals Itself",
+          "type": "revelation",
+          "steps": [
+            { "label": "The Concord extracts the party from the aftermath", "type": "scene" },
+            { "label": "Cael Darro appears — familiar face, already knows too much", "type": "dialogue", "npc_refs": ["cael-darro"] },
+            { "label": "Chaelynn's implicit endorsement — the party has reason to trust", "type": "dialogue", "npc_refs": ["chaelynn", "cael-darro"] },
+            { "label": "The pitch: we're patriots trying to hold things together", "type": "dialogue", "npc_refs": ["cael-darro"] },
+            { "label": "The party is recruited. The Prologue ends.", "type": "revelation" }
+          ]
+        }
+      ]
     }
   ]
 }
