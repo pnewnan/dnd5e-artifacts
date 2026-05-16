@@ -16,6 +16,12 @@
           "type": "gm"
         },
         {
+          "name": "Campaign Storyboard",
+          "desc": "Full campaign knowledge base · NPCs · Factions · Locations · Arcs · Artifacts · Filterable by type and act",
+          "href": "campaign_storyboard.html",
+          "type": "gm"
+        },
+        {
           "name": "It Happened A Long Time Ago",
           "desc": "Opening prose · Hollowgate · 13 Amberfell, Year 313",
           "href": "hollowgate_opening.html",

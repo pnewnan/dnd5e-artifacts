@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aelenthor — Campaign Storyboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9;
+    --parchment-dark: #dbc99a;
+    --parchment-shadow: #b89d5e;
+    --ink: #1a1108;
+    --dim: #2e200e;
+    --faded: #5a4a2e;
+    --blood: #7a1f1f;
+    --purple: #5b2d8e;
+    --gold: #8a6a10;
+    --teal: #1e5f5f;
+    --green: #2a5c1e;
+    --slate: #2e3a4a;
+    --page-bg: #1a1209;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--page-bg);
+    background-image: radial-gradient(ellipse at 30% 0%, #2a1a08 0%, transparent 60%),
+                      radial-gradient(ellipse at 70% 100%, #0e1520 0%, transparent 60%);
+    font-family: 'IM Fell English', serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding-bottom: 4rem;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    background: rgba(26,18,9,0.97);
+    border-bottom: 1px solid rgba(180,140,60,0.2);
+    padding: 1.2rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .header-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 0.9rem;
+    color: rgba(242,232,200,0.7);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .header-title span {
+    color: rgba(180,140,60,0.6);
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  /* ── Filter Bar ── */
+  .filter-area {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+  .filter-group {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+  }
+  .filter-sep {
+    font-family: 'Cinzel', serif;
+    font-size: 0.48rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(180,140,60,0.35);
+    padding-right: 0.2rem;
+  }
+  .filter-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid rgba(180,140,60,0.2);
+    background: rgba(180,140,60,0.04);
+    color: rgba(242,232,200,0.45);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { color: rgba(242,232,200,0.8); border-color: rgba(180,140,60,0.4); }
+  .filter-btn.active {
+    background: rgba(180,140,60,0.15);
+    border-color: rgba(180,140,60,0.6);
+    color: rgba(242,232,200,0.95);
+  }
+  .filter-btn.type-arc.active    { background: rgba(122,31,31,0.2);  border-color: #c05050; color: #e08080; }
+  .filter-btn.type-npc.active    { background: rgba(91,45,142,0.2);  border-color: #8b5cd6; color: #b590f0; }
+  .filter-btn.type-location.active { background: rgba(30,95,95,0.2); border-color: #4aafaf; color: #7fd4d4; }
+  .filter-btn.type-faction.active  { background: rgba(138,106,16,0.2); border-color: #c9a030; color: #e8c060; }
+  .filter-btn.type-artifact.active { background: rgba(42,92,30,0.2); border-color: #5aaf4a; color: #90d880; }
+  .filter-btn.type-entity.active   { background: rgba(20,10,40,0.4); border-color: #7050a0; color: #a080d0; }
+  .filter-btn.type-nation.active   { background: rgba(46,58,74,0.3); border-color: #6080a0; color: #90b0d0; }
+
+  /* ── Act filter pills ── */
+  .act-btn.active { background: rgba(180,140,60,0.12); border-color: rgba(180,140,60,0.5); color: rgba(242,232,200,0.9); }
+
+  /* ── Main Grid ── */
+  .main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 2rem;
+  }
+
+  .results-count {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(180,140,60,0.4);
+    margin-bottom: 1rem;
+    padding-left: 0.2rem;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: #f2e8c9;
+    border: 1px solid var(--parchment-shadow);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.15s;
+    position: relative;
+  }
+  .card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.7); transform: translateY(-1px); }
+  .card.expanded { grid-column: span 2; }
+
+  .card-top-bar {
+    height: 4px;
+  }
+  .card.type-arc      .card-top-bar { background: var(--blood); }
+  .card.type-npc      .card-top-bar { background: var(--purple); }
+  .card.type-location .card-top-bar { background: var(--teal); }
+  .card.type-faction  .card-top-bar { background: var(--gold); }
+  .card.type-artifact .card-top-bar { background: var(--green); }
+  .card.type-entity   .card-top-bar { background: #3a1060; }
+  .card.type-nation   .card-top-bar { background: var(--slate); }
+
+  .card-header {
+    padding: 0.75rem 0.9rem 0.6rem;
+    border-bottom: 1px solid rgba(180,140,60,0.2);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .card-badges {
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+  .badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.44rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.08rem 0.3rem;
+    border-radius: 2px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+  .badge-arc      { background: rgba(122,31,31,0.1);  color: var(--blood);  border-color: rgba(122,31,31,0.3); }
+  .badge-npc      { background: rgba(91,45,142,0.1);  color: var(--purple); border-color: rgba(91,45,142,0.3); }
+  .badge-location { background: rgba(30,95,95,0.1);   color: var(--teal);   border-color: rgba(30,95,95,0.3); }
+  .badge-faction  { background: rgba(138,106,16,0.1); color: var(--gold);   border-color: rgba(138,106,16,0.3); }
+  .badge-artifact { background: rgba(42,92,30,0.1);   color: var(--green);  border-color: rgba(42,92,30,0.3); }
+  .badge-entity   { background: rgba(58,16,96,0.15);  color: #7050a0;       border-color: rgba(58,16,96,0.35); }
+  .badge-nation   { background: rgba(46,58,74,0.15);  color: #4a6880;       border-color: rgba(46,58,74,0.35); }
+
+  .badge-act-prologue { background: rgba(122,31,31,0.08);  color: #a04040; border-color: rgba(122,31,31,0.2); }
+  .badge-act-act1     { background: rgba(30,95,95,0.08);   color: #3a8080; border-color: rgba(30,95,95,0.2); }
+  .badge-act-act2     { background: rgba(91,45,142,0.08);  color: #6a40a0; border-color: rgba(91,45,142,0.2); }
+  .badge-act-backstory { background: rgba(80,80,80,0.1);   color: #707070; border-color: rgba(80,80,80,0.25); }
+
+  .card-chevron {
+    font-size: 0.55rem;
+    color: var(--parchment-shadow);
+    transition: transform 0.22s;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .card.expanded .card-chevron { transform: rotate(180deg); }
+
+  .card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+    padding: 0.5rem 0.9rem 0.15rem;
+    line-height: 1.3;
+  }
+  .card-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    color: var(--faded);
+    padding: 0 0.9rem 0.5rem;
+    text-transform: uppercase;
+  }
+  .card-preview {
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--faded);
+    padding: 0 0.9rem 0.8rem;
+    line-height: 1.45;
+  }
+
+  /* ── Expanded body ── */
+  .card-body {
+    display: none;
+    border-top: 1px solid rgba(180,140,60,0.2);
+  }
+  .card.expanded .card-body { display: block; }
+
+  .card-section {
+    padding: 0.65rem 0.9rem;
+    border-bottom: 1px solid rgba(180,140,60,0.12);
+  }
+  .card-section:last-child { border-bottom: none; }
+
+  .field-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(90,74,46,0.6);
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+  .field-value {
+    font-size: 0.8rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .field-value.italic { font-style: italic; color: var(--faded); }
+
+  /* GM-only block */
+  .gm-block {
+    background: rgba(122,31,31,0.07);
+    border-left: 3px solid rgba(122,31,31,0.4);
+    border-radius: 0 2px 2px 0;
+    padding: 0.5rem 0.75rem;
+    margin: 0.5rem 0 0;
+  }
+  .gm-block .field-label { color: rgba(122,31,31,0.7); }
+  .gm-block .field-value { color: #5a1010; font-style: italic; }
+
+  /* Truth vs Known block */
+  .truth-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+  }
+  .truth-side {
+    padding: 0.4rem 0.6rem;
+    border-radius: 2px;
+    font-size: 0.76rem;
+    line-height: 1.45;
+  }
+  .truth-side.party {
+    background: rgba(30,95,95,0.08);
+    border-left: 2px solid rgba(30,95,95,0.4);
+    color: #1e4f4f;
+  }
+  .truth-side.real {
+    background: rgba(122,31,31,0.07);
+    border-left: 2px solid rgba(122,31,31,0.4);
+    color: #5a1010;
+    font-style: italic;
+  }
+  .truth-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.44rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* Outcomes list */
+  .outcome-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 0.3rem;
+  }
+  .outcome-list li {
+    font-size: 0.76rem;
+    color: var(--faded);
+    padding-left: 0.9rem;
+    position: relative;
+    line-height: 1.4;
+  }
+  .outcome-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--parchment-shadow);
+  }
+
+  /* Party knowledge pill */
+  .pk-pill {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.44rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.4rem;
+    border-radius: 10px;
+    border: 1px solid;
+    margin-top: 0.2rem;
+  }
+  .pk-unknown  { background: rgba(80,80,80,0.1);  color: #707070; border-color: rgba(80,80,80,0.25); }
+  .pk-met      { background: rgba(30,95,95,0.1);  color: var(--teal); border-color: rgba(30,95,95,0.3); }
+  .pk-trusted  { background: rgba(42,92,30,0.1);  color: var(--green); border-color: rgba(42,92,30,0.3); }
+  .pk-known    { background: rgba(91,45,142,0.1); color: var(--purple); border-color: rgba(91,45,142,0.3); }
+
+  /* Status dot */
+  .status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 0.3rem;
+    vertical-align: middle;
+  }
+  .status-alive { background: #4a9a4a; }
+  .status-dead  { background: #9a2020; }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-style: italic;
+    color: rgba(180,140,60,0.4);
+    font-family: 'IM Fell English', serif;
+    font-size: 0.9rem;
+    grid-column: 1 / -1;
+  }
+
+  /* Nav panel button */
+  #aelNavBtn {
+    position: fixed;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    z-index: 1001;
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: rgba(26,18,9,0.9);
+    border: 1px solid var(--parchment-shadow);
+    padding: 0.45rem 0.9rem;
+    color: rgba(242,232,200,0.7);
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+  }
+  #aelNavBtn:hover { color: rgba(242,232,200,1); }
+
+  @media (max-width: 700px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .card.expanded { grid-column: span 1; }
+    .truth-block { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
+<div id="aelNavBtn" onclick="aelNavOpen()">&#9776; All Pages</div>
+<script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-title">
+      <span>GM Reference</span>
+      Campaign Storyboard
+    </div>
+    <div class="filter-area">
+      <div class="filter-group">
+        <span class="filter-sep">Type</span>
+        <button class="filter-btn type-all active" data-type="all" onclick="setTypeFilter('all', this)">All</button>
+        <button class="filter-btn type-arc"      data-type="arc"      onclick="setTypeFilter('arc', this)">Arcs</button>
+        <button class="filter-btn type-npc"      data-type="npc"      onclick="setTypeFilter('npc', this)">NPCs</button>
+        <button class="filter-btn type-location" data-type="location" onclick="setTypeFilter('location', this)">Locations</button>
+        <button class="filter-btn type-faction"  data-type="faction"  onclick="setTypeFilter('faction', this)">Factions</button>
+        <button class="filter-btn type-artifact" data-type="artifact" onclick="setTypeFilter('artifact', this)">Artifacts</button>
+        <button class="filter-btn type-nation"   data-type="nation"   onclick="setTypeFilter('nation', this)">Nations</button>
+        <button class="filter-btn type-entity"   data-type="entity"   onclick="setTypeFilter('entity', this)">Entities</button>
+      </div>
+      <div class="filter-group">
+        <span class="filter-sep">Act</span>
+        <button class="filter-btn act-btn active" data-act="all"       onclick="setActFilter('all', this)">All</button>
+        <button class="filter-btn act-btn"        data-act="prologue"  onclick="setActFilter('prologue', this)">Prologue</button>
+        <button class="filter-btn act-btn"        data-act="act-1"     onclick="setActFilter('act-1', this)">Act I</button>
+        <button class="filter-btn act-btn"        data-act="act-2"     onclick="setActFilter('act-2', this)">Act II</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <div class="results-count" id="resultsCount">Loading…</div>
+  <div class="card-grid" id="cardGrid">
+    <div class="empty-state">Loading campaign data…</div>
+  </div>
+</main>
+
+<script>
+const BASE = 'https://pnewnan.github.io/dnd5e-artifacts/';
+
+var DATA = null;
+var activeType = 'all';
+var activeAct  = 'all';
+var expandedId = null;
+
+fetch(BASE + 'campaign.json')
+  .then(function(r) { return r.json(); })
+  .then(function(d) {
+    DATA = d;
+    render();
+  })
+  .catch(function() {
+    document.getElementById('cardGrid').innerHTML =
+      '<div class="empty-state">Could not load campaign.json — check console.</div>';
+  });
+
+/* ── Filtering ── */
+function setTypeFilter(type, btn) {
+  activeType = type;
+  document.querySelectorAll('.filter-btn[data-type]').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  render();
+}
+function setActFilter(act, btn) {
+  activeAct = act;
+  document.querySelectorAll('.filter-btn[data-act]').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  render();
+}
+
+/* ── Collect all entries ── */
+function allEntries(data) {
+  var entries = [];
+
+  (data.arcs || []).forEach(function(e) {
+    entries.push({ _type: 'arc', _acts: tagsToActs(e.arc_tags || [e.act]), ...e });
+  });
+  (data.npcs || []).forEach(function(e) {
+    entries.push({ _type: 'npc', _acts: tagsToActs(e.arc_tags || []), ...e });
+  });
+  (data.locations || []).forEach(function(e) {
+    entries.push({ _type: 'location', _acts: tagsToActs(e.arc_tags || []), ...e });
+  });
+  (data.factions || []).forEach(function(e) {
+    entries.push({ _type: 'faction', _acts: [], ...e });
+  });
+  (data.artifacts || []).forEach(function(e) {
+    entries.push({ _type: 'artifact', _acts: tagsToActs(e.arc_tags || []), ...e });
+  });
+  (data.nations || []).forEach(function(e) {
+    entries.push({ _type: 'nation', _acts: [], ...e });
+  });
+  (data.entities || []).forEach(function(e) {
+    entries.push({ _type: 'entity', _acts: [], ...e });
+  });
+
+  return entries;
+}
+
+function tagsToActs(tags) {
+  var acts = [];
+  tags.forEach(function(t) {
+    if (t === 'prologue' || t === 'prologue-end' || t === 'missing-convoys' || t === 'moonlit-mirage' || t === 'dunmore-arc') acts.push('prologue');
+    if (t === 'act-1') acts.push('act-1');
+    if (t === 'act-2') acts.push('act-2');
+  });
+  return acts;
+}
+
+function matchesAct(entry) {
+  if (activeAct === 'all') return true;
+  return entry._acts.indexOf(activeAct) !== -1;
+}
+
+/* ── Render ── */
+function render() {
+  if (!DATA) return;
+  var entries = allEntries(DATA);
+
+  var filtered = entries.filter(function(e) {
+    var typeOk = activeType === 'all' || e._type === activeType;
+    var actOk  = matchesAct(e);
+    return typeOk && actOk;
+  });
+
+  document.getElementById('resultsCount').textContent =
+    filtered.length + ' entr' + (filtered.length === 1 ? 'y' : 'ies');
+
+  var grid = document.getElementById('cardGrid');
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="empty-state">No entries match the current filters.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(function(e) { return buildCard(e); }).join('');
+}
+
+/* ── Card builder ── */
+function buildCard(e) {
+  var id = e.id || e.name.toLowerCase().replace(/\s+/g, '-');
+  var isExp = expandedId === id;
+
+  var typeBadge = '<span class="badge badge-' + e._type + '">' + e._type + '</span>';
+
+  // Act badges
+  var actBadges = '';
+  var actSet = {};
+  (e._acts || []).forEach(function(a) { actSet[a] = true; });
+  Object.keys(actSet).forEach(function(a) {
+    var label = a === 'prologue' ? 'Prologue' : a === 'act-1' ? 'Act I' : a === 'act-2' ? 'Act II' : a;
+    actBadges += '<span class="badge badge-act-' + a.replace('-','') + '">' + label + '</span>';
+  });
+
+  var subtitle = e.title || e.type || e.nation || '';
+  var preview  = (e.description || e.summary || e.core_belief || '').substring(0, 140);
+  if (preview.length === 140) preview += '…';
+
+  var statusDot = '';
+  if (e.status === 'alive') statusDot = '<span class="status-dot status-alive"></span>';
+  if (e.status === 'dead')  statusDot = '<span class="status-dot status-dead"></span>';
+
+  var body = isExp ? buildBody(e) : '';
+
+  return '<div class="card type-' + e._type + (isExp ? ' expanded' : '') + '" id="card-' + id + '" onclick="toggleCard(\'' + id + '\')">'
+    + '<div class="card-top-bar"></div>'
+    + '<div class="card-header">'
+      + '<div class="card-badges">' + typeBadge + actBadges + '</div>'
+      + '<span class="card-chevron">▲</span>'
+    + '</div>'
+    + '<div class="card-name">' + statusDot + esc(e.name || e.title || id) + '</div>'
+    + (subtitle ? '<div class="card-subtitle">' + esc(subtitle) + '</div>' : '')
+    + '<div class="card-preview">' + esc(preview) + '</div>'
+    + '<div class="card-body">' + body + '</div>'
+    + '</div>';
+}
+
+function buildBody(e) {
+  var html = '';
+  var t = e._type;
+
+  if (t === 'arc') html += buildArcBody(e);
+  else if (t === 'npc') html += buildNpcBody(e);
+  else if (t === 'location') html += buildLocationBody(e);
+  else if (t === 'faction') html += buildFactionBody(e);
+  else if (t === 'artifact') html += buildArtifactBody(e);
+  else if (t === 'nation') html += buildNationBody(e);
+  else if (t === 'entity') html += buildEntityBody(e);
+
+  return html;
+}
+
+/* ── Field helpers ── */
+function field(label, value, italic) {
+  if (!value) return '';
+  return '<div class="card-section">'
+    + '<span class="field-label">' + label + '</span>'
+    + '<div class="field-value' + (italic ? ' italic' : '') + '">' + esc(value) + '</div>'
+    + '</div>';
+}
+function gmField(label, value) {
+  if (!value) return '';
+  return '<div class="card-section"><div class="gm-block">'
+    + '<span class="field-label">' + label + '</span>'
+    + '<div class="field-value">' + esc(value) + '</div>'
+    + '</div></div>';
+}
+function truthBlock(partyLabel, partyValue, realLabel, realValue) {
+  if (!partyValue && !realValue) return '';
+  return '<div class="card-section"><div class="truth-block">'
+    + '<div class="truth-side party"><span class="truth-label">' + partyLabel + '</span>' + esc(partyValue || '—') + '</div>'
+    + '<div class="truth-side real"><span class="truth-label">' + realLabel + '</span>' + esc(realValue || '—') + '</div>'
+    + '</div></div>';
+}
+function outcomeList(outcomes) {
+  if (!outcomes || !outcomes.length) return '';
+  var items = outcomes.map(function(o) { return '<li>' + esc(o) + '</li>'; }).join('');
+  return '<div class="card-section"><span class="field-label">Outcomes</span><ul class="outcome-list">' + items + '</ul></div>';
+}
+function pkPill(pk) {
+  if (!pk) return '';
+  var cls = 'pk-unknown';
+  if (pk.indexOf('trusted') !== -1 || pk.indexOf('long-lost') !== -1) cls = 'pk-trusted';
+  else if (pk.indexOf('met') !== -1) cls = 'pk-met';
+  else if (pk.indexOf('known') !== -1) cls = 'pk-known';
+  return '<span class="pk-pill ' + cls + '">' + esc(pk) + '</span>';
+}
+
+/* ── Type-specific body builders ── */
+function buildArcBody(e) {
+  return field('Summary', e.summary)
+    + truthBlock('What the Party Knows', e.what_party_knows, 'What Actually Happened', e.what_actually_happened)
+    + outcomeList(e.outcomes)
+    + field('Hooks Forward', e.hooks_forward)
+    + gmField('GM Notes', e.gm_notes);
+}
+
+function buildNpcBody(e) {
+  var pk = e.party_knowledge
+    ? '<div class="card-section"><span class="field-label">Party Knowledge</span><br>' + pkPill(e.party_knowledge) + '</div>'
+    : '';
+  var roles = (e.cover || e.public_role)
+    ? truthBlock('Cover / Public Role', e.cover || e.public_role, 'Reality / Secret Role', e.reality || e.secret_role || e.true_agenda)
+    : '';
+  return pk
+    + field('Description', e.description)
+    + field('Personality', e.personality, true)
+    + roles
+    + field('Role in Story', e.role_in_story)
+    + field('Loyalty', e.loyalty)
+    + field('Relationship to the Concord', e.relationship_to_concord)
+    + field('Vulnerability', e.vulnerability)
+    + field('Public Face', e.public_face)
+    + field('True Agenda', e.true_agenda)
+    + gmField('GM Notes', e.gm_notes);
+}
+
+function buildLocationBody(e) {
+  return field('Description', e.description)
+    + field('Situation', e.situation)
+    + field('Key Features', e.key_features)
+    + field('Significance', e.significance)
+    + field('Arc Summary', e.arc_summary)
+    + field('Fate', e.fate)
+    + gmField('GM Notes', e.gm_notes);
+}
+
+function buildFactionBody(e) {
+  return field('Description', e.description)
+    + field('Core Belief', e.core_belief)
+    + field('Methods', e.methods)
+    + field('Structure / Tone', e.tone)
+    + field('Ultimate Goal', e.ultimate_goal)
+    + field('Connection to Campaign', e.connection_to_campaign)
+    + gmField('Internal Secret', e.internal_secret);
+}
+
+function buildArtifactBody(e) {
+  return field('Description', e.description)
+    + field('Properties', e.properties)
+    + field('Status', e.status)
+    + field('Journey', e.journey)
+    + field('Significance', e.significance)
+    + field('True Purpose', e.true_purpose)
+    + gmField('GM Notes', e.gm_notes);
+}
+
+function buildNationBody(e) {
+  return field('Description', e.description)
+    + field('Political Structure', e.political_structure)
+    + field('Current Situation', e.current_situation)
+    + field('History', e.history)
+    + field('Relationship with Elkenquay / Fastingbreak', e.relationship_with_elkenquay || e.relationship_with_fastingbreak)
+    + field('Key Assets', e.key_assets)
+    + gmField('GM Notes', e.gm_notes);
+}
+
+function buildEntityBody(e) {
+  return field('Description', e.description)
+    + field('Power', e.power)
+    + field('History', e.history)
+    + field('Feywild Connection', e.feywild_connection)
+    + field('Destruction of Caldrath', e.caldrath)
+    + field('Relevance to Campaign', e.relevance_to_campaign)
+    + field('The Army', e.army ? JSON.stringify(e.army, null, 2).replace(/[{}"]/g,'').replace(/,/g,'') : '');
+}
+
+/* ── Toggle ── */
+function toggleCard(id) {
+  expandedId = (expandedId === id) ? null : id;
+  render();
+  if (expandedId) {
+    setTimeout(function() {
+      var el = document.getElementById('card-' + id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 50);
+  }
+}
+
+/* ── Escape HTML ── */
+function esc(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
