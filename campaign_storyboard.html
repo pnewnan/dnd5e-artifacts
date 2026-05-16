@@ -234,6 +234,37 @@
     line-height: 1.45;
   }
 
+  /* ── Reference link footer ── */
+  .card-ref-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    border-top: 1px solid rgba(180,140,60,0.15);
+    background: rgba(180,140,60,0.04);
+  }
+  .card-ref-link a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blood);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+  .card-ref-link a:hover { color: #c04040; }
+  .card-ref-link a::after { content: '→'; }
+  .card-ref-link .ref-divider {
+    color: rgba(180,140,60,0.3);
+    font-size: 0.5rem;
+  }
+
   /* ── Expanded body ── */
   .card-body {
     display: none;
@@ -565,6 +596,17 @@ function buildCard(e) {
 
   var body = isExp ? buildBody(e) : '';
 
+  var refLink = '';
+  if (e.pages && e.pages.length) {
+    var links = e.pages.map(function(p, i) {
+      return (i > 0 ? '<span class="ref-divider">·</span>' : '')
+        + '<a href="' + BASE + p.href + '" onclick="event.stopPropagation()">' + esc(p.label) + '</a>';
+    }).join('');
+    refLink = '<div class="card-ref-link">' + links + '</div>';
+  } else if (e.href) {
+    refLink = '<div class="card-ref-link"><a href="' + BASE + e.href + '" onclick="event.stopPropagation()">View Reference</a></div>';
+  }
+
   return '<div class="card type-' + e._type + (isExp ? ' expanded' : '') + '" id="card-' + id + '" onclick="toggleCard(\'' + id + '\')">'
     + '<div class="card-top-bar"></div>'
     + '<div class="card-header">'
@@ -574,6 +616,7 @@ function buildCard(e) {
     + '<div class="card-name">' + statusDot + esc(e.name || e.title || id) + '</div>'
     + (subtitle ? '<div class="card-subtitle">' + esc(subtitle) + '</div>' : '')
     + '<div class="card-preview">' + esc(preview) + '</div>'
+    + refLink
     + '<div class="card-body">' + body + '</div>'
     + '</div>';
 }

@@ -328,6 +328,7 @@
       "nation": "fastingbreak",
       "type": "small town",
       "arc_tags": ["prologue", "missing-convoys", "moonlit-mirage"],
+      "href": "hollowgate/hollowgate_gm_reference.html",
       "description": "A small town in Fastingbreak where the campaign begins. Site of the missing convoy investigation and the Moonlit Mirage Carnival. Supply wagons have been disappearing nearby — hired kobolds, coordinated through the Concord, have been raiding them. Eric Huwithakay was killed here.",
       "significance": "The party's entry point into the larger conspiracy. The recovered crate — containing the Book of the Damned and the gem — sets every subsequent event in motion."
     },
@@ -479,6 +480,9 @@
       "act": "prologue",
       "location": "hollowgate",
       "href": "hollowgate/missing_convoys/missing_convoys_arc.html",
+      "pages": [
+        { "label": "Arc Reference", "href": "hollowgate/missing_convoys/missing_convoys_arc.html" }
+      ],
       "summary": "Supply wagons have been disappearing near Hollowgate. Eric Huwithakay, a contact of one of the party members, was investigating and has been killed. The party takes over the investigation, tracks the missing goods to kobolds in caverns nearby, and recovers a sealed crate among the stolen goods.",
       "what_actually_happened": "The Concord, through Garrick Thorne, hired the kobolds to raid the caravans — creating shortages and instability, and intercepting one specific sealed crate (the Book of the Damned + the gem) before it could reach Dreknar. Eric Huwithakay was killed because he was getting too close to the truth.",
       "what_party_knows": "Kobolds were stealing the goods. Eric is dead. The crate is sealed and clearly significant. Evidence near the raid scene suggests Elkenquay involvement.",
@@ -498,6 +502,11 @@
       "act": "prologue",
       "location": "hollowgate",
       "href": "hollowgate/moonlit_mirage/moonlit_mirage_arc.html",
+      "pages": [
+        { "label": "Arc Reference", "href": "hollowgate/moonlit_mirage/moonlit_mirage_arc.html" },
+        { "label": "Pallor Brood Encounter", "href": "hollowgate/moonlit_mirage/moonlit_mirage_encounter.html" },
+        { "label": "Prize Counter & Curiosities", "href": "hollowgate/moonlit_mirage/moonlit_mirage_shop.html" }
+      ],
       "summary": "The Moonlit Mirage Carnival arrives in Hollowgate. The party encounters Chaelynn, a long-lost contact now working with the carnival. A Pallor Brood attack disrupts the carnival — monstrosities from the machinist's work.",
       "what_actually_happened": "The monstrosities are the machinist's creations, funded secretly by Percival. The gems dropped by the creatures are the same type as the gem in the crate. Chaelynn has been observing the party throughout and will report to Cael Darro.",
       "what_party_knows": "Strange creatures attacked the carnival and were defeated. Chaelynn is here — a familiar and trusted face. Gems were found on the creatures (significance unclear).",
@@ -517,6 +526,9 @@
       "act": "prologue",
       "location": "dunmore",
       "href": "hollowgate/dunmore/dunmore_arc.html",
+      "pages": [
+        { "label": "Arc Reference", "href": "hollowgate/dunmore/dunmore_arc.html" }
+      ],
       "summary": "The party travels to Dunmore with the carnival. The city is in uproar — inflammatory pamphlets everywhere, anti-Elkenquay sentiment at a boiling point. The party investigates who is printing and distributing the material. Before the investigation resolves, a monstrosity breaks loose — overpowered, multi-phase. The situation spirals. The Concord extracts the party. Cael Darro makes his pitch. The Prologue ends with the party recruited.",
       "what_actually_happened": "The propaganda is a Concord operation. The monstrosity is another machinist creation. The Concord's rescue is deliberate — timed to create obligation and trust. The party has been manipulated into position.",
       "what_party_knows": "Someone is manufacturing the anti-Elkenquay sentiment. A monstrosity attacked the city. The Concord saved them and appears to be the only organized group that knows what is actually happening.",
