@@ -263,6 +263,77 @@
   .conclusion h3 { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--ink); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem; }
   .conclusion ul { margin-left: 1.1rem; font-size: 0.87rem; color: var(--dim); line-height: 1.7; }
 
+  /* ── VOSS ROTATING GALLERY ── */
+  .voss-gallery-wrap {
+    float: left;
+    width: 46%;
+    margin: 0 1.5rem 0.8rem 0;
+  }
+  .voss-gallery {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border: 1px solid var(--parchment-shadow);
+    box-shadow: 4px 4px 16px rgba(0,0,0,0.35);
+    overflow: hidden;
+    background: #0a0806;
+  }
+  .voss-gallery img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out;
+    filter: sepia(6%) contrast(1.04);
+  }
+  .voss-gallery img.active { opacity: 1; }
+  .voss-gallery-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.4rem;
+  }
+  .voss-gallery-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    color: var(--faded);
+    cursor: pointer;
+    padding: 0.15rem 0.55rem;
+    border: 1px solid rgba(180,140,60,0.35);
+    background: rgba(180,140,60,0.06);
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .voss-gallery-btn:hover { background: rgba(180,140,60,0.18); color: var(--ink); }
+  .voss-gallery-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--faded);
+    text-align: center;
+    flex: 1;
+    padding: 0 0.3rem;
+  }
+  .voss-gallery-pips {
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-top: 0.35rem;
+  }
+  .voss-gallery-pip {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(180,140,60,0.25);
+    transition: background 0.3s;
+    cursor: pointer;
+  }
+  .voss-gallery-pip.active { background: rgba(180,140,60,0.75); }
+
   /* ── INCIDENT STRIP ── */
   .incident-strip {
     max-width: 1050px;
@@ -529,14 +600,26 @@
   <div class="creature-section">
     <div class="creature-block">
       <div class="cb-inner">
-        <img style="float:right;width:270px;margin:0 0 1.2rem 1.5rem;border:1px solid var(--parchment-shadow);box-shadow:4px 4px 14px rgba(0,0,0,0.35);filter:sepia(8%) contrast(1.04);" src="viktor_voss.png" alt="Doctor Viktor Voss — augmented">
+        <div class="voss-gallery-wrap">
+          <div class="voss-gallery" id="vossGallery">
+            <img src="vv1.png" alt="Viktor Voss" class="active">
+            <img src="vv2.png" alt="Viktor Voss — rear augmentations">
+            <img src="vv3.png" alt="Viktor Voss — respirator close-up">
+          </div>
+          <div class="voss-gallery-nav">
+            <button class="voss-gallery-btn" onclick="vossGalleryStep(-1)">&#8592;</button>
+            <span class="voss-gallery-label" id="vossGalleryLabel">Full Portrait</span>
+            <button class="voss-gallery-btn" onclick="vossGalleryStep(1)">&#8594;</button>
+          </div>
+          <div class="voss-gallery-pips" id="vossGalleryPips">
+            <div class="voss-gallery-pip active" onclick="vossGalleryGo(0)"></div>
+            <div class="voss-gallery-pip" onclick="vossGalleryGo(1)"></div>
+            <div class="voss-gallery-pip" onclick="vossGalleryGo(2)"></div>
+          </div>
+        </div>
         <div class="cb-name">Doctor Viktor Voss</div>
         <div class="cb-type">Medium Humanoid · Lawful Evil · The Machinist</div>
-        <div class="cb-flavor">
-          <img style="float:left;width:180px;margin:0.2rem 1rem 0.5rem 0;border:1px solid var(--parchment-shadow);box-shadow:2px 2px 8px rgba(0,0,0,0.25);filter:sepia(10%);" src="viktor_voss_young.png" alt="Viktor Voss — early military career">
-          Tall, gaunt, unnervingly composed. Surgical scars trace across his neck and forearms — some clean, some crude, several self-inflicted. Mechanical prosthetic fingers click softly as he moves, concealing injector needles and surgical tools. A respirator fused into his ribcage produces faint rhythmic hissing. Behind him, a third arm extends from spinal reinforcement braces — moving with horrible natural precision, writing notes independently while he fights.
-          <div style="clear:both;"></div>
-        </div>
+        <div class="cb-flavor">Tall, gaunt, unnervingly composed. Surgical scars trace across his neck and forearms — some clean, some crude, several self-inflicted. Mechanical prosthetic fingers click softly as he moves, concealing injector needles and surgical tools. A respirator fused directly into his ribcage produces faint rhythmic hissing. Behind him, a third arm extends from spinal reinforcement braces — moving with horrible natural precision, writing notes independently while he fights.</div>
 
         <div class="stat-bar">
           <div class="stat-item"><span class="stat-label">AC</span><span class="stat-val">18</span></div>
@@ -942,5 +1025,32 @@
   </div>
 
 </div><!-- .page -->
+<script>
+(function() {
+  var slides = [
+    { label: 'Full Portrait'         },
+    { label: 'The Auxiliary Arm'     },
+    { label: 'The Respirator'        },
+  ];
+  var current = 0;
+  var imgs   = document.querySelectorAll('#vossGallery img');
+  var pips   = document.querySelectorAll('#vossGalleryPips .voss-gallery-pip');
+  var lbl    = document.getElementById('vossGalleryLabel');
+
+  function goTo(n) {
+    imgs[current].classList.remove('active');
+    pips[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    imgs[current].classList.add('active');
+    pips[current].classList.add('active');
+    lbl.textContent = slides[current].label;
+  }
+
+  window.vossGalleryStep = function(dir) { goTo(current + dir); };
+  window.vossGalleryGo   = function(n)   { goTo(n); };
+
+  setInterval(function() { goTo(current + 1); }, 3500);
+})();
+</script>
 </body>
 </html>
