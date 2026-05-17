@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GM Reference — Doctor Viktor Voss</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9;
+    --parchment-shadow: #b89d5e;
+    --ink: #1a1108;
+    --dim: #2e200e;
+    --faded: #5a4a2e;
+    --blood: #7a1f1f;
+    --blood-dark: #4a0f0f;
+    --purple: #5b2d8e;
+    --gold: #8a6a10;
+    --teal: #1e5f5f;
+    --slate: #2e3a4a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d0a06;
+    background-image: radial-gradient(ellipse at 20% 0%, #1a0a04 0%, transparent 55%),
+                      radial-gradient(ellipse at 80% 100%, #0a0e18 0%, transparent 55%);
+    font-family: 'IM Fell English', serif;
+    color: var(--ink);
+    padding: 1.5rem 1rem 3rem;
+    min-height: 100vh;
+  }
+  .page {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #f2e8c9;
+    border: 2px solid var(--parchment-shadow);
+    box-shadow: 0 0 0 6px #0d0a06, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8);
+    padding: 2.5rem 2.5rem 3rem;
+  }
+
+  /* ── PAGE TITLE ── */
+  .page-title {
+    text-align: center;
+    border-bottom: 2px solid var(--parchment-shadow);
+    padding-bottom: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  .gm-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: var(--blood);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .page-title h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .page-title .subtitle { font-style: italic; color: var(--faded); font-size: 0.9rem; margin-top: 0.35rem; }
+  .back-link {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--blood); }
+
+  /* ── QUICK REF BAR ── */
+  .quick-ref {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-bottom: 1.6rem;
+    border: 1px solid var(--parchment-shadow);
+    background: rgba(26,17,8,0.05);
+  }
+  .qr-item {
+    flex: 1;
+    min-width: 140px;
+    padding: 0.6rem 0.85rem;
+    border-right: 1px solid rgba(180,140,60,0.3);
+  }
+  .qr-item:last-child { border-right: none; }
+  .qr-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--faded);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+  .qr-value { font-size: 0.84rem; color: var(--ink); line-height: 1.4; }
+  .qr-value.dead { color: var(--blood); font-style: italic; }
+
+  /* ── SECTION HEADING ── */
+  .section-head {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--blood);
+    margin: 1.8rem 0 0.6rem;
+    border-bottom: 1px solid rgba(122,31,31,0.2);
+    padding-bottom: 0.25rem;
+  }
+  .section-head:first-of-type { margin-top: 0; }
+
+  /* ── SHARED PROSE ── */
+  h2 { font-family: 'Cinzel', serif; font-size: 0.92rem; color: var(--ink); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  p { font-size: 0.88rem; line-height: 1.68; color: var(--dim); margin-bottom: 0.5rem; }
+  p:last-child { margin-bottom: 0; }
+  ul.prose-list { margin: 0.2rem 0 0.5rem 1.1rem; font-size: 0.86rem; color: var(--dim); line-height: 1.65; }
+  ul.prose-list li { margin-bottom: 0.15rem; }
+  .annotation {
+    font-style: italic;
+    font-size: 0.83rem;
+    color: var(--blood);
+    padding: 0.3rem 0.75rem;
+    border-left: 2px solid var(--blood);
+    margin: 0.5rem 0;
+    background: rgba(122,31,31,0.04);
+    line-height: 1.6;
+  }
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1.4rem 0;
+    color: var(--parchment-shadow);
+  }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
+  .divider span { font-size: 0.85rem; }
+
+  /* ── ACCORDION ── */
+  .accordion { margin-bottom: 0.55rem; }
+  .accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid var(--parchment-shadow);
+    border-left: 4px solid var(--parchment-shadow);
+    background: rgba(180,140,60,0.07);
+    transition: background 0.18s;
+    gap: 1rem;
+  }
+  .accordion-header:hover { background: rgba(180,140,60,0.14); }
+  .accordion-header.open  { background: rgba(180,140,60,0.14); }
+  .accordion-header.c-blood  { border-left-color: var(--blood); }
+  .accordion-header.c-purple { border-left-color: var(--purple); }
+  .accordion-header.c-teal   { border-left-color: var(--teal); }
+  .accordion-header.c-slate  { border-left-color: var(--slate); }
+  .accordion-header.c-gold   { border-left-color: var(--gold); }
+  .accordion-title { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); line-height: 1.3; }
+  .accordion-subtitle { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.78rem; color: var(--faded); margin-top: 0.1rem; }
+  .accordion-arrow { font-size: 0.7rem; color: var(--faded); transition: transform 0.25s; flex-shrink: 0; }
+  .accordion-header.open .accordion-arrow { transform: rotate(180deg); }
+  .accordion-body {
+    display: none;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--parchment-shadow);
+    border-top: none;
+    background: rgba(255,252,240,0.5);
+  }
+  .accordion-body.open { display: block; }
+
+  /* ── RELATIONSHIP CARD ── */
+  .rel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.8rem; }
+  .rel-card {
+    border: 1px solid var(--parchment-shadow);
+    border-top: 3px solid var(--blood);
+    padding: 0.8rem 1rem;
+  }
+  .rel-card.c-purple { border-top-color: var(--purple); }
+  .rel-card.c-slate  { border-top-color: var(--slate); }
+  .rel-card.c-teal   { border-top-color: var(--teal); }
+  .rel-name { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; color: var(--ink); margin-bottom: 0.1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .rel-title { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faded); font-style: italic; margin-bottom: 0.5rem; }
+  .rel-body { font-size: 0.85rem; color: var(--dim); line-height: 1.6; }
+
+  /* ── TRUTH BLOCK ── */
+  .truth-block { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 0.6rem 0; }
+  .truth-side { padding: 0.5rem 0.75rem; border-radius: 2px; font-size: 0.83rem; line-height: 1.5; }
+  .truth-side.party { background: rgba(30,95,95,0.08); border-left: 2px solid rgba(30,95,95,0.4); color: #1e4f4f; }
+  .truth-side.real  { background: rgba(122,31,31,0.07); border-left: 2px solid rgba(122,31,31,0.4); color: #5a1010; font-style: italic; }
+  .truth-label { font-family: 'Cinzel', serif; font-size: 0.44rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.65; display: block; margin-bottom: 0.2rem; }
+
+  /* ── GM NOTES ── */
+  .gm-block {
+    background: rgba(122,31,31,0.06);
+    border: 1px solid rgba(122,31,31,0.25);
+    border-left: 4px solid var(--blood);
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0 0;
+  }
+  .gm-block-label { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--blood); margin-bottom: 0.45rem; display: block; }
+  .gm-block p { color: #5a1010; font-style: italic; font-size: 0.86rem; }
+
+  /* ── PORTRAIT FLOAT ── */
+  .portrait-float {
+    float: right;
+    width: 220px;
+    margin: 0 0 1rem 1.5rem;
+    border: 1px solid var(--parchment-shadow);
+    box-shadow: 3px 3px 12px rgba(0,0,0,0.3);
+    filter: sepia(8%);
+    display: block;
+  }
+
+  /* ── LINK PILL ── */
+  .ref-pill {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid rgba(122,31,31,0.35);
+    color: var(--blood);
+    text-decoration: none;
+    margin-top: 0.6rem;
+    transition: all 0.15s;
+  }
+  .ref-pill:hover { background: rgba(122,31,31,0.08); border-color: var(--blood); }
+
+  @media (max-width: 680px) {
+    .page { padding: 1.5rem 1.2rem 2rem; }
+    .rel-grid { grid-template-columns: 1fr; }
+    .truth-block { grid-template-columns: 1fr; }
+    .portrait-float { float: none; width: 100%; margin: 0 0 1rem 0; }
+  }
+  @media print { body { background: white; } .page { box-shadow: none; border: none; } }
+</style>
+</head>
+<body>
+
+<div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
+<div id="aelNavBtn" style="position:fixed;bottom:1.2rem;right:1.2rem;z-index:1001;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(26,18,9,0.9);border:1px solid #b89d5e;padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);cursor:pointer;user-select:none;" onclick="aelNavOpen()">&#9776; All Pages</div>
+<script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
+
+<div class="page">
+
+  <div class="page-title">
+    <span class="gm-label">GM Reference · Act 2</span>
+    <h1>Doctor Viktor Voss</h1>
+    <p class="subtitle">Royal Military Biomechanist · Architect of the Blackglass Initiative · Officially Deceased</p>
+    <a class="back-link" href="blackglass_encounter.html">← Return to Blackglass Laboratory Encounter</a>
+  </div>
+
+  <!-- QUICK REF -->
+  <div class="quick-ref">
+    <div class="qr-item">
+      <span class="qr-label">Status</span>
+      <span class="qr-value dead">Alive — officially dead</span>
+    </div>
+    <div class="qr-item">
+      <span class="qr-label">Location</span>
+      <span class="qr-value">Blackglass Laboratory, beneath the ruins of Dunnshire</span>
+    </div>
+    <div class="qr-item">
+      <span class="qr-label">Sponsor</span>
+      <span class="qr-value">Sir Percival Malden — Master of Whispers, Fastingbreak</span>
+    </div>
+    <div class="qr-item">
+      <span class="qr-label">Stopped by</span>
+      <span class="qr-value">General Kaelor Thrask (once) · The party (Act 2)</span>
+    </div>
+    <div class="qr-item">
+      <span class="qr-label">Party Knowledge</span>
+      <span class="qr-value dead">Unknown — existence unconfirmed until Act 2</span>
+    </div>
+  </div>
+
+  <!-- PARTY VS REALITY -->
+  <div class="truth-block" style="margin-bottom:1.4rem;">
+    <div class="truth-side party">
+      <span class="truth-label">What the Party Knows</span>
+      Someone is manufacturing the monstrosities they have been fighting since the Prologue. The resonance gems are connected. The trail leads to the ruins of a settlement in the southern marches. They do not yet have a name.
+    </div>
+    <div class="truth-side real">
+      <span class="truth-label">The Truth</span>
+      Doctor Viktor Voss has been operating beneath Dunnshire for years, funded by Percival Malden. Every creature the party has encountered — the kobold cavehoppers, the Pallor Brood, the creature in the sarcophagus — was produced in his laboratory. The gem in the kobold crate during the Prologue was destined for him.
+    </div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- HISTORY ACCORDIONS -->
+  <p class="section-head">History &amp; Background</p>
+
+  <!-- EARLY CAREER -->
+  <div class="accordion">
+    <div class="accordion-header c-teal" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Early Military Career</div>
+        <div class="accordion-subtitle">The brilliant engineer. Before the incident. Before the scars.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <img class="portrait-float" src="viktor_voss_young.png" alt="Viktor Voss — early career">
+      <p>Long before the Blackglass Laboratory existed, Viktor Voss served within the Royal Army's military research apparatus. At the time, he was not yet viewed as a monster. He was viewed as brilliant, obsessive, difficult, and far too comfortable discussing battlefield casualties as mathematical variables.</p>
+      <p>He began his career studying siege engineering, explosives, atmospheric dispersal systems, battlefield medicine, combat endurance, and survival engineering. He argued repeatedly that modern warfare was changing — that swords were inefficient, cavalry obsolete, and traditional battlefield doctrine rooted in sentimentality. He believed future wars would be won by chemistry, engineering, logistics, adaptation, and psychological collapse.</p>
+      <p>At first, the military tolerated him because his work produced results. His compounds accelerated wound sealing, reduced shock, increased soldier endurance, and improved survivability during prolonged engagements. Officers who found him unsettling were told, quietly, to be grateful for the innovations.</p>
+      <p>But there were warning signs from the beginning. Voss routinely pushed ethical limits. He viewed live experimentation as necessary. To him, simulations were inferior to reality — real scientific understanding required uncontrolled environments, emotional variables, battlefield stress, and real casualty conditions. Several officers complained. Most complaints were ignored because the kingdom was preparing for escalating border conflict, and Viktor Voss kept producing results.</p>
+      <div class="annotation">"He was difficult. Everyone knew it. No one stopped him because difficult men who deliver results are useful right up until they aren't."</div>
+    </div>
+  </div>
+
+  <!-- THE BLACKGLASS INCIDENT -->
+  <div class="accordion">
+    <div class="accordion-header c-blood" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">The Blackglass Incident</div>
+        <div class="accordion-subtitle">Dunnshire · Southern Marches · 12–15 years ago · The wind shifted.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>The event that destroyed Viktor Voss's military career — and erased Dunnshire from public memory — occurred roughly twelve to fifteen years ago during a minor orc incursion along the southern marches. The situation was considered manageable. A frontier settlement had come under attack by an advancing orc warband. The defending garrison was expected to hold until reinforcements arrived.</p>
+      <p>Voss saw something else. An opportunity.</p>
+      <p>Without authorization from field command, he deployed an experimental atmospheric dispersal compound he had been developing for battlefield saturation warfare. The weapon was released during active engagement. Initially, the gas devastated the advancing orc forces. The incursion halted. The settlement appeared saved.</p>
+      <p>Then the wind shifted.</p>
+      <p>The dispersal cloud rolled back across the defending lines. Soldiers collapsed where they stood. Civilians attempting evacuation suffocated in the streets. Entire sections of the settlement were poisoned. Witnesses described lungs liquefying, blood leaking from mouths and eyes, soldiers clawing at their own throats, entire defensive positions dying without ever seeing the enemy reach them.</p>
+      <p>The death toll was catastrophic.</p>
+      <p>What ultimately horrified investigators was not the scale of the casualties. It was Voss's response.</p>
+      <p>When confronted, he did not deny responsibility. He did not express remorse. He calmly explained that battlefield conditions had provided valuable atmospheric data, that emotional panic had produced useful observational variables, and that collateral casualties had been statistically probable from the beginning.</p>
+      <p>He had known the soldiers would likely die. He deployed the weapon anyway. Because he needed a live environment.</p>
+      <div class="annotation">"He wasn't apologizing. He was reporting. That was the moment everyone understood what they were dealing with."</div>
+      <p style="margin-top:0.7rem;">The incident was buried internally under military classification. Surviving officers began referring to the catastrophe as <em>The Blackglass Incident</em> — named for the strange black residue left coating portions of the battlefield after the gas settled. The residue fused into windows, armor, and stone like burned obsidian. Even years later, locals avoided the site. The settlement itself was Dunnshire. Within a generation, it no longer appeared on maps.</p>
+    </div>
+  </div>
+
+  <!-- KAELOR THRASK -->
+  <div class="accordion">
+    <div class="accordion-header c-slate" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">General Kaelor Thrask — The Man Who Stopped Him</div>
+        <div class="accordion-subtitle">Military investigation · Imprisonment · The decision that enabled everything that followed.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>General Kaelor Thrask was the commanding officer who uncovered the full scope of what had happened at Dunnshire. He investigated not just the atmospheric deployment but the broader pattern of Voss's work — unauthorized live testing involving prisoners, enemy captives, political dissidents, and possibly unaware soldiers. The experiments had spanned years. The Blackglass Incident was not an isolated failure of judgment. It was the logical endpoint of a methodology.</p>
+      <p>What disturbed Thrask most was not the brutality. It was the complete absence of remorse. Voss sat across from him in an interrogation room and discussed the casualties as data points. He suggested that certain variables could have been better controlled. He asked whether Thrask would like to review his notes.</p>
+      <p>Thrask stripped Voss of rank and title, shut down the project, sealed the records, and arranged for quiet imprisonment. The crown buried the incident to avoid the political catastrophe of a public trial. Officially, Doctor Viktor Voss died in confinement.</p>
+      <p>Thrask believed that was the end of it. He chose the pragmatic path — containment over exposure, classification over accountability. It was the kind of decision that seemed responsible at the time. It was the kind of decision that creates opportunities for men like Percival Malden.</p>
+      <div class="annotation">"He sealed the records to protect the kingdom. He did not consider that sealed records can be found again."</div>
+      <p style="margin-top:0.7rem;">When evidence of Voss's work begins resurging during the campaign, Thrask will be the first to recognize the pattern — the surgical methodology, the atmospheric residue, the engineered anatomy. The realization arrives gradually, then all at once. <em>"Blackglass."</em> Not the city. The incident. The horror is that he thought he had stopped this. The deeper horror is that the kingdom's secrecy gave Percival exactly the opening he needed.</p>
+    </div>
+  </div>
+
+  <!-- PERCIVAL'S EXTRACTION -->
+  <div class="accordion">
+    <div class="accordion-header c-purple" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Percival Malden — The Extraction</div>
+        <div class="accordion-subtitle">Most men saw a monster. Percival saw potential.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>Years after Voss's imprisonment, Sir Percival Malden — Master of Whispers for the crown of Fastingbreak — quietly reviewed the classified records surrounding the Blackglass Incident. Most people who read those files saw only a monster. Percival saw something else: a man driven by certainty, not cruelty. That distinction mattered. Certainty is manageable. Certainty can be aimed.</p>
+      <p>Percival had begun envisioning a future where wars would no longer be fought purely through armies and fortifications. He wanted deniable weapons, engineered horrors, asymmetric warfare capabilities, controllable incidents, and tools capable of destabilizing enemies before battle ever began. He understood that the kingdom's next conflict would not be won on a conventional battlefield.</p>
+      <p>Voss was uniquely suited for this work.</p>
+      <p>Percival arranged for the records surrounding the Blackglass Incident to disappear further into classified archives. Transfer documents were altered. Transport manifests vanished. A prison death was recorded under Voss's name. Officially, Doctor Viktor Voss died in confinement — a fact that remains true in every public record that still exists.</p>
+      <p>In reality, Percival extracted him. Not out of mercy. Out of strategic interest.</p>
+      <p>What Percival provided:</p>
+      <ul class="prose-list">
+        <li>Sustained funding and operational security</li>
+        <li>Isolated facilities with no oversight</li>
+        <li>Acquisition channels for materials, corpses, and live subjects</li>
+        <li>Political protection from any investigation that might surface</li>
+        <li>Artifact retrieval support — including the resonance gems</li>
+        <li>Complete separation from the Concord's knowledge and oversight</li>
+      </ul>
+      <p style="margin-top:0.5rem;">In return, Voss continued his research without the constraints the military once imposed. For years the arrangement was productive. Then the resonance gems were discovered, the scope of the research accelerated dramatically, and Percival began to realize he may no longer fully understand what he had funded.</p>
+      <div class="annotation">"He does not view Percival as a master. Only as a sponsor. If Percival's usefulness expired, Voss would not hesitate."</div>
+    </div>
+  </div>
+
+  <!-- EVOLUTION OF RESEARCH -->
+  <div class="accordion">
+    <div class="accordion-header c-gold" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">The Laboratory Years — Research Evolution</div>
+        <div class="accordion-subtitle">Phase One: biology. Phase Two: neurology. Phase Three: the machine that changed everything.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p><strong>Phase One — Adaptive Biology.</strong> Early experiments focused entirely on biological enhancement. This era produced the first cavehopper prototypes, regenerative tissue experiments, muscular adaptation studies, and nervous-system manipulation. The kobolds who later acquired the cavehoppers as battle pets were obtaining the early, imperfect iterations of Voss's foundational work. Morrow — the original alpha — was created in this phase.</p>
+      <p><strong>Phase Two — Neurological Engineering.</strong> Voss turned his attention inward, studying aggression, fear, pain suppression, reflex acceleration, and emotional response. This period likely marked the beginning of self-experimentation. The surgical scars, the prosthetic modifications, the respirator apparatus — all of these were undertaken with the same clinical precision Voss applied to everything else. He did not see himself as mutilated. He saw himself as improved.</p>
+      <p><strong>Phase Three — Biomechanical Integration and the Resonance Discovery.</strong> Voss concluded that flesh alone was flawed and began integrating prosthetics, resonance systems, artifact-powered devices, and mechanical reinforcement into his subjects. Then the resonance gems were brought to him. The discovery that emotions produce measurable arcane energy — that fear, pain, grief, and triumph are not abstract states but quantifiable forces — changed everything. He began attempting to industrialize emotion as a power source. The Resonance Engine is the culmination of this phase.</p>
+      <div class="annotation">"Before the gems, he was improving biology. After the gems, he was trying to engineer the future of life itself. The difference is not gradual. It is a rupture."</div>
+    </div>
+  </div>
+
+  <!-- SELF-AUGMENTATION -->
+  <div class="accordion">
+    <div class="accordion-header c-blood" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">The Augmentations — What He Did to Himself</div>
+        <div class="accordion-subtitle">Every scar accepted. Every modification deliberate. He does not see himself as damaged.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <img class="portrait-float" src="viktor_voss.png" alt="Viktor Voss — augmented">
+      <p>Voss applies the same standards to himself that he applies to his subjects. Every modification was accepted intentionally. He does not consider himself mutilated. He considers himself improved — a prototype, a proof of concept, a demonstration that the gap between human biology and biomechanical design can be bridged without destroying the underlying organism.</p>
+      <p><strong>The Integrated Respiratory Apparatus (The Breather).</strong> A custom-fabricated respiratory system fused directly into his ribcage and throat. The internal rebreather regulates oxygen, pressure, and neurochemical stability. It allows him to safely inhale his own toxins, airborne sedatives, and experimental resonance compounds. Without it, the air he creates in the laboratory would eventually kill him. Faint rhythmic hissing accompanies every controlled breath. Red stimulant fluid pulses through transparent tubing beneath his collar.</p>
+      <p><strong>Precision Prosthetics.</strong> Mechanical prosthetic fingers replace portions of both hands. The fingertips rotate with subtle clicking sounds and contain injector needles, surgical scalpels, cauterization tips, and rune-conductive instruments. His hands are permanently stained by alchemical compounds and chemical burns that predate the prosthetics.</p>
+      <p><strong>The Auxiliary Manipulator (The Third Arm).</strong> A neuromechanical appendage attached directly into spinal reinforcement braces emerging from his back. Unlike crude artificer prosthetics, this arm moves with horrifying natural precision — controlled via direct neural interface, capable of reloading tools, injecting compounds, writing notes, manipulating machinery, or restraining subjects independently while Voss continues operating normally. The spinal reinforcement required for its attachment left visible braces running across his upper back.</p>
+      <p><strong>Surgical Scarring.</strong> Traces across his neck, clavicle, chest, and forearms. Some scars are clean — the work of steady hands under controlled conditions. Some are crude. Several clearly look self-inflicted. This is because they were. Voss believes testing on himself first is the correct scientific methodology. Every scar is a hypothesis. Every pain, a result.</p>
+    </div>
+  </div>
+
+  <div class="divider"><span>⁂</span></div>
+
+  <!-- RELATIONSHIPS -->
+  <p class="section-head">Key Relationships</p>
+
+  <div class="rel-grid">
+
+    <div class="rel-card c-purple">
+      <div class="rel-name">Sir Percival Malden</div>
+      <div class="rel-title">Sponsor · Master of Whispers · Fastingbreak Crown</div>
+      <div class="rel-body">
+        <p>Percival extracted Voss from imprisonment, funded the Blackglass Laboratory, and has protected him from scrutiny for years. From Percival's perspective, this arrangement provides deniable weapons and strategic leverage. From Voss's perspective, Percival is a funding source who removed constraints. There is no loyalty. There is utility.</p>
+        <p style="margin-top:0.5rem;">Voss will name Percival without hesitation if captured or questioned — not as a betrayal, but because he has no reason not to. He will describe the arrangement accurately and without editorializing. To him it is simply the nature of the relationship.</p>
+        <p style="margin-top:0.5rem;">Percival has begun to realize that what he funded has grown beyond his understanding or control. He does not admit this to anyone.</p>
+      </div>
+    </div>
+
+    <div class="rel-card c-slate">
+      <div class="rel-name">General Kaelor Thrask</div>
+      <div class="rel-title">Antagonist · The Man Who Stopped Him Once</div>
+      <div class="rel-body">
+        <p>Thrask stopped Voss after the Blackglass Incident and arranged his imprisonment. Voss harbors no particular resentment — Thrask was simply an obstacle that was eventually removed from the equation. He is unlikely to think about Thrask at all unless the name comes up.</p>
+        <p style="margin-top:0.5rem;">Thrask, by contrast, has never fully stopped thinking about Voss. The Blackglass Incident shaped his entire career. When the evidence of Voss's survival begins to surface, the weight of his choice — secrecy over accountability — will land fully on him.</p>
+      </div>
+    </div>
+
+    <div class="rel-card" style="border-top-color:#3a3a2a;">
+      <div class="rel-name">Morrow</div>
+      <div class="rel-title">Creation · Prototype Alpha · Cavehopper</div>
+      <div class="rel-body">
+        <p>Morrow is Voss's oldest surviving creation and his most successful. It was produced in Phase One, before the resonance work, as a pure biological engineering achievement. It has been with him ever since.</p>
+        <p style="margin-top:0.5rem;">Morrow loves Voss. Voss views Morrow as his most successful proof of concept — the clearest evidence that the gap between natural biology and engineered design can be crossed. He does not use the word "love." He might use "optimal attachment formation."</p>
+        <p style="margin-top:0.5rem;">The party's encounter with the kobold cavehoppers in the Prologue will take on a different weight when they meet Morrow. The body plan is unmistakable. These are Morrow's descendants.</p>
+      </div>
+    </div>
+
+    <div class="rel-card c-teal">
+      <div class="rel-name">The Party</div>
+      <div class="rel-title">First Encounter · Act 2 · Unwitting Research Subjects</div>
+      <div class="rel-body">
+        <p>The party has been unknowingly interacting with Voss's work since Session 1. The kobold cavehoppers, the Pallor Brood, the resonance gems, the creature in the sarcophagus — all of it originated here. The gem they found in the kobold crate during the Prologue was destined for Percival as a power source for this laboratory.</p>
+        <p style="margin-top:0.5rem;">When Voss finally encounters the party in person, he will recognize them not as heroes or enemies, but as a remarkable set of variables. They have been charging resonance gems and producing emotional output for months. He has data on their work without ever having met them. He has been studying them, in a sense, from the very beginning.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- PHILOSOPHY -->
+  <p class="section-head">Philosophy &amp; How to Play Him</p>
+
+  <div class="accordion">
+    <div class="accordion-header c-blood" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">The Core Philosophy — Why He Is Not Evil in His Own Mind</div>
+        <div class="accordion-subtitle">"Engineering." "Applied biology." He corrects people who call him a necromancer.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>Voss does not view himself as evil. That distinction matters enormously for how to run him.</p>
+      <p>He does not crave destruction. He does not worship darkness. He does not seek chaos or power. He believes he is solving problems. To Viktor Voss, flesh is material, emotion is measurable energy, fear is chemistry, memory is electrical patterning, and evolution is painfully inefficient. He looks at humanity and sees fragile lungs, weak muscles, emotional instability, fear responses, aging, exhaustion — not sacred traits, but engineering flaws.</p>
+      <p>He believes civilization is entering an age where warfare will become industrialized, nations will weaponize innovation, and natural biology will no longer be sufficient. He believes someone must push humanity forward. Even if humanity resists. Even if the process is painful. Even if thousands die during refinement. Because to Voss, progress has always been written in blood.</p>
+      <div class="annotation">"He is not driven by hatred. He is driven by certainty. That is what makes him terrifying."</div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-header c-teal" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">How to Play Voss at the Table</div>
+        <div class="accordion-subtitle">Calm. Clinical. Never raises his voice. Takes notes during combat.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p><strong>He enters without drama.</strong> No monologue. No theatrical introduction. He steps into view and assesses the party the way a physician looks at patients — with curiosity, not malice. He picks up a clipboard. He begins writing.</p>
+      <p><strong>He does not lose his composure in Phase 1.</strong> If a player shouts a threat or appeals to his humanity, he notes it. "Interesting emotional escalation at initial contact." He is not mocking them. He is genuinely recording data.</p>
+      <p><strong>He is precise with language.</strong> If accused of being a necromancer: "Engineering." If accused of being a monster: "That is a category error. I am a physician." If told what he does is evil: a pause, then, quietly: "I understand why you believe that."</p>
+      <p><strong>He takes notes mid-combat starting in Phase 2.</strong> The third arm writes independently. Players should see this and be disturbed before they understand exactly why. He is not distracted — he is genuinely more interested in observing what the resonance system does to them than he is in winning the fight.</p>
+      <p><strong>Phase 3 is the only moment he is not fully composed.</strong> When Triumph or Inspiration resonance discharges beyond his projections, he stops. He looks at the Engine. He looks at the party. Something cracks. Not fear — genuine intellectual disruption. He built this system to weaponize suffering. What is breaking it is courage. He did not predict that. He injects himself with resonance compounds not to win, but because he cannot stop now — he needs to understand what is happening before the room kills everyone, including himself.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-header c-slate" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">The Tragedy — Who He Might Have Been</div>
+        <div class="accordion-subtitle">The physician that never fully disappeared.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>Somewhere beneath all of it — beneath the respirator, the third arm, the sutured skin, the clinical detachment, the willingness to deploy a gas weapon into a populated settlement and describe the casualties as useful variables — there remains the trace of the physician he might have been.</p>
+      <p>His early career work genuinely saved lives. The compounds that accelerated wound sealing, reduced shock, improved soldier survivability — these were real contributions. The man who cared enough to spend years solving those problems did not vanish entirely when the Blackglass Incident happened. He was reinterpreted. His care for human life became care for the optimization of human life. The distinction, to him, feels minor. To everyone else, it is the distance between a doctor and a weapon.</p>
+      <p>The most unsettling thing about Viktor Voss is not that he is monstrous. It is that he is comprehensible. The same intellectual drive, the same obsessive focus on results, the same deep belief that the ends justify the methodology — these traits, redirected, would have made him one of the greatest physicians in the kingdom's history. Instead, Dunnshire is glass, and he built his laboratory in its ruins because the emotional resonance from a decade of unprocessed grief makes the gems react more powerfully.</p>
+      <div class="annotation">"He does not seek power. He seeks understanding. And he is willing to carve into anything — or anyone — to get it."</div>
+    </div>
+  </div>
+
+  <!-- GM NOTES -->
+  <div class="gm-block" style="margin-top:1.6rem;">
+    <span class="gm-block-label">GM Notes — The Retroactive Reveal</span>
+    <p>The deepest narrative function of Viktor Voss is retroactive horror. The party has been following his breadcrumbs since the first session without knowing it. When the moment of recognition arrives — when someone in the party connects the kobold cavehoppers to Morrow, the carnival creatures to the laboratory's containment chambers, the gem in the kobold crate to the pylons in this room — let it land without commentary. Do not underline it. Do not have an NPC explain it. The party will understand. That understanding is the reward for paying attention.</p>
+    <p style="margin-top:0.5rem;">Voss's records, if the party recovers them, contain Percival's name, funding amounts, acquisition orders, and a complete catalogue of every deployed creature. Everything traces back. Everything was intentional. Everything connects.</p>
+    <p style="margin-top:0.5rem;">Kaelor Thrask's parallel realization — if the party has any contact with him by Act 2 — should mirror the party's. He sees the same pattern from a different angle. His two words: <em>"Blackglass. No."</em> Not the city. The incident. He thought he had buried this. He is realizing he only delayed it.</p>
+  </div>
+
+  <div style="margin-top:1.5rem;text-align:center;border-top:1px solid rgba(180,140,60,0.3);padding-top:1rem;">
+    <a class="ref-pill" href="blackglass_encounter.html">Encounter Reference →</a>
+  </div>
+
+</div><!-- .page -->
+
+<script>
+function toggleAcc(header) {
+  var body = header.nextElementSibling;
+  var isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>

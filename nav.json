@@ -110,6 +110,12 @@
           "desc": "Viktor Voss · Morrow · The Resonance Engine · Three-phase encounter · Level 5–7",
           "href": "blackglass/blackglass_encounter.html",
           "type": "gm"
+        },
+        {
+          "name": "Viktor Voss — Background Reference",
+          "desc": "Full history · The Blackglass Incident · Dunnshire · Percival · Kaelor Thrask · Philosophy · GM notes",
+          "href": "blackglass/viktor_voss_reference.html",
+          "type": "gm"
         }
       ]
     }
