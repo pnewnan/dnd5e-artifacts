@@ -3,18 +3,17 @@
     "campaign": "Aelenthor",
     "version": "1.0",
     "last_updated": "2026-05-16",
-    "setting": "The Gulf of Everroth region. Two neighboring nations — Fastingbreak (declining hereditary monarchy) and Elkenquay (thriving republic) — are being manipulated toward war by a covert nationalist organization called the Concord, operating from within Fastingbreak. A third actor, the wizard Dreknar, is using the growing conflict to pursue his own agenda: raising Zarathrax, Lord of the Seventh Circle of Hell, into the material plane.",
+    "setting": "The Gulf of Everroth region. Two neighboring nations \u2014 Fastingbreak (declining hereditary monarchy) and Elkenquay (thriving republic) \u2014 are being manipulated toward war by a covert nationalist organization called the Concord, operating from within Fastingbreak. A third actor, the wizard Dreknar, is using the growing conflict to pursue his own agenda: raising Zarathrax, Lord of the Seventh Circle of Hell, into the material plane.",
     "theme": "Good people making reasonable decisions with incomplete information inside systems that are manipulating them. The party are not villains. They are people trying to help who slowly realize that history is shaped not only by evil acts, but by fear, loyalty, nationalism, misinformation, and the desire to protect the people closest to you.",
-    "tone": "Mature, morally complex. The Concord should feel like a network of capable patriots who slowly convinced themselves they had to manipulate events to save their country — not a secret evil council. Most members genuinely believe they are protecting their homeland. The party's trust in them makes the eventual revelation more painful.",
-    "dramatic_irony": "The party believes Elkenquay is destabilizing the region. The Concord is manufacturing that instability. The war the party will help start is not inevitable — it is being engineered around them, piece by piece, using their competence and good intentions as tools.",
+    "tone": "Mature, morally complex. The Concord should feel like a network of capable patriots who slowly convinced themselves they had to manipulate events to save their country \u2014 not a secret evil council. Most members genuinely believe they are protecting their homeland. The party's trust in them makes the eventual revelation more painful.",
+    "dramatic_irony": "The party believes Elkenquay is destabilizing the region. The Concord is manufacturing that instability. The war the party will help start is not inevitable \u2014 it is being engineered around them, piece by piece, using their competence and good intentions as tools.",
     "campaign_structure": {
-      "prologue": "Hollowgate → Moonlit Mirage Carnival → Dunmore. Three escalating monstrosity encounters (a subplot — evidence of something deeper). Party recovers the Book of the Damned without knowing what it is. The Concord saves them after the Dunmore monstrosity. Party is recruited by Cael Darro.",
-      "act_1": "Party operates as Concord assets. Includes the Path of the Book — Dreknar is introduced through the Concord, and the party travels south through Slynn's Grey (deliver the Book to clergy for 'safeguarding') and onward to Havenford (deliver a locked sarcophagus for 'destruction'). Also involves Witherwood Forest. Party unknowingly delivers a corrupting artifact to an innocent community and transports a demon to the world's largest port city for release.",
+      "prologue": "Hollowgate \u2192 Moonlit Mirage Carnival \u2192 Dunmore. Three escalating monstrosity encounters (a subplot \u2014 evidence of something deeper). Party recovers the Book of the Damned without knowing what it is. The Concord saves them after the Dunmore monstrosity. Party is recruited by Cael Darro.",
+      "act_1": "Party operates as Concord assets. Includes the Path of the Book \u2014 Dreknar is introduced through the Concord, and the party travels south through Slynn's Grey (deliver the Book to clergy for 'safeguarding') and onward to Havenford (deliver a locked sarcophagus for 'destruction'). Also involves Witherwood Forest. Party unknowingly delivers a corrupting artifact to an innocent community and transports a demon to the world's largest port city for release.",
       "act_2": "Gloomwood Forest, east of Havenford. Treant encounters presented as a monster/nature problem. Clearing the treants opens the forest for Fastingbreak to harvest lumber for siege engine construction. The war machine becomes material reality.",
-      "later": "Magnus' group encounters the corrupted settlement at Slynn's Grey — clergy transformed into cultists from proximity to the Book. They stop an immediate threat and take possession of the artifact, never learning the full history of how it arrived there."
+      "later": "Magnus' group encounters the corrupted settlement at Slynn's Grey \u2014 clergy transformed into cultists from proximity to the Book. They stop an immediate threat and take possession of the artifact, never learning the full history of how it arrived there."
     }
   },
-
   "nations": [
     {
       "id": "fastingbreak",
@@ -23,12 +22,20 @@
       "status": "declining",
       "leader": "king-althar-renwald-iv",
       "capital": "to be established",
-      "description": "A once-powerful kingdom founded over a thousand years ago, whose early rulers united feuding tribes under the Crown. Fastingbreak flourished for centuries on fertile lands and dominance over Gulf of Everroth trade routes. Its inability to modernize has left it economically stagnant and dependent on Elkenquay for refined metals and magical components — a humiliating position for a proud kingdom with deep military heritage.",
-      "history": "Fastingbreak's southern border was contested for generations by Orcish tribes from the Iron Flats, leading to centuries of bloody conflict. The kingdom eventually secured the region, but the campaigns drained its resources and left lasting economic scars. This military heritage — and its cost — shapes the kingdom's identity and its current resentments.",
+      "description": "A once-powerful kingdom founded over a thousand years ago, whose early rulers united feuding tribes under the Crown. Fastingbreak flourished for centuries on fertile lands and dominance over Gulf of Everroth trade routes. Its inability to modernize has left it economically stagnant and dependent on Elkenquay for refined metals and magical components \u2014 a humiliating position for a proud kingdom with deep military heritage.",
+      "history": "Fastingbreak's southern border was contested for generations by Orcish tribes from the Iron Flats, leading to centuries of bloody conflict. The kingdom eventually secured the region, but the campaigns drained its resources and left lasting economic scars. This military heritage \u2014 and its cost \u2014 shapes the kingdom's identity and its current resentments.",
       "current_situation": "King Althar Renwald IV, who inherited a kingdom already in decline, is being slowly tempted by the wizard Dreknar with promises of Zarathrax artifacts and restored military power. The Concord is manufacturing provocations against Elkenquay to push the kingdom toward war. Frustration among the populace grows as leadership clings to tradition.",
       "political_structure": "Hereditary monarchy with a council of nobles advising the king. Power heavily centralized in the royal family.",
       "relationship_with_elkenquay": "Deteriorating. Elkenquay has leveraged its trade dominance by increasing prices on refined metals and magical components. King Althar, under noble pressure and economic strain, increasingly sees war as the only means to reclaim lost prestige and secure the Umberstor Mountain resources.",
-      "court": ["king-althar-renwald-iv", "harren-draeven", "elyse-marondel", "kaelor-thrask", "lenira-vostral", "aldric-varenthorne", "percival-malden"]
+      "court": [
+        "king-althar-renwald-iv",
+        "harren-draeven",
+        "elyse-marondel",
+        "kaelor-thrask",
+        "lenira-vostral",
+        "aldric-varenthorne",
+        "percival-malden"
+      ]
     },
     {
       "id": "elkenquay",
@@ -37,73 +44,91 @@
       "status": "thriving",
       "leader": "calla-trenwyth",
       "capital": "eldralore",
-      "description": "A flourishing republic of roughly 700 years, founded when disparate coastal villages united against pirate incursions in the Gulf of Everroth. Wealth from ports funded sophisticated mining in the Umberstor Mountains. About 300 years ago, merchants, miners, and shipbuilders led a peaceful revolution against the noble class, establishing the Senate. Today Elkenquay is renowned for innovation, inclusivity, and prosperity — and is Fastingbreak's primary economic and political rival.",
+      "description": "A flourishing republic of roughly 700 years, founded when disparate coastal villages united against pirate incursions in the Gulf of Everroth. Wealth from ports funded sophisticated mining in the Umberstor Mountains. About 300 years ago, merchants, miners, and shipbuilders led a peaceful revolution against the noble class, establishing the Senate. Today Elkenquay is renowned for innovation, inclusivity, and prosperity \u2014 and is Fastingbreak's primary economic and political rival.",
       "political_structure": "Representative republic. Senate composed of elected officials serving fixed terms. Prime Minister elected from Senate ranks.",
-      "current_situation": "Genuinely not responsible for the provocations the Concord is manufacturing and attributing to them. However, they are economically pressuring Fastingbreak — raising prices and leveraging trade dominance — which gives the Concord real, legitimate grievances to weaponize. Prime Minister Trenwyth prefers diplomacy but is quietly readying defenses.",
-      "key_assets": "Arcane Transit Nexus (magically enhanced transportation network). Umberstor Mountains mining (iron, gold, gemstones, mithral, adamantine, Deeplight Crystals). Witherwood Forest (three ley lines, 15% of area magically active — key lumber resource). Control of major Gulf of Everroth shipping lanes.",
-      "cities": ["eldralore", "port-valor", "highhaven", "coastfall"],
+      "current_situation": "Genuinely not responsible for the provocations the Concord is manufacturing and attributing to them. However, they are economically pressuring Fastingbreak \u2014 raising prices and leveraging trade dominance \u2014 which gives the Concord real, legitimate grievances to weaponize. Prime Minister Trenwyth prefers diplomacy but is quietly readying defenses.",
+      "key_assets": "Arcane Transit Nexus (magically enhanced transportation network). Umberstor Mountains mining (iron, gold, gemstones, mithral, adamantine, Deeplight Crystals). Witherwood Forest (three ley lines, 15% of area magically active \u2014 key lumber resource). Control of major Gulf of Everroth shipping lanes.",
+      "cities": [
+        "eldralore",
+        "port-valor",
+        "highhaven",
+        "coastfall"
+      ],
       "imports": "Exotic spices and textiles through Havenford. Arcane components from Myrial.",
       "exports": "Refined metals and enchanted tools globally. Lumber from Witherwood Forest to Havenford shipyards.",
-      "gm_notes": "Elkenquay is innocent of the specific provocations being manufactured. But they are not blameless in the broader geopolitical pressure — their trade leverage is real and is fueling genuine resentment. This nuance is important: the Concord's grievances are not entirely fabricated, just weaponized and amplified."
+      "gm_notes": "Elkenquay is innocent of the specific provocations being manufactured. But they are not blameless in the broader geopolitical pressure \u2014 their trade leverage is real and is fueling genuine resentment. This nuance is important: the Concord's grievances are not entirely fabricated, just weaponized and amplified."
     }
   ],
-
   "factions": [
     {
       "id": "the-concord",
       "name": "The Concord",
       "type": "covert nationalist organization",
-      "base": "Fastingbreak — operates in cells throughout",
-      "description": "A covert nationalist organization operating within Fastingbreak. Not officially part of the government, though it includes influential members from military, intelligence, trade, and political circles. Its members genuinely believe they are protecting their homeland — that Elkenquay is slowly strangling Fastingbreak and that passive waiting will lead to collapse.",
+      "base": "Fastingbreak \u2014 operates in cells throughout",
+      "description": "A covert nationalist organization operating within Fastingbreak. Not officially part of the government, though it includes influential members from military, intelligence, trade, and political circles. Its members genuinely believe they are protecting their homeland \u2014 that Elkenquay is slowly strangling Fastingbreak and that passive waiting will lead to collapse.",
       "core_belief": "Elkenquay is strangling Fastingbreak economically and politically. Conflict is not only inevitable but necessary for survival. The crown has been too slow to act.",
-      "methods": "Increase anti-Elkenquay sentiment. Manufacture or intensify border tensions. Create incidents that can be blamed on Elkenquay. Prepare Fastingbreak psychologically and politically for war. Operates in cells — most members only see their piece of any operation. Compartmentalized by design.",
+      "methods": "Increase anti-Elkenquay sentiment. Manufacture or intensify border tensions. Create incidents that can be blamed on Elkenquay. Prepare Fastingbreak psychologically and politically for war. Operates in cells \u2014 most members only see their piece of any operation. Compartmentalized by design.",
       "tone": "Not cartoon villains. A network of capable patriots who slowly convinced themselves that manipulation was necessary to save their country. Many members are frightened officials, opportunists, nationalists, and people who convinced themselves escalation was the only path.",
-      "internal_secret": "Sir Percival Malden is secretly funding a machinist inside Fastingbreak who creates the monstrosities. This is unknown to every other Concord member. The gem in the crate alongside the Book of the Damned was destined for Percival as a payment and power source for this research — a mission within the mission that no one else knows about.",
-      "relationship_with_dreknar": "The Concord views Dreknar as potentially useful for strengthening Fastingbreak militarily but fundamentally untrustworthy. They arranged for the kobolds to steal the crate specifically to intercept the Book before it could reach him — even they recognize giving him the Book would be dangerous. Despite this, they facilitate an introduction to the party because his resources are useful.",
-      "court_connections": ["percival-malden", "aldric-varenthorne"],
-      "operatives": ["garrick-thorne", "selene-marrow", "tomas-vale", "brother-carrow", "mirelle-voss", "cael-darro", "chaelynn"]
+      "internal_secret": "Sir Percival Malden is secretly funding a machinist inside Fastingbreak who creates the monstrosities. This is unknown to every other Concord member. The gem in the crate alongside the Book of the Damned was destined for Percival as a payment and power source for this research \u2014 a mission within the mission that no one else knows about.",
+      "relationship_with_dreknar": "The Concord views Dreknar as potentially useful for strengthening Fastingbreak militarily but fundamentally untrustworthy. They arranged for the kobolds to steal the crate specifically to intercept the Book before it could reach him \u2014 even they recognize giving him the Book would be dangerous. Despite this, they facilitate an introduction to the party because his resources are useful.",
+      "court_connections": [
+        "percival-malden",
+        "aldric-varenthorne"
+      ],
+      "operatives": [
+        "garrick-thorne",
+        "selene-marrow",
+        "tomas-vale",
+        "brother-carrow",
+        "mirelle-voss",
+        "cael-darro",
+        "chaelynn"
+      ]
     },
     {
       "id": "order-of-shadow-and-flame",
       "name": "The Order of Shadow and Flame",
       "type": "infernal cult",
       "description": "A powerful and secretive organization serving Zarathrax's interests on the material plane. Fanatical worshippers who believe in the purity of the Shadowflame and seek to bring Zarathrax into the material realm. They believe the fusion of shadow and fire is the key to ultimate enlightenment and that Zarathrax is the one true sovereign of both worlds.",
-      "methods": "Infiltrates governments, cults, and organizations worldwide. Operates entirely in secret. Members are bound by pacts — power in exchange for service, often requiring sacrifice of something precious: a soul, a loved one, one's sanity.",
+      "methods": "Infiltrates governments, cults, and organizations worldwide. Operates entirely in secret. Members are bound by pacts \u2014 power in exchange for service, often requiring sacrifice of something precious: a soul, a loved one, one's sanity.",
       "ultimate_goal": "Summon Zarathrax fully into the material plane.",
-      "connection_to_campaign": "Dreknar is aligned with or a member of the Order. His guidance of the party — delivering the Book to Slynn's Grey and the sarcophagus to Havenford — serves the Order's broader agenda. The corruption of Slynn's Grey and the demon release at Havenford are Order operations conducted through unwitting proxies."
+      "connection_to_campaign": "Dreknar is aligned with or a member of the Order. His guidance of the party \u2014 delivering the Book to Slynn's Grey and the sarcophagus to Havenford \u2014 serves the Order's broader agenda. The corruption of Slynn's Grey and the demon release at Havenford are Order operations conducted through unwitting proxies."
     }
   ],
-
   "entities": [
     {
       "id": "zarathrax",
       "name": "Zarathrax",
       "title": "The Shadowflame Lord of the Seventh Circle of Hell",
-      "type": "archdevil — lord of the 7th Circle",
-      "status": "confined to the 7th Circle — not yet on the material plane",
-      "description": "An ancient being whose origins stretch back thousands of years, known in full only to a few souls locked by fate. Born under mysterious circumstances, with one or more Sylvan Queens of the Feywild present at his birth — possibly as part of a celestial alignment. He grew beyond the Feywild's natural boundaries, driven by an insatiable desire for dominance. He eventually forged his own path into Hell, where he made his defining discovery: the theft of shadow from the fabric of reality itself, fusing it with fire to create Shadowflame.",
-      "power": "The Shadowflame — a fusion of fire's consuming hunger and shadow's insidious nature. Paradoxical, volatile, uniquely his. The 7th Circle of Hell, once a place of fiery torment, was forever altered by his actions into a realm of dangerous beauty and terrifying contradictions.",
+      "type": "archdevil \u2014 lord of the 7th Circle",
+      "status": "confined to the 7th Circle \u2014 not yet on the material plane",
+      "description": "An ancient being whose origins stretch back thousands of years, known in full only to a few souls locked by fate. Born under mysterious circumstances, with one or more Sylvan Queens of the Feywild present at his birth \u2014 possibly as part of a celestial alignment. He grew beyond the Feywild's natural boundaries, driven by an insatiable desire for dominance. He eventually forged his own path into Hell, where he made his defining discovery: the theft of shadow from the fabric of reality itself, fusing it with fire to create Shadowflame.",
+      "power": "The Shadowflame \u2014 a fusion of fire's consuming hunger and shadow's insidious nature. Paradoxical, volatile, uniquely his. The 7th Circle of Hell, once a place of fiery torment, was forever altered by his actions into a realm of dangerous beauty and terrifying contradictions.",
       "army": {
         "shadow_beasts": "Lower-rank foot soldiers. Tar-like, constantly shifting flesh, razor-sharp teeth capable of tearing through armor. Move on four legs, propelled by infernal flame and shadow magic. Swift and relentless.",
-        "greater_shadowflame_demons": "Higher-ranking servants. Larger, stronger, more intelligent. Can wield fire or shadow independently — some summon infernos at will, others cloak themselves in shadow.",
+        "greater_shadowflame_demons": "Higher-ranking servants. Larger, stronger, more intelligent. Can wield fire or shadow independently \u2014 some summon infernos at will, others cloak themselves in shadow.",
         "elite_winged_warriors": "True captains of the Shadowflame army. Wings of living shadowflame. Their presence heralds destruction."
       },
-      "history": "Stole the essence of shadow from reality, shattering the balance between light, shadow, and flame. Seized the 7th Circle. The identity of the former lord of the circle is unknown — possibly slain, possibly banished, possibly never existed. Destroyed the city of Caldrath when its ruler broke a pact with him.",
+      "history": "Stole the essence of shadow from reality, shattering the balance between light, shadow, and flame. Seized the 7th Circle. The identity of the former lord of the circle is unknown \u2014 possibly slain, possibly banished, possibly never existed. Destroyed the city of Caldrath when its ruler broke a pact with him.",
       "caldrath": "Once a great city. Its ruler believed he could wield shadow power without Zarathrax's consent and broke their pact. Zarathrax obliterated the city in moments. The ruins are now a cautionary legend whispered by those who know the name.",
       "feywild_connection": "Sylvan Queens were present at his birth. His power has roots in the Feywild's untamed forces. The full significance of this connection is unknown and may become relevant later.",
       "relevance_to_campaign": "Dreknar's true goal is to raise Zarathrax fully into the material plane. The Book of the Damned and the sarcophagus delivery to Havenford are both pieces of this plan. The Order of Shadow and Flame facilitates this on the material plane."
     }
   ],
-
   "npcs": [
     {
       "id": "princess-aurelia",
       "name": "Princess Aurelia",
       "status": "alive",
-      "affiliations": ["sarynthia"],
-      "arc_tags": ["prologue", "missing-convoys"],
-      "party_knowledge": "party member — PC",
-      "description": "A PC. Princess of Sarynthia. Eric Huwithakay was Sarynthia's intelligence contact embedded in Hollowgate — Aurelia knows this, and his correspondence has gone silent. She has been waiting for news that hasn't come. When the party finds Eric's body in the kobold tunnels, she is the one who understands what it means: not just a death, but a failed mission that no one back home knows about yet.",
+      "affiliations": [
+        "sarynthia"
+      ],
+      "arc_tags": [
+        "prologue",
+        "missing-convoys"
+      ],
+      "party_knowledge": "party member \u2014 PC",
+      "description": "A PC. Princess of Sarynthia. Eric Huwithakay was Sarynthia's intelligence contact embedded in Hollowgate \u2014 Aurelia knows this, and his correspondence has gone silent. She has been waiting for news that hasn't come. When the party finds Eric's body in the kobold tunnels, she is the one who understands what it means: not just a death, but a failed mission that no one back home knows about yet.",
       "gm_notes": "Aurelia's connection to Eric gives her personal stakes in the Hollowgate investigation beyond the rest of the party. Her Sarynthian background may allow her to automatically recognize Eric's signet stamp and the Elkenquay markings on the dying human. Her royal status and intelligence background should inform how she reads political situations as the campaign develops."
     },
     {
@@ -111,142 +136,191 @@
       "name": "Robyn",
       "status": "alive",
       "affiliations": [],
-      "arc_tags": ["prologue", "missing-convoys"],
+      "arc_tags": [
+        "prologue",
+        "missing-convoys"
+      ],
       "party_knowledge": "met",
-      "description": "A kobold scout and outcast from the cavern band near Hollowgate. Smaller than other kobolds, with softer coloration, a drooping uneven feather plume, and one badly-dyed feather. He was coerced into participating in the convoy raids — threatened with the loss of his tail feathers if he refused. He does not want to hurt anyone.",
+      "description": "A kobold scout and outcast from the cavern band near Hollowgate. Smaller than other kobolds, with softer coloration, a drooping uneven feather plume, and one badly-dyed feather. He was coerced into participating in the convoy raids \u2014 threatened with the loss of his tail feathers if he refused. He does not want to hurt anyone.",
       "personality": "Nervous, stammering, apologetic. Speaks quickly when frightened, talks over himself, flinches at loud sounds. Slouches, avoids eye contact, tail constantly twitching. Failed to become 'properly kobold' by his tribe's standards and is picked on for it.",
-      "what_robyn_knows": "The kobolds were told to retrieve a specific crate — 'Boss said special. Not food crate.' A human hired them. He can lead the party toward the kobold caverns if they make him feel safe enough to do so.",
+      "what_robyn_knows": "The kobolds were told to retrieve a specific crate \u2014 'Boss said special. Not food crate.' A human hired them. He can lead the party toward the kobold caverns if they make him feel safe enough to do so.",
       "key_quote": "\"I-I didn't wanna come with 'em... They said if I didn't, they'd... they'd tear off my tail feathers... I-I just wanted to stay in the nest...\"",
-      "gm_notes": "Robyn should feel oddly sympathetic — not heroic, just not built for kobold life. Responds much better to patience and kindness than intimidation. If the party treats him well, he becomes a useful recurring contact for kobold movements and tunnel layouts."
+      "gm_notes": "Robyn should feel oddly sympathetic \u2014 not heroic, just not built for kobold life. Responds much better to patience and kindness than intimidation. If the party treats him well, he becomes a useful recurring contact for kobold movements and tunnel layouts."
     },
     {
       "id": "krobb",
       "name": "Krobb",
       "status": "alive",
       "affiliations": [],
-      "arc_tags": ["prologue", "missing-convoys"],
+      "arc_tags": [
+        "prologue",
+        "missing-convoys"
+      ],
       "party_knowledge": "met",
       "cover": "Kobold guard, entry post",
       "description": "The kobold guard stationed at the entrance to the cavern tunnels. Asleep when the party arrives. Slightly soft around the middle, wearing a helmet too large for his head. A sign on the wall behind him reads GUARD DUTY = VERY IMPORTANT! (PROBABLY). Krobb designed the tunnel trap system himself, drew a meticulous map, and is absolutely certain no one could ever get through without it. He was asleep when the party arrived and the pit trap was visible from the doorway.",
       "personality": "Absolute self-assurance about his trap designs, zero actual bravery. He believes his system is the finest in the tunnels, possibly the world. When genuinely threatened, this illusion evaporates instantly. His spear is somewhere. He will look for it. He will not find it in time.",
       "what_krobb_knows": "All trap locations, jail area layout, that the cavehopper is behind the rocks, that the two guards at the jail hate their assignment, and that the chieftain has the crate. He does not know what the crate contains.",
       "cooperation": "Immediate and total once threatened. Will describe every trap in loving detail, warn about the pit, confirm the cheese is not free, and describe the cavehopper's location in a hushed voice.",
-      "key_quotes": ["\"Traps are... very good traps. Cannot pass without map. I make them. Very hard. Very clever. You would not get past.\"", "\"Wait — where is spear? I had spear. Spear was HERE.\""],
-      "trap_map": "Hand-drawn on the back of a food manifest in charcoal. Misspelled throughout. Annotated with strong opinions about each trap's quality. At the bottom in larger letters: IF YOU READ THIS, YOU'RE PROBABLY DEAD. –KROBB",
-      "gm_notes": "Player handout exists: krobb's trap map. Krobb is comic relief with mechanical function — his cooperation gives the party real tactical advantage. If he survived, he could be a recurring minor character who respects anyone clever enough to get through his work."
+      "key_quotes": [
+        "\"Traps are... very good traps. Cannot pass without map. I make them. Very hard. Very clever. You would not get past.\"",
+        "\"Wait \u2014 where is spear? I had spear. Spear was HERE.\""
+      ],
+      "trap_map": "Hand-drawn on the back of a food manifest in charcoal. Misspelled throughout. Annotated with strong opinions about each trap's quality. At the bottom in larger letters: IF YOU READ THIS, YOU'RE PROBABLY DEAD. \u2013KROBB",
+      "gm_notes": "Player handout exists: krobb's trap map. Krobb is comic relief with mechanical function \u2014 his cooperation gives the party real tactical advantage. If he survived, he could be a recurring minor character who respects anyone clever enough to get through his work."
     },
     {
       "id": "kobold-chieftain",
       "name": "The Chieftain",
       "status": "alive",
       "affiliations": [],
-      "arc_tags": ["prologue", "missing-convoys"],
+      "arc_tags": [
+        "prologue",
+        "missing-convoys"
+      ],
       "party_knowledge": "met",
-      "description": "The kobold chieftain of the cavern band — self-declared king. Unexpectedly charismatic, with a deep, rich, theatrical voice. Speaks like he believes he is a great king, because by his own reckoning he is. His royal regalia consists of molted feathers, broken necklaces, polished trash, and fake gemstones arranged with absolute sincerity. Simultaneously ridiculous and oddly compelling.",
-      "personality": "Deeply proud. Theatrical. Savors his own words. Genuinely offended that the crate contained only a book — considers it a personal insult from the dying human who hired him. Not a villain; he just wanted to show off his pet.",
-      "role_in_story": "Was hired by the dying human (a planted Concord false flag agent) to retrieve the specific crate. He knew the job, not the conspiracy — and the kobolds took the extra wagons because it seemed fair. His boss encounter is presenting the cavehopper as his greatest treasure. He wants admiration, not violence.",
-      "after_the_fight": "Annoyed at the situation rather than the party. Waves them out through a back tunnel with evident impatience. The kobolds who follow are herding, not hunting — rocks and spears thrown more out of embarrassment than aggression.",
-      "key_quotes": ["\"Little man hired us. Wanted shiny box. We took extra wagons too. Seemed fair.\"", "\"Look. LOOK. Is beautiful, yes?\""],
-      "gm_notes": "Comedy with weight. His absolute sincerity makes him memorable. He is not present at the entry post during the Krobb scene — he stays in the den. Run him as genuinely uncertain whether the cavehopper fight is a problem or entertainment."
+      "description": "The kobold chieftain of the cavern band \u2014 self-declared king. Unexpectedly charismatic, with a deep, rich, theatrical voice. Speaks like he believes he is a great king, because by his own reckoning he is. His royal regalia consists of molted feathers, broken necklaces, polished trash, and fake gemstones arranged with absolute sincerity. Simultaneously ridiculous and oddly compelling.",
+      "personality": "Deeply proud. Theatrical. Savors his own words. Genuinely offended that the crate contained only a book \u2014 considers it a personal insult from the dying human who hired him. Not a villain; he just wanted to show off his pet.",
+      "role_in_story": "Was hired by the dying human (a planted Concord false flag agent) to retrieve the specific crate. He knew the job, not the conspiracy \u2014 and the kobolds took the extra wagons because it seemed fair. His boss encounter is presenting the cavehopper as his greatest treasure. He wants admiration, not violence.",
+      "after_the_fight": "Annoyed at the situation rather than the party. Waves them out through a back tunnel with evident impatience. The kobolds who follow are herding, not hunting \u2014 rocks and spears thrown more out of embarrassment than aggression.",
+      "key_quotes": [
+        "\"Little man hired us. Wanted shiny box. We took extra wagons too. Seemed fair.\"",
+        "\"Look. LOOK. Is beautiful, yes?\""
+      ],
+      "gm_notes": "Comedy with weight. His absolute sincerity makes him memorable. He is not present at the entry post during the Krobb scene \u2014 he stays in the den. Run him as genuinely uncertain whether the cavehopper fight is a problem or entertainment."
     },
     {
       "id": "dying-human",
       "name": "The Dying Human",
-      "status": "dying — condition unknown after party encounter",
+      "status": "dying \u2014 condition unknown after party encounter",
       "affiliations": [],
-      "arc_tags": ["prologue", "missing-convoys"],
-      "party_knowledge": "met — likely dead",
-      "description": "A human found mauled and barely alive in the kobold chieftain's den. He wears colors associated with Elkenquay. Most parties will not recognize this immediately. He was the one who hired the kobolds and assigned them the crate retrieval — and the cavehopper, the chieftain's pet, turned on him afterward.",
+      "arc_tags": [
+        "prologue",
+        "missing-convoys"
+      ],
+      "party_knowledge": "met \u2014 likely dead",
+      "description": "A human found mauled and barely alive in the kobold chieftain's den. He wears colors associated with Elkenquay. Most parties will not recognize this immediately. He was the one who hired the kobolds and assigned them the crate retrieval \u2014 and the cavehopper, the chieftain's pet, turned on him afterward.",
       "what_he_reveals": "If stabilized, can provide fragments before losing consciousness: that he hired the kobolds specifically to retrieve the crate, and that the crate was supposed to go somewhere specific. He cannot or will not say more.",
-      "items": "Elkenquay coinage. Partially burned correspondence. Coded ledger fragments. Tariff records. Convoy route maps. Seal fragments. References to 'adjusted taxation' and 'diverted cargo' — the same patterns Eric Huwithakay was tracking.",
-      "true_nature": "His Elkenquay markings are the Concord's planted false flag — designed to make the party believe Elkenquay agents orchestrated the convoy theft. A DC 14 check identifies the Elkenquay association. Characters with noble, military, merchant, diplomatic, or espionage backgrounds may recognize them automatically.",
-      "gm_notes": "This NPC is the anti-Elkenquay narrative made physical. His documents and appearance are manufactured evidence. He is the moment the party first begins to believe Elkenquay is the enemy — which is exactly what the Concord intended."
+      "items": "Elkenquay coinage. Partially burned correspondence. Coded ledger fragments. Tariff records. Convoy route maps. Seal fragments. References to 'adjusted taxation' and 'diverted cargo' \u2014 the same patterns Eric Huwithakay was tracking.",
+      "true_nature": "His Elkenquay markings are the Concord's planted false flag \u2014 designed to make the party believe Elkenquay agents orchestrated the convoy theft. A DC 14 check identifies the Elkenquay association. Characters with noble, military, merchant, diplomatic, or espionage backgrounds may recognize them automatically.",
+      "gm_notes": "This NPC is the anti-Elkenquay narrative made physical. His documents and appearance are manufactured evidence. He is the moment the party first begins to believe Elkenquay is the enemy \u2014 which is exactly what the Concord intended."
     },
     {
       "id": "eric-huwithakay",
       "name": "Eric Huwithakay",
       "status": "dead",
-      "affiliations": ["sarynthia"],
-      "arc_tags": ["prologue", "missing-convoys"],
-      "party_knowledge": "known — personal contact, found dead in the tunnels",
-      "description": "Not merely a contact — a Sarynthian intelligence operative embedded in Hollowgate, tracking unusual tariffs, altered manifests, and missing cargo. He got close enough to the truth that he was killed. The party finds his body in the kobold tunnels while escaping — already dead, satchel still on him. He never filed his final report.",
-      "what_is_found": "A bronze signet stamp — Sarynthian, though most party members won't recognize it immediately. A hand-drawn partial tunnel map, more detailed than Krobb's — he had been here before. A final note in tight, careful handwriting: 'Kobolds. Someone is paying them.' That is all he had time to write.",
+      "affiliations": [
+        "sarynthia"
+      ],
+      "arc_tags": [
+        "prologue",
+        "missing-convoys"
+      ],
+      "party_knowledge": "known \u2014 personal contact, found dead in the tunnels",
+      "description": "Not merely a contact \u2014 a Sarynthian intelligence operative embedded in Hollowgate, tracking unusual tariffs, altered manifests, and missing cargo. He got close enough to the truth that he was killed. The party finds his body in the kobold tunnels while escaping \u2014 already dead, satchel still on him. He never filed his final report.",
+      "what_is_found": "A bronze signet stamp \u2014 Sarynthian, though most party members won't recognize it immediately. A hand-drawn partial tunnel map, more detailed than Krobb's \u2014 he had been here before. A final note in tight, careful handwriting: 'Kobolds. Someone is paying them.' That is all he had time to write.",
       "cause_of_death": "Not immediately clear. Not kobold weapons. The party may or may not connect this to the cavehopper on their own.",
       "connection_to_aurelia": "Princess Aurelia (a PC) knows Eric was Sarynthia's contact in Hollowgate. His correspondence stopped. She has been waiting for news that hasn't come. The party now carries it.",
-      "role_in_story": "His death is the personal hook that pulls the party into the Hollowgate investigation. Finding him in the tunnels is the moment the convoy problem stops being a local nuisance and becomes something larger. Tomas Vale may have known him by name through customs work — a thread the party could pull.",
+      "role_in_story": "His death is the personal hook that pulls the party into the Hollowgate investigation. Finding him in the tunnels is the moment the convoy problem stops being a local nuisance and becomes something larger. Tomas Vale may have known him by name through customs work \u2014 a thread the party could pull.",
       "gm_notes": "Eric never knew the full scope of what he was uncovering. His death should feel like the cost of asking the right questions in a place where the wrong people were watching. The moment the party finds him should land with weight."
     },
     {
       "id": "cael-darro",
       "name": "Cael Darro",
       "status": "alive",
-      "affiliations": ["the-concord"],
-      "arc_tags": ["prologue"],
-      "party_knowledge": "met — role unknown until recruitment pitch",
+      "affiliations": [
+        "the-concord"
+      ],
+      "arc_tags": [
+        "prologue"
+      ],
+      "party_knowledge": "met \u2014 role unknown until recruitment pitch",
       "cover": "Traveling gambler and fast-talker. Charming, unremarkable at first glance.",
       "reality": "Low-level Concord operative. The party's recruiter. Knows Chaelynn and receives his assessment of the party through her.",
-      "description": "A charming, fast-talking gambler with rapier wit and an actual rapier on his hip. Approximately two levels senior to the party. Has been embedded near or with the Moonlit Mirage Carnival, appearing to the party as a fellow traveler — someone who turns up at card games, buys rounds, and always seems to know what happened yesterday.",
-      "personality": "Genuinely likeable. The kind of person you enjoy being around before you realize how carefully he's been watching you. Loses gracefully at cards, wins suspiciously. Never seems to be paying close attention but always knows more than he should. Believes in the Concord's mission at some level — this is not purely mercenary for him.",
-      "role_in_story": "After the Concord extracts the party from the Dunmore monstrosity's aftermath, Cael appears — familiar face, friendly tone, already knowing things he shouldn't. He makes the recruitment pitch. His connection to Chaelynn gives him implicit credibility with the party.",
-      "gm_notes": "Cael should be someone the players genuinely enjoy. He is not lying about everything — he believes the Concord is trying to save Fastingbreak. His charm is real. His concern for the party may even be real. That makes the eventual revelation of what the Concord has been doing harder to process."
+      "description": "A charming, fast-talking gambler with rapier wit and an actual rapier on his hip. Approximately two levels senior to the party. Has been embedded near or with the Moonlit Mirage Carnival, appearing to the party as a fellow traveler \u2014 someone who turns up at card games, buys rounds, and always seems to know what happened yesterday.",
+      "personality": "Genuinely likeable. The kind of person you enjoy being around before you realize how carefully he's been watching you. Loses gracefully at cards, wins suspiciously. Never seems to be paying close attention but always knows more than he should. Believes in the Concord's mission at some level \u2014 this is not purely mercenary for him.",
+      "role_in_story": "After the Concord extracts the party from the Dunmore monstrosity's aftermath, Cael appears \u2014 familiar face, friendly tone, already knowing things he shouldn't. He makes the recruitment pitch. His connection to Chaelynn gives him implicit credibility with the party.",
+      "gm_notes": "Cael should be someone the players genuinely enjoy. He is not lying about everything \u2014 he believes the Concord is trying to save Fastingbreak. His charm is real. His concern for the party may even be real. That makes the eventual revelation of what the Concord has been doing harder to process."
     },
     {
       "id": "chaelynn",
       "name": "Chaelynn",
       "status": "alive",
-      "affiliations": ["the-concord"],
-      "arc_tags": ["prologue"],
-      "party_knowledge": "known — long-lost contact, trusted",
+      "affiliations": [
+        "the-concord"
+      ],
+      "arc_tags": [
+        "prologue"
+      ],
+      "party_knowledge": "known \u2014 long-lost contact, trusted",
       "cover": "Carnival worker with the Moonlit Mirage Carnival",
       "reality": "Concord operative. Observer and informant. Reports on the party to Cael Darro.",
-      "description": "A long-lost contact of the party who is now working with the Moonlit Mirage Carnival — and also a Concord operative. The party knew her before the campaign; the specific nature of their history is established with the players. She has been with the carnival throughout the Prologue, watching the party handle both the Hollowgate aftermath and the Moonlit Mirage encounter.",
-      "role_in_story": "Chaelynn is the chain of trust that makes the Concord recruitment feel organic. Her familiarity with the party — and theirs with her — means that when Cael approaches them with her implicit endorsement, the party listens. She is the bridge between their old life and the world the Concord is drawing them into.",
+      "description": "A long-lost contact of the party who is now working with the Moonlit Mirage Carnival \u2014 and also a Concord operative. The party knew her before the campaign; the specific nature of their history is established with the players. She has been with the carnival throughout the Prologue, watching the party handle both the Hollowgate aftermath and the Moonlit Mirage encounter.",
+      "role_in_story": "Chaelynn is the chain of trust that makes the Concord recruitment feel organic. Her familiarity with the party \u2014 and theirs with her \u2014 means that when Cael approaches them with her implicit endorsement, the party listens. She is the bridge between their old life and the world the Concord is drawing them into.",
       "gm_notes": "Her history with the party should be established collaboratively before or early in the campaign. She may genuinely care for the party while also believing in the Concord's mission. That complexity is worth preserving."
     },
     {
       "id": "mirelle-voss",
       "name": "Mirelle Voss",
       "status": "alive",
-      "affiliations": ["the-concord"],
-      "arc_tags": ["prologue", "act-1"],
+      "affiliations": [
+        "the-concord"
+      ],
+      "arc_tags": [
+        "prologue",
+        "act-1"
+      ],
       "party_knowledge": "unknown",
       "cover": "Secretary to a noble household in Fastingbreak",
       "reality": "Concord operative. Identification and assessment specialist. Excellent at manipulation and social engineering. Identifies useful outsiders for the Concord.",
-      "description": "A sharp, controlled woman who appears in social contexts — court-adjacent gatherings, noble household events — and observes far more than she reveals. She has access to political gossip and private correspondence.",
+      "description": "A sharp, controlled woman who appears in social contexts \u2014 court-adjacent gatherings, noble household events \u2014 and observes far more than she reveals. She has access to political gossip and private correspondence.",
       "personality": "Controlled, charming, always reading the room. Expert at making people feel seen and understood without revealing anything about herself.",
       "role_in_story": "Likely the first Concord member to flag the party as potentially useful after the convoy recovery. She assesses and reports upward through the cell structure. She rarely makes direct contact herself.",
-      "gm_notes": "Mirelle should seem entirely unremarkable if the party encounters her socially — pleasant, professional, forgettable. The retroactive realization of when she was watching them should be unsettling."
+      "gm_notes": "Mirelle should seem entirely unremarkable if the party encounters her socially \u2014 pleasant, professional, forgettable. The retroactive realization of when she was watching them should be unsettling."
     },
     {
       "id": "garrick-thorne",
       "name": "Garrick Thorne",
       "status": "alive",
-      "affiliations": ["the-concord"],
-      "arc_tags": ["prologue"],
+      "affiliations": [
+        "the-concord"
+      ],
+      "arc_tags": [
+        "prologue"
+      ],
       "party_knowledge": "unknown",
       "cover": "Logistics coordinator, Ministry of Trade",
       "reality": "Key coordinator of staged disruptions. Tracks caravan movement and supply shortages. Coordinated the kobold raid on the convoy near Hollowgate.",
-      "description": "A thoroughly unremarkable bureaucrat — exactly the kind of person no one looks twice at. Publicly boring. Privately extremely dangerous. Precise, organized, patient.",
-      "gm_notes": "Garrick processed the logistics of the kobold raid. He likely does not know who ordered it at the highest level — he received instructions through the cell structure. If the party ever identifies him, his ordinariness should be disturbing."
+      "description": "A thoroughly unremarkable bureaucrat \u2014 exactly the kind of person no one looks twice at. Publicly boring. Privately extremely dangerous. Precise, organized, patient.",
+      "gm_notes": "Garrick processed the logistics of the kobold raid. He likely does not know who ordered it at the highest level \u2014 he received instructions through the cell structure. If the party ever identifies him, his ordinariness should be disturbing."
     },
     {
       "id": "selene-marrow",
       "name": "Selene Marrow",
       "status": "alive",
-      "affiliations": ["the-concord"],
-      "arc_tags": ["prologue", "act-1"],
+      "affiliations": [
+        "the-concord"
+      ],
+      "arc_tags": [
+        "prologue",
+        "act-1"
+      ],
       "party_knowledge": "unknown",
       "cover": "Assistant to a senior military advisor",
       "reality": "Has access to border readiness information and troop reports. Feeds strategic intelligence into Concord planning.",
-      "description": "Calm, intelligent, persuasive. A true believer — she genuinely thinks conflict with Elkenquay is unavoidable and that the Concord is simply preparing Fastingbreak for what is coming regardless.",
-      "personality": "The most ideologically committed of the field operatives. Not reckless — her convictions are measured and argued carefully. Which makes her more dangerous, not less."
+      "description": "Calm, intelligent, persuasive. A true believer \u2014 she genuinely thinks conflict with Elkenquay is unavoidable and that the Concord is simply preparing Fastingbreak for what is coming regardless.",
+      "personality": "The most ideologically committed of the field operatives. Not reckless \u2014 her convictions are measured and argued carefully. Which makes her more dangerous, not less."
     },
     {
       "id": "tomas-vale",
       "name": "Tomas Vale",
       "status": "alive",
-      "affiliations": ["the-concord"],
-      "arc_tags": ["prologue"],
+      "affiliations": [
+        "the-concord"
+      ],
+      "arc_tags": [
+        "prologue"
+      ],
       "party_knowledge": "unknown",
       "cover": "Clerk, Office of Customs and Revenue",
       "reality": "Economic warfare specialist. Understands how tariff and trade pressure affects border towns and manufactures economic grievances.",
@@ -257,38 +331,57 @@
       "id": "brother-carrow",
       "name": "Brother Carrow",
       "status": "alive",
-      "affiliations": ["the-concord"],
-      "arc_tags": ["prologue", "act-1"],
+      "affiliations": [
+        "the-concord"
+      ],
+      "arc_tags": [
+        "prologue",
+        "act-1"
+      ],
       "party_knowledge": "unknown",
       "cover": "Traveling priest and courier",
       "reality": "Moves messages between Concord cells. Recruits sympathetic locals quietly. Uses religious service as cover for travel.",
-      "description": "Gentle demeanor, soft voice, easy manner. Deeply ideological beneath all of it. He believes the Concord's work is not just justified but morally necessary — almost righteous.",
-      "gm_notes": "Brother Carrow is the face of the Concord that does not look like a face at all. He recruits not through pressure but through long, patient conversations. He should seem like a genuinely good person — because in many ways he is — who has allowed ideology to override ethics."
+      "description": "Gentle demeanor, soft voice, easy manner. Deeply ideological beneath all of it. He believes the Concord's work is not just justified but morally necessary \u2014 almost righteous.",
+      "gm_notes": "Brother Carrow is the face of the Concord that does not look like a face at all. He recruits not through pressure but through long, patient conversations. He should seem like a genuinely good person \u2014 because in many ways he is \u2014 who has allowed ideology to override ethics."
     },
     {
       "id": "percival-malden",
       "name": "Sir Percival Malden",
       "title": "Master of Whispers",
       "status": "alive",
-      "affiliations": ["fastingbreak-court", "concord-adjacent"],
-      "arc_tags": ["prologue", "act-1", "act-2"],
+      "affiliations": [
+        "fastingbreak-court",
+        "concord-adjacent"
+      ],
+      "arc_tags": [
+        "prologue",
+        "act-1",
+        "act-2"
+      ],
       "party_knowledge": "unknown",
       "public_role": "Oversees intelligence and espionage for the crown of Fastingbreak. His network of informants, codekeepers, and covert agents monitors threats both within Fastingbreak and beyond its borders. Very few people know how extensive his reach truly is.",
-      "secret_role": "Secretly funds the machinist who creates the monstrosities. The gem in the crate alongside the Book of the Damned was destined for him — a payment and power source for the machinist's ongoing work, smuggled within the Concord's operation without any other member's knowledge.",
-      "personality": "Controlled, observant, difficult to read. Rarely speaks more than necessary. Trusts almost no one and assumes everyone hides something — including allies. Percival does not panic. He adjusts.",
-      "relationship_to_concord": "Does not command the Concord. Allows certain operations to continue, selectively withholds investigations, and occasionally provides intelligence through intermediaries. Views the Concord as dangerous but potentially necessary. His machinist project is entirely separate — not even the Concord knows.",
+      "secret_role": "Secretly funds Doctor Viktor Voss \u2014 the 'Machinist' \u2014 who creates the monstrosities the party has been fighting since the Prologue. The gem in the crate alongside the Book of the Damned was destined for Percival as a power source for Voss's ongoing research, smuggled within the Concord's operation without any other member's knowledge. Percival extracted Voss from military imprisonment years ago by making official records disappear. He did not do this out of mercy \u2014 he saw in Voss a tool for deniable weapons, engineered horrors, and asymmetric warfare. He is beginning to suspect he may no longer fully control what he has unleashed.",
+      "personality": "Controlled, observant, difficult to read. Rarely speaks more than necessary. Trusts almost no one and assumes everyone hides something \u2014 including allies. Percival does not panic. He adjusts.",
+      "relationship_to_concord": "Does not command the Concord. Allows certain operations to continue, selectively withholds investigations, and occasionally provides intelligence through intermediaries. Views the Concord as dangerous but potentially necessary. His machinist project is entirely separate \u2014 not even the Concord knows.",
       "loyalty": "Officially to King Althar. In reality, to the survival of Fastingbreak above all else. Given a choice between morality and stability, he will choose stability.",
-      "gm_notes": "The deepest player in the room. Should never feel like the obvious villain — too controlled and too quiet for that. The party should find him merely unsettling, not monstrous. The reveal of his machinist project should come late — Act 2 at the earliest — and the retroactive understanding of the gem should land like a gut punch."
+      "gm_notes": "The deepest player in the room. Should never feel like the obvious villain \u2014 too controlled and too quiet for that. The party should find him merely unsettling, not monstrous. The reveal of his machinist project should come late \u2014 Act 2 at the earliest \u2014 and the retroactive understanding of the gem should land like a gut punch.",
+      "voss_extraction": "After Thrask imprisoned Voss, Percival quietly arranged for the records surrounding the Blackglass Incident to vanish deeper into classified archives. Transfer documents were altered. Transport manifests disappeared. A prison death was recorded under Voss's name. In reality, Percival extracted him and funded the construction of the Blackglass Laboratory beneath the ruins of Dunnshire. He provided funding, isolated facilities, acquisition channels, political protection, artifact retrieval support, corpses, prisoners, and complete operational secrecy. In return, Voss continued his research without the limits the military once imposed."
     },
     {
       "id": "aldric-varenthorne",
       "name": "Baron Aldric Varenthorne",
       "title": "Lord of Greymarch",
       "status": "alive",
-      "affiliations": ["fastingbreak-court", "concord-adjacent"],
-      "arc_tags": ["prologue", "act-1"],
+      "affiliations": [
+        "fastingbreak-court",
+        "concord-adjacent"
+      ],
+      "arc_tags": [
+        "prologue",
+        "act-1"
+      ],
       "party_knowledge": "unknown",
-      "description": "A staunch traditionalist governing the heavily fortified border region of Greymarch — Fastingbreak's most strategically important territory facing Elkenquay. His lands maintain strong defensive walls, house veteran soldiers, and endure constant economic pressure from Elkenquay's shifting trade policies.",
+      "description": "A staunch traditionalist governing the heavily fortified border region of Greymarch \u2014 Fastingbreak's most strategically important territory facing Elkenquay. His lands maintain strong defensive walls, house veteran soldiers, and endure constant economic pressure from Elkenquay's shifting trade policies.",
       "personality": "Harsh, nationalistic, direct, uncompromising. Believes weakness invites conquest. Sees dissent, hesitation, and dependency as existential threats to the kingdom.",
       "relationship_to_concord": "Ideologically aligned. Quietly protects sympathetic operatives, supports aggressive preparation. Does not know every operation. Would deny public involvement. Believes the Concord exists because the crown has been too slow to act.",
       "loyalty": "Entirely to the king, the monarchy, and Fastingbreak's sovereignty. His definition of protecting the kingdom is increasingly militant."
@@ -298,21 +391,31 @@
       "name": "King Althar Renwald IV",
       "title": "King of Fastingbreak",
       "status": "alive",
-      "affiliations": ["fastingbreak-court"],
-      "arc_tags": ["prologue", "act-1", "act-2"],
+      "affiliations": [
+        "fastingbreak-court"
+      ],
+      "arc_tags": [
+        "prologue",
+        "act-1",
+        "act-2"
+      ],
       "party_knowledge": "known by reputation",
       "description": "Ascended the throne after his father's untimely death in a hunting accident. Inherited a kingdom already in decline. Focuses on preserving tradition and maintaining the nobility's favor, often at the expense of modernization.",
       "personality": "Admired for commitment to the kingdom's heritage. Criticized for being out of touch with his people's actual needs. Susceptible to promises of restored prestige and power.",
-      "vulnerability": "Being slowly tempted by Dreknar with promises of Zarathrax artifacts and increased military power. Does not understand what he is being drawn toward. He wants to believe someone has answers — Dreknar gives him a story where Fastingbreak can be great again.",
-      "gm_notes": "Althar is not evil. He is a man in over his head who wants to believe someone has answers. That makes him pitiable — and dangerous, because his susceptibility makes him a tool in other people's wars."
+      "vulnerability": "Being slowly tempted by Dreknar with promises of Zarathrax artifacts and increased military power. Does not understand what he is being drawn toward. He wants to believe someone has answers \u2014 Dreknar gives him a story where Fastingbreak can be great again.",
+      "gm_notes": "Althar is not evil. He is a man in over his head who wants to believe someone has answers. That makes him pitiable \u2014 and dangerous, because his susceptibility makes him a tool in other people's wars."
     },
     {
       "id": "harren-draeven",
       "name": "Lord Harren Draeven",
       "title": "Chancellor of the Exchequer",
       "status": "alive",
-      "affiliations": ["fastingbreak-court"],
-      "arc_tags": ["act-1"],
+      "affiliations": [
+        "fastingbreak-court"
+      ],
+      "arc_tags": [
+        "act-1"
+      ],
       "party_knowledge": "unknown",
       "description": "A seasoned bureaucrat who has managed Fastingbreak's finances for decades. Skilled, calculating, and criticized for favoring noble estates over public infrastructure. Values stability above modernization.",
       "loyalty": "To King Althar and the noble class that keeps him in power."
@@ -322,8 +425,12 @@
       "name": "Lady Elyse Marondel",
       "title": "Minister of Trade and Commerce",
       "status": "alive",
-      "affiliations": ["fastingbreak-court"],
-      "arc_tags": ["act-1"],
+      "affiliations": [
+        "fastingbreak-court"
+      ],
+      "arc_tags": [
+        "act-1"
+      ],
       "party_knowledge": "unknown",
       "description": "A shrewd negotiator from Greengate who has maintained Fastingbreak's trade routes despite growing Elkenquay competition. Charismatic, ambitious, and one of the more reform-minded members of court.",
       "loyalty": "Split between personal ambition and a genuine desire to revitalize the kingdom's economy."
@@ -333,19 +440,31 @@
       "name": "General Kaelor Thrask",
       "title": "Commander of the Royal Army",
       "status": "alive",
-      "affiliations": ["fastingbreak-court"],
-      "arc_tags": ["act-1", "act-2"],
+      "affiliations": [
+        "fastingbreak-court"
+      ],
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
       "party_knowledge": "unknown",
-      "description": "A veteran of the Orcish Wars. Stoic, disciplined, respected. His aggressive stance toward Elkenquay has raised concerns among more diplomatic court members. Sees war as the only path through Fastingbreak's decline.",
-      "loyalty": "Fiercely to the king. His hawkish policies are sincere conviction, not opportunism."
+      "description": "A veteran of the Orcish Wars. Stoic, disciplined, deeply respected within the military. His aggressive stance toward Elkenquay has raised concerns among more diplomatic court members \u2014 he sees war as the only path through Fastingbreak's strategic decline. What very few people know is that Kaelor Thrask is also the man who stopped Viktor Voss the first time.",
+      "loyalty": "Fiercely to the king. His hawkish policies are sincere conviction, not opportunism. But his role in burying the Blackglass Incident \u2014 even with the best of intentions \u2014 makes him complicit in the consequences that followed.",
+      "blackglass_role": "When the Blackglass Incident occurred roughly twelve years ago, Thrask was the commanding officer who uncovered the full scope of Voss's experiments \u2014 unauthorized live testing involving prisoners, enemy captives, political dissidents, and possibly unaware soldiers. What disturbed Kaelor was not simply the brutality. It was the complete absence of remorse. He stripped Voss of rank and title, shut down the project, sealed the records, and arranged for quiet imprisonment. He believed that was the end of it.",
+      "the_realization": "When evidence of Voss's work begins resurfacing during the campaign \u2014 surgical patterns, chemical residue, engineered anatomy, tactical methodology \u2014 Kaelor will begin connecting the pieces before anyone else. The moment of recognition should be gradual: strange similarities, then a name, then the memory of black residue fused into stone. 'No... Blackglass.' Not the city. The incident. The horror is that he believed he had stopped this. Worse: he will realize the kingdom's choice of secrecy \u2014 classification, quiet imprisonment, buried records \u2014 is what gave Percival the opportunity to reclaim Voss.",
+      "gm_notes": "Thrask is not a villain, but he is not clean either. He made the choice that felt responsible at the time: contain it, classify it, move on. He did not consider that containment creates opportunity. His arc is a study in how good intentions and institutional instinct for secrecy can quietly enable catastrophe."
     },
     {
       "id": "lenira-vostral",
       "name": "Archmage Lenira Vostral",
       "title": "Royal Advisor on Magical Affairs",
       "status": "alive",
-      "affiliations": ["fastingbreak-court"],
-      "arc_tags": ["act-1"],
+      "affiliations": [
+        "fastingbreak-court"
+      ],
+      "arc_tags": [
+        "act-1"
+      ],
       "party_knowledge": "unknown",
       "description": "A powerful sorceress who has served the royal family for three generations. Openly frustrated by the court's reluctance to invest in infrastructural magic. Intellectual, sharp-tongued, and unafraid to challenge the king.",
       "loyalty": "Pragmatic. Supports the crown but often aligns with reformists. Not ideologically committed to war."
@@ -354,15 +473,20 @@
       "id": "dreknar",
       "name": "Dreknar",
       "status": "alive",
-      "affiliations": ["order-of-shadow-and-flame"],
-      "arc_tags": ["prologue-end", "act-1"],
-      "party_knowledge": "introduced at end of prologue — trusted, true role unknown",
+      "affiliations": [
+        "order-of-shadow-and-flame"
+      ],
+      "arc_tags": [
+        "prologue-end",
+        "act-1"
+      ],
+      "party_knowledge": "introduced at end of prologue \u2014 trusted, true role unknown",
       "public_face": "A scholar-wizard with deep knowledge of dangerous artifacts, apparently concerned with containing threats. Claims he has been tracking the Book of the Damned and wants it removed from circulation and properly safeguarded. Appears reasonable, credible, and aligned with the party's goals.",
-      "true_agenda": "Raise Zarathrax into the material plane. Every operation he runs through the party — delivering the Book to Slynn's Grey, transporting the sarcophagus to Havenford — is a piece of this plan.",
+      "true_agenda": "Raise Zarathrax into the material plane. Every operation he runs through the party \u2014 delivering the Book to Slynn's Grey, transporting the sarcophagus to Havenford \u2014 is a piece of this plan.",
       "description": "A wizard living outside Fastingbreak, introduced to the party by the Concord at the end of the Prologue. Patient, measured, and knowledgeable. He never pushes too hard. He has a credible story for everything, and the Concord's endorsement gives him a legitimacy he has not earned.",
       "relationship_to_king": "Promises King Althar access to Zarathrax artifacts and increased military power. Tempting the king slowly toward a dependency he does not understand.",
       "relationship_to_concord": "The Concord views him as useful but untrustworthy. They arranged the kobold theft specifically to prevent the Book reaching him. Despite this, they facilitate his introduction to the party because his resources serve their anti-Elkenquay agenda.",
-      "the_sarcophagus_mission": "In Act 1, Dreknar gives the party a locked sarcophagus containing a raised demon and tells them it must be transported to Havenford for destruction. The actual goal is release at Havenford — the largest port city in the world. The party are unwitting couriers.",
+      "the_sarcophagus_mission": "In Act 1, Dreknar gives the party a locked sarcophagus containing a raised demon and tells them it must be transported to Havenford for destruction. The actual goal is release at Havenford \u2014 the largest port city in the world. The party are unwitting couriers.",
       "gm_notes": "Dreknar should feel entirely trustworthy for a long time. Calm, knowledgeable, never aggressive. The horror of his manipulation is that it is nearly invisible. By the time the party understands what they helped him do, they will already have done it."
     },
     {
@@ -370,36 +494,77 @@
       "name": "Prime Minister Calla Trenwyth",
       "title": "Prime Minister of Elkenquay",
       "status": "alive",
-      "affiliations": ["elkenquay"],
-      "arc_tags": ["act-1", "act-2"],
+      "affiliations": [
+        "elkenquay"
+      ],
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
       "party_knowledge": "known by reputation",
-      "description": "Born into a modest mining family in Highhaven. Rose through the Miner's Guild advocating for workers' rights — safer practices, fair wages. Her ability to bridge Senate factions made her a natural choice for Prime Minister. Pragmatic, empathetic, cautious with Fastingbreak — prefers diplomacy, but is quietly readying defenses.",
-      "key_achievement": "The Arcane Transit Nexus — a network of teleportation circles and magically powered carriages connecting Elkenquay's major cities and mining sites.",
+      "description": "Born into a modest mining family in Highhaven. Rose through the Miner's Guild advocating for workers' rights \u2014 safer practices, fair wages. Her ability to bridge Senate factions made her a natural choice for Prime Minister. Pragmatic, empathetic, cautious with Fastingbreak \u2014 prefers diplomacy, but is quietly readying defenses.",
+      "key_achievement": "The Arcane Transit Nexus \u2014 a network of teleportation circles and magically powered carriages connecting Elkenquay's major cities and mining sites.",
       "gm_notes": "Trenwyth is entirely innocent of the provocations attributed to Elkenquay. If the party ever reaches her level, she represents the human cost of what they have unknowingly helped engineer."
     },
     {
-      "id": "the-machinist",
-      "name": "The Machinist",
+      "id": "viktor-voss",
+      "name": "Doctor Viktor Voss",
+      "title": "The Machinist",
       "status": "alive",
-      "affiliations": ["the-concord"],
-      "arc_tags": ["prologue", "act-1", "act-2"],
-      "party_knowledge": "existence unknown",
-      "description": "A researcher and scientist based inside Fastingbreak, secretly funded by Sir Percival Malden. Brilliant and practically blind to morality — he genuinely believes in the science of building better creatures and pursues the question of what the limits of biological design are. He does not particularly care what his creations are used for.",
-      "role_in_story": "Entirely offscreen during the Prologue. The monstrosities the party encounters are his work. The gem in the crate was destined for Percival as a power source for this research.",
-      "gm_notes": "Name not yet established. To be developed in Act 1 or Act 2. When eventually introduced, he should be fascinating and disturbing — not evil in any conventional sense, simply unconcerned with the moral weight of his work."
+      "affiliations": [
+        "percival-malden"
+      ],
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
+      "party_knowledge": "existence unknown \u2014 monstrosities encountered are his work",
+      "public_role": "Officially dead. The kingdom's records show Viktor Voss died in military confinement roughly twelve years ago following a classified catastrophe along the southern border. His name appears in no public document. His work has been sealed beneath layers of military classification.",
+      "secret_role": "Alive, hidden beneath the ruins of Dunnshire inside a secret facility now known as the Blackglass Laboratory. Continues his research into biomechanistry and emotional resonance weaponization, funded and protected entirely by Percival Malden. He does not consider himself Percival's agent \u2014 only his sponsor.",
+      "description": "Tall, gaunt, pale from years underground. Surgical scars trace across his neck, clavicle, chest, and forearms \u2014 some clean, some crude, several clearly self-inflicted. His hands are permanently stained by alchemical compounds and chemical burns. Mechanical prosthetic fingers replace portions of both hands; the fingertips rotate with subtle clicking sounds, concealing injector needles, surgical scalpels, cauterization tips, and rune-conductive instruments. A reinforced respirator apparatus is fused directly into his ribcage and throat \u2014 faint hissing accompanies every controlled breath, red stimulant fluid pulsing through transparent tubing beneath his collar. Most disturbing is the third arm: a neuromechanical appendage attached into spinal reinforcement braces emerging from his back, moving with horrifying natural precision, independently reloading tools, injecting compounds, writing notes, and restraining subjects while Voss continues operating normally.",
+      "personality": "Calm, articulate, clinical, and methodical. Rarely raises his voice. Discusses mutilation and battlefield casualties with the tone of a physician discussing anatomy. Genuinely believes history will vindicate him. He does not consider himself evil \u2014 he considers himself solving problems.",
+      "cover": "Dead. Filed under military classification. No living record.",
+      "reality": "Architect of biomechanistry. Pioneer of emotional resonance weaponization. The monstrosities the party has been fighting since the Prologue were designed in his laboratory. The cavehoppers, the pallor brood, the creature in the sarcophagus \u2014 all trace back to his research.",
+      "philosophy": "Flesh is material. Emotion is measurable energy. Fear is chemistry. Memory is electrical patterning. Evolution is painfully inefficient. Humanity's fragile lungs, weak muscles, fear responses, aging, and exhaustion are engineering flaws \u2014 not sacred traits. Civilization is entering an age where warfare will become industrialized, and natural biology will no longer be enough to survive. Someone must push humanity forward. Even if it is painful. Even if thousands die during refinement. Progress has always been written in blood.",
+      "role_in_story": "The source of every monstrosity the party has encountered. The Prologue's kobold cavehoppers, the Pallor Brood at the carnival, the creature in the sarcophagus in Dunmore \u2014 all produced in his lab. The resonance gems the party has been carrying since the Prologue were destined for him. The full reveal of Voss's identity and the Blackglass Incident should land as a retroactive horror: the party has been following his breadcrumbs since the very first session.",
+      "relationship_to_percival": "Voss does not view Percival as a master. Only as a sponsor. He accepted Percival's extraction and funding because it removed constraints, not because he owes loyalty. If Percival's usefulness expired, Voss would not hesitate.",
+      "early_career": "Served within the Royal Army's military research apparatus. Initially praised for compounds that accelerated wound sealing, reduced shock, and improved soldier survivability. Repeatedly pushed ethical limits \u2014 viewed live experimentation as necessary. Several officers complained; most were ignored because the kingdom was preparing for escalating border conflict and Voss kept producing innovations.",
+      "blackglass_incident": "Roughly 12\u201315 years ago, during a minor orc incursion along the southern marches, Voss deployed an unauthorized experimental atmospheric dispersal compound during active engagement. Initially appeared successful \u2014 the gas devastated the advancing orc forces. Then the wind shifted. Soldiers, civilians attempting evacuation, entire defensive positions \u2014 all poisoned. Witnesses described lungs liquefying, blood from mouths and eyes, soldiers clawing their throats. When confronted, Voss expressed no remorse. He explained calmly that battlefield conditions had provided valuable atmospheric data, emotional panic had produced useful observational variables, and collateral casualties had been statistically probable from the beginning. He had known. He deployed anyway. Because he needed a live environment.",
+      "gm_notes": "The deepest horror in the campaign is that Voss is not a monster in any conventional sense. He is rational. Measured. He might once have been one of the greatest physicians in the kingdom. When the party meets him, he should feel wrong in a way that's hard to articulate \u2014 not because he rages or threatens, but because he is genuinely curious about them. He will observe the party mid-combat. He will take notes. His tragedy is that somewhere in the clinical exterior, the brilliant physician he might have been is still trying to understand something beautiful about life \u2014 and is doing it by destroying it."
+    },
+    {
+      "id": "morrow",
+      "name": "Morrow",
+      "title": "Prototype Cavehopper Alpha",
+      "status": "alive",
+      "affiliations": [
+        "viktor-voss"
+      ],
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
+      "party_knowledge": "unknown",
+      "description": "Massive pale quadruped. Elongated forelimbs, blind face, exposed tendons, spinal reinforcement, respiratory vents, hooked climbing claws. Moves freely across walls, ceilings, pipes, and containment systems. Voss's oldest and most successful creation.",
+      "personality": "Morrow genuinely loves Voss. Which is deeply unsettling. It is not a wild predator \u2014 it is a loyal creature that has formed something resembling attachment. When Inspiration resonance discharges, it may pause its attack and move to protect Voss instead.",
+      "role_in_story": "The original. The cavehoppers the party encountered in the Hollowgate tunnels during the Prologue are derived from Morrow's biology. Encountering Morrow should produce a moment of horrible recognition.",
+      "gm_notes": "The tragedy of Morrow is the tragedy of the entire lab. It is not evil \u2014 it simply loves the person who made it. The party may hesitate. That hesitation is the point."
     }
   ],
-
   "locations": [
     {
       "id": "hollowgate",
       "name": "Hollowgate",
       "nation": "fastingbreak",
       "type": "small town",
-      "arc_tags": ["prologue", "missing-convoys", "moonlit-mirage"],
+      "arc_tags": [
+        "prologue",
+        "missing-convoys",
+        "moonlit-mirage"
+      ],
       "href": "hollowgate/hollowgate_gm_reference.html",
-      "description": "A small town in Fastingbreak where the campaign begins. Site of the missing convoy investigation and the Moonlit Mirage Carnival. Supply wagons have been disappearing nearby — hired kobolds, coordinated through the Concord, have been raiding them. Eric Huwithakay was killed here.",
-      "significance": "The party's entry point into the larger conspiracy. The recovered crate — containing the Book of the Damned and the gem — sets every subsequent event in motion."
+      "description": "A small town in Fastingbreak where the campaign begins. Site of the missing convoy investigation and the Moonlit Mirage Carnival. Supply wagons have been disappearing nearby \u2014 hired kobolds, coordinated through the Concord, have been raiding them. Eric Huwithakay was killed here.",
+      "significance": "The party's entry point into the larger conspiracy. The recovered crate \u2014 containing the Book of the Damned and the gem \u2014 sets every subsequent event in motion."
     },
     {
       "id": "dunmore",
@@ -407,28 +572,36 @@
       "nation": "fastingbreak",
       "type": "city",
       "population": 10000,
-      "arc_tags": ["prologue", "dunmore-arc"],
-      "description": "A proper Fastingbreak city — old stone, proud heritage, approximately ten thousand people. Large enough to have printing infrastructure, a visible noble presence, and real political weight. The party arrives here traveling with the Moonlit Mirage Carnival.",
-      "situation": "On the party's arrival, the city is in uproar. Propaganda and inflammatory pamphlets — anti-Elkenquay — are everywhere. The mood is a tinderbox. Someone has been manufacturing the outrage through the city's printing infrastructure.",
-      "arc_summary": "The party investigates the propaganda printing operation. Before resolution, a monstrosity breaks loose — overpowered, multi-phase. The situation spirals. The Concord extracts the party. Cael Darro makes the recruitment pitch. The Prologue ends.",
-      "gm_notes": "The second gem artifact is found on the Dunmore monstrosity. The propaganda investigation should give the party a moment of genuine clarity — someone is manufacturing this — before the monstrosity disrupts everything and the Concord steps in. Full Dunmore plot details to be developed."
+      "arc_tags": [
+        "prologue",
+        "dunmore-arc"
+      ],
+      "description": "A proper Fastingbreak city \u2014 old stone, proud heritage, approximately ten thousand people. Large enough to have printing infrastructure, a visible noble presence, and real political weight. The party arrives here traveling with the Moonlit Mirage Carnival.",
+      "situation": "On the party's arrival, the city is in uproar. Propaganda and inflammatory pamphlets \u2014 anti-Elkenquay \u2014 are everywhere. The mood is a tinderbox. Someone has been manufacturing the outrage through the city's printing infrastructure.",
+      "arc_summary": "The party investigates the propaganda printing operation. Before resolution, a monstrosity breaks loose \u2014 overpowered, multi-phase. The situation spirals. The Concord extracts the party. Cael Darro makes the recruitment pitch. The Prologue ends.",
+      "gm_notes": "The second gem artifact is found on the Dunmore monstrosity. The propaganda investigation should give the party a moment of genuine clarity \u2014 someone is manufacturing this \u2014 before the monstrosity disrupts everything and the Concord steps in. Full Dunmore plot details to be developed."
     },
     {
       "id": "slynns-grey",
       "name": "Slynn's Grey",
-      "nation": "independent — south of Fastingbreak",
+      "nation": "independent \u2014 south of Fastingbreak",
       "type": "swamp settlement",
-      "arc_tags": ["act-1"],
-      "description": "An isolated swamp settlement approximately three weeks' journey south of Fastingbreak on the road to Havenford. Home to a group of clergy with a reputation for safeguarding dangerous artifacts — the reason Dreknar directs the party here.",
-      "fate": "The clergy are entirely well-intentioned. They begin studying the Book of the Damned. Proximity and study corrupt them gradually over months — they become cultists. This happens entirely offscreen. Magnus' group later encounters the settlement deep into ritual and stops the immediate threat, never learning how the Book arrived.",
-      "gm_notes": "The party will likely never know what happened to Slynn's Grey during the campaign — unless they return. They delivered the Book in good faith. The weight of it only lands if they discover the corruption later."
+      "arc_tags": [
+        "act-1"
+      ],
+      "description": "An isolated swamp settlement approximately three weeks' journey south of Fastingbreak on the road to Havenford. Home to a group of clergy with a reputation for safeguarding dangerous artifacts \u2014 the reason Dreknar directs the party here.",
+      "fate": "The clergy are entirely well-intentioned. They begin studying the Book of the Damned. Proximity and study corrupt them gradually over months \u2014 they become cultists. This happens entirely offscreen. Magnus' group later encounters the settlement deep into ritual and stops the immediate threat, never learning how the Book arrived.",
+      "gm_notes": "The party will likely never know what happened to Slynn's Grey during the campaign \u2014 unless they return. They delivered the Book in good faith. The weight of it only lands if they discover the corruption later."
     },
     {
       "id": "havenford",
       "name": "Havenford",
       "nation": "independent",
-      "type": "major port city — largest port in the world",
-      "arc_tags": ["act-1", "act-2"],
+      "type": "major port city \u2014 largest port in the world",
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
       "description": "The largest port city in the world. A neutral hub that virtually every nation depends on for trade. Elkenquay imports exotic spices and textiles through Havenford and exports Witherwood lumber to its shipyards. Its independence and global significance make it an unthinkable target.",
       "significance": "Dreknar's target for the sarcophagus release. The party will deliver a raised demon here believing they are escorting it to destruction. Releasing the demon at Havenford would be catastrophic on a global scale.",
       "gm_notes": "The specific nature of the demon and mechanics of the release to be developed in Act 1."
@@ -438,7 +611,9 @@
       "name": "Greymarch",
       "nation": "fastingbreak",
       "type": "fortified border region",
-      "arc_tags": ["act-1"],
+      "arc_tags": [
+        "act-1"
+      ],
       "description": "The heavily fortified border territory governed by Baron Aldric Varenthorne. Strong defensive walls, veteran soldiers, constant economic pressure from Elkenquay's trade policies. A critical defensive point and a hotbed of nationalist sentiment.",
       "significance": "Strategically vital for any conflict with Elkenquay. Aldric's base of power and the ideological heart of the Concord's militant wing."
     },
@@ -447,9 +622,12 @@
       "name": "Eldralore",
       "nation": "elkenquay",
       "type": "capital city",
-      "arc_tags": ["act-1", "act-2"],
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
       "description": "The political and cultural capital of Elkenquay. East of Witherwood Forest, southwest of Highhaven, north of Port Valor. A harmonious blend of tradition, governance, and artistry.",
-      "key_features": "The Silver Spire — white stone and silver inlay, houses the Senate Chambers, in session one month per season. The Grand Market Plaza. The Unity Gardens surrounding the Silver Spire. The Songstone Amphitheater — enchanted stones amplify sound, built into a natural hillside."
+      "key_features": "The Silver Spire \u2014 white stone and silver inlay, houses the Senate Chambers, in session one month per season. The Grand Market Plaza. The Unity Gardens surrounding the Silver Spire. The Songstone Amphitheater \u2014 enchanted stones amplify sound, built into a natural hillside."
     },
     {
       "id": "port-valor",
@@ -457,15 +635,15 @@
       "nation": "elkenquay",
       "type": "major southern port city",
       "description": "The republic's largest city and primary port. Gateway to the Gulf of Everroth. Key hub for commerce, diplomacy, and innovation.",
-      "key_features": "The Lighthouse of Unity — powered by Deeplight Crystals. The Grand Harbor with magically enhanced cranes and storage."
+      "key_features": "The Lighthouse of Unity \u2014 powered by Deeplight Crystals. The Grand Harbor with magically enhanced cranes and storage."
     },
     {
       "id": "highhaven",
       "name": "Highhaven",
       "nation": "elkenquay",
       "type": "mining city",
-      "description": "Nestled in the Umberstor Mountains. Elkenquay's mining backbone — iron, gold, gemstones, mithral, adamantine, and the rare Deeplight Crystals. Prime Minister Trenwyth's hometown. Where the Arcane Transit Nexus began.",
-      "key_features": "The Skyforge Citadel — governance, Mountain Guild Council, elite artisans, defensive stronghold. The Emberstone Market. Deeplight Veins — closely guarded luminescent crystals used in enchantments and arcane technology."
+      "description": "Nestled in the Umberstor Mountains. Elkenquay's mining backbone \u2014 iron, gold, gemstones, mithral, adamantine, and the rare Deeplight Crystals. Prime Minister Trenwyth's hometown. Where the Arcane Transit Nexus began.",
+      "key_features": "The Skyforge Citadel \u2014 governance, Mountain Guild Council, elite artisans, defensive stronghold. The Emberstone Market. Deeplight Veins \u2014 closely guarded luminescent crystals used in enchantments and arcane technology."
     },
     {
       "id": "coastfall",
@@ -473,24 +651,28 @@
       "nation": "elkenquay",
       "type": "arcane innovation hub",
       "description": "Elkenquay's center for magical research and development. Arcane Foundries, the Academy of Applied Magic, and a Port of Knowledge hosting arcane symposiums drawing intellectuals from distant lands.",
-      "key_features": "Arcane Foundries with skilled enchanters and artificers. Academy of Applied Magic — practical magical disciplines. Exports enchanted tools, navigation devices, protective wards."
+      "key_features": "Arcane Foundries with skilled enchanters and artificers. Academy of Applied Magic \u2014 practical magical disciplines. Exports enchanted tools, navigation devices, protective wards."
     },
     {
       "id": "witherwood-forest",
       "name": "Witherwood Forest",
       "nation": "elkenquay",
-      "type": "forest — ley line nexus",
-      "arc_tags": ["act-1"],
+      "type": "forest \u2014 ley line nexus",
+      "arc_tags": [
+        "act-1"
+      ],
       "description": "A key Elkenquay resource forest at the conjunction of three ley lines. Approximately 15% of the area is magically active due to this alignment. Elkenquay exports lumber from Witherwood to Havenford's shipyards. Also a likely location for finding the energy capacitor gems.",
-      "significance": "Strategic Elkenquay lumber and magical resource. Ley line nexus makes it significant beyond economics. The party has a mission here in Act 1. Possible Feywild connection given Zarathrax's origins — to be developed later."
+      "significance": "Strategic Elkenquay lumber and magical resource. Ley line nexus makes it significant beyond economics. The party has a mission here in Act 1. Possible Feywild connection given Zarathrax's origins \u2014 to be developed later."
     },
     {
       "id": "gloomwood-forest",
       "name": "Gloomwood Forest",
       "nation": "independent",
       "type": "forest",
-      "arc_tags": ["act-2"],
-      "description": "Located east of Havenford. The site of the treant encounters in Act 2. Clearing the treants opens the forest for lumber harvesting — providing Fastingbreak with material for siege engine construction. The party will believe they are addressing a nature threat. They are enabling a war.",
+      "arc_tags": [
+        "act-2"
+      ],
+      "description": "Located east of Havenford. The site of the treant encounters in Act 2. Clearing the treants opens the forest for lumber harvesting \u2014 providing Fastingbreak with material for siege engine construction. The party will believe they are addressing a nature threat. They are enabling a war.",
       "gm_notes": "Full development in Act 2 planning."
     },
     {
@@ -498,50 +680,104 @@
       "name": "The Iron Flats",
       "nation": "south of fastingbreak",
       "type": "geographic region",
-      "arc_tags": ["backstory"],
-      "description": "The southern territory from which Orcish tribes launched repeated incursions into Fastingbreak for centuries. Securing this region drained Fastingbreak's resources and left lasting economic scars — a major contributor to the kingdom's current decline and its proud military identity."
+      "arc_tags": [
+        "backstory"
+      ],
+      "description": "The southern territory from which Orcish tribes launched repeated incursions into Fastingbreak for centuries. Securing this region drained Fastingbreak's resources and left lasting economic scars \u2014 a major contributor to the kingdom's current decline and its proud military identity."
     },
     {
       "id": "caldrath",
       "name": "Caldrath",
-      "nation": "unknown — destroyed",
+      "nation": "unknown \u2014 destroyed",
       "type": "ruined city",
-      "arc_tags": ["backstory"],
-      "description": "Once a great city whose ruler broke a pact with Zarathrax, believing he could wield shadow power without the Lord's consent. Zarathrax obliterated it in moments — turned to ash, landscape scorched to wasteland. The ruins are now a cautionary legend whispered by those who know the name."
+      "arc_tags": [
+        "backstory"
+      ],
+      "description": "Once a great city whose ruler broke a pact with Zarathrax, believing he could wield shadow power without the Lord's consent. Zarathrax obliterated it in moments \u2014 turned to ash, landscape scorched to wasteland. The ruins are now a cautionary legend whispered by those who know the name."
+    },
+    {
+      "id": "dunnshire",
+      "name": "Dunnshire (The Blackglass Ruins)",
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
+      "description": "A settlement along the southern marches, now ruined and erased from public memory. Roughly twelve to fifteen years ago, it was destroyed when an unauthorized atmospheric dispersal compound deployed by Viktor Voss during a minor orc incursion turned against the defending garrison and civilian population. Witnesses described lungs liquefying, soldiers clawing at their throats, entire defensive positions dying without ever seeing the enemy reach them.",
+      "situation": "The kingdom did not officially erase the city. It simply stopped acknowledging it. Survivors fled. Merchants avoided the roads. New trade routes formed elsewhere. Cartographers quietly removed the settlement from updated maps. Within a generation, Dunnshire no longer existed in public memory. But the ruins remained.",
+      "key_features": "Streets partially vitrified into dark glass-like stone where the atmospheric compound settled and fused with heat and chemical residue. Buildings sag beneath decades of corrosion. Old military barricades remain where defenders made their final stand. Nothing grows naturally. The air is unnaturally still. Skeletons frozen in defensive positions. Evacuation carts overturned in the streets. Armor fused into walls. Black residue permanently embedded into stone. At night, faint whispers echo through ruined alleys as emotional resonance trapped within the region reacts to the buried laboratory below.",
+      "significance": "The entire region has become an emotional scar \u2014 saturated with fear, grief, panic, desperation, and death accumulated over decades. The resonance gems react powerfully within Dunnshire because the city itself remains emotionally charged. To Viktor Voss, this makes it ideal. He built the Blackglass Laboratory directly beneath the ruins because the city effectively became a massive emotional battery.",
+      "href": "hollowgate/hollowgate_gm_reference.html",
+      "gm_notes": "When the party arrives, the city should feel deeply wrong \u2014 not merely abandoned, but contaminated. The entrance to the laboratory is hidden beneath collapsed military tunnels, quarantine chambers, abandoned drainage systems, buried engineering foundations, and forgotten wartime infrastructure. No giant evil gates. No dramatic towers. The facility should not feel theatrical. It should feel like something that was never meant to be found."
+    },
+    {
+      "id": "blackglass-laboratory",
+      "name": "The Blackglass Laboratory",
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
+      "description": "Hidden research facility of Doctor Viktor Voss, constructed beneath the ruins of Dunnshire. Where medicine, industry, war, and obsession have fused into something deeply unnatural. Steam hisses through copper-veined conduits. Mechanical arms twitch overhead. The air smells of antiseptic fluid, burned metal, chemical accelerants, and blood.",
+      "key_features": "Surgical slabs, preservation tanks, containment chambers, fabrication stations, resonance pylons, self-surgery platforms. Suspended organs, reinforced skeletons, emotional resonance machinery, surgical theaters, restrained experimental subjects. Nothing built by madness \u2014 everything cataloged, intentional, measured, and meticulously researched.",
+      "significance": "The laboratory is alive. Emotional resonance gems embedded throughout the facility react to fear, triumph, pain, courage, grief, rage, and hope. The players' emotions literally reshape the battlefield. By the end of the encounter, the party should realize they are trapped inside a weaponized emotional reactor while a scientist desperately tries to understand it before it destroys everyone present.",
+      "core_encounter_rule": "Critical hits do NOT deal bonus damage inside the laboratory. Instead, attacks deal normal damage and the excess emotional surge is absorbed into nearby resonance gems. This immediately signals to players: something is fundamentally wrong with this place.",
+      "gm_notes": "The deepest design intention of the laboratory encounter is that the players' emotions are the weapon being used against them. The room is feeding on them. The more they fight heroically, the more unstable it becomes. The emotional resonance system should be introduced gradually \u2014 players should begin noticing the pattern before they understand the mechanic."
     }
   ],
-
   "artifacts": [
     {
       "id": "book-of-the-damned",
       "name": "The Book of the Damned",
-      "status": "party possession (Prologue) → delivered to Slynn's Grey (Act 1)",
-      "arc_tags": ["prologue", "act-1"],
+      "status": "party possession (Prologue) \u2192 delivered to Slynn's Grey (Act 1)",
+      "arc_tags": [
+        "prologue",
+        "act-1"
+      ],
       "description": "A dangerous artifact that was being transported to Dreknar before the Concord arranged a kobold raid to intercept it. Even the Concord recognized that allowing it to reach Dreknar would be catastrophic. The party recovers it from the kobolds without knowing what it is.",
       "properties": "Does not immediately corrupt. Instead slowly influences culture and deepens existing fanaticism through proximity and study over time. Those who attempt to study it are gradually transformed into something unrecognizable.",
-      "journey": "Recovered from kobolds at Hollowgate → held through Moonlit Mirage and Dunmore → delivered to Slynn's Grey clergy under Dreknar's guidance in Act 1 → corrupts the clergy offscreen → Magnus' group encounters the fallout later.",
-      "gm_notes": "The Book is a long-form weapon. Its danger is insidious and slow. The party's decision to deliver it to Slynn's Grey is entirely reasonable given what they know — which is exactly the point."
+      "journey": "Recovered from kobolds at Hollowgate \u2192 held through Moonlit Mirage and Dunmore \u2192 delivered to Slynn's Grey clergy under Dreknar's guidance in Act 1 \u2192 corrupts the clergy offscreen \u2192 Magnus' group encounters the fallout later.",
+      "gm_notes": "The Book is a long-form weapon. Its danger is insidious and slow. The party's decision to deliver it to Slynn's Grey is entirely reasonable given what they know \u2014 which is exactly the point."
     },
     {
       "id": "the-gem",
-      "name": "The Gem (Energy Capacitor)",
-      "status": "multiple exist — one in crate (Prologue), others looted from monstrosities, more in Witherwood Forest (Act 1)",
-      "arc_tags": ["prologue", "act-1", "act-2"],
-      "description": "Small gemstones that function as energy capacitors, amplifying and buffing vile creatures — particularly the monstrosities created by the machinist. The party first encounters them as loot from defeated monstrosities during the Prologue, without understanding their significance.",
-      "significance": "The gem in the crate alongside the Book was destined for Sir Percival Malden — smuggled within the Concord's operation without any other member's knowledge. It was a payment and power source for the machinist's research. Additional gems found in Witherwood Forest and on defeated monstrosities throughout the campaign.",
-      "gm_notes": "The gems are the physical thread connecting the monstrosity subplot to Percival's secret. When the party understands what the gems do and where they originate, the full picture of Percival's betrayal of even the Concord becomes clear. The party has been carrying this evidence without knowing what it means."
+      "name": "Resonance Gems",
+      "status": "multiple exist \u2014 one in crate (Prologue), others looted from monstrosities, more in Witherwood Forest (Act 1)",
+      "arc_tags": [
+        "prologue",
+        "act-1",
+        "act-2"
+      ],
+      "description": "Small gemstones that function as emotional energy capacitors \u2014 artifact-derived conductors that absorb measurable arcane output produced by emotional states. Voss discovered that emotions produce real, measurable arcane energy. The gems absorb fear, pain, rage, grief, inspiration, triumph, and courage. When enough emotional energy accumulates, they discharge \u2014 altering the battlefield, empowering creatures, and reshaping the environment. Each gem type corresponds to an emotional state with distinct build-up signals and discharge effects.",
+      "significance": "The physical thread connecting every monstrosity the party has fought back to Viktor Voss and Percival. When the party understands what the gems do and where they originate, the full picture of Percival's betrayal of even the Concord becomes clear. They have been carrying the evidence without knowing what it means.",
+      "gm_notes": "The gems are the physical thread connecting the monstrosity subplot to Percival's secret. When the party understands what the gems do and where they originate, the full picture of Percival's betrayal of even the Concord becomes clear. The party has been carrying this evidence without knowing what it means.",
+      "properties": "Fear resonance dims lights, causes shadows to lengthen, and eventually discharges a Terror Pulse. Rage resonance produces heartbeat-like pounding and eventually ruptures containment. Pain resonance accelerates Voss's healing. Grief resonance produces whispering sounds and can manifest hallucinations. Triumph resonance \u2014 the strongest \u2014 causes catastrophic structural overload. Inspiration resonance, counterintuitively, is the most stabilizing: Voss begins realizing positive emotional resonance is more powerful than suffering.",
+      "journey": "The party first encounters the gems as unexplained loot from defeated monstrosities during the Prologue. Additional gems appear on Pallor Brood creatures at the carnival. One was in the crate alongside the Book of the Damned, destined for Percival. More are found during Act 1. The full significance \u2014 that the party has been carrying evidence of Voss's research since the first session \u2014 only becomes clear late in the campaign.",
+      "true_purpose": "Power sources for the Blackglass Laboratory and its creatures. Percival smuggled one to Voss via the kobold operation. Voss embedded them throughout the laboratory as the core of the Resonance Engine. When clustered, they form a closed emotional-energy circuit capable of reshaping a battlefield based on the emotional states of anyone inside."
     },
     {
       "id": "the-sarcophagus",
       "name": "The Locked Sarcophagus",
-      "status": "Dreknar's possession → given to party in Act 1",
-      "arc_tags": ["act-1"],
-      "description": "A locked sarcophagus containing a raised demon — not a monstrosity. Different taxonomy, different origin, different threat level entirely. Dreknar presents it to the party in Act 1 claiming it must be transported to Havenford for destruction.",
-      "true_purpose": "Release at Havenford — the largest port city in the world. The party are unwitting babysitters. The release would be catastrophic globally.",
-      "gm_notes": "The specific nature of the demon and the mechanics of the release to be established in Act 1 development. The sarcophagus should feel ominous but containable — heavy with implied threat rather than visible danger."
+      "status": "Dreknar's possession \u2192 given to party in Act 1",
+      "arc_tags": [
+        "act-1"
+      ],
+      "description": "A locked sarcophagus containing a raised demon \u2014 not a monstrosity. Different taxonomy, different origin, different threat level entirely. Dreknar presents it to the party in Act 1 claiming it must be transported to Havenford for destruction.",
+      "true_purpose": "Release at Havenford \u2014 the largest port city in the world. The party are unwitting babysitters. The release would be catastrophic globally.",
+      "gm_notes": "The specific nature of the demon and the mechanics of the release to be established in Act 1 development. The sarcophagus should feel ominous but containable \u2014 heavy with implied threat rather than visible danger."
+    },
+    {
+      "id": "resonance-engine",
+      "name": "The Resonance Engine",
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
+      "description": "The single greatest achievement of Viktor Voss's research. Occupies the heart of the primary chamber of the Blackglass Laboratory like a mechanical organ suspended inside an operating theater. Built from suspended resonance gems, copper-vein conduits, rotating focusing rings, spinal tubing, fluid-pressure cylinders, injector arrays, and restrained experimental subjects connected directly into the system. The entire apparatus pulses rhythmically. Like a heart.",
+      "properties": "Does not simply generate power \u2014 harvests emotional intensity. Fear. Pain. Rage. Grief. Hope. Triumph. The gems mounted within reinforced containment cages etched with runic circuitry emit faint rhythmic glows when dormant; when active, veins of light race through the machinery, glass cylinders vibrate, pressure gauges spin wildly, and emotional resonance ripples through the room like invisible shockwaves.",
+      "significance": "The culmination of Voss's pivot from biology to industrialized emotion. Before the gems, he was improving biology. After the gems, he began attempting to industrialize emotion as a power source. The engine represents the answer to a question he has been asking since the Blackglass Incident: what if fear itself could be weaponized at scale?",
+      "true_purpose": "A proof of concept for emotional-resonance warfare. If perfected and scaled, the engine could theoretically be used to destabilize armies, cities, or entire regions \u2014 not through conventional weapons, but through weaponized emotional collapse.",
+      "gm_notes": "The engine is the final boss of the encounter in mechanical terms, but its true narrative function is the reveal: Percival funded this. The gem the party found in the kobold crate was headed here. Percival has known about the Resonance Engine the entire time. Everything the party has experienced \u2014 every monster, every gem, the Book, the sarcophagus \u2014 connects to this machine."
     }
   ],
-
   "arcs": [
     {
       "id": "missing-convoys",
@@ -550,13 +786,26 @@
       "location": "hollowgate",
       "href": "hollowgate/missing_convoys/missing_convoys_arc.html",
       "pages": [
-        { "label": "Arc Reference", "href": "hollowgate/missing_convoys/missing_convoys_arc.html" }
+        {
+          "label": "Arc Reference",
+          "href": "hollowgate/missing_convoys/missing_convoys_arc.html"
+        }
       ],
       "summary": "Supply wagons have been disappearing near Hollowgate. Eric Huwithakay, a contact of one of the party members, was investigating and has been killed. The party takes over the investigation, tracks the missing goods to kobolds in caverns nearby, and recovers a sealed crate among the stolen goods.",
-      "what_actually_happened": "The Concord, through Garrick Thorne, hired the kobolds to raid the caravans — creating shortages and instability, and intercepting one specific sealed crate (the Book of the Damned + the gem) before it could reach Dreknar. Eric Huwithakay was killed because he was getting too close to the truth.",
+      "what_actually_happened": "The Concord, through Garrick Thorne, hired the kobolds to raid the caravans \u2014 creating shortages and instability, and intercepting one specific sealed crate (the Book of the Damned + the gem) before it could reach Dreknar. Eric Huwithakay was killed because he was getting too close to the truth.",
       "what_party_knows": "Kobolds were stealing the goods. Eric is dead. The crate is sealed and clearly significant. Evidence near the raid scene suggests Elkenquay involvement.",
-      "key_npcs": ["eric-huwithakay", "robyn", "krobb", "kobold-chieftain", "dying-human", "garrick-thorne"],
-      "key_artifacts": ["book-of-the-damned", "the-gem"],
+      "key_npcs": [
+        "eric-huwithakay",
+        "robyn",
+        "krobb",
+        "kobold-chieftain",
+        "dying-human",
+        "garrick-thorne"
+      ],
+      "key_artifacts": [
+        "book-of-the-damned",
+        "the-gem"
+      ],
       "outcomes": [
         "Party recovers grain, goods, and sealed crate intact",
         "Kobolds defeated or dispersed",
@@ -570,9 +819,21 @@
           "label": "The Hook",
           "type": "scene",
           "steps": [
-            { "label": "Mayor's briefing — convoys have gone missing", "type": "dialogue" },
-            { "label": "Eric Huwithakay is supposed to be here. He isn't.", "type": "discovery", "npc_refs": ["eric-huwithakay"] },
-            { "label": "Surviving convoy driver's account — kobolds, organized, from the woods", "type": "dialogue" }
+            {
+              "label": "Mayor's briefing \u2014 convoys have gone missing",
+              "type": "dialogue"
+            },
+            {
+              "label": "Eric Huwithakay is supposed to be here. He isn't.",
+              "type": "discovery",
+              "npc_refs": [
+                "eric-huwithakay"
+              ]
+            },
+            {
+              "label": "Surviving convoy driver's account \u2014 kobolds, organized, from the woods",
+              "type": "dialogue"
+            }
           ]
         },
         {
@@ -580,11 +841,29 @@
           "label": "The Trail",
           "type": "scene",
           "steps": [
-            { "label": "Abandoned wagons — food left behind. Bandits steal valuables. Something is wrong.", "type": "discovery" },
-            { "label": "Kobold prints in formation, not chaos", "type": "discovery" },
-            { "label": "Territorial markers — established weeks ago, not days", "type": "discovery" },
-            { "label": "First kobold encounter — three scouts ambush", "type": "encounter" },
-            { "label": "Robyn — coerced outcast, can lead party to the caverns", "type": "discovery", "npc_refs": ["robyn"] }
+            {
+              "label": "Abandoned wagons \u2014 food left behind. Bandits steal valuables. Something is wrong.",
+              "type": "discovery"
+            },
+            {
+              "label": "Kobold prints in formation, not chaos",
+              "type": "discovery"
+            },
+            {
+              "label": "Territorial markers \u2014 established weeks ago, not days",
+              "type": "discovery"
+            },
+            {
+              "label": "First kobold encounter \u2014 three scouts ambush",
+              "type": "encounter"
+            },
+            {
+              "label": "Robyn \u2014 coerced outcast, can lead party to the caverns",
+              "type": "discovery",
+              "npc_refs": [
+                "robyn"
+              ]
+            }
           ]
         },
         {
@@ -592,10 +871,28 @@
           "label": "The Tunnels",
           "type": "scene",
           "steps": [
-            { "label": "Krobb — asleep at his post, trap architect, cooperates immediately when threatened", "type": "encounter", "npc_refs": ["krobb"] },
-            { "label": "Krobb's Trap Map — player handout", "type": "discovery", "artifact_refs": ["the-gem"] },
-            { "label": "Trap gauntlet — five traps, map gives advantage", "type": "encounter" },
-            { "label": "Two guards watching the cavehopper — panic, run to the chieftain", "type": "encounter" }
+            {
+              "label": "Krobb \u2014 asleep at his post, trap architect, cooperates immediately when threatened",
+              "type": "encounter",
+              "npc_refs": [
+                "krobb"
+              ]
+            },
+            {
+              "label": "Krobb's Trap Map \u2014 player handout",
+              "type": "discovery",
+              "artifact_refs": [
+                "the-gem"
+              ]
+            },
+            {
+              "label": "Trap gauntlet \u2014 five traps, map gives advantage",
+              "type": "encounter"
+            },
+            {
+              "label": "Two guards watching the cavehopper \u2014 panic, run to the chieftain",
+              "type": "encounter"
+            }
           ]
         },
         {
@@ -603,10 +900,31 @@
           "label": "The Chieftain's Den",
           "type": "scene",
           "steps": [
-            { "label": "The Chieftain presents the cavehopper as his greatest treasure", "type": "dialogue", "npc_refs": ["kobold-chieftain"] },
-            { "label": "Cavehopper encounter — multi-phase, the chieftain watches", "type": "encounter" },
-            { "label": "The Crate — opened. Just a book. The chieftain is deeply insulted.", "type": "revelation", "artifact_refs": ["book-of-the-damned"] },
-            { "label": "The Dying Human — mauled, Elkenquay markings, planted documents", "type": "discovery", "npc_refs": ["dying-human"] }
+            {
+              "label": "The Chieftain presents the cavehopper as his greatest treasure",
+              "type": "dialogue",
+              "npc_refs": [
+                "kobold-chieftain"
+              ]
+            },
+            {
+              "label": "Cavehopper encounter \u2014 multi-phase, the chieftain watches",
+              "type": "encounter"
+            },
+            {
+              "label": "The Crate \u2014 opened. Just a book. The chieftain is deeply insulted.",
+              "type": "revelation",
+              "artifact_refs": [
+                "book-of-the-damned"
+              ]
+            },
+            {
+              "label": "The Dying Human \u2014 mauled, Elkenquay markings, planted documents",
+              "type": "discovery",
+              "npc_refs": [
+                "dying-human"
+              ]
+            }
           ]
         },
         {
@@ -614,9 +932,25 @@
           "label": "The Escape",
           "type": "scene",
           "steps": [
-            { "label": "Chieftain waves them out — kobolds pursue, herding not hunting", "type": "encounter" },
-            { "label": "Eric's body in the tunnels — not kobold wounds. Final note: 'Kobolds. Someone is paying them.'", "type": "revelation", "npc_refs": ["eric-huwithakay"] },
-            { "label": "The crate is recovered. The gem inside goes unnoticed.", "type": "discovery", "artifact_refs": ["book-of-the-damned", "the-gem"] }
+            {
+              "label": "Chieftain waves them out \u2014 kobolds pursue, herding not hunting",
+              "type": "encounter"
+            },
+            {
+              "label": "Eric's body in the tunnels \u2014 not kobold wounds. Final note: 'Kobolds. Someone is paying them.'",
+              "type": "revelation",
+              "npc_refs": [
+                "eric-huwithakay"
+              ]
+            },
+            {
+              "label": "The crate is recovered. The gem inside goes unnoticed.",
+              "type": "discovery",
+              "artifact_refs": [
+                "book-of-the-damned",
+                "the-gem"
+              ]
+            }
           ]
         }
       ]
@@ -628,21 +962,37 @@
       "location": "hollowgate",
       "href": "hollowgate/moonlit_mirage/moonlit_mirage_arc.html",
       "pages": [
-        { "label": "Arc Reference", "href": "hollowgate/moonlit_mirage/moonlit_mirage_arc.html" },
-        { "label": "Pallor Brood Encounter", "href": "hollowgate/moonlit_mirage/moonlit_mirage_encounter.html" },
-        { "label": "Prize Counter & Curiosities", "href": "hollowgate/moonlit_mirage/moonlit_mirage_shop.html" }
+        {
+          "label": "Arc Reference",
+          "href": "hollowgate/moonlit_mirage/moonlit_mirage_arc.html"
+        },
+        {
+          "label": "Pallor Brood Encounter",
+          "href": "hollowgate/moonlit_mirage/moonlit_mirage_encounter.html"
+        },
+        {
+          "label": "Prize Counter & Curiosities",
+          "href": "hollowgate/moonlit_mirage/moonlit_mirage_shop.html"
+        }
       ],
-      "summary": "The Moonlit Mirage Carnival arrives in Hollowgate. The party encounters Chaelynn, a long-lost contact now working with the carnival. A Pallor Brood attack disrupts the carnival — monstrosities from the machinist's work.",
+      "summary": "The Moonlit Mirage Carnival arrives in Hollowgate. The party encounters Chaelynn, a long-lost contact now working with the carnival. A Pallor Brood attack disrupts the carnival \u2014 monstrosities from the machinist's work.",
       "what_actually_happened": "The monstrosities are the machinist's creations, funded secretly by Percival. The gems dropped by the creatures are the same type as the gem in the crate. Chaelynn has been observing the party throughout and will report to Cael Darro.",
-      "what_party_knows": "Strange creatures attacked the carnival and were defeated. Chaelynn is here — a familiar and trusted face. Gems were found on the creatures (significance unclear).",
-      "key_npcs": ["chaelynn", "cael-darro"],
-      "key_artifacts": ["the-gem"],
-      "key_locations": ["hollowgate"],
+      "what_party_knows": "Strange creatures attacked the carnival and were defeated. Chaelynn is here \u2014 a familiar and trusted face. Gems were found on the creatures (significance unclear).",
+      "key_npcs": [
+        "chaelynn",
+        "cael-darro"
+      ],
+      "key_artifacts": [
+        "the-gem"
+      ],
+      "key_locations": [
+        "hollowgate"
+      ],
       "outcomes": [
         "Party survives the Pallor Brood encounter",
         "First gems recovered from monstrosities",
         "Chaelynn reestablished as a trusted party contact",
-        "Concord's assessment of the party sharpens — Chaelynn's report goes to Cael"
+        "Concord's assessment of the party sharpens \u2014 Chaelynn's report goes to Cael"
       ],
       "hooks_forward": "Chaelynn's report sets the Dunmore recruitment in motion. The gems will become significant once the party understands their connection to the crate.",
       "beats": [
@@ -651,9 +1001,21 @@
           "label": "The Carnival Arrives",
           "type": "scene",
           "steps": [
-            { "label": "Carnival atmosphere — Phase One, games and performances", "type": "scene" },
-            { "label": "Chaelynn — long-lost contact, now a carnival worker", "type": "discovery", "npc_refs": ["chaelynn"] },
-            { "label": "Perception checks — something feels slightly off", "type": "discovery" }
+            {
+              "label": "Carnival atmosphere \u2014 Phase One, games and performances",
+              "type": "scene"
+            },
+            {
+              "label": "Chaelynn \u2014 long-lost contact, now a carnival worker",
+              "type": "discovery",
+              "npc_refs": [
+                "chaelynn"
+              ]
+            },
+            {
+              "label": "Perception checks \u2014 something feels slightly off",
+              "type": "discovery"
+            }
           ]
         },
         {
@@ -661,8 +1023,14 @@
           "label": "The Grand Performance",
           "type": "scene",
           "steps": [
-            { "label": "Phase Two — the main show begins", "type": "scene" },
-            { "label": "The atmosphere shifts. Something is wrong.", "type": "revelation" }
+            {
+              "label": "Phase Two \u2014 the main show begins",
+              "type": "scene"
+            },
+            {
+              "label": "The atmosphere shifts. Something is wrong.",
+              "type": "revelation"
+            }
           ]
         },
         {
@@ -670,10 +1038,25 @@
           "label": "Pallor Brood Attack",
           "type": "encounter",
           "steps": [
-            { "label": "Phase 1 — first creatures emerge", "type": "encounter" },
-            { "label": "Phase 2 — escalation", "type": "encounter" },
-            { "label": "Phase 3 — final push, creatures defeated", "type": "encounter" },
-            { "label": "Gems found on defeated creatures — significance unknown", "type": "discovery", "artifact_refs": ["the-gem"] }
+            {
+              "label": "Phase 1 \u2014 first creatures emerge",
+              "type": "encounter"
+            },
+            {
+              "label": "Phase 2 \u2014 escalation",
+              "type": "encounter"
+            },
+            {
+              "label": "Phase 3 \u2014 final push, creatures defeated",
+              "type": "encounter"
+            },
+            {
+              "label": "Gems found on defeated creatures \u2014 significance unknown",
+              "type": "discovery",
+              "artifact_refs": [
+                "the-gem"
+              ]
+            }
           ]
         },
         {
@@ -681,8 +1064,21 @@
           "label": "Aftermath",
           "type": "scene",
           "steps": [
-            { "label": "Chaelynn's reaction — she saw everything", "type": "dialogue", "npc_refs": ["chaelynn"] },
-            { "label": "Chaelynn reports to Cael Darro offscreen", "type": "revelation", "npc_refs": ["chaelynn", "cael-darro"] }
+            {
+              "label": "Chaelynn's reaction \u2014 she saw everything",
+              "type": "dialogue",
+              "npc_refs": [
+                "chaelynn"
+              ]
+            },
+            {
+              "label": "Chaelynn reports to Cael Darro offscreen",
+              "type": "revelation",
+              "npc_refs": [
+                "chaelynn",
+                "cael-darro"
+              ]
+            }
           ]
         }
       ]
@@ -694,20 +1090,31 @@
       "location": "dunmore",
       "href": "hollowgate/dunmore/dunmore_arc.html",
       "pages": [
-        { "label": "Arc Reference", "href": "hollowgate/dunmore/dunmore_arc.html" }
+        {
+          "label": "Arc Reference",
+          "href": "hollowgate/dunmore/dunmore_arc.html"
+        }
       ],
-      "summary": "The party travels to Dunmore with the carnival. The city is in uproar — inflammatory pamphlets everywhere, anti-Elkenquay sentiment at a boiling point. The party investigates who is printing and distributing the material. Before the investigation resolves, a monstrosity breaks loose — overpowered, multi-phase. The situation spirals. The Concord extracts the party. Cael Darro makes his pitch. The Prologue ends with the party recruited.",
-      "what_actually_happened": "The propaganda is a Concord operation. The monstrosity is another machinist creation. The Concord's rescue is deliberate — timed to create obligation and trust. The party has been manipulated into position.",
+      "summary": "The party travels to Dunmore with the carnival. The city is in uproar \u2014 inflammatory pamphlets everywhere, anti-Elkenquay sentiment at a boiling point. The party investigates who is printing and distributing the material. Before the investigation resolves, a monstrosity breaks loose \u2014 overpowered, multi-phase. The situation spirals. The Concord extracts the party. Cael Darro makes his pitch. The Prologue ends with the party recruited.",
+      "what_actually_happened": "The propaganda is a Concord operation. The monstrosity is another machinist creation. The Concord's rescue is deliberate \u2014 timed to create obligation and trust. The party has been manipulated into position.",
       "what_party_knows": "Someone is manufacturing the anti-Elkenquay sentiment. A monstrosity attacked the city. The Concord saved them and appears to be the only organized group that knows what is actually happening.",
-      "key_npcs": ["cael-darro", "chaelynn", "mirelle-voss"],
-      "key_artifacts": ["the-gem"],
-      "key_locations": ["dunmore"],
+      "key_npcs": [
+        "cael-darro",
+        "chaelynn",
+        "mirelle-voss"
+      ],
+      "key_artifacts": [
+        "the-gem"
+      ],
+      "key_locations": [
+        "dunmore"
+      ],
       "outcomes": [
         "Party investigates propaganda printing operation",
         "Second gem artifact recovered from the Dunmore monstrosity",
         "Concord extracts the party from the aftermath",
         "Cael Darro reveals the Concord and makes the recruitment pitch",
-        "Party recruited — Prologue ends"
+        "Party recruited \u2014 Prologue ends"
       ],
       "hooks_forward": "Party now works for the Concord. Dreknar will be introduced. The Book's journey south begins. Act 1 opens.",
       "beats": [
@@ -716,9 +1123,18 @@
           "label": "Arrival in Dunmore",
           "type": "scene",
           "steps": [
-            { "label": "City in uproar — propaganda pamphlets everywhere", "type": "discovery" },
-            { "label": "Anti-Elkenquay sentiment at a boiling point", "type": "scene" },
-            { "label": "The energy of the crowd feels like it is looking for a reason", "type": "scene" }
+            {
+              "label": "City in uproar \u2014 propaganda pamphlets everywhere",
+              "type": "discovery"
+            },
+            {
+              "label": "Anti-Elkenquay sentiment at a boiling point",
+              "type": "scene"
+            },
+            {
+              "label": "The energy of the crowd feels like it is looking for a reason",
+              "type": "scene"
+            }
           ]
         },
         {
@@ -726,10 +1142,25 @@
           "label": "The Investigation",
           "type": "scene",
           "steps": [
-            { "label": "Who is printing and distributing the pamphlets?", "type": "scene" },
-            { "label": "Trace the printing operation — someone is manufacturing this", "type": "discovery" },
-            { "label": "Party realizes the tension is about to cause real violence", "type": "revelation" },
-            { "label": "Another artifact with a gem is found", "type": "discovery", "artifact_refs": ["the-gem"] }
+            {
+              "label": "Who is printing and distributing the pamphlets?",
+              "type": "scene"
+            },
+            {
+              "label": "Trace the printing operation \u2014 someone is manufacturing this",
+              "type": "discovery"
+            },
+            {
+              "label": "Party realizes the tension is about to cause real violence",
+              "type": "revelation"
+            },
+            {
+              "label": "Another artifact with a gem is found",
+              "type": "discovery",
+              "artifact_refs": [
+                "the-gem"
+              ]
+            }
           ]
         },
         {
@@ -737,9 +1168,21 @@
           "label": "The Monstrosity",
           "type": "encounter",
           "steps": [
-            { "label": "Monstrosity breaks loose — overpowered, multi-phase boss", "type": "encounter" },
-            { "label": "Situation spirals beyond the party's control", "type": "revelation" },
-            { "label": "Gem artifact recovered from the creature", "type": "discovery", "artifact_refs": ["the-gem"] }
+            {
+              "label": "Monstrosity breaks loose \u2014 overpowered, multi-phase boss",
+              "type": "encounter"
+            },
+            {
+              "label": "Situation spirals beyond the party's control",
+              "type": "revelation"
+            },
+            {
+              "label": "Gem artifact recovered from the creature",
+              "type": "discovery",
+              "artifact_refs": [
+                "the-gem"
+              ]
+            }
           ]
         },
         {
@@ -747,13 +1190,333 @@
           "label": "The Concord Reveals Itself",
           "type": "revelation",
           "steps": [
-            { "label": "The Concord extracts the party from the aftermath", "type": "scene" },
-            { "label": "Cael Darro appears — familiar face, already knows too much", "type": "dialogue", "npc_refs": ["cael-darro"] },
-            { "label": "Chaelynn's implicit endorsement — the party has reason to trust", "type": "dialogue", "npc_refs": ["chaelynn", "cael-darro"] },
-            { "label": "The pitch: we're patriots trying to hold things together", "type": "dialogue", "npc_refs": ["cael-darro"] },
-            { "label": "The party is recruited. The Prologue ends.", "type": "revelation" }
+            {
+              "label": "The Concord extracts the party from the aftermath",
+              "type": "scene"
+            },
+            {
+              "label": "Cael Darro appears \u2014 familiar face, already knows too much",
+              "type": "dialogue",
+              "npc_refs": [
+                "cael-darro"
+              ]
+            },
+            {
+              "label": "Chaelynn's implicit endorsement \u2014 the party has reason to trust",
+              "type": "dialogue",
+              "npc_refs": [
+                "chaelynn",
+                "cael-darro"
+              ]
+            },
+            {
+              "label": "The pitch: we're patriots trying to hold things together",
+              "type": "dialogue",
+              "npc_refs": [
+                "cael-darro"
+              ]
+            },
+            {
+              "label": "The party is recruited. The Prologue ends.",
+              "type": "revelation"
+            }
           ]
         }
+      ]
+    },
+    {
+      "id": "blackglass-arc",
+      "title": "The Blackglass Laboratory",
+      "act": "act-1",
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
+      "summary": "The party descends into the ruins of Dunnshire and discovers the Blackglass Laboratory \u2014 the hidden research facility of the man behind every monstrosity they have fought since the Prologue. Doctor Viktor Voss. The encounter with Voss and his Resonance Engine is the culmination of the machinist subplot, and the revelation that Percival Malden funded all of it.",
+      "what_party_knows": "Strange engineered creatures have been appearing across the region. The gems found on defeated monstrosities seem connected. Someone is manufacturing these things. The trail leads to the ruins of an abandoned settlement in the southern marches.",
+      "what_actually_happened": "Viktor Voss survived military imprisonment because Percival extracted him and funded an entirely new research facility beneath the ruins of Dunnshire \u2014 a city Voss himself destroyed twelve years ago. The gem in the kobold crate during the Prologue was destined for Voss's laboratory. The party has been following the breadcrumbs of his research since the first session without knowing it.",
+      "key_npcs": [
+        "viktor-voss",
+        "morrow",
+        "kaelor-thrask",
+        "percival-malden"
+      ],
+      "key_artifacts": [
+        "resonance-engine",
+        "the-gem"
+      ],
+      "key_locations": [
+        "dunnshire",
+        "blackglass-laboratory"
+      ],
+      "hooks_forward": "The full reveal of Percival's involvement. Kaelor Thrask's realization that the kingdom's secrecy enabled this. The question of what Percival intends to do with a functional Resonance Engine \u2014 and whether the party now knows too much.",
+      "gm_notes": "The encounter's mechanical core is the emotional resonance system \u2014 players' actions charge the gems, gems discharge and alter the battlefield, positive emotional resonance (inspiration, triumph, hope) turns out to be more powerful than suffering, which visibly disturbs Voss mid-combat. He should begin taking notes at some point during Phase 2. The narrative peak is not the combat \u2014 it is the moment someone in the party pieces together that the gem from the kobold crate, the creatures at the carnival, the sarcophagus in Dunmore, and the laboratory around them are all the same project.",
+      "beats": [
+        {
+          "id": "bg-approach",
+          "label": "The Ruins of Dunnshire",
+          "type": "scene",
+          "steps": [
+            {
+              "label": "Vitrified streets \u2014 black glass fused into stone, armor, and windows",
+              "type": "discovery"
+            },
+            {
+              "label": "Skeletons frozen in defensive positions. Evacuation carts overturned.",
+              "type": "discovery"
+            },
+            {
+              "label": "Nothing grows. Air unnaturally still. Whispers at night.",
+              "type": "discovery"
+            },
+            {
+              "label": "The entrance: collapsed military tunnels, quarantine chambers, buried infrastructure. No gates. No theater.",
+              "type": "discovery"
+            }
+          ]
+        },
+        {
+          "id": "bg-descent",
+          "label": "Into the Laboratory",
+          "type": "scene",
+          "steps": [
+            {
+              "label": "Steam hissing through copper conduits. Mechanical arms overhead. Wet movement in the dark.",
+              "type": "discovery"
+            },
+            {
+              "label": "Surgical slabs. Preservation tanks. Restrained creatures breathing heavily.",
+              "type": "discovery"
+            },
+            {
+              "label": "First interaction with resonance gems \u2014 a crit is absorbed. Energy ripples into the conduits.",
+              "type": "revelation"
+            },
+            {
+              "label": "Morrow \u2014 the original cavehopper. Horrible recognition for anyone who fought kobold cavehoppers in the Prologue.",
+              "type": "revelation",
+              "npc_refs": [
+                "morrow"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bg-phase1",
+          "label": "Phase One \u2014 Clinical Observation",
+          "type": "encounter",
+          "steps": [
+            {
+              "label": "Viktor Voss emerges \u2014 calm, articulate, clinical. He introduces himself as if beginning a consultation.",
+              "type": "dialogue",
+              "npc_refs": [
+                "viktor-voss"
+              ]
+            },
+            {
+              "label": "Resonance Engine is mostly stable. Players begin learning emotional triggers and crit absorption.",
+              "type": "discovery"
+            },
+            {
+              "label": "Voss observes the party. He is not panicking. He is studying them.",
+              "type": "dialogue",
+              "npc_refs": [
+                "viktor-voss"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bg-phase2",
+          "label": "Phase Two \u2014 Escalation",
+          "type": "encounter",
+          "steps": [
+            {
+              "label": "Gems begin discharging. First containment failure \u2014 creatures enter combat.",
+              "type": "encounter"
+            },
+            {
+              "label": "The laboratory becomes unstable. Environmental hazards activate.",
+              "type": "encounter"
+            },
+            {
+              "label": "Voss grows increasingly fascinated. He begins taking notes mid-combat.",
+              "type": "revelation",
+              "npc_refs": [
+                "viktor-voss"
+              ]
+            },
+            {
+              "label": "Morrow joins the fight \u2014 or moves to protect Voss if Inspiration resonance fires.",
+              "type": "encounter",
+              "npc_refs": [
+                "morrow"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bg-phase3",
+          "label": "Phase Three \u2014 Overload",
+          "type": "encounter",
+          "steps": [
+            {
+              "label": "Triumph and Inspiration resonance destabilize the system beyond control.",
+              "type": "revelation"
+            },
+            {
+              "label": "Voss realizes \u2014 audibly \u2014 that positive emotional resonance is more powerful than suffering.",
+              "type": "revelation",
+              "npc_refs": [
+                "viktor-voss"
+              ]
+            },
+            {
+              "label": "The engine overloads. Structural collapse begins. Creatures frenzy. Hazards escalate every round.",
+              "type": "encounter"
+            },
+            {
+              "label": "Voss may inject raw resonance into himself in desperation to continue observing.",
+              "type": "encounter",
+              "npc_refs": [
+                "viktor-voss"
+              ]
+            },
+            {
+              "label": "The laboratory becomes a living emotional reactor. The party must escape or finish it here.",
+              "type": "encounter"
+            }
+          ]
+        },
+        {
+          "id": "bg-revelation",
+          "label": "The Full Picture",
+          "type": "revelation",
+          "steps": [
+            {
+              "label": "Evidence in the lab connects directly to the kobold cavehopper operation \u2014 and to the gem in the crate.",
+              "type": "revelation",
+              "artifact_refs": [
+                "the-gem"
+              ]
+            },
+            {
+              "label": "Voss's records name Percival Malden as his sponsor. The Concord never knew.",
+              "type": "revelation",
+              "npc_refs": [
+                "percival-malden"
+              ]
+            },
+            {
+              "label": "Kaelor Thrask \u2014 if the party has any connection to him \u2014 will eventually receive word and speak two words: 'Blackglass. No.'",
+              "type": "revelation",
+              "npc_refs": [
+                "kaelor-thrask"
+              ]
+            }
+          ]
+        }
+      ],
+      "href": "blackglass/blackglass_encounter.html",
+      "pages": [
+        {
+          "label": "Encounter Reference",
+          "href": "blackglass/blackglass_encounter.html"
+        }
+      ]
+    }
+  ],
+  "creatures": [
+    {
+      "id": "skitterling",
+      "name": "Skitterling",
+      "subtitle": "Failed Cavehopper Juvenile",
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
+      "description": "Failed juvenile cavehoppers \u2014 fast, frenzied, medium-sized aberrations that move freely across walls and ceilings. Released during Rage Resonance discharges or containment failures.",
+      "stats": {
+        "ac": 14,
+        "hp": 27,
+        "speed": "40 ft, climb 40 ft"
+      },
+      "traits": [
+        "Ceiling Skitter \u2014 moves on walls/ceilings freely",
+        "Frenzied Movement \u2014 opportunity attacks against Skitterlings have disadvantage"
+      ],
+      "actions": [
+        "Claw Flurry: +6 to hit, two attacks 1d6+3 slashing; if both hit, target loses reactions",
+        "Panic Leap (Recharge 5\u20136): leap 20 ft, DEX Save DC 13 or knocked prone"
+      ]
+    },
+    {
+      "id": "stitchman-prototype",
+      "name": "Stitchman Prototype",
+      "subtitle": "Failed Humanoid Soldier",
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
+      "description": "Failed humanoid soldier prototypes. Medium monstrosities that become more dangerous below half HP and cannot be stopped by critical hits \u2014 damage surges instead charge nearby gems.",
+      "stats": {
+        "ac": 15,
+        "hp": 45
+      },
+      "traits": [
+        "Pain Suppression \u2014 below half HP: 10 temp HP, immune fear",
+        "Unstable Physiology \u2014 crits deal normal damage only, nearest gem gains charge"
+      ],
+      "actions": [
+        "Surgical Slam: +7 to hit, 2d8+4 bludgeoning",
+        "Injector Spike: +6 to hit, 1d8+4 piercing, CON Save DC 14 or poisoned",
+        "Desperation Frenzy (below 15 HP): bonus slam attack, 5 self-damage each round"
+      ]
+    },
+    {
+      "id": "resonance-brute",
+      "name": "Resonance Brute",
+      "subtitle": "Gem-Exposed Growth Prototype",
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
+      "description": "Large aberrations saturated with resonance gem exposure. Unpredictable \u2014 each gem discharge rolls randomly to buff the brute. Death triggers an emotional explosion.",
+      "stats": {
+        "ac": 13,
+        "hp": 68
+      },
+      "traits": [
+        "Emotional Instability \u2014 each gem discharge: roll d4 (1: +2 AC, 2: bonus claw attack, 3: regen 10 HP, 4: psychic scream)",
+        "Resonance Saturation \u2014 below 20 HP: unstable overload begins",
+        "Death Burst \u2014 WIS Save DC 14 or frightened; nearest gem gains +2 charges"
+      ],
+      "actions": [
+        "Crushing Limb: +7 to hit, 2d10+5 bludgeoning",
+        "Resonance Vomit (Recharge 5\u20136): 15 ft cone, DEX Save DC 14, 4d6 psychic/acid, failure: emotional triggers count double"
+      ]
+    },
+    {
+      "id": "tendril-mass",
+      "name": "Tendril Mass",
+      "subtitle": "Nervous System Colony",
+      "arc_tags": [
+        "act-1",
+        "act-2"
+      ],
+      "description": "A large ooze/aberration \u2014 an autonomous nervous system colony that feeds on emotional resonance. Half damage from piercing and psychic. Heals whenever nearby creatures experience fear, pain, or grief.",
+      "stats": {
+        "ac": 11,
+        "hp": 52
+      },
+      "traits": [
+        "Distributed Biology \u2014 half damage from piercing and psychic",
+        "Emotional Feeding \u2014 heals 5 HP whenever nearby creatures experience fear, pain, or grief"
+      ],
+      "actions": [
+        "Tendril Lash: +6 to hit, 2d6+4 bludgeoning, target grappled",
+        "Neural Spike: WIS Save DC 14 or disadvantage on next attack/check/save, emotional triggers count double",
+        "Flesh Bloom (Recharge 6): 20 ft area difficult terrain, DEX Save DC 14 or restrained"
       ]
     }
   ]

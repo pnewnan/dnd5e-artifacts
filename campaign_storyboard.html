@@ -113,6 +113,7 @@
   .filter-btn.type-artifact.active { background: rgba(42,92,30,0.2); border-color: #5aaf4a; color: #90d880; }
   .filter-btn.type-entity.active   { background: rgba(20,10,40,0.4); border-color: #7050a0; color: #a080d0; }
   .filter-btn.type-nation.active   { background: rgba(46,58,74,0.3); border-color: #6080a0; color: #90b0d0; }
+  .filter-btn.type-creature.active { background: rgba(74,48,16,0.3); border-color: #a07840; color: #d0a870; }
 
   /* ── Act filter pills ── */
   .act-btn.active { background: rgba(180,140,60,0.12); border-color: rgba(180,140,60,0.5); color: rgba(242,232,200,0.9); }
@@ -163,6 +164,7 @@
   .card.type-artifact .card-top-bar { background: var(--green); }
   .card.type-entity   .card-top-bar { background: #3a1060; }
   .card.type-nation   .card-top-bar { background: var(--slate); }
+  .card.type-creature .card-top-bar { background: #4a3010; }
 
   .card-header {
     padding: 0.75rem 0.9rem 0.6rem;
@@ -195,6 +197,7 @@
   .badge-artifact { background: rgba(42,92,30,0.1);   color: var(--green);  border-color: rgba(42,92,30,0.3); }
   .badge-entity   { background: rgba(58,16,96,0.15);  color: #7050a0;       border-color: rgba(58,16,96,0.35); }
   .badge-nation   { background: rgba(46,58,74,0.15);  color: #4a6880;       border-color: rgba(46,58,74,0.35); }
+  .badge-creature { background: rgba(74,48,16,0.15);  color: #8a6030;       border-color: rgba(74,48,16,0.35); }
 
   .badge-act-prologue { background: rgba(122,31,31,0.08);  color: #a04040; border-color: rgba(122,31,31,0.2); }
   .badge-act-act1     { background: rgba(30,95,95,0.08);   color: #3a8080; border-color: rgba(30,95,95,0.2); }
@@ -718,6 +721,7 @@
         <button class="filter-btn type-artifact" data-type="artifact" onclick="setTypeFilter('artifact', this)">Artifacts</button>
         <button class="filter-btn type-nation"   data-type="nation"   onclick="setTypeFilter('nation', this)">Nations</button>
         <button class="filter-btn type-entity"   data-type="entity"   onclick="setTypeFilter('entity', this)">Entities</button>
+        <button class="filter-btn type-creature" data-type="creature" onclick="setTypeFilter('creature', this)">Creatures</button>
       </div>
       <div class="filter-group">
         <span class="filter-sep">Act</span>
@@ -824,6 +828,9 @@ function allEntries(data) {
   });
   (data.entities || []).forEach(function(e) {
     entries.push({ _type: 'entity', _acts: [], ...e });
+  });
+  (data.creatures || []).forEach(function(e) {
+    entries.push({ _type: 'creature', _acts: tagsToActs(e.arc_tags || []), ...e });
   });
 
   return entries;
@@ -937,6 +944,7 @@ function buildBody(e) {
   else if (t === 'artifact') html += buildArtifactBody(e);
   else if (t === 'nation') html += buildNationBody(e);
   else if (t === 'entity') html += buildEntityBody(e);
+  else if (t === 'creature') html += buildCreatureBody(e);
 
   return html;
 }
@@ -1043,6 +1051,36 @@ function buildNationBody(e) {
     + field('History', e.history)
     + field('Relationship with Elkenquay / Fastingbreak', e.relationship_with_elkenquay || e.relationship_with_fastingbreak)
     + field('Key Assets', e.key_assets)
+    + gmField('GM Notes', e.gm_notes);
+}
+
+function buildCreatureBody(e) {
+  var statsHtml = '';
+  if (e.stats) {
+    var s = e.stats;
+    var parts = [];
+    if (s.ac)    parts.push('AC ' + s.ac);
+    if (s.hp)    parts.push('HP ' + s.hp);
+    if (s.speed) parts.push(s.speed);
+    if (parts.length) {
+      statsHtml = '<div class="card-section"><span class="field-label">Stats</span>'
+        + '<div class="field-value">' + esc(parts.join(' · ')) + '</div></div>';
+    }
+  }
+  var traitsHtml = '';
+  if (e.traits && e.traits.length) {
+    var items = e.traits.map(function(t) { return '<li>' + esc(t) + '</li>'; }).join('');
+    traitsHtml = '<div class="card-section"><span class="field-label">Traits</span><ul class="outcome-list">' + items + '</ul></div>';
+  }
+  var actionsHtml = '';
+  if (e.actions && e.actions.length) {
+    var items = e.actions.map(function(a) { return '<li>' + esc(a) + '</li>'; }).join('');
+    actionsHtml = '<div class="card-section"><span class="field-label">Actions</span><ul class="outcome-list">' + items + '</ul></div>';
+  }
+  return field('Description', e.description)
+    + statsHtml
+    + traitsHtml
+    + actionsHtml
     + gmField('GM Notes', e.gm_notes);
 }
 
@@ -1181,6 +1219,11 @@ function findEntry(id) {
   var all = allEntries(DATA);
   for (var i = 0; i < all.length; i++) {
     if (all[i].id === id) return all[i];
+  }
+  // also search creatures directly (they may not match tagsToActs filter)
+  var creatures = DATA.creatures || [];
+  for (var i = 0; i < creatures.length; i++) {
+    if (creatures[i].id === id) return Object.assign({ _type: 'creature', _acts: [] }, creatures[i]);
   }
   return null;
 }

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encounter — The Blackglass Laboratory</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9;
+    --parchment-dark: #dbc99a;
+    --parchment-shadow: #b89d5e;
+    --ink: #1a1108;
+    --dim: #2e200e;
+    --faded: #5a4a2e;
+    --blood: #7a1f1f;
+    --blood-dark: #4a0f0f;
+    --purple: #5b2d8e;
+    --gold: #8a6a10;
+    --teal: #1e5f5f;
+    --slate: #2e3a4a;
+    /* phase colors */
+    --phase1-c: #1e5f5f;
+    --phase2-c: #7a5800;
+    --phase3-c: #7a1f1f;
+    /* resonance colors */
+    --res-fear:       #4a1a6a;
+    --res-rage:       #8a3010;
+    --res-pain:       #7a1f1f;
+    --res-grief:      #1a2a4a;
+    --res-triumph:    #7a6000;
+    --res-inspire:    #1e5f5f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0806; font-family: 'IM Fell English', serif; color: var(--ink); min-height: 100vh; }
+
+  /* ── HERO ── */
+  .hero-caption {
+    background: #0a0806;
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(180,140,60,0.15);
+  }
+  .hero-caption h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(1.5rem, 4vw, 2.6rem);
+    color: var(--parchment);
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.9);
+  }
+  .hero-caption .sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(180,140,60,0.55);
+    margin-top: 0.5rem;
+  }
+  .hero-caption .flavor {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(220,200,160,0.5);
+    margin-top: 0.7rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .back-link {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(180,140,60,0.5);
+    text-decoration: none;
+    margin-top: 0.8rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: rgba(180,140,60,0.9); }
+
+  /* ── PAGE ── */
+  .page {
+    max-width: 1050px;
+    margin: 0 auto;
+    background-color: #f2e8c9;
+    border: 2px solid var(--parchment-shadow);
+    box-shadow: 0 0 0 6px #0a0806, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8);
+    padding: 2.5rem 2.5rem 3rem;
+  }
+
+  /* ── SHARED ── */
+  .section-head { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--purple); margin-bottom: 0.4rem; border-bottom: 1px solid rgba(91,45,142,0.2); padding-bottom: 0.2rem; }
+  h2 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--ink); line-height: 1.3; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  h3 { font-family: 'Cinzel', serif; font-size: 0.82rem; color: var(--ink); margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  p { font-size: 0.88rem; line-height: 1.65; color: var(--dim); margin-bottom: 0.4rem; }
+  .block { margin-bottom: 1.2rem; }
+  ul.find-list { margin: 0.25rem 0 0.25rem 1.1rem; font-size: 0.84rem; color: var(--dim); line-height: 1.65; }
+  ul.find-list li { margin-bottom: 0.15rem; }
+  .annotation { font-style: italic; font-size: 0.82rem; color: var(--blood); padding: 0.25rem 0.6rem; border-left: 2px solid var(--blood); margin: 0.35rem 0; background: rgba(122,31,31,0.04); }
+  .divider { display: flex; align-items: center; gap: 0.6rem; margin: 1.4rem 0; color: var(--parchment-shadow); }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
+  .divider span { font-size: 0.9rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; align-items: start; }
+  .discovery { padding: 0.65rem 0.9rem; margin-bottom: 0.6rem; border-left: 3px solid var(--parchment-shadow); background: rgba(180,140,60,0.1); }
+  .dc-low-bg  { border-left-color: var(--teal)  !important; background: rgba(30,95,95,0.07)   !important; }
+  .dc-mid-bg  { border-left-color: var(--gold)  !important; background: rgba(122,96,0,0.07)   !important; }
+  .dc-high-bg { border-left-color: var(--blood) !important; background: rgba(122,31,31,0.07)  !important; }
+  .dc-top-bg  { border-left-color: #3a1060      !important; background: rgba(58,16,96,0.07)   !important; }
+  .discovery-name { font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 600; color: var(--ink); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem; }
+  .discovery p { margin-bottom: 0.25rem; }
+
+  /* ── PHASE HEADER ── */
+  .phase-header { padding: 0.8rem 1.2rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 1rem; }
+  .phase-header.p1 { border-left: 4px solid var(--phase1-c); background: rgba(30,95,95,0.07); border-top: 1px solid rgba(30,95,95,0.2); border-bottom: 1px solid rgba(30,95,95,0.2); border-right: 1px solid rgba(30,95,95,0.2); }
+  .phase-header.p2 { border-left: 4px solid var(--phase2-c); background: rgba(122,88,0,0.07); border-top: 1px solid rgba(122,88,0,0.2); border-bottom: 1px solid rgba(122,88,0,0.2); border-right: 1px solid rgba(122,88,0,0.2); }
+  .phase-header.p3 { border-left: 4px solid var(--phase3-c); background: rgba(122,31,31,0.07); border-top: 1px solid rgba(122,31,31,0.2); border-bottom: 1px solid rgba(122,31,31,0.2); border-right: 1px solid rgba(122,31,31,0.2); }
+  .phase-tag { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; white-space: nowrap; }
+  .phase-header.p1 .phase-tag { color: var(--phase1-c); }
+  .phase-header.p2 .phase-tag { color: var(--phase2-c); }
+  .phase-header.p3 .phase-tag { color: var(--phase3-c); }
+  .phase-header h2 { margin: 0; font-size: 1rem; }
+  .phase-sub { font-style: italic; font-size: 0.82rem; color: var(--faded); }
+
+  /* ── TRANSITION BOX ── */
+  .transition-box { margin: 1.5rem 0; padding: 1rem 1.2rem; background: rgba(122,31,31,0.06); border: 1px solid rgba(122,31,31,0.3); border-top: 3px solid var(--blood); text-align: center; }
+  .transition-box .t-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blood); display: block; margin-bottom: 0.4rem; }
+  .transition-box h2 { margin-bottom: 0.4rem; font-size: 1.05rem; }
+  .transition-box p { font-style: italic; font-size: 0.87rem; max-width: 640px; margin: 0 auto 0.3rem; }
+
+  /* ── STAT BLOCK ── */
+  .creature-section { margin-bottom: 2.5rem; }
+  .creature-block { border: 1px solid var(--parchment-shadow); border-top: 3px solid var(--blood-dark); overflow: hidden; margin-bottom: 0.5rem; }
+  .cb-inner { padding: 1.2rem 1.4rem; overflow: hidden; }
+  .cb-inner::after { content: ''; display: table; clear: both; }
+  .cb-name { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1.1rem, 2.5vw, 1.45rem); color: var(--blood-dark); line-height: 1.1; margin-bottom: 0.15rem; }
+  .cb-type { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--faded); font-style: italic; margin-bottom: 0.6rem; }
+  .cb-flavor { font-style: italic; font-size: 0.87rem; color: var(--faded); margin-bottom: 0.8rem; border-left: 2px solid var(--parchment-shadow); padding-left: 0.7rem; line-height: 1.6; }
+  .stat-bar { display: flex; gap: 0; border: 1px solid var(--parchment-shadow); margin-bottom: 0.8rem; background: rgba(26,17,8,0.04); flex-wrap: wrap; }
+  .stat-item { flex: 1; min-width: 60px; text-align: center; padding: 0.4rem 0.3rem; border-right: 1px solid rgba(180,140,60,0.3); }
+  .stat-item:last-child { border-right: none; }
+  .stat-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--faded); display: block; margin-bottom: 0.1rem; }
+  .stat-val { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; color: var(--ink); display: block; }
+  .attr-bar { display: flex; gap: 0.3rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
+  .attr-item { text-align: center; flex: 1; min-width: 45px; }
+  .attr-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faded); display: block; }
+  .attr-val { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; color: var(--ink); display: block; }
+  .cb-rule { border: none; border-top: 1px solid var(--parchment-shadow); margin: 0.6rem 0; }
+  .cb-section-label { font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blood); border-bottom: 1px solid rgba(122,31,31,0.2); padding-bottom: 0.2rem; margin: 0.6rem 0 0.4rem; }
+  .cb-trait { margin-bottom: 0.5rem; font-size: 0.86rem; line-height: 1.6; color: var(--dim); }
+  .cb-trait-name { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; color: var(--ink); font-style: italic; }
+  .cb-action { margin-bottom: 0.5rem; font-size: 0.86rem; line-height: 1.6; color: var(--dim); }
+  .cb-action-name { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; color: var(--ink); }
+  .cb-recharge { font-size: 0.72rem; color: var(--blood); font-style: italic; }
+  .cb-secondary { font-size: 0.82rem; color: var(--dim); margin-bottom: 0.15rem; }
+  .cb-secondary strong { font-family: 'Cinzel', serif; font-size: 0.72rem; color: var(--ink); font-weight: 700; }
+  .combat-notes { background: rgba(26,17,8,0.05); border-top: 1px solid var(--parchment-shadow); padding: 0.8rem 1.4rem; }
+  .combat-notes-label { font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.4rem; }
+  .combat-notes ul { margin-left: 1rem; font-size: 0.85rem; color: var(--dim); line-height: 1.65; }
+  .combat-notes ul li { margin-bottom: 0.2rem; }
+
+  /* ── SHARED MECHANIC BOX ── */
+  .shared-trait { border: 1px solid rgba(180,140,60,0.4); border-left: 4px solid var(--gold); background: rgba(138,106,16,0.06); padding: 0.8rem 1rem; margin-bottom: 1.5rem; }
+  .shared-trait-label { font-family: 'Cinzel', serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .shared-trait p { font-size: 0.86rem; margin-bottom: 0.3rem; }
+  .shared-trait ul { margin-left: 1rem; font-size: 0.85rem; color: var(--dim); line-height: 1.6; }
+
+  /* ── CORE MECHANIC (CRIT ABSORPTION) ── */
+  .core-mechanic {
+    border: 1px solid rgba(91,45,142,0.35);
+    border-left: 4px solid var(--purple);
+    background: rgba(91,45,142,0.06);
+    padding: 0.85rem 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  .core-mechanic-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 0.4rem;
+  }
+  .core-mechanic p { font-size: 0.86rem; margin-bottom: 0.3rem; }
+
+  /* ── LAIR ACTIONS BOX ── */
+  .lair-actions {
+    border: 1px solid rgba(122,31,31,0.3);
+    border-top: 3px solid var(--blood);
+    background: rgba(122,31,31,0.04);
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .lair-actions-label {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--blood);
+    margin-bottom: 0.6rem;
+  }
+  .lair-action-item {
+    margin-bottom: 0.55rem;
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: var(--dim);
+    padding-left: 0.9rem;
+    position: relative;
+  }
+  .lair-action-item::before { content: '→'; position: absolute; left: 0; color: var(--blood); }
+  .lair-action-name { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; color: var(--ink); }
+
+  /* ── RESONANCE GEM SYSTEM ── */
+  .resonance-system { margin-bottom: 1.8rem; }
+  .resonance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin-top: 0.6rem; }
+  .res-card {
+    border: 1px solid;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .res-header {
+    padding: 0.4rem 0.7rem;
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    color: rgba(242,232,200,0.92);
+  }
+  .res-body { padding: 0.55rem 0.7rem; background: var(--parchment); }
+  .res-sub { font-family: 'Cinzel', serif; font-size: 0.48rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.2rem; display: block; opacity: 0.65; }
+  .res-body p { font-size: 0.78rem; margin-bottom: 0.25rem; line-height: 1.5; }
+  .res-triggers { font-size: 0.76rem; color: var(--faded); font-style: italic; margin-bottom: 0.2rem; line-height: 1.45; }
+  .res-discharge { font-size: 0.79rem; color: var(--ink); font-weight: 600; line-height: 1.5; }
+
+  /* Fear */
+  .res-fear   { border-color: rgba(74,26,106,0.5); }
+  .res-fear   .res-header { background: var(--res-fear); }
+  .res-fear   .res-sub { color: var(--res-fear); }
+  /* Rage */
+  .res-rage   { border-color: rgba(138,48,16,0.5); }
+  .res-rage   .res-header { background: var(--res-rage); }
+  .res-rage   .res-sub { color: var(--res-rage); }
+  /* Pain */
+  .res-pain   { border-color: rgba(122,31,31,0.5); }
+  .res-pain   .res-header { background: var(--res-pain); }
+  .res-pain   .res-sub { color: var(--res-pain); }
+  /* Grief */
+  .res-grief  { border-color: rgba(26,42,74,0.5); }
+  .res-grief  .res-header { background: var(--res-grief); }
+  .res-grief  .res-sub { color: var(--res-grief); }
+  /* Triumph */
+  .res-triumph{ border-color: rgba(122,96,0,0.5); }
+  .res-triumph .res-header { background: var(--res-triumph); }
+  .res-triumph .res-sub { color: var(--res-triumph); }
+  /* Inspiration */
+  .res-inspire { border-color: rgba(30,95,95,0.5); }
+  .res-inspire .res-header { background: var(--res-inspire); }
+  .res-inspire .res-sub { color: var(--res-inspire); }
+
+  /* ── CONCLUSION ── */
+  .conclusion { background: rgba(26,17,8,0.06); border: 1px solid var(--parchment-shadow); border-top: 2px solid var(--ink); padding: 1rem 1.2rem; margin-top: 1.5rem; }
+  .conclusion h3 { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--ink); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem; }
+  .conclusion ul { margin-left: 1.1rem; font-size: 0.87rem; color: var(--dim); line-height: 1.7; }
+
+  /* ── MISC ── */
+  .enc-overview { margin-bottom: 1.8rem; }
+  .voss-note {
+    background: rgba(26,17,8,0.06);
+    border: 1px solid rgba(91,45,142,0.2);
+    border-left: 3px solid var(--purple);
+    padding: 0.6rem 0.9rem;
+    margin: 0.6rem 0;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--faded);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 720px) {
+    .two-col, .three-col { grid-template-columns: 1fr; }
+    .resonance-grid { grid-template-columns: 1fr 1fr; }
+    .page { padding: 1.5rem 1.2rem 2rem; }
+    .attr-bar { gap: 0.15rem; }
+  }
+  @media (max-width: 500px) {
+    .resonance-grid { grid-template-columns: 1fr; }
+  }
+  @media print { body { background: white; } .page { box-shadow: none; border: none; } }
+</style>
+</head>
+<body>
+
+<div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
+<div id="aelNavBtn" style="position:fixed;bottom:1.2rem;right:1.2rem;z-index:1001;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(26,18,9,0.9);border:1px solid #b89d5e;padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);cursor:pointer;user-select:none;" onclick="aelNavOpen()">&#9776; All Pages</div>
+<script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
+
+<!-- HERO CAPTION -->
+<div class="hero-caption">
+  <h1>The Blackglass Laboratory</h1>
+  <p class="sub">Act 2 Encounter &nbsp;·&nbsp; Viktor Voss &amp; The Resonance Engine &nbsp;·&nbsp; Level 5–7 Party</p>
+  <p class="flavor">"Nothing here was built by madness. That is what makes it horrifying."</p>
+</div>
+
+<div class="page">
+
+  <!-- ENCOUNTER OVERVIEW -->
+  <div class="enc-overview">
+    <p class="section-head">Encounter Overview</p>
+    <div class="two-col">
+      <div>
+        <div class="discovery dc-low-bg">
+          <div class="discovery-name">Setting &amp; Tone</div>
+          <p>The party descends into the ruins of Dunnshire and finds the Blackglass Laboratory beneath — a hidden research facility that is clean, clinical, industrial, and terrifyingly organized. Steam hisses through copper-veined conduits. Mechanical arms twitch overhead. Somewhere in the dark, restrained things breathe.</p>
+          <div class="annotation">"The air smells of antiseptic fluid, burned metal, and blood. Everything is cataloged. Everything is intentional."</div>
+        </div>
+        <div class="discovery dc-low-bg">
+          <div class="discovery-name">Encounter Design Intent</div>
+          <ul class="find-list">
+            <li>Level 5–7 party; three escalating phases</li>
+            <li>The players' emotional responses are the primary mechanic — the room feeds on them</li>
+            <li>Positive emotional resonance (inspiration, triumph) is more powerful than suffering — this should surprise both Voss and the party</li>
+            <li>Voss should be encountered as a scientist, not a screaming villain — he observes, annotates, corrects people who call him a necromancer</li>
+            <li>The laboratory itself is the final boss as much as Voss is</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="discovery dc-top-bg">
+          <div class="discovery-name">The Retroactive Reveal</div>
+          <p>Somewhere in Phase 2 or 3, a player should be able to piece together what this place is. The cavehoppers in the Prologue tunnels. The Pallor Brood at the carnival. The creature in the sarcophagus in Dunmore. The resonance gems they have been carrying since Session 1.</p>
+          <p>All of it traces back here. To this room. To this man.</p>
+          <div class="annotation">Let that land without commentary. Don't underline it.</div>
+        </div>
+        <div class="discovery dc-mid-bg">
+          <div class="discovery-name">Environmental Interaction</div>
+          <ul class="find-list">
+            <li>Destroying resonance pylons reduces active gem count and may trigger local discharges</li>
+            <li>Containment tanks can be ruptured — releasing subjects or flooding the floor</li>
+            <li>Surgical rigs and mechanical arms are lair action hazards but can also be turned against Voss</li>
+            <li>The Resonance Engine at the center of the chamber is targetable — each hit charges the nearest gem</li>
+            <li>Disconnecting Voss's third arm removes his bonus action utility</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORE MECHANIC -->
+  <div class="core-mechanic">
+    <div class="core-mechanic-label">Core Mechanic — Critical Hit Absorption</div>
+    <p><strong>Critical hits do not deal bonus damage inside the Blackglass Laboratory.</strong> Instead, attacks deal normal damage and the excess emotional surge is absorbed into the nearest resonance gem, immediately adding one charge to it.</p>
+    <p>Visually: the energy ripples away from the wound and traces through glowing conduits in the floor toward the nearest pylon. This is the first signal to players that something is fundamentally wrong with this space.</p>
+    <p><em>This applies to both player and creature critical hits. The laboratory feeds on everyone.</em></p>
+  </div>
+
+  <!-- RESONANCE SYSTEM -->
+  <div class="resonance-system">
+    <p class="section-head">The Resonance Gem System</p>
+    <p style="margin-bottom:0.7rem;">Six emotional states charge corresponding gems embedded throughout the laboratory. Each gem tracks charges independently. At <strong>3 charges</strong>, a gem discharges — altering the battlefield, empowering creatures, or imposing conditions. The room reacts continuously to emotional intensity. Players should begin noticing the pattern before they understand the mechanic.</p>
+
+    <div class="resonance-grid">
+
+      <!-- FEAR -->
+      <div class="res-card res-fear">
+        <div class="res-header">Fear Resonance</div>
+        <div class="res-body">
+          <span class="res-sub">Triggers</span>
+          <p class="res-triggers">Fear spells · Terror effects · Panic conditions · Frightened status applied to any creature</p>
+          <span class="res-sub">Build-Up Cues</span>
+          <p class="res-triggers">Lights dim slightly · Low-frequency hum deepens · Shadows lengthen at the edges of the room · Restrained creatures begin twitching violently</p>
+          <span class="res-sub">Discharge — Terror Pulse</span>
+          <p class="res-discharge">30 ft radius. WIS Save DC 15. Failure: frightened until end of next turn + 2d6 psychic damage. All hidden or dormant creatures awaken. Area lighting extinguishes. Fear effect spreads to adjacent uncharged creatures.</p>
+        </div>
+      </div>
+
+      <!-- RAGE -->
+      <div class="res-card res-rage">
+        <div class="res-header">Rage Resonance</div>
+        <div class="res-body">
+          <span class="res-sub">Triggers</span>
+          <p class="res-triggers">Barbarian Rage · Reckless Attack · Multiattack flurries · Frenzied aggression · Critical hits (via absorption)</p>
+          <span class="res-sub">Build-Up Cues</span>
+          <p class="res-triggers">Rhythmic heartbeat-like pounding from the Engine · Conduit tubing overheats to visible red · Machinery vibrates violently at the joints</p>
+          <span class="res-sub">Discharge — Berserker Cascade</span>
+          <p class="res-discharge">All creatures gain +2 melee damage and +10 movement, but cannot voluntarily disengage. Containment restraints rupture. Caged creatures mutate aggressively and enter combat. Containment chambers crack open.</p>
+        </div>
+      </div>
+
+      <!-- PAIN -->
+      <div class="res-card res-pain">
+        <div class="res-header">Pain Resonance</div>
+        <div class="res-body">
+          <span class="res-sub">Triggers</span>
+          <p class="res-triggers">Critical hits against the party · Any creature reduced below half HP · Massive single-hit damage (20+ in one attack)</p>
+          <span class="res-sub">Build-Up Cues</span>
+          <p class="res-triggers">Sharp metallic ringing that rises in pitch · Fluid systems begin cycling faster, audible through the walls · The Engine's central chamber brightens</p>
+          <span class="res-sub">Discharge — Regenerative Burst</span>
+          <p class="res-discharge">Voss heals 3d8 HP. All laboratory creatures heal 2d6 HP. Severed tissue reconnects. Inactive experimental subjects reactivate on their next initiative count.</p>
+        </div>
+      </div>
+
+      <!-- GRIEF -->
+      <div class="res-card res-grief">
+        <div class="res-header">Grief Resonance</div>
+        <div class="res-body">
+          <span class="res-sub">Triggers</span>
+          <p class="res-triggers">Critical failures · Ally incapacitation or death · Expressions of despair or surrender</p>
+          <span class="res-sub">Build-Up Cues</span>
+          <p class="res-triggers">Whispering sounds from the walls — indistinct, almost familiar · A sense of emotional weight settling over the room · Hallucinatory echoes at the edge of vision</p>
+          <span class="res-sub">Discharge — Echo Manifestation</span>
+          <p class="res-discharge">WIS Save DC 15. Failure: disadvantage on attacks and checks + 2d6 psychic damage. Emotional hallucinations manifest. Spectral echoes of failed experiments twitch to life and move to intercept. Duration: until end of next round.</p>
+        </div>
+      </div>
+
+      <!-- TRIUMPH -->
+      <div class="res-card res-triumph">
+        <div class="res-header">Triumph Resonance</div>
+        <div class="res-body">
+          <span class="res-sub">Triggers</span>
+          <p class="res-triggers">Killing laboratory creatures · Destroying Voss's creations · Decisive heroic victories · Destroying resonance pylons</p>
+          <span class="res-sub">Build-Up Cues</span>
+          <p class="res-triggers">Violent arcs of energy leap between pylons · Structural instability — dust falls from the ceiling · Gems glow with unstable, blinding brightness</p>
+          <span class="res-sub">Discharge — Catastrophic Overload</span>
+          <p class="res-discharge">DEX Save DC 16. Failure: 6d6 force/fire/lightning damage. Half on success. Structural collapse begins. Random surges trigger each subsequent round. Creature control systems fail. Chain reactions spread to adjacent gems. <em>Voss realizes triumph resonance is stronger than suffering.</em></p>
+        </div>
+      </div>
+
+      <!-- INSPIRATION -->
+      <div class="res-card res-inspire">
+        <div class="res-header">Inspiration Resonance</div>
+        <div class="res-body">
+          <span class="res-sub">Triggers</span>
+          <p class="res-triggers">Bardic Inspiration · Rally effects · Heroic speeches · Any ability that grants advantage through courage</p>
+          <span class="res-sub">Build-Up Cues</span>
+          <p class="res-triggers">Harmonic tones that almost resolve into a chord · Machinery stabilizes and rhythmically pulses · Steam releases evenly rather than violently</p>
+          <span class="res-sub">Discharge — Harmonic Resonance Wave</span>
+          <p class="res-discharge">All negative emotional conditions on party members are cleansed. Players who successfully hit this round gain +2 on attacks next round. Monsters automatically stabilize — fear and frenzy suppressed. Mutation instability pauses. <em>This deeply unsettles Voss. He begins realizing positive resonance is more stable than suffering.</em></p>
+        </div>
+      </div>
+
+    </div>
+    <div class="annotation" style="margin-top:0.7rem;">Voss tracks resonance charges openly on his turn — he narrates build-up cues as observational data. Players should hear him and gradually understand what he is measuring.</div>
+  </div>
+
+  <!-- LAIR ACTIONS -->
+  <div class="lair-actions">
+    <div class="lair-actions-label">Lair Actions — Initiative Count 20</div>
+    <p style="font-size:0.85rem;margin-bottom:0.7rem;">On initiative count 20 (losing ties), the laboratory itself acts. Voss does not control these directly — they are the facility responding to accumulated resonance. Choose one each round, or roll randomly if the energy state warrants chaos.</p>
+    <div class="lair-action-item"><span class="lair-action-name">Steam Vent Rupture.</span> A burst of pressurized steam erupts from a ruptured conduit in a 10-foot line. DEX Save DC 15. Failure: 3d6 fire damage and blinded until end of next turn.</div>
+    <div class="lair-action-item"><span class="lair-action-name">Resonance Arc.</span> Two arcs of gem energy leap to separate targets within 40 feet. Each: 2d8 lightning + 2d8 psychic damage. No save — the laboratory does not warn you.</div>
+    <div class="lair-action-item"><span class="lair-action-name">Containment Failure.</span> One containment chamber cracks open, releasing a Skitterling, Stitchman Prototype, or (at Phase 3) a Resonance Brute or Tendril Mass. Roll or choose based on pacing.</div>
+    <div class="lair-action-item"><span class="lair-action-name">Surgical Rig Activation.</span> A mechanical arm descends toward a target within 20 feet. +6 to hit. 2d6 piercing damage. On hit: target is restrained (escape DC 14 STR) as the rig attempts to pin them to a surface for examination.</div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- PHASE ONE -->
+  <div class="phase-header p1">
+    <div>
+      <div class="phase-tag">Phase One — Clinical Observation</div>
+      <h2>Doctor Viktor Voss Enters. The Engine Is Stable.</h2>
+      <div class="phase-sub">He is not panicking. He is studying you. The room is mostly quiet. The gems pulse faintly.</div>
+    </div>
+  </div>
+
+  <div class="voss-note">"He steps out of the surgical theater without hurry. No dramatic entrance. He looks at each of you the way a physician looks at a patient — not with malice, but with assessment. He picks up a clipboard. He begins writing. 'Interesting,' he says. 'You made it further than the last group.'"</div>
+
+  <p style="font-style:italic;font-size:0.87rem;color:var(--faded);margin-bottom:1.2rem;">Phase One is about establishing the encounter's wrongness before combat escalates. Voss fights methodically. He does not overextend. He observes. If a player shouts something emotional — a threat, a declaration, a desperate appeal — he notes it. The resonance gems respond to the players before they understand why.</p>
+
+  <!-- VOSS STAT BLOCK -->
+  <div class="creature-section">
+    <div class="creature-block">
+      <div class="cb-inner">
+        <div class="cb-name">Doctor Viktor Voss</div>
+        <div class="cb-type">Medium Humanoid · Lawful Evil · The Machinist</div>
+        <div class="cb-flavor">Tall, gaunt, unnervingly composed. Surgical scars trace across his neck and forearms — some clean, some crude, several self-inflicted. Mechanical prosthetic fingers click softly as he moves, concealing injector needles and surgical tools. A respirator fused into his ribcage produces faint rhythmic hissing. Behind him, a third arm extends from spinal reinforcement braces — moving with horrible natural precision, writing notes independently while he fights.</div>
+
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-label">AC</span><span class="stat-val">18</span></div>
+          <div class="stat-item"><span class="stat-label">HP</span><span class="stat-val">92</span></div>
+          <div class="stat-item"><span class="stat-label">Speed</span><span class="stat-val">30 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Role</span><span class="stat-val" style="font-size:0.66rem;">Controller/Boss</span></div>
+          <div class="stat-item"><span class="stat-label">Align.</span><span class="stat-val" style="font-size:0.66rem;">Lawful Evil</span></div>
+        </div>
+
+        <div class="attr-bar">
+          <div class="attr-item"><span class="attr-label">STR</span><span class="attr-val">14 (+2)</span></div>
+          <div class="attr-item"><span class="attr-label">DEX</span><span class="attr-val">16 (+3)</span></div>
+          <div class="attr-item"><span class="attr-label">CON</span><span class="attr-val">18 (+4)</span></div>
+          <div class="attr-item"><span class="attr-label">INT</span><span class="attr-val">22 (+6)</span></div>
+          <div class="attr-item"><span class="attr-label">WIS</span><span class="attr-val">16 (+3)</span></div>
+          <div class="attr-item"><span class="attr-label">CHA</span><span class="attr-val">14 (+2)</span></div>
+        </div>
+
+        <div class="cb-secondary"><strong>Saving Throws</strong> INT +8, CON +7, DEX +5</div>
+        <div class="cb-secondary"><strong>Resistances</strong> Poison, Gas/Inhalation; Advantage on Fear saves while respirator active</div>
+        <div class="cb-secondary"><strong>Immunities</strong> Poison gas, inhaled toxins, airborne disease (Integrated Respiratory Apparatus)</div>
+        <div class="cb-secondary"><strong>Senses</strong> Passive Perception 13</div>
+        <div class="cb-secondary"><strong>Languages</strong> Common, Elvish, Dwarvish, Academic Notation</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Traits</div>
+
+        <div class="cb-trait"><span class="cb-trait-name">Integrated Respiratory Apparatus.</span> Immune to poison gas, inhaled toxins, and airborne disease. The respirator produces faint rhythmic hissing — a constant audible indicator of his presence. If the respirator is destroyed (AC 14, 20 HP), he loses this immunity and his Fear save advantage.</div>
+        <div class="cb-trait"><span class="cb-trait-name">Neuromechanical Third Arm.</span> Allows one additional object interaction per turn, independent tool and compound administration, and one independent attack as part of the bonus action Surgical Counter. If the arm is severed (targeted attack, AC 14, 25 HP, disadvantage to hit), Voss loses his bonus action options.</div>
+        <div class="cb-trait"><span class="cb-trait-name">Precision Prosthetics.</span> Voss's mechanical fingers contain surgical tools, injector needles, cauterization tips, and rune-conductive instruments. He can administer compounds as part of any attack action.</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Actions</div>
+
+        <div class="cb-action"><span class="cb-action-name">Multiattack.</span> Voss makes two attacks, or one attack and one utility action.</div>
+        <div class="cb-action"><span class="cb-action-name">Injector Lance.</span> <em>Melee Attack:</em> +8 to hit. Hit: 7 piercing + 6 chemical damage. Choose one compound on hit: <em>Hemorrhage</em> — 1d6 bleed at start of target's next turn; <em>Paralytic Serum</em> — speed reduced 10 ft, cannot take reactions; <em>Resonance Marker</em> — target's next emotional trigger counts double toward gem charging.</div>
+        <div class="cb-action"><span class="cb-action-name">Resonance Scalpel.</span> <em>Melee Attack:</em> +9 to hit. Hit: 1d8+5 slashing + 2d6 resonance damage. Additional effect based on active resonance: Fear — frightened; Rage — +4 damage; Grief — speed halved; Inspiration — Voss gains advantage on next attack.</div>
+        <div class="cb-action"><span class="cb-action-name">Neural Disruptor Dart.</span> <em>Ranged Attack, 60 ft:</em> +7 to hit. Hit: 2d6 piercing + 2d6 psychic. CON Save DC 15 or lose reactions and have disadvantage on concentration checks until end of next turn.</div>
+        <div class="cb-action"><span class="cb-action-name">Conductive Hook.</span> <em>Ranged Attack, 40 ft:</em> +7 to hit. Hit: 1d8 piercing. On hit: pull target 10 feet and restrain them against the nearest piece of machinery (escape DC 13 STR).</div>
+        <div class="cb-action"><span class="cb-action-name">Resonance Extraction <span class="cb-recharge">(Recharge 5–6).</span></span> One creature within 20 feet. CHA Save DC 15. Failure: 4d6 psychic damage. Voss gains 10 temporary HP. The nearest gem gains 2 charges. Emotionally affected targets (frightened, enraged, grieving) take an additional 2d6 psychic damage.</div>
+        <div class="cb-action"><span class="cb-action-name">Experimental Compound Grenade.</span> 20 ft radius, 40 ft range. DEX Save DC 15. Choose variant: <em>Suppressant Gas</em> — 3d6 poison, failure: slowed and disadvantage on attacks; <em>Adrenal Mist</em> — creatures gain +10 movement and advantage on first melee attack but cannot disengage; <em>Hallucinogenic Compound</em> — 2d6 psychic, failure: all emotional triggers count double for 1 minute.</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Bonus Actions</div>
+
+        <div class="cb-action"><span class="cb-action-name">Crimson Surge.</span> Voss administers a stimulant: 15 temporary HP, +10 movement, ignores opportunity attacks until end of turn.</div>
+        <div class="cb-action"><span class="cb-action-name">Ironblood Compound.</span> Voss injects himself: resistance to weapon damage and immunity to restrained/slowed conditions until start of his next turn.</div>
+        <div class="cb-action"><span class="cb-action-name">Hyperoxygenation Burst <span class="cb-recharge">(Recharge 6).</span></span> Voss takes one additional action this turn. Advantage on DEX saves and immunity to fear until start of next turn.</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Reactions</div>
+
+        <div class="cb-action"><span class="cb-action-name">Redirected Pain.</span> When Voss would take a critical hit: damage becomes normal, and the nearest gem gains +2 charges instead. <em>This uses the same mechanic as the room's core rule — Voss has adapted himself to redirect the discharge.</em></div>
+        <div class="cb-action"><span class="cb-action-name">Surgical Counter.</span> When a creature misses Voss by 5 or less: the attacker takes 1d6 slashing from a precision counterstrike. CON Save DC 15 or disadvantage on their next attack.</div>
+
+      </div>
+      <div class="combat-notes">
+        <div class="combat-notes-label">Running Voss — Combat Notes</div>
+        <ul>
+          <li><strong>He is a scientist first.</strong> Voss narrates observations on his turn — "Rage resonance, three charges. Interesting threshold." He should never sound rattled in Phase 1.</li>
+          <li>Open with Injector Lance targeting whoever looks most physically capable — Hemorrhage Compound on the fighter, Paralytic Serum on anyone who charged immediately.</li>
+          <li>Use Resonance Marker on the party's most emotionally expressive character — the one most likely to inspire or rage.</li>
+          <li>Conductive Hook to pull mobile characters into surgical rig range where the lair action can restrain them. Never chase — let the rigs do the repositioning.</li>
+          <li>Save Resonance Extraction for when a character is already emotionally compromised. The additional damage on frightened/enraged targets is significant.</li>
+          <li><strong>Phase 2 shift</strong> (below 60 HP or when first gem discharges): Voss begins moving. He stops merely observing. "I need a better angle." He sounds more interested, not more afraid.</li>
+          <li><strong>Phase 3 shift</strong> (below 30 HP or when Triumph resonance fires): The first genuine crack. He looks at the Engine. He looks at the party. "That is… not what I predicted." He injects himself with Hyperoxygenation Burst. He is no longer calm — he is desperate to understand what is happening before the room kills everyone.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- MORROW -->
+  <div class="creature-section">
+    <div class="creature-block">
+      <div class="cb-inner">
+        <div class="cb-name">Morrow</div>
+        <div class="cb-type">Large Monstrosity · The Prototype · Cavehopper Alpha</div>
+        <div class="cb-flavor">Massive. Pale as old bone. Elongated forelimbs, a blind face, exposed tendons running along its spine, respiratory vents that hiss softly with each breath. Spinal reinforcement braces run the length of its back. It moves across the ceiling with the silence of something that has lived underground for years. It is Voss's oldest creation. And it loves him. Which is the most unsettling thing about it.</div>
+
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-label">AC</span><span class="stat-val">16</span></div>
+          <div class="stat-item"><span class="stat-label">HP</span><span class="stat-val">95</span></div>
+          <div class="stat-item"><span class="stat-label">Speed</span><span class="stat-val">40 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Climb</span><span class="stat-val">40 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Role</span><span class="stat-val" style="font-size:0.66rem;">Apex Predator</span></div>
+        </div>
+
+        <div class="attr-bar">
+          <div class="attr-item"><span class="attr-label">STR</span><span class="attr-val">22 (+6)</span></div>
+          <div class="attr-item"><span class="attr-label">DEX</span><span class="attr-val">18 (+4)</span></div>
+          <div class="attr-item"><span class="attr-label">CON</span><span class="attr-val">20 (+5)</span></div>
+          <div class="attr-item"><span class="attr-label">INT</span><span class="attr-val">4 (−3)</span></div>
+          <div class="attr-item"><span class="attr-label">WIS</span><span class="attr-val">14 (+2)</span></div>
+          <div class="attr-item"><span class="attr-label">CHA</span><span class="attr-val">6 (−2)</span></div>
+        </div>
+
+        <div class="cb-secondary"><strong>Skills</strong> Stealth +7, Perception +5</div>
+        <div class="cb-secondary"><strong>Senses</strong> Blindsight 60 ft. (echolocation), passive Perception 15</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Traits</div>
+
+        <div class="cb-trait"><span class="cb-trait-name">Echolocation Predator.</span> Invisible creatures within 30 feet gain no advantage against Morrow's attacks.</div>
+        <div class="cb-trait"><span class="cb-trait-name">Wallrunner.</span> Morrow moves freely on walls and ceilings. It does not provoke opportunity attacks while climbing.</div>
+        <div class="cb-trait"><span class="cb-trait-name">Resonance Sensitive.</span> Morrow reacts to gem discharges. Fear — advantage on all attacks until end of next turn. Rage — one additional Claw attack this turn. Pain — regenerates 10 HP. Grief — lets out a subsonic despair howl (CON Save DC 14 or rattled — disadvantage on CHA checks). Inspiration — briefly calms; may divert to protect Voss rather than continue attacking.</div>
+        <div class="cb-trait"><span class="cb-trait-name">Loyalty Response.</span> If Voss drops below 30 HP, Morrow disengages from its current target on its next turn and moves toward Voss by the most direct route, interposing itself. Until Voss stabilizes or dies, Morrow gains advantage on all attacks against any creature that attacked Voss last round.</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Actions</div>
+
+        <div class="cb-action"><span class="cb-action-name">Multiattack.</span> Morrow makes one Bite and two Claw attacks.</div>
+        <div class="cb-action"><span class="cb-action-name">Claw.</span> <em>Melee Attack:</em> +8 to hit, reach 10 ft. Hit: 2d6+5 slashing. STR Save DC 15 or knocked prone and dragged 10 feet toward Morrow.</div>
+        <div class="cb-action"><span class="cb-action-name">Bite.</span> <em>Melee Attack:</em> +8 to hit. Hit: 2d8+5 piercing. Prone or restrained targets take +2d6 additional damage.</div>
+        <div class="cb-action"><span class="cb-action-name">Pounce.</span> Morrow moves up to 20 feet toward a target. DEX Save DC 15 or knocked prone. Morrow may immediately make a Bite attack against the prone target.</div>
+        <div class="cb-action"><span class="cb-action-name">Tendon Hook <span class="cb-recharge">(Recharge 5–6).</span></span> +7 to hit, range 30 ft. Hit: 1d10 piercing. Target is restrained by embedded tendon wire, taking 1d6 bleed damage at the start of each of their turns (STR or DEX DC 15 to escape).</div>
+      </div>
+      <div class="combat-notes">
+        <div class="combat-notes-label">Running Morrow</div>
+        <ul>
+          <li>Morrow begins the encounter on the ceiling — players may not notice it immediately. It descends when Voss is first attacked, not before.</li>
+          <li>It is not aggressive by default. It is watchful. This should produce a moment of horrible recognition for anyone who fought kobold cavehoppers in Hollowgate — the body plan is unmistakable.</li>
+          <li>Prioritize dragging targets away from Voss. Its tactical role is separation — pull a character into an isolated corner and keep them pinned with Tendon Hook while Morrow works on them.</li>
+          <li>Loyalty Response at 30 HP is a genuine roleplaying beat. Morrow abandons its target mid-combat to protect Voss. Some players may hesitate to kill it. That hesitation is intentional.</li>
+          <li>If Inspiration resonance discharges while Morrow is in a frenzy, it visibly calms. It may stop attacking entirely and move next to Voss. Voss will note this in his annotations with visible disturbance.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSITION 1→2 -->
+  <div class="transition-box">
+    <span class="t-label">Phase Transition — First Gem Discharges</span>
+    <h2>The Engine Responds</h2>
+    <p>The first gem discharge marks the transition to Phase 2. Whichever resonance fires first — the aftermath reshapes the room. Containment chambers begin showing stress fractures. Fluid systems cycle erratically. Voss stops annotating for a moment and looks directly at the Engine.</p>
+    <p style="margin-top:0.4rem;"><strong>He says: "Charge rate is ahead of projection. Note that." Then he keeps fighting.</strong></p>
+    <div class="annotation" style="max-width:560px;margin:0.6rem auto 0;">He is not afraid. He is delighted. That distinction matters.</div>
+  </div>
+
+  <div class="divider"><span>⁂</span></div>
+
+  <!-- PHASE TWO -->
+  <div class="phase-header p2">
+    <div>
+      <div class="phase-tag">Phase Two — Escalation</div>
+      <h2>The Laboratory Becomes Unstable. Containment Begins to Fail.</h2>
+      <div class="phase-sub">Voss grows increasingly fascinated. He begins taking notes mid-combat. Additional creatures enter from ruptured chambers.</div>
+    </div>
+  </div>
+
+  <p style="font-style:italic;font-size:0.87rem;color:var(--faded);margin-bottom:1.2rem;">In Phase 2, the encounter widens. Containment failures introduce additional creatures into the fight — Skitterlings first, then Stitchman Prototypes if the combat extends. Voss himself becomes more mobile and more aggressive, but he continues narrating. His tone shifts from clinical to something closer to excitement. He is watching the Engine do things he has not observed before.</p>
+
+  <div class="shared-trait">
+    <div class="shared-trait-label">Phase 2 Escalation — Containment Failure Schedule</div>
+    <p>Each round of Phase 2, roll a d6 at initiative count 20 after the lair action. On a 4+, one additional containment chamber cracks open in addition to the normal lair action. Use this order unless pacing demands otherwise:</p>
+    <ul>
+      <li><strong>Round 1 of Phase 2:</strong> Two Skitterlings drop from ceiling vents</li>
+      <li><strong>Round 2:</strong> One Stitchman Prototype pushes through a cracked chamber door</li>
+      <li><strong>Round 3+:</strong> GM discretion — Resonance Brute if gems are charged; Tendril Mass if grief/pain resonance dominates</li>
+    </ul>
+    <p style="margin-top:0.5rem;">Do not flood the encounter. The escalation should feel like pressure building, not a swarm. Two to three additional creatures in play at any time is the ceiling.</p>
+  </div>
+
+  <!-- TRANSITION 2→3 -->
+  <div class="transition-box">
+    <span class="t-label">Phase Transition — Triumph or Inspiration Resonance Discharges</span>
+    <h2>The Engine Overloads</h2>
+    <p>When Triumph or Inspiration resonance first reaches full discharge, the Engine destabilizes beyond Voss's projections. The room shakes. Two containment tanks rupture simultaneously. The Engine's central chamber pulses with blinding light.</p>
+    <p style="margin-top:0.4rem;"><strong>Voss looks at his notes. Then at the party. "That is not— " He stops. "Positive resonance output is exceeding projections by a factor of— " He stops again. He looks genuinely lost for the first time.</strong></p>
+    <div class="annotation" style="max-width:560px;margin:0.6rem auto 0;">This is the moment the players see it. He built a machine to weaponize suffering. And what's breaking it is courage.</div>
+  </div>
+
+  <div class="divider"><span>⁂</span></div>
+
+  <!-- PHASE THREE -->
+  <div class="phase-header p3">
+    <div>
+      <div class="phase-tag">Phase Three — Overload</div>
+      <h2>The Laboratory Is a Living Emotional Reactor. Leave or Finish It.</h2>
+      <div class="phase-sub">Structural collapse begins. Every round without resolution adds new hazards. Voss injects raw resonance directly into himself.</div>
+    </div>
+  </div>
+
+  <p style="font-style:italic;font-size:0.87rem;color:var(--faded);margin-bottom:1rem;">Phase 3 is a clock. Structural collapse is actively occurring — each round, one new environmental hazard activates automatically. The party must choose: finish Voss now, or the room kills everyone.</p>
+
+  <div class="shared-trait" style="border-left-color:var(--blood);">
+    <div class="shared-trait-label" style="color:var(--blood);">Phase 3 — Structural Collapse (Each Round, Initiative Count 20)</div>
+    <p>In addition to the normal lair action, one structural event occurs automatically each round. Roll d6 or choose based on dramatic need:</p>
+    <ul>
+      <li><strong>1–2:</strong> A section of ceiling collapses — 15 ft area becomes difficult terrain; creatures in the area DEX Save DC 14 or 2d10 bludgeoning</li>
+      <li><strong>3–4:</strong> A resonance conduit ruptures — 20 ft line of energy, 3d6 force damage, no save</li>
+      <li><strong>5:</strong> Preservation tank detonates — 10 ft radius acid/chemical splash, 2d8 acid, DEX Save DC 14 for half</li>
+      <li><strong>6:</strong> The Engine pulses — all charged gems discharge simultaneously</li>
+    </ul>
+  </div>
+
+  <div class="discovery dc-high-bg" style="margin-bottom:1rem;">
+    <div class="discovery-name">Voss at Phase 3 — Raw Resonance Injection</div>
+    <p>When Voss first drops below 30 HP in Phase 3, he injects raw resonance fluid directly from the Engine's tubing into his own bloodstream. This triggers Hyperoxygenation Burst automatically (regardless of recharge). He takes one additional action immediately. He also gains the Resonance Saturation trait for the rest of the encounter: whenever a gem discharges, he heals 1d8 HP and his next attack deals +2d6 resonance damage.</p>
+    <div class="annotation">He is trying to understand what is happening. The injection is not desperation — it is data collection, conducted on himself, in real time.</div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ADDITIONAL CREATURES -->
+  <p class="section-head">Additional Laboratory Creatures</p>
+  <p style="margin-bottom:1.2rem;">These creatures primarily appear during Phase 2 and 3 containment failures, Rage Resonance discharges, or Lair Actions. They are not Voss's primary weapons — they are experiments that have escaped containment. Some of them are still in the process of dying.</p>
+
+  <!-- SKITTERLING -->
+  <div class="creature-section">
+    <div class="creature-block">
+      <div class="cb-inner">
+        <div class="cb-name">Skitterling</div>
+        <div class="cb-type">Medium Aberration · Failed Cavehopper Juvenile</div>
+        <div class="cb-flavor">Failed juvenile cavehoppers that did not complete development. Fast, twitching, frenzied. Their exposed tendons make a dry clicking sound as they move across the ceiling. They are not quite right in the way the fully realized cavehopper is — wrong proportions, asymmetrical limbs, blind but clearly aware of the party's exact position. They die easily. There are always more.</div>
+
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-label">AC</span><span class="stat-val">14</span></div>
+          <div class="stat-item"><span class="stat-label">HP</span><span class="stat-val">27</span></div>
+          <div class="stat-item"><span class="stat-label">Speed</span><span class="stat-val">40 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Climb</span><span class="stat-val">40 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Role</span><span class="stat-val" style="font-size:0.66rem;">Swarm / Pressure</span></div>
+        </div>
+
+        <div class="attr-bar">
+          <div class="attr-item"><span class="attr-label">STR</span><span class="attr-val">14 (+2)</span></div>
+          <div class="attr-item"><span class="attr-label">DEX</span><span class="attr-val">18 (+4)</span></div>
+          <div class="attr-item"><span class="attr-label">CON</span><span class="attr-val">12 (+1)</span></div>
+          <div class="attr-item"><span class="attr-label">INT</span><span class="attr-val">2 (−4)</span></div>
+          <div class="attr-item"><span class="attr-label">WIS</span><span class="attr-val">10 (+0)</span></div>
+          <div class="attr-item"><span class="attr-label">CHA</span><span class="attr-val">4 (−3)</span></div>
+        </div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Traits</div>
+        <div class="cb-trait"><span class="cb-trait-name">Ceiling Skitter.</span> Moves freely on walls and ceilings. Never provokes opportunity attacks while climbing.</div>
+        <div class="cb-trait"><span class="cb-trait-name">Frenzied Movement.</span> Opportunity attacks against Skitterlings are made with disadvantage.</div>
+        <hr class="cb-rule">
+        <div class="cb-section-label">Actions</div>
+        <div class="cb-action"><span class="cb-action-name">Claw Flurry.</span> +6 to hit. Two attacks: 1d6+3 slashing each. If both hit the same target, that target loses their reaction until end of their next turn.</div>
+        <div class="cb-action"><span class="cb-action-name">Panic Leap <span class="cb-recharge">(Recharge 5–6).</span></span> Leaps up to 20 feet onto a target. DEX Save DC 13 or knocked prone. On prone target: the Skitterling may make a Claw Flurry attack immediately.</div>
+      </div>
+      <div class="combat-notes">
+        <div class="combat-notes-label">Combat Notes</div>
+        <ul>
+          <li>Use Skitterlings as action economy tax. They force players to choose between dealing with small fast threats and focusing Voss.</li>
+          <li>Drop them from ceiling vents directly onto spellcasters or anyone with active concentration effects.</li>
+          <li>Their recognition factor matters — players who fought kobold cavehoppers should recognize these as failed versions of the same design.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- STITCHMAN PROTOTYPE -->
+  <div class="creature-section">
+    <div class="creature-block">
+      <div class="cb-inner">
+        <div class="cb-name">Stitchman Prototype</div>
+        <div class="cb-type">Medium Monstrosity · Failed Humanoid Soldier</div>
+        <div class="cb-flavor">A failed attempt to engineer an ideal soldier from a humanoid base. The result is wrong in ways that are difficult to look at directly — proportions slightly off, movements mechanical and stuttering, face blank and affectless. It walks upright. It follows orders that no longer exist. Surgical sutures run across every visible surface of its skin, as if it has been repeatedly opened and closed.</div>
+
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-label">AC</span><span class="stat-val">15</span></div>
+          <div class="stat-item"><span class="stat-label">HP</span><span class="stat-val">45</span></div>
+          <div class="stat-item"><span class="stat-label">Speed</span><span class="stat-val">30 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Role</span><span class="stat-val" style="font-size:0.66rem;">Frontline Bruiser</span></div>
+        </div>
+
+        <div class="attr-bar">
+          <div class="attr-item"><span class="attr-label">STR</span><span class="attr-val">18 (+4)</span></div>
+          <div class="attr-item"><span class="attr-label">DEX</span><span class="attr-val">12 (+1)</span></div>
+          <div class="attr-item"><span class="attr-label">CON</span><span class="attr-val">16 (+3)</span></div>
+          <div class="attr-item"><span class="attr-label">INT</span><span class="attr-val">3 (−4)</span></div>
+          <div class="attr-item"><span class="attr-label">WIS</span><span class="attr-val">8 (−1)</span></div>
+          <div class="attr-item"><span class="attr-label">CHA</span><span class="attr-val">4 (−3)</span></div>
+        </div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Traits</div>
+        <div class="cb-trait"><span class="cb-trait-name">Pain Suppression.</span> When reduced below half HP, gains 10 temporary HP and becomes immune to the frightened condition.</div>
+        <div class="cb-trait"><span class="cb-trait-name">Unstable Physiology.</span> Critical hits against the Stitchman deal normal damage only — the excess charges the nearest gem. (Same as the core room mechanic, applied to this creature specifically.)</div>
+        <hr class="cb-rule">
+        <div class="cb-section-label">Actions</div>
+        <div class="cb-action"><span class="cb-action-name">Surgical Slam.</span> +7 to hit. 2d8+4 bludgeoning.</div>
+        <div class="cb-action"><span class="cb-action-name">Injector Spike.</span> +6 to hit. 1d8+4 piercing. CON Save DC 14 or poisoned until end of next turn.</div>
+        <div class="cb-action"><span class="cb-action-name">Desperation Frenzy.</span> When reduced below 15 HP, the Stitchman gains one additional Surgical Slam on each of its turns. It also takes 5 self-damage at the start of each of its turns — it is destroying itself to keep fighting.</div>
+      </div>
+      <div class="combat-notes">
+        <div class="combat-notes-label">Combat Notes</div>
+        <ul>
+          <li>Stitchmen are front-line pressure. Push them into melee and keep them there. Their primary value is action economy disruption.</li>
+          <li>Desperation Frenzy is both a mechanical escalation and a tonal signal — this thing is not fighting out of will. It is following instructions that no longer apply.</li>
+          <li>The Unstable Physiology trait reinforcing the core room mechanic is intentional — players should notice that critting the Stitchman charges the gems the same way critting anything else does. The entire room operates on the same logic.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESONANCE BRUTE -->
+  <div class="creature-section">
+    <div class="creature-block">
+      <div class="cb-inner">
+        <div class="cb-name">Resonance Brute</div>
+        <div class="cb-type">Large Aberration · Gem-Exposed Growth Prototype</div>
+        <div class="cb-flavor">A large experimental subject that survived long-term resonance gem exposure — and was changed by it in unpredictable ways. Enlarged, asymmetric, with crystalline formations visible beneath the skin where gem energy has calcified into the tissue. Its eyes glow faintly. Its behavior is erratic: it may attack, heal, scream, or temporarily petrify. Nobody knows which until it happens.</div>
+
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-label">AC</span><span class="stat-val">13</span></div>
+          <div class="stat-item"><span class="stat-label">HP</span><span class="stat-val">68</span></div>
+          <div class="stat-item"><span class="stat-label">Speed</span><span class="stat-val">35 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Role</span><span class="stat-val" style="font-size:0.66rem;">Chaotic Wildcard</span></div>
+        </div>
+
+        <div class="attr-bar">
+          <div class="attr-item"><span class="attr-label">STR</span><span class="attr-val">20 (+5)</span></div>
+          <div class="attr-item"><span class="attr-label">DEX</span><span class="attr-val">8 (−1)</span></div>
+          <div class="attr-item"><span class="attr-label">CON</span><span class="attr-val">18 (+4)</span></div>
+          <div class="attr-item"><span class="attr-label">INT</span><span class="attr-val">4 (−3)</span></div>
+          <div class="attr-item"><span class="attr-label">WIS</span><span class="attr-val">6 (−2)</span></div>
+          <div class="attr-item"><span class="attr-label">CHA</span><span class="attr-val">4 (−3)</span></div>
+        </div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Traits</div>
+        <div class="cb-trait"><span class="cb-trait-name">Emotional Instability.</span> Whenever any gem discharges, roll a d4: 1 — the Brute gains +2 AC until next discharge; 2 — it makes one additional Crushing Limb attack on its next turn; 3 — it regenerates 10 HP; 4 — it emits a psychic scream (15 ft, WIS Save DC 13 or stunned until end of next turn).</div>
+        <div class="cb-trait"><span class="cb-trait-name">Resonance Saturation.</span> Below 20 HP, the Brute enters unstable overload — its discharge results always add to the rolled effect rather than replace it.</div>
+        <hr class="cb-rule">
+        <div class="cb-section-label">Actions</div>
+        <div class="cb-action"><span class="cb-action-name">Crushing Limb.</span> +7 to hit, reach 10 ft. 2d10+5 bludgeoning.</div>
+        <div class="cb-action"><span class="cb-action-name">Resonance Vomit <span class="cb-recharge">(Recharge 5–6).</span></span> 15 ft cone. DEX Save DC 14. Failure: 4d6 psychic and acid damage. All emotional triggers on affected creatures count double for 1 minute.</div>
+        <div class="cb-action"><span class="cb-action-name">Death Burst.</span> When the Brute dies, the crystalline resonance in its body detonates. WIS Save DC 14 or frightened until end of next turn. The nearest gem gains +2 charges immediately.</div>
+      </div>
+      <div class="combat-notes">
+        <div class="combat-notes-label">Combat Notes</div>
+        <ul>
+          <li>The Brute is a chaos vector. Introduce it in Phase 3 when the encounter needs unpredictability — it will affect both sides of the fight.</li>
+          <li>Emotional Instability results can cascade — a discharge triggering a psychic scream can frighten party members, which charges the Fear gem, which may then discharge. Track this carefully.</li>
+          <li>Death Burst charging the nearest gem means killing it has immediate consequences. Players should be aware of which gems are already building when they land the killing blow.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TENDRIL MASS -->
+  <div class="creature-section">
+    <div class="creature-block">
+      <div class="cb-inner">
+        <div class="cb-name">Tendril Mass</div>
+        <div class="cb-type">Large Ooze/Aberration · Autonomous Nervous System Colony</div>
+        <div class="cb-flavor">A colony of autonomous nervous system tissue — severed, fused, and still firing. It moves like a slowly deliberate liquid, extending tendrils that probe surfaces with unnerving precision. It does not have eyes. It does not need them. It feeds on the emotional output of nearby creatures and becomes stronger as the room's suffering accumulates. Its presence makes the room feel watched.</div>
+
+        <div class="stat-bar">
+          <div class="stat-item"><span class="stat-label">AC</span><span class="stat-val">11</span></div>
+          <div class="stat-item"><span class="stat-label">HP</span><span class="stat-val">52</span></div>
+          <div class="stat-item"><span class="stat-label">Speed</span><span class="stat-val">20 ft.</span></div>
+          <div class="stat-item"><span class="stat-label">Role</span><span class="stat-val" style="font-size:0.66rem;">Area Control / Drain</span></div>
+        </div>
+
+        <div class="attr-bar">
+          <div class="attr-item"><span class="attr-label">STR</span><span class="attr-val">16 (+3)</span></div>
+          <div class="attr-item"><span class="attr-label">DEX</span><span class="attr-val">6 (−2)</span></div>
+          <div class="attr-item"><span class="attr-label">CON</span><span class="attr-val">18 (+4)</span></div>
+          <div class="attr-item"><span class="attr-label">INT</span><span class="attr-val">1 (−5)</span></div>
+          <div class="attr-item"><span class="attr-label">WIS</span><span class="attr-val">8 (−1)</span></div>
+          <div class="attr-item"><span class="attr-label">CHA</span><span class="attr-val">2 (−4)</span></div>
+        </div>
+
+        <div class="cb-secondary"><strong>Damage Resistances</strong> Piercing, Psychic</div>
+
+        <hr class="cb-rule">
+        <div class="cb-section-label">Traits</div>
+        <div class="cb-trait"><span class="cb-trait-name">Distributed Biology.</span> Half damage from piercing and psychic sources. Slashing and fire deal normal damage.</div>
+        <div class="cb-trait"><span class="cb-trait-name">Emotional Feeding.</span> Whenever a creature within 30 feet experiences fear, pain, or grief (is frightened, reduced below half HP, or an ally within sight is incapacitated), the Tendril Mass heals 5 HP.</div>
+        <hr class="cb-rule">
+        <div class="cb-section-label">Actions</div>
+        <div class="cb-action"><span class="cb-action-name">Tendril Lash.</span> +6 to hit, reach 15 ft. 2d6+3 bludgeoning. Target is grappled (escape DC 13).</div>
+        <div class="cb-action"><span class="cb-action-name">Neural Spike.</span> One grappled or restrained creature. WIS Save DC 14. Failure: disadvantage on next attack, ability check, and save. Emotional triggers on the target count double until the end of their next turn.</div>
+        <div class="cb-action"><span class="cb-action-name">Flesh Bloom <span class="cb-recharge">(Recharge 6).</span></span> The Mass spreads tendrils across a 20 ft radius area. The area becomes difficult terrain. DEX Save DC 14 or restrained by embedded tendrils (STR DC 14 to break free).</div>
+      </div>
+      <div class="combat-notes">
+        <div class="combat-notes-label">Combat Notes</div>
+        <ul>
+          <li>The Tendril Mass is a sustained drain — it heals from the conditions the rest of the encounter is actively creating. Deploy it in Phase 2 or 3 when the party is already under emotional pressure.</li>
+          <li>Neural Spike doubling emotional triggers on a grappled target can chain into rapid gem charging. Use it on whoever has the most active emotional states.</li>
+          <li>Flesh Bloom is the most impactful action — locking down a portion of the battlefield while everything else escalates. Use it when the party is trying to disengage or regroup.</li>
+          <li>It is slow and not particularly threatening in isolation. It thrives in the chaos of Phase 3, where it can feed continuously while the party is occupied with structural collapse and Voss simultaneously.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion">
+    <h3>Aftermath — What Remains</h3>
+    <ul>
+      <li>If Voss is killed, the Engine begins a controlled shutdown — gems dim sequentially. The structural collapse slows but does not reverse. The party has roughly ten minutes to leave before critical sections fail completely.</li>
+      <li>If Voss is incapacitated or surrenders, he will answer questions. Calmly. He will name Percival Malden without hesitation — not as a betrayal, but because he has no loyalty to Percival and sees no reason to protect him. "He was a sponsor. He funded the work. That is the sum of our arrangement."</li>
+      <li>Morrow — if Voss is dead — does not flee and does not attack. It moves to Voss's body and stays there. What the party does with this information is theirs to decide.</li>
+      <li>The resonance gems scattered throughout the laboratory can be recovered. They now carry the emotional charge of the entire encounter — powerful, unstable, and deeply significant to whatever comes next.</li>
+      <li>Voss's records are intact — meticulously organized, fully legible, and contain Percival's name, funding amounts, acquisition orders, and a complete list of deployed monstrosities going back years. Everything the party has fought is in those files. Everything traces back to Percival.</li>
+    </ul>
+  </div>
+
+</div><!-- .page -->
+</body>
+</html>
