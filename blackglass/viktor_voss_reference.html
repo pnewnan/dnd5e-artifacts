@@ -211,12 +211,53 @@
   /* ── PORTRAIT FLOAT ── */
   .portrait-float {
     float: right;
-    width: 220px;
-    margin: 0 0 1rem 1.5rem;
+    width: 48%;
+    margin: 0 0 1.2rem 1.8rem;
     border: 1px solid var(--parchment-shadow);
-    box-shadow: 3px 3px 12px rgba(0,0,0,0.3);
+    box-shadow: 4px 6px 20px rgba(0,0,0,0.35);
     filter: sepia(8%);
     display: block;
+  }
+  .portrait-float-left {
+    float: left;
+    width: 48%;
+    margin: 0 1.8rem 1.2rem 0;
+    border: 1px solid var(--parchment-shadow);
+    box-shadow: 4px 6px 20px rgba(0,0,0,0.35);
+    filter: sepia(8%);
+    display: block;
+  }
+
+  /* ── DUNNSHIRE STRIP ── */
+  .dunnshire-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+    clear: both;
+  }
+  .dunnshire-strip figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .dunnshire-strip img {
+    width: 100%;
+    border: 1px solid var(--parchment-shadow);
+    box-shadow: 2px 3px 10px rgba(0,0,0,0.3);
+    filter: sepia(6%);
+    display: block;
+  }
+  .dunnshire-strip figcaption {
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--faded);
+    text-align: center;
+    padding: 0.3rem 0;
+    border-top: 1px solid rgba(180,140,60,0.25);
+    background: rgba(26,17,8,0.04);
   }
 
   /* ── LINK PILL ── */
@@ -239,7 +280,8 @@
     .page { padding: 1.5rem 1.2rem 2rem; }
     .rel-grid { grid-template-columns: 1fr; }
     .truth-block { grid-template-columns: 1fr; }
-    .portrait-float { float: none; width: 100%; margin: 0 0 1rem 0; }
+    .portrait-float, .portrait-float-left { float: none; width: 100%; margin: 0 0 1rem 0; }
+    .dunnshire-strip { grid-template-columns: 1fr; }
   }
   @media print { body { background: white; } .page { box-shadow: none; border: none; } }
 </style>
@@ -340,6 +382,21 @@
       <p>He had known the soldiers would likely die. He deployed the weapon anyway. Because he needed a live environment.</p>
       <div class="annotation">"He wasn't apologizing. He was reporting. That was the moment everyone understood what they were dealing with."</div>
       <p style="margin-top:0.7rem;">The incident was buried internally under military classification. Surviving officers began referring to the catastrophe as <em>The Blackglass Incident</em> — named for the strange black residue left coating portions of the battlefield after the gas settled. The residue fused into windows, armor, and stone like burned obsidian. Even years later, locals avoided the site. The settlement itself was Dunnshire. Within a generation, it no longer appeared on maps.</p>
+
+      <div class="dunnshire-strip">
+        <figure>
+          <img src="dunnshire_before.png" alt="Dunnshire — before the incident">
+          <figcaption>Dunnshire — Before</figcaption>
+        </figure>
+        <figure>
+          <img src="orc_gas.png" alt="The deployment — the wind shifts">
+          <figcaption>The Deployment — Wind Shifts</figcaption>
+        </figure>
+        <figure>
+          <img src="dunnshire_after.png" alt="Dunnshire — after the incident">
+          <figcaption>Dunnshire — After</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 
@@ -418,7 +475,7 @@
       <span class="accordion-arrow">▲</span>
     </div>
     <div class="accordion-body">
-      <img class="portrait-float" src="viktor_voss.png" alt="Viktor Voss — augmented">
+      <img class="portrait-float-left" src="viktor_voss.png" alt="Viktor Voss — augmented">
       <p>Voss applies the same standards to himself that he applies to his subjects. Every modification was accepted intentionally. He does not consider himself mutilated. He considers himself improved — a prototype, a proof of concept, a demonstration that the gap between human biology and biomechanical design can be bridged without destroying the underlying organism.</p>
       <p><strong>The Integrated Respiratory Apparatus (The Breather).</strong> A custom-fabricated respiratory system fused directly into his ribcage and throat. The internal rebreather regulates oxygen, pressure, and neurochemical stability. It allows him to safely inhale his own toxins, airborne sedatives, and experimental resonance compounds. Without it, the air he creates in the laboratory would eventually kill him. Faint rhythmic hissing accompanies every controlled breath. Red stimulant fluid pulses through transparent tubing beneath his collar.</p>
       <p><strong>Precision Prosthetics.</strong> Mechanical prosthetic fingers replace portions of both hands. The fingertips rotate with subtle clicking sounds and contain injector needles, surgical scalpels, cauterization tips, and rune-conductive instruments. His hands are permanently stained by alchemical compounds and chemical burns that predate the prosthetics.</p>
