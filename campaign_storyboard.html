@@ -590,14 +590,10 @@
   }
   .flow-act-arcs {
     display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    padding: 0.7rem;
-    flex: 1;
-  }
-  .flow-act-arcs .flow-arc {
-    width: 100%;
-    flex-shrink: 0;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0.7rem 0.7rem 0.7rem 0.7rem;
   }
   /* Connector between act groups (big horizontal arrow) */
   .flow-act-connector {
@@ -1145,7 +1141,7 @@ function arcPrimaryAct(arc) {
   return 'prologue';
 }
 
-function renderArcColumn(arc) {
+function renderArcColumn(arc, isLastInGroup) {
   var refLinks = '';
   if (arc.pages && arc.pages.length) {
     refLinks = arc.pages.map(function(p) {
@@ -1155,13 +1151,17 @@ function renderArcColumn(arc) {
     refLinks = '<a class="flow-arc-ref" href="' + BASE + arc.href + '" onclick="event.stopPropagation()">Ref →</a>';
   }
   var beats = (arc.beats || []).map(function(beat) { return renderBeat(beat); }).join('');
-  return '<div class="flow-arc">'
+  var arcHtml = '<div class="flow-arc">'
     + '<div class="flow-arc-header" onclick="toggleFlowArcFocus(\'' + arc.id + '\')" title="Click to view in Reference grid">'
       + '<span>' + esc(arc.title) + '</span>'
       + (refLinks ? '<span>' + refLinks + '</span>' : '')
     + '</div>'
     + '<div class="flow-beats">' + (beats || '<div style="padding:0.5rem 0.7rem;font-style:italic;font-size:0.7rem;color:var(--faded);">No beats defined</div>') + '</div>'
     + '</div>';
+  var connector = !isLastInGroup
+    ? '<div class="flow-arc-connector"><div class="flow-connector-line"></div></div>'
+    : '';
+  return arcHtml + connector;
 }
 
 function renderFlowView() {
@@ -1197,7 +1197,7 @@ function renderFlowView() {
     var meta = actMeta[actId];
     var arcs = grouped[actId];
 
-    var arcsHtml = arcs.map(function(arc) { return renderArcColumn(arc); }).join('');
+    var arcsHtml = arcs.map(function(arc, arcIdx) { return renderArcColumn(arc, arcIdx === arcs.length - 1); }).join('');
 
     var connector = !isLast
       ? '<div class="flow-act-connector"><div class="flow-act-connector-arrow">&#9654;</div></div>'

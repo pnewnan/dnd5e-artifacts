@@ -362,7 +362,7 @@
       <span class="accordion-arrow">▼</span>
     </div>
     <div class="accordion-body">
-      <img id="koboldsImg" src="kobolds.png" alt="Kobolds of Aelanthar" style="width:100%; display:block; margin-bottom:1.2rem; border:1px solid var(--parchment-shadow); filter:sepia(10%) contrast(1.05); max-height:280px; object-fit:cover; object-position:center 30%; cursor:zoom-in;">
+      <img id="koboldsImg" class="zoomable" src="kobolds.png" alt="Kobolds of Aelanthar" data-caption="Kobolds of Aelanthar" style="width:100%; display:block; margin-bottom:1.2rem; border:1px solid var(--parchment-shadow); filter:sepia(10%) contrast(1.05); max-height:280px; object-fit:cover; object-position:center 30%;">
       <div class="two-col">
         <div>
           <div class="world-box">
@@ -464,7 +464,7 @@
       <!-- ROBYN -->
       <div class="npc-card">
         <div class="npc-inner">
-          <img id="robynImg" class="npc-img" src="robyn.png" alt="Robyn" style="cursor:zoom-in;">
+          <img id="robynImg" class="npc-img zoomable" src="robyn.png" alt="Robyn" data-caption="Robyn — Kobold Scout">
           <div class="npc-name">Robyn</div>
           <div class="npc-type">Kobold Scout / Outcast</div>
           <div class="npc-flavor">Robyn doesn't fit in with the other kobolds. He's smaller, not as fierce, and gets picked on for it. He'd rather hide than fight. He speaks in a nervous, stammering tone — quickly, apologetically, and with the cadence of someone who expects to be interrupted at any moment.</div>
@@ -501,7 +501,7 @@
       <!-- KROBB -->
       <div class="npc-card">
         <div class="npc-inner">
-          <img id="krobbNpcImg" class="npc-img" src="krobb_guard.png" alt="Krobb" style="cursor:zoom-in;">
+          <img id="krobbNpcImg" class="npc-img zoomable" src="krobb_guard.png" alt="Krobb" data-caption="Krobb — Kobold Guard & Trap Architect">
           <div class="npc-name">Krobb</div>
           <div class="npc-type">Kobold Guard · Entry Post · Trap Architect</div>
           <div class="npc-flavor">Krobb is very proud of his traps. He designed them himself. He drew a map. He is certain that no one has ever, or could ever, get through them without that map. He is asleep when the party arrives. The pit trap is visible from the doorway. So is the cheese.</div>
@@ -539,7 +539,7 @@
       <!-- CHIEFTAIN -->
       <div class="npc-card">
         <div class="npc-inner">
-          <img id="chieftainImg" class="npc-img left" src="chieftain.png" alt="Kobold Chieftain" style="cursor:zoom-in;">
+          <img id="chieftainImg" class="npc-img left zoomable" src="chieftain.png" alt="The Chieftain" data-caption="The Chieftain — Self-Declared King of the Kobolds">
           <div class="npc-name">The Chieftain</div>
           <div class="npc-type">Kobold Chieftain · Self-Declared King</div>
           <div class="npc-flavor">Unexpectedly charismatic. Deep, rich, textured voice. Speaks like he believes he is a great king — because, by his own reckoning, he is. His "royal regalia" is essentially molted feathers, broken necklaces, polished trash, and fake gemstones, all arranged with absolute sincerity. He is simultaneously ridiculous and oddly compelling.</div>
@@ -654,7 +654,7 @@
     <div class="accordion-body">
       <div class="two-col">
         <div>
-          <img id="krobbImg" src="krobb_guard.png" alt="Krobb — Sleeping Guard" class="npc-img wide" style="cursor:zoom-in; margin-bottom:1rem; max-height:220px; object-fit:cover; object-position:center 20%;">
+          <img id="krobbImg" src="krobb_guard.png" alt="Krobb — Sleeping Guard" class="npc-img wide zoomable" data-caption="Krobb — Genuinely Asleep at the Guard Post" style="margin-bottom:1rem; max-height:220px; object-fit:cover; object-position:center 20%;">
           <div class="block">
             <p class="section-head">The Guard Post</p>
             <div class="discovery dc-mid-bg">
@@ -688,7 +688,7 @@
         <div>
           <div class="block">
             <p class="section-head">The Trap Map</p>
-            <img id="trapMapImg" src="trap_map.png" alt="Krobb's Trap Map" style="width:100%; display:block; margin-bottom:0.8rem; border:1px solid var(--parchment-shadow); box-shadow:2px 2px 8px rgba(0,0,0,0.2); cursor:zoom-in;">
+            <img id="trapMapImg" class="zoomable" src="trap_map.png" alt="Krobb's Trap Map" data-caption="Krobb's Trap Map — \"If you read this, you're probably dead.\"" style="width:100%; display:block; margin-bottom:0.8rem; border:1px solid var(--parchment-shadow); box-shadow:2px 2px 8px rgba(0,0,0,0.2);">
             <div class="discovery gold-bg">
               <div class="discovery-name">Krobb's Cartography</div>
               <p>Hand-drawn on the back of a food manifest in charcoal. Misspelled throughout. Annotated with strong opinions about each trap's quality. At the bottom in larger letters: <em>IF YOU READ THIS, YOU'RE PROBABLY DEAD. –KROBB</em></p>
@@ -731,7 +731,7 @@
       <span class="accordion-arrow">▼</span>
     </div>
     <div class="accordion-body">
-      <img id="pitTrapImg" src="pit_trap.png" alt="The Tunnels" style="width:100%; display:block; margin-bottom:1.2rem; border:1px solid var(--parchment-shadow); filter:sepia(10%) contrast(1.05); max-height:300px; object-fit:cover; object-position:center 40%; cursor:zoom-in;">
+      <img id="pitTrapImg" class="zoomable" src="pit_trap.png" alt="The Tunnels" data-caption="The Tunnels — Kobold Cavern" style="width:100%; display:block; margin-bottom:1.2rem; border:1px solid var(--parchment-shadow); filter:sepia(10%) contrast(1.05); max-height:300px; object-fit:cover; object-position:center 40%;">
       <div class="two-col">
         <div>
           <div class="block">
@@ -1209,5 +1209,6 @@
   <div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
   <div id="aelNavBtn" onclick="aelNavOpen()" style="position:fixed;bottom:1rem;right:1rem;z-index:1001;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(13,10,6,0.88);border:1px solid rgba(180,140,60,0.4);padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);cursor:pointer;user-select:none;transition:color 0.2s;" onmouseover="this.style.color='rgba(242,232,200,1)'" onmouseout="this.style.color='rgba(242,232,200,0.7)'">&#9776; All Pages</div>
   <script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
+  <script src="https://pnewnan.github.io/dnd5e-artifacts/img-modal.js"></script>
 </body>
 </html>
