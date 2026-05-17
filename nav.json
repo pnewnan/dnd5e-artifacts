@@ -100,6 +100,18 @@
           "type": "asset"
         }
       ]
+    },
+    {
+      "title": "The Blackglass Laboratory",
+      "group": "Act 2",
+      "entries": [
+        {
+          "name": "Blackglass Laboratory — Encounter",
+          "desc": "Viktor Voss · Morrow · The Resonance Engine · Three-phase encounter · Level 5–7",
+          "href": "blackglass/blackglass_encounter.html",
+          "type": "gm"
+        }
+      ]
     }
   ]
 }

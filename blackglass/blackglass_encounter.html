@@ -263,6 +263,45 @@
   .conclusion h3 { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--ink); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem; }
   .conclusion ul { margin-left: 1.1rem; font-size: 0.87rem; color: var(--dim); line-height: 1.7; }
 
+  /* ── INCIDENT STRIP ── */
+  .incident-strip {
+    max-width: 1050px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3px;
+    background: #0a0806;
+  }
+  .incident-strip figure {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+  }
+  .incident-strip img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    filter: sepia(8%) contrast(1.04);
+    transition: filter 0.3s;
+  }
+  .incident-strip figure:hover img { filter: sepia(0%) contrast(1.08); }
+  .incident-strip figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(10,8,6,0.85));
+    padding: 1.2rem 0.8rem 0.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(220,200,160,0.75);
+    text-align: center;
+  }
+
   /* ── MISC ── */
   .enc-overview { margin-bottom: 1.8rem; }
   .voss-note {
@@ -295,11 +334,29 @@
 <div id="aelNavBtn" style="position:fixed;bottom:1.2rem;right:1.2rem;z-index:1001;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(26,18,9,0.9);border:1px solid #b89d5e;padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);cursor:pointer;user-select:none;" onclick="aelNavOpen()">&#9776; All Pages</div>
 <script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
 
+<!-- HERO -->
+<img style="width:100%;max-height:520px;object-fit:cover;object-position:center 40%;display:block;filter:brightness(0.88) contrast(1.08);" src="viktor_voss_lair.png" alt="The Blackglass Laboratory">
+
 <!-- HERO CAPTION -->
 <div class="hero-caption">
   <h1>The Blackglass Laboratory</h1>
   <p class="sub">Act 2 Encounter &nbsp;·&nbsp; Viktor Voss &amp; The Resonance Engine &nbsp;·&nbsp; Level 5–7 Party</p>
   <p class="flavor">"Nothing here was built by madness. That is what makes it horrifying."</p>
+</div>
+
+<div class="incident-strip">
+  <figure>
+    <img src="dunnshire_before.png" alt="Dunnshire — before">
+    <figcaption>Dunnshire — Before</figcaption>
+  </figure>
+  <figure>
+    <img src="orc_gas.png" alt="The Deployment — wind shifts" style="object-position:center 30%;">
+    <figcaption>The Deployment — Wind Shifts</figcaption>
+  </figure>
+  <figure>
+    <img src="dunnshire_after.png" alt="Dunnshire — after">
+    <figcaption>Dunnshire — After</figcaption>
+  </figure>
 </div>
 
 <div class="page">
@@ -472,9 +529,14 @@
   <div class="creature-section">
     <div class="creature-block">
       <div class="cb-inner">
+        <img style="float:right;width:270px;margin:0 0 1.2rem 1.5rem;border:1px solid var(--parchment-shadow);box-shadow:4px 4px 14px rgba(0,0,0,0.35);filter:sepia(8%) contrast(1.04);" src="viktor_voss.png" alt="Doctor Viktor Voss — augmented">
         <div class="cb-name">Doctor Viktor Voss</div>
         <div class="cb-type">Medium Humanoid · Lawful Evil · The Machinist</div>
-        <div class="cb-flavor">Tall, gaunt, unnervingly composed. Surgical scars trace across his neck and forearms — some clean, some crude, several self-inflicted. Mechanical prosthetic fingers click softly as he moves, concealing injector needles and surgical tools. A respirator fused into his ribcage produces faint rhythmic hissing. Behind him, a third arm extends from spinal reinforcement braces — moving with horrible natural precision, writing notes independently while he fights.</div>
+        <div class="cb-flavor">
+          <img style="float:left;width:180px;margin:0.2rem 1rem 0.5rem 0;border:1px solid var(--parchment-shadow);box-shadow:2px 2px 8px rgba(0,0,0,0.25);filter:sepia(10%);" src="viktor_voss_young.png" alt="Viktor Voss — early military career">
+          Tall, gaunt, unnervingly composed. Surgical scars trace across his neck and forearms — some clean, some crude, several self-inflicted. Mechanical prosthetic fingers click softly as he moves, concealing injector needles and surgical tools. A respirator fused into his ribcage produces faint rhythmic hissing. Behind him, a third arm extends from spinal reinforcement braces — moving with horrible natural precision, writing notes independently while he fights.
+          <div style="clear:both;"></div>
+        </div>
 
         <div class="stat-bar">
           <div class="stat-item"><span class="stat-label">AC</span><span class="stat-val">18</span></div>
