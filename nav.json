@@ -97,10 +97,16 @@
           "desc": "Player handout · Kobold cavern traps · \"If you read this, you're probably dead.\"",
           "href": "hollowgate/missing_convoys/trap_map.png",
           "type": "asset"
-        },
+        }
+      ]
+    },
+    {
+      "title": "The Hollow Road",
+      "group": "The Prologue",
+      "entries": [
         {
           "name": "The Hollow Road — Arc Reference",
-          "desc": "Hollowgate to Dunmore · Levels 1–2 · Relief convoy · The fake claw marks · The hoarder · Dunmore",
+          "desc": "Hollowgate to Dunmore · Levels 1–2 · Relief convoy · Durgan Valeforge · The fake claw marks · The hoarder · Dunmore",
           "href": "hollow_road_arc.html",
           "type": "gm"
         }
