@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Act II — Blackglass</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9; --parchment-shadow: #b89d5e; --ink: #1a1108; --dim: #2e200e; --faded: #5a4a2e;
+    --blood: #7a1f1f; --blood-dark: #4a0f0f; --purple: #5b2d8e; --gold: #8a6a10; --teal: #1e5f5f; --slate: #2e3a4a;
+    --act-color: #5b2d8e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d0a06; background-image: radial-gradient(ellipse at 20% 0%, #0d0418 0%, transparent 55%), radial-gradient(ellipse at 80% 100%, #0a0e18 0%, transparent 55%); font-family: 'IM Fell English', serif; color: var(--ink); padding: 1.5rem 1rem 3rem; min-height: 100vh; }
+  .page { max-width: 1000px; margin: 0 auto; background-color: #f2e8c9; border: 2px solid var(--parchment-shadow); box-shadow: 0 0 0 6px #0d0a06, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8); overflow: hidden; }
+  .act-band { background: var(--act-color); height: 6px; }
+  .page-inner { padding: 2.5rem 2.5rem 3rem; }
+  .page-title { text-align: center; border-bottom: 2px solid var(--parchment-shadow); padding-bottom: 1.1rem; margin-bottom: 1.6rem; }
+  .gm-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; color: var(--act-color); text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+  .level-badge { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.2rem 0.65rem; border: 1px solid var(--act-color); color: var(--act-color); margin-bottom: 0.4rem; background: rgba(91,45,142,0.06); }
+  .page-title h1 { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1.3rem, 3.5vw, 2.1rem); color: var(--ink); line-height: 1.2; }
+  .page-title .subtitle { font-style: italic; color: var(--faded); font-size: 0.9rem; margin-top: 0.35rem; }
+  .back-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faded); text-decoration: none; margin-top: 0.5rem; transition: color 0.2s; }
+  .back-link:hover { color: var(--act-color); }
+  .section-head { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--act-color); margin: 1.8rem 0 0.6rem; border-bottom: 1px solid rgba(91,45,142,0.2); padding-bottom: 0.25rem; }
+  p { font-size: 0.88rem; line-height: 1.7; color: var(--dim); margin-bottom: 0.5rem; }
+  p:last-child { margin-bottom: 0; }
+  ul.prose-list { margin: 0.3rem 0 0.5rem 1.1rem; font-size: 0.86rem; color: var(--dim); line-height: 1.7; }
+  ul.prose-list li { margin-bottom: 0.15rem; }
+  .narrative-block { background: rgba(91,45,142,0.04); border: 1px solid rgba(91,45,142,0.15); border-left: 5px solid var(--act-color); padding: 1.1rem 1.3rem; margin-bottom: 1.2rem; }
+  .annotation { font-style: italic; font-size: 0.83rem; color: var(--act-color); padding: 0.3rem 0.75rem; border-left: 2px solid var(--act-color); margin: 0.6rem 0; background: rgba(91,45,142,0.04); line-height: 1.6; }
+  .annotation.red { color: var(--blood); border-left-color: var(--blood); background: rgba(122,31,31,0.04); }
+  /* Story structure timeline */
+  .story-timeline { display: flex; flex-direction: column; gap: 0; margin: 0.5rem 0; }
+  .story-beat { display: flex; gap: 0; }
+  .story-beat-mark { display: flex; flex-direction: column; align-items: center; width: 2rem; flex-shrink: 0; }
+  .story-beat-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--act-color); flex-shrink: 0; margin-top: 0.35rem; }
+  .story-beat-line { flex: 1; width: 2px; background: rgba(91,45,142,0.25); margin-top: 2px; }
+  .story-beat:last-child .story-beat-line { display: none; }
+  .story-beat-content { padding: 0 0 1.2rem 0.5rem; flex: 1; }
+  .story-beat-label { font-family: 'Cinzel', serif; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--act-color); margin-bottom: 0.3rem; }
+  /* War begins block */
+  .war-block { background: rgba(122,31,31,0.06); border: 1px solid rgba(122,31,31,0.3); border-left: 5px solid var(--blood-dark); padding: 1.1rem 1.3rem; margin: 1rem 0; }
+  .war-block-label { font-family: 'Cinzel Decorative', cursive; font-size: 0.78rem; color: var(--blood-dark); display: block; margin-bottom: 0.6rem; }
+  .emotional-goal { background: rgba(26,17,8,0.06); border: 1px solid var(--parchment-shadow); border-top: 3px solid var(--act-color); padding: 1.1rem 1.3rem; margin-top: 1.4rem; }
+  .eg-label { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--act-color); margin-bottom: 0.5rem; display: block; }
+  .eg-statement { font-family: 'Cinzel Decorative', cursive; font-size: clamp(0.82rem, 2vw, 1rem); color: var(--blood-dark); line-height: 1.4; margin-bottom: 0.5rem; font-style: italic; }
+  .accordion { margin-bottom: 0.55rem; }
+  .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; cursor: pointer; user-select: none; border: 1px solid var(--parchment-shadow); border-left: 4px solid var(--parchment-shadow); background: rgba(180,140,60,0.07); transition: background 0.18s; gap: 1rem; }
+  .accordion-header:hover { background: rgba(180,140,60,0.14); }
+  .accordion-header.open { background: rgba(180,140,60,0.14); }
+  .accordion-header.c-blood  { border-left-color: var(--blood); }
+  .accordion-header.c-teal   { border-left-color: var(--teal); }
+  .accordion-header.c-gold   { border-left-color: var(--gold); }
+  .accordion-header.c-slate  { border-left-color: var(--slate); }
+  .accordion-header.c-purple { border-left-color: var(--purple); }
+  .accordion-title { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); line-height: 1.3; }
+  .accordion-subtitle { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.78rem; color: var(--faded); margin-top: 0.1rem; }
+  .accordion-arrow { font-size: 0.7rem; color: var(--faded); transition: transform 0.25s; flex-shrink: 0; }
+  .accordion-header.open .accordion-arrow { transform: rotate(180deg); }
+  .accordion-body { display: none; padding: 1rem 1.2rem; border: 1px solid var(--parchment-shadow); border-top: none; background: rgba(255,252,240,0.5); }
+  .accordion-body.open { display: block; }
+  .divider { display: flex; align-items: center; gap: 0.6rem; margin: 1.4rem 0; color: var(--parchment-shadow); }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
+  .divider span { font-size: 0.85rem; }
+  .ref-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.25rem 0.65rem; border: 1px solid rgba(91,45,142,0.35); color: var(--act-color); text-decoration: none; margin-top: 0.6rem; transition: all 0.15s; }
+  .ref-link:hover { background: rgba(91,45,142,0.06); border-color: var(--act-color); }
+  .arc-nav { display: flex; gap: 0.8rem; margin-top: 1.6rem; border-top: 1px solid rgba(180,140,60,0.3); padding-top: 1rem; }
+  .arc-nav a { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faded); text-decoration: none; padding: 0.3rem 0.7rem; border: 1px solid rgba(180,140,60,0.35); transition: all 0.15s; }
+  .arc-nav a:hover { color: var(--act-color); border-color: rgba(91,45,142,0.4); }
+  .arc-nav .spacer { flex: 1; }
+  @media (max-width: 680px) { .page-inner { padding: 1.5rem 1.2rem 2rem; } }
+</style>
+</head>
+<body>
+
+<div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
+<div id="aelNavBtn" style="position:fixed;bottom:1.2rem;right:1.2rem;z-index:1001;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(26,18,9,0.9);border:1px solid #b89d5e;padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);cursor:pointer;user-select:none;" onclick="aelNavOpen()">&#9776; All Pages</div>
+<script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
+
+<div class="page">
+<div class="act-band"></div>
+<div class="page-inner">
+
+  <div class="page-title">
+    <span class="gm-label">GM Reference · Act II</span>
+    <span class="level-badge">Levels 6–8</span>
+    <h1>Blackglass</h1>
+    <p class="subtitle">Songs of the Shadowed Flame · Act II</p>
+    <a class="back-link" href="campaign_overview.html">← Campaign Overview</a>
+  </div>
+
+  <!-- NARRATIVE PURPOSE -->
+  <p class="section-head">Narrative Purpose</p>
+  <div class="narrative-block">
+    <p>Act II is where the campaign emotionally matures. This arc recontextualizes the kingdom, the military, the Concord, secrecy, and the players' understanding of morality. The discovery of Blackglass reveals that the kingdom itself contains buried atrocities.</p>
+    <p style="margin-top:0.6rem;">This should feel horrifying, tragic, and intellectually fascinating. Not a simple villain reveal. A systemic indictment of the way institutions handle dangerous knowledge — and of the people who tried, imperfectly, to contain it.</p>
+    <div class="annotation" style="margin-top:0.8rem;">"Everything the players thought they understood about the world was true. And incomplete. In Act II, they get the rest."</div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- CORE STORY STRUCTURE -->
+  <p class="section-head">Core Story Structure</p>
+
+  <div class="story-timeline">
+    <div class="story-beat">
+      <div class="story-beat-mark">
+        <div class="story-beat-dot"></div>
+        <div class="story-beat-line"></div>
+      </div>
+      <div class="story-beat-content">
+        <div class="story-beat-label">Early Act II</div>
+        <p>Strange creature attacks. Missing caravans. Chemical residue. Engineered monstrosities. Rumors of impossible experiments. The players begin noticing a pattern — but the pattern doesn't have a name yet.</p>
+      </div>
+    </div>
+    <div class="story-beat">
+      <div class="story-beat-mark">
+        <div class="story-beat-dot"></div>
+        <div class="story-beat-line"></div>
+      </div>
+      <div class="story-beat-content">
+        <div class="story-beat-label">Mid Act II — The Name Returns</div>
+        <p>Kaelor Thrask begins recognizing similarities to old battlefield reports, classified residue, atmospheric compounds, and experimental military science. The name "Blackglass" returns. Not the city. The incident. The horror is gradual — first a word that surfaces in a sealed file, then a description that matches something they've seen. Then the full weight of what it means.</p>
+      </div>
+    </div>
+    <div class="story-beat">
+      <div class="story-beat-mark">
+        <div class="story-beat-dot"></div>
+        <div class="story-beat-line"></div>
+      </div>
+      <div class="story-beat-content">
+        <div class="story-beat-label">The Ruins of Dunnshire</div>
+        <p>The players eventually discover the erased settlement, the vitrified remains, abandoned military barricades, and the emotional scar left behind by the Blackglass Incident. The ruins should feel mournful, wrong, and haunted by memory. A city that does not appear on any map. Glass fused into stone. The silence of a place where something happened and no one was allowed to grieve.</p>
+      </div>
+    </div>
+    <div class="story-beat">
+      <div class="story-beat-mark">
+        <div class="story-beat-dot"></div>
+        <div class="story-beat-line"></div>
+      </div>
+      <div class="story-beat-content">
+        <div class="story-beat-label">Descent Into the Blackglass Laboratory</div>
+        <p>The players uncover Viktor Voss, the Resonance Engine, biomechanistry, emotional-energy experimentation, and the horrifying truth that the kingdom secretly preserved Voss through Percival. The laboratory exists beneath the ruins of the city Voss destroyed. He built it there deliberately. The emotional resonance from years of unprocessed grief makes the gems react more powerfully.</p>
+        <a class="ref-link" href="blackglass/blackglass_encounter.html">Laboratory Encounter Reference →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- MAJOR THEMES -->
+  <p class="section-head">Major Themes</p>
+
+  <div class="accordion">
+    <div class="accordion-header c-blood" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">The Consequences of Buried Truth</div>
+        <div class="accordion-subtitle">Kaelor buried Blackglass. Percival exploited that burial. The kingdom's silence allowed it to survive.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>The players realize that Kaelor buried Blackglass to prevent panic, that Percival exploited secrecy, and that the kingdom's attempts to contain horror allowed it to survive and grow. This should force the players to reconsider whether secrecy was entirely wrong.</p>
+      <p>There is no clean answer. Thrask's choice to bury the incident rather than expose it was not made from malice — it was made from a genuine belief that public knowledge would cause chaos, damage the military, and potentially destabilize the kingdom during a vulnerable period. That belief may have been correct. And yet it created the exact conditions that allowed Percival to find Voss and continue his work. Good judgment, bad outcome.</p>
+      <div class="annotation">"He buried it to protect people. He did not consider that Percival would find it."</div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-header c-gold" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Understanding the People They Hated</div>
+        <div class="accordion-subtitle">Not agreeing with them. Understanding them. That distinction matters.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>One of the most important emotional goals of Act II: the players begin understanding Kaelor, the Concord, the Order, and others who carried terrible burdens quietly. Not agreeing with them. Understanding them. That distinction matters.</p>
+      <p>Thrask stopped Voss once. He arranged imprisonment. He sealed the records. He genuinely believed he had ended this. When the evidence of Voss's survival begins to surface, the realization arrives gradually, then all at once. The horror is not that Thrask failed to stop Voss — it is that he could not have known what he was setting in motion by choosing silence over accountability. His two words: "Blackglass. No." Not the city. The incident. He thought he had buried this.</p>
+      <div class="annotation">"He sealed the records to protect the kingdom. He did not consider that sealed records can be found again."</div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-header c-purple" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Emotional Resonance — Literally</div>
+        <div class="accordion-subtitle">The players' emotions shape the battlefield. Fear. Hope. Rage. Grief. Triumph. Everything matters.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>The Blackglass Laboratory externalizes the campaign's emotional themes. The players' emotions literally shape the battlefield through the resonance gem system. Fear, rage, pain, grief, triumph, and inspiration are not just emotional states — they are quantifiable forces that interact with the Engine.</p>
+      <p>This is thematically deliberate. The same mechanism that drives the most dangerous political force in the world — fear — powers the most dangerous weapon the players have yet encountered. The resonance gem system is a mirror. Voss built a machine that does what politics has always done: harvest human emotion as fuel. The players fight it by generating the one emotion he did not account for. Triumph. Courage. The refusal to break.</p>
+      <div class="annotation">"He weaponized suffering. He did not predict what happens when someone refuses to suffer."</div>
+    </div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- STORYTELLING GOALS -->
+  <p class="section-head">Storytelling Goals</p>
+
+  <div class="accordion">
+    <div class="accordion-header c-purple" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Make Voss Tragic</div>
+        <div class="accordion-subtitle">Not a cartoon villain. Not merely a mad scientist. A wasted life that almost meant something.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>Voss should not feel like a cartoon villain or merely a mad scientist. The players should glimpse brilliance, obsession, isolation, and wasted humanity. His final moments should feel tragic. Not triumphant.</p>
+      <p>Somewhere beneath the respirator, the third arm, the sutured skin, and the clinical detachment — there remains the trace of the physician he might have been. His early career work genuinely saved lives. The same intellectual drive that produced his atrocities, redirected, would have made him one of the greatest physicians in the kingdom's history. That is the tragedy. Not that he was a monster. That he was comprehensible. That the gap between who he was and who he might have been is visible and close and permanently uncrossable.</p>
+      <a class="ref-link" href="blackglass/viktor_voss_reference.html">Viktor Voss Background Reference →</a>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-header c-blood" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Force the Players to Grow Up</div>
+        <div class="accordion-subtitle">They can no longer think locally. Actions have geopolitical consequences. Truths become dangerous.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>By the end of Act II, the players can no longer think locally. Their actions now have geopolitical consequences. Truths themselves become dangerous — not because knowing is bad, but because who receives the truth, in what form, and when, determines whether it heals or destroys.</p>
+      <p>The campaign matures here. The players are no longer solving localized problems that feel contained. Every decision they make from this point forward carries the weight of knowing that the world is watching, that forces larger than any individual are moving, and that their understanding of the situation is always going to be partial.</p>
+      <div class="annotation">"They started as adventurers. They are becoming something else. Something heavier."</div>
+    </div>
+  </div>
+
+  <div class="divider"><span>⁂</span></div>
+
+  <!-- THE WAR BEGINS -->
+  <div class="war-block">
+    <span class="war-block-label">End of Act II — "The War Begins"</span>
+    <p>This is one of the most important moments in the entire campaign. The players stop Voss, uncover the truth, expose buried horrors, and believe they finally understand what is happening.</p>
+    <p style="margin-top:0.6rem;">Instead: the truth accelerates the war. The revelations surrounding Blackglass become propaganda, political ammunition, military justification, and public fear fuel. Riots worsen. Borders militarize. Diplomacy collapses. The players realize they helped create the conditions for war. Not because they failed. Because history was already breaking.</p>
+    <div class="annotation red" style="margin-top:0.8rem;">"They did everything right. And the world broke anyway."</div>
+  </div>
+
+  <!-- EMOTIONAL GOAL -->
+  <div class="emotional-goal">
+    <span class="eg-label">Emotional Goal — End of Act II</span>
+    <div class="eg-statement">"We understand now… and it's too late."</div>
+    <p>The players should cry. Not because the plot is sad. Because they finally understand. They should realize: Kaelor was trying to prevent this. The Concord was afraid of this. The Order buried truths for reasons. Even flawed people were desperately trying to stop catastrophe.</p>
+    <p style="margin-top:0.6rem;">And despite all of it: the war begins anyway. The emotional feeling should be understanding arriving too late — the campaign's core emotional principle, finally landing with its full weight.</p>
+    <p style="margin-top:0.6rem;">After Act II, the world changes permanently. The players are no longer merely adventurers. They are witnesses to history unraveling in real time. And the world will never fully recover from what Blackglass revealed.</p>
+  </div>
+
+  <div class="arc-nav">
+    <a href="act1_arc.html">← Act I</a>
+    <span class="spacer"></span>
+    <a href="campaign_overview.html">Campaign Overview →</a>
+  </div>
+
+</div>
+</div><!-- .page -->
+
+<script>
+function toggleAcc(header) {
+  var body = header.nextElementSibling;
+  var isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>

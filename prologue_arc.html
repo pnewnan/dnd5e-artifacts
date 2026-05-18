@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Prologue — The Kingdom Fractures</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9; --parchment-shadow: #b89d5e; --ink: #1a1108; --dim: #2e200e; --faded: #5a4a2e;
+    --blood: #7a1f1f; --blood-dark: #4a0f0f; --purple: #5b2d8e; --gold: #8a6a10; --teal: #1e5f5f; --slate: #2e3a4a;
+    --act-color: #7a1f1f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d0a06; background-image: radial-gradient(ellipse at 20% 0%, #1a0a04 0%, transparent 55%), radial-gradient(ellipse at 80% 100%, #0a0e18 0%, transparent 55%); font-family: 'IM Fell English', serif; color: var(--ink); padding: 1.5rem 1rem 3rem; min-height: 100vh; }
+  .page { max-width: 1000px; margin: 0 auto; background-color: #f2e8c9; border: 2px solid var(--parchment-shadow); box-shadow: 0 0 0 6px #0d0a06, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8); overflow: hidden; }
+  .act-band { background: var(--act-color); height: 6px; }
+  .page-inner { padding: 2.5rem 2.5rem 3rem; }
+  .page-title { text-align: center; border-bottom: 2px solid var(--parchment-shadow); padding-bottom: 1.1rem; margin-bottom: 1.6rem; }
+  .gm-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; color: var(--act-color); text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+  .level-badge { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.2rem 0.65rem; border: 1px solid var(--act-color); color: var(--act-color); margin-bottom: 0.4rem; background: rgba(122,31,31,0.05); }
+  .page-title h1 { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1.3rem, 3.5vw, 2.1rem); color: var(--ink); line-height: 1.2; }
+  .page-title .subtitle { font-style: italic; color: var(--faded); font-size: 0.9rem; margin-top: 0.35rem; }
+  .back-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faded); text-decoration: none; margin-top: 0.5rem; transition: color 0.2s; }
+  .back-link:hover { color: var(--act-color); }
+  .section-head { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--act-color); margin: 1.8rem 0 0.6rem; border-bottom: 1px solid rgba(122,31,31,0.2); padding-bottom: 0.25rem; }
+  p { font-size: 0.88rem; line-height: 1.7; color: var(--dim); margin-bottom: 0.5rem; }
+  p:last-child { margin-bottom: 0; }
+  ul.prose-list { margin: 0.3rem 0 0.5rem 1.1rem; font-size: 0.86rem; color: var(--dim); line-height: 1.7; }
+  ul.prose-list li { margin-bottom: 0.15rem; }
+  h3 { font-family: 'Cinzel', serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin: 0.9rem 0 0.35rem; }
+  .narrative-block { background: rgba(122,31,31,0.04); border: 1px solid rgba(122,31,31,0.18); border-left: 5px solid var(--act-color); padding: 1.1rem 1.3rem; margin-bottom: 1.2rem; }
+  .narrative-block p { color: var(--dim); }
+  .annotation { font-style: italic; font-size: 0.83rem; color: var(--blood); padding: 0.3rem 0.75rem; border-left: 2px solid var(--blood); margin: 0.6rem 0; background: rgba(122,31,31,0.04); line-height: 1.6; }
+  .emotional-goal { background: rgba(26,17,8,0.06); border: 1px solid var(--parchment-shadow); border-top: 3px solid var(--act-color); padding: 1.1rem 1.3rem; margin-top: 1.4rem; }
+  .eg-label { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--act-color); margin-bottom: 0.5rem; display: block; }
+  .eg-statement { font-family: 'Cinzel Decorative', cursive; font-size: clamp(0.82rem, 2vw, 1rem); color: var(--ink); line-height: 1.4; margin-bottom: 0.5rem; font-style: italic; }
+  .accordion { margin-bottom: 0.55rem; }
+  .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; cursor: pointer; user-select: none; border: 1px solid var(--parchment-shadow); border-left: 4px solid var(--parchment-shadow); background: rgba(180,140,60,0.07); transition: background 0.18s; gap: 1rem; }
+  .accordion-header:hover { background: rgba(180,140,60,0.14); }
+  .accordion-header.open { background: rgba(180,140,60,0.14); }
+  .accordion-header.c-blood  { border-left-color: var(--blood); }
+  .accordion-header.c-teal   { border-left-color: var(--teal); }
+  .accordion-header.c-gold   { border-left-color: var(--gold); }
+  .accordion-header.c-slate  { border-left-color: var(--slate); }
+  .accordion-header.c-purple { border-left-color: var(--purple); }
+  .accordion-title { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); line-height: 1.3; }
+  .accordion-subtitle { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.78rem; color: var(--faded); margin-top: 0.1rem; }
+  .accordion-arrow { font-size: 0.7rem; color: var(--faded); transition: transform 0.25s; flex-shrink: 0; }
+  .accordion-header.open .accordion-arrow { transform: rotate(180deg); }
+  .accordion-body { display: none; padding: 1rem 1.2rem; border: 1px solid var(--parchment-shadow); border-top: none; background: rgba(255,252,240,0.5); }
+  .accordion-body.open { display: block; }
+  .divider { display: flex; align-items: center; gap: 0.6rem; margin: 1.4rem 0; color: var(--parchment-shadow); }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
+  .divider span { font-size: 0.85rem; }
+  .arc-nav { display: flex; gap: 0.8rem; margin-top: 1.6rem; border-top: 1px solid rgba(180,140,60,0.3); padding-top: 1rem; }
+  .arc-nav a { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faded); text-decoration: none; padding: 0.3rem 0.7rem; border: 1px solid rgba(180,140,60,0.35); transition: all 0.15s; }
+  .arc-nav a:hover { color: var(--blood); border-color: rgba(122,31,31,0.4); }
+  .arc-nav .spacer { flex: 1; }
+  @media (max-width: 680px) { .page-inner { padding: 1.5rem 1.2rem 2rem; } }
+</style>
+</head>
+<body>
+
+<div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
+<div id="aelNavBtn" style="position:fixed;bottom:1.2rem;right:1.2rem;z-index:1001;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(26,18,9,0.9);border:1px solid #b89d5e;padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);cursor:pointer;user-select:none;" onclick="aelNavOpen()">&#9776; All Pages</div>
+<script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
+
+<div class="page">
+<div class="act-band"></div>
+<div class="page-inner">
+
+  <div class="page-title">
+    <span class="gm-label">GM Reference · The Prologue</span>
+    <span class="level-badge">Levels 1–3</span>
+    <h1>The Kingdom Fractures</h1>
+    <p class="subtitle">Songs of the Shadowed Flame · The Prologue Arc</p>
+    <a class="back-link" href="campaign_overview.html">← Campaign Overview</a>
+  </div>
+
+  <!-- NARRATIVE PURPOSE -->
+  <p class="section-head">Narrative Purpose</p>
+  <div class="narrative-block">
+    <p>The Prologue exists to introduce the world, establish political tension, build emotional investment, ground the story in ordinary suffering, and slowly hint that something much larger is happening beneath the surface.</p>
+    <p style="margin-top:0.6rem;">This arc should feel grounded, tense, political, emotional, and human. The players should initially believe this is a story about a kingdom nearing civil collapse. That belief is not wrong — it is incomplete.</p>
+    <div class="annotation" style="margin-top:0.8rem;">"The world must feel worth saving before it starts breaking."</div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- MAJOR THEMES -->
+  <p class="section-head">Major Themes</p>
+
+  <div class="accordion">
+    <div class="accordion-header c-blood" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Scarcity and Fear</div>
+        <div class="accordion-subtitle">Food shortages. Riots. Militarization. Xenophobia. Fear becomes contagious.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>Fastingbreak is under strain. Food shortages. Riots. Unrest. Militarization. Xenophobia. Ordinary people are afraid, and fear is contagious — it spreads from household to household faster than any disease.</p>
+      <p>The players should experience this fear as something physical and immediate, not as abstract political context. Frightened merchants. Soldiers who joined up because they needed the wage. Refugees who don't have a faction and don't want one. The Prologue's job is to make these people real.</p>
+      <div class="annotation">"The instability isn't background. It's the story. Everything else grows from this ground."</div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-header c-slate" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">The Public Enemy Narrative</div>
+        <div class="accordion-subtitle">The people believe Elkenquay is destabilizing the kingdom. That belief matters more than facts.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>The people of Fastingbreak increasingly believe Elkenquay is destabilizing the kingdom. Whether true, partially true, or manufactured, public perception matters more than facts. The players should initially see convincing evidence that Elkenquay is funding unrest, political agitation is increasing, and foreign interference may be real.</p>
+      <p>This ambiguity is important. The players should not know early on whether the narrative is accurate. Neither should they be certain it is manufactured. The truth, when it eventually becomes clearer, should reframe everything they thought they understood about the Prologue's politics.</p>
+      <div class="annotation">"The narrative exists before the evidence. The evidence is selected to fit the narrative."</div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-header c-gold" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Humanizing the World</div>
+        <div class="accordion-subtitle">The Prologue must emotionally attach the players to ordinary people.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>The Prologue must emotionally attach the players to ordinary civilians, small settlements, frightened soldiers, struggling merchants, refugees, and local communities. These attachments are not optional texture — they are the emotional infrastructure that makes everything in Act II land.</p>
+      <p>When the players later discover what was buried beneath the politics, their reaction should be shaped by people they already care about. Abstract atrocities produce abstract outrage. Atrocities committed against people the players know produce devastation.</p>
+      <div class="annotation">"The world must feel worth saving before it starts breaking."</div>
+    </div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- STORYTELLING GOALS -->
+  <p class="section-head">Storytelling Goals</p>
+
+  <div class="accordion">
+    <div class="accordion-header c-teal" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">The Players Self-Initiate</div>
+        <div class="accordion-subtitle">They should not feel "chosen." They should choose.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>The players should not feel chosen. Instead, they choose to help — intervening in unrest, stopping violence, escorting supplies, protecting civilians, or investigating strange incidents. This creates emotional ownership. The story belongs to them because they walked into it willingly.</p>
+      <p>The Prologue's design should create situations where the players' choices feel consequential and self-directed, not like missions handed to them by a quest board. They intervene because they want to. The Concord notices them because of that intervention. Not the other way around.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-header c-teal" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Introduce the Concord Carefully</div>
+        <div class="accordion-subtitle">Ancient. Competent. Restrained. Deeply informed. Not an adventurer guild.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>The Concord should feel ancient, competent, restrained, and deeply informed. Not an adventurer guild. The players' first encounters with the Concord should leave them with questions rather than answers — who are these people, what do they actually know, and why are they being so careful about what they share?</p>
+      <p>The Concord notices the players because they are capable, compassionate, resourceful, and increasingly entangled in larger events. That entanglement is what creates the relationship — not destiny, not prophecy, not recruitment. The players are useful. They are also, it turns out, in the middle of something the Concord has been watching for a long time.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-header c-blood" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">First Hints of Something Wrong</div>
+        <div class="accordion-subtitle">By the end of the Prologue: unnatural creatures. Strange symbols. Coordinated events.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>By the end of the Prologue, unnatural creatures appear, strange symbols emerge, hidden actors manipulate unrest, and events begin feeling coordinated. The players should realize: this is larger than politics.</p>
+      <p>The hint should not be obvious enough to feel like a twist reveal. It should be the kind of thing that makes the players look back at earlier sessions and think <em>"that was the first sign."</em> The cavehopper. The gem. The timing of the carnival. These are not coincidences — but that realization should arrive slowly.</p>
+      <div class="annotation">"The first session was already Act I. They just didn't know it yet."</div>
+    </div>
+  </div>
+
+  <!-- EMOTIONAL GOAL -->
+  <div class="emotional-goal">
+    <span class="eg-label">Emotional Goal — End of Prologue</span>
+    <div class="eg-statement">"We've stumbled into something much bigger than we understand."</div>
+    <p>The Prologue should end with curiosity, investment, uncertainty, and growing dread. The players should feel they have stumbled into something much bigger than they understand — and that whatever it is, it has been waiting for them. Not because they are special. Because they happened to be in the right place, asking the right questions, at exactly the wrong moment.</p>
+  </div>
+
+  <div class="arc-nav">
+    <a href="campaign_overview.html">← Campaign Overview</a>
+    <span class="spacer"></span>
+    <a href="act1_arc.html">Act I: The Hidden Machinery →</a>
+  </div>
+
+</div>
+</div><!-- .page -->
+
+<script>
+function toggleAcc(header) {
+  var body = header.nextElementSibling;
+  var isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>

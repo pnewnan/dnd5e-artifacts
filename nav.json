@@ -1,6 +1,35 @@
 {
   "sections": [
     {
+      "title": "Campaign Narrative",
+      "entries": [
+        {
+          "name": "Hands That Hold the Line",
+          "desc": "Campaign philosophy · Core themes · Buried Truths · Escalation · Fear as Fuel · Weight of Consequence",
+          "href": "campaign_overview.html",
+          "type": "gm"
+        },
+        {
+          "name": "The Prologue — The Kingdom Fractures",
+          "desc": "Levels 1–3 · Narrative purpose · Scarcity and Fear · The Public Enemy Narrative · Storytelling goals",
+          "href": "prologue_arc.html",
+          "type": "gm"
+        },
+        {
+          "name": "Act I — The Hidden Machinery",
+          "desc": "Levels 4–5 · Hidden structures · Information control · Building emotional attachments",
+          "href": "act1_arc.html",
+          "type": "gm"
+        },
+        {
+          "name": "Act II — Blackglass",
+          "desc": "Levels 6–8 · The buried atrocity · Voss · The war begins · Understanding arriving too late",
+          "href": "act2_arc.html",
+          "type": "gm"
+        }
+      ]
+    },
+    {
       "title": "Campaign Opening",
       "entries": [
         {

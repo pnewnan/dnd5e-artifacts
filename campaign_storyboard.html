@@ -499,6 +499,36 @@
   #flowView.visible { display: block; }
   #refView.hidden { display: none; }
 
+  /* Flow banner — thematic intro above arc columns */
+  #flowBanner {
+    background: rgba(26,17,8,0.92);
+    border-bottom: 1px solid rgba(180,140,60,0.2);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .flow-banner-text { flex: 1; min-width: 200px; }
+  .flow-banner-campaign { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(180,140,60,0.5); display: block; margin-bottom: 0.2rem; }
+  .flow-banner-statement { font-family: 'Cinzel Decorative', cursive; font-size: 0.78rem; color: rgba(242,232,200,0.88); line-height: 1.4; }
+  .flow-banner-sub { font-family: 'IM Fell English', serif; font-size: 0.75rem; color: rgba(242,232,200,0.45); font-style: italic; margin-top: 0.3rem; line-height: 1.5; }
+  .flow-banner-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; flex-shrink: 0; }
+  .flow-banner-pill { font-family: 'Cinzel', serif; font-size: 0.45rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.18rem 0.5rem; border: 1px solid; border-radius: 1px; }
+  .fbp-teal   { color: #4aafaf; border-color: rgba(30,95,95,0.4); }
+  .fbp-blood  { color: #c05050; border-color: rgba(122,31,31,0.4); }
+  .fbp-purple { color: #9060d0; border-color: rgba(91,45,142,0.4); }
+  .fbp-gold   { color: #c0a040; border-color: rgba(138,106,16,0.4); }
+  .fbp-slate  { color: #8090a8; border-color: rgba(46,58,74,0.4); }
+  .flow-banner-link { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(180,140,60,0.5); text-decoration: none; padding: 0.3rem 0.7rem; border: 1px solid rgba(180,140,60,0.2); white-space: nowrap; transition: all 0.15s; flex-shrink: 0; }
+  .flow-banner-link:hover { color: rgba(180,140,60,0.9); border-color: rgba(180,140,60,0.4); }
+
+  /* Act header link */
+  .flow-act-title-link { text-decoration: none; color: inherit; display: block; }
+  .flow-act-sub { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.65; margin-top: 0.15rem; }
+  .flow-act-ref { font-family: 'Cinzel', serif; font-size: 0.46rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(242,232,200,0.45); text-decoration: none; display: block; margin-top: 0.2rem; transition: color 0.15s; }
+  .flow-act-ref:hover { color: rgba(242,232,200,0.9); }
+
   .flow-scroll {
     overflow-x: auto;
     padding: 1.5rem 1.5rem 3rem;
@@ -791,6 +821,7 @@
   </main>
 </div>
 <div id="flowView">
+  <div id="flowBanner"></div>
   <div class="flow-scroll">
     <div class="flow-inner" id="flowInner"></div>
   </div>
@@ -1169,9 +1200,9 @@ function renderFlowView() {
 
   var actOrder = ['prologue', 'act-1', 'act-2'];
   var actMeta = {
-    'prologue': { label: 'The Prologue', color: 'var(--blood)' },
-    'act-1':    { label: 'Act I',        color: 'var(--teal)' },
-    'act-2':    { label: 'Act II',       color: 'var(--purple)' }
+    'prologue': { label: 'The Prologue', sub: 'The Kingdom Fractures · Levels 1–3', color: 'var(--blood)',  href: BASE + 'prologue_arc.html' },
+    'act-1':    { label: 'Act I',        sub: 'The Hidden Machinery · Levels 4–5',  color: 'var(--teal)',   href: BASE + 'act1_arc.html' },
+    'act-2':    { label: 'Act II',       sub: 'Blackglass · Levels 6–8',            color: 'var(--purple)', href: BASE + 'act2_arc.html' }
   };
 
   var grouped = { 'prologue': [], 'act-1': [], 'act-2': [] };
@@ -1185,6 +1216,25 @@ function renderFlowView() {
   });
 
   var visibleActs = actOrder.filter(function(a) { return grouped[a].length > 0; });
+
+  /* Populate the thematic banner */
+  var banner = document.getElementById('flowBanner');
+  if (banner) {
+    banner.innerHTML =
+      '<div class="flow-banner-text">'
+        + '<span class="flow-banner-campaign">Songs of the Shadowed Flame</span>'
+        + '<div class="flow-banner-statement">This campaign is not fundamentally about defeating evil.</div>'
+        + '<div class="flow-banner-sub">Buried truths · Unintended consequences · Institutional fear · Understanding arriving too late</div>'
+      + '</div>'
+      + '<div class="flow-banner-pills">'
+        + '<span class="flow-banner-pill fbp-teal">Buried Truths</span>'
+        + '<span class="flow-banner-pill fbp-blood">Escalation</span>'
+        + '<span class="flow-banner-pill fbp-purple">Fear as Fuel</span>'
+        + '<span class="flow-banner-pill fbp-gold">People Trying Their Best</span>'
+        + '<span class="flow-banner-pill fbp-slate">Weight of Consequence</span>'
+      + '</div>'
+      + '<a class="flow-banner-link" href="' + BASE + 'campaign_overview.html">&#9654; Hands That Hold the Line</a>';
+  }
 
   var inner = document.getElementById('flowInner');
   if (!visibleActs.length) {
@@ -1204,7 +1254,13 @@ function renderFlowView() {
       : '';
 
     return '<div class="flow-act-group" style="border-top:3px solid ' + meta.color + '">'
-      + '<div class="flow-act-header" style="background:' + meta.color + '">' + meta.label + '</div>'
+      + '<div class="flow-act-header" style="background:' + meta.color + '">'
+        + '<div>'
+          + '<a class="flow-act-title-link" href="' + meta.href + '">' + meta.label + '</a>'
+          + '<div class="flow-act-sub">' + meta.sub + '</div>'
+        + '</div>'
+        + '<a class="flow-act-ref" href="' + meta.href + '" onclick="event.stopPropagation()">Arc Reference →</a>'
+      + '</div>'
       + '<div class="flow-act-arcs">' + arcsHtml + '</div>'
       + '</div>'
       + connector;
