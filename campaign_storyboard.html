@@ -639,6 +639,33 @@
     line-height: 1;
   }
 
+  .flow-arc-desc {
+    font-family: 'IM Fell English', serif;
+    font-size: 0.73rem;
+    font-style: italic;
+    color: rgba(90,74,46,0.85);
+    line-height: 1.5;
+    padding: 0.55rem 0.75rem 0.45rem;
+    border: 1px solid rgba(180,140,60,0.2);
+    border-top: none;
+    background: rgba(242,232,200,0.55);
+    border-bottom: 1px solid rgba(180,140,60,0.15);
+  }
+
+  .flow-arc-empty {
+    border: 1px solid rgba(180,140,60,0.15);
+    border-top: none;
+    background: rgba(242,232,200,0.2);
+    padding: 1.4rem 1rem;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(90,74,46,0.5);
+    font-style: italic;
+  }
+
   .flow-beats {
     border: 1px solid rgba(180,140,60,0.2);
     border-top: none;
@@ -1181,12 +1208,18 @@ function renderArcColumn(arc, isLastInGroup) {
   } else if (arc.href) {
     refLinks = '<a class="flow-arc-ref" href="' + BASE + arc.href + '" onclick="event.stopPropagation()">Ref →</a>';
   }
+  var desc = '';
+  if (arc.summary) {
+    var truncated = arc.summary.length > 140 ? arc.summary.slice(0, 137).replace(/\s\S*$/, '') + '…' : arc.summary;
+    desc = '<div class="flow-arc-desc">' + esc(truncated) + '</div>';
+  }
   var beats = (arc.beats || []).map(function(beat) { return renderBeat(beat); }).join('');
   var arcHtml = '<div class="flow-arc">'
     + '<div class="flow-arc-header" onclick="toggleFlowArcFocus(\'' + arc.id + '\')" title="Click to view in Reference grid">'
       + '<span>' + esc(arc.title) + '</span>'
       + (refLinks ? '<span>' + refLinks + '</span>' : '')
     + '</div>'
+    + desc
     + '<div class="flow-beats">' + (beats || '<div style="padding:0.5rem 0.7rem;font-style:italic;font-size:0.7rem;color:var(--faded);">No beats defined</div>') + '</div>'
     + '</div>';
   var connector = !isLastInGroup

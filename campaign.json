@@ -538,6 +538,131 @@
       ]
     },
     {
+      "id": "durgan-valeforge",
+      "name": "Commander Durgan Valeforge",
+      "status": "alive",
+      "affiliations": [
+        "ashfall-watch"
+      ],
+      "arc_tags": [
+        "prologue",
+        "hollow-road"
+      ],
+      "party_knowledge": "unknown",
+      "description": "A dwarven militia commander overseeing the emergency blockade near Ashfall Watch. Rational, disciplined, practical, and visibly exhausted. Not paranoid or cruel — a man attempting to make impossible logistical decisions while civilians panic, roads fail, supplies disappear, and his people stop returning from patrols.",
+      "personality": "Refuses to allow the convoy to continue because he genuinely believes sending civilians forward without securing the road would be murder. Respects competence and calm leadership. Remembers every patrol he has lost. Has not slept properly in days. He is willing to listen — if the players prove capable, compassionate, and practical, he increasingly trusts them.",
+      "role_in_story": "One of the first examples in the campaign of a fundamentally good person trapped inside a collapsing situation. He was fed a false threat report by a Concord-adjacent operative, which justified the blockade in his mind. He is not malicious. He is convinced, and he is not wrong to be cautious — he just does not know the real source of the disruption.",
+      "gm_notes": "The goal is for the party to slowly realize Durgan cares deeply about his people, and that his obstruction is born from genuine protective instinct, not corruption or cruelty. Negotiating past him rather than fighting him is the dramatically correct path. He may become an ally in later sessions if the party treats him with respect."
+    },
+    {
+      "id": "berry-underbough",
+      "name": "Berry Underbough",
+      "status": "alive",
+      "affiliations": [
+        "ashfall-watch"
+      ],
+      "arc_tags": [
+        "prologue",
+        "hollow-road"
+      ],
+      "party_knowledge": "unknown",
+      "description": "Young halfling enlisted militia member. Eager, nervous, compassionate, and trying very hard to prove himself useful. Desperately wants to accompany the party when they begin investigating the road. Commander Valeforge refuses — not because Berry is incompetent, but because Durgan knows Berry personally and does not want to send another frightened young militia member to die.",
+      "personality": "Repeatedly volunteers for scouting duty despite clear fear. His aunt owns a farm farther down the Hollow Road; he has not heard from her since the fires began. The tension between his youthful idealism, his fear, and Durgan's protective refusal is a small human story running beneath the investigation.",
+      "role_in_story": "Berry's presence creates emotional texture at the blockade. His unseen aunt is a potential personal stake the party may discover. His repeated volunteering shows what it looks like to be brave and terrified simultaneously.",
+      "gm_notes": "Do not make Berry's aunt a tragedy unless it serves the arc. The possibility that she is alive and in danger — or that she is fine and simply unreachable — is more useful than a confirmed death. Berry can become a recurring minor character if the party takes an interest."
+    },
+    {
+      "id": "mara-vell",
+      "name": "Mara Vell",
+      "status": "alive",
+      "affiliations": [],
+      "arc_tags": [
+        "prologue",
+        "hollow-road"
+      ],
+      "party_knowledge": "unknown",
+      "description": "Middle-aged wagon leader running the relief convoy. Practical, exhausted, and trying desperately to hold things together. Gruff but kind — she does not perform gratitude, she solves problems.",
+      "personality": "Efficient, no-nonsense, reads people quickly. She has watched institutional overreach before and does not trust anyone in armor without cause. If the party proves useful and trustworthy, she becomes a frank and reliable source of ground-level intelligence.",
+      "role_in_story": "The party's primary contact for the convoy mission. Her frustration with the blockade is visible and justified — she knows something is wrong with the supply situation, even if she cannot name why.",
+      "gm_notes": "Mara is the human face of the Prologue's scarcity theme. She is trying to help people in a system that is actively working against her without her knowledge. Run her as competent and tired, not desperate."
+    },
+    {
+      "id": "edrin-holt",
+      "name": "Edrin Holt",
+      "status": "alive",
+      "affiliations": [
+        "ashfall-watch"
+      ],
+      "arc_tags": [
+        "prologue",
+        "hollow-road"
+      ],
+      "party_knowledge": "unknown",
+      "description": "Young militia volunteer at the Ashfall Watch blockade. Clearly inexperienced. Trying very hard not to appear afraid. He believes in the Watch because he has not yet had reason not to.",
+      "personality": "Stiff, formal, overly correct. Hides uncertainty behind procedure. If given an off-ramp — a face-saving reason to back down — he will take it. If pressured or embarrassed publicly, he hardens.",
+      "role_in_story": "Under Commander Valeforge's command. Not a decision-maker — a texture character showing what recruitment into the militia looks like during a crisis. Willing to defer to Durgan rather than dig in on his own authority.",
+      "gm_notes": "Edrin is not an obstacle to defeat. He is a symptom. He may become a thread later if the party wants to trace who issued the false threat report upward through the chain."
+    },
+    {
+      "id": "sella",
+      "name": "Sella",
+      "status": "alive",
+      "affiliations": [],
+      "arc_tags": [
+        "prologue",
+        "hollow-road"
+      ],
+      "party_knowledge": "unknown",
+      "description": "A refugee traveling with the convoy — a young woman separated from her parents during one of the attacks. She travels with her younger brother Brin. Calm in a way that comes from exhaustion rather than peace.",
+      "personality": "Quiet, watchful. She does not ask for things. She observes who offers help before anyone has to.",
+      "role_in_story": "Sella and Brin are the human cost made visible. They are not quest-givers or information sources. They are the reason the supply situation matters. They become emotionally important very quickly.",
+      "gm_notes": "The burned farm on the Hollow Road — the one the party investigates — may be where Sella and Brin came from. The party may not realize this unless they ask directly. The moment of recognition, if it happens, should land without announcement."
+    },
+    {
+      "id": "brin",
+      "name": "Brin",
+      "status": "alive",
+      "affiliations": [],
+      "arc_tags": [
+        "prologue",
+        "hollow-road"
+      ],
+      "party_knowledge": "unknown",
+      "description": "Sella's younger brother. Nine years old. Doesn't talk much. Holds his sister's hand and watches the road.",
+      "gm_notes": "Don't over-use Brin. His silence is the point."
+    },
+    {
+      "id": "old-thom",
+      "name": "Old Thom",
+      "status": "alive",
+      "affiliations": [],
+      "arc_tags": [
+        "prologue",
+        "hollow-road"
+      ],
+      "party_knowledge": "unknown",
+      "description": "An elderly farmer transporting salvaged tools. Refuses to abandon them. Says: 'If the land survives, so do we.' Has been working this road for decades. Not a reliable narrator — he conflates old grudges with present events — but his observations about how recently the shortages changed in character are accurate and useful.",
+      "personality": "Garrulous, fond of tangents, more insightful than he appears. He mentions that the shortages 'started feeling different' about three months ago without being able to say why. He noticed. He just does not know what to do with the observation.",
+      "role_in_story": "A useful environmental witness. Not a named plot source — more a texture character who can confirm the timeline without seeming like exposition.",
+      "gm_notes": "Thom's offhand comments about the timing of the supply changes are accurate: that is approximately when the Concord's interference with trade routes began escalating in this region."
+    },
+    {
+      "id": "the-landowner",
+      "name": "The Landowner",
+      "status": "alive",
+      "affiliations": [],
+      "arc_tags": [
+        "prologue",
+        "hollow-road"
+      ],
+      "party_knowledge": "unknown",
+      "description": "An unnamed landowner whose estate sits adjacent to Dunmore. He has been quietly purchasing supply contracts and rerouting goods from smaller villages to Dunmore's wealthier districts at inflated prices. He is not a Concord operative — he is simply an opportunist who recognized that scarcity is profitable.",
+      "personality": "Smooth, defensive, practiced at appearing reasonable. He has a legitimate-sounding answer for everything. He is not technically breaking any laws — the contracts are real, the redirections are legal. What he is doing is indecent, not illegal.",
+      "role_in_story": "The proximate villain of the Hollow Road arc. The fake claw marks on the barn were arranged to justify the blockade and protect his operation from scrutiny. But he did not arrange the Watch deployment — that came from elsewhere. He only exploited it.",
+      "real_cause": "The party's investigation reveals a layered truth: bandits created some instability, fear spread naturally, the Landowner used the cover to redirect supplies — and above all of it, someone fed Edrin Holt a false threat report to justify the Watch blockade. The Landowner is the answer to 'who benefits.' He is not the answer to 'who is behind this.'",
+      "gm_notes": "The Landowner should feel like a satisfying answer right up until the party realizes he did not arrange the Watch blockade. He is guilty of something — just not everything. That gap is the thread that points toward the Concord, even if the party does not follow it yet."
+    },
+    {
       "id": "morrow",
       "name": "Morrow",
       "title": "Prototype Cavehopper Alpha",
@@ -1224,6 +1349,150 @@
             {
               "label": "The party is recruited. The Prologue ends.",
               "type": "revelation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hollow-road",
+      "title": "The Hollow Road",
+      "act": "prologue",
+      "arc_tags": [
+        "prologue"
+      ],
+      "location": "hollowgate-to-dunmore",
+      "href": "hollow_road_arc.html",
+      "pages": [
+        {
+          "label": "Arc Reference",
+          "href": "hollow_road_arc.html"
+        }
+      ],
+      "summary": "The party escorts a relief convoy from Hollowgate toward Dunmore along the Hollow Road. The road is blocked by Ashfall Watch militia citing creature attacks. Investigation reveals the blockade is a symptom: fear, opportunism, and coordinated supply redirection are strangling the region. Beneath it all, a false threat report was fed to the Watch commander — the first visible thread of the Concord's interference in the region.",
+      "what_actually_happened": "A local landowner has been purchasing supply contracts and rerouting goods to Dunmore's wealthier districts at profit. Bandits and genuine creature sightings created the initial instability. The Concord fed a false threat report to Commander Durgan Valeforge justifying the blockade — not to help the landowner, but as part of a broader supply disruption strategy. The landowner simply exploited the situation.",
+      "what_party_knows": "The road is blocked. People are desperate. Creature attacks may have occurred. Something is wrong with the supply situation, but the full picture is unclear.",
+      "key_npcs": [
+        "durgan-valeforge",
+        "berry-underbough",
+        "mara-vell",
+        "edrin-holt",
+        "sella",
+        "brin",
+        "old-thom",
+        "the-landowner"
+      ],
+      "key_locations": [
+        "hollowgate",
+        "dunmore"
+      ],
+      "outcomes": [
+        "Party navigates or bypasses the Ashfall Watch blockade",
+        "Investigation reveals layered causes — banditry, fear, opportunism, coordinated interference",
+        "The landowner is exposed as the proximate cause",
+        "The false threat report points beyond the landowner — a thread not yet followed",
+        "Party arrives in Dunmore with the convoy, battered and more aware that something larger is happening"
+      ],
+      "hooks_forward": "The false threat report and coordinated supply disruption point toward organized interference the party cannot yet name. The Dunmore arc follows immediately.",
+      "beats": [
+        {
+          "id": "hr-convoy",
+          "label": "The Relief Convoy",
+          "type": "scene",
+          "steps": [
+            {
+              "label": "Party joins Mara Vell's convoy departing Hollowgate",
+              "type": "scene",
+              "npc_refs": ["mara-vell"]
+            },
+            {
+              "label": "Refugees, salvaged goods, exhausted drivers — the cost of the crisis is visible",
+              "type": "scene",
+              "npc_refs": ["sella", "brin", "old-thom"]
+            },
+            {
+              "label": "First signs of road deterioration — abandoned farmsteads, overturned carts",
+              "type": "discovery"
+            }
+          ]
+        },
+        {
+          "id": "hr-blockade",
+          "label": "The Ashfall Watch Blockade",
+          "type": "scene",
+          "steps": [
+            {
+              "label": "Commander Durgan Valeforge — rational, exhausted, genuinely believes the road is death",
+              "type": "dialogue",
+              "npc_refs": ["durgan-valeforge"]
+            },
+            {
+              "label": "Berry Underbough volunteers repeatedly to scout — Durgan refuses each time",
+              "type": "dialogue",
+              "npc_refs": ["berry-underbough", "durgan-valeforge"]
+            },
+            {
+              "label": "The blockade can be negotiated, investigated around, or bypassed — not forced",
+              "type": "scene"
+            }
+          ]
+        },
+        {
+          "id": "hr-road",
+          "label": "The Hollow Road",
+          "type": "scene",
+          "steps": [
+            {
+              "label": "Burned farmstead — fake claw marks on the barn",
+              "type": "discovery"
+            },
+            {
+              "label": "Investigation: the marks are staged. Something else happened here.",
+              "type": "revelation"
+            },
+            {
+              "label": "Survivor accounts conflict — fear has become its own truth",
+              "type": "discovery"
+            }
+          ]
+        },
+        {
+          "id": "hr-investigation",
+          "label": "The Real Cause",
+          "type": "revelation",
+          "steps": [
+            {
+              "label": "Layer 1: Genuine banditry and isolated creature sightings created initial instability",
+              "type": "discovery"
+            },
+            {
+              "label": "Layer 2: Fear spread and manufactured itself — communities stopped checking facts",
+              "type": "revelation"
+            },
+            {
+              "label": "Layer 3: The landowner has been rerouting supply contracts. The chaos was profitable.",
+              "type": "revelation",
+              "npc_refs": ["the-landowner"]
+            },
+            {
+              "label": "The thread: the Watch blockade was justified by a false threat report. Someone fed it to Durgan. The landowner didn't arrange that.",
+              "type": "revelation",
+              "npc_refs": ["durgan-valeforge", "the-landowner"]
+            }
+          ]
+        },
+        {
+          "id": "hr-dunmore",
+          "label": "Arrival in Dunmore",
+          "type": "scene",
+          "steps": [
+            {
+              "label": "The convoy arrives — smaller than it left, having lost goods and time",
+              "type": "scene"
+            },
+            {
+              "label": "Dunmore is louder and angrier than expected. The Prologue is accelerating.",
+              "type": "discovery"
             }
           ]
         }

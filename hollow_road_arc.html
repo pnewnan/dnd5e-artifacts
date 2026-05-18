@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hollow Road — Arc Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9; --parchment-shadow: #b89d5e; --ink: #1a1108; --dim: #2e200e; --faded: #5a4a2e;
+    --blood: #7a1f1f; --blood-dark: #4a0f0f; --purple: #5b2d8e; --gold: #8a6a10; --teal: #1e5f5f; --slate: #2e3a4a;
+    --act-color: #7a1f1f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #080604; background-image: radial-gradient(ellipse at 15% 0%, #1a0a04 0%, transparent 50%), radial-gradient(ellipse at 85% 100%, #120810 0%, transparent 50%); font-family: 'IM Fell English', serif; color: var(--ink); padding: 1.5rem 1rem 3rem; min-height: 100vh; }
+  .page { max-width: 1000px; margin: 0 auto; background-color: #f2e8c9; border: 2px solid var(--parchment-shadow); box-shadow: 0 0 0 6px #080604, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.85); overflow: hidden; }
+  .act-band { background: var(--act-color); height: 6px; }
+  .page-inner { padding: 2.5rem 2.5rem 3rem; }
+
+  /* ── TITLE ── */
+  .page-title { text-align: center; border-bottom: 2px solid var(--parchment-shadow); padding-bottom: 1.1rem; margin-bottom: 1.6rem; }
+  .gm-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; color: var(--act-color); text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+  .level-badge { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.2rem 0.65rem; border: 1px solid var(--act-color); color: var(--act-color); margin-bottom: 0.4rem; background: rgba(122,31,31,0.05); }
+  .page-title h1 { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1.3rem, 3.5vw, 2.1rem); color: var(--ink); line-height: 1.2; }
+  .page-title .subtitle { font-style: italic; color: var(--faded); font-size: 0.9rem; margin-top: 0.35rem; }
+  .back-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faded); text-decoration: none; margin-top: 0.5rem; transition: color 0.2s; }
+  .back-link:hover { color: var(--act-color); }
+
+  /* ── QUICK REF ── */
+  .quick-ref { display: flex; gap: 0; flex-wrap: wrap; margin-bottom: 1.4rem; border: 1px solid var(--parchment-shadow); background: rgba(26,17,8,0.04); }
+  .qr-item { flex: 1; min-width: 130px; padding: 0.5rem 0.85rem; border-right: 1px solid rgba(180,140,60,0.25); }
+  .qr-item:last-child { border-right: none; }
+  .qr-label { font-family: 'Cinzel', serif; font-size: 0.52rem; letter-spacing: 0.2em; color: var(--faded); text-transform: uppercase; display: block; margin-bottom: 0.15rem; }
+  .qr-value { font-size: 0.84rem; color: var(--ink); line-height: 1.4; }
+
+  /* ── SECTION HEAD ── */
+  .section-head { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--act-color); margin: 1.8rem 0 0.6rem; border-bottom: 1px solid rgba(122,31,31,0.2); padding-bottom: 0.25rem; }
+
+  /* ── PROSE ── */
+  p { font-size: 0.88rem; line-height: 1.7; color: var(--dim); margin-bottom: 0.5rem; }
+  p:last-child { margin-bottom: 0; }
+  ul.prose-list { margin: 0.25rem 0 0.5rem 1.1rem; font-size: 0.86rem; color: var(--dim); line-height: 1.7; }
+  ul.prose-list li { margin-bottom: 0.15rem; }
+
+  /* ── NARRATIVE BLOCK ── */
+  .narrative-block { background: rgba(122,31,31,0.04); border: 1px solid rgba(122,31,31,0.15); border-left: 5px solid var(--act-color); padding: 1.1rem 1.3rem; margin-bottom: 1.2rem; }
+
+  /* ── ANNOTATION ── */
+  .annotation { font-style: italic; font-size: 0.83rem; color: var(--blood); padding: 0.3rem 0.75rem; border-left: 2px solid var(--blood); margin: 0.6rem 0; background: rgba(122,31,31,0.04); line-height: 1.6; }
+
+  /* ── ACCORDION ── */
+  .accordion { margin-bottom: 0.55rem; }
+  .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; cursor: pointer; user-select: none; border: 1px solid var(--parchment-shadow); border-left: 4px solid var(--parchment-shadow); background: rgba(180,140,60,0.07); transition: background 0.18s; gap: 1rem; }
+  .accordion-header:hover { background: rgba(180,140,60,0.14); }
+  .accordion-header.open  { background: rgba(180,140,60,0.14); }
+  .accordion-header.c-blood  { border-left-color: var(--blood); }
+  .accordion-header.c-teal   { border-left-color: var(--teal); }
+  .accordion-header.c-gold   { border-left-color: var(--gold); }
+  .accordion-header.c-slate  { border-left-color: var(--slate); }
+  .accordion-header.c-purple { border-left-color: var(--purple); }
+  .accordion-title { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); line-height: 1.3; }
+  .accordion-subtitle { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.78rem; color: var(--faded); margin-top: 0.1rem; }
+  .accordion-arrow { font-size: 0.7rem; color: var(--faded); transition: transform 0.25s; flex-shrink: 0; }
+  .accordion-header.open .accordion-arrow { transform: rotate(180deg); }
+  .accordion-body { display: none; padding: 1rem 1.2rem; border: 1px solid var(--parchment-shadow); border-top: none; background: rgba(255,252,240,0.5); }
+  .accordion-body.open { display: block; }
+
+  /* ── STORY TIMELINE ── */
+  .story-timeline { display: flex; flex-direction: column; gap: 0; margin: 0.5rem 0; }
+  .story-beat { display: flex; gap: 0; }
+  .story-beat-mark { display: flex; flex-direction: column; align-items: center; width: 2rem; flex-shrink: 0; }
+  .story-beat-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--act-color); flex-shrink: 0; margin-top: 0.35rem; }
+  .story-beat-line { flex: 1; width: 2px; background: rgba(122,31,31,0.2); margin-top: 2px; }
+  .story-beat:last-child .story-beat-line { display: none; }
+  .story-beat-content { padding: 0 0 1.2rem 0.5rem; flex: 1; }
+  .story-beat-label { font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--act-color); margin-bottom: 0.3rem; }
+  .story-beat-type { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--faded); margin-bottom: 0.1rem; }
+
+  /* ── NPC CARDS ── */
+  .npc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.6rem; }
+  .npc-card-small { border: 1px solid var(--parchment-shadow); border-top: 3px solid var(--act-color); padding: 0.7rem 0.9rem; background: rgba(255,252,240,0.4); }
+  .npc-card-small.c-slate  { border-top-color: var(--slate); }
+  .npc-card-small.c-gold   { border-top-color: var(--gold); }
+  .npc-card-small.c-teal   { border-top-color: var(--teal); }
+  .npc-card-small.c-purple { border-top-color: var(--purple); }
+  .npc-name-sm { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.08rem; }
+  .npc-role-sm { font-family: 'Cinzel', serif; font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faded); font-style: italic; margin-bottom: 0.45rem; }
+  .npc-desc-sm { font-size: 0.83rem; color: var(--dim); line-height: 1.6; }
+  .npc-note-sm { font-style: italic; font-size: 0.78rem; color: var(--blood); margin-top: 0.35rem; border-left: 2px solid rgba(122,31,31,0.3); padding-left: 0.5rem; }
+
+  /* ── LAYER BOXES (Real Cause) ── */
+  .layer-stack { display: flex; flex-direction: column; gap: 0.55rem; margin: 0.6rem 0; }
+  .layer-box { padding: 0.7rem 1rem; border: 1px solid; border-left: 4px solid; }
+  .layer-box.l1 { background: rgba(46,58,74,0.07); border-color: rgba(46,58,74,0.2); border-left-color: var(--slate); }
+  .layer-box.l2 { background: rgba(138,106,16,0.06); border-color: rgba(138,106,16,0.2); border-left-color: var(--gold); }
+  .layer-box.l3 { background: rgba(122,31,31,0.06); border-color: rgba(122,31,31,0.2); border-left-color: var(--blood); }
+  .layer-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 0.25rem; }
+  .layer-box.l1 .layer-label { color: var(--slate); }
+  .layer-box.l2 .layer-label { color: var(--gold); }
+  .layer-box.l3 .layer-label { color: var(--blood); }
+
+  /* ── INVESTIGATION BOX ── */
+  .investigation-box { background: rgba(46,58,74,0.06); border: 1px solid rgba(46,58,74,0.2); border-left: 4px solid var(--slate); padding: 0.9rem 1.1rem; margin: 0.6rem 0; }
+  .inv-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.35rem; display: block; }
+  .inv-reveal { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--slate); display: block; margin-bottom: 0.35rem; }
+
+  /* ── EMOTIONAL GOAL ── */
+  .emotional-goal { background: rgba(26,17,8,0.06); border: 1px solid var(--parchment-shadow); border-top: 3px solid var(--act-color); padding: 1.1rem 1.3rem; margin-top: 1.4rem; }
+  .eg-label { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--act-color); margin-bottom: 0.5rem; display: block; }
+  .eg-statement { font-family: 'Cinzel Decorative', cursive; font-size: clamp(0.82rem, 2vw, 1rem); color: var(--ink); line-height: 1.45; margin-bottom: 0.5rem; font-style: italic; }
+  .dunnshire-mirror { background: rgba(91,45,142,0.06); border: 1px solid rgba(91,45,142,0.2); border-left: 3px solid var(--purple); padding: 0.6rem 0.85rem; margin-top: 0.9rem; font-size: 0.83rem; color: var(--dim); font-style: italic; line-height: 1.6; }
+  .dunnshire-mirror-label { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple); display: block; margin-bottom: 0.2rem; }
+
+  /* ── DIVIDER ── */
+  .divider { display: flex; align-items: center; gap: 0.6rem; margin: 1.4rem 0; color: var(--parchment-shadow); }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
+  .divider span { font-size: 0.85rem; }
+
+  /* ── ARC NAV ── */
+  .arc-nav { display: flex; gap: 0.8rem; margin-top: 1.6rem; border-top: 1px solid rgba(180,140,60,0.3); padding-top: 1rem; }
+  .arc-nav a { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faded); text-decoration: none; padding: 0.3rem 0.7rem; border: 1px solid rgba(180,140,60,0.35); transition: all 0.15s; }
+  .arc-nav a:hover { color: var(--act-color); border-color: rgba(122,31,31,0.4); }
+  .arc-nav .spacer { flex: 1; }
+
+  @media (max-width: 680px) {
+    .page-inner { padding: 1.5rem 1.2rem 2rem; }
+    .npc-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
+<div id="aelNavBtn" style="position:fixed;bottom:1.2rem;right:1.2rem;z-index:1001;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(26,18,9,0.9);border:1px solid #b89d5e;padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);cursor:pointer;user-select:none;" onclick="aelNavOpen()">&#9776; All Pages</div>
+<script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
+
+<div class="page">
+<div class="act-band"></div>
+<div class="page-inner">
+
+  <div class="page-title">
+    <span class="gm-label">GM Reference · The Prologue</span>
+    <span class="level-badge">Levels 1–2</span>
+    <h1>The Hollow Road</h1>
+    <p class="subtitle">Hollowgate to Dunmore · One of the foundational arcs of the campaign</p>
+    <a class="back-link" href="prologue_arc.html">← The Prologue</a>
+  </div>
+
+  <!-- QUICK REF -->
+  <div class="quick-ref">
+    <div class="qr-item">
+      <span class="qr-label">Starting Location</span>
+      <span class="qr-value">Hollowgate</span>
+    </div>
+    <div class="qr-item">
+      <span class="qr-label">Destination</span>
+      <span class="qr-value">Dunmore</span>
+    </div>
+    <div class="qr-item">
+      <span class="qr-label">Tone</span>
+      <span class="qr-value">Grounded · Cold · Muddy · Uncertain · Human</span>
+    </div>
+    <div class="qr-item">
+      <span class="qr-label">Threat</span>
+      <span class="qr-value">Banditry · Fear · Coordinated hoarding — not monsters</span>
+    </div>
+    <div class="qr-item">
+      <span class="qr-label">Emotional Core</span>
+      <span class="qr-value">The players should help people. That hope matters.</span>
+    </div>
+  </div>
+
+  <!-- ARC OVERVIEW -->
+  <div class="narrative-block">
+    <p>The Hollow Road Arc serves as one of the foundational story arcs of the campaign. Its primary purpose is to humanize the world, emotionally attach the players to ordinary people, establish political instability, introduce fear and paranoia, and slowly reveal that the kingdom is beginning to fracture under pressure.</p>
+    <p style="margin-top:0.5rem;">The players are not yet dealing with ancient evils, world-ending threats, or legendary artifacts. They are helping ordinary people survive during a period of growing instability. This emotional grounding is critical — because later, wars begin, cities are erased, kingdoms collapse, and buried horrors emerge. The players must first understand what is worth protecting.</p>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- NARRATIVE THEMES -->
+  <p class="section-head">Narrative Themes</p>
+
+  <div class="accordion">
+    <div class="accordion-header c-blood" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Fear Spreads Faster Than Truth</div>
+        <div class="accordion-subtitle">Nobody fully understands what is happening. The uncertainty itself becomes dangerous.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>Nobody fully understands what is happening along the Hollow Road. Rumors spread constantly: Elkenquayan raiders, bandit attacks, strange creatures, foreign saboteurs, missing patrols, burned farms. Most people only know that something is wrong.</p>
+      <p>The uncertainty itself becomes dangerous. As information fails, communities fill the gap with fear. Each rumor generates three more. Each missing patrol spawns a dozen theories. The players should encounter this information collapse directly — and begin to understand that the real threat is not what is happening but what people believe is happening.</p>
+      <div class="annotation">"The road isn't this dangerous because of what is on it. It is this dangerous because everyone believes it is impassable."</div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-header c-gold" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Ordinary People Suffer First</div>
+        <div class="accordion-subtitle">Farmers. Refugees. Exhausted militia. Children. Struggling settlements.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>This arc focuses heavily on farmers, refugees, exhausted militia, healers, children, and struggling settlements. The stakes are personal. The players should repeatedly feel: <em>"These are real people."</em> Not abstractions. Not NPCs serving a quest function. People with specific faces, specific fears, specific names.</p>
+      <p>Linger on them. Give them enough time that the players remember them. These connections are the emotional architecture that makes every later revelation land with its full weight.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-header c-teal" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Small Acts Matter</div>
+        <div class="accordion-subtitle">Distribute food. Heal civilians. Rescue survivors. Hope is important in this arc.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>The players distribute food, heal civilians, rescue survivors, protect roads, and restore stability. These victories matter emotionally. Hope is important in this arc — not as a naive emotion but as a deliberate choice. The players should feel, genuinely, that they improved things. That their presence made a difference.</p>
+      <div class="annotation">"Because later: hope becomes fragile. Give them something to lose first."</div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <div class="accordion-header c-slate" onclick="toggleAcc(this)">
+      <div>
+        <div class="accordion-title">Civilization Is Fragile</div>
+        <div class="accordion-subtitle">Roads. Supply lines. Communication. Confidence. Once fear spreads, communities isolate.</div>
+      </div>
+      <span class="accordion-arrow">▲</span>
+    </div>
+    <div class="accordion-body">
+      <p>The Hollow Road Arc quietly establishes one of the campaign's core truths: civilization survives on trust and stability. Roads. Supply lines. Communication. Confidence. Once fear spreads, communities isolate, rumors become reality, violence escalates, and ordinary people begin turning against each other.</p>
+      <p>The players are watching a system fail from the inside. Not a dramatic collapse — a slow dissolution. The kind that happens when people stop trusting the roads, stop sending wagons, stop believing help is coming. By the time anyone declares a crisis, it has already been a crisis for months.</p>
+    </div>
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- STORY STRUCTURE -->
+  <p class="section-head">Story Structure</p>
+
+  <div class="story-timeline">
+
+    <div class="story-beat">
+      <div class="story-beat-mark"><div class="story-beat-dot"></div><div class="story-beat-line"></div></div>
+      <div class="story-beat-content">
+        <div class="story-beat-type">Opening Scene</div>
+        <div class="story-beat-label">Hollowgate — The Situation</div>
+        <p>News arrives that farms along the road to Dunmore have been attacked, burned, or abandoned. Ashfall Watch has failed to respond. Travelers report patrols vanishing, supply wagons disappearing, violence on the roads. Refugees arrive carrying burns, injuries, missing family members, and terrifying stories.</p>
+        <p style="margin-top:0.5rem;">The town atmosphere becomes increasingly tense: militia patrols increase, supplies are rationed, people begin hoarding food, and public arguments break out. The players become involved because <strong>they choose to help</strong> — not because they are asked, though they may be. The distinction matters.</p>
+      </div>
+    </div>
+
+    <div class="story-beat">
+      <div class="story-beat-mark"><div class="story-beat-dot"></div><div class="story-beat-line"></div></div>
+      <div class="story-beat-content">
+        <div class="story-beat-type">Transition</div>
+        <div class="story-beat-label">The Relief Convoy</div>
+        <p>A small emergency relief convoy is assembled: grain, medicine, tools, healing supplies, and civilian volunteers. The players join. The caravan should feel vulnerable, underprepared, and emotionally real — not heroic. People are scared. The NPCs here are the emotional heart of the arc.</p>
+      </div>
+    </div>
+
+    <div class="story-beat">
+      <div class="story-beat-mark"><div class="story-beat-dot"></div><div class="story-beat-line"></div></div>
+      <div class="story-beat-content">
+        <div class="story-beat-type">Atmosphere</div>
+        <div class="story-beat-label">The Hollow Road — Signs of Collapse</div>
+        <p>The journey toward Dunmore should focus heavily on atmosphere, conversations, emotional immersion, and growing instability. The players encounter burned farmland, abandoned wagons, smoke on distant hills, frightened travelers, militia checkpoints, and increasing signs of collapse. The world should feel strained. Not destroyed. Yet.</p>
+      </div>
+    </div>
+
+    <div class="story-beat">
+      <div class="story-beat-mark"><div class="story-beat-dot"></div><div class="story-beat-line"></div></div>
+      <div class="story-beat-content">
+        <div class="story-beat-type">Obstacle</div>
+        <div class="story-beat-label">Ashfall Watch Blockade</div>
+        <p>Approximately twenty miles from Ashfall Watch, the convoy encounters a military blockade. The acting commander refuses to allow the convoy to continue. He is not irrational — he is exhausted and afraid. Every time he sends people toward the keep, they disappear. Or come back missing half their number. Sometimes it's bandits. Sometimes survivors swear it was Elkenquayan scouts. Sometimes nobody sees anything at all.</p>
+        <div class="annotation">"Until I know what's on that road, I'm not sending civilians and the last of our supplies to vanish with them."</div>
+        <p style="margin-top:0.5rem;">The players should understand: his logic makes sense. The roads are becoming impossible to trust. The blockade is not a villain encounter. It is a frightened man making a defensible decision. The correct response is not to overpower him — it is to solve the problem he is describing.</p>
+      </div>
+    </div>
+
+    <div class="story-beat">
+      <div class="story-beat-mark"><div class="story-beat-dot"></div><div class="story-beat-line"></div></div>
+      <div class="story-beat-content">
+        <div class="story-beat-type">Major Victory</div>
+        <div class="story-beat-label">Helping the Burned Farm</div>
+        <p>Immediately beyond the blockade lies one of the burned farmsteads. The players can distribute food, heal burns, stabilize wounded civilians, and materially improve conditions. This is one of the most important emotional moments in the early campaign.</p>
+        <p style="margin-top:0.5rem;">Key images: children finally eating. Exhausted responders collapsing after receiving aid. Militia finally receiving medical treatment. Burned farmers crying with relief. Do not rush these moments. Let them breathe. The players should walk away feeling <em>"we actually helped people."</em></p>
+      </div>
+    </div>
+
+    <div class="story-beat">
+      <div class="story-beat-mark"><div class="story-beat-dot"></div><div class="story-beat-line"></div></div>
+      <div class="story-beat-content">
+        <div class="story-beat-type">Investigation</div>
+        <div class="story-beat-label">The Destroyed Wagon — What Doesn't Add Up</div>
+        <p>After stabilizing the immediate situation, the players can investigate why patrols vanish and wagons disappear. One key discovery: a destroyed militia wagon farther down the road. Bodies are missing. Some appear to have been dragged into nearby woods. Claw marks carved into wood, wagon panels, and trees suggest creature attacks.</p>
+        <p style="margin-top:0.5rem;">On a high Investigation check: the claw marks are wrong. Too even, too symmetrical, too consistent, cut at identical depth and angle. Real animals slip, vary pressure, tear unpredictably. These marks look intentionally manufactured. Closer inspection may reveal faint metal scoring, repeated strike patterns, and signs the marks were created deliberately.</p>
+        <div class="annotation">"Someone is staging violence."</div>
+      </div>
+    </div>
+
+    <div class="story-beat">
+      <div class="story-beat-mark"><div class="story-beat-dot"></div><div class="story-beat-line"></div></div>
+      <div class="story-beat-content">
+        <div class="story-beat-type">Resolution</div>
+        <div class="story-beat-label">Dunmore — The Road Reopened</div>
+        <p>The players stabilize the route, expose or negotiate with the hoarder, rescue survivors, secure the roads, and restore enough confidence for the convoy to continue. The convoy finally reaches Dunmore. This moment should feel emotionally meaningful — not triumphant, not celebratory, but meaningful. People survive because of the players.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- KEY NPCS -->
+  <p class="section-head">Key NPCs</p>
+
+  <div class="npc-grid">
+
+    <div class="npc-card-small c-slate">
+      <div class="npc-name-sm">Commander Durgan Valeforge</div>
+      <div class="npc-role-sm">Ashfall Watch · Dwarven Militia Commander</div>
+      <div class="npc-desc-sm">Rational, disciplined, practical, and visibly exhausted. He refuses to let the convoy through because he genuinely believes sending civilians forward without securing the road would be murder. He respects competence and calm leadership. He has not slept properly in days and remembers every patrol he has lost.</div>
+      <div class="npc-note-sm">He is willing to listen. One of the first examples in the campaign of a fundamentally good person trapped inside a collapsing situation. He was fed a false threat report — he does not know it is false.</div>
+    </div>
+
+    <div class="npc-card-small c-teal">
+      <div class="npc-name-sm">Berry Underbough</div>
+      <div class="npc-role-sm">Ashfall Watch · Young Halfling Militiaman</div>
+      <div class="npc-desc-sm">Eager, nervous, compassionate. Desperately wants to accompany the party when they begin investigating the road. Commander Valeforge refuses every time — not because Berry is incompetent, but because Durgan does not want to send another frightened young soldier to die. Berry's aunt owns a farm farther down the road. He has not heard from her since the fires began.</div>
+      <div class="npc-note-sm">The tension between his idealism, his fear, and Durgan's protective refusal is a small human story running beneath the investigation.</div>
+    </div>
+
+    <div class="npc-card-small">
+      <div class="npc-name-sm">Mara Vell</div>
+      <div class="npc-role-sm">Wagon Leader · The One Holding It Together</div>
+      <div class="npc-desc-sm">Middle-aged. Practical. Exhausted. Gruff but kind. She is doing what she always does: holding things together with sheer willpower and the refusal to admit she doesn't know if it will work.</div>
+      <div class="npc-note-sm">Play her as someone who has stopped expecting help and learned to be grateful when it arrives anyway.</div>
+    </div>
+
+    <div class="npc-card-small c-slate">
+      <div class="npc-name-sm">Edrin Holt</div>
+      <div class="npc-role-sm">Militia Volunteer · Nineteen Years Old</div>
+      <div class="npc-desc-sm">Clearly inexperienced. Trying very hard not to appear afraid. He joined up because the situation seemed like it required it. He is now less certain that was wise, and too committed to admit it.</div>
+      <div class="npc-note-sm">Let him grow. If the players protect him, he becomes better. If they ignore him, he becomes a statistic.</div>
+    </div>
+
+    <div class="npc-card-small c-gold">
+      <div class="npc-name-sm">Sella &amp; Brin</div>
+      <div class="npc-role-sm">Refugee Siblings · Separated From Their Parents</div>
+      <div class="npc-desc-sm">They became emotionally important very quickly. Sella is older and trying to hold it together for Brin's sake. Brin is old enough to know something is very wrong and young enough to still believe it will be okay.</div>
+      <div class="npc-note-sm">Do not resolve their story cheaply. Their parents may or may not be found. That ambiguity is the point.</div>
+    </div>
+
+    <div class="npc-card-small c-teal">
+      <div class="npc-name-sm">Old Thom</div>
+      <div class="npc-role-sm">Elderly Farmer · Transporting Salvaged Tools</div>
+      <div class="npc-desc-sm">Refuses to abandon his tools. "If the land survives, so do we." He is not delusional — he understands the situation perfectly. He has simply decided that civilization requires someone to act as though it will continue.</div>
+      <div class="npc-note-sm">He is the thematic soul of the arc in two sentences. Let him say them.</div>
+    </div>
+
+    <div class="npc-card-small c-purple" style="grid-column: 1 / -1;">
+      <div class="npc-name-sm">The Landowner <span style="font-weight:400;font-family:'IM Fell English',serif;font-style:italic;font-size:0.78rem;"> — unnamed, or give a name at the table</span></div>
+      <div class="npc-role-sm">The Hoarder · The Human Cause of the Crisis</div>
+      <div class="npc-desc-sm">He is frightened, defensive, pragmatic, and morally compromised. He genuinely believes he is protecting his workers, his people, and his future. He hired men to stage creature attacks using forged metal claw implements, spread rumors, and make the roads appear infested — because he believes the kingdom is collapsing and whoever controls grain controls survival.<br><br>"You think the kingdom's coming to save us?" Or: "If the roads die, somebody has to make sure there's still food left."</div>
+      <div class="npc-note-sm">The players should not fully approve. But they should understand him. That distinction is critical to the campaign's themes. He is not a villain. He is a frightened man who made a terrible, calculated, defensible-in-his-own-mind decision.</div>
+    </div>
+
+  </div>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- THE REAL CAUSE -->
+  <p class="section-head">The Real Cause — Three Overlapping Layers</p>
+  <p style="margin-bottom:0.8rem;">The road instability is not caused by a single enemy. Several overlapping problems are occurring simultaneously — which is exactly why it has been so difficult to diagnose.</p>
+
+  <div class="layer-stack">
+    <div class="layer-box l1">
+      <span class="layer-label">Layer One — Ordinary Banditry</span>
+      <p>Ordinary criminals are taking advantage of collapsing security. They attack isolated travelers, damaged caravans, and unprotected refugees. They are opportunistic, not organized. They are making a bad situation worse, but they are not the cause of it.</p>
+    </div>
+    <div class="layer-box l2">
+      <span class="layer-label">Layer Two — Fear and Rumor</span>
+      <p>Panicked survivors increasingly blame Elkenquay, foreign infiltrators, or monsters. Rumors spread faster than truth. The public narrative becomes increasingly unstable. This layer is dangerous not because it involves actual enemies, but because it creates a perception of threat that feels more real than the threat itself — and begins justifying military escalation.</p>
+    </div>
+    <div class="layer-box l3">
+      <span class="layer-label">Layer Three — Coordinated Hoarding and Staged Attacks</span>
+      <p>The landowner has secretly begun intercepting and redirecting supplies. He hired men to stage attacks, frighten caravans, and spread rumors — manufacturing the appearance of creature infestation using forged metal claw implements. The tools may eventually be discovered hidden on his property. He is not purely greedy. He is terrified. That distinction matters enormously.</p>
+    </div>
+  </div>
+
+  <div class="investigation-box" style="margin-top:0.8rem;">
+    <span class="inv-label">Investigation Detail — The Claw Marks</span>
+    <span class="inv-reveal">High Investigation DC: These marks were manufactured.</span>
+    <p>Too even. Too symmetrical. Too consistent. Cut at identical depth and angle. Real animals slip, vary pressure, tear unpredictably. These marks show faint metal scoring, repeated strike patterns, and signs of deliberate fabrication. The players should feel the realization land quietly — not as a dramatic reveal, but as a slow, unsettling understanding. Someone went to a lot of effort to make people afraid of the wrong thing.</p>
+  </div>
+
+  <!-- EMOTIONAL GOAL -->
+  <div class="emotional-goal">
+    <span class="eg-label">Emotional Goal — End of Arc</span>
+    <div class="eg-statement">"We helped people. That hope matters."</div>
+    <p>By the end of the Hollow Road Arc, the players should feel useful, compassionate, protective, emotionally attached to the region, and increasingly worried about the kingdom. Most importantly: they should feel that they helped people. That hope is real. That the world is worth protecting.</p>
+    <p style="margin-top:0.6rem;">That hope matters. Because later it becomes much harder to hold onto. Build it here, carefully, so that when the campaign asks the players what they're fighting for — they already know.</p>
+    <div class="dunnshire-mirror">
+      <span class="dunnshire-mirror-label">Narrative Thread — Dunmore &amp; Dunnshire</span>
+      Dunmore becomes familiar, human, and emotionally important through this arc. Much later — when the players discover the erased ruins of Dunnshire — they will subconsciously understand what was lost there too. The names are not an accident. The parallel is intentional. Do not underline it. Let it arrive on its own.
+    </div>
+  </div>
+
+  <div class="arc-nav">
+    <a href="prologue_arc.html">← The Prologue</a>
+    <span class="spacer"></span>
+    <a href="campaign_overview.html">Campaign Overview →</a>
+  </div>
+
+</div>
+</div><!-- .page -->
+
+<script>
+function toggleAcc(header) {
+  var body = header.nextElementSibling;
+  var isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>
