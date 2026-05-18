@@ -828,8 +828,8 @@
       </div>
     </div>
     <div class="view-toggle">
-      <button class="view-btn active" id="btnRef" onclick="switchView('ref')">&#9632; Reference</button>
-      <button class="view-btn" id="btnFlow" onclick="switchView('flow')">&#9654; Story Flow</button>
+      <button class="view-btn" id="btnRef" onclick="switchView('ref')">&#9632; Reference</button>
+      <button class="view-btn active" id="btnFlow" onclick="switchView('flow')">&#9654; Story Flow</button>
     </div>
   </div>
 </header>
@@ -839,7 +839,7 @@
   <button onclick="clearArcFocus()">✕ Clear focus</button>
 </div>
 
-<div id="refView">
+<div id="refView" class="hidden">
   <main class="main">
     <div class="results-count" id="resultsCount">Loading…</div>
     <div class="card-grid" id="cardGrid">
@@ -847,7 +847,7 @@
     </div>
   </main>
 </div>
-<div id="flowView">
+<div id="flowView" class="visible">
   <div id="flowBanner"></div>
   <div class="flow-scroll">
     <div class="flow-inner" id="flowInner"></div>
@@ -863,7 +863,7 @@ var activeAct  = 'all';
 var expandedId = null;
 var focusedArcId = null;
 var focusedRelatedIds = new Set();
-var currentView = 'ref';
+var currentView = 'flow';
 var openBeats = {};
 
 fetch(BASE + 'campaign.json')
@@ -1248,7 +1248,8 @@ function renderFlowView() {
     grouped[primary].push(arc);
   });
 
-  var visibleActs = actOrder.filter(function(a) { return grouped[a].length > 0; });
+  /* Always show all acts — empty acts get a placeholder */
+  var visibleActs = actOrder;
 
   /* Populate the thematic banner */
   var banner = document.getElementById('flowBanner');
@@ -1270,7 +1271,9 @@ function renderFlowView() {
   }
 
   var inner = document.getElementById('flowInner');
-  if (!visibleActs.length) {
+  /* Check if any act has actual arcs (for the all-empty case) */
+  var totalArcs = visibleActs.reduce(function(n, a) { return n + grouped[a].length; }, 0);
+  if (totalArcs === 0 && activeAct !== 'all') {
     inner.innerHTML = '<div style="color:rgba(180,140,60,0.4);font-family:\'Cinzel\',serif;font-size:0.78rem;padding:2rem;font-style:italic;">No arcs match the current filters.</div>';
     return;
   }
@@ -1280,7 +1283,18 @@ function renderFlowView() {
     var meta = actMeta[actId];
     var arcs = grouped[actId];
 
-    var arcsHtml = arcs.map(function(arc, arcIdx) { return renderArcColumn(arc, arcIdx === arcs.length - 1); }).join('');
+    var arcsHtml;
+    if (arcs.length) {
+      arcsHtml = arcs.map(function(arc, arcIdx) { return renderArcColumn(arc, arcIdx === arcs.length - 1); }).join('');
+    } else {
+      arcsHtml = '<div class="flow-arc">'
+        + '<div class="flow-arc-header" style="cursor:default;">'
+          + '<span style="opacity:0.65;">Arcs in development</span>'
+          + '<a class="flow-arc-ref" href="' + meta.href + '" onclick="event.stopPropagation()">Arc Reference →</a>'
+        + '</div>'
+        + '<div class="flow-arc-empty">Constituent arcs will appear here as the act is developed.</div>'
+        + '</div>';
+    }
 
     var connector = !isLast
       ? '<div class="flow-act-connector"><div class="flow-act-connector-arrow">&#9654;</div></div>'
