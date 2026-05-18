@@ -528,6 +528,16 @@
   .flow-act-sub { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.65; margin-top: 0.15rem; }
   .flow-act-ref { font-family: 'Cinzel', serif; font-size: 0.46rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(242,232,200,0.45); text-decoration: none; display: block; margin-top: 0.2rem; transition: color 0.15s; }
   .flow-act-ref:hover { color: rgba(242,232,200,0.9); }
+  .flow-act-desc {
+    font-family: 'IM Fell English', serif;
+    font-size: 0.76rem;
+    font-style: italic;
+    color: rgba(90,74,46,0.8);
+    line-height: 1.55;
+    padding: 0.65rem 1rem 0.55rem;
+    background: rgba(242,232,200,0.45);
+    border-bottom: 1px solid rgba(180,140,60,0.18);
+  }
 
   .flow-scroll {
     overflow-x: auto;
@@ -1233,9 +1243,12 @@ function renderFlowView() {
 
   var actOrder = ['prologue', 'act-1', 'act-2'];
   var actMeta = {
-    'prologue': { label: 'The Prologue', sub: 'The Kingdom Fractures · Levels 1–3', color: 'var(--blood)',  href: BASE + 'prologue_arc.html' },
-    'act-1':    { label: 'Act I',        sub: 'The Hidden Machinery · Levels 4–5',  color: 'var(--teal)',   href: BASE + 'act1_arc.html' },
-    'act-2':    { label: 'Act II',       sub: 'Blackglass · Levels 6–8',            color: 'var(--purple)', href: BASE + 'act2_arc.html' }
+    'prologue': { label: 'The Prologue', sub: 'The Kingdom Fractures · Levels 1–3', color: 'var(--blood)',  href: BASE + 'prologue_arc.html',
+      desc: 'The world before the party understands what they\'ve walked into. Political tension, engineered scarcity, and encounters that feel like local problems — each one a thread in a pattern they won\'t recognize until much later.' },
+    'act-1':    { label: 'Act I',        sub: 'The Hidden Machinery · Levels 4–5',  color: 'var(--teal)',   href: BASE + 'act1_arc.html',
+      desc: 'The party operates as Concord assets, believing they are helping hold a fractured kingdom together. Every mission they run — delivering artifacts, escorting cargo, clearing threats — serves an agenda they haven\'t been told.' },
+    'act-2':    { label: 'Act II',       sub: 'Blackglass · Levels 6–8',            color: 'var(--purple)', href: BASE + 'act2_arc.html',
+      desc: 'The buried atrocity surfaces. The war the party helped build becomes material reality. Viktor Voss. The Resonance Engine. The moment understanding arrives — and what it costs.' }
   };
 
   var grouped = { 'prologue': [], 'act-1': [], 'act-2': [] };
@@ -1308,6 +1321,7 @@ function renderFlowView() {
         + '</div>'
         + '<a class="flow-act-ref" href="' + meta.href + '" onclick="event.stopPropagation()">Arc Reference →</a>'
       + '</div>'
+      + (meta.desc ? '<div class="flow-act-desc">' + esc(meta.desc) + '</div>' : '')
       + '<div class="flow-act-arcs">' + arcsHtml + '</div>'
       + '</div>'
       + connector;
