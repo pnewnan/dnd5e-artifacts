@@ -532,10 +532,10 @@
     font-family: 'IM Fell English', serif;
     font-size: 0.76rem;
     font-style: italic;
-    color: rgba(90,74,46,0.8);
+    color: #2e200e;
     line-height: 1.55;
     padding: 0.65rem 1rem 0.55rem;
-    background: rgba(242,232,200,0.45);
+    background: rgba(242,232,200,0.72);
     border-bottom: 1px solid rgba(180,140,60,0.18);
   }
 
@@ -614,7 +614,7 @@
   .flow-act-group {
     display: flex;
     flex-direction: column;
-    min-width: 320px;
+    min-width: 292px;
     flex-shrink: 0;
     border: 1px solid rgba(180,140,60,0.18);
     background: rgba(0,0,0,0.2);
@@ -653,12 +653,12 @@
     font-family: 'IM Fell English', serif;
     font-size: 0.73rem;
     font-style: italic;
-    color: rgba(90,74,46,0.85);
+    color: #2e200e;
     line-height: 1.5;
     padding: 0.55rem 0.75rem 0.45rem;
     border: 1px solid rgba(180,140,60,0.2);
     border-top: none;
-    background: rgba(242,232,200,0.55);
+    background: rgba(242,232,200,0.78);
     border-bottom: 1px solid rgba(180,140,60,0.15);
   }
 
@@ -1261,8 +1261,8 @@ function renderFlowView() {
     grouped[primary].push(arc);
   });
 
-  /* Always show all acts — empty acts get a placeholder */
-  var visibleActs = actOrder;
+  /* Show all acts when unfiltered; collapse to selected act when filtered */
+  var visibleActs = (activeAct === 'all') ? actOrder : [activeAct];
 
   /* Populate the thematic banner */
   var banner = document.getElementById('flowBanner');
@@ -1284,12 +1284,6 @@ function renderFlowView() {
   }
 
   var inner = document.getElementById('flowInner');
-  /* Check if any act has actual arcs (for the all-empty case) */
-  var totalArcs = visibleActs.reduce(function(n, a) { return n + grouped[a].length; }, 0);
-  if (totalArcs === 0 && activeAct !== 'all') {
-    inner.innerHTML = '<div style="color:rgba(180,140,60,0.4);font-family:\'Cinzel\',serif;font-size:0.78rem;padding:2rem;font-style:italic;">No arcs match the current filters.</div>';
-    return;
-  }
 
   inner.innerHTML = visibleActs.map(function(actId, idx) {
     var isLast = idx === visibleActs.length - 1;
