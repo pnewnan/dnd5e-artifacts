@@ -531,10 +531,10 @@
       "early_career": "Served within the Royal Army's military research apparatus. Initially praised for compounds that accelerated wound sealing, reduced shock, and improved soldier survivability. Repeatedly pushed ethical limits \u2014 viewed live experimentation as necessary. Several officers complained; most were ignored because the kingdom was preparing for escalating border conflict and Voss kept producing innovations.",
       "blackglass_incident": "Roughly 12\u201315 years ago, during a minor orc incursion along the southern marches, Voss deployed an unauthorized experimental atmospheric dispersal compound during active engagement. Initially appeared successful \u2014 the gas devastated the advancing orc forces. Then the wind shifted. Soldiers, civilians attempting evacuation, entire defensive positions \u2014 all poisoned. Witnesses described lungs liquefying, blood from mouths and eyes, soldiers clawing their throats. When confronted, Voss expressed no remorse. He explained calmly that battlefield conditions had provided valuable atmospheric data, emotional panic had produced useful observational variables, and collateral casualties had been statistically probable from the beginning. He had known. He deployed anyway. Because he needed a live environment.",
       "gm_notes": "The deepest horror in the campaign is that Voss is not a monster in any conventional sense. He is rational. Measured. He might once have been one of the greatest physicians in the kingdom. When the party meets him, he should feel wrong in a way that's hard to articulate \u2014 not because he rages or threatens, but because he is genuinely curious about them. He will observe the party mid-combat. He will take notes. His tragedy is that somewhere in the clinical exterior, the brilliant physician he might have been is still trying to understand something beautiful about life \u2014 and is doing it by destroying it.",
-      "href": "blackglass/viktor_voss_reference.html",
+      "href": "act2/blackglass/viktor_voss_reference.html",
       "pages": [
-        { "label": "Background Reference", "href": "blackglass/viktor_voss_reference.html" },
-        { "label": "Encounter", "href": "blackglass/blackglass_encounter.html" }
+        { "label": "Background Reference", "href": "act2/blackglass/viktor_voss_reference.html" },
+        { "label": "Encounter", "href": "act2/blackglass/blackglass_encounter.html" }
       ]
     },
     {
@@ -1221,11 +1221,11 @@
         "prologue"
       ],
       "location": "hollowgate-to-dunmore",
-      "href": "hollow_road_arc.html",
+      "href": "prologue/hollow_road_arc.html",
       "pages": [
         {
           "label": "Arc Reference",
-          "href": "hollow_road_arc.html"
+          "href": "prologue/hollow_road_arc.html"
         }
       ],
       "summary": "The party escorts a relief convoy from Hollowgate toward Dunmore along the Hollow Road. The road is blocked by Ashfall Watch militia citing creature attacks. Investigation reveals the blockade is a symptom: fear, opportunism, and coordinated supply redirection are strangling the region. Beneath it all, a false threat report was fed to the Watch commander — the first visible thread of the Concord's interference in the region.",
@@ -1362,11 +1362,11 @@
       "title": "Dunmore",
       "act": "prologue",
       "location": "dunmore",
-      "href": "hollowgate/dunmore/dunmore_arc.html",
+      "href": "prologue/dunmore/dunmore_arc.html",
       "pages": [
         {
           "label": "Arc Reference",
-          "href": "hollowgate/dunmore/dunmore_arc.html"
+          "href": "prologue/dunmore/dunmore_arc.html"
         }
       ],
       "summary": "The party travels to Dunmore with the carnival. The city is in uproar \u2014 inflammatory pamphlets everywhere, anti-Elkenquay sentiment at a boiling point. The party investigates who is printing and distributing the material. Before the investigation resolves, a monstrosity breaks loose \u2014 overpowered, multi-phase. The situation spirals. The Concord extracts the party. Cael Darro makes his pitch. The Prologue ends with the party recruited.",
@@ -1691,11 +1691,11 @@
           ]
         }
       ],
-      "href": "blackglass/blackglass_encounter.html",
+      "href": "act2/blackglass/blackglass_encounter.html",
       "pages": [
         {
           "label": "Encounter Reference",
-          "href": "blackglass/blackglass_encounter.html"
+          "href": "act2/blackglass/blackglass_encounter.html"
         }
       ]
     }
