@@ -1214,147 +1214,6 @@
       ]
     },
     {
-      "id": "dunmore-arc",
-      "title": "Dunmore",
-      "act": "prologue",
-      "location": "dunmore",
-      "href": "hollowgate/dunmore/dunmore_arc.html",
-      "pages": [
-        {
-          "label": "Arc Reference",
-          "href": "hollowgate/dunmore/dunmore_arc.html"
-        }
-      ],
-      "summary": "The party travels to Dunmore with the carnival. The city is in uproar \u2014 inflammatory pamphlets everywhere, anti-Elkenquay sentiment at a boiling point. The party investigates who is printing and distributing the material. Before the investigation resolves, a monstrosity breaks loose \u2014 overpowered, multi-phase. The situation spirals. The Concord extracts the party. Cael Darro makes his pitch. The Prologue ends with the party recruited.",
-      "what_actually_happened": "The propaganda is a Concord operation. The monstrosity is another machinist creation. The Concord's rescue is deliberate \u2014 timed to create obligation and trust. The party has been manipulated into position.",
-      "what_party_knows": "Someone is manufacturing the anti-Elkenquay sentiment. A monstrosity attacked the city. The Concord saved them and appears to be the only organized group that knows what is actually happening.",
-      "key_npcs": [
-        "cael-darro",
-        "chaelynn",
-        "mirelle-voss"
-      ],
-      "key_artifacts": [
-        "the-gem"
-      ],
-      "key_locations": [
-        "dunmore"
-      ],
-      "outcomes": [
-        "Party investigates propaganda printing operation",
-        "Second gem artifact recovered from the Dunmore monstrosity",
-        "Concord extracts the party from the aftermath",
-        "Cael Darro reveals the Concord and makes the recruitment pitch",
-        "Party recruited \u2014 Prologue ends"
-      ],
-      "hooks_forward": "Party now works for the Concord. Dreknar will be introduced. The Book's journey south begins. Act 1 opens.",
-      "beats": [
-        {
-          "id": "dm-arrival",
-          "label": "Arrival in Dunmore",
-          "type": "scene",
-          "steps": [
-            {
-              "label": "City in uproar \u2014 propaganda pamphlets everywhere",
-              "type": "discovery"
-            },
-            {
-              "label": "Anti-Elkenquay sentiment at a boiling point",
-              "type": "scene"
-            },
-            {
-              "label": "The energy of the crowd feels like it is looking for a reason",
-              "type": "scene"
-            }
-          ]
-        },
-        {
-          "id": "dm-investigation",
-          "label": "The Investigation",
-          "type": "scene",
-          "steps": [
-            {
-              "label": "Who is printing and distributing the pamphlets?",
-              "type": "scene"
-            },
-            {
-              "label": "Trace the printing operation \u2014 someone is manufacturing this",
-              "type": "discovery"
-            },
-            {
-              "label": "Party realizes the tension is about to cause real violence",
-              "type": "revelation"
-            },
-            {
-              "label": "Another artifact with a gem is found",
-              "type": "discovery",
-              "artifact_refs": [
-                "the-gem"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "dm-monstrosity",
-          "label": "The Monstrosity",
-          "type": "encounter",
-          "steps": [
-            {
-              "label": "Monstrosity breaks loose \u2014 overpowered, multi-phase boss",
-              "type": "encounter"
-            },
-            {
-              "label": "Situation spirals beyond the party's control",
-              "type": "revelation"
-            },
-            {
-              "label": "Gem artifact recovered from the creature",
-              "type": "discovery",
-              "artifact_refs": [
-                "the-gem"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "dm-recruitment",
-          "label": "The Concord Reveals Itself",
-          "type": "revelation",
-          "steps": [
-            {
-              "label": "The Concord extracts the party from the aftermath",
-              "type": "scene"
-            },
-            {
-              "label": "Cael Darro appears \u2014 familiar face, already knows too much",
-              "type": "dialogue",
-              "npc_refs": [
-                "cael-darro"
-              ]
-            },
-            {
-              "label": "Chaelynn's implicit endorsement \u2014 the party has reason to trust",
-              "type": "dialogue",
-              "npc_refs": [
-                "chaelynn",
-                "cael-darro"
-              ]
-            },
-            {
-              "label": "The pitch: we're patriots trying to hold things together",
-              "type": "dialogue",
-              "npc_refs": [
-                "cael-darro"
-              ]
-            },
-            {
-              "label": "The party is recruited. The Prologue ends.",
-              "type": "revelation"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "hollow-road",
       "title": "The Hollow Road",
       "act": "prologue",
@@ -1493,6 +1352,147 @@
             {
               "label": "Dunmore is louder and angrier than expected. The Prologue is accelerating.",
               "type": "discovery"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dunmore-arc",
+      "title": "Dunmore",
+      "act": "prologue",
+      "location": "dunmore",
+      "href": "hollowgate/dunmore/dunmore_arc.html",
+      "pages": [
+        {
+          "label": "Arc Reference",
+          "href": "hollowgate/dunmore/dunmore_arc.html"
+        }
+      ],
+      "summary": "The party travels to Dunmore with the carnival. The city is in uproar \u2014 inflammatory pamphlets everywhere, anti-Elkenquay sentiment at a boiling point. The party investigates who is printing and distributing the material. Before the investigation resolves, a monstrosity breaks loose \u2014 overpowered, multi-phase. The situation spirals. The Concord extracts the party. Cael Darro makes his pitch. The Prologue ends with the party recruited.",
+      "what_actually_happened": "The propaganda is a Concord operation. The monstrosity is another machinist creation. The Concord's rescue is deliberate \u2014 timed to create obligation and trust. The party has been manipulated into position.",
+      "what_party_knows": "Someone is manufacturing the anti-Elkenquay sentiment. A monstrosity attacked the city. The Concord saved them and appears to be the only organized group that knows what is actually happening.",
+      "key_npcs": [
+        "cael-darro",
+        "chaelynn",
+        "mirelle-voss"
+      ],
+      "key_artifacts": [
+        "the-gem"
+      ],
+      "key_locations": [
+        "dunmore"
+      ],
+      "outcomes": [
+        "Party investigates propaganda printing operation",
+        "Second gem artifact recovered from the Dunmore monstrosity",
+        "Concord extracts the party from the aftermath",
+        "Cael Darro reveals the Concord and makes the recruitment pitch",
+        "Party recruited \u2014 Prologue ends"
+      ],
+      "hooks_forward": "Party now works for the Concord. Dreknar will be introduced. The Book's journey south begins. Act 1 opens.",
+      "beats": [
+        {
+          "id": "dm-arrival",
+          "label": "Arrival in Dunmore",
+          "type": "scene",
+          "steps": [
+            {
+              "label": "City in uproar \u2014 propaganda pamphlets everywhere",
+              "type": "discovery"
+            },
+            {
+              "label": "Anti-Elkenquay sentiment at a boiling point",
+              "type": "scene"
+            },
+            {
+              "label": "The energy of the crowd feels like it is looking for a reason",
+              "type": "scene"
+            }
+          ]
+        },
+        {
+          "id": "dm-investigation",
+          "label": "The Investigation",
+          "type": "scene",
+          "steps": [
+            {
+              "label": "Who is printing and distributing the pamphlets?",
+              "type": "scene"
+            },
+            {
+              "label": "Trace the printing operation \u2014 someone is manufacturing this",
+              "type": "discovery"
+            },
+            {
+              "label": "Party realizes the tension is about to cause real violence",
+              "type": "revelation"
+            },
+            {
+              "label": "Another artifact with a gem is found",
+              "type": "discovery",
+              "artifact_refs": [
+                "the-gem"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dm-monstrosity",
+          "label": "The Monstrosity",
+          "type": "encounter",
+          "steps": [
+            {
+              "label": "Monstrosity breaks loose \u2014 overpowered, multi-phase boss",
+              "type": "encounter"
+            },
+            {
+              "label": "Situation spirals beyond the party's control",
+              "type": "revelation"
+            },
+            {
+              "label": "Gem artifact recovered from the creature",
+              "type": "discovery",
+              "artifact_refs": [
+                "the-gem"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dm-recruitment",
+          "label": "The Concord Reveals Itself",
+          "type": "revelation",
+          "steps": [
+            {
+              "label": "The Concord extracts the party from the aftermath",
+              "type": "scene"
+            },
+            {
+              "label": "Cael Darro appears \u2014 familiar face, already knows too much",
+              "type": "dialogue",
+              "npc_refs": [
+                "cael-darro"
+              ]
+            },
+            {
+              "label": "Chaelynn's implicit endorsement \u2014 the party has reason to trust",
+              "type": "dialogue",
+              "npc_refs": [
+                "chaelynn",
+                "cael-darro"
+              ]
+            },
+            {
+              "label": "The pitch: we're patriots trying to hold things together",
+              "type": "dialogue",
+              "npc_refs": [
+                "cael-darro"
+              ]
+            },
+            {
+              "label": "The party is recruited. The Prologue ends.",
+              "type": "revelation"
             }
           ]
         }

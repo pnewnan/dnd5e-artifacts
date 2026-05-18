@@ -143,6 +143,18 @@
       ]
     },
     {
+      "title": "Dunmore",
+      "group": "The Prologue",
+      "entries": [
+        {
+          "name": "Dunmore — Arc Reference",
+          "desc": "Propaganda · Anti-Elkenquay unrest · The monstrosity · Concord recruitment · Prologue ends",
+          "href": "hollowgate/dunmore/dunmore_arc.html",
+          "type": "gm"
+        }
+      ]
+    },
+    {
       "title": "The Blackglass Laboratory",
       "group": "Act 2",
       "entries": [
