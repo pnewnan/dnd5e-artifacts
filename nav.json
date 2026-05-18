@@ -101,18 +101,6 @@
       ]
     },
     {
-      "title": "The Hollow Road",
-      "group": "The Prologue",
-      "entries": [
-        {
-          "name": "The Hollow Road — Arc Reference",
-          "desc": "Hollowgate to Dunmore · Levels 1–2 · Relief convoy · Durgan Valeforge · The fake claw marks · The hoarder · Dunmore",
-          "href": "hollow_road_arc.html",
-          "type": "gm"
-        }
-      ]
-    },
-    {
       "title": "Moonlit Mirage Carnival",
       "group": "The Prologue",
       "entries": [
@@ -139,6 +127,18 @@
           "desc": "Carnival flyer art",
           "href": "hollowgate/moonlit_mirage/BigTopFlyer.png",
           "type": "asset"
+        }
+      ]
+    },
+    {
+      "title": "The Hollow Road",
+      "group": "The Prologue",
+      "entries": [
+        {
+          "name": "The Hollow Road — Arc Reference",
+          "desc": "Hollowgate to Dunmore · Levels 1–2 · Relief convoy · Durgan Valeforge · The fake claw marks · The hoarder · Dunmore",
+          "href": "hollow_road_arc.html",
+          "type": "gm"
         }
       ]
     },
