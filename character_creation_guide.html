@@ -8,16 +8,15 @@
 <style>
   :root {
     --parchment: #f2e8c9; --parchment-shadow: #b89d5e; --ink: #1a1108; --dim: #2e200e; --faded: #5a4a2e;
-    --blood: #7a1f1f; --blood-dark: #4a0f0f; --purple: #5b2d8e; --gold: #8a6a10; --teal: #1e5f5f; --slate: #2e3a4a;
+    --blood: #7a1f1f; --purple: #5b2d8e; --gold: #8a6a10; --teal: #1e5f5f; --slate: #2e3a4a;
     --act-color: #3a5a2e;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #060d04; background-image: radial-gradient(ellipse at 20% 0%, #0a180a 0%, transparent 55%), radial-gradient(ellipse at 80% 100%, #0a0e18 0%, transparent 55%); font-family: 'IM Fell English', serif; color: var(--ink); padding: 1.5rem 1rem 3rem; min-height: 100vh; }
-  .page { max-width: 1000px; margin: 0 auto; background-color: #f2e8c9; border: 2px solid var(--parchment-shadow); box-shadow: 0 0 0 6px #060d04, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8); overflow: hidden; position: relative; }
+  .page { max-width: 1000px; margin: 0 auto; background-color: #f2e8c9; border: 2px solid var(--parchment-shadow); box-shadow: 0 0 0 6px #060d04, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8); overflow: hidden; }
   .act-band { background: var(--act-color); height: 6px; }
   .page-inner { padding: 2.5rem 2.5rem 3rem; }
 
-  /* ── TITLE ── */
   .page-title { text-align: center; border-bottom: 2px solid var(--parchment-shadow); padding-bottom: 1.1rem; margin-bottom: 1.6rem; }
   .gm-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; color: var(--act-color); text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
   .page-title h1 { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1.3rem, 3.5vw, 2.1rem); color: var(--ink); line-height: 1.2; }
@@ -25,38 +24,57 @@
   .back-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faded); text-decoration: none; margin-top: 0.5rem; transition: color 0.2s; }
   .back-link:hover { color: var(--act-color); }
 
-  /* ── SECTION HEAD ── */
+  /* ── TOOLBAR ── */
+  .toolbar { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.6rem; justify-content: center; }
+  .btn { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.5rem 1.1rem; border: 1px solid; cursor: pointer; transition: background 0.18s, color 0.18s; background: transparent; }
+  .btn-primary { border-color: var(--act-color); color: var(--act-color); }
+  .btn-primary:hover { background: var(--act-color); color: #f2e8c9; }
+  .btn-secondary { border-color: var(--parchment-shadow); color: var(--faded); }
+  .btn-secondary:hover { background: rgba(180,140,60,0.15); color: var(--ink); }
+  .btn-print { border-color: var(--slate); color: var(--slate); }
+  .btn-print:hover { background: var(--slate); color: #f2e8c9; }
+
   .section-head { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--act-color); margin: 2rem 0 0.6rem; border-bottom: 1px solid rgba(58,90,46,0.2); padding-bottom: 0.25rem; }
 
-  /* ── PROSE ── */
   p { font-size: 0.88rem; line-height: 1.7; color: var(--dim); margin-bottom: 0.5rem; }
   p:last-child { margin-bottom: 0; }
   ul.prose-list { margin: 0.3rem 0 0.5rem 1.1rem; font-size: 0.86rem; color: var(--dim); line-height: 1.7; }
   ul.prose-list li { margin-bottom: 0.2rem; }
 
-  /* ── CALLOUT / PHILOSOPHY ── */
   .philosophy-block { background: rgba(58,90,46,0.05); border: 1px solid rgba(58,90,46,0.2); border-left: 5px solid var(--act-color); padding: 1.2rem 1.4rem; margin-bottom: 1.4rem; text-align: center; }
   .philosophy-block .big-question { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--ink); line-height: 1.4; }
   .philosophy-block p { font-style: italic; color: var(--faded); font-size: 0.86rem; margin-top: 0.5rem; }
 
-  /* ── NUMBERED QUESTION CARD ── */
+  /* ── QUESTION CARD ── */
   .question-card { border: 1px solid var(--parchment-shadow); background: rgba(255,252,240,0.5); margin-bottom: 1.2rem; overflow: hidden; }
-  .question-card-header { display: flex; align-items: stretch; gap: 0; }
+  .question-card-header { display: flex; align-items: stretch; }
   .question-num { background: var(--act-color); color: #fff; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; min-width: 3rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .question-title-block { padding: 0.75rem 1rem; flex: 1; }
   .question-title { font-family: 'Cinzel', serif; font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); }
   .question-subtitle { font-style: italic; font-size: 0.8rem; color: var(--faded); margin-top: 0.15rem; }
+  .question-reroll { display: flex; align-items: center; padding: 0 0.9rem; cursor: pointer; color: var(--faded); font-size: 1.1rem; transition: color 0.18s; flex-shrink: 0; border-left: 1px solid rgba(180,140,60,0.2); }
+  .question-reroll:hover { color: var(--act-color); }
+  .question-reroll title { display: none; }
   .question-body { padding: 1rem 1.2rem; border-top: 1px solid rgba(180,140,60,0.25); }
+
+  /* ── GENERATED ANSWER ── */
+  .generated-answer { display: none; background: rgba(58,90,46,0.07); border: 1px solid rgba(58,90,46,0.25); border-left: 4px solid var(--act-color); padding: 0.85rem 1.1rem; margin-bottom: 0.9rem; }
+  .generated-answer.visible { display: block; }
+  .gen-label { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--act-color); margin-bottom: 0.2rem; }
+  .gen-title { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; color: var(--ink); margin-bottom: 0.2rem; }
+  .gen-body { font-size: 0.86rem; color: var(--dim); line-height: 1.65; }
+  .gen-extra { font-size: 0.8rem; font-style: italic; color: var(--faded); margin-top: 0.3rem; border-top: 1px solid rgba(180,140,60,0.2); padding-top: 0.3rem; }
 
   /* ── ACCORDION ── */
   .accordion { margin-bottom: 0.55rem; }
   .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 1rem; cursor: pointer; user-select: none; border: 1px solid var(--parchment-shadow); border-left: 4px solid var(--parchment-shadow); background: rgba(180,140,60,0.07); transition: background 0.18s; gap: 1rem; }
   .accordion-header:hover, .accordion-header.open { background: rgba(180,140,60,0.14); }
-  .accordion-header.c-green { border-left-color: var(--act-color); }
-  .accordion-header.c-gold  { border-left-color: var(--gold); }
-  .accordion-header.c-slate { border-left-color: var(--slate); }
+  .accordion-header.c-green  { border-left-color: var(--act-color); }
+  .accordion-header.c-gold   { border-left-color: var(--gold); }
+  .accordion-header.c-slate  { border-left-color: var(--slate); }
   .accordion-header.c-purple { border-left-color: var(--purple); }
-  .accordion-header.c-teal  { border-left-color: var(--teal); }
+  .accordion-header.c-teal   { border-left-color: var(--teal); }
+  .accordion-header.c-blood  { border-left-color: var(--blood); }
   .accordion-title { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); line-height: 1.3; }
   .accordion-subtitle { font-family: 'IM Fell English', serif; font-style: italic; font-size: 0.76rem; color: var(--faded); margin-top: 0.1rem; }
   .accordion-arrow { font-size: 0.7rem; color: var(--faded); transition: transform 0.25s; flex-shrink: 0; }
@@ -73,426 +91,333 @@
   .class-card.c-teal   { border-top-color: var(--teal); }
   .class-card.c-slate  { border-top-color: var(--slate); }
   .class-card.c-purple { border-top-color: var(--purple); }
+  .class-card.c-green  { border-top-color: var(--act-color); }
   .class-name { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.07rem; }
-  .class-fantasy { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faded); margin-bottom: 0.4rem; }
+  .class-fantasy-label { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faded); margin-bottom: 0.4rem; }
   .class-desc { font-size: 0.83rem; color: var(--dim); line-height: 1.6; }
   .class-tag { font-size: 0.78rem; font-style: italic; color: var(--act-color); border-left: 2px solid rgba(58,90,46,0.3); padding-left: 0.5rem; margin-top: 0.4rem; }
 
-  /* ── FORMULA BLOCK ── */
+  /* ── FORMULA ── */
   .formula-block { background: rgba(26,17,8,0.05); border: 1px solid var(--parchment-shadow); padding: 1.1rem 1.3rem; margin: 0.8rem 0; }
   .formula-text { font-family: 'Cinzel', serif; font-size: 0.82rem; color: var(--ink); line-height: 1.6; letter-spacing: 0.03em; }
   .formula-text em { font-family: 'IM Fell English', serif; font-style: italic; color: var(--act-color); }
+  .formula-generated { display: none; background: rgba(58,90,46,0.07); border: 1px solid rgba(58,90,46,0.3); padding: 1.1rem 1.3rem; margin: 0.8rem 0; }
+  .formula-generated.visible { display: block; }
+  .formula-generated .formula-text { color: var(--ink); }
 
-  /* ── EXAMPLE LIST ── */
-  .example-list { margin: 0.5rem 0; }
   .example-item { font-style: italic; font-size: 0.85rem; color: var(--dim); line-height: 1.65; border-left: 2px solid rgba(58,90,46,0.3); padding-left: 0.7rem; margin-bottom: 0.45rem; }
-
-  /* ── ANNOTATION ── */
   .annotation { font-style: italic; font-size: 0.83rem; color: var(--blood); padding: 0.3rem 0.75rem; border-left: 2px solid var(--blood); margin: 0.6rem 0; background: rgba(122,31,31,0.04); line-height: 1.6; }
 
-  /* ── DIVIDER ── */
   .divider { display: flex; align-items: center; gap: 0.6rem; margin: 1.6rem 0; color: var(--parchment-shadow); }
   .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
   .divider span { font-size: 0.85rem; }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border: none; max-width: 100%; }
+    .act-band { display: none; }
+    .toolbar, .question-reroll, .back-link, .btn { display: none !important; }
+    .accordion-body { display: block !important; }
+    .accordion-arrow { display: none; }
+    .generated-answer { display: block !important; border: 1px solid #ccc; }
+    .formula-generated { display: block !important; }
+    .question-card { break-inside: avoid; }
+  }
 </style>
 </head>
 <body>
 <div class="page">
   <div class="act-band"></div>
-  <div class="page-inner">
-
-    <!-- TITLE -->
-    <div class="page-title">
-      <span class="gm-label">Player Reference · Aelenthor Campaign</span>
-      <h1>Building Your Character</h1>
-      <div class="subtitle">A practical guide to creating someone worth playing</div>
-      <a href="index.html" class="back-link">← Back to Campaign Home</a>
-    </div>
-
-    <!-- PHILOSOPHY -->
-    <div class="philosophy-block">
-      <div class="big-question">Who would be fun to play and pretend to be?</div>
-      <p>The rules, class, race, and stats matter — but the most important thing is creating someone you'll enjoy acting as, making choices for, and watching grow over time.</p>
-    </div>
-
-    <p>A good character does not need a huge backstory, but they should have a few clear answers. The questions below are meant to help you find them.</p>
-
-    <div class="divider"><span>✦</span></div>
-
-    <!-- Q1: CONFRONTATION -->
-    <div class="question-card">
-      <div class="question-card-header">
-        <div class="question-num">1</div>
-        <div class="question-title-block">
-          <div class="question-title">How does this character deal with confrontation?</div>
-          <div class="question-subtitle">D&amp;D is usually about heroes, danger, conflict, and hard choices</div>
-        </div>
-      </div>
-      <div class="question-body">
-        <p>Sooner or later, your character is probably going to end up in a fight. Think about what that looks like for them.</p>
-
-        <div class="accordion">
-          <div class="accordion-header c-green" onclick="toggle(this)">
-            <div>
-              <div class="accordion-title">Questions to ask yourself</div>
-              <div class="accordion-subtitle">Instinct, motivation, and method</div>
-            </div>
-            <span class="accordion-arrow">▼</span>
-          </div>
-          <div class="accordion-body">
-            <ul class="prose-list">
-              <li>Do they try to avoid violence?</li>
-              <li>Do they talk first and fight only when forced?</li>
-              <li>Do they jump into danger immediately?</li>
-              <li>What makes them angry enough to fight?</li>
-              <li>Are they protecting innocent people?</li>
-              <li>Do they have a strong sense of justice?</li>
-              <li>Are they defending friends, family, faith, country, nature, freedom, or themselves?</li>
-              <li>When they fight, how do they fight?</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="accordion">
-          <div class="accordion-header c-gold" onclick="toggle(this)">
-            <div>
-              <div class="accordion-title">Example archetypes</div>
-              <div class="accordion-subtitle">Types of fighters, and why they fight</div>
-            </div>
-            <span class="accordion-arrow">▼</span>
-          </div>
-          <div class="accordion-body">
-            <div class="example-list">
-              <div class="example-item">A protector who steps in when others are threatened.</div>
-              <div class="example-item">A survivor who avoids fights unless cornered.</div>
-              <div class="example-item">A glory-seeker who wants to prove themselves.</div>
-              <div class="example-item">A religious warrior who believes evil must be confronted.</div>
-              <div class="example-item">A clever trickster who would rather manipulate or distract enemies than face them directly.</div>
-              <div class="example-item">A reluctant hero who does not want trouble, but cannot ignore suffering.</div>
-            </div>
-            <div class="annotation">The goal is not to create someone perfect. The goal is to create someone whose reactions are fun and interesting.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Q2: MOTIVATION -->
-    <div class="question-card">
-      <div class="question-card-header">
-        <div class="question-num">2</div>
-        <div class="question-title-block">
-          <div class="question-title">What motivates them?</div>
-          <div class="question-subtitle">Your character is out in the world for a reason</div>
-        </div>
-      </div>
-      <div class="question-body">
-        <p>A character with no ambition, no curiosity, and no reason to engage with the story can be hard to play. Ask what they want.</p>
-
-        <div class="accordion">
-          <div class="accordion-header c-green" onclick="toggle(this)">
-            <div>
-              <div class="accordion-title">For themselves</div>
-              <div class="accordion-subtitle">Personal ambition, need, or drive</div>
-            </div>
-            <span class="accordion-arrow">▼</span>
-          </div>
-          <div class="accordion-body">
-            <ul class="prose-list">
-              <li>Riches? Fame? Power?</li>
-              <li>Freedom? Redemption? Revenge?</li>
-              <li>Knowledge? Adventure?</li>
-              <li>To prove they are more than what people think they are?</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="accordion">
-          <div class="accordion-header c-teal" onclick="toggle(this)">
-            <div>
-              <div class="accordion-title">For others</div>
-              <div class="accordion-subtitle">Duty, care, or belief in something larger</div>
-            </div>
-            <span class="accordion-arrow">▼</span>
-          </div>
-          <div class="accordion-body">
-            <ul class="prose-list">
-              <li>Protect their home? Help the poor?</li>
-              <li>Defend nature? Serve a god?</li>
-              <li>Free people from oppression? Stop a war?</li>
-              <li>Preserve history? Expose corruption?</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="accordion">
-          <div class="accordion-header c-slate" onclick="toggle(this)">
-            <div>
-              <div class="accordion-title">In this world</div>
-              <div class="accordion-subtitle">Aelenthor-specific motivations</div>
-            </div>
-            <span class="accordion-arrow">▼</span>
-          </div>
-          <div class="accordion-body">
-            <p>They might care about the rising tension between <strong>Elkenquay</strong> and <strong>Fastingbreak</strong>. Maybe they see war coming and want to prevent it. Maybe they believe monarchy is flawed after seeing a nearby republic function differently. Maybe they are loyal to a kingdom and suspicious of republican ideals. Maybe they just want to survive while powerful nations tear the world apart.</p>
-          </div>
-        </div>
-
-        <div class="accordion">
-          <div class="accordion-header c-gold" onclick="toggle(this)">
-            <div>
-              <div class="accordion-title">Example motivations</div>
-              <div class="accordion-subtitle">Concrete starting points</div>
-            </div>
-            <span class="accordion-arrow">▼</span>
-          </div>
-          <div class="accordion-body">
-            <div class="example-list">
-              <div class="example-item">"I want to avenge my parents' deaths."</div>
-              <div class="example-item">"I want to become rich enough that no one can control me again."</div>
-              <div class="example-item">"I want to protect my village from the coming war."</div>
-              <div class="example-item">"I want to prove my family wrong."</div>
-              <div class="example-item">"I want to expose corruption in the monarchy."</div>
-              <div class="example-item">"I want to understand the strange magic spreading through the world."</div>
-              <div class="example-item">"I want to become famous enough that my name is remembered."</div>
-              <div class="example-item">"I want to help people, even though I'm bad at admitting it."</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Q3: RACE/ANCESTRY -->
-    <div class="question-card">
-      <div class="question-card-header">
-        <div class="question-num">3</div>
-        <div class="question-title-block">
-          <div class="question-title">What race or ancestry are you?</div>
-          <div class="question-subtitle">Appearance, culture, and how others may see you</div>
-        </div>
-      </div>
-      <div class="question-body">
-        <p>Race and ancestry can affect appearance, culture, abilities, lifespan, and how others may react — but it does not decide whether they are good or evil.</p>
-        <p>None of the playable races are inherently evil. This is not Tolkien. An orc is not automatically a villain. A tiefling is not automatically corrupt. A goblin, snake person, harpy, or fae-touched character can be heroic, selfish, gentle, strange, noble, terrifying, hilarious, or anything else.</p>
-
-        <div class="accordion">
-          <div class="accordion-header c-green" onclick="toggle(this)">
-            <div>
-              <div class="accordion-title">Common options</div>
-              <div class="accordion-subtitle">The foundational peoples of the world</div>
-            </div>
-            <span class="accordion-arrow">▼</span>
-          </div>
-          <div class="accordion-body">
-            <ul class="prose-list">
-              <li><strong>Human</strong> — Flexible, ambitious, adaptable, and found almost everywhere.</li>
-              <li><strong>Dwarf</strong> — Sturdy, tough, often tied to mountains, craft, history, clans, stonework, or tradition.</li>
-              <li><strong>Halfling</strong> — Small, lucky, brave, often underestimated, and great for cozy, clever, or unexpectedly heroic characters.</li>
-              <li><strong>Elf</strong> — Long-lived, graceful, often connected to magic, nature, ancient cultures, or old griefs.</li>
-              <li><strong>Gnome</strong> — Small, curious, clever, inventive, strange, magical, or chaotic in fun ways.</li>
-              <li><strong>Tiefling</strong> — People with infernal or demonic traits, usually horns, unusual eyes, tails, or strange skin tones. They often look intimidating but are not evil by nature.</li>
-              <li><strong>Orc</strong> — Strong, intense, passionate, and physical, but not automatically savage or cruel. An orc can be a poet, protector, scholar, farmer, knight, or anything else.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="accordion">
-          <div class="accordion-header c-purple" onclick="toggle(this)">
-            <div>
-              <div class="accordion-title">Exotic options</div>
-              <div class="accordion-subtitle">More unusual ancestries — ask your DM first</div>
-            </div>
-            <span class="accordion-arrow">▼</span>
-          </div>
-          <div class="accordion-body">
-            <ul class="prose-list">
-              <li><strong>Tabaxi</strong> — Cat people. Agile, curious, quick, and often excellent wanderers, scouts, rogues, or storytellers.</li>
-              <li><strong>Aarakocra / Crowfolk</strong> — Bird people, sometimes crow-like or eagle-like, often tied to the sky, omens, travel, or freedom.</li>
-              <li><strong>Arryan / Owlfolk</strong> — Owl-like people, often wise, watchful, quiet, eerie, scholarly, or mystical.</li>
-              <li><strong>Snake People</strong> — Serpentine folk who might be mysterious, elegant, ancient, unsettling, or misunderstood.</li>
-              <li><strong>Pandarians</strong> — Panda-like people, often gentle, strong, spiritual, humorous, or surprisingly dangerous when pushed.</li>
-              <li><strong>Polecats</strong> — Small mammal-like folk, quick, perceptive, clever, cute, and adaptable.</li>
-              <li><strong>Harpy</strong> — Winged people who may be fierce, musical, strange, predatory, beautiful, or tragic depending on the character.</li>
-              <li><strong>Fae / Fae-touched</strong> — Characters connected to the Feywild or faerie magic. They might be whimsical, unsettling, charming, emotional, oath-bound, mischievous, or alien in their thinking.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="annotation">Race can give you flavor, but it should not trap you. A gentle orc healer, a nervous tiefling librarian, a dwarf who hates mining, a halfling vengeance paladin, or a fae-touched accountant can all be great characters. Sometimes the best question is simply: what does this ancestry <em>add</em> to the character's personality, appearance, or story?</div>
-      </div>
-    </div>
-
-    <!-- Q4: CLASS -->
-    <div class="question-card">
-      <div class="question-card-header">
-        <div class="question-num">4</div>
-        <div class="question-title-block">
-          <div class="question-title">What class are you?</div>
-          <div class="question-subtitle">When your character is in danger, what do they do?</div>
-        </div>
-      </div>
-      <div class="question-body">
-        <p>Class is partly about combat, but it is also about fantasy. Do they charge forward with a sword? Cast spells? Heal allies? Sneak through shadows? Call on nature? Inspire people with music or words?</p>
-        <p>Each class below has subclasses that let you customize it further, and D&amp;D also allows multiclassing at each level if you want to blend ideas later.</p>
-
-        <div class="class-grid">
-          <div class="class-card c-slate">
-            <div class="class-name">Fighter</div>
-            <div class="class-fantasy">Fantasy</div>
-            <div class="class-desc">A trained warrior. Fighters are good if you want to be reliable, tough, and effective with weapons. They can be knights, soldiers, duelists, archers, mercenaries, bodyguards, or self-taught survivors.</div>
-            <div class="class-tag">"I solve problems with skill, discipline, and steel."</div>
-          </div>
-          <div class="class-card c-blood">
-            <div class="class-name">Barbarian</div>
-            <div class="class-fantasy">Fantasy</div>
-            <div class="class-desc">A fierce warrior powered by rage, instinct, endurance, or primal strength. Barbarians are great if you want to be physical, direct, emotional, and hard to kill.</div>
-            <div class="class-tag">"When danger comes, I become the danger."</div>
-          </div>
-          <div class="class-card c-gold">
-            <div class="class-name">Rogue</div>
-            <div class="class-fantasy">Fantasy</div>
-            <div class="class-desc">A sneaky, clever, skillful character who relies on precision, deception, stealth, and timing. Rogues can be thieves, scouts, spies, assassins, investigators, smugglers, or charming troublemakers.</div>
-            <div class="class-tag">"I win by being faster, quieter, and smarter."</div>
-          </div>
-          <div class="class-card c-teal">
-            <div class="class-name">Ranger</div>
-            <div class="class-fantasy">Fantasy</div>
-            <div class="class-desc">A warrior of the wilds. Rangers are hunters, trackers, scouts, monster-slayers, and protectors of the borderlands. They often mix weapons, survival skills, and some nature magic.</div>
-            <div class="class-tag">"I know the wild, I know my enemy, and I know how to survive."</div>
-          </div>
-          <div class="class-card" style="border-top-color: var(--act-color);">
-            <div class="class-name">Druid</div>
-            <div class="class-fantasy">Fantasy</div>
-            <div class="class-desc">A nature-based spellcaster connected to animals, plants, storms, the moon, spirits, or the balance of the natural world. Druids can heal, control the battlefield, summon natural forces, and sometimes transform into animals.</div>
-            <div class="class-tag">"The natural world has power, and I speak for it."</div>
-          </div>
-          <div class="class-card c-blood">
-            <div class="class-name">Paladin</div>
-            <div class="class-fantasy">Fantasy</div>
-            <div class="class-desc">A holy or oath-bound warrior. Paladins fight because they believe in something deeply: justice, vengeance, protection, freedom, conquest, redemption, or a sacred duty.</div>
-            <div class="class-tag">"My convictions give me power."</div>
-          </div>
-          <div class="class-card c-gold">
-            <div class="class-name">Cleric</div>
-            <div class="class-fantasy">Fantasy</div>
-            <div class="class-desc">A divine spellcaster connected to a god, philosophy, sacred force, or cosmic domain. Clerics can heal, protect, curse, fight, investigate, or bring divine judgment.</div>
-            <div class="class-tag">"I am the hand of something greater than myself."</div>
-          </div>
-          <div class="class-card c-purple">
-            <div class="class-name">Wizard</div>
-            <div class="class-fantasy">Fantasy</div>
-            <div class="class-desc">A scholar of magic. Wizards learn spells through study, research, and intelligence. They are flexible, powerful, and often curious, ambitious, or obsessed with knowledge.</div>
-            <div class="class-tag">"Reality has rules, and I have learned how to rewrite them."</div>
-          </div>
-          <div class="class-card c-purple">
-            <div class="class-name">Sorcerer</div>
-            <div class="class-fantasy">Fantasy</div>
-            <div class="class-desc">A natural spellcaster whose magic comes from bloodline, destiny, trauma, mutation, or some supernatural event. Sorcerers do not learn magic so much as contain it.</div>
-            <div class="class-tag">"Magic is not something I do. It is something I am."</div>
-          </div>
-          <div class="class-card c-slate">
-            <div class="class-name">Warlock</div>
-            <div class="class-fantasy">Fantasy</div>
-            <div class="class-desc">A spellcaster who gained power through a pact with a powerful being: a fiend, fey, ancient entity, celestial, shadow force, or something stranger. Warlocks are great for characters with secrets, bargains, debts, or dangerous patrons.</div>
-            <div class="class-tag">"I made a deal, and now I have power. The cost is the question."</div>
-          </div>
-          <div class="class-card" style="border-top-color: var(--act-color);">
-            <div class="class-name">Bard</div>
-            <div class="class-fantasy">Fantasy</div>
-            <div class="class-desc">A magical performer, storyteller, scholar, diplomat, or inspirational force. Bards use music, words, art, lore, and charisma to shape the world and support their allies.</div>
-            <div class="class-tag">"Stories, songs, and words have power."</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Q5: DOWNTIME -->
-    <div class="question-card">
-      <div class="question-card-header">
-        <div class="question-num">5</div>
-        <div class="question-title-block">
-          <div class="question-title">Are they fun outside the main plot, too?</div>
-          <div class="question-subtitle">Campfires, taverns, and quiet moments between the danger</div>
-        </div>
-      </div>
-      <div class="question-body">
-        <p>Sometimes D&amp;D has little in-character moments: sitting around a campfire, talking in a tavern, traveling on the road, killing time at an inn, or playing a small character game like Two Truths and a Lie. That kind of scene is really fun if your character has enough personality, history, secrets, quirks, or opinions to participate.</p>
-
-        <div class="accordion">
-          <div class="accordion-header c-green" onclick="toggle(this)">
-            <div>
-              <div class="accordion-title">Questions to ask yourself</div>
-              <div class="accordion-subtitle">Who are they when nothing is at stake?</div>
-            </div>
-            <span class="accordion-arrow">▼</span>
-          </div>
-          <div class="accordion-body">
-            <ul class="prose-list">
-              <li>What would this character say during downtime?</li>
-              <li>Do they lie easily, or are they terrible at it?</li>
-              <li>What embarrassing story might they tell?</li>
-              <li>What truth would they hide?</li>
-              <li>What would they joke about?</li>
-              <li>What topic would unexpectedly make them serious?</li>
-              <li>What small personal detail would surprise the party?</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="accordion">
-          <div class="accordion-header c-gold" onclick="toggle(this)">
-            <div>
-              <div class="accordion-title">Two Truths and a Lie — example</div>
-              <div class="accordion-subtitle">How to make the game immediately interesting</div>
-            </div>
-            <span class="accordion-arrow">▼</span>
-          </div>
-          <div class="accordion-body">
-            <div class="example-list">
-              <div class="example-item">"I once stole a horse from a noble."</div>
-              <div class="example-item">"I have never been kissed."</div>
-              <div class="example-item">"I killed a man before I turned sixteen."</div>
-            </div>
-            <p style="margin-top:0.5rem;">One is funny, one is sad, and one is dangerous. The point is not just trivia — it gives the other players little hooks into who this person is.</p>
-          </div>
-        </div>
-
-        <div class="annotation">A good character has enough life in them that they can be interesting during the quiet scenes too. You do not need to plan all of this in advance — it can emerge from play. But it helps to have a few details that are not just about combat or the main quest.</div>
-      </div>
-    </div>
-
-    <div class="divider"><span>✦</span></div>
-
-    <!-- FORMULA -->
-    <div class="section-head">A Simple Way to Build the Character</div>
-    <p>Once you have a sense of the above, try filling in this formula. It does not need to be perfect — it just needs to be a starting point.</p>
-
-    <div class="formula-block">
-      <div class="formula-text">
-        I am a <em>[class]</em> who wants <em>[goal]</em>, but <em>[complication]</em>. I usually handle conflict by <em>[approach]</em>.
-      </div>
-    </div>
-
-    <div class="example-list">
-      <div class="example-item">"I am a rogue who wants enough money to buy my family's freedom, but I keep getting attached to people I'm supposed to betray."</div>
-      <div class="example-item">"I am a paladin who wants to stop the war between Elkenquay and Fastingbreak, but I'm starting to question whether my own kingdom is just."</div>
-      <div class="example-item">"I am a wizard who wants to uncover forbidden history, but I'm afraid the truth might make things worse."</div>
-      <div class="example-item">"I am a barbarian who wants revenge for my village, but I'm learning that not every enemy is the person holding the sword."</div>
-      <div class="example-item">"I am a bard who wants to become famous, but I keep accidentally becoming responsible for people."</div>
-      <div class="example-item">"I am a druid who wants to protect the old forests from war and industry, but I am slowly realizing that people are part of nature too."</div>
-    </div>
-
-    <div class="annotation" style="margin-top:1rem;">That is usually enough to start. You do not need to know everything on day one. Some of the best character details come from playing the game and discovering who the character becomes.</div>
-
-  </div><!-- end page-inner -->
-</div><!-- end page -->
+  <div class="page-inner" id="root">
+    <p style="font-style:italic;color:var(--faded);text-align:center;padding:2rem;">Loading…</p>
+  </div>
+</div>
 
 <script>
+const BASE = window.location.hostname === 'pnewnan.github.io'
+  ? '/dnd5e-artifacts'
+  : (window.location.pathname.includes('/prologue') ? '../..' : '.');
+
+// ── State ──────────────────────────────────────────────────────────────────
+let answers = null; // loaded from answers JSON
+let picks = {};     // current generated picks, keyed by bank id
+
+function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+// ── Bank → Question mapping ────────────────────────────────────────────────
+// Each bank id maps to the question card DOM id that should show the result
+const BANK_TO_QUESTION = {
+  confrontation:       'q-confrontation',
+  motivation:          'q-motivation',
+  ancestry:            'q-ancestry',
+  class:               'q-class',
+  complication:        'q-complication',
+  background:          'q-background',
+  family_relationship: 'q-family',
+  left_home:           'q-left_home',
+  downtime:            'q-downtime'
+};
+
+// ── Accordion toggle ───────────────────────────────────────────────────────
 function toggle(header) {
-  const body = header.nextElementSibling;
-  const isOpen = header.classList.contains('open');
-  header.classList.toggle('open', !isOpen);
-  body.classList.toggle('open', !isOpen);
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
 }
+
+// ── Render a generated answer into a card ─────────────────────────────────
+function showPick(bankId, pick) {
+  picks[bankId] = pick;
+  const card = document.getElementById(BANK_TO_QUESTION[bankId]);
+  if (!card) return;
+  const box = card.querySelector('.generated-answer');
+  if (!box) return;
+  box.querySelector('.gen-title').textContent = pick.label;
+  box.querySelector('.gen-body').textContent = pick.answer;
+  const extra = box.querySelector('.gen-extra');
+  if (extra) extra.textContent = pick.benefits || pick.fantasy || '';
+  box.classList.add('visible');
+  updateFormula();
+}
+
+// ── Reroll a single question ───────────────────────────────────────────────
+function reroll(bankId) {
+  if (!answers) return;
+  const bank = answers.answerBanks[bankId];
+  if (!bank) return;
+  showPick(bankId, rand(bank));
+}
+
+// ── Generate all ──────────────────────────────────────────────────────────
+function generateAll() {
+  if (!answers) return;
+  Object.keys(answers.answerBanks).forEach(bankId => {
+    const bank = answers.answerBanks[bankId];
+    showPick(bankId, rand(bank));
+  });
+}
+
+// ── Assemble formula ──────────────────────────────────────────────────────
+function updateFormula() {
+  const box = document.getElementById('formula-generated');
+  if (!box) return;
+  const cls          = picks.class;
+  const motivation   = picks.motivation;
+  const confront     = picks.confrontation;
+  const complication = picks.complication;
+  if (!cls && !motivation && !confront && !complication) return;
+
+  const classLabel  = cls          ? cls.label          : '[class]';
+  const goal        = motivation   ? motivation.label    : '[goal]';
+  const compl       = complication ? complication.label  : '[complication]';
+  const approach    = confront     ? confront.label      : '[approach]';
+
+  box.querySelector('.formula-text').innerHTML =
+    `I am a <em>${classLabel}</em> who wants to <em>${goal.toLowerCase()}</em>, ` +
+    `but <em>${compl.toLowerCase()}</em>. ` +
+    `I usually handle conflict as <em>${approach}</em>.`;
+  box.classList.add('visible');
+}
+
+// ── Print ──────────────────────────────────────────────────────────────────
+function printView() {
+  window.print();
+}
+
+// ── Renderers ─────────────────────────────────────────────────────────────
+function renderList(items) {
+  return `<ul class="prose-list">${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+}
+function renderBoldList(items) {
+  return `<ul class="prose-list">${items.map(i => `<li><strong>${i.term}</strong> — ${i.desc}</li>`).join('')}</ul>`;
+}
+function renderExamples(items) {
+  return items.map(i => `<div class="example-item">${i}</div>`).join('');
+}
+function renderAccordion(acc) {
+  let body = '';
+  if (acc.type === 'list')      body = renderList(acc.items);
+  if (acc.type === 'bold-list') body = renderBoldList(acc.items);
+  if (acc.type === 'examples')  body = renderExamples(acc.items)
+    + (acc.annotation ? `<div class="annotation">${acc.annotation}</div>` : '')
+    + (acc.prose ? `<p style="margin-top:0.5rem;">${acc.prose}</p>` : '');
+  if (acc.type === 'prose')     body = `<p>${acc.body}</p>`;
+  return `
+    <div class="accordion">
+      <div class="accordion-header c-${acc.color}" onclick="toggle(this)">
+        <div>
+          <div class="accordion-title">${acc.title}</div>
+          <div class="accordion-subtitle">${acc.subtitle}</div>
+        </div>
+        <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="accordion-body">${body}</div>
+    </div>`;
+}
+
+function renderQuestion(q, bankId) {
+  const cardId = BANK_TO_QUESTION[bankId] || `q-${bankId}`;
+  const hasBank = !!bankId;
+
+  let body = `
+    <div class="generated-answer" id="gen-${bankId}">
+      <div class="gen-label">Generated Answer</div>
+      <div class="gen-title"></div>
+      <div class="gen-body"></div>
+      ${q.showExtra ? `<div class="gen-extra"></div>` : ''}
+    </div>
+    <p>${q.intro}</p>`;
+
+  if (q.accordions) body += q.accordions.map(renderAccordion).join('');
+
+  if (q.classes) {
+    body += `<div class="class-grid">${q.classes.map(cls => `
+      <div class="class-card c-${cls.color}">
+        <div class="class-name">${cls.name}</div>
+        <div class="class-fantasy-label">Fantasy</div>
+        <div class="class-desc">${cls.desc}</div>
+        <div class="class-tag">"${cls.fantasy}"</div>
+      </div>`).join('')}</div>`;
+  }
+
+  if (q.annotation) body += `<div class="annotation">${q.annotation}</div>`;
+
+  const rerollBtn = hasBank
+    ? `<div class="question-reroll" onclick="reroll('${bankId}')" title="Re-roll this question">⚄</div>`
+    : '';
+
+  return `
+    <div class="question-card" id="${cardId}">
+      <div class="question-card-header">
+        <div class="question-num">${q.number}</div>
+        <div class="question-title-block">
+          <div class="question-title">${q.title}</div>
+          <div class="question-subtitle">${q.subtitle}</div>
+        </div>
+        ${rerollBtn}
+      </div>
+      <div class="question-body">${body}</div>
+    </div>`;
+}
+
+function renderFormula(f) {
+  const tpl = f.template.replace(/\[([^\]]+)\]/g, '<em>[$1]</em>');
+  return `
+    <div class="section-head">A Simple Way to Build the Character</div>
+    <p>${f.intro}</p>
+    <div class="formula-block"><div class="formula-text">${tpl}</div></div>
+    <div class="formula-generated" id="formula-generated"><div class="formula-text"></div></div>
+    ${f.examples.map(e => `<div class="example-item">${e}</div>`).join('')}
+    <div class="annotation" style="margin-top:1rem;">${f.closing}</div>`;
+}
+
+// ── Static extra questions (not in original data JSON yet) ─────────────────
+const EXTRA_QUESTIONS = [
+  {
+    id: 'complication',
+    bankId: 'complication',
+    number: '★',
+    title: 'What complicates them?',
+    subtitle: 'The \"but\" that makes them interesting',
+    intro: 'A character without friction is hard to play. The complication is the thing that gets in the way of what they want — not a flaw to fix, but a tension to live with.',
+    showExtra: false,
+    accordions: []
+  },
+  {
+    id: 'background',
+    bankId: 'background',
+    number: '★',
+    title: 'What is their background?',
+    subtitle: 'Where they came from and what skills they carry',
+    intro: 'Background gives your character a life before adventuring — skills, tools, contacts, and a reason for knowing what they know.',
+    showExtra: true,
+    accordions: []
+  },
+  {
+    id: 'family',
+    bankId: 'family_relationship',
+    number: '★',
+    title: 'What was their family like?',
+    subtitle: 'The home they came from shapes who they became',
+    intro: 'Your character\'s family — or lack of one — is often the first story they carry. It doesn\'t have to be dramatic, but it should feel true.',
+    showExtra: false,
+    accordions: []
+  },
+  {
+    id: 'left_home',
+    bankId: 'left_home',
+    number: '★',
+    title: 'Why did they leave home?',
+    subtitle: 'The moment that put them on the road',
+    intro: 'Most adventurers left something behind. The reason they left is often the first thing that defines them.',
+    showExtra: false,
+    accordions: []
+  }
+];
+
+// ── Main render ────────────────────────────────────────────────────────────
+Promise.all([
+  fetch(`${BASE}/character_creation_data.json`).then(r => r.json()),
+  fetch(`${BASE}/character_creation_answers.json`).then(r => r.json())
+]).then(([data, answerData]) => {
+  answers = answerData;
+  const root = document.getElementById('root');
+  document.title = `${data.title} — Player Guide`;
+
+  // Map bankId by question id
+  const bankMap = {
+    confrontation: 'confrontation',
+    motivation: 'motivation',
+    ancestry: 'ancestry',
+    class: 'class',
+    downtime: 'downtime'
+  };
+
+  const questionsHtml = data.questions.map(q => {
+    q.showExtra = (q.id === 'class' || q.id === 'background');
+    return renderQuestion(q, bankMap[q.id] || null);
+  }).join('');
+
+  const extraHtml = EXTRA_QUESTIONS.map(q =>
+    renderQuestion(q, q.bankId)
+  ).join('');
+
+  root.innerHTML = `
+    <div class="page-title">
+      <span class="gm-label">Player Reference · Aelenthor Campaign</span>
+      <h1>${data.title}</h1>
+      <div class="subtitle">${data.subtitle}</div>
+      <a href="${BASE}/index.html" class="back-link">← Back to Campaign Home</a>
+    </div>
+
+    <div class="toolbar">
+      <button class="btn btn-primary" onclick="generateAll()">⚄ Generate Random Character</button>
+      <button class="btn btn-print" onclick="printView()">⎙ Print</button>
+    </div>
+
+    <div class="philosophy-block">
+      <div class="big-question">${data.philosophy.question}</div>
+      <p>${data.philosophy.body}</p>
+    </div>
+
+    <p>${data.intro}</p>
+    <div class="divider"><span>✦</span></div>
+
+    ${questionsHtml}
+
+    <div class="divider"><span>✦</span></div>
+    <div class="section-head">Going Deeper</div>
+    <p>These questions are optional, but they give your character more texture and make quiet scenes — campfires, taverns, downtime — much richer.</p>
+    ${extraHtml}
+
+    <div class="divider"><span>✦</span></div>
+    ${renderFormula(data.formula)}
+  `;
+
+}).catch(err => {
+  document.getElementById('root').innerHTML =
+    `<p style="color:var(--blood);text-align:center;padding:2rem;">Failed to load: ${err.message}</p>`;
+});
 </script>
 </body>
 </html>

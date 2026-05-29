@@ -1,0 +1,815 @@
+{
+  "answerBanks": {
+    "confrontation": [
+      {
+        "id": "protector",
+        "label": "The Protector",
+        "answer": "They avoid violence when possible, but immediately step in when someone weaker is being threatened."
+      },
+      {
+        "id": "reluctant_hero",
+        "label": "The Reluctant Hero",
+        "answer": "They do not want trouble, but they cannot ignore suffering once they see it."
+      },
+      {
+        "id": "talk_first",
+        "label": "The Talk-First Diplomat",
+        "answer": "They try to negotiate before fighting, believing most conflicts can be avoided if people are willing to listen."
+      },
+      {
+        "id": "survivor",
+        "label": "The Survivor",
+        "answer": "They avoid fair fights and only engage when cornered, outnumbered, or forced to protect themselves."
+      },
+      {
+        "id": "justice_driven",
+        "label": "The Justice-Driven Avenger",
+        "answer": "They are usually calm, but cruelty, corruption, or abuse of power makes them act immediately."
+      },
+      {
+        "id": "glory_seeker",
+        "label": "The Glory-Seeker",
+        "answer": "They see conflict as a chance to prove themselves and may jump into danger before thinking it through."
+      },
+      {
+        "id": "strategist",
+        "label": "The Strategist",
+        "answer": "They dislike chaos and prefer to observe, plan, and win the fight before it really begins."
+      },
+      {
+        "id": "trickster",
+        "label": "The Trickster",
+        "answer": "They would rather confuse, distract, deceive, or embarrass an enemy than fight them directly."
+      },
+      {
+        "id": "defender_of_nature",
+        "label": "The Defender of Nature",
+        "answer": "They are slow to anger unless animals, forests, rivers, or sacred places are threatened."
+      },
+      {
+        "id": "honorable_duelist",
+        "label": "The Honorable Duelist",
+        "answer": "They believe conflict should have rules, and they prefer direct, honorable combat over ambush or cruelty."
+      },
+      {
+        "id": "rage_response",
+        "label": "The Emotional Fighter",
+        "answer": "They try to stay calm, but when someone they love is hurt, emotion takes over and they become dangerous."
+      },
+      {
+        "id": "coward_learning_courage",
+        "label": "The Coward Learning Courage",
+        "answer": "Their first instinct is fear, but they are slowly learning to stand their ground when it matters."
+      },
+      {
+        "id": "professional",
+        "label": "The Professional",
+        "answer": "They treat conflict like a job: assess the threat, protect the objective, and finish efficiently."
+      },
+      {
+        "id": "mercy_first",
+        "label": "The Merciful Combatant",
+        "answer": "They will fight if necessary, but they prefer to disable, restrain, or redeem enemies rather than kill them."
+      },
+      {
+        "id": "chaos_agent",
+        "label": "The Chaos Agent",
+        "answer": "They thrive in confusion and may start improvising wildly the moment things go bad."
+      },
+      {
+        "id": "vengeful",
+        "label": "The Vengeful One",
+        "answer": "They can ignore insults and threats, but if someone reminds them of an old wound, they lose restraint quickly."
+      },
+      {
+        "id": "bodyguard",
+        "label": "The Bodyguard",
+        "answer": "They are always watching exits, threats, and who is standing too close to the people they care about."
+      },
+      {
+        "id": "bully_hunter",
+        "label": "The Bully Hunter",
+        "answer": "They cannot stand people who use power to intimidate others, and they often escalate when they see it."
+      },
+      {
+        "id": "pacifist_pushed_too_far",
+        "label": "The Pacifist Pushed Too Far",
+        "answer": "They hate violence and try every other option first, which makes it shocking when they finally fight."
+      },
+      {
+        "id": "reckless_friend",
+        "label": "The Reckless Friend",
+        "answer": "They may not care much about their own safety, but they will throw themselves into danger for a friend without hesitation."
+      }
+    ],
+    "motivation": [
+      {
+        "id": "avenge_family",
+        "label": "Avenge Their Family",
+        "answer": "They want to find and punish the people responsible for destroying their family or home."
+      },
+      {
+        "id": "protect_home",
+        "label": "Protect Their Home",
+        "answer": "They are adventuring because their village, city, forest, or homeland is threatened."
+      },
+      {
+        "id": "stop_war",
+        "label": "Stop the War",
+        "answer": "They see the rising conflict between Elkenquay and Fastingbreak as dangerous and want to prevent disaster."
+      },
+      {
+        "id": "get_rich",
+        "label": "Get Rich",
+        "answer": "They want enough wealth that no one can control, dismiss, or endanger them again."
+      },
+      {
+        "id": "seek_fame",
+        "label": "Seek Fame",
+        "answer": "They want their name remembered in songs, stories, histories, or tavern gossip."
+      },
+      {
+        "id": "prove_self",
+        "label": "Prove Themselves",
+        "answer": "They are tired of being underestimated and want to prove they are capable of greatness."
+      },
+      {
+        "id": "expose_corruption",
+        "label": "Expose Corruption",
+        "answer": "They believe powerful people are hiding the truth and want to reveal what is really happening."
+      },
+      {
+        "id": "serve_faith",
+        "label": "Serve a God or Oath",
+        "answer": "They believe they have been called to act on behalf of a god, spirit, oath, or sacred cause."
+      },
+      {
+        "id": "discover_magic",
+        "label": "Understand Strange Magic",
+        "answer": "They are drawn to the weird magic spreading through the world and need to know what it means."
+      },
+      {
+        "id": "free_oppressed",
+        "label": "Free the Oppressed",
+        "answer": "They cannot stand seeing people trapped by kings, nobles, debt, monsters, or cruel systems."
+      },
+      {
+        "id": "escape_past",
+        "label": "Escape Their Past",
+        "answer": "They are running from who they were, what they did, or what someone expects them to become."
+      },
+      {
+        "id": "find_belonging",
+        "label": "Find Belonging",
+        "answer": "They want to find people who accept them, even if they pretend they do not care."
+      },
+      {
+        "id": "preserve_history",
+        "label": "Preserve History",
+        "answer": "They believe old stories, ruins, artifacts, and forgotten truths matter and must not be erased."
+      },
+      {
+        "id": "serve_republic",
+        "label": "Defend Republican Ideals",
+        "answer": "They believe monarchies concentrate too much power and are drawn to the ideas represented by Elkenquay."
+      },
+      {
+        "id": "loyal_to_kingdom",
+        "label": "Defend the Kingdom",
+        "answer": "They believe their homeland, crown, or people are worth defending, even if the system is imperfect."
+      },
+      {
+        "id": "find_lost_person",
+        "label": "Find Someone Missing",
+        "answer": "They are searching for a sibling, parent, lover, mentor, child, or friend who disappeared."
+      },
+      {
+        "id": "break_curse",
+        "label": "Break a Curse",
+        "answer": "They or someone they love is cursed, and adventuring is the only way to find a cure."
+      },
+      {
+        "id": "repay_debt",
+        "label": "Repay a Debt",
+        "answer": "Someone saved them, raised them, spared them, or protected them, and now they feel they owe the world something."
+      },
+      {
+        "id": "chase_wonder",
+        "label": "Chase Wonder",
+        "answer": "They simply want to see impossible places, strange creatures, ancient ruins, and things no one back home would believe."
+      },
+      {
+        "id": "become_free",
+        "label": "Become Free",
+        "answer": "They were raised under rules, duty, debt, family expectations, or political control, and now they want to choose their own life."
+      }
+    ],
+    "ancestry": [
+      {
+        "id": "human",
+        "label": "Human",
+        "answer": "They are adaptable, ambitious, and shaped more by choices than by ancient expectations."
+      },
+      {
+        "id": "dwarf",
+        "label": "Dwarf",
+        "answer": "They come from a people tied to stone, craft, endurance, tradition, and deep memory."
+      },
+      {
+        "id": "halfling",
+        "label": "Halfling",
+        "answer": "They are small, brave, underestimated, and possibly much more dangerous than they look."
+      },
+      {
+        "id": "elf",
+        "label": "Elf",
+        "answer": "They are long-lived and may carry old griefs, ancient knowledge, or a distant view of short-lived people."
+      },
+      {
+        "id": "gnome",
+        "label": "Gnome",
+        "answer": "They are curious, inventive, strange, and probably interested in things others consider dangerous or useless."
+      },
+      {
+        "id": "tiefling",
+        "label": "Tiefling",
+        "answer": "They have infernal or demonic traits, but their appearance does not define their morality."
+      },
+      {
+        "id": "orc",
+        "label": "Orc",
+        "answer": "They are strong and intense, but not automatically cruel, savage, or villainous."
+      },
+      {
+        "id": "tabaxi",
+        "label": "Tabaxi",
+        "answer": "They are cat-like people who may be curious, quick, graceful, and easily drawn to stories or shiny things."
+      },
+      {
+        "id": "aarakocra_crowfolk",
+        "label": "Aarakocra / Crowfolk",
+        "answer": "They are bird-like people tied to the sky, omens, travel, freedom, or watchfulness."
+      },
+      {
+        "id": "arryan_owlfolk",
+        "label": "Arryan / Owlfolk",
+        "answer": "They are owl-like people who may seem wise, quiet, eerie, scholarly, or mystical."
+      },
+      {
+        "id": "snake_person",
+        "label": "Snake Person",
+        "answer": "They are serpentine and may be mysterious, elegant, ancient, misunderstood, or unsettling."
+      },
+      {
+        "id": "pandarian",
+        "label": "Pandarian",
+        "answer": "They are panda-like people who may be gentle, strong, spiritual, humorous, or shockingly dangerous when pushed."
+      },
+      {
+        "id": "polecat",
+        "label": "Polecat",
+        "answer": "They are small mammal-like folk who are quick, perceptive, clever, cute, and adaptable."
+      },
+      {
+        "id": "harpy",
+        "label": "Harpy",
+        "answer": "They are winged people who may be fierce, musical, strange, beautiful, predatory, or tragic."
+      },
+      {
+        "id": "fae_touched",
+        "label": "Fae / Fae-touched",
+        "answer": "They are connected to faerie magic and may be charming, unsettling, whimsical, oath-bound, or alien in their thinking."
+      }
+    ],
+    "class": [
+      {
+        "id": "fighter",
+        "label": "Fighter",
+        "answer": "They are a trained warrior who solves problems through discipline, skill, and steel.",
+        "fantasy": "I solve problems with skill, discipline, and steel."
+      },
+      {
+        "id": "barbarian",
+        "label": "Barbarian",
+        "answer": "They are powered by rage, instinct, endurance, or primal strength.",
+        "fantasy": "When danger comes, I become the danger."
+      },
+      {
+        "id": "rogue",
+        "label": "Rogue",
+        "answer": "They rely on stealth, deception, precision, timing, and cleverness rather than brute force.",
+        "fantasy": "I win by being faster, quieter, and smarter."
+      },
+      {
+        "id": "ranger",
+        "label": "Ranger",
+        "answer": "They are a hunter, tracker, scout, or protector of the borderlands and wild places.",
+        "fantasy": "I know the wild, I know my enemy, and I know how to survive."
+      },
+      {
+        "id": "druid",
+        "label": "Druid",
+        "answer": "They are connected to animals, plants, storms, spirits, the moon, or the balance of nature.",
+        "fantasy": "The natural world has power, and I speak for it."
+      },
+      {
+        "id": "paladin",
+        "label": "Paladin",
+        "answer": "They are a warrior whose power comes from an oath, conviction, faith, justice, vengeance, or duty.",
+        "fantasy": "My convictions give me power."
+      },
+      {
+        "id": "cleric",
+        "label": "Cleric",
+        "answer": "They are connected to a god, philosophy, sacred force, or cosmic domain.",
+        "fantasy": "I am the hand of something greater than myself."
+      },
+      {
+        "id": "wizard",
+        "label": "Wizard",
+        "answer": "They study magic like a science, art, language, or dangerous obsession.",
+        "fantasy": "Reality has rules, and I have learned how to rewrite them."
+      },
+      {
+        "id": "sorcerer",
+        "label": "Sorcerer",
+        "answer": "Their magic comes from bloodline, destiny, trauma, mutation, or some supernatural event.",
+        "fantasy": "Magic is not something I do. It is something I am."
+      },
+      {
+        "id": "warlock",
+        "label": "Warlock",
+        "answer": "They gained power through a pact with something powerful, strange, divine, infernal, fey, or ancient.",
+        "fantasy": "I made a deal, and now I have power. The cost is the question."
+      },
+      {
+        "id": "bard",
+        "label": "Bard",
+        "answer": "They use music, stories, words, performance, lore, or charisma to shape the world.",
+        "fantasy": "Stories, songs, and words have power."
+      },
+      {
+        "id": "monk",
+        "label": "Monk",
+        "answer": "They turn discipline, motion, spirit, and their own body into a weapon.",
+        "fantasy": "My body, mind, and spirit are my weapon."
+      },
+      {
+        "id": "artificer",
+        "label": "Artificer",
+        "answer": "They use invention, craft, tools, magical devices, and strange engineering to solve problems.",
+        "fantasy": "Magic is something I can build."
+      },
+      {
+        "id": "blood_hunter",
+        "label": "Blood Hunter",
+        "answer": "They use dangerous power, sacrifice, curses, or forbidden techniques to hunt monsters.",
+        "fantasy": "I became something frightening to fight something worse."
+      },
+      {
+        "id": "multiclass",
+        "label": "Multiclass Concept",
+        "answer": "They blend two ideas, such as a rogue-warlock with a dangerous pact or a fighter-druid who defends nature with steel.",
+        "fantasy": "I am not just one thing."
+      }
+    ],
+    "background": [
+      {
+        "id": "acolyte",
+        "label": "Acolyte",
+        "answer": "They were raised in or devoted to a temple, faith, cult, monastery, or religious order.",
+        "benefits": "Usually gives Insight and Religion, two languages, and temple support through Shelter of the Faithful."
+      },
+      {
+        "id": "charlatan",
+        "label": "Charlatan",
+        "answer": "They survived through scams, false identities, forged papers, cons, or carefully performed lies.",
+        "benefits": "Usually gives Deception and Sleight of Hand, disguise kit, forgery kit, and a false identity."
+      },
+      {
+        "id": "criminal",
+        "label": "Criminal",
+        "answer": "They have history with crime, gangs, smuggling, burglary, spying, or underground networks.",
+        "benefits": "Usually gives Deception and Stealth, thieves' tools, a gaming set, and a criminal contact."
+      },
+      {
+        "id": "spy",
+        "label": "Spy",
+        "answer": "They dealt in secrets, surveillance, infiltration, and information gathering.",
+        "benefits": "Usually uses Criminal-style benefits, flavored around intelligence contacts and covert work."
+      },
+      {
+        "id": "entertainer",
+        "label": "Entertainer",
+        "answer": "They performed as a musician, actor, dancer, storyteller, juggler, comedian, or public spectacle.",
+        "benefits": "Usually gives Acrobatics and Performance, disguise kit, a musical instrument, and hospitality through By Popular Demand."
+      },
+      {
+        "id": "gladiator",
+        "label": "Gladiator",
+        "answer": "They performed through combat, spectacle, bloodsport, or arena fighting.",
+        "benefits": "Usually uses Entertainer-style benefits, flavored around arena reputation and performance fighting."
+      },
+      {
+        "id": "folk_hero",
+        "label": "Folk Hero",
+        "answer": "They came from ordinary people and became known for standing up to danger, injustice, monsters, nobles, or bullies.",
+        "benefits": "Usually gives Animal Handling and Survival, artisan's tools, land vehicles, and help from common folk through Rustic Hospitality."
+      },
+      {
+        "id": "guild_artisan",
+        "label": "Guild Artisan",
+        "answer": "They trained in a respected craft, trade, or professional guild.",
+        "benefits": "Usually gives Insight and Persuasion, artisan's tools, a language, and guild support through Guild Membership."
+      },
+      {
+        "id": "guild_merchant",
+        "label": "Guild Merchant",
+        "answer": "They came from commerce, negotiation, transport, markets, and business relationships.",
+        "benefits": "Usually uses Guild Artisan-style benefits, flavored toward trade contacts and business credibility."
+      },
+      {
+        "id": "hermit",
+        "label": "Hermit",
+        "answer": "They lived apart from society in isolation, contemplation, exile, study, survival, or spiritual retreat.",
+        "benefits": "Usually gives Medicine and Religion, herbalism kit, a language, and a hidden truth through Discovery."
+      },
+      {
+        "id": "noble",
+        "label": "Noble",
+        "answer": "They were born into wealth, rank, courtly politics, noble obligations, or a powerful family name.",
+        "benefits": "Usually gives History and Persuasion, a gaming set, a language, and social recognition through Position of Privilege."
+      },
+      {
+        "id": "knight",
+        "label": "Knight",
+        "answer": "They gained status through martial service, chivalry, oath, land, or sworn duty.",
+        "benefits": "Usually uses Noble-style benefits, flavored around knightly recognition, retainers, or martial honor."
+      },
+      {
+        "id": "outlander",
+        "label": "Outlander",
+        "answer": "They grew up beyond settled civilization as a wanderer, exile, nomad, hunter, guide, or wilderness survivor.",
+        "benefits": "Usually gives Athletics and Survival, a musical instrument, a language, and wilderness survival help through Wanderer."
+      },
+      {
+        "id": "sage",
+        "label": "Sage",
+        "answer": "They were a scholar, researcher, librarian, apprentice wizard, professor, historian, astronomer, or obsessive student.",
+        "benefits": "Usually gives Arcana and History, two languages, and help finding obscure information through Researcher."
+      },
+      {
+        "id": "sailor",
+        "label": "Sailor",
+        "answer": "They spent years aboard ships, learning the sea, storms, ports, crews, ropes, and shipboard discipline.",
+        "benefits": "Usually gives Athletics and Perception, navigator's tools, water vehicles, and access to sea travel through Ship's Passage."
+      },
+      {
+        "id": "pirate",
+        "label": "Pirate",
+        "answer": "They lived at sea through raiding, smuggling, intimidation, mutiny, or illegal freedom.",
+        "benefits": "Usually uses Sailor-style benefits, often with a feared reputation through Bad Reputation."
+      },
+      {
+        "id": "soldier",
+        "label": "Soldier",
+        "answer": "They served in an army, militia, guard, mercenary company, noble retinue, or organized fighting force.",
+        "benefits": "Usually gives Athletics and Intimidation, a gaming set, land vehicles, and recognition through Military Rank."
+      },
+      {
+        "id": "urchin",
+        "label": "Urchin",
+        "answer": "They grew up poor, alone, abandoned, or street-raised, surviving through speed, awareness, theft, begging, or cleverness.",
+        "benefits": "Usually gives Sleight of Hand and Stealth, disguise kit, thieves' tools, and city movement knowledge through City Secrets."
+      }
+    ],
+    "family_relationship": [
+      {
+        "id": "loving_stable",
+        "label": "Loving and Stable",
+        "answer": "They grew up in a loving home and left because they wanted adventure, not because they were trying to escape."
+      },
+      {
+        "id": "loving_but_strict",
+        "label": "Loving but Strict",
+        "answer": "Their family loved them, but had very clear expectations about duty, career, marriage, faith, or tradition."
+      },
+      {
+        "id": "distant_but_safe",
+        "label": "Distant but Safe",
+        "answer": "Their family provided for them, but emotional warmth was rare, so they learned independence early."
+      },
+      {
+        "id": "overprotective",
+        "label": "Overprotective",
+        "answer": "Their family tried to shelter them from danger, which made them desperate to prove they could survive on their own."
+      },
+      {
+        "id": "large_chaotic_family",
+        "label": "Large Chaotic Family",
+        "answer": "They grew up surrounded by siblings, cousins, noise, arguments, food, stories, and very little privacy."
+      },
+      {
+        "id": "only_child",
+        "label": "Only Child",
+        "answer": "They were the center of their family's hopes, worries, and expectations, for better or worse."
+      },
+      {
+        "id": "favored_child",
+        "label": "Favored Child",
+        "answer": "They were treated as special, talented, or destined for something, and now struggle with pressure or guilt."
+      },
+      {
+        "id": "black_sheep",
+        "label": "Black Sheep",
+        "answer": "They never fit what their family wanted them to be, and leaving home felt inevitable."
+      },
+      {
+        "id": "family_business",
+        "label": "Family Business",
+        "answer": "They were expected to inherit or continue a family trade, shop, farm, temple role, criminal network, or noble duty."
+      },
+      {
+        "id": "military_family",
+        "label": "Military Family",
+        "answer": "Their family valued discipline, service, loyalty, and toughness, whether or not the character agreed with those values."
+      },
+      {
+        "id": "criminal_family",
+        "label": "Criminal Family",
+        "answer": "Their family survived through theft, smuggling, scams, or underground deals, and the character may be proud, ashamed, or conflicted."
+      },
+      {
+        "id": "adopted",
+        "label": "Adopted or Taken In",
+        "answer": "They were raised by people who were not their birth family, and that shaped how they think about blood, loyalty, and belonging."
+      },
+      {
+        "id": "orphaned_young",
+        "label": "Orphaned Young",
+        "answer": "They lost their family early and were shaped by whoever, or whatever, helped them survive afterward."
+      },
+      {
+        "id": "raised_by_community",
+        "label": "Raised by the Community",
+        "answer": "No single person raised them; they belonged to a village, temple, caravan, ship, troupe, or circle."
+      },
+      {
+        "id": "noble_family",
+        "label": "Noble Family",
+        "answer": "They grew up with status, education, and expectations, but may have seen the cruelty or emptiness behind polite society."
+      },
+      {
+        "id": "poor_but_loving",
+        "label": "Poor but Loving",
+        "answer": "Their family had very little, but gave them love, humor, survival skills, and a reason to want a better life."
+      },
+      {
+        "id": "wealthy_but_cold",
+        "label": "Wealthy but Cold",
+        "answer": "They had comfort and opportunity, but affection was conditional, distant, or treated like a weakness."
+      },
+      {
+        "id": "secretive_family",
+        "label": "Secretive Family",
+        "answer": "Their family hid something important: a crime, a curse, a pact, a forbidden lineage, or the truth about where they came from."
+      },
+      {
+        "id": "betrayed_by_family",
+        "label": "Betrayed by Family",
+        "answer": "Someone in their family used, abandoned, sold out, framed, or sacrificed them, and that wound still shapes them."
+      },
+      {
+        "id": "family_lost_to_war",
+        "label": "Family Lost to War",
+        "answer": "War, politics, conscription, famine, or invasion shattered their family, leaving them with grief and unfinished questions."
+      }
+    ],
+    "left_home": [
+      {
+        "id": "never_really_left",
+        "label": "Never Really Left",
+        "answer": "They still think of home as home, write letters when they can, and expect to return someday."
+      },
+      {
+        "id": "left_as_child",
+        "label": "Left as a Child",
+        "answer": "They left home very young due to tragedy, poverty, danger, abandonment, or being taken in by someone else."
+      },
+      {
+        "id": "left_as_teen",
+        "label": "Left as a Teenager",
+        "answer": "They left as a teenager, either running away, being sent away, apprenticing, joining a group, or chasing independence."
+      },
+      {
+        "id": "left_at_adulthood",
+        "label": "Left at Adulthood",
+        "answer": "They left when they came of age because it was expected, celebrated, or necessary in their culture."
+      },
+      {
+        "id": "ran_away",
+        "label": "Ran Away",
+        "answer": "They left suddenly, without permission, and may still feel guilt, fear, or pride about it."
+      },
+      {
+        "id": "sent_away",
+        "label": "Sent Away",
+        "answer": "Their family sent them away for schooling, safety, punishment, apprenticeship, politics, or because they were different."
+      },
+      {
+        "id": "banished",
+        "label": "Banished",
+        "answer": "They were forced to leave and are not welcome back unless something major changes."
+      },
+      {
+        "id": "left_after_death",
+        "label": "Left After a Death",
+        "answer": "They left after a parent, sibling, mentor, spouse, or friend died, because staying hurt too much."
+      },
+      {
+        "id": "left_after_betrayal",
+        "label": "Left After a Betrayal",
+        "answer": "They left when they learned someone close to them had lied, used them, or hidden the truth."
+      },
+      {
+        "id": "left_for_training",
+        "label": "Left for Training",
+        "answer": "They left to become a soldier, mage, priest, druid, performer, spy, knight, monk, or apprentice."
+      },
+      {
+        "id": "left_for_love",
+        "label": "Left for Love",
+        "answer": "They left home because of love: to follow someone, escape an arranged match, protect someone, or recover from heartbreak."
+      },
+      {
+        "id": "left_for_money",
+        "label": "Left for Money",
+        "answer": "They left because their family needed money, or because poverty made staying impossible."
+      },
+      {
+        "id": "left_to_escape_expectations",
+        "label": "Left to Escape Expectations",
+        "answer": "They left because home had already decided who they were supposed to become."
+      },
+      {
+        "id": "left_to_find_truth",
+        "label": "Left to Find the Truth",
+        "answer": "They left after discovering a clue, secret, prophecy, map, letter, symbol, or strange magical event."
+      },
+      {
+        "id": "left_because_of_war",
+        "label": "Left Because of War",
+        "answer": "They left because war, conscription, occupation, raids, or political violence made home unsafe."
+      },
+      {
+        "id": "left_with_blessing",
+        "label": "Left with Their Family's Blessing",
+        "answer": "Their family supported their departure, even if it was painful."
+      },
+      {
+        "id": "left_without_goodbye",
+        "label": "Left Without Saying Goodbye",
+        "answer": "They disappeared without a proper farewell and may dread the day someone asks why."
+      },
+      {
+        "id": "left_and_cannot_return",
+        "label": "Left and Cannot Return",
+        "answer": "They would go home if they could, but home is destroyed, occupied, cursed, politically dangerous, or no longer exists."
+      },
+      {
+        "id": "left_to_prove_self",
+        "label": "Left to Prove Themselves",
+        "answer": "They left because they were tired of being treated like a child, failure, burden, joke, or disappointment."
+      },
+      {
+        "id": "left_by_accident",
+        "label": "Left by Accident",
+        "answer": "They did not mean to become an adventurer; one bad day, strange job, wrong road, or weird magical incident changed everything."
+      }
+    ],
+    "complication": [
+      { "id": "gets_attached", "label": "Gets Attached Too Easily", "answer": "They try to stay independent, but they keep caring about people they meant to keep at a distance." },
+      { "id": "haunted_by_past", "label": "Haunted by the Past", "answer": "Something they did, failed to do, or survived still follows them." },
+      { "id": "dangerous_secret", "label": "Dangerous Secret", "answer": "They are hiding something that could change how the party sees them." },
+      { "id": "family_expectations", "label": "Family Expectations", "answer": "Their family already decided who they were supposed to become, and they are trying to escape or live up to it." },
+      { "id": "owes_a_debt", "label": "Owes a Debt", "answer": "They owe money, loyalty, a favor, a life debt, or a promise to someone dangerous or important." },
+      { "id": "wanted", "label": "Wanted", "answer": "Someone is looking for them: the law, a noble, a guild, a criminal group, a cult, or their own family." },
+      { "id": "does_not_trust_people", "label": "Does Not Trust People", "answer": "They want connection, but experience has taught them that trust is dangerous." },
+      { "id": "too_much_pride", "label": "Too Much Pride", "answer": "They struggle to admit weakness, ask for help, or back down when they should." },
+      { "id": "afraid_of_power", "label": "Afraid of Their Own Power", "answer": "They have abilities, anger, magic, or instincts they do not fully trust." },
+      { "id": "tempted_by_power", "label": "Tempted by Power", "answer": "They want to do the right thing, but power, recognition, revenge, or control keeps tempting them." },
+      { "id": "divided_loyalties", "label": "Divided Loyalties", "answer": "They care about two people, nations, causes, gods, or ideals that may come into conflict." },
+      { "id": "bad_reputation", "label": "Bad Reputation", "answer": "People have heard stories about them, and some of those stories are true." },
+      { "id": "naive", "label": "Naive", "answer": "They are capable and sincere, but they do not yet understand how cruel, political, or complicated the world can be." },
+      { "id": "reckless", "label": "Reckless", "answer": "They act before thinking when emotions run high, especially if someone is in danger." },
+      { "id": "protective_to_a_fault", "label": "Protective to a Fault", "answer": "They will put themselves in danger for others, even when nobody asked them to." },
+      { "id": "cannot_go_home", "label": "Cannot Go Home", "answer": "They would return home if they could, but home is destroyed, unsafe, cursed, occupied, or no longer wants them." },
+      { "id": "hunted_by_pact", "label": "Hunted by a Pact or Promise", "answer": "They made a bargain, oath, promise, or mistake that now demands payment." },
+      { "id": "secretly_guilty", "label": "Secretly Guilty", "answer": "They blame themselves for something, whether or not it was actually their fault." },
+      { "id": "does_not_belong", "label": "Does Not Belong", "answer": "They feel out of place wherever they go: too strange for home, too shaped by home for the wider world." },
+      { "id": "truth_would_hurt", "label": "The Truth Would Hurt", "answer": "They are searching for answers, but part of them is afraid of what the truth will cost." }
+    ],
+    "downtime": [
+      {
+        "id": "bad_liar",
+        "label": "Terrible Liar",
+        "answer": "They are brave in battle but completely unable to lie convincingly during games like Two Truths and a Lie."
+      },
+      {
+        "id": "too_good_liar",
+        "label": "Too Good at Lying",
+        "answer": "They lie so smoothly that the party starts wondering how much of their backstory is true."
+      },
+      {
+        "id": "secret_romantic",
+        "label": "Secret Romantic",
+        "answer": "They act tough or detached but secretly love poetry, songs, love stories, or dramatic confessions."
+      },
+      {
+        "id": "embarrassing_past",
+        "label": "Embarrassing Past",
+        "answer": "They once did something deeply embarrassing and will do almost anything to keep the party from learning about it."
+      },
+      {
+        "id": "hidden_crime",
+        "label": "Hidden Crime",
+        "answer": "They committed a crime in the past, but the story is more complicated than it first sounds."
+      },
+      {
+        "id": "unexpected_hobby",
+        "label": "Unexpected Hobby",
+        "answer": "They have a hobby no one expects, like knitting, birdwatching, baking, calligraphy, dancing, or collecting spoons."
+      },
+      {
+        "id": "soft_spot",
+        "label": "Obvious Soft Spot",
+        "answer": "They become completely different around children, animals, old people, or anyone who reminds them of home."
+      },
+      {
+        "id": "campfire_storyteller",
+        "label": "Campfire Storyteller",
+        "answer": "They always have a story to tell, but no one is sure whether the stories are true, exaggerated, or stolen."
+      },
+      {
+        "id": "serious_trigger",
+        "label": "Unexpected Serious Topic",
+        "answer": "They joke constantly until one specific subject comes up, and then they become quiet and intense."
+      },
+      {
+        "id": "strange_superstition",
+        "label": "Strange Superstition",
+        "answer": "They follow a weird personal rule or superstition that may or may not have any real magical basis."
+      },
+      {
+        "id": "secret_kindness",
+        "label": "Secretly Kind",
+        "answer": "They pretend to be selfish, but quietly leave food, coins, or protection for people who need help."
+      },
+      {
+        "id": "keeps_trophies",
+        "label": "Keeps Trophies",
+        "answer": "They collect little objects from places they have been, each with a story attached."
+      },
+      {
+        "id": "over_sharer",
+        "label": "Over-Sharer",
+        "answer": "They answer simple questions with wildly personal stories that make everyone uncomfortable."
+      },
+      {
+        "id": "never_answers_directly",
+        "label": "Never Answers Directly",
+        "answer": "They dodge personal questions with jokes, riddles, insults, or by asking someone else a question."
+      },
+      {
+        "id": "three_truths_problem",
+        "label": "Three Truths Problem",
+        "answer": "During Two Truths and a Lie, they accidentally give three true statements because their life is already ridiculous."
+      },
+      {
+        "id": "secretly_afraid",
+        "label": "Secretly Afraid",
+        "answer": "They seem confident, but a very ordinary thing scares them more than monsters do."
+      },
+      {
+        "id": "odd_collection",
+        "label": "Odd Collection",
+        "answer": "They collect something strange, useless, sentimental, or mildly concerning."
+      },
+      {
+        "id": "writes_letters",
+        "label": "Writes Letters",
+        "answer": "They write letters to someone regularly, even if they never send them."
+      },
+      {
+        "id": "talks_in_sleep",
+        "label": "Talks in Their Sleep",
+        "answer": "They occasionally say names, warnings, jokes, or secrets while asleep."
+      },
+      {
+        "id": "camp_cook",
+        "label": "Camp Cook",
+        "answer": "They take cooking very seriously and judge people by how they treat a shared meal."
+      }
+    ]
+  }
+}

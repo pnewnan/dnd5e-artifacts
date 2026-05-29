@@ -1,0 +1,273 @@
+{
+  "title": "Building Your Character",
+  "subtitle": "A practical guide to creating someone worth playing",
+  "philosophy": {
+    "question": "Who would be fun to play and pretend to be?",
+    "body": "The rules, class, race, and stats matter — but the most important thing is creating someone you'll enjoy acting as, making choices for, and watching grow over time."
+  },
+  "intro": "A good character does not need a huge backstory, but they should have a few clear answers. The questions below are meant to help you find them.",
+  "questions": [
+    {
+      "id": "confrontation",
+      "number": 1,
+      "title": "How does this character deal with confrontation?",
+      "subtitle": "D&D is usually about heroes, danger, conflict, and hard choices",
+      "intro": "Sooner or later, your character is probably going to end up in a fight. Think about what that looks like for them.",
+      "accordions": [
+        {
+          "title": "Questions to ask yourself",
+          "subtitle": "Instinct, motivation, and method",
+          "color": "green",
+          "type": "list",
+          "items": [
+            "Do they try to avoid violence?",
+            "Do they talk first and fight only when forced?",
+            "Do they jump into danger immediately?",
+            "What makes them angry enough to fight?",
+            "Are they protecting innocent people?",
+            "Do they have a strong sense of justice?",
+            "Are they defending friends, family, faith, country, nature, freedom, or themselves?",
+            "When they fight, how do they fight?"
+          ]
+        },
+        {
+          "title": "Example archetypes",
+          "subtitle": "Types of fighters, and why they fight",
+          "color": "gold",
+          "type": "examples",
+          "items": [
+            "A protector who steps in when others are threatened.",
+            "A survivor who avoids fights unless cornered.",
+            "A glory-seeker who wants to prove themselves.",
+            "A religious warrior who believes evil must be confronted.",
+            "A clever trickster who would rather manipulate or distract enemies than face them directly.",
+            "A reluctant hero who does not want trouble, but cannot ignore suffering."
+          ],
+          "annotation": "The goal is not to create someone perfect. The goal is to create someone whose reactions are fun and interesting."
+        }
+      ]
+    },
+    {
+      "id": "motivation",
+      "number": 2,
+      "title": "What motivates them?",
+      "subtitle": "Your character is out in the world for a reason",
+      "intro": "A character with no ambition, no curiosity, and no reason to engage with the story can be hard to play. Ask what they want.",
+      "accordions": [
+        {
+          "title": "For themselves",
+          "subtitle": "Personal ambition, need, or drive",
+          "color": "green",
+          "type": "list",
+          "items": [
+            "Riches? Fame? Power?",
+            "Freedom? Redemption? Revenge?",
+            "Knowledge? Adventure?",
+            "To prove they are more than what people think they are?"
+          ]
+        },
+        {
+          "title": "For others",
+          "subtitle": "Duty, care, or belief in something larger",
+          "color": "teal",
+          "type": "list",
+          "items": [
+            "Protect their home? Help the poor?",
+            "Defend nature? Serve a god?",
+            "Free people from oppression? Stop a war?",
+            "Preserve history? Expose corruption?"
+          ]
+        },
+        {
+          "title": "In this world",
+          "subtitle": "Aelenthor-specific motivations",
+          "color": "slate",
+          "type": "prose",
+          "body": "They might care about the rising tension between <strong>Elkenquay</strong> and <strong>Fastingbreak</strong>. Maybe they see war coming and want to prevent it. Maybe they believe monarchy is flawed after seeing a nearby republic function differently. Maybe they are loyal to a kingdom and suspicious of republican ideals. Maybe they just want to survive while powerful nations tear the world apart."
+        },
+        {
+          "title": "Example motivations",
+          "subtitle": "Concrete starting points",
+          "color": "gold",
+          "type": "examples",
+          "items": [
+            "\"I want to avenge my parents' deaths.\"",
+            "\"I want to become rich enough that no one can control me again.\"",
+            "\"I want to protect my village from the coming war.\"",
+            "\"I want to prove my family wrong.\"",
+            "\"I want to expose corruption in the monarchy.\"",
+            "\"I want to understand the strange magic spreading through the world.\"",
+            "\"I want to become famous enough that my name is remembered.\"",
+            "\"I want to help people, even though I'm bad at admitting it.\""
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ancestry",
+      "number": 3,
+      "title": "What race or ancestry are you?",
+      "subtitle": "Appearance, culture, and how others may see you",
+      "intro": "Race and ancestry can affect appearance, culture, abilities, lifespan, and how others may react — but it does not decide whether they are good or evil. None of the playable races are inherently evil. This is not Tolkien. An orc is not automatically a villain. A tiefling is not automatically corrupt. A goblin, snake person, harpy, or fae-touched character can be heroic, selfish, gentle, strange, noble, terrifying, hilarious, or anything else.",
+      "accordions": [
+        {
+          "title": "Common options",
+          "subtitle": "The foundational peoples of the world",
+          "color": "green",
+          "type": "bold-list",
+          "items": [
+            { "term": "Human", "desc": "Flexible, ambitious, adaptable, and found almost everywhere." },
+            { "term": "Dwarf", "desc": "Sturdy, tough, often tied to mountains, craft, history, clans, stonework, or tradition." },
+            { "term": "Halfling", "desc": "Small, lucky, brave, often underestimated, and great for cozy, clever, or unexpectedly heroic characters." },
+            { "term": "Elf", "desc": "Long-lived, graceful, often connected to magic, nature, ancient cultures, or old griefs." },
+            { "term": "Gnome", "desc": "Small, curious, clever, inventive, strange, magical, or chaotic in fun ways." },
+            { "term": "Tiefling", "desc": "People with infernal or demonic traits, usually horns, unusual eyes, tails, or strange skin tones. They often look intimidating but are not evil by nature." },
+            { "term": "Orc", "desc": "Strong, intense, passionate, and physical, but not automatically savage or cruel. An orc can be a poet, protector, scholar, farmer, knight, or anything else." }
+          ]
+        },
+        {
+          "title": "Exotic options",
+          "subtitle": "More unusual ancestries — ask your DM first",
+          "color": "purple",
+          "type": "bold-list",
+          "items": [
+            { "term": "Tabaxi", "desc": "Cat people. Agile, curious, quick, and often excellent wanderers, scouts, rogues, or storytellers." },
+            { "term": "Aarakocra / Crowfolk", "desc": "Bird people, sometimes crow-like or eagle-like, often tied to the sky, omens, travel, or freedom." },
+            { "term": "Arryan / Owlfolk", "desc": "Owl-like people, often wise, watchful, quiet, eerie, scholarly, or mystical." },
+            { "term": "Snake People", "desc": "Serpentine folk who might be mysterious, elegant, ancient, unsettling, or misunderstood." },
+            { "term": "Pandarians", "desc": "Panda-like people, often gentle, strong, spiritual, humorous, or surprisingly dangerous when pushed." },
+            { "term": "Polecats", "desc": "Small mammal-like folk, quick, perceptive, clever, cute, and adaptable." },
+            { "term": "Harpy", "desc": "Winged people who may be fierce, musical, strange, predatory, beautiful, or tragic depending on the character." },
+            { "term": "Fae / Fae-touched", "desc": "Characters connected to the Feywild or faerie magic. They might be whimsical, unsettling, charming, emotional, oath-bound, mischievous, or alien in their thinking." }
+          ]
+        }
+      ],
+      "annotation": "Race can give you flavor, but it should not trap you. A gentle orc healer, a nervous tiefling librarian, a dwarf who hates mining, a halfling vengeance paladin, or a fae-touched accountant can all be great characters. Sometimes the best question is simply: what does this ancestry add to the character's personality, appearance, or story?"
+    },
+    {
+      "id": "class",
+      "number": 4,
+      "title": "What class are you?",
+      "subtitle": "When your character is in danger, what do they do?",
+      "intro": "Class is partly about combat, but it is also about fantasy. Do they charge forward with a sword? Cast spells? Heal allies? Sneak through shadows? Call on nature? Inspire people with music or words? Each class below has subclasses that let you customize it further, and D&D also allows multiclassing at each level if you want to blend ideas later.",
+      "classes": [
+        {
+          "name": "Fighter",
+          "color": "slate",
+          "desc": "A trained warrior. Fighters are good if you want to be reliable, tough, and effective with weapons. They can be knights, soldiers, duelists, archers, mercenaries, bodyguards, or self-taught survivors.",
+          "fantasy": "I solve problems with skill, discipline, and steel."
+        },
+        {
+          "name": "Barbarian",
+          "color": "blood",
+          "desc": "A fierce warrior powered by rage, instinct, endurance, or primal strength. Barbarians are great if you want to be physical, direct, emotional, and hard to kill.",
+          "fantasy": "When danger comes, I become the danger."
+        },
+        {
+          "name": "Rogue",
+          "color": "gold",
+          "desc": "A sneaky, clever, skillful character who relies on precision, deception, stealth, and timing. Rogues can be thieves, scouts, spies, assassins, investigators, smugglers, or charming troublemakers.",
+          "fantasy": "I win by being faster, quieter, and smarter."
+        },
+        {
+          "name": "Ranger",
+          "color": "teal",
+          "desc": "A warrior of the wilds. Rangers are hunters, trackers, scouts, monster-slayers, and protectors of the borderlands. They often mix weapons, survival skills, and some nature magic.",
+          "fantasy": "I know the wild, I know my enemy, and I know how to survive."
+        },
+        {
+          "name": "Druid",
+          "color": "green",
+          "desc": "A nature-based spellcaster connected to animals, plants, storms, the moon, spirits, or the balance of the natural world. Druids can heal, control the battlefield, summon natural forces, and sometimes transform into animals.",
+          "fantasy": "The natural world has power, and I speak for it."
+        },
+        {
+          "name": "Paladin",
+          "color": "blood",
+          "desc": "A holy or oath-bound warrior. Paladins fight because they believe in something deeply: justice, vengeance, protection, freedom, conquest, redemption, or a sacred duty.",
+          "fantasy": "My convictions give me power."
+        },
+        {
+          "name": "Cleric",
+          "color": "gold",
+          "desc": "A divine spellcaster connected to a god, philosophy, sacred force, or cosmic domain. Clerics can heal, protect, curse, fight, investigate, or bring divine judgment.",
+          "fantasy": "I am the hand of something greater than myself."
+        },
+        {
+          "name": "Wizard",
+          "color": "purple",
+          "desc": "A scholar of magic. Wizards learn spells through study, research, and intelligence. They are flexible, powerful, and often curious, ambitious, or obsessed with knowledge.",
+          "fantasy": "Reality has rules, and I have learned how to rewrite them."
+        },
+        {
+          "name": "Sorcerer",
+          "color": "purple",
+          "desc": "A natural spellcaster whose magic comes from bloodline, destiny, trauma, mutation, or some supernatural event. Sorcerers do not learn magic so much as contain it.",
+          "fantasy": "Magic is not something I do. It is something I am."
+        },
+        {
+          "name": "Warlock",
+          "color": "slate",
+          "desc": "A spellcaster who gained power through a pact with a powerful being: a fiend, fey, ancient entity, celestial, shadow force, or something stranger. Warlocks are great for characters with secrets, bargains, debts, or dangerous patrons.",
+          "fantasy": "I made a deal, and now I have power. The cost is the question."
+        },
+        {
+          "name": "Bard",
+          "color": "green",
+          "desc": "A magical performer, storyteller, scholar, diplomat, or inspirational force. Bards use music, words, art, lore, and charisma to shape the world and support their allies.",
+          "fantasy": "Stories, songs, and words have power."
+        }
+      ]
+    },
+    {
+      "id": "downtime",
+      "number": 5,
+      "title": "Are they fun outside the main plot, too?",
+      "subtitle": "Campfires, taverns, and quiet moments between the danger",
+      "intro": "Sometimes D&D has little in-character moments: sitting around a campfire, talking in a tavern, traveling on the road, killing time at an inn, or playing a small character game like Two Truths and a Lie. That kind of scene is really fun if your character has enough personality, history, secrets, quirks, or opinions to participate.",
+      "accordions": [
+        {
+          "title": "Questions to ask yourself",
+          "subtitle": "Who are they when nothing is at stake?",
+          "color": "green",
+          "type": "list",
+          "items": [
+            "What would this character say during downtime?",
+            "Do they lie easily, or are they terrible at it?",
+            "What embarrassing story might they tell?",
+            "What truth would they hide?",
+            "What would they joke about?",
+            "What topic would unexpectedly make them serious?",
+            "What small personal detail would surprise the party?"
+          ]
+        },
+        {
+          "title": "Two Truths and a Lie — example",
+          "subtitle": "How to make the game immediately interesting",
+          "color": "gold",
+          "type": "examples",
+          "items": [
+            "\"I once stole a horse from a noble.\"",
+            "\"I have never been kissed.\"",
+            "\"I killed a man before I turned sixteen.\""
+          ],
+          "prose": "One is funny, one is sad, and one is dangerous. The point is not just trivia — it gives the other players little hooks into who this person is."
+        }
+      ],
+      "annotation": "A good character has enough life in them that they can be interesting during the quiet scenes too. You do not need to plan all of this in advance — it can emerge from play. But it helps to have a few details that are not just about combat or the main quest."
+    }
+  ],
+  "formula": {
+    "template": "I am a [class] who wants [goal], but [complication]. I usually handle conflict by [approach].",
+    "intro": "Once you have a sense of the above, try filling in this formula. It does not need to be perfect — it just needs to be a starting point.",
+    "examples": [
+      "\"I am a rogue who wants enough money to buy my family's freedom, but I keep getting attached to people I'm supposed to betray.\"",
+      "\"I am a paladin who wants to stop the war between Elkenquay and Fastingbreak, but I'm starting to question whether my own kingdom is just.\"",
+      "\"I am a wizard who wants to uncover forbidden history, but I'm afraid the truth might make things worse.\"",
+      "\"I am a barbarian who wants revenge for my village, but I'm learning that not every enemy is the person holding the sword.\"",
+      "\"I am a bard who wants to become famous, but I keep accidentally becoming responsible for people.\"",
+      "\"I am a druid who wants to protect the old forests from war and industry, but I am slowly realizing that people are part of nature too.\""
+    ],
+    "closing": "That is usually enough to start. You do not need to know everything on day one. Some of the best character details come from playing the game and discovering who the character becomes."
+  }
+}
