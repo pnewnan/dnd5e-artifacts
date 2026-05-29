@@ -29,10 +29,9 @@
   .btn { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.5rem 1.1rem; border: 1px solid; cursor: pointer; transition: background 0.18s, color 0.18s; background: transparent; }
   .btn-primary { border-color: var(--act-color); color: var(--act-color); }
   .btn-primary:hover { background: var(--act-color); color: #f2e8c9; }
-  .btn-secondary { border-color: var(--parchment-shadow); color: var(--faded); }
-  .btn-secondary:hover { background: rgba(180,140,60,0.15); color: var(--ink); }
   .btn-print { border-color: var(--slate); color: var(--slate); }
   .btn-print:hover { background: var(--slate); color: #f2e8c9; }
+  .btn-print:disabled { opacity: 0.35; cursor: default; }
 
   .section-head { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--act-color); margin: 2rem 0 0.6rem; border-bottom: 1px solid rgba(58,90,46,0.2); padding-bottom: 0.25rem; }
 
@@ -45,25 +44,41 @@
   .philosophy-block .big-question { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--ink); line-height: 1.4; }
   .philosophy-block p { font-style: italic; color: var(--faded); font-size: 0.86rem; margin-top: 0.5rem; }
 
+  /* ── CHARACTER SHEET (generated summary) ── */
+  #character-sheet { display: none; border: 2px solid var(--act-color); background: rgba(58,90,46,0.04); margin-bottom: 1.8rem; overflow: hidden; }
+  #character-sheet.visible { display: block; }
+  .sheet-header { background: var(--act-color); color: #f2e8c9; padding: 0.65rem 1.1rem; display: flex; align-items: center; justify-content: space-between; }
+  .sheet-header-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; }
+  .sheet-body { padding: 1.1rem 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 1.2rem; }
+  @media (max-width: 580px) { .sheet-body { grid-template-columns: 1fr; } }
+  .sheet-row { padding-bottom: 0.5rem; border-bottom: 1px solid rgba(180,140,60,0.2); }
+  .sheet-row:last-child, .sheet-row.full { border-bottom: none; }
+  .sheet-row.full { grid-column: 1 / -1; }
+  .sheet-q { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faded); margin-bottom: 0.12rem; }
+  .sheet-label { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; color: var(--ink); margin-bottom: 0.08rem; }
+  .sheet-answer { font-size: 0.83rem; color: var(--dim); line-height: 1.55; }
+  .sheet-formula { grid-column: 1 / -1; border-top: 1px solid rgba(58,90,46,0.25); padding-top: 0.75rem; margin-top: 0.2rem; font-family: 'Cinzel', serif; font-size: 0.82rem; color: var(--ink); line-height: 1.6; }
+  .sheet-formula em { font-family: 'IM Fell English', serif; font-style: italic; color: var(--act-color); }
+
   /* ── QUESTION CARD ── */
   .question-card { border: 1px solid var(--parchment-shadow); background: rgba(255,252,240,0.5); margin-bottom: 1.2rem; overflow: hidden; }
   .question-card-header { display: flex; align-items: stretch; }
   .question-num { background: var(--act-color); color: #fff; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; min-width: 3rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .question-num.star { font-size: 0.9rem; }
   .question-title-block { padding: 0.75rem 1rem; flex: 1; }
   .question-title { font-family: 'Cinzel', serif; font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); }
   .question-subtitle { font-style: italic; font-size: 0.8rem; color: var(--faded); margin-top: 0.15rem; }
   .question-reroll { display: flex; align-items: center; padding: 0 0.9rem; cursor: pointer; color: var(--faded); font-size: 1.1rem; transition: color 0.18s; flex-shrink: 0; border-left: 1px solid rgba(180,140,60,0.2); }
   .question-reroll:hover { color: var(--act-color); }
-  .question-reroll title { display: none; }
   .question-body { padding: 1rem 1.2rem; border-top: 1px solid rgba(180,140,60,0.25); }
 
-  /* ── GENERATED ANSWER ── */
-  .generated-answer { display: none; background: rgba(58,90,46,0.07); border: 1px solid rgba(58,90,46,0.25); border-left: 4px solid var(--act-color); padding: 0.85rem 1.1rem; margin-bottom: 0.9rem; }
+  /* ── GENERATED ANSWER (inline on card) ── */
+  .generated-answer { display: none; background: rgba(58,90,46,0.07); border: 1px solid rgba(58,90,46,0.25); border-left: 4px solid var(--act-color); padding: 0.75rem 1rem; margin-bottom: 0.9rem; }
   .generated-answer.visible { display: block; }
-  .gen-label { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--act-color); margin-bottom: 0.2rem; }
-  .gen-title { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; color: var(--ink); margin-bottom: 0.2rem; }
-  .gen-body { font-size: 0.86rem; color: var(--dim); line-height: 1.65; }
-  .gen-extra { font-size: 0.8rem; font-style: italic; color: var(--faded); margin-top: 0.3rem; border-top: 1px solid rgba(180,140,60,0.2); padding-top: 0.3rem; }
+  .gen-label { font-family: 'Cinzel', serif; font-size: 0.48rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--act-color); margin-bottom: 0.18rem; }
+  .gen-title { font-family: 'Cinzel', serif; font-size: 0.8rem; font-weight: 700; color: var(--ink); margin-bottom: 0.15rem; }
+  .gen-body { font-size: 0.85rem; color: var(--dim); line-height: 1.6; }
+  .gen-extra { font-size: 0.79rem; font-style: italic; color: var(--faded); margin-top: 0.3rem; border-top: 1px solid rgba(180,140,60,0.2); padding-top: 0.3rem; }
 
   /* ── ACCORDION ── */
   .accordion { margin-bottom: 0.55rem; }
@@ -81,6 +96,16 @@
   .accordion-header.open .accordion-arrow { transform: rotate(180deg); }
   .accordion-body { display: none; padding: 0.9rem 1.1rem; border: 1px solid var(--parchment-shadow); border-top: none; background: rgba(255,252,240,0.5); }
   .accordion-body.open { display: block; }
+
+  /* ── OPTION GRID (background, complication) ── */
+  .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.6rem; }
+  @media (max-width: 600px) { .option-grid { grid-template-columns: 1fr; } }
+  .option-card { border: 1px solid var(--parchment-shadow); border-left: 3px solid var(--parchment-shadow); padding: 0.6rem 0.8rem; background: rgba(255,252,240,0.4); cursor: default; }
+  .option-card.c-gold  { border-left-color: var(--gold); }
+  .option-card.c-slate { border-left-color: var(--slate); }
+  .option-label { font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.18rem; }
+  .option-desc { font-size: 0.8rem; color: var(--dim); line-height: 1.55; }
+  .option-extra { font-size: 0.75rem; font-style: italic; color: var(--faded); margin-top: 0.25rem; border-top: 1px solid rgba(180,140,60,0.2); padding-top: 0.25rem; }
 
   /* ── CLASS GRID ── */
   .class-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-top: 0.6rem; }
@@ -101,9 +126,6 @@
   .formula-block { background: rgba(26,17,8,0.05); border: 1px solid var(--parchment-shadow); padding: 1.1rem 1.3rem; margin: 0.8rem 0; }
   .formula-text { font-family: 'Cinzel', serif; font-size: 0.82rem; color: var(--ink); line-height: 1.6; letter-spacing: 0.03em; }
   .formula-text em { font-family: 'IM Fell English', serif; font-style: italic; color: var(--act-color); }
-  .formula-generated { display: none; background: rgba(58,90,46,0.07); border: 1px solid rgba(58,90,46,0.3); padding: 1.1rem 1.3rem; margin: 0.8rem 0; }
-  .formula-generated.visible { display: block; }
-  .formula-generated .formula-text { color: var(--ink); }
 
   .example-item { font-style: italic; font-size: 0.85rem; color: var(--dim); line-height: 1.65; border-left: 2px solid rgba(58,90,46,0.3); padding-left: 0.7rem; margin-bottom: 0.45rem; }
   .annotation { font-style: italic; font-size: 0.83rem; color: var(--blood); padding: 0.3rem 0.75rem; border-left: 2px solid var(--blood); margin: 0.6rem 0; background: rgba(122,31,31,0.04); line-height: 1.6; }
@@ -116,13 +138,10 @@
   @media print {
     body { background: #fff; padding: 0; }
     .page { box-shadow: none; border: none; max-width: 100%; }
-    .act-band { display: none; }
-    .toolbar, .question-reroll, .back-link, .btn { display: none !important; }
-    .accordion-body { display: block !important; }
-    .accordion-arrow { display: none; }
-    .generated-answer { display: block !important; border: 1px solid #ccc; }
-    .formula-generated { display: block !important; }
-    .question-card { break-inside: avoid; }
+    .act-band, .toolbar, .back-link, .guide-content { display: none !important; }
+    #character-sheet { display: block !important; border: 1px solid #999; margin: 1.5rem; }
+    .sheet-header { background: #3a5a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page-title { border-bottom: 1px solid #ccc; }
   }
 </style>
 </head>
@@ -139,14 +158,23 @@ const BASE = window.location.hostname === 'pnewnan.github.io'
   ? '/dnd5e-artifacts'
   : (window.location.pathname.includes('/prologue') ? '../..' : '.');
 
-// ── State ──────────────────────────────────────────────────────────────────
-let answers = null; // loaded from answers JSON
-let picks = {};     // current generated picks, keyed by bank id
+let answers = null;
+let picks = {};
 
 function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
-// ── Bank → Question mapping ────────────────────────────────────────────────
-// Each bank id maps to the question card DOM id that should show the result
+const BANK_ORDER = [
+  { bankId: 'ancestry',            label: 'Ancestry' },
+  { bankId: 'class',               label: 'Class' },
+  { bankId: 'background',          label: 'Background' },
+  { bankId: 'motivation',          label: 'Motivation' },
+  { bankId: 'complication',        label: 'Complication' },
+  { bankId: 'confrontation',       label: 'Confrontation Style' },
+  { bankId: 'family_relationship', label: 'Family' },
+  { bankId: 'left_home',           label: 'Why They Left' },
+  { bankId: 'downtime',            label: 'Downtime Trait' }
+];
+
 const BANK_TO_QUESTION = {
   confrontation:       'q-confrontation',
   motivation:          'q-motivation',
@@ -159,28 +187,76 @@ const BANK_TO_QUESTION = {
   downtime:            'q-downtime'
 };
 
-// ── Accordion toggle ───────────────────────────────────────────────────────
 function toggle(header) {
   header.classList.toggle('open');
   header.nextElementSibling.classList.toggle('open');
 }
 
-// ── Render a generated answer into a card ─────────────────────────────────
-function showPick(bankId, pick) {
-  picks[bankId] = pick;
-  const card = document.getElementById(BANK_TO_QUESTION[bankId]);
-  if (!card) return;
-  const box = card.querySelector('.generated-answer');
-  if (!box) return;
-  box.querySelector('.gen-title').textContent = pick.label;
-  box.querySelector('.gen-body').textContent = pick.answer;
-  const extra = box.querySelector('.gen-extra');
-  if (extra) extra.textContent = pick.benefits || pick.fantasy || '';
-  box.classList.add('visible');
-  updateFormula();
+// ── Update the aggregate character sheet at the top ────────────────────────
+function updateSheet() {
+  const sheet = document.getElementById('character-sheet');
+  if (!sheet) return;
+
+  const rows = BANK_ORDER.map(({ bankId, label }) => {
+    const pick = picks[bankId];
+    if (!pick) return '';
+    const extraHtml = pick.benefits
+      ? `<div class="sheet-answer" style="font-size:0.78rem;font-style:italic;color:var(--faded);margin-top:0.15rem;">${pick.benefits}</div>`
+      : '';
+    return `
+      <div class="sheet-row">
+        <div class="sheet-q">${label}</div>
+        <div class="sheet-label">${pick.label}</div>
+        <div class="sheet-answer">${pick.answer}</div>
+        ${extraHtml}
+      </div>`;
+  }).join('');
+
+  const formulaHtml = buildFormulaText()
+    ? `<div class="sheet-formula">${buildFormulaText()}</div>`
+    : '';
+
+  sheet.querySelector('.sheet-body').innerHTML = rows + formulaHtml;
+
+  if (Object.keys(picks).length > 0) {
+    sheet.classList.add('visible');
+    const printBtn = document.getElementById('btn-print');
+    if (printBtn) printBtn.disabled = false;
+  }
 }
 
-// ── Reroll a single question ───────────────────────────────────────────────
+function buildFormulaText() {
+  const cls = picks.class;
+  const motivation = picks.motivation;
+  const complication = picks.complication;
+  const confront = picks.confrontation;
+  if (!cls && !motivation) return '';
+  const classLabel = cls          ? cls.label         : '[class]';
+  const goal       = motivation   ? motivation.label   : '[goal]';
+  const compl      = complication ? complication.label : '[complication]';
+  const approach   = confront     ? confront.label     : '[approach]';
+  return `I am a <em>${classLabel}</em> who wants to <em>${goal.toLowerCase()}</em>, but <em>${compl.toLowerCase()}</em>. I usually handle conflict as <em>${approach}</em>.`;
+}
+
+function showPick(bankId, pick) {
+  picks[bankId] = pick;
+  const cardId = BANK_TO_QUESTION[bankId];
+  if (cardId) {
+    const card = document.getElementById(cardId);
+    if (card) {
+      const box = card.querySelector('.generated-answer');
+      if (box) {
+        box.querySelector('.gen-title').textContent = pick.label;
+        box.querySelector('.gen-body').textContent = pick.answer;
+        const extra = box.querySelector('.gen-extra');
+        if (extra) extra.textContent = pick.benefits || pick.fantasy || '';
+        box.classList.add('visible');
+      }
+    }
+  }
+  updateSheet();
+}
+
 function reroll(bankId) {
   if (!answers) return;
   const bank = answers.answerBanks[bankId];
@@ -188,43 +264,17 @@ function reroll(bankId) {
   showPick(bankId, rand(bank));
 }
 
-// ── Generate all ──────────────────────────────────────────────────────────
 function generateAll() {
   if (!answers) return;
+  picks = {};
   Object.keys(answers.answerBanks).forEach(bankId => {
-    const bank = answers.answerBanks[bankId];
-    showPick(bankId, rand(bank));
+    showPick(bankId, rand(answers.answerBanks[bankId]));
   });
 }
 
-// ── Assemble formula ──────────────────────────────────────────────────────
-function updateFormula() {
-  const box = document.getElementById('formula-generated');
-  if (!box) return;
-  const cls          = picks.class;
-  const motivation   = picks.motivation;
-  const confront     = picks.confrontation;
-  const complication = picks.complication;
-  if (!cls && !motivation && !confront && !complication) return;
+function printView() { window.print(); }
 
-  const classLabel  = cls          ? cls.label          : '[class]';
-  const goal        = motivation   ? motivation.label    : '[goal]';
-  const compl       = complication ? complication.label  : '[complication]';
-  const approach    = confront     ? confront.label      : '[approach]';
-
-  box.querySelector('.formula-text').innerHTML =
-    `I am a <em>${classLabel}</em> who wants to <em>${goal.toLowerCase()}</em>, ` +
-    `but <em>${compl.toLowerCase()}</em>. ` +
-    `I usually handle conflict as <em>${approach}</em>.`;
-  box.classList.add('visible');
-}
-
-// ── Print ──────────────────────────────────────────────────────────────────
-function printView() {
-  window.print();
-}
-
-// ── Renderers ─────────────────────────────────────────────────────────────
+// ── Renderers ──────────────────────────────────────────────────────────────
 function renderList(items) {
   return `<ul class="prose-list">${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
 }
@@ -255,12 +305,30 @@ function renderAccordion(acc) {
     </div>`;
 }
 
-function renderQuestion(q, bankId) {
-  const cardId = BANK_TO_QUESTION[bankId] || `q-${bankId}`;
-  const hasBank = !!bankId;
+// Render background options as a visible two-column grid
+function renderBackgroundGrid(bank) {
+  return `<div class="option-grid">${bank.map(b => `
+    <div class="option-card c-gold">
+      <div class="option-label">${b.label}</div>
+      <div class="option-desc">${b.answer}</div>
+      ${b.benefits ? `<div class="option-extra">${b.benefits}</div>` : ''}
+    </div>`).join('')}</div>`;
+}
+
+// Render complication options as a visible two-column grid
+function renderComplicationGrid(bank) {
+  return `<div class="option-grid">${bank.map(b => `
+    <div class="option-card c-slate">
+      <div class="option-label">${b.label}</div>
+      <div class="option-desc">${b.answer}</div>
+    </div>`).join('')}</div>`;
+}
+
+function renderQuestion(q, bankId, answerBanks) {
+  const cardId = BANK_TO_QUESTION[bankId] || `q-${q.id}`;
 
   let body = `
-    <div class="generated-answer" id="gen-${bankId}">
+    <div class="generated-answer">
       <div class="gen-label">Generated Answer</div>
       <div class="gen-title"></div>
       <div class="gen-body"></div>
@@ -268,8 +336,7 @@ function renderQuestion(q, bankId) {
     </div>
     <p>${q.intro}</p>`;
 
-  if (q.accordions) body += q.accordions.map(renderAccordion).join('');
-
+  if (q.accordions && q.accordions.length) body += q.accordions.map(renderAccordion).join('');
   if (q.classes) {
     body += `<div class="class-grid">${q.classes.map(cls => `
       <div class="class-card c-${cls.color}">
@@ -280,16 +347,27 @@ function renderQuestion(q, bankId) {
       </div>`).join('')}</div>`;
   }
 
+  // Background: render as visible option grid
+  if (bankId === 'background' && answerBanks && answerBanks.background) {
+    body += renderBackgroundGrid(answerBanks.background);
+  }
+
+  // Complication: render as visible option grid
+  if (bankId === 'complication' && answerBanks && answerBanks.complication) {
+    body += renderComplicationGrid(answerBanks.complication);
+  }
+
   if (q.annotation) body += `<div class="annotation">${q.annotation}</div>`;
 
-  const rerollBtn = hasBank
-    ? `<div class="question-reroll" onclick="reroll('${bankId}')" title="Re-roll this question">⚄</div>`
+  const numClass = (q.number === '★') ? 'question-num star' : 'question-num';
+  const rerollBtn = bankId
+    ? `<div class="question-reroll" onclick="reroll('${bankId}')" title="Re-roll">⚄</div>`
     : '';
 
   return `
     <div class="question-card" id="${cardId}">
       <div class="question-card-header">
-        <div class="question-num">${q.number}</div>
+        <div class="${numClass}">${q.number}</div>
         <div class="question-title-block">
           <div class="question-title">${q.title}</div>
           <div class="question-subtitle">${q.subtitle}</div>
@@ -306,54 +384,48 @@ function renderFormula(f) {
     <div class="section-head">A Simple Way to Build the Character</div>
     <p>${f.intro}</p>
     <div class="formula-block"><div class="formula-text">${tpl}</div></div>
-    <div class="formula-generated" id="formula-generated"><div class="formula-text"></div></div>
     ${f.examples.map(e => `<div class="example-item">${e}</div>`).join('')}
     <div class="annotation" style="margin-top:1rem;">${f.closing}</div>`;
 }
 
-// ── Static extra questions (not in original data JSON yet) ─────────────────
+// ── Static extra question definitions ──────────────────────────────────────
 const EXTRA_QUESTIONS = [
   {
-    id: 'complication',
-    bankId: 'complication',
-    number: '★',
+    id: 'complication', number: '★',
     title: 'What complicates them?',
-    subtitle: 'The \"but\" that makes them interesting',
+    subtitle: 'The "but" that makes them interesting',
     intro: 'A character without friction is hard to play. The complication is the thing that gets in the way of what they want — not a flaw to fix, but a tension to live with.',
-    showExtra: false,
-    accordions: []
+    showExtra: false, accordions: []
   },
   {
-    id: 'background',
-    bankId: 'background',
-    number: '★',
+    id: 'background', number: '★',
     title: 'What is their background?',
     subtitle: 'Where they came from and what skills they carry',
     intro: 'Background gives your character a life before adventuring — skills, tools, contacts, and a reason for knowing what they know.',
-    showExtra: true,
-    accordions: []
+    showExtra: true, accordions: []
   },
   {
-    id: 'family',
-    bankId: 'family_relationship',
-    number: '★',
+    id: 'family', number: '★',
     title: 'What was their family like?',
     subtitle: 'The home they came from shapes who they became',
-    intro: 'Your character\'s family — or lack of one — is often the first story they carry. It doesn\'t have to be dramatic, but it should feel true.',
-    showExtra: false,
-    accordions: []
+    intro: "Your character's family — or lack of one — is often the first story they carry.",
+    showExtra: false, accordions: []
   },
   {
-    id: 'left_home',
-    bankId: 'left_home',
-    number: '★',
+    id: 'left_home', number: '★',
     title: 'Why did they leave home?',
     subtitle: 'The moment that put them on the road',
     intro: 'Most adventurers left something behind. The reason they left is often the first thing that defines them.',
-    showExtra: false,
-    accordions: []
+    showExtra: false, accordions: []
   }
 ];
+
+const EXTRA_BANK_MAP = {
+  complication: 'complication',
+  background:   'background',
+  family:       'family_relationship',
+  left_home:    'left_home'
+};
 
 // ── Main render ────────────────────────────────────────────────────────────
 Promise.all([
@@ -361,25 +433,19 @@ Promise.all([
   fetch(`${BASE}/character_creation_answers.json`).then(r => r.json())
 ]).then(([data, answerData]) => {
   answers = answerData;
+  const ab = answers.answerBanks;
   const root = document.getElementById('root');
   document.title = `${data.title} — Player Guide`;
 
-  // Map bankId by question id
-  const bankMap = {
-    confrontation: 'confrontation',
-    motivation: 'motivation',
-    ancestry: 'ancestry',
-    class: 'class',
-    downtime: 'downtime'
-  };
+  const bankMap = { confrontation:'confrontation', motivation:'motivation', ancestry:'ancestry', class:'class', downtime:'downtime' };
 
   const questionsHtml = data.questions.map(q => {
-    q.showExtra = (q.id === 'class' || q.id === 'background');
-    return renderQuestion(q, bankMap[q.id] || null);
+    q.showExtra = (q.id === 'class');
+    return renderQuestion(q, bankMap[q.id] || null, ab);
   }).join('');
 
   const extraHtml = EXTRA_QUESTIONS.map(q =>
-    renderQuestion(q, q.bankId)
+    renderQuestion(q, EXTRA_BANK_MAP[q.id], ab)
   ).join('');
 
   root.innerHTML = `
@@ -392,26 +458,32 @@ Promise.all([
 
     <div class="toolbar">
       <button class="btn btn-primary" onclick="generateAll()">⚄ Generate Random Character</button>
-      <button class="btn btn-print" onclick="printView()">⎙ Print</button>
+      <button class="btn btn-print" id="btn-print" onclick="printView()" disabled>⎙ Print Character</button>
     </div>
 
-    <div class="philosophy-block">
-      <div class="big-question">${data.philosophy.question}</div>
-      <p>${data.philosophy.body}</p>
+    <div id="character-sheet">
+      <div class="sheet-header">
+        <span class="sheet-header-title">Generated Character</span>
+        <button class="btn" style="border-color:rgba(242,232,201,0.4);color:#f2e8c9;font-size:0.55rem;padding:0.3rem 0.7rem;" onclick="generateAll()">⚄ Re-roll All</button>
+      </div>
+      <div class="sheet-body"></div>
     </div>
 
-    <p>${data.intro}</p>
-    <div class="divider"><span>✦</span></div>
-
-    ${questionsHtml}
-
-    <div class="divider"><span>✦</span></div>
-    <div class="section-head">Going Deeper</div>
-    <p>These questions are optional, but they give your character more texture and make quiet scenes — campfires, taverns, downtime — much richer.</p>
-    ${extraHtml}
-
-    <div class="divider"><span>✦</span></div>
-    ${renderFormula(data.formula)}
+    <div class="guide-content">
+      <div class="philosophy-block">
+        <div class="big-question">${data.philosophy.question}</div>
+        <p>${data.philosophy.body}</p>
+      </div>
+      <p>${data.intro}</p>
+      <div class="divider"><span>✦</span></div>
+      ${questionsHtml}
+      <div class="divider"><span>✦</span></div>
+      <div class="section-head">Going Deeper</div>
+      <p>These questions are optional, but they give your character more texture and make quiet scenes — campfires, taverns, downtime — much richer.</p>
+      ${extraHtml}
+      <div class="divider"><span>✦</span></div>
+      ${renderFormula(data.formula)}
+    </div>
   `;
 
 }).catch(err => {
