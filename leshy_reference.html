@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leshy of the Cronewood — Class Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9; --parchment-shadow: #b89d5e; --ink: #1a1108; --dim: #2e200e; --faded: #5a4a2e;
+    --blood: #7a1f1f; --purple: #5b2d8e; --gold: #8a6a10; --teal: #1e5f5f; --slate: #2e3a4a;
+    --act-color: #1e3d2a;
+    --act-mid: #2e5c3e;
+    --act-light: rgba(30,61,42,0.12);
+    --act-border: rgba(30,61,42,0.22);
+    --spore: #4a3a6e;
+    --spore-light: rgba(74,58,110,0.1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #06100a; background-image: radial-gradient(ellipse at 15% 0%, #0a1e10 0%, transparent 55%), radial-gradient(ellipse at 85% 100%, #0e0a18 0%, transparent 55%); font-family: 'IM Fell English', serif; color: var(--ink); padding: 1.5rem 1rem 3rem; min-height: 100vh; }
+  .page { max-width: 1000px; margin: 0 auto; background-color: #f2e8c9; border: 2px solid var(--parchment-shadow); box-shadow: 0 0 0 6px #06100a, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.85); overflow: hidden; }
+  .act-band { background: var(--act-color); height: 6px; }
+  .page-inner { padding: 2.5rem 2.5rem 3rem; }
+
+  /* ── TITLE ── */
+  .page-title { text-align: center; border-bottom: 2px solid var(--parchment-shadow); padding-bottom: 1.1rem; margin-bottom: 1.6rem; }
+  .player-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; color: var(--act-mid); text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+  .page-title h1 { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1.4rem, 3.5vw, 2.2rem); color: var(--ink); line-height: 1.2; }
+  .page-title .subtitle { font-style: italic; color: var(--faded); font-size: 0.92rem; margin-top: 0.4rem; line-height: 1.55; }
+  .back-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faded); text-decoration: none; margin-top: 0.5rem; transition: color 0.2s; }
+  .back-link:hover { color: var(--act-color); }
+
+  /* ── QUICK REF ── */
+  .quick-ref { display: flex; gap: 0; flex-wrap: wrap; margin-bottom: 1.4rem; border: 1px solid var(--parchment-shadow); background: rgba(26,17,8,0.04); }
+  .qr-item { flex: 1; min-width: 120px; padding: 0.5rem 0.85rem; border-right: 1px solid rgba(180,140,60,0.25); }
+  .qr-item:last-child { border-right: none; }
+  .qr-label { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.2em; color: var(--faded); text-transform: uppercase; display: block; margin-bottom: 0.15rem; }
+  .qr-value { font-size: 0.84rem; color: var(--ink); line-height: 1.4; }
+
+  /* ── SECTION HEAD ── */
+  .section-head { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--act-color); margin: 1.8rem 0 0.6rem; border-bottom: 1px solid var(--act-border); padding-bottom: 0.25rem; }
+  .section-head.spore { color: var(--spore); border-bottom-color: rgba(74,58,110,0.25); }
+
+  /* ── PROSE ── */
+  p { font-size: 0.88rem; line-height: 1.7; color: var(--dim); margin-bottom: 0.5rem; }
+  p:last-child { margin-bottom: 0; }
+  ul.prose-list { margin: 0.3rem 0 0.6rem 1.1rem; font-size: 0.86rem; color: var(--dim); line-height: 1.7; }
+  ul.prose-list li { margin-bottom: 0.2rem; }
+  strong { color: var(--ink); }
+
+  /* ── EPIGRAPH ── */
+  .epigraph { text-align: center; font-style: italic; color: var(--faded); font-size: 0.88rem; line-height: 1.7; padding: 0.8rem 2rem; border-top: 1px solid rgba(180,140,60,0.3); border-bottom: 1px solid rgba(180,140,60,0.3); margin-bottom: 1.4rem; }
+
+  /* ── FEATURE BLOCK ── */
+  .feature { margin-bottom: 1rem; border: 1px solid var(--parchment-shadow); background: rgba(255,252,240,0.45); overflow: hidden; }
+  .feature-header { background: var(--act-light); border-bottom: 1px solid var(--act-border); padding: 0.6rem 1rem; display: flex; align-items: baseline; gap: 0.6rem; }
+  .feature-name { font-family: 'Cinzel', serif; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--act-color); }
+  .feature-body { padding: 0.8rem 1rem; }
+  .feature-example { font-style: italic; font-size: 0.82rem; color: var(--faded); padding: 0.3rem 0.7rem; border-left: 2px solid rgba(30,61,42,0.3); margin: 0.4rem 0; background: rgba(30,61,42,0.04); line-height: 1.6; }
+
+  /* ── GIFT GRID ── */
+  .level-group { margin-bottom: 1.4rem; }
+  .level-badge { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.2rem 0.65rem; border: 1px solid var(--act-color); color: var(--act-color); background: var(--act-light); margin-bottom: 0.7rem; }
+  .gift-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+  @media (max-width: 600px) { .gift-grid { grid-template-columns: 1fr; } }
+  .gift-card { border: 1px solid var(--parchment-shadow); border-top: 3px solid var(--act-color); padding: 0.75rem 0.9rem; background: rgba(255,252,240,0.4); }
+  .gift-card.full { grid-column: 1 / -1; border-top-color: var(--act-mid); }
+  .gift-name { font-family: 'Cinzel', serif; font-size: 0.8rem; font-weight: 700; color: var(--ink); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.07rem; }
+  .gift-flavor { font-style: italic; font-size: 0.78rem; color: var(--faded); margin-bottom: 0.35rem; }
+  .gift-prof { font-family: 'Cinzel', serif; font-size: 0.52rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--act-mid); margin-bottom: 0.3rem; }
+  .gift-desc { font-size: 0.83rem; color: var(--dim); line-height: 1.6; }
+  .gift-sub { font-family: 'Cinzel', serif; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--act-color); margin: 0.5rem 0 0.2rem; }
+  .gift-sub-body { font-size: 0.82rem; color: var(--dim); line-height: 1.6; }
+  .gift-prereq { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--spore); margin-bottom: 0.3rem; }
+
+  /* ── SPORES SECTION ── */
+  .spore-feature { margin-bottom: 0.85rem; border: 1px solid rgba(74,58,110,0.25); background: var(--spore-light); overflow: hidden; }
+  .spore-feature-header { background: rgba(74,58,110,0.1); border-bottom: 1px solid rgba(74,58,110,0.2); padding: 0.55rem 1rem; }
+  .spore-feature-name { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--spore); }
+  .spore-level-badge { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(74,58,110,0.6); margin-top: 0.1rem; }
+  .spore-feature-body { padding: 0.75rem 1rem; }
+  .spore-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 0.5rem 0; }
+  .spore-table th { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--spore); padding: 0.3rem 0.6rem; border-bottom: 1px solid rgba(74,58,110,0.25); text-align: left; }
+  .spore-table td { padding: 0.28rem 0.6rem; color: var(--dim); border-bottom: 1px solid rgba(180,140,60,0.15); }
+  .spore-table tr:last-child td { border-bottom: none; }
+  .spore-flavor { font-style: italic; font-size: 0.81rem; color: var(--act-color); padding: 0.35rem 0.7rem; border-left: 2px solid rgba(30,61,42,0.35); margin-top: 0.55rem; background: rgba(30,61,42,0.04); line-height: 1.6; }
+  .spore-rule-tip { font-size: 0.79rem; color: var(--faded); padding: 0.4rem 0.7rem; border: 1px solid rgba(180,140,60,0.3); background: rgba(180,140,60,0.05); margin-top: 0.45rem; line-height: 1.55; }
+
+  /* ── ROLEPLAYING BLOCK ── */
+  .rp-block { background: rgba(30,61,42,0.05); border: 1px solid var(--act-border); border-left: 5px solid var(--act-color); padding: 1.1rem 1.3rem; margin-top: 0.5rem; }
+  .rp-block p { margin-bottom: 0.45rem; }
+  .impression { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.12em; font-weight: 700; text-transform: uppercase; color: var(--act-color); background: var(--act-light); border: 1px solid var(--act-border); padding: 0.15rem 0.45rem; margin: 0.1rem 0.15rem; }
+
+  /* ── ANNOTATION ── */
+  .annotation { font-style: italic; font-size: 0.83rem; color: var(--blood); padding: 0.3rem 0.75rem; border-left: 2px solid var(--blood); margin: 0.6rem 0; background: rgba(122,31,31,0.04); line-height: 1.6; }
+
+  /* ── DIVIDER ── */
+  .divider { display: flex; align-items: center; gap: 0.6rem; margin: 1.6rem 0; color: var(--parchment-shadow); }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
+  .divider span { font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="act-band"></div>
+  <div class="page-inner">
+
+    <div class="page-title">
+      <span class="player-label">Player Reference · Custom Race/Class</span>
+      <h1>Leshy of the Cronewood</h1>
+      <div class="subtitle">"The trees are the face of the forest.<br>The roots are its bones. The mycelium is its memory."</div>
+      <a href="index.html" class="back-link">← Back to Campaign Home</a>
+    </div>
+
+    <div class="quick-ref">
+      <div class="qr-item"><span class="qr-label">Size</span><span class="qr-value">Medium or Small</span></div>
+      <div class="qr-item"><span class="qr-label">Speed</span><span class="qr-value">30 ft.</span></div>
+      <div class="qr-item"><span class="qr-label">Type</span><span class="qr-value">Fey + Humanoid</span></div>
+      <div class="qr-item"><span class="qr-label">Languages</span><span class="qr-value">Common, Sylvan</span></div>
+      <div class="qr-item"><span class="qr-label">Darkvision</span><span class="qr-value">60 ft.</span></div>
+      <div class="qr-item"><span class="qr-label">Gifts</span><span class="qr-value">Levels 1, 3, 5, 7</span></div>
+    </div>
+
+    <p>The Leshy are fey spirits bound to a particular Wood. Each Wood shapes its Leshy according to its own nature, creating guardians who embody the character, traditions, and mysteries of their homeland.</p>
+    <p>Your character is a Leshy of the <strong>Cronewood</strong>: an ancient, witch-haunted forest of crooked paths, ravens, wolves, old bargains, and mycelial memory. The Cronewood does not always remember as mortals do. It remembers patterns, trespasses, hungers, promises, blood, fire, grief, and return. Names matter less to it than what a creature has done within its bounds.</p>
+    <p>As a Leshy of the Cronewood, you carry a fragment of that ancient awareness wherever you travel.</p>
+
+    <!-- ── RACE FEATURES ──────────────────────────────────────── -->
+    <div class="section-head">Race Features</div>
+
+    <div class="feature">
+      <div class="feature-header"><div class="feature-name">Creature Type</div></div>
+      <div class="feature-body">
+        <p>You are both <strong>Fey</strong> and <strong>Humanoid</strong>. You are affected by abilities targeting either type.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-header"><div class="feature-name">Fey Resilience</div></div>
+      <div class="feature-body">
+        <p>You have advantage on saving throws against being Charmed. Magic cannot put you to sleep.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-header"><div class="feature-name">Forest Sense</div></div>
+      <div class="feature-body">
+        <p>You always know which direction is north, the direction of the nearest substantial woodland within one mile, and whether you are within the bounds of a forested area. You cannot become naturally lost while traveling in forests.</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-header"><div class="feature-name">Voice of Nature</div></div>
+      <div class="feature-body">
+        <p>You possess an innate connection to the hidden mycelial network that binds the natural world together. You may communicate simple concepts and emotions with beasts, plants, and fungi. This communication does not use language — information is exchanged through impressions, emotions, scents, memories, and instincts.</p>
+        <p style="margin-top:0.4rem;">The information received is often incomplete or symbolic. A mushroom may communicate:</p>
+        <div class="feature-example" style="margin:0.4rem 0;">
+          <span class="impression">Fire</span>
+          <span class="impression">Fear</span>
+          <span class="impression">Stranger</span>
+        </div>
+        <p style="font-size:0.82rem;font-style:italic;color:var(--faded);">Rather than: "A human carrying a torch passed here two hours ago."</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-header"><div class="feature-name">Child of the Mycelium</div></div>
+      <div class="feature-body">
+        <p>When magic would allow you to communicate with plants or fungi, you may choose to speak with the collective network instead of a single organism. The network rarely provides precise answers — it communicates in patterns, impressions, emotions, and relationships.</p>
+        <div class="feature-example" style="margin:0.4rem 0 0;">
+          <p style="font-size:0.82rem;color:var(--faded);font-style:italic;">Instead of "Sir Aldric entered the forest," you may hear: <strong style="color:var(--act-color);">"The crown-bearer crossed the boundary."</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-header"><div class="feature-name">Shapechanger</div></div>
+      <div class="feature-body">
+        <p><em style="color:var(--faded);">The Wood teaches that not all things need walk to be alive.</em></p>
+        <p style="margin-top:0.4rem;">Once per long rest, you may transform into an inanimate natural object associated with your Wood for up to 1 hour.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.15rem 1rem;margin:0.5rem 0;">
+          <div style="font-size:0.83rem;color:var(--dim);">· Tree stump</div>
+          <div style="font-size:0.83rem;color:var(--dim);">· Thorn bush</div>
+          <div style="font-size:0.83rem;color:var(--dim);">· Fallen log</div>
+          <div style="font-size:0.83rem;color:var(--dim);">· Patch of reeds</div>
+          <div style="font-size:0.83rem;color:var(--dim);">· Mushroom colony</div>
+          <div style="font-size:0.83rem;color:var(--dim);">· Dead tree</div>
+          <div style="font-size:0.83rem;color:var(--dim);">· Moss-covered boulder</div>
+          <div style="font-size:0.83rem;color:var(--dim);">· Tangled roots</div>
+          <div style="font-size:0.83rem;color:var(--dim);">· Dense shrub</div>
+        </div>
+        <p>While transformed:</p>
+        <ul class="prose-list" style="margin-top:0.25rem;">
+          <li>You retain your game statistics and senses.</li>
+          <li>You are aware of your surroundings.</li>
+          <li>You cannot speak or cast spells with verbal components.</li>
+          <li>You cannot move.</li>
+          <li>You cannot take actions other than ending the transformation.</li>
+        </ul>
+        <p style="margin-top:0.4rem;">This feature ends early if you choose to end it.</p>
+      </div>
+    </div>
+
+    <div class="divider"><span>✦</span></div>
+
+    <!-- ── CRONEWOOD GIFTS ──────────────────────────────────────── -->
+    <div class="section-head">Cronewood Gifts</div>
+    <p>At levels 1, 3, 5, and 7, choose one Cronewood Gift. Unless otherwise specified, a gift may only be selected once.</p>
+
+    <!-- Level 1 -->
+    <div class="level-group">
+      <div class="level-badge">Available at Level 1</div>
+      <div class="gift-grid">
+
+        <div class="gift-card">
+          <div class="gift-name">Mycelial Keeper</div>
+          <div class="gift-flavor">"The roots speak. The mushrooms remember."</div>
+          <div class="gift-prof">Grants: Proficiency — Nature</div>
+          <div class="gift-desc">You gain proficiency in Nature.</div>
+          <div class="gift-sub">Mycelial Memory</div>
+          <div class="gift-sub-body">As an action, you may touch soil, fungi, moss, roots, or rotting wood and listen to lingering impressions within the network. Once per long rest, the DM provides one sensory impression regarding a significant event that occurred nearby within the last seven days.
+            <div class="feature-example" style="margin:0.35rem 0;">
+              <span class="impression">Fear</span>
+              <span class="impression">Blood</span>
+              <span class="impression">Fire</span>
+              <span class="impression">Grief</span>
+              <span class="impression">Hunger</span>
+              <span class="impression">Pursuit</span>
+              <span class="impression">Iron</span>
+              <span class="impression">Betrayal</span>
+            </div>
+            <p style="font-size:0.8rem;font-style:italic;color:var(--faded);">The memory is emotional and symbolic rather than factual.</p>
+          </div>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-name">Witchwood Touched</div>
+          <div class="gift-flavor">"The old stories cling to you."</div>
+          <div class="gift-prof">Grants: Proficiency — Arcana</div>
+          <div class="gift-desc">Your connection to the Cronewood has attuned you to the strange and subtle magic that permeates the Wood. You gain proficiency in Arcana.</div>
+          <div class="gift-sub">Sense Enchantment</div>
+          <div class="gift-sub-body">Once per long rest, you may focus on a creature, object, or location within 30 feet. You learn whether it is currently affected by magic. This ability reveals only the presence or absence of magic — it does not identify the spell, source, school, or specific effect.</div>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-name">Rootspeaker</div>
+          <div class="gift-flavor">"The roots remember what the leaves forget."</div>
+          <div class="gift-desc">Your connection to the Wood runs deeper than most Leshy. When using Voice of Nature to communicate with plants, roots, fungi, or moss, you receive clearer impressions than normal. When the DM provides information through Voice of Nature, they provide one additional useful detail. The information still comes through symbols, emotions, scents, instincts, and memories rather than spoken language.</div>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-name">Ravenbound</div>
+          <div class="gift-flavor">"The ravens carry stories between the trees."</div>
+          <div class="gift-prof">Grants: Proficiency — Perception</div>
+          <div class="gift-desc">You gain proficiency in Perception. You may communicate simple concepts with ravens and crows using Voice of Nature. Ravens and crows instinctively recognize you as part of the natural order of the Cronewood.</div>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-name">Wolfkin Warden</div>
+          <div class="gift-flavor">"The wolves know your scent."</div>
+          <div class="gift-prof">Grants: Proficiency — Survival</div>
+          <div class="gift-desc">You gain proficiency in Survival and have advantage on checks made to track creatures through forests. Wolves recognize you as belonging to the Wood unless given a reason not to.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Level 3 -->
+    <div class="level-group">
+      <div class="level-badge">Available at Level 3</div>
+      <div class="gift-grid">
+
+        <div class="gift-card full">
+          <div class="gift-prereq">Prerequisite: Level 3</div>
+          <div class="gift-name">Pathkeeper</div>
+          <div class="gift-flavor">"The forest remembers roads that others have forgotten."</div>
+          <div class="gift-prof">Grants: Proficiency — Survival (or double bonus if already proficient)</div>
+          <div class="gift-desc">You gain proficiency in Survival. If already proficient, your proficiency bonus is doubled for Survival checks.</div>
+          <div class="gift-sub">Forgotten Ways</div>
+          <div class="gift-sub-body">Once per long rest, spend 1 minute touching soil, roots, moss, fungi, natural stone, or cave silt to ask the DM one question:
+            <ul class="prose-list" style="margin-top:0.3rem;">
+              <li>Is there a hidden route nearby?</li>
+              <li>Is there a safer route nearby?</li>
+              <li>Has this area been traveled recently?</li>
+            </ul>
+            <p style="margin-top:0.35rem;font-size:0.8rem;font-style:italic;color:var(--faded);">Answers come as impressions, not words. Requires contact with the natural world — worked stone generally blocks this connection.</p>
+          </div>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-prereq">Prerequisite: Level 3</div>
+          <div class="gift-name">Voice of Beasts</div>
+          <div class="gift-desc">You may cast <strong>Speak with Animals</strong> once per long rest without expending a spell slot. Wisdom is your spellcasting ability for this spell.</div>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-prereq">Prerequisite: Level 3</div>
+          <div class="gift-name">Fungal Messenger</div>
+          <div class="gift-desc">Once per long rest, as an action, you may send a message of up to 25 words to a location within 1 mile that you have previously visited and that contains living plants, roots, fungi, moss, or soil. A creature within 10 feet of that location hears the message.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Level 5 -->
+    <div class="level-group">
+      <div class="level-badge">Available at Level 5</div>
+      <div class="gift-grid">
+
+        <div class="gift-card">
+          <div class="gift-prereq">Prerequisite: Level 5</div>
+          <div class="gift-name">Crow's Omen</div>
+          <div class="gift-desc">Once per long rest, when you fail an ability check, attack roll, or saving throw, you may reroll it. You must use the new result.</div>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-prereq">Prerequisite: Level 5</div>
+          <div class="gift-name">Wolf's Warning</div>
+          <div class="gift-desc">While in a forest, cave, swamp, or other natural environment, you cannot be surprised unless you are incapacitated. The warning may come as a snapping twig, a sudden silence, a raven's cry, or a tremor through the roots.</div>
+        </div>
+
+        <div class="gift-card full">
+          <div class="gift-prereq">Prerequisite: Level 5</div>
+          <div class="gift-name">Voice of the Network</div>
+          <div class="gift-desc">When using <strong>Mycelial Memory</strong>, your connection reaches farther. The memory may originate from events occurring up to one month ago, rather than only within the last seven days.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Level 7 -->
+    <div class="level-group">
+      <div class="level-badge">Available at Level 7</div>
+      <div class="gift-grid">
+
+        <div class="gift-card">
+          <div class="gift-prereq">Prerequisite: Level 7</div>
+          <div class="gift-name">Fruiting Body</div>
+          <div class="gift-desc">Once per long rest, when you are reduced to 0 hit points but not killed outright, you may instead drop to 1 hit point. When this happens, fungal blooms, moss, or pale mycelial threads briefly spread across your body as the Cronewood pulls you back from the edge.</div>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-prereq">Prerequisite: Level 7</div>
+          <div class="gift-name">Witchwood Intuition</div>
+          <div class="gift-desc">Once per long rest, when you meet a creature for the first time, you may ask the DM one question:
+            <ul class="prose-list" style="margin-top:0.3rem;">
+              <li>Does this creature feel connected to danger?</li>
+              <li>Does this creature feel connected to loss?</li>
+              <li>Does this creature feel connected to the supernatural?</li>
+            </ul>
+            <p style="margin-top:0.3rem;font-size:0.8rem;font-style:italic;color:var(--faded);">The answer comes as a symbolic impression rather than a direct fact.</p>
+          </div>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-prereq">Prerequisite: Level 7</div>
+          <div class="gift-name">Speak with Plants</div>
+          <div class="gift-desc">You may cast <strong>Speak with Plants</strong> once per long rest without expending a spell slot. Wisdom is your spellcasting ability for this spell.</div>
+        </div>
+
+        <div class="gift-card">
+          <div class="gift-prereq">Prerequisite: Level 7</div>
+          <div class="gift-name">Warden's Authority</div>
+          <div class="gift-desc">Beasts with Intelligence 3 or lower begin one attitude category friendlier toward you, unless they have reason to be hostile.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="divider"><span>✦</span></div>
+
+    <!-- ── DRUID: CIRCLE OF SPORES ──────────────────────────────────── -->
+    <div class="section-head spore">Druid: Circle of Spores</div>
+    <p>Many Leshy become Druids, serving as protectors of the hidden cycles of life, death, decay, and renewal. A Cronewood Leshy's magic is expressed through fungi, roots, spores, moss, and the unseen networks beneath the forest floor.</p>
+    <p style="margin-top:0.4rem;font-size:0.84rem;font-style:italic;color:var(--faded);">Each feature below includes its mechanics and a Cronewood flavor note describing how it looks and feels for this character.</p>
+
+    <div style="margin-top:0.9rem;">
+
+      <!-- Circle Spells -->
+      <div class="spore-feature">
+        <div class="spore-feature-header">
+          <div class="spore-feature-name">Circle Spells</div>
+          <div class="spore-level-badge">2nd-level feature · Unlocks at Druid 3</div>
+        </div>
+        <div class="spore-feature-body">
+          <p>Your symbiotic link to fungi and your ability to tap into the cycle of life and death grants you access to certain spells. At 3rd, 5th, 7th, and 9th level you gain access to the spells listed for that level. These spells are always prepared and do not count against the number of spells you can prepare each day.</p>
+          <table class="spore-table">
+            <thead><tr><th>Druid Level</th><th>Spells</th></tr></thead>
+            <tbody>
+              <tr><td>3rd</td><td>blindness/deafness, chill touch, gentle repose</td></tr>
+              <tr><td>5th</td><td>animate dead, gaseous form</td></tr>
+              <tr><td>7th</td><td>blight, confusion</td></tr>
+              <tr><td>9th</td><td>cloudkill, contagion</td></tr>
+            </tbody>
+          </table>
+          <div class="spore-flavor">In the Cronewood, these spells manifest through the mycelial network. Blindness spreads like spore clouds. Gentle repose is the Wood preserving what it is not yet ready to reclaim. Animate dead is the network refusing to release what has fallen.</div>
+        </div>
+      </div>
+
+      <!-- Halo of Spores -->
+      <div class="spore-feature">
+        <div class="spore-feature-header">
+          <div class="spore-feature-name">Halo of Spores</div>
+          <div class="spore-level-badge">3rd-level feature</div>
+        </div>
+        <div class="spore-feature-body">
+          <p>You are surrounded by invisible, necrotic spores that are harmless until you unleash them. When a creature you can see moves into a space within 10 feet of you or starts its turn there, you can use your <strong>reaction</strong> to deal necrotic damage unless it succeeds on a <strong>Constitution saving throw</strong> against your spell save DC.</p>
+          <table class="spore-table" style="margin-top:0.5rem;">
+            <thead><tr><th>Druid Level</th><th>Damage</th></tr></thead>
+            <tbody>
+              <tr><td>3rd–5th</td><td>1d4 necrotic</td></tr>
+              <tr><td>6th–9th</td><td>1d6 necrotic</td></tr>
+              <tr><td>10th–13th</td><td>1d8 necrotic</td></tr>
+              <tr><td>14th+</td><td>1d10 necrotic</td></tr>
+            </tbody>
+          </table>
+          <div class="spore-flavor">For a Cronewood Leshy, these spores appear as glowing motes, drifting fungal threads, or tiny mushroom caps that bloom and burst. The Wood's memory releasing into the air.</div>
+        </div>
+      </div>
+
+      <!-- Symbiotic Entity -->
+      <div class="spore-feature">
+        <div class="spore-feature-header">
+          <div class="spore-feature-name">Symbiotic Entity</div>
+          <div class="spore-level-badge">3rd-level feature</div>
+        </div>
+        <div class="spore-feature-body">
+          <p>As an action, you can expend a use of your <strong>Wild Shape</strong> to awaken your spores rather than transforming into a beast. You gain <strong>4 temporary hit points per druid level</strong>. While active:</p>
+          <ul class="prose-list" style="margin-top:0.35rem;">
+            <li>When you deal Halo of Spores damage, roll the damage die a second time and add it to the total.</li>
+            <li>Your melee weapon attacks deal an extra <strong>1d6 necrotic damage</strong>.</li>
+          </ul>
+          <p style="margin-top:0.4rem;">These benefits last for <strong>10 minutes</strong>, until you lose all the temporary hit points, or until you use Wild Shape again.</p>
+          <div class="spore-rule-tip">Rule: Temporary hit points don't stack. If you receive more while you still have some, you choose which to keep — you don't add them together.</div>
+          <div class="spore-flavor">The Cronewood briefly grows through you. Bark-like skin. Fungal growths along your arms. Glowing mycelial veins visible beneath the surface. You are no longer just a guardian — the Wood is wearing you.</div>
+        </div>
+      </div>
+
+      <!-- Fungal Infestation -->
+      <div class="spore-feature">
+        <div class="spore-feature-header">
+          <div class="spore-feature-name">Fungal Infestation</div>
+          <div class="spore-level-badge">6th-level feature</div>
+        </div>
+        <div class="spore-feature-body">
+          <p>Your spores gain the ability to infest a corpse and animate it. When a <strong>Small or Medium beast or humanoid</strong> dies within 10 feet of you, you can use your <strong>reaction</strong> to animate it. It stands immediately with <strong>1 hit point</strong>, uses the zombie stat block, and remains animate for <strong>1 hour</strong> before collapsing.</p>
+          <p style="margin-top:0.4rem;">In combat, the zombie acts immediately after your turn. It obeys your mental commands and can only take the Attack action (one melee attack).</p>
+          <p style="margin-top:0.4rem;">You can use this feature a number of times equal to your <strong>Wisdom modifier</strong> (minimum once). All uses regain on a long rest.</p>
+          <div class="spore-flavor">The network reclaims what has fallen. The dead briefly move because the Wood has not yet finished with them. It is not cruelty — it is the forest's refusal to waste what remains.</div>
+        </div>
+      </div>
+
+      <!-- Spreading Spores / Fungal Body placeholders -->
+      <div class="spore-feature">
+        <div class="spore-feature-header">
+          <div class="spore-feature-name">Spreading Spores &amp; Fungal Body</div>
+          <div class="spore-level-badge">10th and 14th-level features</div>
+        </div>
+        <div class="spore-feature-body">
+          <p style="font-style:italic;color:var(--faded);">Full mechanics to be added when relevant. At 10th level the mycelial network erupts from the soil around you. At 14th level your body becomes increasingly intertwined with the fungal network — you are no longer merely a guardian of the Cronewood. You are becoming part of it.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"><span>✦</span></div>
+
+    <!-- ── ROLEPLAYING NOTES ──────────────────────────────────────── -->
+    <div class="section-head">Roleplaying Notes</div>
+
+    <div class="rp-block">
+      <p>The Cronewood thinks differently than mortals. It remembers <strong>stories, emotions, relationships, and promises</strong> more readily than names, dates, or titles.</p>
+      <p>A Leshy often receives impressions rather than facts. A memory may reveal:</p>
+      <div style="margin:0.6rem 0 0.6rem 0.5rem;">
+        <span class="impression">Fire.</span>
+      </div>
+      <p>Rather than: <em style="color:var(--faded);">A hunter carrying a torch passed this way yesterday.</em></p>
+      <p style="margin-top:0.6rem;">A Leshy's understanding of the world is shaped by <strong>connections</strong> rather than categories. Nothing is truly separate. Everything eventually returns to the Wood.</p>
+    </div>
+
+    <div class="annotation" style="margin-top:1rem;">Age: Leshy mature at a rate similar to humanoids but may live for many centuries. Their connection to their Wood often makes it difficult to distinguish age from memory, and many Leshy measure their existence in seasons rather than years.</div>
+
+  </div>
+</div>
+</body>
+</html>

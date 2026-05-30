@@ -155,6 +155,23 @@
       ]
     },
     {
+      "title": "Player Resources",
+      "entries": [
+        {
+          "name": "Building Your Character",
+          "desc": "Character creation guide · Confrontation · Motivation · Ancestry · Class · Formula · Random generator",
+          "href": "character_creation_guide.html",
+          "type": "player"
+        },
+        {
+          "name": "Leshy of the Cronewood",
+          "desc": "Custom race/class · Cronewood Gifts · Circle of Spores · Fey guardian · Mycelial network · Slavic fairy-tale roots",
+          "href": "leshy_reference.html",
+          "type": "player"
+        }
+      ]
+    },
+    {
       "title": "The Blackglass Laboratory",
       "group": "Act 2",
       "entries": [
