@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunmore — Town Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* ── DESIGN TOKENS — match site exactly ── */
+  :root {
+    --parchment: #f2e8c9;
+    --parchment-dark: #dbc99a;
+    --parchment-shadow: #b89d5e;
+    --ink: #1a1108;
+    --dim: #2e200e;
+    --faded: #5a4a2e;
+    --blood: #7a1f1f;
+    --purple: #5b2d8e;
+    --gold: #8a6a10;
+    --teal: #1e5f5f;
+    --slate: #2e3a4a;
+    --act-color: var(--blood); /* Prologue = blood */
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0d0a06;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, #1a0a04 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 100%, #0a0e18 0%, transparent 55%);
+    font-family: 'IM Fell English', serif;
+    color: var(--ink);
+    padding: 1.5rem 1rem 3rem;
+    min-height: 100vh;
+  }
+
+  /* ── PAGE CARD ── */
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: var(--parchment);
+    border: 2px solid var(--parchment-shadow);
+    box-shadow: 0 0 0 6px #0d0a06, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8);
+    overflow: hidden;
+  }
+
+  .act-band { background: var(--act-color); height: 6px; }
+  .page-inner { padding: 2rem 2.5rem 2.5rem; }
+
+  /* ── TITLE ── */
+  .page-title {
+    text-align: center;
+    border-bottom: 2px solid var(--parchment-shadow);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .gm-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: var(--act-color);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .page-title h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .page-title .subtitle {
+    font-style: italic;
+    color: var(--faded);
+    font-size: 0.88rem;
+    margin-top: 0.3rem;
+  }
+  .back-link {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded);
+    text-decoration: none;
+    margin-top: 0.45rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--act-color); }
+
+  /* ── MAP + SIDEBAR LAYOUT ── */
+  .map-layout {
+    display: flex;
+    gap: 0;
+    align-items: flex-start;
+  }
+
+  /* ── MAP AREA ── */
+  .map-area {
+    flex: 1 1 auto;
+    position: relative;
+    min-width: 0;
+    background: rgba(26,17,8,0.06);
+    border: 1px solid var(--parchment-shadow);
+  }
+
+  /* Map image fills the container */
+  #map-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Placeholder shown when image is missing */
+  #map-placeholder {
+    display: none;
+    width: 100%;
+    aspect-ratio: 1;
+    background: rgba(26,17,8,0.06);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.6rem;
+    color: var(--faded);
+  }
+  #map-placeholder .ph-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  #map-placeholder .ph-sub {
+    font-style: italic;
+    font-size: 0.8rem;
+  }
+
+  /* Marker overlay — absolutely positioned over the map image */
+  #map-markers {
+    position: absolute;
+    inset: 0;
+    pointer-events: none; /* let clicks through to markers only */
+  }
+
+  /* ── MAP MARKERS ── */
+  .map-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: var(--parchment);
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid rgba(242,232,200,0.85);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.1);
+    transition: transform 0.15s, box-shadow 0.15s;
+    z-index: 10;
+    pointer-events: all;
+  }
+  .map-marker:hover {
+    transform: translate(-50%, -50%) scale(1.25);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.15);
+    z-index: 20;
+  }
+  .map-marker.selected {
+    background: var(--gold) !important;
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(138,106,16,0.45), 0 3px 10px rgba(0,0,0,0.7);
+    transform: translate(-50%, -50%) scale(1.15);
+    z-index: 20;
+  }
+
+  /* Tooltip */
+  .map-tooltip {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10,8,5,0.92);
+    color: var(--parchment);
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid rgba(180,140,60,0.4);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .map-marker:hover .map-tooltip { opacity: 1; }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 270px;
+    flex-shrink: 0;
+    border-left: 1px solid var(--parchment-shadow);
+    background: rgba(26,17,8,0.03);
+    display: flex;
+    flex-direction: column;
+    max-height: 780px;
+    overflow: hidden;
+  }
+
+  .sidebar-controls {
+    padding: 0.85rem 1rem 0.7rem;
+    border-bottom: 1px solid rgba(180,140,60,0.25);
+    flex-shrink: 0;
+  }
+
+  .control-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Phase selector */
+  #phase-select {
+    width: 100%;
+    background: var(--parchment);
+    border: 1px solid var(--parchment-shadow);
+    color: var(--ink);
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    padding: 0.35rem 0.5rem;
+    cursor: pointer;
+    margin-bottom: 0.7rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a4a2e'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.6rem center;
+    padding-right: 1.8rem;
+  }
+
+  /* Day/Night toggle */
+  .mode-toggle {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--parchment-shadow);
+    overflow: hidden;
+  }
+  .mode-btn {
+    flex: 1;
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 0;
+    background: transparent;
+    border: none;
+    color: var(--faded);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .mode-btn + .mode-btn { border-left: 1px solid var(--parchment-shadow); }
+  .mode-btn.active {
+    background: rgba(26,17,8,0.1);
+    color: var(--ink);
+  }
+  .mode-btn:hover:not(.active) { background: rgba(26,17,8,0.05); }
+
+  /* ── LEGEND ── */
+  .legend-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.7rem 0.9rem;
+  }
+
+  .legend-section-head {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-bottom: 0.5rem;
+  }
+
+  .legend-group { margin-bottom: 0.9rem; }
+
+  .legend-district {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid rgba(180,140,60,0.2);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.4rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.12s;
+    margin-bottom: 0.15rem;
+  }
+  .legend-item:hover { background: rgba(180,140,60,0.1); }
+  .legend-item.selected { background: rgba(138,106,16,0.12); }
+
+  .legend-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: var(--parchment);
+    font-family: 'Cinzel', serif;
+    font-size: 0.56rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .legend-name {
+    font-family: 'IM Fell English', serif;
+    font-size: 0.8rem;
+    color: var(--ink);
+    flex: 1;
+    line-height: 1.2;
+  }
+
+  .legend-type {
+    font-family: 'Cinzel', serif;
+    font-size: 0.46rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faded);
+    flex-shrink: 0;
+  }
+
+  .legend-empty {
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--faded);
+    padding: 0.5rem 0;
+  }
+
+  /* ── DETAIL PANEL ── */
+  .detail-panel-wrap {
+    border-top: 1px solid rgba(180,140,60,0.25);
+    flex-shrink: 0;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+
+  #detail-panel {
+    padding: 0.85rem 1rem;
+  }
+
+  .detail-empty {
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--faded);
+    line-height: 1.6;
+  }
+
+  .detail-header {
+    margin-bottom: 0.6rem;
+  }
+
+  .detail-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+
+  .detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .detail-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.46rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid;
+    padding: 0.12rem 0.45rem;
+  }
+
+  .detail-district {
+    font-family: 'Cinzel', serif;
+    font-size: 0.48rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faded);
+  }
+
+  .detail-body { border-top: 1px solid rgba(180,140,60,0.2); padding-top: 0.6rem; }
+
+  .detail-body p {
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: var(--dim);
+    margin-bottom: 0.4rem;
+  }
+
+  /* Later-phase details get a subtle divider */
+  .detail-body p.detail-later {
+    padding-top: 0.4rem;
+    border-top: 1px dashed rgba(180,140,60,0.25);
+  }
+
+  .detail-npcs {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-top: 0.4rem;
+  }
+  .detail-npcs .detail-label { color: var(--blood); margin-right: 0.3rem; }
+
+  .detail-secrets {
+    background: rgba(122,31,31,0.05);
+    border-left: 3px solid var(--blood);
+    padding: 0.5rem 0.7rem;
+    margin-top: 0.55rem;
+  }
+
+  .detail-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded);
+  }
+
+  .secret-label { color: var(--blood); margin-bottom: 0.3rem; display: block; }
+
+  .secret-text {
+    font-size: 0.78rem !important;
+    font-style: italic;
+    color: var(--blood) !important;
+    line-height: 1.6 !important;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1.2rem 0;
+    color: var(--parchment-shadow);
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 680px) {
+    .page-inner { padding: 1.5rem 1.2rem 2rem; }
+    .map-layout { flex-direction: column; }
+    .sidebar {
+      width: 100%;
+      max-height: none;
+      border-left: none;
+      border-top: 1px solid var(--parchment-shadow);
+    }
+    .legend-scroll { max-height: 240px; }
+    .detail-panel-wrap { max-height: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── SITE NAV ── -->
+<div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
+<div id="aelNavBtn" style="position:fixed;bottom:1.2rem;right:1.2rem;z-index:1001;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(26,18,9,0.9);border:1px solid #b89d5e;padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);cursor:pointer;user-select:none;" onclick="aelNavOpen()">&#9776; All Pages</div>
+<script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
+
+<div class="page">
+  <div class="act-band"></div>
+  <div class="page-inner">
+
+    <!-- ── TITLE ── -->
+    <div class="page-title">
+      <span class="gm-label">GM Reference · The Prologue</span>
+      <h1 id="town-name">Dunmore</h1>
+      <p class="subtitle">The manufactured city · Pop. 9,400</p>
+      <a class="back-link" href="dunmore_arc.html">← Dunmore Arc Reference</a>
+    </div>
+
+    <!-- ── MAP + SIDEBAR LAYOUT ── -->
+    <div class="map-layout">
+
+      <!-- ── MAP AREA ── -->
+      <div class="map-area">
+        <img
+          id="map-image"
+          src="dunmore_map_day.png"
+          alt="Map of Dunmore"
+        >
+        <!-- Shown when image fails to load -->
+        <div id="map-placeholder">
+          <span class="ph-label">Map Unavailable</span>
+          <span class="ph-sub">Add dunmore_map_day.png to this folder</span>
+        </div>
+        <!-- Marker overlay — markers are injected here by map-app.js -->
+        <div id="map-markers"></div>
+      </div>
+
+      <!-- ── SIDEBAR ── -->
+      <div class="sidebar">
+
+        <!-- Controls: Phase + Day/Night -->
+        <div class="sidebar-controls">
+          <label class="control-label" for="phase-select">Discovery phase</label>
+          <select id="phase-select"></select>
+
+          <div class="control-label">Map view</div>
+          <div class="mode-toggle">
+            <button class="mode-btn active" data-mode="day">☀ Day</button>
+            <button class="mode-btn" data-mode="night">☽ Night</button>
+          </div>
+        </div>
+
+        <!-- Legend: grouped by district, clickable -->
+        <div class="legend-scroll">
+          <div class="legend-section-head">Locations</div>
+          <div id="legend-list"></div>
+        </div>
+
+        <!-- Detail panel: shown when a location is selected -->
+        <div class="detail-panel-wrap">
+          <div id="detail-panel">
+            <p class="detail-empty">Click a marker or legend entry to view details.</p>
+          </div>
+        </div>
+
+      </div><!-- .sidebar -->
+
+    </div><!-- .map-layout -->
+
+  </div><!-- .page-inner -->
+</div><!-- .page -->
+
+<script src="dunmore_map-app.js"></script>
+</body>
+</html>

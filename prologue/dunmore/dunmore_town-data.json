@@ -1,0 +1,308 @@
+{
+  "_comments": {
+    "add_district": "Add an object to the 'districts' array with id, name, description, color (one of: blood, teal, gold, purple, slate)",
+    "add_location": "Add an object to 'locations' with a unique id, number, districtId matching a district id, x/y as % coordinates (x=0 is left, x=100 is right, y=0 is top, y=100 is bottom), unlockPhase matching a phase id, and a detailsByPhase block",
+    "add_phase": "Add to town.phases with a new id and the next order number. Then add matching keys to each location's detailsByPhase",
+    "move_marker": "Change the x and y values on a location. Open the map image at full size in Preview, hover over the spot, and divide pixel coords by image width/height to get percentages",
+    "add_secret": "Add to a location's secrets array with unlockPhase set to the phase when it becomes visible to players"
+  },
+  "town": {
+    "name": "Dunmore",
+    "subtitle": "The manufactured city",
+    "act": "prologue",
+    "maps": {
+      "day": "dunmore_map_day.png",
+      "night": "dunmore_map_night.png"
+    },
+    "phases": [
+      { "id": "initial",        "label": "Initial Knowledge",   "order": 1 },
+      { "id": "explored",       "label": "After Investigation", "order": 2 },
+      { "id": "fully_explored", "label": "Full Knowledge",      "order": 3 }
+    ]
+  },
+  "districts": [
+    {
+      "id": "market",
+      "name": "Market District",
+      "description": "The commercial heart of Dunmore. The Moonlit Mirage Carnival sets up here — traders, stalls, and a crowd ripe for propaganda.",
+      "color": "gold"
+    },
+    {
+      "id": "civic",
+      "name": "Civic Quarter",
+      "description": "The seat of government and official business. The town hall dominates, and Concord operatives have been observed moving through its halls.",
+      "color": "slate"
+    },
+    {
+      "id": "noble",
+      "name": "Noble Quarter",
+      "description": "Dunmore's wealthiest district — old stone manors, private gardens, court-adjacent gatherings. A social arena where Mirelle Voss has been quietly watching.",
+      "color": "purple"
+    },
+    {
+      "id": "old_town",
+      "name": "Old Town",
+      "description": "The oldest part of Dunmore. Proud heritage, narrow streets, and the kind of working-class anger that propaganda finds easy to ignite.",
+      "color": "blood"
+    },
+    {
+      "id": "docks",
+      "name": "Dockside",
+      "description": "The riverfront district where goods — and information — flow in and out of Dunmore. Useful for moving things quietly.",
+      "color": "teal"
+    }
+  ],
+  "locations": [
+    {
+      "id": "carnival_grounds",
+      "number": 1,
+      "name": "Carnival Grounds",
+      "districtId": "market",
+      "type": "Festival Ground",
+      "x": 50.0,
+      "y": 42.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Carnival Grounds",
+          "description": "The Moonlit Mirage Carnival has set up in the market square. The crowd is large and restless — festivity and tension exist uncomfortably side by side. Pamphlets against Elkenquay circulate freely among the stalls."
+        },
+        "explored": {
+          "description": "Carnival performers are unusually well-informed about city politics. Someone has been using the crowd cover to distribute propaganda. The carnival's arrival was not coincidental — it draws exactly the kind of crowd the pamphlets are aimed at."
+        },
+        "fully_explored": {
+          "description": "The carnival was deliberately brought to Dunmore on this schedule. Its crowd provides both cover for propaganda distribution and a ready audience for manufactured outrage."
+        }
+      },
+      "tags": ["carnival", "crowd", "propaganda", "market"],
+      "notableNpcs": [],
+      "secrets": [
+        {
+          "unlockPhase": "fully_explored",
+          "text": "The carnival's route through this region was coordinated — it is no accident that it arrived during peak anti-Elkenquay sentiment. The Concord may have had a hand in the scheduling."
+        }
+      ]
+    },
+    {
+      "id": "town_hall",
+      "number": 2,
+      "name": "Dunmore Town Hall",
+      "districtId": "civic",
+      "type": "Government",
+      "x": 67.0,
+      "y": 22.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Town Hall",
+          "description": "The seat of Dunmore's local government. Guards are posted at the entrance. Officials move with the harried look of people managing a city on edge. The building has seen increased traffic in recent days."
+        },
+        "explored": {
+          "description": "Concord operatives have been seen entering and leaving the town hall through a side entrance used by messengers and minor officials. Someone inside is either working with them or being used by them."
+        },
+        "fully_explored": {
+          "description": "The town hall has been a key node in the Concord's information network in Dunmore. The operatives used it to monitor the local political response to the propaganda campaign — tracking whether the manufactured crisis was producing the desired effect."
+        }
+      },
+      "tags": ["government", "concord", "politics"],
+      "notableNpcs": ["Cael Darro", "Mirelle Voss"],
+      "secrets": [
+        {
+          "unlockPhase": "explored",
+          "text": "At least one official inside the town hall has been receiving payments. The source traces back to the same organization funding the propaganda printing operation."
+        },
+        {
+          "unlockPhase": "fully_explored",
+          "text": "Cael Darro used the town hall's messenger network to ensure he would be present in Dunmore exactly when the party arrived. The 'coincidence' of his appearance was arranged weeks in advance."
+        }
+      ]
+    },
+    {
+      "id": "printing_house",
+      "number": 3,
+      "name": "The Stained Print",
+      "districtId": "old_town",
+      "type": "Workshop",
+      "x": 30.0,
+      "y": 48.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Abandoned Printshop",
+          "description": "An old building in the labyrinthine streets of Old Town. The windows are blacked out and there is a faint smell of ink. Locals say it has been vacant for years, though the door shows recent use."
+        },
+        "explored": {
+          "visibleName": "The Stained Print",
+          "description": "The source of the anti-Elkenquay propaganda. The operation inside is organized — multiple press runs, coordinated distribution networks, deliberately targeted messaging. This is not amateur agitation. It is funded and directed."
+        },
+        "fully_explored": {
+          "description": "The printing operation traces back to the Concord. The pamphlets are part of a deliberate manufactured crisis — Elkenquay sentiment has been strategically inflamed to produce the political conditions the Concord requires. A resonance artifact with a gem was stored here."
+        }
+      },
+      "tags": ["propaganda", "printing", "concord", "investigation"],
+      "notableNpcs": [],
+      "secrets": [
+        {
+          "unlockPhase": "explored",
+          "text": "The funding for this operation comes from outside Dunmore. The money flows through three intermediaries, making it difficult to trace — but each intermediary has used the same courier."
+        },
+        {
+          "unlockPhase": "fully_explored",
+          "text": "The Concord runs this operation. The propaganda campaign against Elkenquay is a Concord instrument — part of a larger strategy to destabilize regional alliances and manufacture crises that require their intervention."
+        }
+      ]
+    },
+    {
+      "id": "noble_manor",
+      "number": 4,
+      "name": "Haverstock Manor",
+      "districtId": "noble",
+      "type": "Estate",
+      "x": 63.0,
+      "y": 12.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Haverstock Manor",
+          "description": "One of the larger noble houses in Dunmore's elite quarter. Frequent gatherings, court-adjacent social events. The kind of place where the city's opinion-makers mingle and where the propaganda's effects are debated over wine."
+        },
+        "explored": {
+          "description": "Mirelle Voss has attended several gatherings here over the past month, positioning herself among the social circles that shape Dunmore's political response. She is far more connected than she appears."
+        },
+        "fully_explored": {
+          "description": "Mirelle used Haverstock Manor's social network to identify which local officials and nobles could be influenced or would look the other way. Her presence here was an assessment operation — mapping the landscape of Dunmore's power before the Concord made its move."
+        }
+      },
+      "tags": ["noble", "social", "concord", "mirelle"],
+      "notableNpcs": ["Mirelle Voss"],
+      "secrets": [
+        {
+          "unlockPhase": "explored",
+          "text": "Mirelle Voss attended these events as 'Sera Vantalle', a merchant's widow from the southern provinces. The alias is clean and well-constructed. She was watching far more than she revealed."
+        },
+        {
+          "unlockPhase": "fully_explored",
+          "text": "It was Mirelle who flagged the party as useful after the convoy recovery. She arranged for Cael Darro to be in Dunmore when they arrived. The 'coincidence' of the Concord's presence was her work."
+        }
+      ]
+    },
+    {
+      "id": "the_crossed_keys",
+      "number": 5,
+      "name": "The Crossed Keys",
+      "districtId": "market",
+      "type": "Tavern",
+      "x": 44.0,
+      "y": 35.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "The Crossed Keys",
+          "description": "The most popular tavern in the market district. Loud, busy, and full of people who have strong opinions about Elkenquay. Pamphlets are passed hand to hand between tables."
+        },
+        "explored": {
+          "description": "Cael Darro has been seen here — losing at cards with good grace, buying rounds, and listening carefully to everything said around him. He fits in too well. He has been here before."
+        },
+        "fully_explored": {
+          "description": "The Crossed Keys served as Cael Darro's primary observation post in Dunmore. He used its social noise as cover for meetings and information gathering. The barkeep has been paid to be incurious."
+        }
+      },
+      "tags": ["tavern", "rumors", "concord", "cael"],
+      "notableNpcs": ["Cael Darro"],
+      "secrets": [
+        {
+          "unlockPhase": "explored",
+          "text": "Cael Darro has a regular table here — the one in the corner with sightlines to both doors. He has been coming since before the party arrived in Dunmore."
+        }
+      ]
+    },
+    {
+      "id": "river_warehouse",
+      "number": 6,
+      "name": "Aldren's Wharf",
+      "districtId": "docks",
+      "type": "Warehouse",
+      "x": 18.0,
+      "y": 65.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Aldren's Wharf",
+          "description": "A working riverfront warehouse. Goods move in and out on a regular schedule — grain, timber, wool. The kind of place where no one looks twice at a covered cart arriving at odd hours."
+        },
+        "explored": {
+          "description": "The printing operation's paper supply has been routed through here — legitimate goods on top, propaganda materials underneath. Someone with access to the warehouse manifest has been falsifying records."
+        },
+        "fully_explored": {
+          "description": "Aldren's Wharf is the logistics hub for the propaganda distribution network. Printed materials are staged here before being moved to distribution points across the city."
+        }
+      },
+      "tags": ["docks", "logistics", "propaganda", "supply"],
+      "notableNpcs": [],
+      "secrets": [
+        {
+          "unlockPhase": "explored",
+          "text": "The warehouse manifest has been falsified going back four months. Whatever has been moving through here predates the recent propaganda surge — this was a long-term logistical arrangement, not improvised."
+        },
+        {
+          "unlockPhase": "fully_explored",
+          "text": "The same courier network that connects the printing house to the town hall uses this warehouse as a dead drop. Messages left here have been moving between Concord cells operating in Dunmore."
+        }
+      ]
+    },
+    {
+      "id": "concord_extraction_point",
+      "number": 7,
+      "name": "Harrow Lane Gatehouse",
+      "districtId": "civic",
+      "type": "Landmark",
+      "x": 57.0,
+      "y": 37.0,
+      "unlockPhase": "explored",
+      "detailsByPhase": {
+        "explored": {
+          "visibleName": "Harrow Lane Gatehouse",
+          "description": "An old civic gatehouse at the boundary between the civic quarter and old town. Currently used as a staging post for the city watch's patrol rotations. After the monstrosity attack, this is where the Concord extracted the party."
+        },
+        "fully_explored": {
+          "description": "The extraction point was pre-selected. Cael Darro knew in advance where the monstrosity attack would drive the crowd — and positioned his team to intercept the party during the chaos. The Concord's rescue was not reactive. It was choreographed."
+        }
+      },
+      "tags": ["concord", "extraction", "cael", "chaelynn"],
+      "notableNpcs": ["Cael Darro", "Chaelynn"],
+      "secrets": [
+        {
+          "unlockPhase": "fully_explored",
+          "text": "Chaelynn was already at the gatehouse when the party arrived. She had been positioned there before the monstrosity was released — which means she knew it was coming."
+        }
+      ]
+    },
+    {
+      "id": "chaelynn_safehouse",
+      "number": 8,
+      "name": "Threadneedle Rooms",
+      "districtId": "old_town",
+      "type": "Lodging",
+      "x": 36.0,
+      "y": 43.0,
+      "unlockPhase": "explored",
+      "detailsByPhase": {
+        "explored": {
+          "visibleName": "Threadneedle Rooms",
+          "description": "A respectable lodging house in Old Town. Chaelynn has been staying here — a familiar face, the long-lost contact the party trusts. Her presence in Dunmore feels like a coincidence that turns out not to be."
+        },
+        "fully_explored": {
+          "description": "Chaelynn has been watching the party throughout the Prologue and reporting to Cael Darro. Her lodging here was not accidental — she was placed in Dunmore to provide the party with a trusted face at the moment of Concord recruitment."
+        }
+      },
+      "tags": ["chaelynn", "concord", "safehouse", "lodging"],
+      "notableNpcs": ["Chaelynn"],
+      "secrets": [
+        {
+          "unlockPhase": "fully_explored",
+          "text": "A letter in Chaelynn's room, if found, is in a cipher the party does not have. It is addressed to 'C.D.' — Cael Darro. How much of her friendship with the party has been a Concord instrument is a question left deliberately open."
+        }
+      ]
+    }
+  ]
+}
