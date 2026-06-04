@@ -24,6 +24,8 @@ As a Leshy of the Cronewood, you carry a fragment of that ancient awareness wher
 
 **Age.** Leshy mature at a rate similar to humanoids but may live for many centuries. Their connection to their Wood often makes it difficult to distinguish age from memory, and many Leshy measure their existence in seasons rather than years.
 
+**Ability Score Increase.** Your Constitution, Charisma, or Wisdom score increases by 1 (your choice).
+
 ---
 
 **Wayward Path.** Once per long rest, as an action, choose a creature within 60 feet that you can see. The target must succeed on a Wisdom saving throw (DC = 8 + your proficiency bonus + your Wisdom modifier) or become disoriented for 10 minutes. While disoriented, the creature has disadvantage on Survival checks made to navigate or track, cannot reliably determine direction, finds trails and landmarks unfamiliar or misleading, and cannot benefit from nonmagical effects that would prevent becoming lost. The effect ends early if the creature spends 1 minute carefully orienting itself and succeeds on a Wisdom (Survival) check against your save DC.
