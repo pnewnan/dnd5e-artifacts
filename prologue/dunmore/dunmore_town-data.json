@@ -1,10 +1,11 @@
 {
   "_comments": {
-    "add_district": "Add an object to the 'districts' array with id, name, description, color (one of: blood, teal, gold, purple, slate)",
-    "add_location": "Add an object to 'locations' with a unique id, number, districtId matching a district id, x/y as % coordinates (x=0 is left, x=100 is right, y=0 is top, y=100 is bottom), unlockPhase matching a phase id, and a detailsByPhase block",
-    "add_phase": "Add to town.phases with a new id and the next order number. Then add matching keys to each location's detailsByPhase",
-    "move_marker": "Change the x and y values on a location. Open the map image, find the spot visually, and estimate as a percentage of image width/height",
-    "add_secret": "Add to a location's secrets array with unlockPhase set to the phase when it becomes visible to players"
+    "add_district": "Add an object to 'districts' with id, name, description, color (blood/teal/gold/purple/slate), and a polygon array of [x,y] pairs as percentages (0–100)",
+    "add_location": "Add to 'locations' with unique id, number, districtId, type, x/y percent coords, unlockPhase, and detailsByPhase",
+    "add_phase": "Add to town.phases with new id and next order number; add matching keys to each location's detailsByPhase",
+    "move_marker": "Change x and y. x=0 is left edge, x=100 is right edge; y=0 is top, y=100 is bottom. Avoid the forest area (roughly x:18–40, y:52–78)",
+    "add_secret": "Add to a location's secrets array with unlockPhase set to when it becomes visible",
+    "district_polygon": "polygon is an array of [x,y] pairs defining the district overlay shape. Coordinates are percentages of map size."
   },
   "town": {
     "name": "Dunmore",
@@ -24,32 +25,37 @@
     {
       "id": "civic",
       "name": "Civic Quarter",
-      "description": "The administrative heart of Dunmore — the roundabout plaza, the town hall, official buildings. The seat of what passes for order in a city on the edge of something ugly.",
-      "color": "slate"
+      "description": "The administrative heart of Dunmore — the roundabout plaza, town hall, and official buildings. The seat of what passes for order in a city on the edge of something ugly.",
+      "color": "slate",
+      "polygon": [[50,10],[82,10],[84,22],[82,44],[54,46],[48,36],[50,15]]
     },
     {
       "id": "high_quarter",
       "name": "High Quarter",
-      "description": "Dunmore's small upper class lives here — old stone manors, private gardens, a deliberate remove from the noise of the lower city. Not large. Not especially welcoming.",
-      "color": "purple"
+      "description": "Dunmore's small upper class — old stone manors, private gardens, a deliberate remove from the noise below. Not large. Not especially welcoming.",
+      "color": "purple",
+      "polygon": [[60,4],[85,4],[86,20],[62,22],[58,14]]
     },
     {
       "id": "gables",
       "name": "The Gables",
-      "description": "Upper-middle-class Dunmore — comfortable homes, respectable streets, the kind of neighborhood where people have opinions about property values and worry about what the pamphlets are doing to them.",
-      "color": "teal"
+      "description": "Upper-middle-class Dunmore — comfortable homes, respectable streets, the kind of neighbourhood where people have opinions about property values.",
+      "color": "teal",
+      "polygon": [[42,16],[66,16],[68,48],[42,50]]
     },
     {
       "id": "market",
       "name": "Market District",
-      "description": "The commercial spine of Dunmore. Shops, stalls, inns, and temples crowd the road intersections. It is loud, busy, and currently angry — pamphlets change hands between purchases.",
-      "color": "gold"
+      "description": "The commercial spine of Dunmore. Shops, stalls, inns, and temples crowd the road intersections. Loud, busy, and currently running about thirty percent angrier than usual.",
+      "color": "gold",
+      "polygon": [[22,20],[55,20],[56,56],[24,58],[18,46]]
     },
     {
       "id": "warrens",
       "name": "The Warrens",
-      "description": "The oldest, densest part of Dunmore. Narrow streets, proud heritage, and the working class that built this city and has been watching its anger be aimed somewhere convenient.",
-      "color": "blood"
+      "description": "The oldest, densest part of Dunmore. Narrow streets, proud heritage, and the working class that built this city watching its anger be aimed somewhere convenient.",
+      "color": "blood",
+      "polygon": [[6,18],[36,18],[38,54],[22,56],[6,50]]
     }
   ],
   "locations": [
@@ -65,26 +71,20 @@
       "detailsByPhase": {
         "initial": {
           "visibleName": "Town Hall",
-          "description": "The seat of Dunmore's local government, anchoring the roundabout plaza at the civic quarter's center. Guards are posted. Officials move with the harried look of people managing a city on edge. Traffic here has increased markedly in recent days."
+          "description": "Dunmore's seat of government, anchoring the roundabout plaza. Guards are posted. Officials move with the harried look of people managing a city on edge."
         },
         "explored": {
-          "description": "Concord operatives have been observed using a side entrance — the one reserved for messengers and minor officials. Someone inside is either working with them or is being used without knowing it."
+          "description": "Concord operatives have been observed using a side entrance reserved for messengers. Someone inside is either working with them or being used without knowing it."
         },
         "fully_explored": {
-          "description": "The town hall has served as a node in the Concord's information network. Operatives monitored the local political response to the propaganda campaign from here — tracking whether the manufactured crisis was producing the intended effect."
+          "description": "The town hall served as a Concord information node. Operatives monitored the propaganda campaign's political effect from here."
         }
       },
       "tags": ["government", "concord", "politics"],
       "notableNpcs": ["Cael Darro", "Mirelle Voss"],
       "secrets": [
-        {
-          "unlockPhase": "explored",
-          "text": "At least one official here has been receiving payments. The source traces back to the same organization funding the printing operation."
-        },
-        {
-          "unlockPhase": "fully_explored",
-          "text": "Cael Darro used this building's messenger network to position himself in Dunmore before the party arrived. The coincidence of his appearance was arranged weeks in advance."
-        }
+        { "unlockPhase": "explored", "text": "At least one official has been receiving payments traceable to the propaganda printing operation." },
+        { "unlockPhase": "fully_explored", "text": "Cael Darro used this building's messenger network to position himself in Dunmore before the party arrived. His 'coincidence' was arranged weeks in advance." }
       ]
     },
     {
@@ -99,61 +99,74 @@
       "detailsByPhase": {
         "initial": {
           "visibleName": "Haverstock Manor",
-          "description": "One of the larger private estates in the High Quarter. The household holds frequent gatherings — wine, debate, the usual performance of influence. The kind of place where Dunmore's opinion-makers tell each other what to think."
+          "description": "One of the larger private estates in the High Quarter. Frequent gatherings — wine, debate, the usual performance of influence."
         },
         "explored": {
-          "description": "Mirelle Voss has been a fixture at these gatherings for the past month, moving through the social circles that shape the city's political response. She is better connected than she has any obvious reason to be."
+          "description": "Mirelle Voss has been a fixture here for the past month. She is better connected than she has any obvious reason to be."
         },
         "fully_explored": {
-          "description": "Mirelle used Haverstock's network to map Dunmore's landscape of influence — identifying who could be bought, who could be managed, and who would look away. Her time here was an assessment operation, not socializing."
+          "description": "Mirelle used Haverstock's network to map who in Dunmore could be bought, managed, or made to look away. It was an assessment operation, not socializing."
         }
       },
       "tags": ["noble", "social", "concord"],
       "notableNpcs": ["Mirelle Voss"],
       "secrets": [
-        {
-          "unlockPhase": "explored",
-          "text": "Mirelle attended as 'Sera Vantalle', a merchant's widow from the southern provinces. The alias is clean and well-constructed."
-        },
-        {
-          "unlockPhase": "fully_explored",
-          "text": "It was Mirelle who identified the party as useful after the convoy incident and arranged for Cael Darro to be here when they arrived. The Concord's apparent coincidence was her design."
-        }
+        { "unlockPhase": "explored", "text": "Mirelle attended as 'Sera Vantalle', a merchant's widow from the southern provinces. The alias is clean." },
+        { "unlockPhase": "fully_explored", "text": "It was Mirelle who identified the party as useful and arranged for Cael Darro to be here when they arrived." }
       ]
     },
     {
-      "id": "temple_erathis",
+      "id": "dunmore_club",
       "number": 3,
+      "name": "The Dunmore Club",
+      "districtId": "high_quarter",
+      "type": "Private Club",
+      "x": 76.0,
+      "y": 16.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "The Dunmore Club",
+          "description": "A private members' club for the town's upper crust. No sign. The door is answered before you knock. Non-members are not admitted."
+        },
+        "explored": {
+          "description": "The Club's membership list overlaps heavily with Mirelle Voss's social calendar. Several members have made quiet donations to civic funds that don't appear in public records."
+        }
+      },
+      "tags": ["noble", "private", "social"],
+      "notableNpcs": [],
+      "secrets": []
+    },
+    {
+      "id": "temple_erathis",
+      "number": 4,
       "name": "Temple of Erathis",
       "districtId": "gables",
       "type": "Temple",
       "x": 62.0,
-      "y": 30.0,
+      "y": 29.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "Temple of Erathis",
-          "description": "A well-maintained temple to the goddess of civilization and law, attended primarily by merchants, civic officials, and the upper-middle class of the Gables. The clergy are aligned with Dunmore's sense of its own importance and heritage. Services are formal. Donations are visible."
+          "description": "A well-maintained temple to the goddess of civilization and law. Attended by merchants, officials, and the Gables' respectable class. Services are formal. Donations are visible."
         },
         "explored": {
-          "description": "The head priest, Brother Aldric Vane, has been conspicuously quiet about the propaganda. He preaches order — but order, the party may note, does not require asking where the pamphlets come from."
+          "description": "Head priest Brother Aldric Vane has been conspicuously quiet about the propaganda. He preaches order — order that apparently does not require asking where the pamphlets come from."
         },
         "fully_explored": {
-          "description": "Brother Vane received a quiet donation three months ago from a civic 'beautification fund' that does not appear in any public record. He has not asked questions. Erathis teaches that civilization requires pragmatism."
+          "description": "Brother Vane received a quiet donation three months ago from a 'civic beautification fund' that appears in no public record. His silence was purchased."
         }
       },
-      "tags": ["temple", "erathis", "religion", "law"],
+      "tags": ["temple", "erathis", "religion"],
       "notableNpcs": ["Brother Aldric Vane"],
       "secrets": [
-        {
-          "unlockPhase": "fully_explored",
-          "text": "The donation was Concord money. Brother Vane's silence on the propaganda was purchased — not cheaply, and not without his understanding what he was agreeing to."
-        }
+        { "unlockPhase": "fully_explored", "text": "The donation was Concord money. Vane's silence on the propaganda was bought — not cheaply, and not without his understanding what he was agreeing to." }
       ]
     },
     {
-      "id": "haberdasher",
-      "number": 4,
+      "id": "barrow_sons",
+      "number": 5,
       "name": "Barrow & Sons",
       "districtId": "gables",
       "type": "Haberdasher",
@@ -163,19 +176,76 @@
       "detailsByPhase": {
         "initial": {
           "visibleName": "Barrow & Sons",
-          "description": "A respected haberdasher serving the Gables and upper market trade. Hats, caps, scarves, gloves, and fine small wares — the kind of shop where you can spend an hour selecting a belt buckle. Currently doing brisk business in hats with brims large enough to obscure a face."
+          "description": "A respected haberdasher: hats, caps, gloves, scarves, fine small wares. Old Barrow notices everything and forgets nothing."
         },
         "explored": {
-          "description": "Old Barrow notices everything and forgets nothing. He has seen faces come and go from the civic quarter that don't belong to any household he recognizes. He will talk, if asked carefully and treated well."
+          "description": "Barrow has seen unfamiliar faces moving through the civic quarter. He will talk, if asked carefully and treated well."
         }
       },
-      "tags": ["shop", "clothing", "merchant"],
+      "tags": ["shop", "clothing"],
       "notableNpcs": ["Barrow"],
       "secrets": []
     },
     {
-      "id": "temple_avandra",
-      "number": 5,
+      "id": "vellum_quill",
+      "number": 6,
+      "name": "Vellum & Quill",
+      "districtId": "gables",
+      "type": "Scrivener",
+      "x": 60.0,
+      "y": 40.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Vellum & Quill",
+          "description": "A scrivener and notary. Contracts, letters of introduction, legal documents prepared. Efficient and discreet."
+        }
+      },
+      "tags": ["shop", "legal", "documents"],
+      "notableNpcs": [],
+      "secrets": []
+    },
+    {
+      "id": "sable_stables",
+      "number": 7,
+      "name": "Sable House Stables",
+      "districtId": "gables",
+      "type": "Stable",
+      "x": 66.0,
+      "y": 44.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Sable House Stables",
+          "description": "The best stable in the Gables. Horses boarded, hired, or bought. The grooms are professional and don't ask about your hours."
+        }
+      },
+      "tags": ["stable", "horses", "transport"],
+      "notableNpcs": [],
+      "secrets": []
+    },
+    {
+      "id": "weathervane_inn",
+      "number": 8,
+      "name": "The Weathervane",
+      "districtId": "market",
+      "type": "Inn",
+      "x": 47.0,
+      "y": 28.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "The Weathervane",
+          "description": "A clean, unremarkable inn for travelers of modest means. Full most nights. The common room runs warmer than usual lately."
+        }
+      },
+      "tags": ["inn", "lodging", "travelers"],
+      "notableNpcs": [],
+      "secrets": []
+    },
+    {
+      "id": "shrine_avandra",
+      "number": 9,
       "name": "Shrine of Avandra",
       "districtId": "market",
       "type": "Temple",
@@ -185,41 +255,84 @@
       "detailsByPhase": {
         "initial": {
           "visibleName": "Shrine of Avandra",
-          "description": "A modest but busy shrine to the goddess of luck, change, and travel, tucked into a corner of the market district where merchants and travelers pass by. Coins are left at the feet of her icon — the trickster-goddess of good fortune. Travelers pray here before the road. Gamblers pray here before everything."
+          "description": "A modest shrine to the goddess of luck and travel. Travelers pray here before the road; merchants before a deal. Kept by Tessaly, who hears a great deal."
         },
         "explored": {
-          "description": "The shrine's keeper, a cheerful woman named Tessaly, has a talent for hearing things. She is not a gossip — but she remembers what she's told in confidence, and distinguishes carefully between information and secrets."
+          "description": "Tessaly distinguishes carefully between information and secrets. She is not a gossip — but she remembers what she's told in confidence."
         }
       },
-      "tags": ["temple", "avandra", "religion", "luck", "travel"],
+      "tags": ["temple", "avandra", "religion", "luck"],
       "notableNpcs": ["Tessaly"],
       "secrets": []
     },
     {
-      "id": "food_stalls",
-      "number": 6,
+      "id": "holts_goods",
+      "number": 10,
+      "name": "Holt's General Goods",
+      "districtId": "market",
+      "type": "General Store",
+      "x": 52.0,
+      "y": 32.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Holt's General Goods",
+          "description": "Everything you might need and nothing you'd linger over. Good prices, indifferent service, reliable stock."
+        }
+      },
+      "tags": ["shop", "general", "supplies"],
+      "notableNpcs": [],
+      "secrets": []
+    },
+    {
+      "id": "merchants_exchange",
+      "number": 11,
+      "name": "Merchant's Exchange",
+      "districtId": "market",
+      "type": "Money Changer",
+      "x": 40.0,
+      "y": 34.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Merchant's Exchange",
+          "description": "Currency exchange and informal credit. The ledgers here are not public and the rates are not posted."
+        },
+        "explored": {
+          "description": "Several large transactions have passed through here recently — amounts that don't match any legitimate business operating on this street."
+        }
+      },
+      "tags": ["shop", "money", "banking"],
+      "notableNpcs": [],
+      "secrets": [
+        { "unlockPhase": "explored", "text": "The large transactions are Concord funds being distributed to local intermediaries — the printing operation's supply chain runs through here." }
+      ]
+    },
+    {
+      "id": "provisions_row",
+      "number": 12,
       "name": "Provisions Row",
       "districtId": "market",
-      "type": "Market Stalls",
+      "type": "Food Stalls",
       "x": 46.0,
-      "y": 35.0,
+      "y": 36.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "Provisions Row",
-          "description": "A dense cluster of food carts and open-air stalls occupying the widest intersection in the market district. Bread, roasted meats, pies, pickled vegetables, spiced nuts, cheap wine. It is loud, fragrant, and currently serving as an informal distribution point for anti-Elkenquay pamphlets — left on cart edges, pressed into hands with purchases."
+          "description": "A dense cluster of food carts at the market's widest intersection. Bread, roasted meats, pies, spiced nuts, cheap wine. Pamphlets appear between purchases."
         },
         "explored": {
-          "description": "The cart owners did not choose to distribute the pamphlets. They appeared one morning, already stacked and ready. No one saw who left them. None of the vendors will admit to having passed them on, but none will deny it either."
+          "description": "The cart owners didn't choose to distribute pamphlets — they appeared one morning, already stacked. None of the vendors will confirm or deny having passed them on."
         }
       },
-      "tags": ["market", "food", "stalls", "crowd"],
+      "tags": ["food", "market", "stalls", "crowd"],
       "notableNpcs": [],
       "secrets": []
     },
     {
       "id": "crossed_keys",
-      "number": 7,
+      "number": 13,
       "name": "The Crossed Keys",
       "districtId": "market",
       "type": "Tavern",
@@ -229,86 +342,118 @@
       "detailsByPhase": {
         "initial": {
           "visibleName": "The Crossed Keys",
-          "description": "The most popular tavern in the market district. Loud, full, and running about thirty percent angrier than usual. Pamphlets pass between tables. The barkeep keeps his opinions to himself, which is its own kind of opinion."
+          "description": "The most popular tavern in the market district — loud, full, running about thirty percent angrier than usual. The barkeep keeps his opinions to himself."
         },
         "explored": {
-          "description": "Cael Darro has been seen here regularly — losing at cards with good grace, buying rounds, listening carefully. He fits in too well. He has been here before the party arrived."
+          "description": "Cael Darro is a regular here — losing at cards gracefully, buying rounds, listening. He fits in too well. He has been coming before the party arrived."
         },
         "fully_explored": {
-          "description": "The Crossed Keys was Cael Darro's primary observation post in Dunmore. He used the tavern's noise as cover. The barkeep has been paid to be incurious about the corner table."
+          "description": "The Crossed Keys was Cael Darro's primary observation post. He used the noise as cover. The barkeep has been paid to be incurious about the corner table."
         }
       },
       "tags": ["tavern", "rumors", "concord"],
       "notableNpcs": ["Cael Darro"],
       "secrets": [
-        {
-          "unlockPhase": "explored",
-          "text": "Cael's regular table has sightlines to both doors. He has been coming here since before the party arrived in Dunmore."
-        }
+        { "unlockPhase": "explored", "text": "Cael's regular table has sightlines to both doors. He has been here since before the party arrived." }
       ]
     },
     {
-      "id": "bound_word",
-      "number": 8,
-      "name": "The Bound Word",
-      "districtId": "market",
-      "type": "Bookseller",
-      "x": 54.0,
-      "y": 44.0,
-      "unlockPhase": "initial",
-      "detailsByPhase": {
-        "initial": {
-          "visibleName": "The Bound Word",
-          "description": "Dunmore's dedicated bookseller — maps, histories, religious texts, fiction of uncertain quality, and a back shelf of books the proprietor will show you only if you ask specifically. Mira, the proprietor, has ink-stained fingers and an excellent memory for which customers buy which kinds of books."
-        },
-        "explored": {
-          "description": "Mira has noticed that someone has been buying up every map of the greater Dunmore region she can source. She has been asked not to discuss it and has been offered coin to ensure her discretion. She declines to say by whom — but she will confirm that it was not a local."
-        }
-      },
-      "tags": ["shop", "books", "maps", "merchant"],
-      "notableNpcs": ["Mira"],
-      "secrets": [
-        {
-          "unlockPhase": "explored",
-          "text": "The regional maps were purchased by a Concord operative. The Concord has been mapping movement corridors in the area for months — the propaganda is one instrument of a much larger operation."
-        }
-      ]
-    },
-    {
-      "id": "tailors",
-      "number": 9,
+      "id": "needle_thread",
+      "number": 14,
       "name": "The Needle & Thread",
       "districtId": "market",
       "type": "Tailor",
       "x": 55.0,
-      "y": 40.0,
+      "y": 39.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "The Needle & Thread",
-          "description": "A working tailor serving the middle market — repairs, alterations, and commissions for people who want to look presentable without spending noble money. Currently backed up two weeks on orders. Half the city apparently decided this was a good moment to have something fitted."
+          "description": "A working tailor — repairs, alterations, commissions for people who want to look presentable without spending noble money. Backed up two weeks on orders."
         }
       },
-      "tags": ["shop", "clothing", "merchant"],
+      "tags": ["shop", "clothing", "tailor"],
       "notableNpcs": [],
       "secrets": []
     },
     {
-      "id": "blacksmith",
-      "number": 10,
-      "name": "Ashford's Forge",
+      "id": "goldwrights",
+      "number": 15,
+      "name": "Goldwright's",
       "districtId": "market",
-      "type": "Blacksmith",
-      "x": 40.0,
+      "type": "Jeweler",
+      "x": 57.0,
+      "y": 44.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Goldwright's",
+          "description": "A jeweler serving the upper market. Rings, pendants, small valuables — and a discreet appraisal service for items whose provenance you'd rather not discuss."
+        }
+      },
+      "tags": ["shop", "jewelry", "valuables"],
+      "notableNpcs": [],
+      "secrets": []
+    },
+    {
+      "id": "bound_word",
+      "number": 16,
+      "name": "The Bound Word",
+      "districtId": "market",
+      "type": "Bookseller",
+      "x": 54.0,
       "y": 46.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
-          "visibleName": "Ashford's Forge",
-          "description": "A reliable smithy at the market district's western edge — tools, hardware, horseshoes, basic weapons, and repair work. Tam Ashford keeps short hours and long prices, but his work holds. He has been quietly turning down orders for anything longer than a short sword and won't say why."
+          "visibleName": "The Bound Word",
+          "description": "Dunmore's dedicated bookseller — histories, maps, religious texts, fiction of uncertain quality. Proprietor Mira remembers every customer and every purchase."
         },
         "explored": {
-          "description": "Tam has heard things at the forge — men talking while they wait for work, the kind of conversation people have when they think a fire drowns out their voices. He's been turning down weapons orders because he doesn't want to know what they're for."
+          "description": "Someone has been buying up every map of the greater Dunmore region Mira can source. She was asked to be discreet about it — and will confirm only that the buyer was not a local."
+        }
+      },
+      "tags": ["shop", "books", "maps"],
+      "notableNpcs": ["Mira"],
+      "secrets": [
+        { "unlockPhase": "explored", "text": "The regional maps were purchased by a Concord operative. The Concord has been mapping movement corridors in the area for months." }
+      ]
+    },
+    {
+      "id": "barber_surgeon",
+      "number": 17,
+      "name": "Renwick's Barber",
+      "districtId": "market",
+      "type": "Barber-Surgeon",
+      "x": 44.0,
+      "y": 46.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Renwick's Barber",
+          "description": "Shaves, haircuts, teeth pulled, minor wounds dressed. Renwick sees a lot of faces and remembers most of them. Has been busier than usual."
+        }
+      },
+      "tags": ["shop", "healing", "barber"],
+      "notableNpcs": ["Renwick"],
+      "secrets": []
+    },
+    {
+      "id": "ashfords_forge",
+      "number": 18,
+      "name": "Ashford's Forge",
+      "districtId": "market",
+      "type": "Blacksmith",
+      "x": 40.0,
+      "y": 48.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Ashford's Forge",
+          "description": "Tools, hardware, horseshoes, basic weapons, repair work. Tam Ashford has been quietly declining orders for anything longer than a short sword."
+        },
+        "explored": {
+          "description": "Tam has heard things at the forge — conversations men have when they assume fire drowns out voices. He's turning down weapon orders because he doesn't want to know what they're for."
         }
       },
       "tags": ["shop", "blacksmith", "weapons", "tools"],
@@ -316,144 +461,272 @@
       "secrets": []
     },
     {
-      "id": "grey_vial",
-      "number": 11,
-      "name": "The Grey Vial",
-      "districtId": "warrens",
-      "type": "Apothecary",
-      "x": 32.0,
-      "y": 52.0,
+      "id": "spice_row",
+      "number": 19,
+      "name": "The Spice Row",
+      "districtId": "market",
+      "type": "Market Stalls",
+      "x": 48.0,
+      "y": 50.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
-          "visibleName": "The Grey Vial",
-          "description": "A small apothecary on an unnamed side-street in the Warrens — no sign except a single grey vial hung above the door. Stocks healing potions, basic alchemical components, and a modest selection of wands. The proprietor, Orvyn, is polite, unhurried, and asks no questions. His prices are fair. His sourcing is not discussed."
-        },
-        "explored": {
-          "description": "Orvyn maintains a secondary stock not displayed on shelves — substances that are legal in some jurisdictions, components that have legitimate uses if you don't ask what those uses are. He will share this stock with customers he trusts, which takes more than one visit to become."
-        },
-        "fully_explored": {
-          "description": "Orvyn has had at least one Concord contact as a regular customer in recent months. What they purchased and why is not something he has volunteered. He is careful. He is also, it appears, still alive — which suggests the Concord considers him useful rather than a liability."
+          "visibleName": "The Spice Row",
+          "description": "A cluster of market stalls specializing in dried spices, culinary herbs, and imported flavourings. Fragrant, cheerful, and blissfully apolitical."
         }
       },
-      "tags": ["shop", "potions", "wands", "apothecary", "shady"],
-      "notableNpcs": ["Orvyn"],
-      "secrets": [
-        {
-          "unlockPhase": "fully_explored",
-          "text": "Orvyn supplied components to the printing operation — not the paper, but the alchemical compounds used to treat it, making it resistant to water damage and easier to mass-produce. He knew what it was for."
-        }
-      ]
-    },
-    {
-      "id": "temple_pelor",
-      "number": 12,
-      "name": "Chapel of Pelor",
-      "districtId": "warrens",
-      "type": "Temple",
-      "x": 27.0,
-      "y": 46.0,
-      "unlockPhase": "initial",
-      "detailsByPhase": {
-        "initial": {
-          "visibleName": "Chapel of Pelor",
-          "description": "A small chapel to the god of life and healing, wedged between a tanner and a boarding house in the Warrens. The priest, Sister Hadara, runs on donations and determination. Healing is available to anyone who needs it; the suggested offering is whatever you can spare. The chapel smells of tallow candles and dried herbs."
-        },
-        "explored": {
-          "description": "Sister Hadara has been treating more injuries than usual — men who won't say what happened, women with bruises from arguments that escalated. The tension in the Warrens is producing its own damage. She is angry about it, quietly, in the way of someone who has to stay functional."
-        }
-      },
-      "tags": ["temple", "pelor", "healing", "religion"],
-      "notableNpcs": ["Sister Hadara"],
+      "tags": ["food", "market", "spices"],
+      "notableNpcs": [],
       "secrets": []
     },
     {
-      "id": "printing_house",
-      "number": 13,
-      "name": "The Stained Print",
-      "districtId": "warrens",
-      "type": "Workshop",
-      "x": 30.0,
-      "y": 42.0,
+      "id": "city_watch_post",
+      "number": 20,
+      "name": "Watch Post",
+      "districtId": "civic",
+      "type": "City Watch",
+      "x": 62.0,
+      "y": 33.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
-          "visibleName": "Abandoned Printshop",
-          "description": "An old building on a back street of the Warrens. The windows are covered. There is a faint smell of ink. Locals say it has been vacant for years, though the door latch shows fresh wear."
+          "visibleName": "Watch Post",
+          "description": "A patrol staging post for the civic quarter watch. Two guards on rotation, usually looking bored or anxious, depending on the hour."
         },
         "explored": {
-          "visibleName": "The Stained Print",
-          "description": "The source of the anti-Elkenquay propaganda. The operation inside is organized — multiple press runs, a coordinated distribution network, messaging that has been carefully targeted by someone who understands how to make people angry at a specific thing. This is not amateur agitation."
-        },
-        "fully_explored": {
-          "description": "The printing operation is a Concord instrument. The pamphlets are part of a manufactured crisis — Elkenquay sentiment has been strategically inflamed to create the political conditions the Concord requires. A resonance artifact was stored here, likely used to power equipment."
+          "description": "The watch has been given very specific orders about which streets to patrol — and very specific orders about which complaints not to pursue."
         }
       },
-      "tags": ["propaganda", "printing", "concord", "investigation"],
+      "tags": ["civic", "watch", "guard"],
       "notableNpcs": [],
       "secrets": [
-        {
-          "unlockPhase": "explored",
-          "text": "The operation's paper supply was routed through a warehouse in the lower market. The funding traces through three intermediaries, each using the same courier."
-        },
-        {
-          "unlockPhase": "fully_explored",
-          "text": "The Concord runs this operation. The propaganda campaign is an instrument of a much larger strategy — one that requires a destabilized region and a population primed to welcome order when it arrives."
-        }
+        { "unlockPhase": "explored", "text": "The Watch's standing orders on certain streets came down from the Town Hall two months ago. No explanation was given." }
       ]
     },
     {
-      "id": "threadneedle_rooms",
-      "number": 14,
-      "name": "Threadneedle Rooms",
-      "districtId": "warrens",
-      "type": "Lodging",
-      "x": 36.0,
-      "y": 56.0,
-      "unlockPhase": "explored",
+      "id": "notice_board",
+      "number": 21,
+      "name": "Public Notice Board",
+      "districtId": "civic",
+      "type": "Landmark",
+      "x": 65.0,
+      "y": 27.0,
+      "unlockPhase": "initial",
       "detailsByPhase": {
-        "explored": {
-          "visibleName": "Threadneedle Rooms",
-          "description": "A respectable lodging house in the Warrens. Chaelynn has been staying here — a familiar face, the long-lost contact the party trusts. Her presence in Dunmore feels like a coincidence. It is not."
-        },
-        "fully_explored": {
-          "description": "Chaelynn has been observing the party throughout the Prologue and reporting to Cael Darro. Her placement in Dunmore was deliberate — she was positioned to provide a trusted face at the moment of Concord recruitment. Whether her care for the party is genuine and her mission is separate from that, or whether they were always the same thing, is a question the skill leaves open."
+        "initial": {
+          "visibleName": "Public Notice Board",
+          "description": "The city's official posting board for proclamations and public notices. Currently buried under anti-Elkenquay pamphlets three layers deep."
         }
       },
-      "tags": ["lodging", "chaelynn", "concord"],
-      "notableNpcs": ["Chaelynn"],
-      "secrets": [
-        {
-          "unlockPhase": "fully_explored",
-          "text": "A letter in Chaelynn's room, if found, is in cipher. It is addressed to 'C.D.' How much of her friendship with the party has been a Concord instrument is deliberately left unanswered."
-        }
-      ]
+      "tags": ["civic", "flavor", "propaganda"],
+      "notableNpcs": [],
+      "secrets": []
     },
     {
       "id": "harrow_gatehouse",
-      "number": 15,
+      "number": 22,
       "name": "Harrow Lane Gatehouse",
       "districtId": "civic",
       "type": "Landmark",
       "x": 58.0,
-      "y": 33.0,
+      "y": 34.0,
       "unlockPhase": "explored",
       "detailsByPhase": {
         "explored": {
           "visibleName": "Harrow Lane Gatehouse",
-          "description": "An old civic gatehouse at the boundary of the civic quarter and the market district. Used by the city watch as a patrol staging post. After the monstrosity attack, this is where the Concord extracted the party."
+          "description": "An old civic gatehouse at the boundary of the civic quarter and market district. After the monstrosity attack, this is where the Concord extracted the party."
         },
         "fully_explored": {
-          "description": "The extraction point was pre-selected. Cael Darro knew in advance where the attack would drive the crowd — and positioned his team accordingly. The rescue was not reactive. It was choreographed."
+          "description": "The extraction point was pre-selected. Cael Darro knew in advance where the attack would drive the crowd. The rescue was choreographed, not reactive."
         }
       },
       "tags": ["concord", "extraction", "landmark"],
       "notableNpcs": ["Cael Darro", "Chaelynn"],
       "secrets": [
-        {
-          "unlockPhase": "fully_explored",
-          "text": "Chaelynn was already at the gatehouse when the party arrived. She had been positioned there before the monstrosity was released. She knew it was coming."
+        { "unlockPhase": "fully_explored", "text": "Chaelynn was already here when the party arrived. She was positioned before the monstrosity was released. She knew it was coming." }
+      ]
+    },
+    {
+      "id": "grey_vial",
+      "number": 23,
+      "name": "The Grey Vial",
+      "districtId": "warrens",
+      "type": "Apothecary",
+      "x": 30.0,
+      "y": 44.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "The Grey Vial",
+          "description": "A small apothecary on an unnamed side-street — just a grey vial hung above the door. Stocks healing potions, wands, and alchemical components. Proprietor Orvyn asks no questions."
+        },
+        "explored": {
+          "description": "Orvyn maintains a secondary stock not on display — substances that are legal in some jurisdictions, components with legitimate uses if you don't ask what those are."
+        },
+        "fully_explored": {
+          "description": "Orvyn has had at least one Concord contact as a regular customer. He appears to still be alive, which suggests the Concord considers him useful rather than a liability."
         }
+      },
+      "tags": ["shop", "potions", "wands", "apothecary", "shady"],
+      "notableNpcs": ["Orvyn"],
+      "secrets": [
+        { "unlockPhase": "fully_explored", "text": "Orvyn supplied alchemical compounds used to treat the propaganda paper, making it water-resistant and easier to mass-produce. He knew what it was for." }
+      ]
+    },
+    {
+      "id": "chapel_pelor",
+      "number": 24,
+      "name": "Chapel of Pelor",
+      "districtId": "warrens",
+      "type": "Temple",
+      "x": 25.0,
+      "y": 40.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Chapel of Pelor",
+          "description": "A small healing chapel wedged between a tanner and a boarding house. Sister Hadara runs it on donations and determination. Healing is available to anyone who needs it."
+        },
+        "explored": {
+          "description": "Sister Hadara has been treating more injuries than usual — men who won't say what happened, women with bruises from arguments that escalated. She is quietly angry about it."
+        }
+      },
+      "tags": ["temple", "pelor", "healing"],
+      "notableNpcs": ["Sister Hadara"],
+      "secrets": []
+    },
+    {
+      "id": "morrows_exchange",
+      "number": 25,
+      "name": "Morrow's Exchange",
+      "districtId": "warrens",
+      "type": "Pawnbroker",
+      "x": 22.0,
+      "y": 35.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Morrow's Exchange",
+          "description": "A cluttered pawnshop. Morrow buys without asking and sells without explaining. Everything here came from somewhere unpleasant."
+        }
+      },
+      "tags": ["shop", "pawnshop", "secondhand"],
+      "notableNpcs": ["Morrow"],
+      "secrets": []
+    },
+    {
+      "id": "leatherworker",
+      "number": 26,
+      "name": "The Cobbler",
+      "districtId": "warrens",
+      "type": "Leatherworker",
+      "x": 18.0,
+      "y": 42.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "The Cobbler",
+          "description": "Shoes, belts, straps, and leather repair. Slow, thorough, cheap. The cobbler works by the window and sees everyone who comes and goes on the lane."
+        }
+      },
+      "tags": ["shop", "leather", "cobbler"],
+      "notableNpcs": [],
+      "secrets": []
+    },
+    {
+      "id": "printing_house",
+      "number": 27,
+      "name": "The Stained Print",
+      "districtId": "warrens",
+      "type": "Workshop",
+      "x": 28.0,
+      "y": 38.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Abandoned Printshop",
+          "description": "An old building on a back street. Windows covered, faint smell of ink. Locals say it's been vacant for years, though the door latch shows fresh wear."
+        },
+        "explored": {
+          "visibleName": "The Stained Print",
+          "description": "The source of the anti-Elkenquay propaganda. The operation inside is organized — multiple press runs, coordinated distribution, messaging carefully targeted by someone who understands manufactured anger."
+        },
+        "fully_explored": {
+          "description": "A Concord instrument. The propaganda is part of a deliberate manufactured crisis. A resonance artifact was stored here, likely used to power equipment."
+        }
+      },
+      "tags": ["propaganda", "printing", "concord", "investigation"],
+      "notableNpcs": [],
+      "secrets": [
+        { "unlockPhase": "explored", "text": "The funding runs through three intermediaries, each using the same courier. The paper supply was routed through a warehouse in the lower market." },
+        { "unlockPhase": "fully_explored", "text": "The Concord runs this operation. The pamphlet campaign is one instrument of a much larger strategy requiring a destabilized region." }
+      ]
+    },
+    {
+      "id": "crabbs_rooms",
+      "number": 28,
+      "name": "Crabb's Rooms",
+      "districtId": "warrens",
+      "type": "Lodging",
+      "x": 24.0,
+      "y": 46.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "Crabb's Rooms",
+          "description": "The cheapest rooms in Dunmore. Thin walls, no questions asked, a lock that mostly works. Full of people with somewhere to be and no one to tell."
+        }
+      },
+      "tags": ["lodging", "cheap", "warrens"],
+      "notableNpcs": [],
+      "secrets": []
+    },
+    {
+      "id": "threadneedle_rooms",
+      "number": 29,
+      "name": "Threadneedle Rooms",
+      "districtId": "warrens",
+      "type": "Lodging",
+      "x": 34.0,
+      "y": 46.0,
+      "unlockPhase": "explored",
+      "detailsByPhase": {
+        "explored": {
+          "visibleName": "Threadneedle Rooms",
+          "description": "A respectable lodging house in the Warrens. Chaelynn has been staying here — a familiar face the party trusts. Her presence in Dunmore is not a coincidence."
+        },
+        "fully_explored": {
+          "description": "Chaelynn has been observing the party throughout the Prologue and reporting to Cael Darro. She was placed here to provide a trusted face at the moment of recruitment."
+        }
+      },
+      "tags": ["lodging", "chaelynn", "concord"],
+      "notableNpcs": ["Chaelynn"],
+      "secrets": [
+        { "unlockPhase": "fully_explored", "text": "A letter in Chaelynn's room, in cipher, is addressed to 'C.D.' How much of her friendship was a Concord instrument is deliberately left unanswered." }
+      ]
+    },
+    {
+      "id": "pamphleteers_corner",
+      "number": 30,
+      "name": "The Corner",
+      "districtId": "warrens",
+      "type": "Street Corner",
+      "x": 35.0,
+      "y": 42.0,
+      "unlockPhase": "initial",
+      "detailsByPhase": {
+        "initial": {
+          "visibleName": "The Corner",
+          "description": "A busy intersection at the Warrens' edge where pamphlets change hands openly. Men argue about Elkenquay here before breakfast. The anger is real, even if the cause is manufactured."
+        },
+        "explored": {
+          "description": "A specific figure distributes pamphlets here each morning — always gone before the watch change. Locals say he's been doing it for weeks, always from a new stack, always well-supplied."
+        }
+      },
+      "tags": ["propaganda", "flavor", "street"],
+      "notableNpcs": [],
+      "secrets": [
+        { "unlockPhase": "explored", "text": "The distributor picks up fresh stock from a dead drop two streets away. Tracking the supply chain leads back to Aldren's warehouse in the lower market." }
       ]
     }
   ]

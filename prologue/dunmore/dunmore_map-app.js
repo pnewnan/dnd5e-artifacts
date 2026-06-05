@@ -1,21 +1,25 @@
 /**
  * Dunmore Town Map — Interactive Engine
  * ======================================
- * This file is the ENGINE. It contains no campaign content.
- * All town data lives in dunmore_town-data.json.
+ * ENGINE ONLY — no campaign content lives here.
+ * All town data (districts, locations, phases) is in dunmore_town-data.json.
  *
- * PHASE ORDERING SYSTEM:
- * Phases are compared by their index in town.phases array (not by string value).
- * A location with unlockPhase: "explored" appears when the selected phase has
- * an index >= the index of "explored" in the phases array.
- * Details accumulate: at phase "explored", all details from "initial" AND "explored"
- * are shown. At "fully_explored", all three phase descriptions are shown.
+ * PHASE ORDERING:
+ * Phases are compared by their index in town.phases array.
+ * A location with unlockPhase:"explored" appears when the selected phase index
+ * >= the index of "explored". Details accumulate: at "explored", all "initial"
+ * AND "explored" descriptions are shown.
  *
- * HOW TO USE:
- * - To add a location: edit dunmore_town-data.json → locations array
- * - To move a marker: change x/y values in the JSON (x=0 left, x=100 right, y=0 top, y=100 bottom)
- * - To add a phase: add to town.phases in JSON, then add matching keys to each location's detailsByPhase
- * - To add a secret: add to a location's secrets array with the appropriate unlockPhase
+ * DISTRICT OVERLAYS:
+ * Each district has a "polygon" array of [x,y] pairs (0–100 percentage space).
+ * These are rendered as translucent SVG polygons over the map image.
+ *
+ * EDITING GUIDE:
+ * - Move a marker:        change x/y in the JSON
+ * - Add a location:       add to locations[] in the JSON
+ * - Add a district:       add to districts[] with a polygon in the JSON
+ * - Add a phase:          add to town.phases[] and to each location's detailsByPhase
+ * - Add a secret:         add to location.secrets[] with unlockPhase
  */
 
 (function () {
@@ -27,72 +31,154 @@
   let currentMode = 'day';
   let selectedId = null;
 
+  // ── Color map (CSS variable name → hex, for SVG which can't use CSS vars) ──
+  const COLOR_MAP = {
+    blood:  '#7a1f1f',
+    teal:   '#1e5f5f',
+    gold:   '#8a6a10',
+    purple: '#5b2d8e',
+    slate:  '#2e3a4a'
+  };
+
   // ── Phase helpers ──────────────────────────────────────────────────────────
 
-  /** Returns the array index of a phase by id. */
   function phaseIndex(phaseId) {
     if (!data) return -1;
     return data.town.phases.findIndex(p => p.id === phaseId);
   }
 
-  /** Returns true if a location should be visible at the current phase. */
   function isVisible(location) {
     return phaseIndex(location.unlockPhase) <= phaseIndex(currentPhaseId);
   }
 
-  /**
-   * Returns an array of detail objects for all phases up to and including
-   * the current phase. Each object has { visibleName?, description }.
-   */
+  /** Accumulates detail objects from all phases up to and including current. */
   function getAccumulatedDetails(location) {
-    const currentIdx = phaseIndex(currentPhaseId);
+    const idx = phaseIndex(currentPhaseId);
     return data.town.phases
-      .filter((p, i) => i <= currentIdx)
+      .filter((p, i) => i <= idx)
       .map(p => location.detailsByPhase[p.id])
       .filter(Boolean);
   }
 
-  /**
-   * Returns the best visible name for a location at the current phase.
-   * Uses the most recent detailsByPhase entry that has a visibleName.
-   */
+  /** Returns the most recent visibleName for the current phase. */
   function getVisibleName(location) {
-    const currentIdx = phaseIndex(currentPhaseId);
+    const idx = phaseIndex(currentPhaseId);
     let name = location.name;
-    for (let i = 0; i <= currentIdx; i++) {
-      const phaseData = location.detailsByPhase[data.town.phases[i].id];
-      if (phaseData && phaseData.visibleName) name = phaseData.visibleName;
+    for (let i = 0; i <= idx; i++) {
+      const d = location.detailsByPhase[data.town.phases[i].id];
+      if (d && d.visibleName) name = d.visibleName;
     }
     return name;
   }
 
-  /** Returns the CSS variable name for a district's color. */
   function districtColor(districtId) {
-    const district = data.districts.find(d => d.id === districtId);
-    return district ? `var(--${district.color})` : 'var(--faded)';
+    const d = data.districts.find(d => d.id === districtId);
+    return d ? `var(--${d.color})` : 'var(--faded)';
   }
 
-  // ── Rendering ──────────────────────────────────────────────────────────────
+  function districtHex(districtId) {
+    const d = data.districts.find(d => d.id === districtId);
+    return d ? (COLOR_MAP[d.color] || '#888') : '#888';
+  }
 
-  /** Clears and re-renders all map markers. */
+  // ── District overlays (SVG) ────────────────────────────────────────────────
+
+  /**
+   * Renders translucent SVG polygon overlays for each district.
+   * Polygons are defined in the JSON as [[x,y],...] percentage pairs.
+   * SVG uses viewBox="0 0 100 100" so coordinates map directly to percentages.
+   */
+  function renderDistrictOverlays() {
+    const mapArea = document.querySelector('.map-area');
+    if (!mapArea) return;
+
+    // Remove any existing overlay
+    const existing = document.getElementById('district-svg');
+    if (existing) existing.remove();
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.id = 'district-svg';
+    svg.setAttribute('viewBox', '0 0 100 100');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.style.cssText = [
+      'position:absolute',
+      'inset:0',
+      'width:100%',
+      'height:100%',
+      'z-index:2',
+      'pointer-events:none'
+    ].join(';');
+
+    data.districts.forEach(district => {
+      if (!district.polygon || district.polygon.length < 3) return;
+
+      const hex = COLOR_MAP[district.color] || '#888888';
+      const points = district.polygon.map(p => `${p[0]},${p[1]}`).join(' ');
+
+      const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+      poly.setAttribute('points', points);
+      poly.setAttribute('fill', hex);
+      poly.setAttribute('fill-opacity', '0.14');
+      poly.setAttribute('stroke', hex);
+      poly.setAttribute('stroke-width', '0.35');
+      poly.setAttribute('stroke-opacity', '0.45');
+      poly.style.pointerEvents = 'all';
+      poly.style.cursor = 'default';
+      poly.dataset.districtId = district.id;
+
+      // Hover: slightly more opaque, show district name tooltip
+      poly.addEventListener('mouseenter', (e) => {
+        poly.setAttribute('fill-opacity', '0.24');
+        showDistrictTip(district.name, e);
+      });
+      poly.addEventListener('mousemove', (e) => showDistrictTip(district.name, e));
+      poly.addEventListener('mouseleave', () => {
+        poly.setAttribute('fill-opacity', '0.14');
+        hideDistrictTip();
+      });
+
+      svg.appendChild(poly);
+    });
+
+    // Insert behind markers but above the map image
+    const markers = document.getElementById('map-markers');
+    mapArea.insertBefore(svg, markers);
+  }
+
+  function showDistrictTip(name, e) {
+    let tip = document.getElementById('district-tip');
+    if (!tip) return;
+    const rect = document.querySelector('.map-area').getBoundingClientRect();
+    tip.textContent = name;
+    tip.style.left = (e.clientX - rect.left + 10) + 'px';
+    tip.style.top  = (e.clientY - rect.top  - 28) + 'px';
+    tip.style.display = 'block';
+  }
+
+  function hideDistrictTip() {
+    const tip = document.getElementById('district-tip');
+    if (tip) tip.style.display = 'none';
+  }
+
+  // ── Marker rendering ───────────────────────────────────────────────────────
+
   function renderMarkers() {
     const container = document.getElementById('map-markers');
     if (!container) return;
     container.innerHTML = '';
 
-    const visible = data.locations.filter(isVisible);
-
-    visible.forEach(loc => {
+    data.locations.filter(isVisible).forEach(loc => {
       const marker = document.createElement('div');
       marker.className = 'map-marker' + (loc.id === selectedId ? ' selected' : '');
       marker.dataset.id = loc.id;
       marker.style.left = loc.x + '%';
-      marker.style.top = loc.y + '%';
-      marker.style.background = loc.id === selectedId ? 'var(--gold)' : districtColor(loc.districtId);
+      marker.style.top  = loc.y + '%';
+      marker.style.background = loc.id === selectedId
+        ? 'var(--gold)'
+        : districtColor(loc.districtId);
 
       marker.textContent = loc.number;
 
-      // Tooltip
       const tooltip = document.createElement('div');
       tooltip.className = 'map-tooltip';
       tooltip.textContent = getVisibleName(loc);
@@ -103,7 +189,8 @@
     });
   }
 
-  /** Clears and re-renders the sidebar legend, grouped by district. */
+  // ── Legend rendering ───────────────────────────────────────────────────────
+
   function renderLegend() {
     const container = document.getElementById('legend-list');
     if (!container) return;
@@ -115,10 +202,9 @@
       return;
     }
 
-    // Group by district, preserving district array order
     data.districts.forEach(district => {
-      const districtLocs = visible.filter(l => l.districtId === district.id);
-      if (districtLocs.length === 0) return;
+      const locs = visible.filter(l => l.districtId === district.id);
+      if (locs.length === 0) return;
 
       const group = document.createElement('div');
       group.className = 'legend-group';
@@ -129,7 +215,7 @@
       header.textContent = district.name;
       group.appendChild(header);
 
-      districtLocs.forEach(loc => {
+      locs.forEach(loc => {
         const item = document.createElement('div');
         item.className = 'legend-item' + (loc.id === selectedId ? ' selected' : '');
         item.dataset.id = loc.id;
@@ -146,7 +232,8 @@
     });
   }
 
-  /** Renders the detail panel for the selected location. */
+  // ── Detail panel ───────────────────────────────────────────────────────────
+
   function renderDetail(locationId) {
     const panel = document.getElementById('detail-panel');
     if (!panel) return;
@@ -159,53 +246,43 @@
     const loc = data.locations.find(l => l.id === locationId);
     if (!loc) return;
 
-    const district = data.districts.find(d => d.id === loc.districtId);
-    const details = getAccumulatedDetails(loc);
-    const name = getVisibleName(loc);
-
-    // Visible secrets for current phase
-    const currentIdx = phaseIndex(currentPhaseId);
-    const secrets = (loc.secrets || []).filter(s => phaseIndex(s.unlockPhase) <= currentIdx);
-
-    // Build description paragraphs from all accumulated phase details
-    const descriptions = details.map(d => d.description).filter(Boolean);
+    const district  = data.districts.find(d => d.id === loc.districtId);
+    const details   = getAccumulatedDetails(loc);
+    const name      = getVisibleName(loc);
+    const curIdx    = phaseIndex(currentPhaseId);
+    const secrets   = (loc.secrets || []).filter(s => phaseIndex(s.unlockPhase) <= curIdx);
+    const descs     = details.map(d => d.description).filter(Boolean);
+    const color     = districtColor(loc.districtId);
 
     panel.innerHTML = `
       <div class="detail-header">
         <div class="detail-name">${name}</div>
         <div class="detail-meta">
-          <span class="detail-badge" style="border-color:${districtColor(loc.districtId)};color:${districtColor(loc.districtId)}">${loc.type}</span>
+          <span class="detail-badge" style="border-color:${color};color:${color}">${loc.type}</span>
           <span class="detail-district">${district ? district.name : ''}</span>
         </div>
       </div>
       <div class="detail-body">
-        ${descriptions.map((d, i) => `<p${i > 0 ? ' class="detail-later"' : ''}>${d}</p>`).join('')}
+        ${descs.map((d, i) => `<p${i > 0 ? ' class="detail-later"' : ''}>${d}</p>`).join('')}
         ${loc.notableNpcs && loc.notableNpcs.length ? `
           <div class="detail-npcs">
-            <span class="detail-label">Notable:</span>
-            ${loc.notableNpcs.join(', ')}
-          </div>
-        ` : ''}
+            <span class="detail-label">Notable:</span> ${loc.notableNpcs.join(', ')}
+          </div>` : ''}
         ${secrets.length ? `
           <div class="detail-secrets">
             <div class="detail-label secret-label">▸ Secret${secrets.length > 1 ? 's' : ''}</div>
             ${secrets.map(s => `<p class="secret-text">${s.text}</p>`).join('')}
-          </div>
-        ` : ''}
-      </div>
-    `;
+          </div>` : ''}
+      </div>`;
   }
 
   // ── Selection ──────────────────────────────────────────────────────────────
 
-  /** Selects a location, updates markers, legend, and detail panel. */
   function selectLocation(locationId) {
     selectedId = locationId === selectedId ? null : locationId;
     renderMarkers();
     renderLegend();
     renderDetail(selectedId);
-
-    // Scroll the selected legend item into view
     if (selectedId) {
       const el = document.querySelector(`.legend-item[data-id="${selectedId}"]`);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -214,21 +291,19 @@
 
   // ── Phase selector ─────────────────────────────────────────────────────────
 
-  /** Rebuilds the phase dropdown from JSON data. */
   function buildPhaseSelector() {
     const select = document.getElementById('phase-select');
     if (!select) return;
     select.innerHTML = '';
-    data.town.phases.forEach(phase => {
+    data.town.phases.forEach(p => {
       const opt = document.createElement('option');
-      opt.value = phase.id;
-      opt.textContent = phase.label;
+      opt.value = p.id;
+      opt.textContent = p.label;
       select.appendChild(opt);
     });
     select.value = currentPhaseId;
     select.addEventListener('change', () => {
       currentPhaseId = select.value;
-      // Deselect if selected location is no longer visible
       if (selectedId) {
         const loc = data.locations.find(l => l.id === selectedId);
         if (!loc || !isVisible(loc)) selectedId = null;
@@ -239,21 +314,15 @@
 
   // ── Day/Night toggle ───────────────────────────────────────────────────────
 
-  /** Switches the map image between day and night. */
   function setMapMode(mode) {
     currentMode = mode;
     const img = document.getElementById('map-image');
-    const placeholder = document.getElementById('map-placeholder');
-    if (img) {
-      const src = mode === 'day' ? data.town.maps.day : data.town.maps.night;
-      img.src = src;
-    }
+    if (img) img.src = mode === 'day' ? data.town.maps.day : data.town.maps.night;
     document.querySelectorAll('.mode-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.mode === mode);
     });
   }
 
-  /** Sets up day/night toggle buttons. */
   function buildModeToggle() {
     document.querySelectorAll('.mode-btn').forEach(btn => {
       btn.addEventListener('click', () => setMapMode(btn.dataset.mode));
@@ -263,7 +332,6 @@
 
   // ── Image error fallback ───────────────────────────────────────────────────
 
-  /** Shows a styled placeholder when map image fails to load. */
   function handleImageError() {
     const img = document.getElementById('map-image');
     const placeholder = document.getElementById('map-placeholder');
@@ -274,6 +342,7 @@
   // ── Full re-render ─────────────────────────────────────────────────────────
 
   function renderAll() {
+    renderDistrictOverlays();
     renderMarkers();
     renderLegend();
     renderDetail(selectedId);
@@ -281,7 +350,6 @@
 
   // ── Init ───────────────────────────────────────────────────────────────────
 
-  /** Loads the JSON and boots the map. */
   function init() {
     fetch('dunmore_town-data.json')
       .then(r => {
@@ -292,14 +360,12 @@
         data = json;
         currentPhaseId = data.town.phases[0].id;
 
-        // Set page title
         const titleEl = document.getElementById('town-name');
         if (titleEl) titleEl.textContent = data.town.name;
 
         buildPhaseSelector();
         buildModeToggle();
 
-        // Image error handler
         const img = document.getElementById('map-image');
         if (img) img.addEventListener('error', handleImageError);
 
@@ -308,7 +374,10 @@
       .catch(err => {
         console.error(err);
         const panel = document.getElementById('detail-panel');
-        if (panel) panel.innerHTML = `<p class="detail-empty" style="color:var(--blood)">Error loading map data. Make sure dunmore_town-data.json is in the same folder and you're running this via a local server (not file://).</p>`;
+        if (panel) panel.innerHTML = `<p class="detail-empty" style="color:var(--blood)">
+          Error loading map data. Make sure dunmore_town-data.json is in the same folder
+          and you're serving via a local server (not file://).
+        </p>`;
       });
   }
 
