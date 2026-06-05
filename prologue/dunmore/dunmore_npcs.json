@@ -1,0 +1,266 @@
+{
+  "_meta": {
+    "town": "Dunmore",
+    "generated_from": ["dunmore_town-data.json", "campaign.json"],
+    "notes": "WARNING: The pawnbroker at Morrow's Exchange was named 'Morrow' in town-data.json, but 'Morrow' already exists in campaign.json as Viktor Voss's cavehopper creature. The pawnbroker should be renamed to avoid confusion. Placeholder name used here: 'Aldous' — confirm or change.",
+    "fields_key": "generated_fields lists every field Claude wrote. All other fields are sourced from campaign.json verbatim."
+  },
+  "phases": ["initial", "explored", "fully_explored"],
+  "npcs": [
+    {
+      "id": "cael-darro",
+      "name": "Cael Darro",
+      "source": "campaign.json",
+      "race": "unknown",
+      "title": null,
+      "status": "alive",
+      "affiliations": ["The Concord"],
+      "appearance": "— not yet defined —",
+      "voice": "— not yet defined —",
+      "personality": "Genuinely likeable. The kind of person you enjoy being around before you realize how carefully he's been watching you. Loses gracefully at cards, wins suspiciously. Never seems to be paying close attention but always knows more than he should. Believes in the Concord's mission at some level — this is not purely mercenary for him.",
+      "party_knowledge": "met — role unknown until recruitment pitch",
+      "cover": "Traveling gambler and fast-talker. Charming, unremarkable at first glance.",
+      "locations_in_town": ["Dunmore Town Hall", "The Crossed Keys", "Harrow Lane Gatehouse"],
+      "knowledge_by_phase": {
+        "initial": "A cheerful gambler and traveler who turns up at card games and buys rounds. Loses gracefully, wins suspiciously. Always seems to know what happened yesterday everywhere he goes.",
+        "explored": "Has been in Dunmore longer than casual mention suggests. The corner table at The Crossed Keys has sightlines to both doors. He has been here since before the party arrived.",
+        "fully_explored": "Low-level Concord operative. The party's recruiter. Orchestrated his presence in Dunmore, timed to the monstrosity attack. The coincidence of his appearance was designed weeks in advance."
+      },
+      "gm_notes": "Cael should be someone the players genuinely enjoy. He is not lying about everything — he believes the Concord is trying to save Fastingbreak. His charm is real. His concern for the party may even be real. That makes the eventual revelation of what the Concord has been doing harder to process.",
+      "generated_fields": ["knowledge_by_phase"]
+    },
+    {
+      "id": "mirelle-voss",
+      "name": "Mirelle Voss",
+      "source": "campaign.json",
+      "race": "unknown",
+      "title": null,
+      "status": "alive",
+      "affiliations": ["The Concord"],
+      "appearance": "— not yet defined —",
+      "voice": "— not yet defined —",
+      "personality": "Controlled, charming, always reading the room. Expert at making people feel seen and understood without revealing anything about herself.",
+      "party_knowledge": "unknown",
+      "cover": "Secretary to a noble household in Fastingbreak. In Dunmore, she attended Haverstock Manor events as 'Sera Vantalle', a merchant's widow from the southern provinces.",
+      "locations_in_town": ["Dunmore Town Hall", "Haverstock Manor"],
+      "knowledge_by_phase": {
+        "initial": "A well-dressed woman circulating in the Gables and High Quarter social scene. Pleasant, unremarkable, appears attached to a noble household.",
+        "explored": "Has been attending Haverstock Manor gatherings for months under the name 'Sera Vantalle'. Better connected than her apparent role suggests.",
+        "fully_explored": "Concord operative — identification and assessment specialist. She identified the party as useful after the convoy incident and arranged for Cael Darro's presence in Dunmore. The recruitment was her design."
+      },
+      "gm_notes": "Mirelle should seem entirely unremarkable if the party encounters her socially — pleasant, professional, forgettable. The retroactive realization of when she was watching them should be unsettling.",
+      "generated_fields": ["knowledge_by_phase"]
+    },
+    {
+      "id": "chaelynn",
+      "name": "Chaelynn",
+      "source": "campaign.json",
+      "race": "unknown",
+      "title": null,
+      "status": "alive",
+      "affiliations": ["The Concord"],
+      "appearance": "— not yet defined —",
+      "voice": "— not yet defined —",
+      "personality": "— not yet defined —",
+      "party_knowledge": "known — long-lost contact, trusted",
+      "cover": "Carnival worker with the Moonlit Mirage Carnival",
+      "locations_in_town": ["Threadneedle Rooms", "Harrow Lane Gatehouse"],
+      "knowledge_by_phase": {
+        "initial": "A long-lost contact the party knows and trusts. Appeared in Dunmore unexpectedly — a welcome familiar face.",
+        "explored": "Has been in Dunmore for some time. Her lodgings at Threadneedle Rooms were established before the party arrived.",
+        "fully_explored": "Concord operative. Has been observing the party throughout the Prologue and reporting to Cael Darro. Her placement in Dunmore was deliberate — she was positioned to provide a trusted face at the moment of recruitment."
+      },
+      "gm_notes": "Her history with the party should be established collaboratively before or early in the campaign. She may genuinely care for the party while also believing in the Concord's mission. That complexity is worth preserving.",
+      "generated_fields": ["knowledge_by_phase"]
+    },
+    {
+      "id": "brother-aldric-vane",
+      "name": "Brother Aldric Vane",
+      "source": "generated",
+      "race": "Human (generated — confirm or change)",
+      "title": "Head Priest, Temple of Erathis",
+      "status": "alive",
+      "affiliations": ["Temple of Erathis"],
+      "appearance": "A lean man in his mid-fifties with precisely groomed silver hair and vestments that are always immaculate. He has the posture of someone who decided long ago that appearance is a form of argument. His hands are still when he speaks — deliberate stillness, not calm.",
+      "voice": "Measured and balanced. Completes sentences in neat clauses. Rarely raises his voice because he has arranged his life so he doesn't need to.",
+      "personality": "Believes sincerely in order as a moral good. Not unkind — but order comes before kindness when they conflict. Has made accommodations he considers pragmatic and does not examine them closely.",
+      "party_knowledge": "not yet met",
+      "locations_in_town": ["Temple of Erathis"],
+      "knowledge_by_phase": {
+        "initial": "Which families donate, and how much. Which civic officials attend regularly. What the respectable classes of the Gables are frightened of this season.",
+        "explored": "Received a quiet donation three months ago from a 'civic beautification fund' with no public record. Has been conspicuously silent about the propaganda.",
+        "fully_explored": "— to be defined —"
+      },
+      "gm_notes": "— not yet defined —",
+      "generated_fields": ["race", "appearance", "voice", "personality", "knowledge_by_phase.initial", "knowledge_by_phase.explored"]
+    },
+    {
+      "id": "barrow",
+      "name": "Barrow",
+      "source": "generated",
+      "race": "Human (generated — confirm or change)",
+      "title": "Proprietor, Barrow & Sons",
+      "status": "alive",
+      "affiliations": [],
+      "appearance": "A heavyset man in his late sixties who moves as though he has measured every inch of his shop and knows it precisely. A measuring tape over one shoulder always. Reading glasses perpetually pushed to his forehead. His eyes do an inventory of you when you walk in — not rude, just professional.",
+      "voice": "Unhurried. Finishes sentences at his own pace. Tends to pause before answering, as though pricing the question before committing to it.",
+      "personality": "Reads people the way others read ledgers. Not suspicious by disposition, but accurate. Has been watching Dunmore's households for forty years and knows which ones are behaving differently.",
+      "party_knowledge": "not yet met",
+      "locations_in_town": ["Barrow & Sons"],
+      "knowledge_by_phase": {
+        "initial": "Which households have new staff or unusual visitors. Who has been buying heavy travelling cloaks, recently. Unfamiliar faces that don't belong to any household he recognizes moving through the civic quarter.",
+        "explored": "— to be defined —",
+        "fully_explored": "— to be defined —"
+      },
+      "gm_notes": "— not yet defined —",
+      "generated_fields": ["race", "appearance", "voice", "personality", "knowledge_by_phase.initial"]
+    },
+    {
+      "id": "tessaly",
+      "name": "Tessaly",
+      "source": "generated",
+      "race": "Gnome (generated — confirm or change)",
+      "title": "Shrine Keeper, Shrine of Avandra",
+      "status": "alive",
+      "affiliations": ["Shrine of Avandra"],
+      "appearance": "Small, copper-skinned, always slightly windswept regardless of the weather. She wears layers of small charms and tokens left by travelers over the years — they shift and chime faintly when she moves. Her smile arrives before the rest of her expression, as though it travels faster.",
+      "voice": "Quick and warm. Tends to finish a sentence she thinks you're heading toward — usually correctly. Asks questions in pairs.",
+      "personality": "Genuinely interested in where people have been and where they're going. Holds the distinction between information and secrets very carefully, and honors both.",
+      "party_knowledge": "not yet met",
+      "locations_in_town": ["Shrine of Avandra"],
+      "knowledge_by_phase": {
+        "initial": "Who has prayed here and for what — not specific words, but general weights. Travelers' news from the roads. What direction the city's mood has been moving, week by week.",
+        "explored": "— to be defined —",
+        "fully_explored": "— to be defined —"
+      },
+      "gm_notes": "— not yet defined —",
+      "generated_fields": ["race", "appearance", "voice", "personality", "knowledge_by_phase.initial"]
+    },
+    {
+      "id": "mira",
+      "name": "Mira",
+      "source": "generated",
+      "race": "Elf (generated — confirm or change)",
+      "title": "Proprietor, The Bound Word",
+      "status": "alive",
+      "affiliations": [],
+      "appearance": "Tall, with ink-stained fingers she has long stopped apologizing for, and hair pinned back with what appear to be two writing quills. Bifocals on a cord around her neck that she puts on and takes off constantly. Tends to squint faintly even when she doesn't need to, as though reading fine print.",
+      "voice": "Precise. Uses exactly the right word and waits for you to catch up if needed. A slight elongation on words she finds interesting.",
+      "personality": "Remembers every book she has ever sold and who bought it. Treats this as a professional obligation, not a curiosity. Does not share what she remembers without reason — but she does share it, sometimes, when reason presents itself.",
+      "party_knowledge": "not yet met",
+      "locations_in_town": ["The Bound Word"],
+      "knowledge_by_phase": {
+        "initial": "Every purchase in her shop for the past decade. Who reads what. The regional map sales in particular — all bought by the same buyer, different visits.",
+        "explored": "Was asked to be discreet about the map purchases. Will confirm only that the buyer was not a local.",
+        "fully_explored": "— to be defined —"
+      },
+      "gm_notes": "— not yet defined —",
+      "generated_fields": ["race", "appearance", "voice", "personality", "knowledge_by_phase.initial", "knowledge_by_phase.explored"]
+    },
+    {
+      "id": "renwick",
+      "name": "Renwick",
+      "source": "generated",
+      "race": "Human (generated — confirm or change)",
+      "title": "Barber-Surgeon",
+      "status": "alive",
+      "affiliations": [],
+      "appearance": "Compact and quick-handed, perpetually in a leather apron with a row of small tools clipped to the front. Dark beard with gray threading through it, kept immaculately. The kind of face people find themselves confessing things to before they've decided to.",
+      "voice": "Conversational and low, keeps talking while his hands work. Never lets silence feel uncomfortable. Asks follow-up questions that feel like natural conversation rather than questions.",
+      "personality": "Hears everything. Comments on almost nothing. Unless asked — and even then, carefully.",
+      "party_knowledge": "not yet met",
+      "locations_in_town": ["Renwick's Barber"],
+      "knowledge_by_phase": {
+        "initial": "The mood of the city at street level — who is frightened, who is angry, and whether those are the same people. Has been unusually busy. Doesn't say with what.",
+        "explored": "— to be defined —",
+        "fully_explored": "— to be defined —"
+      },
+      "gm_notes": "— not yet defined —",
+      "generated_fields": ["race", "appearance", "voice", "personality", "knowledge_by_phase.initial"]
+    },
+    {
+      "id": "tam-ashford",
+      "name": "Tam Ashford",
+      "source": "generated",
+      "race": "Dwarf (generated — confirm or change)",
+      "title": "Blacksmith, Ashford's Forge",
+      "status": "alive",
+      "affiliations": [],
+      "appearance": "Broad, with forearms like bridge cables and soot permanently under his nails regardless of scrubbing. Keeps his work vest buttoned to the collar in all weather. Moves around his forge with the economy of someone who has done every motion ten thousand times.",
+      "voice": "Short sentences. Doesn't elaborate unless the work requires it. If something needs saying, he says it once.",
+      "personality": "Believes in the quality of things. Suspicious of people who don't care what something is made of. Has been declining weapons orders for weeks and won't explain why.",
+      "party_knowledge": "not yet met",
+      "locations_in_town": ["Ashford's Forge"],
+      "knowledge_by_phase": {
+        "initial": "What men talk about at a forge when they assume the fire covers their voices. Has heard things he doesn't want to know the end of. Has been turning down orders for anything longer than a short sword.",
+        "explored": "— to be defined —",
+        "fully_explored": "— to be defined —"
+      },
+      "gm_notes": "— not yet defined —",
+      "generated_fields": ["race", "appearance", "voice", "personality", "knowledge_by_phase.initial"]
+    },
+    {
+      "id": "orvyn",
+      "name": "Orvyn",
+      "source": "generated",
+      "race": "Half-Elf (generated — confirm or change)",
+      "title": "Proprietor, The Grey Vial",
+      "status": "alive",
+      "affiliations": [],
+      "appearance": "Slight and ageless in a way that makes it difficult to say if he's thirty or sixty. Long fingers, always clean. Keeps the shop dim. He reads you before he greets you — a brief, complete assessment that he has learned not to make obvious.",
+      "voice": "Quiet and even. Never raised. Speaks slightly more slowly than you expect, which has the effect of making you listen more carefully.",
+      "personality": "Neutral in the way of someone who has decided that opinions are a liability in his line of work. Polite, unhurried, thorough. Asks no questions. This is not incuriosity — it is policy.",
+      "party_knowledge": "not yet met",
+      "locations_in_town": ["The Grey Vial"],
+      "knowledge_by_phase": {
+        "initial": "What can be legally sold, what cannot, and where the line is in various jurisdictions. Has had at least one regular customer in recent months he won't describe.",
+        "explored": "Maintains a secondary stock not on display. Can be accessed by customers he trusts, which takes more than one visit to become.",
+        "fully_explored": "— to be defined —"
+      },
+      "gm_notes": "— not yet defined —",
+      "generated_fields": ["race", "appearance", "voice", "personality", "knowledge_by_phase.initial", "knowledge_by_phase.explored"]
+    },
+    {
+      "id": "sister-hadara",
+      "name": "Sister Hadara",
+      "source": "generated",
+      "race": "Human (generated — confirm or change)",
+      "title": "Priest, Chapel of Pelor",
+      "status": "alive",
+      "affiliations": ["Chapel of Pelor"],
+      "appearance": "Small and dark-complexioned, perpetually in motion. Keeps her sleeves rolled up. The chapel always smells of whatever remedy she is currently preparing. There are tallow stains on her vestments she has given up trying to remove.",
+      "voice": "Direct. No softening language. Calls things what they are — not unkindly, but without the cushioning most people add.",
+      "personality": "Angry at what the city is doing to people and doing something about it anyway, because anger without action is just noise. Has seen enough injuries this month that her quiet anger has become something louder underneath.",
+      "party_knowledge": "not yet met",
+      "locations_in_town": ["Chapel of Pelor"],
+      "knowledge_by_phase": {
+        "initial": "The texture of the Warrens' fear — not the politics, but the consequences. Who is being hurt. What kind of hurt. More injuries lately than she can explain by accident.",
+        "explored": "— to be defined —",
+        "fully_explored": "— to be defined —"
+      },
+      "gm_notes": "— not yet defined —",
+      "generated_fields": ["race", "appearance", "voice", "personality", "knowledge_by_phase.initial"]
+    },
+    {
+      "id": "aldous",
+      "name": "Aldous",
+      "source": "generated",
+      "race": "Human (generated — confirm or change)",
+      "title": "Proprietor, Morrow's Exchange",
+      "status": "alive",
+      "affiliations": [],
+      "appearance": "Heavyset, slow-moving, watchful. Sits behind a counter dense with other people's objects — none of which he appears to have any particular attachment to. Keeps his hands visible on the counter.",
+      "voice": "Flat. Transaction-focused. States prices, does not negotiate aloud. If something is not for sale, says so once.",
+      "personality": "No opinions for sale. Has seen enough to know that curiosity is expensive in his line of work. Whatever he knows, he has calculated not to share for free.",
+      "party_knowledge": "not yet met",
+      "locations_in_town": ["Morrow's Exchange"],
+      "knowledge_by_phase": {
+        "initial": "What people bring in when they need money fast. Has been busier than usual. Does not ask where things came from.",
+        "explored": "— to be defined —",
+        "fully_explored": "— to be defined —"
+      },
+      "gm_notes": "NOTE: This NPC was named 'Morrow' in dunmore_town-data.json, which conflicts with 'Morrow' in campaign.json (Viktor Voss's cavehopper creature). Renamed here to 'Aldous' — update dunmore_town-data.json and the town-data notableNpcs entry to match, or choose a different name.",
+      "generated_fields": ["race", "appearance", "voice", "personality", "knowledge_by_phase.initial"]
+    }
+  ]
+}

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunmore — NPC Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9; --parchment-dark: #dbc99a; --parchment-shadow: #b89d5e;
+    --ink: #1a1108; --dim: #2e200e; --faded: #5a4a2e;
+    --blood: #7a1f1f; --purple: #5b2d8e; --gold: #8a6a10; --teal: #1e5f5f; --slate: #2e3a4a;
+    --act-color: var(--blood);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d0a06;
+    background-image: radial-gradient(ellipse at 20% 0%, #1a0a04 0%, transparent 55%),
+                      radial-gradient(ellipse at 80% 100%, #0a0e18 0%, transparent 55%);
+    font-family: 'IM Fell English', serif;
+    color: var(--ink);
+    padding: 1.5rem 1rem 3rem;
+    min-height: 100vh;
+  }
+  .page {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--parchment);
+    border: 2px solid var(--parchment-shadow);
+    box-shadow: 0 0 0 6px #0d0a06, 0 0 0 8px var(--parchment-shadow), 0 20px 60px rgba(0,0,0,0.8);
+    overflow: hidden;
+  }
+  .act-band { background: var(--act-color); height: 6px; }
+  .page-inner { padding: 2rem 2.5rem 3rem; }
+
+  /* ── TITLE ── */
+  .page-title { text-align: center; border-bottom: 2px solid var(--parchment-shadow); padding-bottom: 1rem; margin-bottom: 1.6rem; }
+  .gm-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; color: var(--act-color); text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+  .page-title h1 { font-family: 'Cinzel Decorative', cursive; font-size: clamp(1.4rem, 3.5vw, 2rem); color: var(--ink); line-height: 1.2; }
+  .page-title .subtitle { font-style: italic; color: var(--faded); font-size: 0.88rem; margin-top: 0.3rem; }
+  .back-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faded); text-decoration: none; margin-top: 0.45rem; transition: color 0.2s; }
+  .back-link:hover { color: var(--act-color); }
+
+  /* ── CONTROLS ── */
+  .controls { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.4rem; flex-wrap: wrap; }
+  .control-label { font-family: 'Cinzel', serif; font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faded); }
+  #phase-select {
+    background: var(--parchment); border: 1px solid var(--parchment-shadow);
+    color: var(--ink); font-family: 'Cinzel', serif; font-size: 0.68rem;
+    padding: 0.3rem 1.8rem 0.3rem 0.5rem; cursor: pointer; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a4a2e'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 0.5rem center;
+  }
+  .filter-btns { display: flex; gap: 0; border: 1px solid var(--parchment-shadow); overflow: hidden; }
+  .filter-btn {
+    font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 0.3rem 0.7rem; background: transparent;
+    border: none; color: var(--faded); cursor: pointer; transition: background 0.15s, color 0.15s;
+  }
+  .filter-btn + .filter-btn { border-left: 1px solid var(--parchment-shadow); }
+  .filter-btn.active { background: rgba(26,17,8,0.1); color: var(--ink); }
+
+  /* ── WARNING BANNER ── */
+  .warning-banner {
+    background: rgba(122,31,31,0.06); border: 1px solid rgba(122,31,31,0.2);
+    border-left: 4px solid var(--blood); padding: 0.7rem 1rem;
+    font-size: 0.82rem; color: var(--dim); line-height: 1.6; margin-bottom: 1.4rem;
+  }
+  .warning-banner strong { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blood); display: block; margin-bottom: 0.3rem; }
+
+  /* ── NPC GRID ── */
+  #npc-grid { display: flex; flex-direction: column; gap: 1rem; }
+
+  /* ── NPC CARD ── */
+  .npc-card {
+    border: 1px solid var(--parchment-shadow);
+    border-top: 3px solid var(--act-color);
+    background: rgba(255,252,240,0.4);
+    overflow: hidden;
+  }
+  .npc-card.established { border-top-color: var(--slate); }
+  .npc-card.generated  { border-top-color: var(--gold); }
+
+  .npc-card-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    padding: 0.85rem 1rem 0.7rem; gap: 1rem; cursor: pointer;
+    user-select: none;
+  }
+  .npc-card-header:hover { background: rgba(180,140,60,0.06); }
+
+  .npc-title-block { flex: 1; }
+  .npc-name { font-family: 'Cinzel', serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); }
+  .npc-sub {
+    font-family: 'Cinzel', serif; font-size: 0.52rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--faded); margin-top: 0.15rem;
+  }
+  .npc-badges { display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; margin-top: 0.3rem; }
+  .badge {
+    font-family: 'Cinzel', serif; font-size: 0.46rem; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 0.1rem 0.45rem; border: 1px solid;
+  }
+  .badge-established { border-color: var(--slate); color: var(--slate); }
+  .badge-generated   { border-color: var(--gold);  color: var(--gold); }
+  .badge-affil       { border-color: rgba(26,17,8,0.2); color: var(--faded); }
+
+  .npc-arrow { font-size: 0.7rem; color: var(--faded); transition: transform 0.2s; flex-shrink: 0; margin-top: 0.15rem; }
+  .npc-card.open .npc-arrow { transform: rotate(180deg); }
+
+  .npc-body { display: none; padding: 0 1rem 1rem; border-top: 1px solid rgba(180,140,60,0.2); }
+  .npc-card.open .npc-body { display: block; }
+
+  /* ── BODY SECTIONS ── */
+  .npc-section-head {
+    font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--act-color); margin: 0.9rem 0 0.35rem;
+    border-bottom: 1px solid rgba(122,31,31,0.15); padding-bottom: 0.2rem;
+  }
+  .npc-section-head.slate { color: var(--slate); border-bottom-color: rgba(46,58,74,0.2); }
+  p.npc-text { font-size: 0.85rem; line-height: 1.68; color: var(--dim); margin-bottom: 0.35rem; }
+  p.npc-text:last-child { margin-bottom: 0; }
+  .npc-undefined { font-style: italic; color: var(--faded); font-size: 0.82rem; }
+
+  /* ── KNOWLEDGE TABLE ── */
+  .knowledge-block { margin-top: 0.2rem; }
+  .knowledge-row { display: flex; gap: 0.8rem; padding: 0.35rem 0; border-bottom: 1px solid rgba(180,140,60,0.15); align-items: baseline; }
+  .knowledge-row:last-child { border-bottom: none; }
+  .knowledge-phase {
+    font-family: 'Cinzel', serif; font-size: 0.48rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--faded); flex-shrink: 0; width: 110px;
+  }
+  .knowledge-text { font-size: 0.83rem; line-height: 1.6; color: var(--dim); }
+  .knowledge-text.future { color: var(--faded); font-style: italic; }
+
+  /* ── GM SECTION ── */
+  .gm-section {
+    background: rgba(122,31,31,0.04); border: 1px solid rgba(122,31,31,0.15);
+    border-left: 4px solid var(--blood); padding: 0.7rem 0.9rem; margin-top: 1rem;
+  }
+  .gm-section-head {
+    font-family: 'Cinzel', serif; font-size: 0.52rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--blood); margin-bottom: 0.4rem;
+  }
+
+  /* ── LOCATIONS ── */
+  .location-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.2rem; }
+  .location-tag {
+    font-family: 'Cinzel', serif; font-size: 0.48rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.1rem 0.5rem;
+    background: rgba(26,17,8,0.06); border: 1px solid rgba(180,140,60,0.3); color: var(--faded);
+  }
+
+  /* ── DIVIDER ── */
+  .divider { display: flex; align-items: center; gap: 0.6rem; margin: 1.2rem 0; color: var(--parchment-shadow); }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--parchment-shadow), transparent); }
+
+  /* ── EMPTY STATE ── */
+  .empty-state { text-align: center; padding: 2rem; font-style: italic; color: var(--faded); font-size: 0.88rem; }
+
+  @media (max-width: 680px) { .page-inner { padding: 1.5rem 1.2rem 2rem; } }
+</style>
+</head>
+<body>
+
+<div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
+<div id="aelNavBtn" style="position:fixed;bottom:1.2rem;right:1.2rem;z-index:1001;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(26,18,9,0.9);border:1px solid #b89d5e;padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);cursor:pointer;user-select:none;" onclick="aelNavOpen()">&#9776; All Pages</div>
+<script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
+
+<div class="page">
+  <div class="act-band"></div>
+  <div class="page-inner">
+
+    <div class="page-title">
+      <span class="gm-label">GM Reference · The Prologue</span>
+      <h1>Dunmore — NPCs</h1>
+      <p class="subtitle">Notable persons of the town</p>
+      <a class="back-link" href="dunmore_arc.html">← Dunmore Arc Reference</a>
+      &nbsp;&nbsp;
+      <a class="back-link" href="dunmore_map.html">↗ Town Map</a>
+    </div>
+
+    <div id="warning-container"></div>
+
+    <div class="controls">
+      <span class="control-label">Phase</span>
+      <select id="phase-select"></select>
+      <span class="control-label" style="margin-left:0.5rem">Show</span>
+      <div class="filter-btns">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="established">Canon</button>
+        <button class="filter-btn" data-filter="generated">Filler</button>
+      </div>
+    </div>
+
+    <div id="npc-grid"></div>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  let data = null;
+  let currentPhase = 0;
+  let currentFilter = 'all';
+
+  function isUndefined(val) {
+    return !val || val === '— not yet defined —' || val === 'unknown';
+  }
+
+  function renderWarnings() {
+    const container = document.getElementById('warning-container');
+    if (!data._meta || !data._meta.notes) return;
+    container.innerHTML = `
+      <div class="warning-banner">
+        <strong>⚠ Notes</strong>
+        ${data._meta.notes}
+      </div>`;
+  }
+
+  function buildPhaseSelector() {
+    const select = document.getElementById('phase-select');
+    data.phases.forEach((p, i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = p.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      select.appendChild(opt);
+    });
+    select.addEventListener('change', () => {
+      currentPhase = parseInt(select.value);
+      renderAll();
+    });
+  }
+
+  function buildFilters() {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderAll();
+      });
+    });
+  }
+
+  function renderAll() {
+    const grid = document.getElementById('npc-grid');
+    const npcs = data.npcs.filter(n => {
+      if (currentFilter === 'established') return n.source === 'campaign.json';
+      if (currentFilter === 'generated') return n.source === 'generated';
+      return true;
+    });
+
+    if (npcs.length === 0) {
+      grid.innerHTML = '<div class="empty-state">No NPCs match the current filter.</div>';
+      return;
+    }
+
+    // Established first, then generated
+    const sorted = [
+      ...npcs.filter(n => n.source === 'campaign.json'),
+      ...npcs.filter(n => n.source === 'generated'),
+    ];
+
+    grid.innerHTML = '';
+    sorted.forEach(npc => grid.appendChild(buildCard(npc)));
+  }
+
+  function buildCard(npc) {
+    const card = document.createElement('div');
+    const isEstablished = npc.source === 'campaign.json';
+    card.className = `npc-card ${isEstablished ? 'established' : 'generated'}`;
+    card.dataset.id = npc.id;
+
+    // Knowledge for current phase
+    const phaseId = data.phases[currentPhase];
+    const phaseKeys = data.phases.slice(0, currentPhase + 1);
+
+    // Header
+    const affiliations = (npc.affiliations || []).map(a =>
+      `<span class="badge badge-affil">${a}</span>`).join('');
+
+    card.innerHTML = `
+      <div class="npc-card-header" onclick="toggleCard('${npc.id}')">
+        <div class="npc-title-block">
+          <div class="npc-name">${npc.name}</div>
+          ${npc.title ? `<div class="npc-sub">${npc.title}</div>` : ''}
+          <div class="npc-badges">
+            <span class="badge ${isEstablished ? 'badge-established' : 'badge-generated'}">
+              ${isEstablished ? 'Canon' : 'Filler'}
+            </span>
+            ${npc.race && !isUndefined(npc.race)
+              ? `<span class="badge badge-affil">${npc.race.replace(' (generated — confirm or change)', ' †')}</span>`
+              : ''}
+            ${affiliations}
+          </div>
+        </div>
+        <div class="npc-arrow">▼</div>
+      </div>
+      <div class="npc-body">
+        ${buildBody(npc, phaseKeys, phaseId)}
+      </div>`;
+
+    return card;
+  }
+
+  function buildBody(npc, phaseKeys, currentPhaseId) {
+    const sections = [];
+
+    // Appearance + Voice
+    if (!isUndefined(npc.appearance) || !isUndefined(npc.voice)) {
+      sections.push(`<div class="npc-section-head">Appearance & Voice</div>`);
+      if (!isUndefined(npc.appearance)) {
+        sections.push(`<p class="npc-text">${npc.appearance}</p>`);
+      } else {
+        sections.push(`<p class="npc-undefined">Appearance not yet defined.</p>`);
+      }
+      if (!isUndefined(npc.voice)) {
+        sections.push(`<p class="npc-text" style="font-style:italic">${npc.voice}</p>`);
+      }
+    }
+
+    // Personality
+    if (!isUndefined(npc.personality)) {
+      sections.push(`<div class="npc-section-head">Personality</div>`);
+      sections.push(`<p class="npc-text">${npc.personality}</p>`);
+    }
+
+    // Cover / Public face
+    if (npc.cover && !isUndefined(npc.cover)) {
+      sections.push(`<div class="npc-section-head">Cover</div>`);
+      sections.push(`<p class="npc-text">${npc.cover}</p>`);
+    }
+
+    // Locations
+    if (npc.locations_in_town && npc.locations_in_town.length) {
+      sections.push(`<div class="npc-section-head">Locations in Town</div>`);
+      sections.push(`<div class="location-tags">${npc.locations_in_town.map(l =>
+        `<span class="location-tag">${l}</span>`).join('')}</div>`);
+    }
+
+    // What they know — phase gated
+    if (npc.knowledge_by_phase) {
+      sections.push(`<div class="npc-section-head">What They Know</div>`);
+      sections.push(`<div class="knowledge-block">`);
+      data.phases.forEach((phase, i) => {
+        const text = npc.knowledge_by_phase[phase];
+        if (!text) return;
+        const isVisible = i <= data.phases.indexOf(currentPhaseId);
+        const isDefined = !isUndefined(text);
+        if (!isVisible) return; // hide future phases entirely
+        sections.push(`
+          <div class="knowledge-row">
+            <span class="knowledge-phase">${phase.replace(/_/g, ' ')}</span>
+            <span class="knowledge-text ${isDefined ? '' : 'future'}">${isDefined ? text : '—'}</span>
+          </div>`);
+      });
+      sections.push(`</div>`);
+    }
+
+    // Party knowledge
+    if (npc.party_knowledge) {
+      sections.push(`<div class="npc-section-head slate">Party Knowledge</div>`);
+      sections.push(`<p class="npc-text">${npc.party_knowledge}</p>`);
+    }
+
+    // GM section
+    const gmParts = [];
+    if (!isUndefined(npc.gm_notes)) gmParts.push(npc.gm_notes);
+    if (npc.role_in_story && !isUndefined(npc.role_in_story))
+      gmParts.push(`<strong>Role:</strong> ${npc.role_in_story}`);
+
+    if (gmParts.length) {
+      sections.push(`
+        <div class="gm-section">
+          <div class="gm-section-head">▸ GM Notes</div>
+          ${gmParts.map(p => `<p class="npc-text">${p}</p>`).join('')}
+        </div>`);
+    }
+
+    // Generated fields notice
+    if (npc.generated_fields && npc.generated_fields.length) {
+      sections.push(`<p style="margin-top:0.8rem;font-family:'Cinzel',serif;font-size:0.46rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold)">
+        † Generated fields (review before use): ${npc.generated_fields.join(', ')}
+      </p>`);
+    }
+
+    return sections.join('');
+  }
+
+  window.toggleCard = function(id) {
+    const card = document.querySelector(`.npc-card[data-id="${id}"]`);
+    if (card) card.classList.toggle('open');
+  };
+
+  fetch('dunmore_npcs.json')
+    .then(r => r.json())
+    .then(json => {
+      data = json;
+      renderWarnings();
+      buildPhaseSelector();
+      buildFilters();
+      renderAll();
+    })
+    .catch(err => {
+      document.getElementById('npc-grid').innerHTML =
+        `<div class="empty-state" style="color:var(--blood)">Error loading NPC data: ${err.message}<br>Make sure dunmore_npcs.json is in the same folder and you're serving via a local server.</div>`;
+    });
+})();
+</script>
+</body>
+</html>
