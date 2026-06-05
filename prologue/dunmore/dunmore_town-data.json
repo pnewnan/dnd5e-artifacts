@@ -27,35 +27,35 @@
       "name": "Civic Quarter",
       "description": "The administrative heart of Dunmore — the roundabout plaza, town hall, and official buildings. The seat of what passes for order in a city on the edge of something ugly.",
       "color": "slate",
-      "polygon": [[58,20],[84,20],[84,46],[58,46]]
+      "polygon": [[58,22],[80,22],[84,34],[80,46],[60,46],[54,36],[56,24]]
     },
     {
       "id": "high_quarter",
       "name": "High Quarter",
       "description": "Dunmore's small upper class — old stone manors, private gardens, a deliberate remove from the noise below. Not large. Not especially welcoming.",
       "color": "purple",
-      "polygon": [[62,4],[84,4],[84,20],[62,20]]
+      "polygon": [[62,4],[84,4],[86,14],[80,22],[64,22],[60,14]]
     },
     {
       "id": "gables",
       "name": "The Gables",
       "description": "Upper-middle-class Dunmore — comfortable homes, respectable streets, the kind of neighbourhood where people have opinions about property values.",
       "color": "teal",
-      "polygon": [[44,14],[64,14],[64,50],[44,50]]
+      "polygon": [[36,14],[62,14],[64,30],[60,42],[54,48],[34,46],[32,34]]
     },
     {
       "id": "market",
       "name": "Market District",
       "description": "The commercial spine of Dunmore. Shops, stalls, inns, and temples crowd the road intersections. Loud, busy, and currently running about thirty percent angrier than usual.",
       "color": "gold",
-      "polygon": [[30,24],[56,24],[56,56],[30,56]]
+      "polygon": [[26,30],[56,26],[60,40],[56,54],[28,56],[20,44],[22,34]]
     },
     {
       "id": "warrens",
       "name": "The Warrens",
       "description": "The oldest, densest part of Dunmore. Narrow streets, proud heritage, and the working class that built this city watching its anger be aimed somewhere convenient.",
       "color": "blood",
-      "polygon": [[4,16],[36,16],[36,52],[16,54],[4,48]]
+      "polygon": [[4,16],[32,14],[38,28],[36,46],[26,52],[12,54],[4,48]]
     }
   ],
   "locations": [
@@ -211,7 +211,7 @@
       "name": "Sable House Stables",
       "districtId": "gables",
       "type": "Stable",
-      "x": 63.0,
+      "x": 57.0,
       "y": 44.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
@@ -688,7 +688,7 @@
       "districtId": "warrens",
       "type": "Lodging",
       "x": 34.0,
-      "y": 46.0,
+      "y": 45.0,
       "unlockPhase": "explored",
       "detailsByPhase": {
         "explored": {
