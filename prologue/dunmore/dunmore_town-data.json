@@ -27,35 +27,35 @@
       "name": "Civic Quarter",
       "description": "The administrative heart of Dunmore — the roundabout plaza, town hall, and official buildings. The seat of what passes for order in a city on the edge of something ugly.",
       "color": "slate",
-      "polygon": [[50,10],[82,10],[84,22],[82,44],[54,46],[48,36],[50,15]]
+      "polygon": [[58,20],[84,20],[84,46],[58,46]]
     },
     {
       "id": "high_quarter",
       "name": "High Quarter",
       "description": "Dunmore's small upper class — old stone manors, private gardens, a deliberate remove from the noise below. Not large. Not especially welcoming.",
       "color": "purple",
-      "polygon": [[60,4],[85,4],[86,20],[62,22],[58,14]]
+      "polygon": [[62,4],[84,4],[84,20],[62,20]]
     },
     {
       "id": "gables",
       "name": "The Gables",
       "description": "Upper-middle-class Dunmore — comfortable homes, respectable streets, the kind of neighbourhood where people have opinions about property values.",
       "color": "teal",
-      "polygon": [[42,16],[66,16],[68,48],[42,50]]
+      "polygon": [[44,14],[64,14],[64,50],[44,50]]
     },
     {
       "id": "market",
       "name": "Market District",
       "description": "The commercial spine of Dunmore. Shops, stalls, inns, and temples crowd the road intersections. Loud, busy, and currently running about thirty percent angrier than usual.",
       "color": "gold",
-      "polygon": [[22,20],[55,20],[56,56],[24,58],[18,46]]
+      "polygon": [[30,24],[56,24],[56,56],[30,56]]
     },
     {
       "id": "warrens",
       "name": "The Warrens",
       "description": "The oldest, densest part of Dunmore. Narrow streets, proud heritage, and the working class that built this city watching its anger be aimed somewhere convenient.",
       "color": "blood",
-      "polygon": [[6,18],[36,18],[38,54],[22,56],[6,50]]
+      "polygon": [[4,16],[36,16],[36,52],[16,54],[4,48]]
     }
   ],
   "locations": [
@@ -211,7 +211,7 @@
       "name": "Sable House Stables",
       "districtId": "gables",
       "type": "Stable",
-      "x": 66.0,
+      "x": 63.0,
       "y": 44.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
@@ -382,7 +382,7 @@
       "name": "Goldwright's",
       "districtId": "market",
       "type": "Jeweler",
-      "x": 57.0,
+      "x": 55.0,
       "y": 44.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
