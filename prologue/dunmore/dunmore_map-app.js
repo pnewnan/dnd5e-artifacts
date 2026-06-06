@@ -33,11 +33,22 @@
 
   // ── Color map (CSS variable name → hex, for SVG which can't use CSS vars) ──
   const COLOR_MAP = {
-    blood:  '#7a1f1f',
-    teal:   '#1e5f5f',
-    gold:   '#8a6a10',
-    purple: '#5b2d8e',
-    slate:  '#2e3a4a'
+    blood:    '#7a1f1f',
+    teal:     '#1e5f5f',
+    gold:     '#8a6a10',
+    purple:   '#5b2d8e',
+    slate:    '#2e3a4a',
+    amber:    '#9a5e10',
+    rose:     '#7a2050',
+    indigo:   '#3a2888',
+    olive:    '#566010',
+    rust:     '#8a3818',
+    stone:    '#4a3c2c',
+    charcoal: '#383838',
+    crimson:  '#9e2828',
+    moss:     '#285a20',
+    cerulean: '#1a406e',
+    navy:     '#1c2858'
   };
 
   // ── Phase helpers ──────────────────────────────────────────────────────────
