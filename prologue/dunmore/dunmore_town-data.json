@@ -1,6 +1,6 @@
 {
   "_comments": {
-    "add_district": "Add to 'districts' with id, name, description, color (blood/teal/gold/purple/slate), and polygon as [[x,y],...] road-traced percentage pairs",
+    "add_district": "Add to 'districts' with id, name, description, color (blood/teal/gold/purple/slate/amber/rose/indigo/olive/rust/stone/cerulean/navy/moss/charcoal), and polygon as [[x,y],...] road-traced percentage pairs",
     "add_location": "Add to 'locations' with id, number, districtId, type, x/y percentages (x=0 left, x=100 right, y=0 top, y=100 bottom), unlockPhase, detailsByPhase",
     "add_phase": "Add to town.phases with new id and next order number; add matching keys to each location's detailsByPhase",
     "move_marker": "Change x and y. Map is portrait (1592x2600). x=0 left edge, x=100 right edge, y=0 top, y=100 bottom.",
@@ -23,39 +23,88 @@
   },
   "districts": [
     {
-      "id": "old_hill",
-      "name": "The Old Hill",
-      "description": "The oldest part of Dunmore — dense, organic streets that grew before anyone planned them. The working class here has been angry longer than the pamphlets have existed. That's what makes them useful.",
-      "color": "blood",
-      "polygon": [[3,2],[46,2],[44,18],[40,28],[30,36],[3,30]]
-    },
-    {
-      "id": "crossings",
-      "name": "The Crossings",
-      "description": "Where Dunmore's main roads meet around the town hall. Civic authority, official business, and the commercial energy that gravitates toward them. The roundabout is the city's visible center of gravity.",
-      "color": "slate",
-      "polygon": [[30,26],[66,22],[68,44],[50,50],[28,46],[24,34]]
-    },
-    {
-      "id": "lanes",
-      "name": "The Lanes",
-      "description": "The comfortable quarter on the upper-right — merchants who've done well, craftspeople with steady work, respectable households with opinions about property values. Not wealthy. Aspirational.",
-      "color": "teal",
-      "polygon": [[62,6],[84,6],[84,46],[68,48],[66,22]]
-    },
-    {
-      "id": "rows",
-      "name": "The Rows",
-      "description": "The broad commercial middle of Dunmore. Shops, stalls, inns, trades. The daily economic engine. Currently running about thirty percent angrier than usual.",
+      "id": "the_alderman_s_quarter",
+      "name": "The Alderman's Quarter",
+      "description": "Dunmore's administrative center — town hall, civic offices, the roundabout that is the city's visible center of gravity. Officials move with the harried look of people managing a city on edge. Someone here is either working with the Concord or being used without knowing it.",
       "color": "gold",
-      "polygon": [[5,44],[80,44],[80,70],[5,70]]
+      "polygon": [[36.16,28.35],[35.27,24.68],[36.51,23.38],[38.45,21.11],[42.86,20.57],[47.44,23.27],[47.27,25.65],[51.5,29],[47.62,29.86],[47.97,36.02],[45.86,35.37],[42.5,33.21],[35.27,35.05]]
     },
     {
-      "id": "southend",
-      "name": "The Southend",
-      "description": "The lower tail of the city — streets that appeared faster than the city could plan them. The poorest residents, the newest arrivals, and the people who end up here when everywhere else has no room.",
+      "id": "factor_s_row",
+      "name": "Factor's Row",
+      "description": "Where goods come in and go out — warehouses, brokers, merchants who know the price of everything. The pamphlets flow through here with the rest of the paper trade. The daily economic engine, currently running about thirty percent angrier than usual.",
+      "color": "amber",
+      "polygon": [[38.45,20.9],[34.92,18.52],[25.93,19.82],[25.75,21.01],[28.04,23.71],[25.4,24.14],[25.22,26.3],[27.69,27.7],[33.16,26.51],[35.1,26.51]]
+    },
+    {
+      "id": "tinker_s_row",
+      "name": "Tinker's Row",
+      "description": "Dense, practical streets of workshops and small trades. The craftspeople here have been angry longer than the pamphlets have existed. That's what makes them useful. The Old Hill's working heart, where the city's actual labor happens without ceremony.",
+      "color": "rust",
+      "polygon": [[35.63,28.78],[35.27,35.8],[24.16,32.78],[16.93,33.86],[8.99,28.89],[5.82,28.13],[16.4,27.92],[22.75,26.62]]
+    },
+    {
+      "id": "ink_quarter",
+      "name": "Ink Quarter",
+      "description": "Archives, booksellers, scribes, and the city's intellectual fringe. Whoever organized the propaganda campaign knew this neighborhood well — the paper supply, the distribution networks, the people who ask too many questions and the ones who don't ask enough.",
+      "color": "rose",
+      "polygon": [[6.53,28.78],[15.17,37.85],[23.46,40.45],[45.15,52.86],[36.33,36.56],[24.34,33.21],[16.4,34.29]]
+    },
+    {
+      "id": "the_carouse",
+      "name": "The Carouse",
+      "description": "The city's busy commercial and social heart — taverns, inns, lodging, trades. Where Dunmore's mood is loudest and most legible. Cael Darro chose this neighborhood to operate in for a reason: it's where the city talks.",
       "color": "purple",
-      "polygon": [[12,68],[70,68],[65,88],[42,93],[24,90],[10,80]]
+      "polygon": [[35.45,35.05],[43.21,33.53],[47.8,41.63],[56.26,49.3],[46.03,52.54]]
+    },
+    {
+      "id": "songbird_s_way",
+      "name": "Songbird's Way",
+      "description": "The social tier above the Carouse — fashionable establishments, haberdashers, tailors, and gathering places for the aspirational class. Music and managed appearances. The residents here have opinions about the pamphlets but express them at dinner parties, not street corners.",
+      "color": "indigo",
+      "polygon": [[21.34,16.25],[25.75,19.6],[36.68,18.95],[39.68,21.11],[43.92,20.9],[47.62,22.95],[46.91,24.79],[49.38,26.84],[50.44,27.92],[65.08,25.33],[58.03,22.84],[57.5,21.22],[53.09,21.87],[50.79,19.39],[46.21,19.49],[40.56,17.12],[40.39,15.61],[23.99,16.15]]
+    },
+    {
+      "id": "the_devotion",
+      "name": "The Devotion",
+      "description": "A small but well-tended religious enclave at the city's center. Healing is available to anyone who needs it. The silence here is conspicuous given how loud the rest of Dunmore has become — the priests have noticed the injuries, and they are quietly angry.",
+      "color": "stone",
+      "polygon": [[38.45,49.95],[37.21,51.24],[42.5,55.02],[46.03,54.16]]
+    },
+    {
+      "id": "rampart_row",
+      "name": "Rampart Row",
+      "description": "The Watch's operational base, adjacent to the Alderman's Quarter. The orders that come from here lately have been quietly unusual — specific streets to patrol, specific complaints not to pursue. Someone in the civic structure is managing what the Watch sees.",
+      "color": "slate",
+      "polygon": [[51.15,28.57],[46.91,25.65],[43.92,27.27],[43.56,28.46],[48.15,29.97]]
+    },
+    {
+      "id": "crestview",
+      "name": "Crestview",
+      "description": "The oldest money in Dunmore — estates, private clubs, and the studied indifference of people who can afford to be wrong. Currently hosting several unfamiliar guests who are better connected than they have any obvious reason to be.",
+      "color": "olive",
+      "polygon": [[64.9,24.89],[58.91,22.95],[58.03,20.25],[49.21,18.95],[45.33,18.85],[40.74,16.47],[38.98,14.85],[25.4,15.82],[21.69,15.93],[14.46,16.25],[11.64,14.42],[11.64,11.83],[20.64,11.07],[24.16,9.67],[27.34,6.43],[32.8,5.35],[45.86,8.91],[53.26,12.69],[61.91,18.52]]
+    },
+    {
+      "id": "alley_row",
+      "name": "Alley Row",
+      "description": "The streets that appeared faster than the city could plan them. The poorest residents, the newest arrivals, and the people who end up here when everywhere else has no room. The anger here is real, even if the cause is manufactured.",
+      "color": "blood",
+      "polygon": [[49.03,91.2],[42.15,89.15],[38.45,82.02],[37.57,70.58],[35.45,64.2],[32.63,60.96],[30.34,56.97],[37.04,53.08],[39.86,51.03],[46.03,52.65],[41.98,65.18]]
+    },
+    {
+      "id": "the_manufactory",
+      "name": "The Manufactory",
+      "description": "Workshops, foundries, and the city's grinding productive core. The workers here are the quietest political force in Dunmore — so far. The pamphlets have reached here too, passed hand to hand between shifts.",
+      "color": "charcoal",
+      "polygon": [[50.27,91.31],[53.79,90.12],[53.97,86.78],[53.44,84.18],[54.15,81.38],[52.91,74.14],[51.15,70.47],[54.5,65.93],[47.27,63.02],[43.92,63.34],[42.33,62.58],[41.98,69.28]]
+    },
+    {
+      "id": "the_shrines",
+      "name": "The Shrines",
+      "description": "A cluster of minor shrines and devotional spaces on the city's eastern edge. Frequented by the Lanes' respectable class, who prefer their religion at a slight remove from the noise. The head priest here has been conspicuously quiet about the propaganda.",
+      "color": "teal",
+      "polygon": [[73.55,39.47],[69.31,37.96],[67.2,40.34],[69.49,41.96],[73.55,42.07]]
     }
   ],
   "locations": [
@@ -63,15 +112,15 @@
       "id": "town_hall",
       "number": 1,
       "name": "Dunmore Town Hall",
-      "districtId": "crossings",
+      "districtId": "the_alderman_s_quarter",
       "type": "Government",
-      "x": 49.0,
-      "y": 31.0,
+      "x": 35.7,
+      "y": 24.8,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "Town Hall",
-          "description": "Dunmore's seat of government, anchoring the roundabout at the Crossings. Guards are posted. Officials move with the harried look of people managing a city on edge."
+          "description": "Dunmore's seat of government, anchoring the roundabout at the Alderman's Quarter. Guards are posted. Officials move with the harried look of people managing a city on edge."
         },
         "explored": {
           "description": "Concord operatives have been observed using a side entrance reserved for messengers. Someone inside is either working with them or being used without knowing it."
@@ -91,15 +140,15 @@
       "id": "haverstock_manor",
       "number": 2,
       "name": "Haverstock Manor",
-      "districtId": "lanes",
+      "districtId": "crestview",
       "type": "Estate",
-      "x": 74.0,
-      "y": 18.0,
+      "x": 29.8,
+      "y": 8.4,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "Haverstock Manor",
-          "description": "One of the larger private estates in the Lanes. Frequent gatherings — wine, debate, the usual performance of influence."
+          "description": "One of the larger private estates in Crestview. Frequent gatherings — wine, debate, the usual performance of influence."
         },
         "explored": {
           "description": "Mirelle Voss has been a fixture here for the past month. She is better connected than she has any obvious reason to be."
@@ -119,10 +168,10 @@
       "id": "dunmore_club",
       "number": 3,
       "name": "The Dunmore Club",
-      "districtId": "lanes",
+      "districtId": "crestview",
       "type": "Private Club",
-      "x": 72.0,
-      "y": 12.0,
+      "x": 48.3,
+      "y": 16.2,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -141,10 +190,10 @@
       "id": "temple_erathis",
       "number": 4,
       "name": "Temple of Erathis",
-      "districtId": "lanes",
+      "districtId": "the_shrines",
       "type": "Temple",
-      "x": 68.0,
-      "y": 30.0,
+      "x": 71.5,
+      "y": 42.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -168,10 +217,10 @@
       "id": "barrow_sons",
       "number": 5,
       "name": "Barrow & Sons",
-      "districtId": "lanes",
+      "districtId": "songbird_s_way",
       "type": "Haberdasher",
-      "x": 70.0,
-      "y": 36.0,
+      "x": 49.3,
+      "y": 22.5,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -179,7 +228,7 @@
           "description": "A respected haberdasher: hats, caps, gloves, fine small wares. Old Barrow notices everything and forgets nothing."
         },
         "explored": {
-          "description": "Barrow has seen unfamiliar faces moving through the Crossings — men and women who don't belong to any household he recognizes. He will talk if asked carefully."
+          "description": "Barrow has seen unfamiliar faces moving through the quarter — men and women who don't belong to any household he recognizes. He will talk if asked carefully."
         }
       },
       "tags": ["shop", "clothing"],
@@ -190,10 +239,10 @@
       "id": "vellum_quill",
       "number": 6,
       "name": "Vellum & Quill",
-      "districtId": "lanes",
+      "districtId": "songbird_s_way",
       "type": "Scrivener",
-      "x": 72.0,
-      "y": 40.0,
+      "x": 25.3,
+      "y": 16.2,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -209,15 +258,15 @@
       "id": "sable_stables",
       "number": 7,
       "name": "Sable House Stables",
-      "districtId": "lanes",
+      "districtId": "crestview",
       "type": "Stable",
-      "x": 76.0,
-      "y": 26.0,
+      "x": 50.5,
+      "y": 15.8,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "Sable House Stables",
-          "description": "The best stables in the Lanes. Horses boarded, hired, or bought. The grooms are professional and don't ask about your hours."
+          "description": "The best stables in Dunmore. Horses boarded, hired, or bought. The grooms are professional and don't ask about your hours."
         }
       },
       "tags": ["stable", "horses", "transport"],
@@ -228,10 +277,10 @@
       "id": "weathervane_inn",
       "number": 8,
       "name": "The Weathervane",
-      "districtId": "rows",
+      "districtId": "ink_quarter",
       "type": "Inn",
-      "x": 42.0,
-      "y": 48.0,
+      "x": 33.3,
+      "y": 42.9,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -247,10 +296,10 @@
       "id": "shrine_avandra",
       "number": 9,
       "name": "Shrine of Avandra",
-      "districtId": "rows",
+      "districtId": "the_devotion",
       "type": "Temple",
-      "x": 46.0,
-      "y": 52.0,
+      "x": 38.9,
+      "y": 50.4,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -269,10 +318,10 @@
       "id": "holts_goods",
       "number": 10,
       "name": "Holt's General Goods",
-      "districtId": "rows",
+      "districtId": "factor_s_row",
       "type": "General Store",
-      "x": 54.0,
-      "y": 48.0,
+      "x": 31.0,
+      "y": 25.1,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -288,10 +337,10 @@
       "id": "merchants_exchange",
       "number": 11,
       "name": "Merchant's Exchange",
-      "districtId": "rows",
+      "districtId": "factor_s_row",
       "type": "Money Changer",
-      "x": 50.0,
-      "y": 56.0,
+      "x": 25.4,
+      "y": 25.1,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -312,15 +361,15 @@
       "id": "provisions_row",
       "number": 12,
       "name": "Provisions Row",
-      "districtId": "rows",
+      "districtId": "factor_s_row",
       "type": "Food Stalls",
-      "x": 44.0,
-      "y": 56.0,
+      "x": 32.3,
+      "y": 21.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "Provisions Row",
-          "description": "A dense cluster of food carts at the Rows' widest intersection. Bread, roasted meats, pies, cheap wine. Pamphlets appear between purchases."
+          "description": "A dense cluster of food carts at the market's widest intersection. Bread, roasted meats, pies, cheap wine. Pamphlets appear between purchases."
         },
         "explored": {
           "description": "The cart owners didn't choose to distribute pamphlets — they appeared one morning, already stacked. None of the vendors will confirm or deny passing them on."
@@ -334,15 +383,15 @@
       "id": "crossed_keys",
       "number": 13,
       "name": "The Crossed Keys",
-      "districtId": "rows",
+      "districtId": "the_carouse",
       "type": "Tavern",
-      "x": 52.0,
-      "y": 52.0,
+      "x": 42.5,
+      "y": 44.3,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "The Crossed Keys",
-          "description": "The most popular tavern in the Rows — loud, full, running about thirty percent angrier than usual. The barkeep keeps his opinions to himself."
+          "description": "The most popular tavern in the Carouse — loud, full, running about thirty percent angrier than usual. The barkeep keeps his opinions to himself."
         },
         "explored": {
           "description": "Cael Darro is a regular here — losing at cards gracefully, buying rounds, listening. He fits in too well. He has been here before the party arrived."
@@ -361,10 +410,10 @@
       "id": "needle_thread",
       "number": 14,
       "name": "The Needle & Thread",
-      "districtId": "rows",
+      "districtId": "songbird_s_way",
       "type": "Tailor",
-      "x": 56.0,
-      "y": 54.0,
+      "x": 58.2,
+      "y": 25.2,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -380,10 +429,10 @@
       "id": "goldwrights",
       "number": 15,
       "name": "Goldwright's",
-      "districtId": "rows",
+      "districtId": "crestview",
       "type": "Jeweler",
-      "x": 58.0,
-      "y": 50.0,
+      "x": 30.5,
+      "y": 10.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -399,10 +448,10 @@
       "id": "bound_word",
       "number": 16,
       "name": "The Bound Word",
-      "districtId": "rows",
+      "districtId": "ink_quarter",
       "type": "Bookseller",
-      "x": 46.0,
-      "y": 62.0,
+      "x": 26.0,
+      "y": 33.8,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -423,10 +472,10 @@
       "id": "barber_surgeon",
       "number": 17,
       "name": "Renwick's Barber",
-      "districtId": "rows",
+      "districtId": "tinker_s_row",
       "type": "Barber-Surgeon",
-      "x": 40.0,
-      "y": 52.0,
+      "x": 25.2,
+      "y": 30.6,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -442,10 +491,10 @@
       "id": "ashfords_forge",
       "number": 18,
       "name": "Ashford's Forge",
-      "districtId": "rows",
+      "districtId": "tinker_s_row",
       "type": "Blacksmith",
-      "x": 36.0,
-      "y": 58.0,
+      "x": 31.8,
+      "y": 29.4,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -464,10 +513,10 @@
       "id": "spice_row",
       "number": 19,
       "name": "The Spice Row",
-      "districtId": "rows",
+      "districtId": "factor_s_row",
       "type": "Market Stalls",
-      "x": 54.0,
-      "y": 64.0,
+      "x": 33.6,
+      "y": 25.6,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -483,15 +532,15 @@
       "id": "city_watch_post",
       "number": 20,
       "name": "Watch Post",
-      "districtId": "crossings",
+      "districtId": "rampart_row",
       "type": "City Watch",
-      "x": 46.0,
-      "y": 38.0,
+      "x": 45.5,
+      "y": 28.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "Watch Post",
-          "description": "A patrol staging post for the Crossings watch. Two guards on rotation, usually looking bored or anxious depending on the hour."
+          "description": "A patrol staging post for the Watch. Two guards on rotation, usually looking bored or anxious depending on the hour."
         },
         "explored": {
           "description": "The watch has been given specific orders about which streets to patrol — and specific orders about which complaints not to pursue."
@@ -507,10 +556,10 @@
       "id": "notice_board",
       "number": 21,
       "name": "Public Notice Board",
-      "districtId": "crossings",
+      "districtId": "the_alderman_s_quarter",
       "type": "Landmark",
-      "x": 54.0,
-      "y": 28.0,
+      "x": 45.0,
+      "y": 29.8,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -526,15 +575,15 @@
       "id": "harrow_gatehouse",
       "number": 22,
       "name": "Harrow Lane Gatehouse",
-      "districtId": "crossings",
+      "districtId": "the_alderman_s_quarter",
       "type": "Landmark",
-      "x": 40.0,
-      "y": 42.0,
+      "x": 36.7,
+      "y": 27.1,
       "unlockPhase": "explored",
       "detailsByPhase": {
         "explored": {
           "visibleName": "Harrow Lane Gatehouse",
-          "description": "An old gatehouse at the boundary of the Crossings and the Rows. After the monstrosity attack, this is where the Concord extracted the party."
+          "description": "An old gatehouse at the boundary of the Alderman's Quarter. After the monstrosity attack, this is where the Concord extracted the party."
         },
         "fully_explored": {
           "description": "The extraction point was pre-selected. Cael Darro knew in advance where the attack would drive the crowd. The rescue was choreographed, not reactive."
@@ -550,10 +599,10 @@
       "id": "grey_vial",
       "number": 23,
       "name": "The Grey Vial",
-      "districtId": "old_hill",
+      "districtId": "tinker_s_row",
       "type": "Apothecary",
-      "x": 18.0,
-      "y": 26.0,
+      "x": 11.8,
+      "y": 29.5,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -577,15 +626,15 @@
       "id": "chapel_pelor",
       "number": 24,
       "name": "Chapel of Pelor",
-      "districtId": "old_hill",
+      "districtId": "the_devotion",
       "type": "Temple",
-      "x": 14.0,
-      "y": 22.0,
+      "x": 40.6,
+      "y": 52.5,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "Chapel of Pelor",
-          "description": "A small healing chapel wedged into the Old Hill. Sister Hadara runs it on donations and determination. Healing available to anyone who needs it."
+          "description": "A small healing chapel. Sister Hadara runs it on donations and determination. Healing available to anyone who needs it."
         },
         "explored": {
           "description": "Sister Hadara has been treating more injuries than usual — men who won't say what happened. She is quietly angry about it."
@@ -599,15 +648,15 @@
       "id": "aldous_exchange",
       "number": 25,
       "name": "Aldous Exchange",
-      "districtId": "old_hill",
+      "districtId": "factor_s_row",
       "type": "Pawnbroker",
-      "x": 22.0,
-      "y": 18.0,
+      "x": 30.0,
+      "y": 21.7,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "Aldous Exchange",
-          "description": "A cluttered pawnshop in the Old Hill. Aldous buys without asking and sells without explaining. Everything here came from somewhere unpleasant."
+          "description": "A cluttered pawnshop at the market's edge. Aldous buys without asking and sells without explaining. Everything here came from somewhere unpleasant."
         }
       },
       "tags": ["shop", "pawnshop", "secondhand"],
@@ -618,15 +667,15 @@
       "id": "printing_house",
       "number": 26,
       "name": "The Stained Print",
-      "districtId": "old_hill",
+      "districtId": "tinker_s_row",
       "type": "Workshop",
-      "x": 28.0,
-      "y": 22.0,
+      "x": 28.4,
+      "y": 32.4,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "Abandoned Printshop",
-          "description": "An old building on a back street of the Old Hill. Windows covered. Faint smell of ink. The door latch shows fresh wear."
+          "description": "An old building on a back street of Tinker's Row. Windows covered. Faint smell of ink. The door latch shows fresh wear."
         },
         "explored": {
           "visibleName": "The Stained Print",
@@ -647,15 +696,15 @@
       "id": "threadneedle_rooms",
       "number": 27,
       "name": "Threadneedle Rooms",
-      "districtId": "old_hill",
+      "districtId": "the_carouse",
       "type": "Lodging",
-      "x": 34.0,
-      "y": 30.0,
+      "x": 45.3,
+      "y": 48.4,
       "unlockPhase": "explored",
       "detailsByPhase": {
         "explored": {
           "visibleName": "Threadneedle Rooms",
-          "description": "A respectable lodging house in the Old Hill. Chaelynn has been staying here — a familiar face the party trusts. Her presence in Dunmore is not a coincidence."
+          "description": "A respectable lodging house near the Carouse. Chaelynn has been staying here — a familiar face the party trusts. Her presence in Dunmore is not a coincidence."
         },
         "fully_explored": {
           "description": "Chaelynn was placed here deliberately. She has been observing the party throughout the Prologue and reporting to Cael Darro."
@@ -671,15 +720,15 @@
       "id": "pamphleteers_corner",
       "number": 28,
       "name": "The Corner",
-      "districtId": "old_hill",
+      "districtId": "tinker_s_row",
       "type": "Street Corner",
-      "x": 36.0,
-      "y": 27.0,
+      "x": 15.6,
+      "y": 30.6,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
           "visibleName": "The Corner",
-          "description": "A busy intersection at the Old Hill's edge where pamphlets change hands openly. Men argue about Elkenquay here before breakfast. The anger is real, even if the cause is manufactured."
+          "description": "A busy intersection in Tinker's Row where pamphlets change hands openly. Men argue about Elkenquay here before breakfast. The anger is real, even if the cause is manufactured."
         },
         "explored": {
           "description": "A specific figure distributes pamphlets here each morning — always gone before the watch change, always from a new stack."
@@ -695,10 +744,10 @@
       "id": "crabbs_rooms",
       "number": 29,
       "name": "Crabb's Rooms",
-      "districtId": "southend",
+      "districtId": "alley_row",
       "type": "Lodging",
       "x": 38.0,
-      "y": 74.0,
+      "y": 63.1,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {
@@ -714,10 +763,10 @@
       "id": "leatherworker",
       "number": 30,
       "name": "The Cobbler",
-      "districtId": "southend",
+      "districtId": "tinker_s_row",
       "type": "Leatherworker",
-      "x": 28.0,
-      "y": 70.0,
+      "x": 24.0,
+      "y": 28.0,
       "unlockPhase": "initial",
       "detailsByPhase": {
         "initial": {

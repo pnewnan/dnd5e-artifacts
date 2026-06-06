@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>District Polygon Editor</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #1a1108;
+    color: #f2e8c9;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  #topbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: #0d0a06;
+    border-bottom: 1px solid #5a4a2e;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+  #topbar h1 {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #b89d5e;
+    margin-right: 6px;
+  }
+  #imageLoader { display: none; }
+  label.btn, button.btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 5px 12px;
+    background: #2e200e;
+    border: 1px solid #5a4a2e;
+    border-radius: 4px;
+    color: #f2e8c9;
+    font-size: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  label.btn:hover, button.btn:hover { background: #3e2e18; border-color: #b89d5e; }
+  button.btn:disabled { opacity: 0.4; cursor: default; }
+  #modeIndicator {
+    font-size: 0.7rem;
+    color: #8a6a10;
+    letter-spacing: 0.08em;
+    margin-left: auto;
+  }
+
+  #main { display: flex; flex: 1; overflow: hidden; }
+
+  #mapPane {
+    flex: 1;
+    position: relative;
+    overflow: auto;
+    background: #111;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  #mapWrapper {
+    position: relative;
+    display: inline-block;
+    cursor: crosshair;
+    line-height: 0;
+  }
+  #mapImg {
+    display: block;
+    max-width: 100%;
+    user-select: none;
+    pointer-events: none;
+  }
+  #overlaySvg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  #sidebar {
+    width: 290px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #3e2e18;
+    background: #120d07;
+    overflow: hidden;
+  }
+  #sidebarTop {
+    padding: 10px 12px;
+    border-bottom: 1px solid #2e200e;
+    flex-shrink: 0;
+  }
+  #sidebarTop h2 {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #5a4a2e;
+    margin-bottom: 8px;
+  }
+  #districtList { flex: 1; overflow-y: auto; padding: 6px 0; }
+
+  .districtItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: background 0.1s;
+    font-size: 0.78rem;
+  }
+  .districtItem:hover { background: #1e140a; }
+  .districtItem.active { background: #2a1c0e; border-left-color: var(--dc); }
+  .districtItem .swatch {
+    width: 11px; height: 11px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    background: var(--dc);
+    opacity: 0.85;
+  }
+  .districtItem .dname { flex: 1; }
+  .districtItem .dtype {
+    font-size: 0.6rem;
+    color: #5a4a2e;
+    font-style: italic;
+  }
+  .districtItem .dcount { font-size: 0.6rem; color: #3e2e18; }
+  .districtItem .deleteBtn {
+    opacity: 0;
+    font-size: 0.6rem;
+    color: #7a1f1f;
+    padding: 1px 4px;
+    border: 1px solid #7a1f1f33;
+    border-radius: 3px;
+    background: none;
+    cursor: pointer;
+    transition: opacity 0.1s;
+  }
+  .districtItem:hover .deleteBtn { opacity: 1; }
+
+  #sidebarBottom {
+    padding: 10px 12px;
+    border-top: 1px solid #2e200e;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  #exportBox {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 12px;
+    border-top: 1px solid #2e200e;
+    flex-shrink: 0;
+  }
+  #exportBox label { font-size: 0.62rem; color: #5a4a2e; letter-spacing: 0.1em; text-transform: uppercase; }
+  #exportText {
+    width: 100%;
+    height: 150px;
+    background: #0a0704;
+    border: 1px solid #3e2e18;
+    border-radius: 4px;
+    color: #c8b88a;
+    font-family: 'Courier New', monospace;
+    font-size: 0.62rem;
+    padding: 6px;
+    resize: vertical;
+  }
+  #copyBtn { align-self: flex-end; }
+  #copyFeedback { font-size: 0.65rem; color: #1e5f5f; display: none; }
+
+  /* Modal */
+  #modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+  #modal.open { display: flex; }
+  #modalBox {
+    background: #1a1108;
+    border: 1px solid #5a4a2e;
+    border-radius: 6px;
+    padding: 20px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+  #modalBox h3 { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: #b89d5e; }
+  .formRow { display: flex; flex-direction: column; gap: 4px; }
+  .formRow label { font-size: 0.68rem; color: #8a7a60; }
+  .formRow select, .formRow input[type="text"] {
+    background: #0d0a06;
+    border: 1px solid #3e2e18;
+    border-radius: 4px;
+    color: #f2e8c9;
+    padding: 5px 8px;
+    font-size: 0.78rem;
+    outline: none;
+    width: 100%;
+  }
+  .formRow select { cursor: pointer; }
+  .formRow select:focus, .formRow input[type="text"]:focus { border-color: #b89d5e; }
+  .formRow select option { background: #1a1108; }
+  .nameRow { display: flex; gap: 6px; align-items: flex-end; }
+  .nameRow input { flex: 1; }
+  #rollBtn {
+    padding: 5px 9px;
+    background: #2e200e;
+    border: 1px solid #5a4a2e;
+    border-radius: 4px;
+    color: #b89d5e;
+    font-size: 0.85rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.15s;
+  }
+  #rollBtn:hover { background: #3e2e18; }
+  #rollBtn:disabled { opacity: 0.3; cursor: default; }
+
+  /* Color grid — 5 cols, 3 rows for 15 colors */
+  .colorGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+  }
+  .colorOpt {
+    height: 24px;
+    border-radius: 3px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.1s, transform 0.1s;
+    position: relative;
+  }
+  .colorOpt:hover { transform: scale(1.12); }
+  .colorOpt.selected { border-color: #f2e8c9; }
+  .colorOpt .colorLabel {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0d0a06;
+    border: 1px solid #3e2e18;
+    border-radius: 3px;
+    padding: 2px 5px;
+    font-size: 0.55rem;
+    color: #b89d5e;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.1s;
+    z-index: 10;
+  }
+  .colorOpt:hover .colorLabel { opacity: 1; }
+
+  .modalBtns { display: flex; gap: 8px; justify-content: flex-end; }
+
+  #emptyState {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #3e2e18;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    pointer-events: none;
+    gap: 10px;
+  }
+  #emptyState svg { opacity: 0.3; }
+
+  .vertex {
+    cursor: pointer;
+    fill: #f2e8c9;
+    stroke: #1a1108;
+    stroke-width: 1;
+    transition: r 0.1s;
+  }
+  .vertex:hover { fill: #c04040; }
+
+  #instrStrip {
+    display: none;
+    padding: 4px 14px;
+    background: #1e140a;
+    border-bottom: 1px solid #2e200e;
+    font-size: 0.65rem;
+    color: #8a6a10;
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0d0a06; }
+  ::-webkit-scrollbar-thumb { background: #3e2e18; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <h1>⬡ District Polygon Editor</h1>
+  <label class="btn" for="imageLoader">📂 Load Map Image</label>
+  <input type="file" id="imageLoader" accept="image/*">
+  <button class="btn" id="undoBtn" disabled>↩ Undo</button>
+  <button class="btn" id="finishBtn" disabled>✓ Finish District</button>
+  <span id="modeIndicator">Load a map image to begin</span>
+</div>
+
+<div id="instrStrip">
+  Click the map to add vertices · Click a vertex dot to remove it · U = undo last point
+</div>
+
+<div id="main">
+  <div id="mapPane">
+    <div id="emptyState">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+      </svg>
+      Load a map image to start
+    </div>
+    <div id="mapWrapper" style="display:none;">
+      <img id="mapImg" src="" alt="map">
+      <svg id="overlaySvg" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+  </div>
+
+  <div id="sidebar">
+    <div id="sidebarTop">
+      <h2>Districts</h2>
+      <button class="btn" id="addDistrictBtn" style="width:100%">+ Add District</button>
+    </div>
+    <div id="districtList"></div>
+    <div id="exportBox">
+      <label>Export — paste into town-data.json districts array</label>
+      <textarea id="exportText" readonly></textarea>
+      <button class="btn" id="copyBtn">📋 Copy</button>
+      <span id="copyFeedback">Copied!</span>
+    </div>
+    <div id="sidebarBottom">
+      <button class="btn" id="exportBtn">⬇ Export JSON</button>
+      <button class="btn" id="clearAllBtn" style="color:#7a3a3a; border-color:#5a2a2a;">✕ Clear All</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal">
+  <div id="modalBox">
+    <h3>New District</h3>
+    <div class="formRow">
+      <label>Type</label>
+      <select id="modalType">
+        <option value="">— choose type —</option>
+        <option value="market">Market / Commerce</option>
+        <option value="residential">Residential / Common</option>
+        <option value="noble">Noble Quarter</option>
+        <option value="temple">Temple / Faith</option>
+        <option value="docks">Docks / Harbor</option>
+        <option value="craftsmen">Craftsmen / Trade</option>
+        <option value="military">Military / Garrison</option>
+        <option value="scholar">Scholar / Arcane</option>
+        <option value="entertainment">Entertainment / Pleasure</option>
+        <option value="slums">Slums / Warrens</option>
+        <option value="civic">Civic / Government</option>
+        <option value="industrial">Industrial / Works</option>
+      </select>
+    </div>
+    <div class="formRow">
+      <label>Name</label>
+      <div class="nameRow">
+        <input type="text" id="modalName" placeholder="e.g. Market District">
+        <button id="rollBtn" title="Generate name from type" disabled>🎲</button>
+      </div>
+    </div>
+    <div class="formRow">
+      <label>ID (auto-filled, editable)</label>
+      <input type="text" id="modalId" placeholder="e.g. market">
+    </div>
+    <div class="formRow">
+      <label>Color</label>
+      <div class="colorGrid" id="colorGrid"></div>
+    </div>
+    <div class="modalBtns">
+      <button class="btn" id="modalCancel">Cancel</button>
+      <button class="btn" id="modalOk">Create &amp; Draw</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Colors (15) ──────────────────────────────────────────────────────────────
+const COLORS = {
+  blood:    '#7a1f1f',
+  crimson:  '#9e2828',
+  rust:     '#8a3818',
+  amber:    '#9a5e10',
+  gold:     '#8a6a10',
+  olive:    '#566010',
+  moss:     '#285a20',
+  teal:     '#1e5f5f',
+  cerulean: '#1a406e',
+  navy:     '#1c2858',
+  indigo:   '#3a2888',
+  purple:   '#5b2d8e',
+  rose:     '#7a2050',
+  slate:    '#2e3a4a',
+  stone:    '#4a3c2c',
+};
+const COLOR_KEYS = Object.keys(COLORS);
+
+// ── District types + 300 names (25 per type) ────────────────────────────────
+const DISTRICT_NAMES = {
+  market: [
+    "Merchant's Row","The Exchange","Trade Quarter","Copper Lane","Silver Market",
+    "The Bazaar","Goldengate Ward","The Spice Rows","Haggler's Cross","Tinker's Alley",
+    "Coin Quarter","The Weighhouse","Factor's Row","The Counting House","Bargain's End",
+    "The Stalls","Peddler's Way","The Guildhall Ward","Commerce Cross","The Trestle",
+    "Wares Quarter","The Open Market","Trader's Quarter","Shill Row","The Auction House"
+  ],
+  residential: [
+    "The Commons","Millstone Row","Hearthside","Cobbler's Rest","Common Quarter",
+    "The Lanes","Thatch Row","Goodwife's Quarter","Homestead Ward","The Hearths",
+    "Low Quarter","Plowman's Rest","The Wayside","Miller's Row","Shepherd's Fold",
+    "The Dwellings","Commonside","The Boroughs","Lodger's Row","Clayfoot Quarter",
+    "The Tenements","Fireside Quarter","The Homes","Croft Row","The Village Heart"
+  ],
+  noble: [
+    "High Ward","The Estates","Lordshire","The Manors","Goldspire Quarter",
+    "Silvertower Ward","The Keeps","Crestview","The Gentry Quarter","High Garden",
+    "The Pinnacle","Lordsmere","Noble Row","The Towers","Aristide Quarter",
+    "The Highborn","Crestfall","The Upper Ward","Gentleman's Walk","The Patrician Quarter",
+    "Silver Vale","The Aristocracy","High Cross","The Ascendancy","Manor Row"
+  ],
+  temple: [
+    "The Sanctum","Holy Quarter","The Shrines","Faith's End","Pilgrim's Way",
+    "The Altars","God's Row","The Blessed Quarter","The Consecrated","Temple Row",
+    "The Devotion","Pray-Haven","The Cathedral Quarter","Hymn Row","The Hallows",
+    "Saintward","The Vestry","Chapel Row","The Nave Quarter","Blessing's Cross",
+    "The Cloister","Shrine Quarter","The Vigil","Piety Row","The Conclave"
+  ],
+  docks: [
+    "The Docks","Waterfront Ward","The Quays","Harbor Row","The Wharves",
+    "Tideside","The Moorings","Sailor's Quarter","Ebb Quarter","The Landings",
+    "The Cargoes","Saltwind Row","The Anchorage","Fisher's Row","The Tides",
+    "Breakwater Quarter","The Berths","Deckhand's Row","The Shipways","Portside",
+    "The Netting Quarter","Seafarer's End","The Causeway","Low Tide","Harbormaster's Row"
+  ],
+  craftsmen: [
+    "The Anvil Quarter","Smith's Row","Craftsman's Way","The Forges","Tinker's Row",
+    "The Guilds","Artisan's Quarter","Hammer Row","The Workshops","Joiner's Quarter",
+    "The Looms","Coppersmith's Row","The Kilns","Wheelwright's Way","The Craft Quarter",
+    "Bellows Row","The Tanneries","Weaver's Quarter","The Foundries","Cooper's Row",
+    "The Lathers","Carpenter's Quarter","Tool Row","The Bindery","Mason's Quarter"
+  ],
+  military: [
+    "The Garrison","Sword Quarter","The Barracks","Shield Row","Warden's Quarter",
+    "The Armory","The Keep Quarter","Guard's Row","The Palisade","Iron Quarter",
+    "The Watch","Bulwark Row","The Patrols","Soldier's Quarter","The Fortway",
+    "Sentry Row","The Redoubt","Pike Quarter","The Battlements","Warder's End",
+    "The Castle Ward","Rampart Row","The Vanguard","Fort Quarter","The Citadel Ward"
+  ],
+  scholar: [
+    "The Academy","Ink Quarter","The Scriptorium","Sage's Row","The Arcanum",
+    "Scholar's Way","The Athenaeum","Mage Quarter","The Observatory","Scroll Row",
+    "The Collegium","Wisdom's End","The Library Quarter","Rune Row","The Spire Ward",
+    "Inkwell Quarter","The Learned Quarter","Arcanist's Row","The Mysterie Quarter","Tome Row",
+    "The Illumined Quarter","The Studies","Cipher Row","The Esoteric Quarter","The Loreward"
+  ],
+  entertainment: [
+    "The Revels","Mummer's Row","The Pleasure Quarter","Festival Row","The Theater Ward",
+    "Jester's Quarter","The Bawdy Quarter","Merrymaker's Row","The Carouse","Stage Quarter",
+    "The Festive Quarter","Dancer's Row","The Cup Quarter","Songbird's Way","The Play Ward",
+    "Tumbler's Row","The Revelry","Minstrel's Quarter","The Glee Quarter","Joyhouse Row",
+    "The Fete Quarter","Performer's Row","The Mirth Quarter","The Cabaret","Fool's Quarter"
+  ],
+  slums: [
+    "The Warrens","Low Quarter","The Rookery","Ragpicker's Row","The Underbelly",
+    "The Squalor","Beggar's Quarter","The Midden","Scavenger's Row","The Dregs",
+    "Crumble Quarter","Pauper's Row","The Hovels","Mudflat Quarter","The Wretch Quarter",
+    "Alley Row","The Tangle","Slumside","The Haunt","Fester's Row",
+    "The Hollow Quarter","Patchwork Row","The Dross","Cobweb Quarter","The Pit Ward"
+  ],
+  civic: [
+    "The Civic Quarter","Town Hall Ward","The Council Quarter","Magistrate's Row","The Chancery",
+    "The Hall Quarter","Judge's Row","The Alderman's Quarter","Charter Row","The Civic Heart",
+    "The Court Quarter","Governor's Row","The Ledger Quarter","The Administration","Clerk's Row",
+    "The Assembly Ward","Justice's Quarter","The Municipality","Ordinance Row","The Writ Quarter",
+    "The Burgher Quarter","Commissioner's Row","The Registry","Civic Cross","The Deliberation"
+  ],
+  industrial: [
+    "The Works","Mill Quarter","The Industry","Chimney Row","The Labor Quarter",
+    "The Grind","Stoker's Row","The Manufactory","Cinder Quarter","The Pressing Quarter",
+    "Furnace Row","The Yards","Soot Quarter","The Machine Ward","Bellman's Row",
+    "The Pressing Row","The Colliery","Slag Quarter","The Refineries","Ironworks Row",
+    "The Rendering","Smoke Quarter","The Operations","Coke Row","The Industrial Quarter"
+  ],
+};
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let districts  = [];
+let activeId   = null;
+let imgLoaded  = false;
+let usedNames  = new Set();
+
+// ── DOM ───────────────────────────────────────────────────────────────────────
+const imageLoader    = document.getElementById('imageLoader');
+const mapImg         = document.getElementById('mapImg');
+const mapWrapper     = document.getElementById('mapWrapper');
+const emptyState     = document.getElementById('emptyState');
+const overlaySvg     = document.getElementById('overlaySvg');
+const districtList   = document.getElementById('districtList');
+const modeIndicator  = document.getElementById('modeIndicator');
+const instrStrip     = document.getElementById('instrStrip');
+const undoBtn        = document.getElementById('undoBtn');
+const finishBtn      = document.getElementById('finishBtn');
+const addDistrictBtn = document.getElementById('addDistrictBtn');
+const exportBtn      = document.getElementById('exportBtn');
+const clearAllBtn    = document.getElementById('clearAllBtn');
+const exportBox      = document.getElementById('exportBox');
+const exportText     = document.getElementById('exportText');
+const copyBtn        = document.getElementById('copyBtn');
+const copyFeedback   = document.getElementById('copyFeedback');
+const modal          = document.getElementById('modal');
+const modalType      = document.getElementById('modalType');
+const modalName      = document.getElementById('modalName');
+const modalId        = document.getElementById('modalId');
+const colorGrid      = document.getElementById('colorGrid');
+const modalCancel    = document.getElementById('modalCancel');
+const modalOk        = document.getElementById('modalOk');
+const rollBtn        = document.getElementById('rollBtn');
+let selectedColor    = COLOR_KEYS[0];
+
+// ── Color grid ────────────────────────────────────────────────────────────────
+COLOR_KEYS.forEach(key => {
+  const el = document.createElement('div');
+  el.className = 'colorOpt' + (key === selectedColor ? ' selected' : '');
+  el.style.background = COLORS[key];
+  const lbl = document.createElement('span');
+  lbl.className = 'colorLabel';
+  lbl.textContent = key;
+  el.appendChild(lbl);
+  el.addEventListener('click', () => {
+    selectedColor = key;
+    document.querySelectorAll('.colorOpt').forEach(e => e.classList.remove('selected'));
+    el.classList.add('selected');
+  });
+  colorGrid.appendChild(el);
+});
+
+// ── Name generator ────────────────────────────────────────────────────────────
+function pickName(typeKey) {
+  const pool = DISTRICT_NAMES[typeKey];
+  if (!pool) return '';
+  const unused = pool.filter(n => !usedNames.has(n));
+  const source = unused.length ? unused : pool; // refill if exhausted
+  return source[Math.floor(Math.random() * source.length)];
+}
+
+modalType.addEventListener('change', () => {
+  rollBtn.disabled = !modalType.value;
+  if (modalType.value) {
+    const name = pickName(modalType.value);
+    modalName.value = name;
+    syncId();
+  }
+});
+
+rollBtn.addEventListener('click', () => {
+  if (!modalType.value) return;
+  const name = pickName(modalType.value);
+  modalName.value = name;
+  syncId();
+});
+
+function syncId() {
+  modalId.value = modalName.value
+    .toLowerCase().trim()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_|_$/g, '');
+}
+modalName.addEventListener('input', syncId);
+
+// ── Image loading ─────────────────────────────────────────────────────────────
+imageLoader.addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  mapImg.onload = () => {
+    imgLoaded = true;
+    emptyState.style.display = 'none';
+    mapWrapper.style.display = 'inline-block';
+    modeIndicator.textContent = 'Select a district or add a new one';
+    renderAll();
+  };
+  mapImg.src = URL.createObjectURL(file);
+});
+
+// ── Map click ─────────────────────────────────────────────────────────────────
+mapWrapper.addEventListener('click', e => {
+  if (!activeId) return;
+  if (e.target.classList.contains('vertex')) return;
+  const rect = mapImg.getBoundingClientRect();
+  const x = +((e.clientX - rect.left) / rect.width  * 100).toFixed(2);
+  const y = +((e.clientY - rect.top)  / rect.height * 100).toFixed(2);
+  const d = districts.find(d => d.id === activeId);
+  if (!d) return;
+  d.polygon.push([x, y]);
+  renderAll();
+  updateButtons();
+});
+
+// ── Undo ──────────────────────────────────────────────────────────────────────
+undoBtn.addEventListener('click', () => {
+  const d = districts.find(d => d.id === activeId);
+  if (d && d.polygon.length) { d.polygon.pop(); renderAll(); updateButtons(); }
+});
+document.addEventListener('keydown', e => {
+  if ((e.key === 'u' || e.key === 'U') && activeId) undoBtn.click();
+});
+
+// ── Finish ────────────────────────────────────────────────────────────────────
+finishBtn.addEventListener('click', () => {
+  activeId = null;
+  instrStrip.style.display = 'none';
+  modeIndicator.textContent = 'Select a district to keep editing, or add a new one';
+  renderAll();
+  updateButtons();
+});
+
+// ── Export ────────────────────────────────────────────────────────────────────
+exportBtn.addEventListener('click', () => {
+  exportText.value = JSON.stringify(
+    districts.map(({ id, name, type, color, polygon }) => ({ id, name, type, color, polygon })),
+    null, 2
+  );
+  exportBox.style.display = 'flex';
+  exportBox.scrollIntoView({ behavior: 'smooth', block: 'end' });
+});
+copyBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(exportText.value).then(() => {
+    copyFeedback.style.display = 'inline';
+    setTimeout(() => copyFeedback.style.display = 'none', 1800);
+  });
+});
+
+// ── Clear all ─────────────────────────────────────────────────────────────────
+clearAllBtn.addEventListener('click', () => {
+  if (!confirm('Delete all districts?')) return;
+  districts = []; activeId = null; usedNames.clear();
+  instrStrip.style.display = 'none';
+  exportBox.style.display  = 'none';
+  modeIndicator.textContent = 'Cleared. Add a district to begin.';
+  renderAll(); updateButtons();
+});
+
+// ── Modal ─────────────────────────────────────────────────────────────────────
+addDistrictBtn.addEventListener('click', () => {
+  modalType.value = ''; modalName.value = ''; modalId.value = '';
+  rollBtn.disabled = true;
+  modal.classList.add('open');
+  modalType.focus();
+});
+modalCancel.addEventListener('click', () => modal.classList.remove('open'));
+modalOk.addEventListener('click', () => {
+  const name = modalName.value.trim();
+  const id   = modalId.value.trim() || name.toLowerCase().replace(/\s+/g,'_');
+  const type = modalType.value;
+  if (!name) { modalName.focus(); return; }
+  if (districts.find(d => d.id === id)) {
+    alert(`District id "${id}" already exists.`); return;
+  }
+  usedNames.add(name);
+  districts.push({ id, name, type, color: selectedColor, polygon: [] });
+  activeId = id;
+  modal.classList.remove('open');
+  instrStrip.style.display = 'block';
+  modeIndicator.textContent = `Drawing: ${name} — click the map to add vertices`;
+  renderAll(); updateButtons();
+});
+modalName.addEventListener('keydown', e => { if (e.key === 'Enter') modalOk.click(); });
+modalId.addEventListener('keydown',   e => { if (e.key === 'Enter') modalOk.click(); });
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function renderAll() { renderSidebar(); renderSvg(); }
+
+function renderSidebar() {
+  districtList.innerHTML = '';
+  districts.forEach(d => {
+    const item = document.createElement('div');
+    item.className = 'districtItem' + (d.id === activeId ? ' active' : '');
+    item.style.setProperty('--dc', COLORS[d.color] || '#888');
+
+    const sw   = document.createElement('div'); sw.className = 'swatch';
+    const nm   = document.createElement('span'); nm.className = 'dname'; nm.textContent = d.name;
+    const tp   = document.createElement('span'); tp.className = 'dtype';
+    tp.textContent = d.type ? d.type.charAt(0).toUpperCase() + d.type.slice(1) : '';
+    const ct   = document.createElement('span'); ct.className = 'dcount'; ct.textContent = d.polygon.length + 'pt';
+    const del  = document.createElement('button'); del.className = 'deleteBtn'; del.textContent = '✕';
+    del.addEventListener('click', e => {
+      e.stopPropagation();
+      if (!confirm(`Delete "${d.name}"?`)) return;
+      usedNames.delete(d.name);
+      districts = districts.filter(x => x.id !== d.id);
+      if (activeId === d.id) { activeId = null; instrStrip.style.display = 'none'; }
+      renderAll(); updateButtons();
+    });
+
+    item.append(sw, nm, tp, ct, del);
+    item.addEventListener('click', () => {
+      activeId = d.id;
+      instrStrip.style.display = 'block';
+      modeIndicator.textContent = `Editing: ${d.name}`;
+      renderAll(); updateButtons();
+    });
+    districtList.appendChild(item);
+  });
+}
+
+function renderSvg() {
+  overlaySvg.innerHTML = '';
+  districts.forEach(d => {
+    const hex   = COLORS[d.color] || '#888888';
+    const pts   = d.polygon;
+    const isAct = d.id === activeId;
+
+    if (pts.length >= 3) {
+      const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+      poly.setAttribute('points', pts.map(p => `${p[0]},${p[1]}`).join(' '));
+      poly.setAttribute('fill', hex);
+      poly.setAttribute('fill-opacity', isAct ? '0.22' : '0.13');
+      poly.setAttribute('stroke', hex);
+      poly.setAttribute('stroke-width', isAct ? '0.45' : '0.3');
+      poly.setAttribute('stroke-opacity', isAct ? '0.75' : '0.4');
+      poly.style.pointerEvents = 'none';
+      overlaySvg.appendChild(poly);
+    }
+
+    if (pts.length >= 2) {
+      const pl = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+      pl.setAttribute('points', pts.map(p => `${p[0]},${p[1]}`).join(' '));
+      pl.setAttribute('fill', 'none');
+      pl.setAttribute('stroke', hex);
+      pl.setAttribute('stroke-width', isAct ? '0.35' : '0.18');
+      pl.setAttribute('stroke-opacity', isAct ? '0.85' : '0.3');
+      pl.setAttribute('stroke-dasharray', isAct ? '' : '0.8,0.8');
+      pl.style.pointerEvents = 'none';
+      overlaySvg.appendChild(pl);
+    }
+
+    if (isAct) {
+      pts.forEach((pt, idx) => {
+        const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', pt[0]);
+        c.setAttribute('cy', pt[1]);
+        c.setAttribute('r', '0.7');
+        c.classList.add('vertex');
+        c.title = `Point ${idx+1} (${pt[0]}, ${pt[1]}) — click to remove`;
+        c.addEventListener('click', e => {
+          e.stopPropagation();
+          d.polygon.splice(idx, 1);
+          renderAll(); updateButtons();
+        });
+        overlaySvg.appendChild(c);
+
+        const lbl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        lbl.setAttribute('x', pt[0] + 1.0);
+        lbl.setAttribute('y', pt[1] - 1.0);
+        lbl.setAttribute('font-size', '1.8');
+        lbl.setAttribute('fill', '#f2e8c9');
+        lbl.setAttribute('fill-opacity', '0.65');
+        lbl.setAttribute('pointer-events', 'none');
+        lbl.textContent = idx + 1;
+        overlaySvg.appendChild(lbl);
+      });
+    }
+
+    if (pts.length >= 3) {
+      const cx = pts.reduce((s,p) => s+p[0], 0) / pts.length;
+      const cy = pts.reduce((s,p) => s+p[1], 0) / pts.length;
+      const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      t.setAttribute('x', cx); t.setAttribute('y', cy);
+      t.setAttribute('text-anchor', 'middle');
+      t.setAttribute('dominant-baseline', 'middle');
+      t.setAttribute('font-size', '2.8');
+      t.setAttribute('font-weight', '700');
+      t.setAttribute('fill', hex);
+      t.setAttribute('fill-opacity', '0.8');
+      t.setAttribute('pointer-events', 'none');
+      t.textContent = d.name;
+      overlaySvg.appendChild(t);
+    }
+  });
+}
+
+function updateButtons() {
+  const d = activeId ? districts.find(d => d.id === activeId) : null;
+  undoBtn.disabled   = !d || d.polygon.length === 0;
+  finishBtn.disabled = !activeId;
+}
+
+overlaySvg.setAttribute('viewBox', '0 0 100 100');
+overlaySvg.setAttribute('preserveAspectRatio', 'none');
+</script>
+</body>
+</html>
