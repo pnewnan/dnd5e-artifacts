@@ -1,0 +1,421 @@
+{
+  "meta": {
+    "gm_label": "GM Reference · Prologue Arc",
+    "title": "The Path of the Heart Seed",
+    "subtitle": "Hollowgate → Kobold Warren → Dunmore · Hypha's onboarding arc"
+  },
+  "sections": [
+    {
+      "color": "forest",
+      "title": "Core Truth — What Actually Happened",
+      "subtitle": "The forest's design · The chain of harm · What nobody knows",
+      "open": true,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "The Forest's Secret (GM Only)" },
+                {
+                  "type": "discovery",
+                  "variant": "forest",
+                  "name": "The Chronewood Arranged This",
+                  "content": [
+                    { "type": "paragraph", "text": "The Chronewood is old enough to have learned patience — and cruelty in service of a longer purpose. It sensed what is coming: a war that will consume the land, and behind the war, a deeper darkness that threatens blight across the world. It understood that Hypha is not prepared for what she will need to face, and that the grove alone cannot prepare her." },
+                    { "type": "paragraph", "text": "The forest sent her away the only way a forest can: by taking something she would have to follow. The kobolds did not stumble on the Heart Seed by accident. The forest let it be found." },
+                    { "type": "forest_note", "text": "Tamsin Vale's death is an indirect consequence of the forest's choice. The Chronewood knew harm would follow. It chose the path anyway." }
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "forest",
+                  "name": "The Forest's Destination",
+                  "content": [
+                    { "type": "paragraph", "text": "The Chronewood intends for Hypha to reach Witherwood — a forest at the conjunction of three ley lines in Elkenquay. That is where she needs to be when the darkness comes. The forest does not explain this to her. It trusts the path." },
+                    { "type": "forest_note", "text": "Whether Hypha ever learns the forest arranged the theft is a decision for late in the campaign — not now." }
+                  ]
+                }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "The Chain of Harm" },
+                { "type": "discovery", "variant": "dc-low", "name": "The Kobolds", "content": [{ "type": "paragraph", "text": "Did not understand what they stole. Saw a warm, humming green egg and thought: dragon egg. Brought it back to the warren with excitement." }] },
+                { "type": "discovery", "variant": "dc-low", "name": "The Chieftain", "content": [{ "type": "paragraph", "text": "Not innocent. He knew it was dangerous forest magic. Punished the thieves, ordered the seed removed. Did not care what happened to it after it left — only that it was gone. He is not the villain. He is the first in a chain of reasonable decisions that ends badly." }] },
+                { "type": "discovery", "variant": "dc-low", "name": "Robyn", "content": [{ "type": "paragraph", "text": "Sold it because he was ordered to. Good price. No stabbing. He thought there was honest trade at the warren. He was wrong, but not malicious." }] },
+                { "type": "discovery", "variant": "dc-low", "name": "Auntie Tamsin Vale", "content": [{ "type": "paragraph", "text": "Bought it because she thought it was a rare living bulb. She was partly right. She placed it in her glasshouse. She realized too late that the seed was not thriving — it was afraid. She died trying to correct her mistake." }] },
+                { "type": "discovery", "variant": "dc-low", "name": "The Heart Seed", "content": [{ "type": "paragraph", "text": "Did not create monsters. It awakened what was already present in surrounding plant life. In captivity and fear, that meant carnivorous, defensive, predatory growth. The greenhouse is not evil. It is a frightened ecosystem." }] }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "forest",
+      "title": "The Seed's Journey — Step by Step",
+      "subtitle": "From the Chronewood to the greenhouse · The full chain",
+      "open": false,
+      "content": [
+        {
+          "type": "trail_chain",
+          "steps": [
+            { "num": 1, "label": "Stolen from the Chronewood", "detail": "Kobolds stumble on the Heart Seed in the grove. They believe it is a dragon egg — warm, pulsing, faintly luminous. They take it with excitement and pride. The forest lets this happen.", "secret": "The Chronewood arranged this deliberately." },
+            { "num": 2, "label": "Brought to the Warren", "detail": "The thieves present the egg to the chieftain expecting praise. The chieftain recognizes immediately that it is not a dragon egg. He also recognizes it as dangerous forest magic. He has the thieves punished." },
+            { "num": 3, "label": "Ordered Sold Through Robyn", "detail": "The chieftain orders the seed removed from the warren quickly. Robyn is assigned the task — he handles the talking when the others start biting. Robyn sells it to an old plant-lady at the Dunmore market. Good price. No stabbing. He considers it a success." },
+            { "num": 4, "label": "Purchased by Auntie Tamsin Vale", "detail": "Tamsin buys it believing it is a rare living bulb. She notes the unusual pulse when placed near soil. She brings it to her market cart, then to her greenhouse outside Dunmore for observation. Her ledger entry: \"Warm root-ovum. Not egg, though shaped like one. Unusual pulse when near soil. Move to glasshouse.\"" },
+            { "num": 5, "label": "The Miracle Phase", "detail": "The greenhouse has never been so vibrant. Dead cuttings revive. Flowers bloom out of season. Even winter cuttings take hold. Tamsin is delighted. Plants near her market cart flourish unnaturally. Dunmore vendors notice. Children notice." },
+            { "num": 6, "label": "The Seed Awakens in Fear", "detail": "The growth becomes aggressive. Flytraps begin catching mice. Pitcher plants dissolve rats. Vines pull tools from workers' hands. Thorned creepers seal the doors. The seed is not thriving. It is panicking, and panic expressed in biology looks like hunger." },
+            { "num": 7, "label": "Tamsin Understands Too Late", "detail": "Her journal entry: \"The little thing is frightened. I am certain of it now. I have made a terrible error.\" She attempts to move the seed to open soil. She does not reach it in time. Her final journal entry ends mid-sentence.", "secret": "She knew what she needed to do. She simply ran out of time." },
+            { "num": 8, "label": "The Party Arrives", "detail": "The party reaches the greenhouse expecting to question a harmless old woman. They find an open door, a broken basket, a journal on the table, and a greenhouse whose glass walls are bulging under a press of vines. Tamsin is dead inside." },
+            { "num": 9, "label": "Hypha Must Reach It", "detail": "The plants do not attack Hypha. They recognize kin. The seed is calling her. She is the only one who can end this — not through force, but through presence. The party protects her while she reaches the center and holds the seed still." }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "dc-low",
+      "title": "Hollowgate Phase — Drops & Hypha's Entry",
+      "subtitle": "Forest unease · Dragon egg rumors · Hypha meets the party · Warren setup",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Hypha's Entry" },
+                {
+                  "type": "discovery",
+                  "variant": "forest",
+                  "name": "On the Road to the Warren",
+                  "content": [
+                    { "type": "paragraph", "text": "Hypha encounters the party while tracking the same kobold trail for different reasons. She is following the absence of the Heart Seed: small clawed prints, forest unease, the hollow where something living was removed. She cannot take on a full warren alone. Their paths are the same path." },
+                    { "type": "forest_note", "text": "\"Something living was taken from the roots. Something that had not yet learned its own name.\"" }
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "dc-low",
+                  "name": "Forest Unease — Signs of Absence",
+                  "content": [
+                    { "type": "paragraph", "text": "Do not show plant miracles in Hollowgate. The seed is already gone. These should feel like <em>absence</em>:" },
+                    { "type": "list", "items": [
+                      "Birds avoiding a grove near the kobold trail",
+                      "Roots growing shallow and exposed, as if reaching for something removed",
+                      "Mushrooms forming incomplete circles",
+                      "A hollow in the earth where something living was taken",
+                      "Vines along the kobold trail withering instead of growing",
+                      "Insects refusing to cross the place where the seed was taken"
+                    ]},
+                    { "type": "annotation", "text": "\"The forest does not feel wounded exactly. It feels interrupted, as if a song was cut off before the last note.\"" }
+                  ]
+                }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Hollowgate Drops" },
+                {
+                  "type": "discovery",
+                  "variant": "dc-low",
+                  "name": "Drop 1 — Dragon Egg Rumors",
+                  "content": [
+                    { "type": "list", "items": [
+                      "\"Kobolds out past the low road found something. Calling it a dragon egg, if you believe that.\"",
+                      "\"Little fools were showing off a warm green egg. Said it would hatch into a forest dragon.\"",
+                      "\"I heard one of them tried sleeping on it. Said it hummed.\""
+                    ]},
+                    { "type": "paragraph", "text": "<em>Should sound like local nonsense at first.</em>" }
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "dc-low",
+                  "name": "Drop 5 — Robyn's Name Before Robyn",
+                  "content": [
+                    { "type": "list", "items": [
+                      "\"If kobolds sold it, ask for Robyn. He handles the talking when the others start biting.\"",
+                      "\"There's one kobold with a trader's mouth. Robyn, I think. Could sell mud back to a swamp.\""
+                    ]}
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "dc-mid",
+                  "name": "Drop 8 — Forest Debt Warning",
+                  "content": [
+                    { "type": "paragraph", "text": "A woodsman, shrine keeper, or old-timer. <strong>Not Hypha.</strong>" },
+                    { "type": "annotation", "text": "\"You can steal from a forest. But forests are patient creditors.\"" }
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "dc-mid",
+                  "name": "Drop 9 — Dunmore as the Market for Strange Goods",
+                  "content": [
+                    { "type": "list", "items": [
+                      "\"If strange goods vanish from the road, they get exported. Dunmore has buyers for roots, relics, bones, charms — anything someone calls rare.\"",
+                      "\"You want something odd sold fast, you send it toward Dunmore. Someone there always thinks they can make use of it.\""
+                    ]}
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "dc-mid",
+      "title": "Kobold Warren — The Double Resolution",
+      "subtitle": "Two separate problems · The chieftain offloads both · Robyn departs",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Two Separate Operations" },
+                { "type": "discovery", "variant": "dc-low", "name": "The Crate Job (Concord)", "content": [{ "type": "paragraph", "text": "The kobold convoy raids and the sealed crate were a Concord operation coordinated through Garrick Thorne. The chieftain knew it as a job. He did not know the scope or the faction behind it." }] },
+                { "type": "discovery", "variant": "forest", "name": "The Heart Seed (Separate Kobolds)", "content": [
+                  { "type": "paragraph", "text": "Completely coincidental. A different group of kobolds stumbled on the seed while foraging near the grove. They brought it back. The chieftain had them punished and ordered it sold through Robyn immediately. No connection to the Concord job." },
+                  { "type": "forest_note", "text": "These two operations have nothing to do with each other — from every perspective except the GM's." }
+                ]},
+                { "type": "heading", "level": 2, "text": "The Chieftain's Motivation" },
+                { "type": "discovery", "variant": "dc-mid", "name": "Two Problems, One Exit", "content": [
+                  { "type": "paragraph", "text": "When Hypha's claim becomes clear to the chieftain, he sees an opportunity to resolve both the forest debt and the Robyn problem in one gesture. He offers Robyn as guide and witness. The party takes the crate and the seed problem away. The chieftain is rid of everything." },
+                  { "type": "paragraph", "text": "He frames this as generosity. It is almost entirely self-interest." },
+                  { "type": "annotation", "text": "\"Fool-claws brought forest trouble into stone-home. I made trouble leave.\"" },
+                  { "type": "annotation", "text": "\"Robyn goes with you as witness and finder. When seed is found, Robyn's debt is done.\"" }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Robyn's Position" },
+                { "type": "discovery", "variant": "dc-low", "name": "What Robyn Believes", "content": [
+                  { "type": "paragraph", "text": "Robyn sold the seed because the chieftain ordered him to. He found a buyer — an old plant-lady with a green cart, flower-painted wheels, honey candies, clean gloves, and a pouch of clipped silver. Good price. No stabbing. He considered it a success." },
+                  { "type": "paragraph", "text": "He did not know the warren was raiding convoys. He thought there was honest trade happening. Learning otherwise is the beginning of his arc." },
+                  { "type": "annotation", "text": "\"Robyn did not steal seed. Robyn was told sell seed. Robyn sold seed. Good price. No stabbing. This was success.\"" }
+                ]},
+                { "type": "discovery", "variant": "forest", "name": "Robyn's Sensory Memory of Tamsin", "content": [
+                  { "type": "paragraph", "text": "He can identify Auntie Tamsin's cart in Dunmore without knowing her name — by smell and sensory memory:" },
+                  { "type": "list", "items": ["Green cart, flower-painted wheels", "Blue candy tin, honey smell", "Wet dirt and old flowers", "Soft old voice, clean gloves", "Pouch of clipped silver"] },
+                  { "type": "forest_note", "text": "\"This way. Robyn remembers smell. Wet dirt. Flower candy. Old plant-lady cart.\"" }
+                ]},
+                { "type": "heading", "level": 2, "text": "What the Party Learns at the Warren" },
+                { "type": "discovery", "variant": "teal", "name": "Confirmed at the Warren", "content": [
+                  { "type": "list", "items": [
+                    "The seed was stolen by kobolds who thought it was a dragon egg",
+                    "The chieftain knew it was dangerous forest magic and had the thieves punished",
+                    "Robyn was ordered to sell it — and did",
+                    "The buyer was an old cultivator from Dunmore: green cart, flower wheels, honey candies",
+                    "Robyn will guide the party to the market in Dunmore"
+                  ]}
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "Dunmore Phase — The Trail Becomes Concrete",
+      "subtitle": "Tamsin's cart · Flourishing plants · Vendors' love · The greenhouse awaits",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Robyn Identifies the Market" },
+                { "type": "discovery", "variant": "forest", "name": "Navigation by Memory", "content": [
+                  { "type": "paragraph", "text": "Robyn does not know Tamsin's name. He knows her cart. He navigates by sensory memory — wet dirt, flower candy, old plant-lady smell. He becomes immediately useful in Dunmore in a way that justifies his presence to the players." },
+                  { "type": "forest_note", "text": "\"This way. Robyn remembers smell. Wet dirt. Flower candy. Old plant-lady cart.\"" }
+                ]},
+                { "type": "heading", "level": 2, "text": "Auntie Tamsin's Cart" },
+                { "type": "discovery", "variant": "dc-low", "name": "Description", "content": [
+                  { "type": "paragraph", "text": "Green and cream, flowers carved into the sideboards, herb bundles hanging from the awning. Children know she keeps honey candies in a blue tin. The cart is closed. The herbs should be wilted after days untended. They are not. They are fresher than anything else in the market." }
+                ]},
+                { "type": "discovery", "variant": "dc-low", "name": "Plants Nearby", "content": [
+                  { "type": "paragraph", "text": "The Heart Seed's influence has leaked into the lane around the cart. Window boxes overflowing. Dead ivy revived into glossy ropes. Moss brightening cobblestone cracks. Flowers blooming out of season. Broom handles sprouting leaves. The air smells wet and sweet, as if spring has been trapped in one narrow street." },
+                  { "type": "annotation", "text": "This is the opposite of Hollowgate. In Hollowgate there was absence. Here there is too much presence. The party should feel the difference." }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Vendor Testimony" },
+                { "type": "discovery", "variant": "dc-low", "name": "What the Vendors Say About Tamsin", "content": [
+                  { "type": "paragraph", "text": "The vendors should make Tamsin feel real and loved <em>before</em> the party knows she is dead. They are going to question a harmless old woman. The vendors confirm this. Then the party reaches the greenhouse." },
+                  { "type": "list", "items": [
+                    "\"Auntie Tamsin? Sweetest woman you'll meet. Bit odd, but kind.\"",
+                    "\"She gives children honey candies and scolds grown men for overwatering mint.\"",
+                    "\"She hasn't opened the cart in three days. That's not like her.\"",
+                    "\"My wife's dead rosebush flowered last night. In the dark.\"",
+                    "\"The cats won't come near this lane anymore.\"",
+                    "\"The flowers turn toward people when they talk.\"",
+                    "\"We thought it was a blessing at first.\""
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "Cart Clues" },
+                { "type": "discovery", "variant": "dc-mid", "name": "What Can Be Found at the Cart", "content": [
+                  { "type": "list", "items": [
+                    "Ledger entry: \"Purchased from kobold trader. Warm root-ovum. Not egg, though shaped like one. Unusual pulse when near soil. Move to glasshouse for observation.\"",
+                    "Green-gold sap stain",
+                    "Honey candies in a blue tin",
+                    "Pots with roots growing through ceramic",
+                    "A child's drawing labeled \"Auntie Tamsin's glowing egg\"",
+                    "Note: \"move specimen to glasshouse immediately\"",
+                    "A small carnivorous sprout under the cart — alive, snapping at shadows",
+                    "Directions to her cottage on the east road, past the orchards"
+                  ]}
+                ]},
+                { "type": "discovery", "variant": "dc-mid", "name": "If the Party Speaks with Plants (Nearby)", "content": [
+                  { "type": "paragraph", "text": "Impressions only — not explanations:" },
+                  { "type": "paragraph", "text": "<em>old hands · warm seed · green cart · carried away · glass house · too much hunger · fear growing · roots in walls · old voice stopped</em>" }
+                ]}
+              ]
+            }
+          ]
+        },
+        {
+          "type": "link_row",
+          "links": [
+            { "href": "../dunmore/dunmore_heart_seed.html", "text": "Continue → Greenhouse Encounter Reference", "color": "teal" }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "purple",
+      "title": "Hypha's Arc — The Long Game",
+      "subtitle": "The Heart Seed · Walkabout · Witherwood · Level 7",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "What Hypha Knows" },
+                { "type": "discovery", "variant": "dc-low", "name": "Her Perspective", "content": [
+                  { "type": "paragraph", "text": "The Heart Seed was stolen from her grove's care. She followed the trail. She will recover it. That is what she knows." },
+                  { "type": "paragraph", "text": "She does not know that each Heart Seed chooses its own name — a name that is a direct reflection of the destiny of the leshy who guards it. She calls it the Heart Seed because that is the generic term. The seed does not know its own name yet either." }
+                ]},
+                { "type": "section_head", "text": "What the Forest Knows" },
+                { "type": "discovery", "variant": "forest", "name": "The Chronewood's Intent", "content": [
+                  { "type": "paragraph", "text": "Hypha needs to reach Witherwood — three ley lines at the heart of Elkenquay. That is where she needs to be when the darkness comes. The forest sent her toward it by making her follow the seed. The walkabout is not punishment. It is preparation." }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "The Heart Seed's Name" },
+                { "type": "discovery", "variant": "purple", "name": "Approximately Level 7", "content": [
+                  { "type": "paragraph", "text": "The seed will not introduce itself to Hypha until much later — approximately level 7. By then, Hypha will have become someone different: tested, changed, further from the Chronewood than she ever imagined she would go." },
+                  { "type": "paragraph", "text": "When the seed finally speaks, it will give its name. That name will reflect Hypha's destiny — the darkness the Chronewood sent her to face. Neither of them knows what that name is yet. They are both still becoming." },
+                  { "type": "forest_note", "text": "The greenhouse is a first meeting. Not a resolution. The relationship is just beginning." }
+                ]},
+                { "type": "section_head", "text": "Robyn's Arc" },
+                { "type": "discovery", "variant": "dc-low", "name": "Earned Trust", "content": [
+                  { "type": "paragraph", "text": "Robyn begins this arc treating the seed sale as an unfortunate misunderstanding. The greenhouse should make him understand the weight of what happened — not through guilt alone, but through the party's example. They say what they mean. They keep their word. He has not encountered that before." },
+                  { "type": "list", "items": [
+                    "\"Old plant-lady was nice.\"",
+                    "\"Robyn gave her seed. Robyn did not know it would bite her.\"",
+                    "\"This is not good trade. This is bad trade forever.\"",
+                    "\"Robyn wants to fix. Robyn does not know how. But Robyn wants.\""
+                  ]}
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Campaign Function — Why This Arc Exists",
+      "subtitle": "Onboarding · Thematic resonance · What the party learns",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "discovery",
+              "variant": "dc-low",
+              "name": "What It Does Narratively",
+              "content": [
+                { "type": "list", "items": [
+                  "Gives Hypha a personal reason to join the party that is not immediately resolved",
+                  "Gives the party a reason to negotiate with the kobold chieftain rather than fight",
+                  "Gives Robyn a reason to travel with the party beyond the warren",
+                  "Points the group naturally toward Dunmore",
+                  "Introduces Auntie Tamsin warmly before revealing her death — the party cares before they grieve",
+                  "Turns the Heart Seed from a missing object into an active living presence",
+                  "Creates a moral conflict instead of a simple theft recovery"
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "What the Party Learns",
+              "content": [
+                { "type": "paragraph", "text": "The greenhouse encounter teaches a lesson the Blackglass Laboratory will return to later in the campaign: fighting harder is not always the solution. Some problems require someone other than the party to solve. The party's job is to protect the person who can." },
+                { "type": "paragraph", "text": "The moral conflict: no one in this chain was evil. The kobolds were ignorant. The chieftain was pragmatic. Robyn was obedient. Tamsin was curious. The Heart Seed was afraid. The harm was caused by fear, ignorance, and commerce — not malice. The party must decide what justice looks like in that world." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "forest",
+              "name": "Thematic Resonance",
+              "content": [
+                { "type": "paragraph", "text": "This arc mirrors the campaign's central theme: good people making reasonable decisions with incomplete information inside systems that are using them. Tamsin made a mistake, realized it, and died trying to undo it. So will many people the party will meet." }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "conclusion": {
+    "title": "GM Summary — The Arc's Shape",
+    "items": [
+      "The arc begins at the Chronewood and ends at the greenhouse. Everything in between is a trail of reasonable decisions that nobody understood the full consequences of.",
+      "Hollowgate is absence. The seed is gone. The forest remembers it. Do not show plant miracles here.",
+      "The warren is where both the crate and the Heart Seed resolve in a single scene. The chieftain is practical, not generous. Robyn departs with the party.",
+      "Dunmore is where the miracle phase is visible — plants flourishing unnaturally near the cart, vendors who love Tamsin, a trail that feels warm right up until the cottage door is open and nobody answers.",
+      "The greenhouse is genuinely deadly. The party cannot solve it. Hypha can. Protect her long enough for her to.",
+      "The Heart Seed's name is years away. The greenhouse is a first meeting. Handle it accordingly."
+    ]
+  }
+}

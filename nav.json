@@ -82,7 +82,7 @@
         },
         {
           "name": "Missing Convoys Arc",
-          "desc": "Kobold investigation · Robyn · Krobb · The Chieftain · The Cavehopper · Eric's body",
+          "desc": "Kobold investigation · Hypha's arrival · Robyn · Krobb · The Chieftain · The Cavehopper · Eric's body · The double resolution",
           "href": "prologue/missing_convoys/missing_convoys_arc.html",
           "type": "gm"
         },
@@ -138,6 +138,24 @@
           "name": "The Hollow Road — Arc Reference",
           "desc": "Hollowgate to Dunmore · Levels 1–2 · Relief convoy · Durgan Valeforge · The fake claw marks · The hoarder · Dunmore",
           "href": "prologue/hollow_road_arc.html",
+          "type": "gm"
+        }
+      ]
+    },
+    {
+      "title": "The Path of the Heart Seed",
+      "group": "The Prologue",
+      "entries": [
+        {
+          "name": "Heart Seed — Full Arc Reference",
+          "desc": "Hypha · Chronewood · The seed's journey · Hollowgate drops · Warren double resolution · Dunmore trail · The forest's secret",
+          "href": "prologue/heart_seed/heart_seed_path.html",
+          "type": "gm"
+        },
+        {
+          "name": "Unearthing the Heart Seed — Encounter",
+          "desc": "Tamsin's cart · The cottage · Greenhouse encounter · Three perception checks · The three-round hold · Robyn's moment",
+          "href": "prologue/dunmore/dunmore_heart_seed.html",
           "type": "gm"
         }
       ]

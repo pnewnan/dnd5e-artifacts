@@ -1,0 +1,421 @@
+{
+  "meta": {
+    "gm_label": "GM Reference · Dunmore · Heart Seed Arc",
+    "title": "Unearthing the Heart Seed",
+    "subtitle": "Tamsin's market cart → The cottage → The greenhouse · A genuinely deadly encounter"
+  },
+  "sections": [
+    {
+      "color": "dc-mid",
+      "title": "The Market — Robyn Finds the Cart",
+      "subtitle": "Sensory navigation · Flourishing plants · Vendors who love Tamsin · Cart clues",
+      "open": true,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Robyn's Navigation" },
+                { "type": "discovery", "variant": "forest", "name": "He Remembers the Smell", "content": [
+                  { "type": "paragraph", "text": "Robyn does not know Tamsin's name. He navigates by sensory memory. He becomes immediately useful — and the party understands why the chieftain sent him. He is not just a witness. He is the only map they have." },
+                  { "type": "forest_note", "text": "\"This way. Robyn remembers smell. Wet dirt. Flower candy. Old plant-lady cart.\"" }
+                ]},
+                { "type": "heading", "level": 2, "text": "Auntie Tamsin's Cart" },
+                { "type": "discovery", "variant": "dc-low", "name": "Description", "content": [
+                  { "type": "paragraph", "text": "Green and cream paint. Flowers carved into the sideboards. Herb bundles hanging from the awning — they should be wilted after several days untended. They are not. They are fresher than anything else in the market. The cart is closed. The blue candy tin is visible through the gap in the boards." }
+                ]},
+                { "type": "discovery", "variant": "dc-low", "name": "Flourishing Plants Nearby", "content": [
+                  { "type": "paragraph", "text": "The seed's influence has leaked into the lane. The signs should feel beautiful before they feel wrong:" },
+                  { "type": "list", "items": [
+                    "Window boxes overflowing with uncontrolled growth",
+                    "Dead ivy on the wall behind revived into glossy green ropes",
+                    "Moss brightening between cobblestones",
+                    "Flowers blooming out of season",
+                    "Broom handles sprouting leaves",
+                    "Tiny carnivorous sprouts visible under the cart",
+                    "Vines curling slowly toward voices"
+                  ]},
+                  { "type": "annotation", "text": "The air smells wet and sweet, as if spring has been trapped in one narrow street." }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "What the Vendors Say" },
+                { "type": "paragraph", "text": "<em>Introduce Tamsin warmly through other people's love before the party knows she is dead. They are going to question a harmless old woman. These vendors confirm it.</em>" },
+                { "type": "discovery", "variant": "dc-low", "name": "Vendor Testimony", "content": [
+                  { "type": "list", "items": [
+                    "\"Auntie Tamsin? Sweetest woman you'll meet. Bit odd, but kind.\"",
+                    "\"She gives children honey candies and scolds grown men for overwatering mint.\"",
+                    "\"She hasn't opened the cart in three days. That's not like her.\"",
+                    "\"My wife's dead rosebush flowered last night. In the dark.\"",
+                    "\"The cats won't come near this lane anymore.\"",
+                    "\"The flowers turn toward people when they talk.\"",
+                    "\"We thought it was a blessing at first.\""
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "Cart Clues" },
+                { "type": "discovery", "variant": "dc-mid", "name": "What Can Be Found", "content": [
+                  { "type": "list", "items": [
+                    "Ledger entry: <em>\"Purchased from kobold trader. Warm root-ovum. Not egg, though shaped like one. Unusual pulse when near soil. Move to glasshouse for observation.\"</em>",
+                    "Green-gold sap stain",
+                    "Honey candies in a blue tin",
+                    "Pots with roots growing through ceramic",
+                    "A child's drawing labeled \"Auntie Tamsin's glowing egg\"",
+                    "Note: \"move specimen to glasshouse immediately\"",
+                    "A small carnivorous sprout under the cart — alive, snapping at shadows"
+                  ]}
+                ]},
+                { "type": "discovery", "variant": "dc-mid", "name": "Speak with Plants (Nearby)", "content": [
+                  { "type": "paragraph", "text": "Impressions only — not explanations:" },
+                  { "type": "paragraph", "text": "<em>old hands · warm seed · green cart · carried away · glass house · too much hunger · fear growing · roots in walls · old voice stopped</em>" }
+                ]},
+                { "type": "discovery", "variant": "dc-low", "name": "Directions to the Cottage", "content": [
+                  { "type": "paragraph", "text": "A nearby vendor or the delivery note points the party east, past the orchards. Little white cottage. Blue shutters. Big glasshouse behind it." },
+                  { "type": "annotation", "text": "\"But listen — if you go, do not touch the vines.\"" }
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Auntie Tamsin's Cottage — The Silence",
+      "subtitle": "Open door · Broken basket · Journal · What the party expected vs. what they find",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Arrival" },
+                { "type": "discovery", "variant": "dc-low", "name": "Description", "content": [
+                  { "type": "paragraph", "text": "The cottage sits at the end of a narrow lane beyond the last farms of Dunmore. For one impossible moment it looks exactly as promised: small, whitewashed, blue shutters, bunches of drying lavender beneath the eaves. Harmless. Grandmotherly." },
+                  { "type": "paragraph", "text": "Then: the open door. Then: the broken herb basket. Then: the greenhouse behind the cottage, its glass walls bulging under a press of vines, flowers, and thorned leaves from the inside. No birdsong from that direction." }
+                ]},
+                { "type": "heading", "level": 2, "text": "Inside the Cottage" },
+                { "type": "discovery", "variant": "dc-mid", "name": "What the Party Finds", "content": [
+                  { "type": "list", "items": [
+                    "Kettle boiled dry on the hearth",
+                    "Tea set for one, never drunk",
+                    "Pruning shears on the floor",
+                    "Muddy boot prints leading toward the greenhouse door",
+                    "Cracked spectacles on the windowsill",
+                    "A bloody handprint near the greenhouse door frame",
+                    "Tamsin's journal open on the table",
+                    "Her shawl caught on thorned vines that have crept through the gap under the door"
+                  ]}
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Tamsin's Journal" },
+                { "type": "paragraph", "text": "<em>The journal traces the full arc: miracle to horror. Read selected entries aloud as the party finds them — not all at once.</em>" },
+                { "type": "journal_entry", "text": "\"Purchased today from a kobold trader. He believed it to be an egg. It is no egg, though I admit the resemblance is charming.\"" },
+                { "type": "journal_entry", "text": "\"The specimen pulses when placed near living roots. Not a heartbeat exactly, but close enough to unsettle me.\"" },
+                { "type": "journal_entry", "text": "\"The glasshouse has never been so vibrant. Even the winter cuttings have taken.\"" },
+                { "type": "journal_entry", "text": "\"The flytraps have begun closing when I speak.\"" },
+                { "type": "journal_entry", "text": "\"I found a rabbit in the eastern bed. Or what remained of one.\"" },
+                { "type": "journal_entry", "text": "\"The little thing is frightened. I am certain of it now.\"" },
+                { "type": "journal_entry", "text": "\"I have made a terrible error.\"" },
+                { "type": "journal_entry", "text": "\"Tomorrow I will move it out of the glasshouse. It needs old soil. Not pots. Not walls.\"" },
+                { "type": "journal_entry", "final": true, "text": "\"If it resists, I must not cut the roots. I must—\"" },
+                { "type": "annotation", "text": "She knew what needed to be done. She simply ran out of time." }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "forest",
+      "title": "The Greenhouse — The Encounter",
+      "subtitle": "Genuinely deadly · Never-ending · Fighting harder makes it worse · Tamsin's body",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Description" },
+                { "type": "discovery", "variant": "forest", "name": "Approaching the Greenhouse", "content": [
+                  { "type": "paragraph", "text": "The glass roof is webbed with vines from the inside. Flowers the size of shields press against the panes, petals slowly opening and closing. The air is wet, sweet, and hot enough to breathe like an animal. Somewhere inside, something pulses with the rhythm of a heart." }
+                ]},
+                { "type": "discovery", "variant": "dc-low", "name": "Entering", "content": [
+                  { "type": "paragraph", "text": "The doors are sealed by vines. Options to enter:" },
+                  { "type": "list", "items": [
+                    "Cut through the vine seal (the plants notice this)",
+                    "Tamsin's key hanging in the cottage",
+                    "Ask the vines to move (requires Sylvan, Terran, Speak with Plants, or Hypha)",
+                    "Open a roof panel from above",
+                    "Follow the irrigation pipes to a side entrance",
+                    "Send Robyn through a broken vent — he is small enough"
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "The Encounter — Core Rules" },
+                { "type": "discovery", "variant": "dc-top", "name": "This Encounter Cannot Be Won by Killing", "content": [
+                  { "type": "paragraph", "text": "The waves of carnivorous plants do not stop. Cutting them down generates more. The seed's fear drives the greenhouse's biology — more violence means more fear, which means more growth, which means more plants." },
+                  { "type": "paragraph", "text": "<strong>Fighting harder makes it worse.</strong> Gentle approaches (Speak with Plants, calm behavior, Nature checks, druidic magic, opening vents to let fresh air in, stopping the alchemical irrigation) reduce the intensity of attacks. Violent approaches escalate it." }
+                ]},
+                { "type": "discovery", "variant": "dc-mid", "name": "Encounter Zones", "content": [
+                  { "type": "list", "items": [
+                    "<strong>Entrance / Vine Seal</strong> — the door challenge",
+                    "<strong>Overgrown Walkway</strong> — hanging pitcher plants, sticky sundews, thorn lashes, sleeping pollen, unstable glass overhead",
+                    "<strong>Carnivorous Beds</strong> — snapping blooms, acid-filled pitcher flowers, grasping vines, digestive mud, pollen clouds, thorn bursts. Main danger area.",
+                    "<strong>Tamsin's Body</strong> — beneath a curtain of pale vines, almost gently arranged. White flowers opened around her shoulders. One hand extended toward the center. Pruning knife nearby, blade sticky with green sap.",
+                    "<strong>Heart Chamber</strong> — center of the greenhouse, floor split open, roots twisting upward into a cradle. The Heart Seed within it, veined with green-gold light. Every plant in the room leans toward it."
+                  ]}
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Tamsin's Body" },
+                { "type": "discovery", "variant": "dc-high", "name": "Found in the Carnivorous Beds", "content": [
+                  { "type": "paragraph", "text": "Auntie Tamsin lies beneath a curtain of pale vines, almost gently arranged. White flowers have opened around her shoulders. One hand is still extended toward the center of the greenhouse. Her pruning knife rests nearby, its blade sticky with green sap. She made it further than the party might expect. She almost reached it." },
+                  { "type": "annotation", "text": "She was not trying to destroy it. She was trying to move it outside. The journal said so. She knew what it needed. She simply ran out of time." }
+                ]},
+                { "type": "heading", "level": 2, "text": "The Heart Chamber" },
+                { "type": "discovery", "variant": "forest", "name": "Description", "content": [
+                  { "type": "paragraph", "text": "At the center of the greenhouse, where the paths once met, the floor has split open beneath a mound of black soil and broken ceramic. Roots twist upward into a cradle. Within it rests the Heart Seed — no larger than a curled fist, veined with green-gold light. Every plant in the room leans toward it like worshippers around a frightened child." }
+                ]},
+                { "type": "heading", "level": 2, "text": "Approach Resolution Options" },
+                { "type": "discovery", "variant": "teal", "name": "Gentle Approaches (Reduce Intensity)", "content": [
+                  { "type": "list", "items": [
+                    "Speak with Plants",
+                    "Calm behavior, slow movement — Animal Handling-equivalent",
+                    "Nature checks to read the ecosystem",
+                    "Druidic magic, Sylvan or Terran speech",
+                    "Opening vents or panels to let fresh air in",
+                    "Stopping the alchemical irrigation system",
+                    "Offering soil from outside — a handful of real earth",
+                    "Letting Hypha move first, alone"
+                  ]}
+                ]},
+                { "type": "discovery", "variant": "dc-high", "name": "Violent Recovery (Consequences)", "content": [
+                  { "type": "paragraph", "text": "The party can cut and burn through. They may reach the seed. But:" },
+                  { "type": "list", "items": [
+                    "The seed is traumatized by the violence — it will be harder to calm",
+                    "Hypha is distressed by the destruction",
+                    "The plants fight harder with each escalation",
+                    "Tamsin's greenhouse is destroyed",
+                    "Dunmore authorities may blame the party for the fire"
+                  ]}
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "purple",
+      "title": "Hypha's Reveal — The Three Perception Checks",
+      "subtitle": "Let the battle breathe first · Discovery through observation · Not hinted early",
+      "open": false,
+      "content": [
+        {
+          "type": "block_wrap",
+          "content": [
+            { "type": "section_head", "text": "Pacing — When to Introduce the Checks" },
+            { "type": "paragraph", "text": "Do <strong>not</strong> hint at the seed's call early. Let the battle breathe. Let the party struggle. Let resources drain and people go down or close to it. The situation should feel impossible — because fighting is the wrong solution and the room is showing them that." },
+            { "type": "paragraph", "text": "Only when the encounter has been running long enough to feel genuinely brutal should the first check surface. The revelation emerges from what is already visible — not from a GM announcement." },
+            { "type": "forest_note", "text": "The GM never says \"the seed is calling you.\" The GM describes what Hypha's body is doing before her mind catches up. She is already moving toward the center." }
+          ]
+        },
+        { "type": "divider" },
+        {
+          "type": "check_reveal",
+          "num": 1,
+          "label": "Perception Check — Absence of Attacks",
+          "timing": "Surfaces when the party has been fighting long enough to notice who is and isn't taking damage.",
+          "content": [
+            { "type": "paragraph", "text": "<strong>What the GM says:</strong> \"Make a Perception check.\"" },
+            { "type": "paragraph", "text": "<strong>On success:</strong> \"None of the plants have attempted to attack Hypha.\"" },
+            { "type": "paragraph", "text": "This can be dismissed as luck. As positioning. As Hypha staying clear. The party may not react at first. That is fine. Plant the seed of the observation." }
+          ]
+        },
+        {
+          "type": "check_reveal",
+          "num": 2,
+          "label": "Perception Check — Active Defense",
+          "timing": "Surfaces a round or two later, after more combat — after someone has gone down or used a major resource.",
+          "content": [
+            { "type": "paragraph", "text": "<strong>What the GM says:</strong> \"Make a Perception check.\"" },
+            { "type": "paragraph", "text": "<strong>On success:</strong> \"The plants nearest to Hypha have had extra attacks — toward the rest of you. They are not ignoring her. They are defending her.\"" },
+            { "type": "paragraph", "text": "This is the reframe. Not luck. Not positioning. The greenhouse is <em>protecting</em> her. The party should feel something shift. This is when the player's stomach drops." }
+          ]
+        },
+        {
+          "type": "check_reveal",
+          "num": 3,
+          "label": "Perception Check — The Call",
+          "timing": "Surfaces when the truth is ready to land — when the party is on the edge, when Hypha herself is beginning to feel something she cannot name.",
+          "content": [
+            { "type": "paragraph", "text": "<strong>What the GM says:</strong> \"Make a Perception check.\"" },
+            { "type": "paragraph", "text": "<strong>On success:</strong> \"They answer the seed's call. The seed is calling her.\"" },
+            { "type": "paragraph", "text": "The plants are not making a choice. They are answering something. Something at the center. Something that has been calling since the party entered — or longer. And that something is calling Hypha." },
+            { "type": "forest_note", "text": "By the time the third check lands, everyone at the table knows what Hypha has to do. Nobody needs to be told." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "purple",
+          "name": "The Decision",
+          "content": [
+            { "type": "paragraph", "text": "Once the call is understood, the party must decide: do they push toward the center together and protect Hypha while she moves — or does Hypha go ahead and they hold position behind her?" },
+            { "type": "paragraph", "text": "Either way, the moment the third check lands, the encounter changes shape. The party is no longer trying to win a fight. They are trying to buy someone time to do something they cannot do themselves." }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "purple",
+      "title": "The Hold — Three Rounds",
+      "subtitle": "Hypha takes the seed · Feels what it has felt · The greenhouse stills",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Hypha Reaches the Center" },
+                { "type": "discovery", "variant": "forest", "name": "What Happens When She Arrives", "content": [
+                  { "type": "paragraph", "text": "The plants part for Hypha as she moves toward the center. They do not attack her. They close behind her. The path seals. The party cannot follow without fighting through — the plants still attack everyone else." },
+                  { "type": "paragraph", "text": "When she reaches the Heart Seed and takes it: she cannot act for three rounds. She is not meditating or performing a ritual. She is holding something that is terrified, and it is showing her what it remembers." },
+                  { "type": "forest_note", "text": "The party protects her. The greenhouse is still fighting. This is the most dangerous part of the encounter for everyone except Hypha." }
+                ]},
+                { "type": "heading", "level": 2, "text": "What Hypha Is Immune To" },
+                { "type": "discovery", "variant": "forest", "name": "Seed's Recognition", "content": [
+                  { "type": "paragraph", "text": "The Heart Seed recognizes Hypha as kin. The plants do not attack her — not because they fear her, but because the seed knows her. She can walk through things that are shredding the party. This is not a mechanical grace. It is the seed's first act of trust toward the person who has been looking for it." }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "The Three Rounds" }
+              ]
+            }
+          ]
+        },
+        { "type": "divider" },
+        {
+          "type": "hold_round",
+          "label": "Round One — Fear",
+          "mechanic": "WIS Save (DC 14) · Failure: Frightened until end of next turn · The greenhouse continues attacking at full intensity",
+          "feel": "The seed's first memory is the theft — roots torn, something wrong, the world suddenly not the way it was. The violation of being taken. Hypha absorbs it as raw terror that is not her own. The fear passes through her like a current. The plants around her spike into aggression as the seed's panic spikes."
+        },
+        {
+          "type": "hold_round",
+          "label": "Round Two — Grief",
+          "mechanic": "2d6 Psychic Damage · The greenhouse begins to slow very slightly — still dangerous, but the plants show the first signs of uncertainty",
+          "feel": "The next memory is Tamsin. Old hands. Wet earth smell. Someone who knew how to tend things. The seed felt hope — briefly, genuinely — and then the warm presence stopped. It does not understand death the way a person does. It only knows: the warmth ended, and somehow the ending was connected to its hunger. Hypha feels the loneliness of a frightened thing that tried to survive and watched someone die because of it."
+        },
+        {
+          "type": "hold_round",
+          "label": "Round Three — Recognition",
+          "mechanic": "No damage · The seed feels Hypha back · The greenhouse stills",
+          "feel": "Something shifts in the third round. The seed stops remembering and starts feeling. It feels Hypha. Not as a threat. Not as a captor. As the thing it has been calling toward since before it knew it was calling. The greenhouse does not collapse dramatically. It quiets. One by one, the plants ease back. The snapping blooms close. The vines go still. The pollen settles. The room, for the first time in days, breathes."
+        },
+        {
+          "type": "discovery",
+          "variant": "forest",
+          "name": "After the Hold",
+          "content": [
+            { "type": "paragraph", "text": "The seed does not speak. It is not ready for that. But it goes with Hypha. Willingly. This is a first meeting — not a recovery. The relationship between them is just beginning, and neither of them fully understands what it is yet." },
+            { "type": "forest_note", "text": "The seed will not introduce itself until approximately level 7. Its name will reflect Hypha's destiny. Neither of them knows that name yet. They are both still becoming." }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "Robyn's Moment — Not Good Trade",
+      "subtitle": "The weight lands · \"Bad trade forever\" · Where Robyn becomes real",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "discovery",
+              "variant": "dc-low",
+              "name": "Before the Greenhouse",
+              "content": [{ "type": "paragraph", "text": "Robyn has been treating the sale as an unfortunate misunderstanding. He found a buyer. Good price. No stabbing. He did not steal anything. He was told to sell it and he sold it. That is not failure. That is completing the task." }]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "At the Cottage",
+              "content": [
+                { "type": "paragraph", "text": "The open door. The broken basket. The dried blood near the greenhouse door. Robyn is quiet. He does not make jokes. He recognizes the candy tin." },
+                { "type": "forest_note", "text": "\"Old plant-lady was nice.\"" }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "Finding Tamsin's Body",
+              "content": [
+                { "type": "paragraph", "text": "This is the moment. Robyn sold her the seed. He does not know the chieftain's choice, the forest's design, the Concord's conspiracy. He knows only that there is an old woman lying beneath white flowers with her hand still reaching for the center, and he was the one who gave her what killed her." },
+                { "type": "paragraph", "text": "Do not play this as guilt-trip comedy. Play it as a genuine beat. Robyn goes quiet. He stays quiet for a while." },
+                { "type": "annotation", "text": "\"Robyn gave her seed. Robyn did not know it would bite her.\"" },
+                { "type": "annotation", "text": "\"This is not good trade. This is bad trade forever.\"" },
+                { "type": "annotation", "text": "\"Robyn wants to fix. Robyn does not know how. But Robyn wants.\"" }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "forest",
+              "name": "After the Hold",
+              "content": [
+                { "type": "paragraph", "text": "Robyn watches Hypha hold the seed. He watches the greenhouse still. He does not fully understand what he is seeing. But he understands that the party kept their word — they said they would find the seed and they found it. They said they would let him come and they let him come. That is new to him. He does not know what to do with it yet. But he notices." }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "arc_nav": {
+    "prev": { "href": "../../prologue/heart_seed/heart_seed_path.html", "text": "Full Arc Reference" },
+    "next": { "href": "dunmore_arc.html", "text": "Dunmore Arc" }
+  },
+  "conclusion": {
+    "title": "GM Summary — Running This Encounter",
+    "items": [
+      "The party cannot win this fight by fighting. The sooner they internalize this, the better. Do not make it obvious — let the combat teach them.",
+      "The three perception checks are the heart of the encounter. Do not rush them. Let the battle breathe. Let resources drain. The first check lands when they're already hurting. The third check lands when everyone knows what has to happen.",
+      "Hypha takes no damage from the greenhouse's plants — ever. The GM never announces this. The party figures it out through the checks.",
+      "The hold is three rounds of the party being the most important people in the room while solving nothing. They buy time. Hypha resolves it. That gap — the party's competence in service of something they cannot do themselves — is the emotional core of the encounter.",
+      "Tamsin's body should land quietly. No dramatic announcement. The party finds her beneath white flowers, hand still reaching, and the room tells the rest.",
+      "Robyn goes quiet at the cottage and stays quiet through the greenhouse. Let the player feel it without narrating it.",
+      "After the hold, the seed goes with Hypha. The greenhouse is still. The arc does not end here — it begins here. The seed will not introduce itself for a long time. Handle the exit accordingly: not triumphant. Completed."
+    ]
+  }
+}

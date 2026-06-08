@@ -1,0 +1,179 @@
+{
+  "draft": true,
+  "meta": {
+    "gm_label": "GM Reference · The Prologue",
+    "title": "Dunmore",
+    "subtitle": "The manufactured city · Propaganda · The monstrosity · The Concord reveals itself",
+    "act_band": "blood",
+    "level_badge": "Levels 2–3",
+    "back_link": { "href": "../../prologue_arc.html", "text": "← The Prologue" }
+  },
+  "quick_ref": [
+    { "label": "Location", "value": "Dunmore · Old stone, proud heritage · Pop. ~10,000" },
+    { "label": "Arriving With", "value": "The Moonlit Mirage Carnival" },
+    { "label": "Atmosphere", "value": "Tinderbox. Propaganda everywhere. Crowd looking for a reason." },
+    { "label": "Arc Ends With", "value": "Concord recruitment · Prologue closes" }
+  ],
+  "sections": [
+    {
+      "color": "blood",
+      "title": "Narrative Purpose",
+      "subtitle": "",
+      "open": true,
+      "content": [
+        {
+          "type": "narrative_block",
+          "content": [
+            { "type": "paragraph", "text": "Dunmore is where the Prologue pays off. The scarcity and fear the party has watched build since Hollowgate arrives here in its most concentrated form — a city of ten thousand people that has been deliberately worked into a state of outrage. The pamphlets are everywhere. The mood is a tinderbox. Someone has been manufacturing this anger, and the party is about to step into the middle of it." },
+            { "type": "paragraph", "text": "Before they can resolve anything, a monstrosity breaks loose. The Concord extracts them from the aftermath. The Prologue ends with the party recruited — not chosen, but noticed." },
+            { "type": "annotation", "text": "\"The city behaves like something is about to happen. Something is.\"" }
+          ]
+        },
+        { "type": "divider" }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "The Surface and the Truth",
+      "subtitle": "",
+      "open": true,
+      "content": [
+        {
+          "type": "truth_block",
+          "party": {
+            "label": "What the Party Sees",
+            "content": [
+              { "type": "paragraph", "text": "Someone is manufacturing anti-Elkenquay sentiment. The propaganda printing operation is real and traceable. The monstrosity arrives before the investigation resolves — the Concord steps in, saves the party, and presents itself as the only organized group that knows what is actually happening." }
+            ]
+          },
+          "real": {
+            "label": "What Actually Happened",
+            "content": [
+              { "type": "paragraph", "text": "The propaganda is a Concord operation. The monstrosity is another machinist creation. The Concord's rescue is deliberate — timed to create obligation and trust. The party has been maneuvered into position. A second resonance gem is recovered from the Dunmore monstrosity." }
+            ]
+          }
+        },
+        { "type": "divider" }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Story Beats",
+      "subtitle": "",
+      "open": true,
+      "content": [
+        {
+          "type": "beat_list",
+          "beats": [
+            {
+              "label": "Arrival in Dunmore",
+              "type_tag": "Scene",
+              "detail": "The city is in uproar. Propaganda pamphlets are everywhere — crude, effective, full of manufactured outrage against Elkenquay. The anti-Elkenquay sentiment has reached a boiling point. The energy of the crowd feels like it is looking for a reason to become something worse.\n\nThe party arrives having just survived the Hollow Road. They walk into a city that is angrier and more frightened than they left.",
+              "dot_color": "blood"
+            },
+            {
+              "label": "The Printing Operation",
+              "type_tag": "Investigation",
+              "detail": "The party investigates who is printing and distributing the pamphlets. The trail leads to a printing operation that is organized, funded, and deliberately targeting Elkenquay. Someone is manufacturing the crisis. Another resonance artifact with a gem is discovered.\n\n• Trace the printing operation — funded, organized, targeted\n• Party realizes the tension is about to produce real violence\n• A second resonance gem artifact is found — significance still unclear",
+              "dot_color": "gold"
+            },
+            {
+              "label": "The Monstrosity",
+              "type_tag": "Encounter",
+              "detail": "Before the investigation resolves, a monstrosity breaks loose. Overpowered, multi-phase. The situation spirals beyond the party's control. This one is bigger and more dangerous than anything from the carnival — Voss has been refining his work.\n\nFull encounter details to be developed. This is the hardest fight of the Prologue.",
+              "dot_color": "slate"
+            },
+            {
+              "label": "The Concord Reveals Itself",
+              "type_tag": "Revelation",
+              "detail": "The Concord extracts the party from the aftermath. Cael Darro appears — familiar face, already knowing things he shouldn't. Chaelynn's implicit endorsement. The pitch: patriots trying to hold things together. The Prologue ends with the party recruited.\n\n\"We've been watching you since Hollowgate. You keep ending up in the middle of things that matter. We'd like that to stop being an accident.\"",
+              "dot_color": "purple"
+            }
+          ]
+        },
+        { "type": "divider" }
+      ]
+    },
+    {
+      "color": "purple",
+      "title": "Key NPCs",
+      "subtitle": "",
+      "open": true,
+      "content": [
+        {
+          "type": "npc_grid",
+          "cards": [
+            {
+              "name": "Cael Darro",
+              "role": "Concord Operative · The Recruiter",
+              "desc": "Charming, fast-talking, genuinely likeable. He loses gracefully at cards and wins suspiciously. Appears familiar — the party has seen him before, hovering at the edges of things. He makes the recruitment pitch after the extraction.",
+              "note": "He believes in the Concord's mission at some level. His charm is real. His concern for the party may even be real. That makes the eventual revelation harder.",
+              "color": "purple"
+            },
+            {
+              "name": "Chaelynn",
+              "role": "Concord Operative · The Bridge",
+              "desc": "The long-lost contact the party trusts. She has been watching them throughout the Prologue and reporting to Cael. Her implicit endorsement is what makes the recruitment feel organic — the party listens because she is there.",
+              "note": "She may genuinely care for the party while also believing in the Concord's mission. That complexity is worth preserving.",
+              "color": "teal"
+            },
+            {
+              "name": "Mirelle Voss",
+              "role": "Concord Operative · Assessment Specialist",
+              "desc": "Controlled, charming, always reading the room. She has been present in Dunmore's social circles — court-adjacent gatherings, noble household events — observing far more than she reveals. She was likely the operative who flagged the party as useful after the convoy recovery and arranged for Cael to be here when they arrived.",
+              "note": "She should seem entirely unremarkable. The retroactive realization of when she was watching them should be unsettling.",
+              "color": "slate"
+            }
+          ]
+        },
+        { "type": "divider" }
+      ]
+    },
+    {
+      "color": "gold",
+      "title": "Arc Outcomes",
+      "subtitle": "",
+      "open": true,
+      "content": [
+        {
+          "type": "outcome_list",
+          "items": [
+            "Party investigates and partially traces the propaganda printing operation",
+            "Second resonance gem artifact recovered from the Dunmore monstrosity",
+            "Concord extracts the party from the aftermath of the monster attack",
+            "Cael Darro reveals the Concord and makes the recruitment pitch",
+            "Party is recruited — the Prologue ends"
+          ]
+        }
+      ]
+    },
+    {
+      "color": "forest",
+      "title": "Running Alongside This Arc",
+      "subtitle": "Hypha's Heart Seed arc resolves in Dunmore during this same period",
+      "open": true,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Hypha's Heart Seed arc resolves in Dunmore during this same period. The greenhouse encounter runs parallel to the propaganda investigation — two threads escalating toward the Concord recruitment. See the dedicated encounter reference for full details."
+        },
+        {
+          "type": "link_row",
+          "links": [
+            { "href": "dunmore_heart_seed.html", "text": "Unearthing the Heart Seed →", "color": "forest" },
+            { "href": "../heart_seed/heart_seed_path.html", "text": "Full Heart Seed Arc →", "color": "forest" }
+          ]
+        }
+      ]
+    }
+  ],
+  "emotional_goal": {
+    "label": "Emotional Goal — End of Prologue",
+    "statement": "\"We've stumbled into something much bigger than we understand — and now someone is offering to tell us what it is.\"",
+    "body": "The party should feel the weight of the Prologue closing around them. Everything since Hollowgate has been building to this moment: the scarcity, the fear, the creatures, the gems, Chaelynn. The Concord's offer should feel like relief and like a trap simultaneously — and the party should want to say yes anyway."
+  },
+  "arc_nav": {
+    "prev": { "href": "../hollow_road_arc.html", "text": "← The Hollow Road" },
+    "next": { "href": "../../act1_arc.html", "text": "Act I: The Hidden Machinery →" }
+  }
+}

@@ -141,11 +141,18 @@
         "missing-convoys"
       ],
       "party_knowledge": "met",
-      "description": "A kobold scout and outcast from the cavern band near Hollowgate. Smaller than other kobolds, with softer coloration, a drooping uneven feather plume, and one badly-dyed feather. He was coerced into participating in the convoy raids \u2014 threatened with the loss of his tail feathers if he refused. He does not want to hurt anyone.",
+      "description": "A kobold scout and outcast from the cavern band near Hollowgate. Smaller than other kobolds, with softer coloration, a drooping uneven feather plume, and one badly-dyed feather. He did not know the warren was raiding convoys \u2014 he believed the kobolds were running honest trade. He sold the Heart Seed to Auntie Tamsin Vale because the chieftain ordered him to, for a fair price, with no stabbing. He considered it a success. He does not yet understand what he helped cause.",
       "personality": "Nervous, stammering, apologetic. Speaks quickly when frightened, talks over himself, flinches at loud sounds. Slouches, avoids eye contact, tail constantly twitching. Failed to become 'properly kobold' by his tribe's standards and is picked on for it.",
-      "what_robyn_knows": "The kobolds were told to retrieve a specific crate \u2014 'Boss said special. Not food crate.' A human hired them. He can lead the party toward the kobold caverns if they make him feel safe enough to do so.",
-      "key_quote": "\"I-I didn't wanna come with 'em... They said if I didn't, they'd... they'd tear off my tail feathers... I-I just wanted to stay in the nest...\"",
-      "gm_notes": "Robyn should feel oddly sympathetic \u2014 not heroic, just not built for kobold life. Responds much better to patience and kindness than intimidation. If the party treats him well, he becomes a useful recurring contact for kobold movements and tunnel layouts."
+      "what_robyn_knows": "The kobolds were told to retrieve a specific crate \u2014 'Boss said special. Not food crate.' A human hired them. He sold the Heart Seed to an old plant-lady in Dunmore \u2014 green cart, flower-painted wheels, honey candies, wet earth smell, clean gloves. He can lead the party toward the kobold caverns and later identify Tamsin's cart in Dunmore by sensory memory alone.",
+      "heart_seed_role": "Robyn sold the Heart Seed to Auntie Tamsin Vale in Dunmore, acting on the chieftain's direct order. He believed it was a fair trade. When the party reveals what the warren was actually doing \u2014 the convoy raids, the Concord's involvement \u2014 Robyn realizes he was used. He thought there was honest trade. There was not. This betrayal by his own people is what begins his shift toward trusting the party instead.",
+      "arc": "Robyn's arc is about earned trust. He begins attached to the warren's logic \u2014 orders are orders, trade is trade, no stabbing means success. The greenhouse in Dunmore breaks that logic. Seeing what happened to Tamsin, understanding his role in it, is the moment Robyn stops being comic relief. He does not become heroic. He becomes honest. The party's straightforwardness \u2014 saying what they mean, keeping their word \u2014 is something he has not encountered before.",
+      "key_quotes": [
+        "\"I-I didn't wanna come with 'em... They said if I didn't, they'd... they'd tear off my tail feathers... I-I just wanted to stay in the nest...\"",
+        "\"Robyn did not steal seed. Robyn was told sell seed. Robyn sold seed. Good price. No stabbing. This was success.\"",
+        "\"Old plant-lady was nice.\"",
+        "\"This is not good trade. This is bad trade forever.\""
+      ],
+      "gm_notes": "Robyn should feel oddly sympathetic \u2014 not heroic, just not built for kobold life. Responds much better to patience and kindness than intimidation. Do not play his early lines about the seed sale as moral failure \u2014 he genuinely did not know. The weight lands later, at the greenhouse. That is where Robyn becomes real."
     },
     {
       "id": "krobb",
@@ -181,13 +188,16 @@
       "party_knowledge": "met",
       "description": "The kobold chieftain of the cavern band \u2014 self-declared king. Unexpectedly charismatic, with a deep, rich, theatrical voice. Speaks like he believes he is a great king, because by his own reckoning he is. His royal regalia consists of molted feathers, broken necklaces, polished trash, and fake gemstones arranged with absolute sincerity. Simultaneously ridiculous and oddly compelling.",
       "personality": "Deeply proud. Theatrical. Savors his own words. Genuinely offended that the crate contained only a book \u2014 considers it a personal insult from the dying human who hired him. Not a villain; he just wanted to show off his pet.",
-      "role_in_story": "Was hired by the dying human (a planted Concord false flag agent) to retrieve the specific crate. He knew the job, not the conspiracy \u2014 and the kobolds took the extra wagons because it seemed fair. His boss encounter is presenting the cavehopper as his greatest treasure. He wants admiration, not violence.",
+      "role_in_story": "Running two operations simultaneously, though he does not think of them that way. The Concord job \u2014 retrieving the crate \u2014 was business. The Heart Seed was a separate mistake: fool-claws in the warren stole it from the forest thinking it was a dragon egg. The chieftain knew immediately it was not. He also knew it was dangerous forest magic. He had the thieves punished and ordered the seed sold and removed. His boss encounter is presenting the cavehopper as his greatest treasure. He wants admiration, not violence \u2014 and he wants both problems gone.",
+      "heart_seed_resolution": "When the party reveals Hypha's claim, the chieftain sees an opportunity to resolve both the forest debt and the Robyn problem at once. He offers Robyn as guide and witness \u2014 Robyn goes with the party to find the seed, his debt to the warren is settled, and the chieftain can stop worrying about forest vengeance. He frames this as generosity. It is mostly self-interest.",
       "after_the_fight": "Annoyed at the situation rather than the party. Waves them out through a back tunnel with evident impatience. The kobolds who follow are herding, not hunting \u2014 rocks and spears thrown more out of embarrassment than aggression.",
       "key_quotes": [
         "\"Little man hired us. Wanted shiny box. We took extra wagons too. Seemed fair.\"",
-        "\"Look. LOOK. Is beautiful, yes?\""
+        "\"Look. LOOK. Is beautiful, yes?\"",
+        "\"Fool-claws brought forest trouble into stone-home. I made trouble leave.\"",
+        "\"Robyn goes with you as witness and finder. When seed is found, Robyn's debt is done.\""
       ],
-      "gm_notes": "Comedy with weight. His absolute sincerity makes him memorable. He is not present at the entry post during the Krobb scene \u2014 he stays in the den. Run him as genuinely uncertain whether the cavehopper fight is a problem or entertainment."
+      "gm_notes": "Comedy with weight. His absolute sincerity makes him memorable. He is not present at the entry post during the Krobb scene \u2014 he stays in the den. The Heart Seed resolution should feel like the chieftain being pragmatic, not generous \u2014 he is offloading a problem he wants no part of. Run him as genuinely uncertain whether the cavehopper fight is a problem or entertainment."
     },
     {
       "id": "dying-human",
@@ -679,6 +689,35 @@
       "personality": "Morrow genuinely loves Voss. Which is deeply unsettling. It is not a wild predator \u2014 it is a loyal creature that has formed something resembling attachment. When Inspiration resonance discharges, it may pause its attack and move to protect Voss instead.",
       "role_in_story": "The original. The cavehoppers the party encountered in the Hollowgate tunnels during the Prologue are derived from Morrow's biology. Encountering Morrow should produce a moment of horrible recognition.",
       "gm_notes": "The tragedy of Morrow is the tragedy of the entire lab. It is not evil \u2014 it simply loves the person who made it. The party may hesitate. That hesitation is the point."
+    },
+    {
+      "id": "hypha",
+      "name": "Hypha",
+      "status": "alive",
+      "affiliations": ["chronewood"],
+      "arc_tags": ["prologue", "heart-seed-path", "dunmore-arc"],
+      "party_knowledge": "party member \u2014 PC",
+      "description": "A leshy from the Chronewood \u2014 a forest so old it has learned patience. Hypha left the grove not by choice but by the forest's design: the Heart Seed was stolen to force her onto walkabout, though she does not yet know this. She believes she is chasing a theft. The forest knows she is being prepared for something far larger.",
+      "personality": "New to the world outside the Chronewood. Reads people through the same instincts she uses to read a forest \u2014 stillness, direction, what a thing moves toward. Slow to trust, quick to notice. The world outside the grove is loud in ways that are not sound.",
+      "entry": "Joins the party on the road to the kobold warren, tracking the same trail for different reasons \u2014 small clawed footprints, forest unease, the absence of the Heart Seed's presence. She cannot take on a full warren alone. The party's path and her path are the same path.",
+      "role_in_story": "Her presence turns the warren scene from a simple recovery into a negotiation with genuine stakes. The greenhouse encounter in Dunmore is hers to resolve \u2014 not the party's. Her arc spans the entire campaign.",
+      "heart_seed_relationship": "The Heart Seed was in her grove's care before it was stolen. She does not yet know that each Heart Seed chooses its own name \u2014 a name that reflects the destiny of the leshy who guards it. The seed will not introduce itself to her until much later. For now it only calls.",
+      "long_arc": "Hypha's destiny is tied not just to the coming war but to a deeper darkness that will eventually threaten blight across the land. The Chronewood sensed it. The forest sent her toward Witherwood because that is where she needs to be when it arrives. She does not know this yet. She thinks she is looking for a stolen seed.",
+      "gm_notes": "Hypha should feel genuinely foreign to the world \u2014 not naive, not childlike, but calibrated to a different environment entirely. She reads the world like a forest. Political intrigue is weather. People are ecosystems. Her instincts are often correct and arrive through channels the rest of the party cannot access. The Heart Seed reveal is slow: she does not learn the seed's true name until approximately level 7, when the seed introduces herself."
+    },
+    {
+      "id": "auntie-tamsin-vale",
+      "name": "Auntie Tamsin Vale",
+      "status": "dead",
+      "affiliations": ["dunmore"],
+      "arc_tags": ["heart-seed-path", "dunmore-arc"],
+      "party_knowledge": "heard of before meeting \u2014 dead on arrival",
+      "description": "A cultivator of small fame in Dunmore \u2014 known for her market cart, her greenhouse outside town, and her honey candies. She bought the Heart Seed from Robyn believing it was a rare living bulb. She placed it in her glasshouse, watched the growth begin as miracle, and understood too late that the seed was not thriving. It was afraid.",
+      "personality": "By all accounts: sweet, odd, generous. Scolds grown men for overwatering mint. Gives children candies. Her plants were always unusually fresh. She was the person Dunmore took plants to when they were dying.",
+      "what_happened": "The Heart Seed awakened in captivity. The glasshouse became overgrown \u2014 not from malice, but from panic expressed as biology. Tamsin realized the seed was frightened. She attempted to move it to open soil. She did not reach it in time.",
+      "journal": "Her journal survives in the cottage. It traces the miracle-to-horror arc: purchase, unusual pulse, vibrant growth, flytraps catching mice, her realization, her attempt to correct it. The final entry ends mid-sentence.",
+      "role_in_story": "Tamsin is the human cost of the Heart Seed's journey. She is mentioned warmly in Dunmore before the party knows she matters. Her death should land as tragedy, not obstacle. She was not evil. She made a mistake, understood it, and died trying to undo it.",
+      "gm_notes": "Introduce Tamsin through other people's affection before the party ever reaches the greenhouse. The vendors love her. The children remember her candies. By the time the party finds her body, they should already care about her. Robyn sold her the seed. He will carry that."
     }
   ],
   "locations": [
@@ -851,6 +890,17 @@
       "significance": "The laboratory is alive. Emotional resonance gems embedded throughout the facility react to fear, triumph, pain, courage, grief, rage, and hope. The players' emotions literally reshape the battlefield. By the end of the encounter, the party should realize they are trapped inside a weaponized emotional reactor while a scientist desperately tries to understand it before it destroys everyone present.",
       "core_encounter_rule": "Critical hits do NOT deal bonus damage inside the laboratory. Instead, attacks deal normal damage and the excess emotional surge is absorbed into nearby resonance gems. This immediately signals to players: something is fundamentally wrong with this place.",
       "gm_notes": "The deepest design intention of the laboratory encounter is that the players' emotions are the weapon being used against them. The room is feeding on them. The more they fight heroically, the more unstable it becomes. The emotional resonance system should be introduced gradually \u2014 players should begin noticing the pattern before they understand the mechanic."
+    },
+    {
+      "id": "chronewood",
+      "name": "The Chronewood",
+      "nation": "independent \u2014 ancient forest, no national claim",
+      "type": "ancient forest",
+      "arc_tags": ["prologue", "heart-seed-path"],
+      "description": "Hypha's origin forest \u2014 old enough to have learned patience. The Chronewood is where the Heart Seed was kept before it was stolen, and where Hypha was guardian before she was sent away. The forest is not unconscious. It arranged the theft deliberately to force Hypha onto walkabout.",
+      "true_nature": "The Chronewood sensed what is coming \u2014 the war, and the deeper darkness beyond it. It understood that Hypha is not prepared for what she will need to face, and that the grove alone cannot prepare her. It sent her away the only way a forest can: by taking something she would have to follow.",
+      "relationship_to_witherwood": "The Chronewood's intent is that Hypha reach Witherwood \u2014 a forest at the conjunction of three ley lines in Elkenquay. That is where she needs to be when the darkness comes. The forest does not explain this to her. It trusts the path.",
+      "gm_notes": "The Chronewood should feel ancient and deliberate \u2014 not sinister, but willing to cause harm in service of a longer purpose. Tamsin's death is an indirect consequence of the forest's choice. Whether Hypha ever learns the forest arranged the theft is a decision for late in the campaign."
     }
   ],
   "artifacts": [
@@ -906,6 +956,19 @@
       "significance": "The culmination of Voss's pivot from biology to industrialized emotion. Before the gems, he was improving biology. After the gems, he began attempting to industrialize emotion as a power source. The engine represents the answer to a question he has been asking since the Blackglass Incident: what if fear itself could be weaponized at scale?",
       "true_purpose": "A proof of concept for emotional-resonance warfare. If perfected and scaled, the engine could theoretically be used to destabilize armies, cities, or entire regions \u2014 not through conventional weapons, but through weaponized emotional collapse.",
       "gm_notes": "The engine is the final boss of the encounter in mechanical terms, but its true narrative function is the reveal: Percival funded this. The gem the party found in the kobold crate was headed here. Percival has known about the Resonance Engine the entire time. Everything the party has experienced \u2014 every monster, every gem, the Book, the sarcophagus \u2014 connects to this machine."
+    },
+    {
+      "id": "heart-seed",
+      "name": "The Heart Seed",
+      "status": "in Tamsin's greenhouse (Dunmore) \u2014 awakened and afraid",
+      "arc_tags": ["prologue", "heart-seed-path", "dunmore-arc"],
+      "description": "A living seed from the Chronewood, no larger than a curled fist, veined with green-gold light. Not an object \u2014 a presence. It was kept in sacred soil under Hypha's guardianship before kobolds stole it believing it was a dragon egg. It has been passed through hands that did not understand it ever since.",
+      "true_nature": "Each Heart Seed chooses its own name \u2014 a name that is a direct reflection of the destiny of the leshy who guards it. Hypha does not know this yet. The seed does not know its own name yet. It is too young and too frightened.",
+      "what_it_has_felt": "Violation \u2014 the moment of theft, roots torn. Confusion \u2014 stone tunnels, torchlight, nothing alive the way soil is alive. Hope, briefly \u2014 Tamsin's hands, wet earth, someone who knew how to tend things. Hunger it did not choose \u2014 the growth was panic expressed as biology. Grief \u2014 Tamsin died, and the seed felt the warm presence stop. Loneliness \u2014 it has been calling and nothing answered. Until now.",
+      "plant_behavior": "The greenhouse plants do not attack Hypha. They recognize kin. By the time the party arrives, the plants nearest Hypha actively defend her \u2014 spending extra attacks outward. This is revealed through three staged perception checks: (1) none of the plants have attempted to attack Hypha; (2) the plants nearest her have had extra attacks \u2014 they are defending her; (3) they answer the seed's call \u2014 the seed is calling her.",
+      "encounter_mechanic": "The seed cannot be recovered by force. Hypha must reach the center and hold the seed for three rounds while the greenhouse continues fighting around her. Each round she holds it, she feels what the seed has felt \u2014 Round 1: Fear (WIS save or frightened); Round 2: Grief (psychic damage, the seed's loneliness); Round 3: Recognition (the seed feels her back, goes still, greenhouse calms). The party protects her.",
+      "long_arc": "The seed will not introduce itself to Hypha until approximately level 7. When it does, its name will reflect her destiny \u2014 the darkness the Chronewood sent her to face.",
+      "gm_notes": "The Heart Seed is a character, not an artifact. It has interiority, memory, and an arc. It is not ready to communicate yet \u2014 only to call. The three perception check reveal should not be hinted at early. Let the battle breathe. Let the party struggle. The truth emerges from what is already visible."
     }
   ],
   "arcs": [
@@ -914,11 +977,11 @@
       "title": "Missing Convoys",
       "act": "prologue",
       "location": "hollowgate",
-      "href": "hollowgate/missing_convoys/missing_convoys_arc.html",
+      "href": "prologue/missing_convoys/missing_convoys_arc.html",
       "pages": [
         {
           "label": "Arc Reference",
-          "href": "hollowgate/missing_convoys/missing_convoys_arc.html"
+          "href": "prologue/missing_convoys/missing_convoys_arc.html"
         }
       ],
       "summary": "Supply wagons have been disappearing near Hollowgate. Eric Huwithakay, a contact of one of the party members, was investigating and has been killed. The party takes over the investigation, tracks the missing goods to kobolds in caverns nearby, and recovers a sealed crate among the stolen goods.",
@@ -930,11 +993,13 @@
         "krobb",
         "kobold-chieftain",
         "dying-human",
-        "garrick-thorne"
+        "garrick-thorne",
+        "hypha"
       ],
       "key_artifacts": [
         "book-of-the-damned",
-        "the-gem"
+        "the-gem",
+        "heart-seed"
       ],
       "outcomes": [
         "Party recovers grain, goods, and sealed crate intact",
@@ -1090,19 +1155,19 @@
       "title": "Moonlit Mirage Carnival",
       "act": "prologue",
       "location": "hollowgate",
-      "href": "hollowgate/moonlit_mirage/moonlit_mirage_arc.html",
+      "href": "prologue/moonlit_mirage/moonlit_mirage_arc.html",
       "pages": [
         {
           "label": "Arc Reference",
-          "href": "hollowgate/moonlit_mirage/moonlit_mirage_arc.html"
+          "href": "prologue/moonlit_mirage/moonlit_mirage_arc.html"
         },
         {
           "label": "Pallor Brood Encounter",
-          "href": "hollowgate/moonlit_mirage/moonlit_mirage_encounter.html"
+          "href": "prologue/moonlit_mirage/moonlit_mirage_encounter.html"
         },
         {
           "label": "Prize Counter & Curiosities",
-          "href": "hollowgate/moonlit_mirage/moonlit_mirage_shop.html"
+          "href": "prologue/moonlit_mirage/moonlit_mirage_shop.html"
         }
       ],
       "summary": "The Moonlit Mirage Carnival arrives in Hollowgate. The party encounters Chaelynn, a long-lost contact now working with the carnival. A Pallor Brood attack disrupts the carnival \u2014 monstrosities from the machinist's work.",
@@ -1698,6 +1763,58 @@
           "href": "act2/blackglass/blackglass_encounter.html"
         }
       ]
+    },
+    {
+      "id": "heart-seed-path",
+      "title": "The Path of the Heart Seed",
+      "act": "prologue",
+      "arc_tags": ["prologue", "heart-seed-path"],
+      "location": "hollowgate-to-dunmore",
+      "href": "prologue/heart_seed/heart_seed_path.html",
+      "pages": [
+        {
+          "label": "Arc Reference",
+          "href": "prologue/heart_seed/heart_seed_path.html"
+        }
+      ],
+      "summary": "A Heart Seed from the Chronewood was stolen by kobolds who mistook it for a dragon egg. The chieftain, recognizing forest magic, ordered it sold quickly. Robyn sold it to Auntie Tamsin Vale, a cultivator in Dunmore. Tamsin placed it in her greenhouse. The seed awakened in fear. The greenhouse became a living defensive ecosystem. Tamsin died trying to correct her mistake. The party reaches the greenhouse expecting to question a harmless old woman and finds an overgrown horror — and Hypha, the leshy who guards the seed, discovers she is the only one who can reach it.",
+      "what_actually_happened": "The Chronewood arranged the theft deliberately to force Hypha onto walkabout. The forest sensed the coming war and the deeper darkness beyond it. Hypha is not prepared for what she will need to face. The theft — and Tamsin's death — are indirect consequences of the forest's patient design. Hypha does not know this.",
+      "what_party_knows": "Kobolds stole something from the forest. The chieftain got rid of it fast. Robyn sold it to an old woman in Dunmore. The old woman has not been seen in days. Her greenhouse is overrun.",
+      "core_truth": "The kobolds did not understand what they stole. The chieftain understood enough to fear it. Robyn sold it because he was ordered to — and believed the warren ran honest trade. Auntie Tamsin bought it because she thought it was a rare living bulb. The Heart Seed awakened in captivity. The greenhouse did not become evil. It became afraid.",
+      "key_npcs": ["hypha", "robyn", "kobold-chieftain", "auntie-tamsin-vale"],
+      "key_artifacts": ["heart-seed"],
+      "key_locations": ["chronewood", "hollowgate", "dunmore"],
+      "campaign_function": "Gives the new leshy character a personal reason to join the party that is not immediately resolved. Gives the party a reason to negotiate with the kobold chieftain. Gives Robyn a reason to travel with the party. Points the group naturally toward Dunmore. Turns the Heart Seed from a missing object into an active living presence. Creates a moral conflict instead of a simple theft recovery.",
+      "hooks_forward": "Hypha joins the party. Robyn accompanies as guide, beginning his arc of earned trust. The Heart Seed travels with Hypha — not as an object but as a presence. The arc's long resolution (the seed's name) waits until approximately level 7."
+    },
+    {
+      "id": "dunmore-heart-seed",
+      "title": "Unearthing the Heart Seed",
+      "act": "prologue",
+      "arc_tags": ["prologue", "heart-seed-path", "dunmore-arc"],
+      "location": "dunmore",
+      "href": "prologue/dunmore/dunmore_heart_seed.html",
+      "pages": [
+        {
+          "label": "Encounter Reference",
+          "href": "prologue/dunmore/dunmore_heart_seed.html"
+        }
+      ],
+      "summary": "The party follows the Heart Seed's trail to Dunmore, where Robyn identifies Auntie Tamsin's market cart by smell and memory. Investigation reveals she has not been seen in days. Her greenhouse outside town is overrun. The party finds Tamsin dead and must survive a genuinely deadly encounter while Hypha reaches the Heart Seed at the center.",
+      "key_npcs": ["hypha", "robyn", "auntie-tamsin-vale"],
+      "key_artifacts": ["heart-seed"],
+      "key_locations": ["dunmore"],
+      "encounter_structure": {
+        "approach": "Robyn identifies the market district by sensory memory — wet dirt, flower candy, old plant-lady cart. Tamsin's cart is closed but plants nearby flourish unnaturally. Vendors describe her warmly. Cart clues point to the greenhouse outside town.",
+        "cottage": "Open door. Broken basket. Kettle boiled dry. Tamsin's journal on the table. Bloody handprint near the greenhouse door. The party expects to question a harmless old woman. They find silence.",
+        "greenhouse": "Genuinely deadly. Never-ending carnivorous plant waves. Fighting harder makes it worse — violence feeds the seed's fear, escalating the greenhouse. The party cannot win by killing everything.",
+        "hypha_reveal": "Three staged perception checks, introduced only after the battle has been breathing long enough to feel impossible: (1) none of the plants have attempted to attack Hypha; (2) the plants nearest her have had extra attacks — they are defending her; (3) they answer the seed's call — the seed is calling her. The GM does not hint at this early.",
+        "the_hold": "Hypha reaches the center and takes the seed. Three rounds. She cannot act. Round 1: Fear — WIS save or frightened. Round 2: Grief — psychic damage, the seed's loneliness. Round 3: Recognition — the seed feels her back, goes still, greenhouse calms. The party protects her.",
+        "resolution": "The seed chooses to go with Hypha. The greenhouse stills. Tamsin's body is found beneath pale vines, almost gently arranged, one hand still extended toward the center."
+      },
+      "robyn_beat": "Robyn sees what happened to Tamsin. This is not a good trade. This is bad trade forever. This is the moment Robyn becomes more than a guide.",
+      "emotional_core": "Hypha does not recover an artifact. She begins a relationship. The party watches someone they cannot help absorb something they cannot see.",
+      "gm_notes": "This encounter teaches the lesson the Blackglass Laboratory will return to: fighting harder is not the solution. The party learns early that some problems require someone other than them to solve. Hypha is that someone here."
     }
   ],
   "creatures": [

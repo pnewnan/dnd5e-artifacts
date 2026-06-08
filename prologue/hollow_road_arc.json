@@ -1,0 +1,238 @@
+{
+  "meta": {
+    "gm_label": "GM Reference · The Prologue",
+    "title": "The Hollow Road",
+    "subtitle": "Hollowgate to Dunmore · One of the foundational arcs of the campaign",
+    "act_band": "blood",
+    "level_badge": "Levels 1–2",
+    "back_link": { "href": "../prologue_arc.html", "text": "← The Prologue" }
+  },
+  "quick_ref": [
+    { "label": "Starting Location", "value": "Hollowgate" },
+    { "label": "Destination", "value": "Dunmore" },
+    { "label": "Tone", "value": "Grounded · Cold · Muddy · Uncertain · Human" },
+    { "label": "Threat", "value": "Banditry · Fear · Coordinated hoarding — not monsters" },
+    { "label": "Emotional Core", "value": "The players should help people. That hope matters." }
+  ],
+  "sections": [
+    {
+      "color": "blood",
+      "title": "Arc Overview",
+      "subtitle": "",
+      "open": true,
+      "content": [
+        {
+          "type": "narrative_block",
+          "content": [
+            { "type": "paragraph", "text": "The Hollow Road Arc serves as one of the foundational story arcs of the campaign. Its primary purpose is to humanize the world, emotionally attach the players to ordinary people, establish political instability, introduce fear and paranoia, and slowly reveal that the kingdom is beginning to fracture under pressure." },
+            { "type": "paragraph", "text": "The players are not yet dealing with ancient evils, world-ending threats, or legendary artifacts. They are helping ordinary people survive during a period of growing instability. This emotional grounding is critical — because later, wars begin, cities are erased, kingdoms collapse, and buried horrors emerge. The players must first understand what is worth protecting." }
+          ]
+        },
+        { "type": "divider" }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Fear Spreads Faster Than Truth",
+      "subtitle": "Nobody fully understands what is happening. The uncertainty itself becomes dangerous.",
+      "open": false,
+      "content": [
+        { "type": "paragraph", "text": "Nobody fully understands what is happening along the Hollow Road. Rumors spread constantly: Elkenquayan raiders, bandit attacks, strange creatures, foreign saboteurs, missing patrols, burned farms. Most people only know that something is wrong." },
+        { "type": "paragraph", "text": "The uncertainty itself becomes dangerous. As information fails, communities fill the gap with fear. Each rumor generates three more. Each missing patrol spawns a dozen theories. The players should encounter this information collapse directly — and begin to understand that the real threat is not what is happening but what people believe is happening." },
+        { "type": "annotation", "text": "\"The road isn't this dangerous because of what is on it. It is this dangerous because everyone believes it is impassable.\"" }
+      ]
+    },
+    {
+      "color": "gold",
+      "title": "Ordinary People Suffer First",
+      "subtitle": "Farmers. Refugees. Exhausted militia. Children. Struggling settlements.",
+      "open": false,
+      "content": [
+        { "type": "paragraph", "text": "This arc focuses heavily on farmers, refugees, exhausted militia, healers, children, and struggling settlements. The stakes are personal. The players should repeatedly feel: <em>\"These are real people.\"</em> Not abstractions. Not NPCs serving a quest function. People with specific faces, specific fears, specific names." },
+        { "type": "paragraph", "text": "Linger on them. Give them enough time that the players remember them. These connections are the emotional architecture that makes every later revelation land with its full weight." }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "Small Acts Matter",
+      "subtitle": "Distribute food. Heal civilians. Rescue survivors. Hope is important in this arc.",
+      "open": false,
+      "content": [
+        { "type": "paragraph", "text": "The players distribute food, heal civilians, rescue survivors, protect roads, and restore stability. These victories matter emotionally. Hope is important in this arc — not as a naive emotion but as a deliberate choice. The players should feel, genuinely, that they improved things. That their presence made a difference." },
+        { "type": "annotation", "text": "\"Because later: hope becomes fragile. Give them something to lose first.\"" }
+      ]
+    },
+    {
+      "color": "slate",
+      "title": "Civilization Is Fragile",
+      "subtitle": "Roads. Supply lines. Communication. Confidence. Once fear spreads, communities isolate.",
+      "open": false,
+      "content": [
+        { "type": "paragraph", "text": "The Hollow Road Arc quietly establishes one of the campaign's core truths: civilization survives on trust and stability. Roads. Supply lines. Communication. Confidence. Once fear spreads, communities isolate, rumors become reality, violence escalates, and ordinary people begin turning against each other." },
+        { "type": "paragraph", "text": "The players are watching a system fail from the inside. Not a dramatic collapse — a slow dissolution. The kind that happens when people stop trusting the roads, stop sending wagons, stop believing help is coming. By the time anyone declares a crisis, it has already been a crisis for months." }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Story Structure",
+      "subtitle": "",
+      "open": true,
+      "content": [
+        {
+          "type": "beat_list",
+          "beats": [
+            {
+              "label": "Hollowgate — The Situation",
+              "type_tag": "Opening Scene",
+              "detail": "News arrives that farms along the road to Dunmore have been attacked, burned, or abandoned. Ashfall Watch has failed to respond. Travelers report patrols vanishing, supply wagons disappearing, violence on the roads. Refugees arrive carrying burns, injuries, missing family members, and terrifying stories.\n\nThe town atmosphere becomes increasingly tense: militia patrols increase, supplies are rationed, people begin hoarding food, and public arguments break out. The players become involved because they choose to help — not because they are asked, though they may be. The distinction matters.",
+              "dot_color": "blood"
+            },
+            {
+              "label": "The Relief Convoy",
+              "type_tag": "Transition",
+              "detail": "A small emergency relief convoy is assembled: grain, medicine, tools, healing supplies, and civilian volunteers. The players join. The caravan should feel vulnerable, underprepared, and emotionally real — not heroic. People are scared. The NPCs here are the emotional heart of the arc.",
+              "dot_color": "blood"
+            },
+            {
+              "label": "The Hollow Road — Signs of Collapse",
+              "type_tag": "Atmosphere",
+              "detail": "The journey toward Dunmore should focus heavily on atmosphere, conversations, emotional immersion, and growing instability. The players encounter burned farmland, abandoned wagons, smoke on distant hills, frightened travelers, militia checkpoints, and increasing signs of collapse. The world should feel strained. Not destroyed. Yet.",
+              "dot_color": "blood"
+            },
+            {
+              "label": "Ashfall Watch Blockade",
+              "type_tag": "Obstacle",
+              "detail": "Approximately twenty miles from Ashfall Watch, the convoy encounters a military blockade. The acting commander refuses to allow the convoy to continue. He is not irrational — he is exhausted and afraid. Every time he sends people toward the keep, they disappear. Or come back missing half their number. Sometimes it's bandits. Sometimes survivors swear it was Elkenquayan scouts. Sometimes nobody sees anything at all.\n\n\"Until I know what's on that road, I'm not sending civilians and the last of our supplies to vanish with them.\"\n\nThe players should understand: his logic makes sense. The roads are becoming impossible to trust. The blockade is not a villain encounter. It is a frightened man making a defensible decision. The correct response is not to overpower him — it is to solve the problem he is describing.",
+              "dot_color": "blood"
+            },
+            {
+              "label": "Helping the Burned Farm",
+              "type_tag": "Major Victory",
+              "detail": "Immediately beyond the blockade lies one of the burned farmsteads. The players can distribute food, heal burns, stabilize wounded civilians, and materially improve conditions. This is one of the most important emotional moments in the early campaign.\n\nKey images: children finally eating. Exhausted responders collapsing after receiving aid. Militia finally receiving medical treatment. Burned farmers crying with relief. Do not rush these moments. Let them breathe. The players should walk away feeling \"we actually helped people.\"",
+              "dot_color": "blood"
+            },
+            {
+              "label": "The Destroyed Wagon — What Doesn't Add Up",
+              "type_tag": "Investigation",
+              "detail": "After stabilizing the immediate situation, the players can investigate why patrols vanish and wagons disappear. One key discovery: a destroyed militia wagon farther down the road. Bodies are missing. Some appear to have been dragged into nearby woods. Claw marks carved into wood, wagon panels, and trees suggest creature attacks.\n\nOn a high Investigation check: the claw marks are wrong. Too even, too symmetrical, too consistent, cut at identical depth and angle. Real animals slip, vary pressure, tear unpredictably. These marks look intentionally manufactured. Closer inspection may reveal faint metal scoring, repeated strike patterns, and signs the marks were created deliberately.\n\n\"Someone is staging violence.\"",
+              "dot_color": "blood"
+            },
+            {
+              "label": "Dunmore — The Road Reopened",
+              "type_tag": "Resolution",
+              "detail": "The players stabilize the route, expose or negotiate with the hoarder, rescue survivors, secure the roads, and restore enough confidence for the convoy to continue. The convoy finally reaches Dunmore. This moment should feel emotionally meaningful — not triumphant, not celebratory, but meaningful. People survive because of the players.",
+              "dot_color": "blood"
+            }
+          ]
+        },
+        { "type": "divider" }
+      ]
+    },
+    {
+      "color": "slate",
+      "title": "Key NPCs",
+      "subtitle": "",
+      "open": true,
+      "content": [
+        {
+          "type": "npc_grid",
+          "cards": [
+            {
+              "name": "Commander Durgan Valeforge",
+              "role": "Ashfall Watch · Dwarven Militia Commander",
+              "desc": "Rational, disciplined, practical, and visibly exhausted. He refuses to let the convoy through because he genuinely believes sending civilians forward without securing the road would be murder. He respects competence and calm leadership. He has not slept properly in days and remembers every patrol he has lost.",
+              "note": "He is willing to listen. One of the first examples in the campaign of a fundamentally good person trapped inside a collapsing situation. He was fed a false threat report — he does not know it is false.",
+              "color": "slate"
+            },
+            {
+              "name": "Berry Underbough",
+              "role": "Ashfall Watch · Young Halfling Militiaman",
+              "desc": "Eager, nervous, compassionate. Desperately wants to accompany the party when they begin investigating the road. Commander Valeforge refuses every time — not because Berry is incompetent, but because Durgan does not want to send another frightened young soldier to die. Berry's aunt owns a farm farther down the road. He has not heard from her since the fires began.",
+              "note": "The tension between his idealism, his fear, and Durgan's protective refusal is a small human story running beneath the investigation.",
+              "color": "teal"
+            },
+            {
+              "name": "Mara Vell",
+              "role": "Wagon Leader · The One Holding It Together",
+              "desc": "Middle-aged. Practical. Exhausted. Gruff but kind. She is doing what she always does: holding things together with sheer willpower and the refusal to admit she doesn't know if it will work.",
+              "note": "Play her as someone who has stopped expecting help and learned to be grateful when it arrives anyway.",
+              "color": "slate"
+            },
+            {
+              "name": "Edrin Holt",
+              "role": "Militia Volunteer · Nineteen Years Old",
+              "desc": "Clearly inexperienced. Trying very hard not to appear afraid. He joined up because the situation seemed like it required it. He is now less certain that was wise, and too committed to admit it.",
+              "note": "Let him grow. If the players protect him, he becomes better. If they ignore him, he becomes a statistic.",
+              "color": "slate"
+            },
+            {
+              "name": "Sella &amp; Brin",
+              "role": "Refugee Siblings · Separated From Their Parents",
+              "desc": "They became emotionally important very quickly. Sella is older and trying to hold it together for Brin's sake. Brin is old enough to know something is very wrong and young enough to still believe it will be okay.",
+              "note": "Do not resolve their story cheaply. Their parents may or may not be found. That ambiguity is the point.",
+              "color": "gold"
+            },
+            {
+              "name": "Old Thom",
+              "role": "Elderly Farmer · Transporting Salvaged Tools",
+              "desc": "Refuses to abandon his tools. \"If the land survives, so do we.\" He is not delusional — he understands the situation perfectly. He has simply decided that civilization requires someone to act as though it will continue.",
+              "note": "He is the thematic soul of the arc in two sentences. Let him say them.",
+              "color": "teal"
+            },
+            {
+              "name": "The Landowner — unnamed, or give a name at the table",
+              "role": "The Hoarder · The Human Cause of the Crisis",
+              "desc": "He is frightened, defensive, pragmatic, and morally compromised. He genuinely believes he is protecting his workers, his people, and his future. He hired men to stage creature attacks using forged metal claw implements, spread rumors, and make the roads appear infested — because he believes the kingdom is collapsing and whoever controls grain controls survival.<br><br>\"You think the kingdom's coming to save us?\" Or: \"If the roads die, somebody has to make sure there's still food left.\"",
+              "note": "The players should not fully approve. But they should understand him. That distinction is critical to the campaign's themes. He is not a villain. He is a frightened man who made a terrible, calculated, defensible-in-his-own-mind decision.",
+              "color": "purple"
+            }
+          ]
+        },
+        { "type": "divider" }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "The Real Cause — Three Overlapping Layers",
+      "subtitle": "",
+      "open": true,
+      "content": [
+        { "type": "paragraph", "text": "The road instability is not caused by a single enemy. Several overlapping problems are occurring simultaneously — which is exactly why it has been so difficult to diagnose." },
+        {
+          "type": "layer_stack",
+          "layers": [
+            {
+              "label": "Layer One — Ordinary Banditry",
+              "content": "Ordinary criminals are taking advantage of collapsing security. They attack isolated travelers, damaged caravans, and unprotected refugees. They are opportunistic, not organized. They are making a bad situation worse, but they are not the cause of it.",
+              "variant": "l1"
+            },
+            {
+              "label": "Layer Two — Fear and Rumor",
+              "content": "Panicked survivors increasingly blame Elkenquay, foreign infiltrators, or monsters. Rumors spread faster than truth. The public narrative becomes increasingly unstable. This layer is dangerous not because it involves actual enemies, but because it creates a perception of threat that feels more real than the threat itself — and begins justifying military escalation.",
+              "variant": "l2"
+            },
+            {
+              "label": "Layer Three — Coordinated Hoarding and Staged Attacks",
+              "content": "The landowner has secretly begun intercepting and redirecting supplies. He hired men to stage attacks, frighten caravans, and spread rumors — manufacturing the appearance of creature infestation using forged metal claw implements. The tools may eventually be discovered hidden on his property. He is not purely greedy. He is terrified. That distinction matters enormously.",
+              "variant": "l3"
+            }
+          ]
+        },
+        {
+          "type": "investigation_box",
+          "label": "Investigation Detail — The Claw Marks",
+          "reveal": "High Investigation DC: These marks were manufactured. Too even. Too symmetrical. Too consistent. Cut at identical depth and angle. Real animals slip, vary pressure, tear unpredictably. These marks show faint metal scoring, repeated strike patterns, and signs of deliberate fabrication. The players should feel the realization land quietly — not as a dramatic reveal, but as a slow, unsettling understanding. Someone went to a lot of effort to make people afraid of the wrong thing."
+        }
+      ]
+    }
+  ],
+  "emotional_goal": {
+    "label": "Emotional Goal — End of Arc",
+    "statement": "\"We helped people. That hope matters.\"",
+    "body": "By the end of the Hollow Road Arc, the players should feel useful, compassionate, protective, emotionally attached to the region, and increasingly worried about the kingdom. Most importantly: they should feel that they helped people. That hope is real. That the world is worth protecting.\n\nThat hope matters. Because later it becomes much harder to hold onto. Build it here, carefully, so that when the campaign asks the players what they're fighting for — they already know.\n\n<em>Narrative Thread — Dunmore &amp; Dunnshire:</em> Dunmore becomes familiar, human, and emotionally important through this arc. Much later — when the players discover the erased ruins of Dunnshire — they will subconsciously understand what was lost there too. The names are not an accident. The parallel is intentional. Do not underline it. Let it arrive on its own."
+  },
+  "arc_nav": {
+    "prev": { "href": "../prologue_arc.html", "text": "← The Prologue" },
+    "next": { "href": "campaign_overview.html", "text": "Campaign Overview →" }
+  }
+}

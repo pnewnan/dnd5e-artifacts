@@ -1,0 +1,839 @@
+{
+  "meta": {
+    "gm_label": "GM Reference · Moonlit Mirage Carnival",
+    "title": "The Carnival Arc",
+    "subtitle": "Phase One: Missing Convoys · Phase Two: The Pallor · Links to the Hollowgate Investigation"
+  },
+  "phase_strip": [
+    { "label": "Phase One", "title": "We Need Food", "note": "Practical · Investigation · Trust-building", "variant": "phase-1" },
+    { "label": "Connects To", "title": "Eric's Investigation", "note": "Kobolds · Tunnels · Convoys", "variant": "phase-link" },
+    { "label": "Phase Two", "title": "The Pallor", "note": "Horror · Artifact · Outbreak", "variant": "phase-2" }
+  ],
+  "sections": [
+    {
+      "color": "dc-low",
+      "title": "Overview &amp; Arc Structure",
+      "subtitle": "Two phases · The central twist · Emotional stakes",
+      "open": true,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            { "type": "section_head", "text": "The Setup" },
+            { "type": "paragraph", "text": "The Moonlit Mirage Carnival arrives near Hollowgate during a period of regional instability. To the townsfolk it represents wonder and distraction. To the party it first appears to be a struggling traveling show suffering from the same problems affecting the rest of the region." },
+            {
+              "type": "discovery",
+              "variant": "dc-low",
+              "name": "Initial Carnival State",
+              "content": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Subdued, exhausted, partially operational",
+                    "Strangely melancholic beneath its cheerful exterior",
+                    "The nighttime show has not yet begun",
+                    "Many attractions remain closed; lanterns dimmed to conserve oil",
+                    "Food stalls sparse, several performers unavailable"
+                  ]
+                }
+              ]
+            },
+            { "type": "quote", "text": "\"Once the convoy arrives, the true show can begin.\" — Chaelynn" }
+          ],
+          "right": [
+            { "type": "section_head", "text": "The Central Twist" },
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "The Players Enable the Horror",
+              "content": [
+                { "type": "paragraph", "text": "The party's success in saving the carnival — recovering the convoy, restoring supplies — is what enables Phase Two. Without a full crowd, the artifact's feeding cycle remains incomplete." },
+                { "type": "annotation", "text": "The final tragedy: the creatures matured rapidly because the party succeeded." }
+              ]
+            },
+            { "type": "section_head", "text": "Arc Phases" },
+            {
+              "type": "discovery",
+              "variant": "dc-low",
+              "name": "Phase One — \"We Need Food\"",
+              "content": [
+                { "type": "paragraph", "text": "Grounds the story in practical problems. Missing convoys, kobolds, tunnels. Establishes trust with carnival NPCs." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-high",
+              "name": "Phase Two — The Pallor",
+              "content": [
+                { "type": "paragraph", "text": "Slowly transforms the carnival into escalating supernatural horror. Triggered by Phase One success." }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "purple",
+      "title": "Key NPCs",
+      "subtitle": "Chaelynn · Magnus Eillin",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            { "type": "heading", "level": 2, "text": "Chaelynn — Ringmaster" },
+            {
+              "type": "discovery",
+              "variant": "dc-low",
+              "name": "Who She Is",
+              "content": [
+                { "type": "paragraph", "text": "Joined as a performer years ago, became the person responsible for keeping the carnival alive. Charismatic, capable, fiercely protective of her people, and increasingly overwhelmed by the carnival's deteriorating condition." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "What She Reveals — Initially",
+              "content": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Missing supplies and exhausted workers",
+                    "Postponed performances and morale concerns"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-high",
+              "name": "What She Hides — Until Trust Is Earned",
+              "content": [
+                { "type": "paragraph", "text": "Her deeper fears about the pallor and the strange nighttime symptoms among workers. She will not reveal these without significant trust from the party." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "Phase Two — Her Reaction",
+              "content": [
+                { "type": "paragraph", "text": "When the party investigates the artifact, Chaelynn's instinct is to protect it — it has been the carnival's most prized centerpiece for years and she has never seen it cause harm before. She will resist any attempt to damage or remove it unless she witnesses the connection herself." },
+                { "type": "annotation", "text": "\"You cannot stop the show.\" — Chaelynn, when Magnus urges intervention during Act 1." }
+              ]
+            }
+          ],
+          "right": [
+            { "type": "heading", "level": 2, "text": "Magnus Eillin — Sideshow Storyteller" },
+            {
+              "type": "discovery",
+              "variant": "dc-low",
+              "name": "Who He Is",
+              "content": [
+                { "type": "paragraph", "text": "A traveling storyteller, bard, and sideshow performer. Wears a long blue coat adorned with golden stars. Entertains children with magical flourishes, exaggerated stories, and observations about the stars and the empty spaces between them." },
+                { "type": "annotation", "text": "\"It belongs in a library.\"" }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "His Role in Phase Two",
+              "content": [
+                { "type": "paragraph", "text": "Magnus is perceptive — more than he lets on. During Act 1 of the Grand Performance, he pulls the party aside quietly and points them toward the artifact. He has noticed something is wrong with it but cannot articulate exactly what." },
+                { "type": "paragraph", "text": "He will not confront Chaelynn directly. He knows she will not stop the show. But he believes the party might be able to do something about it — if they move quickly." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "teal",
+              "name": "Story Role — Pre-Zarathrax",
+              "content": [
+                { "type": "paragraph", "text": "This version of Magnus predates the larger Zarathrax storyline. He is here to establish warmth, character, and the feeling of a living world. Protect his role as an emotional anchor before the horror begins." }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "gold",
+      "title": "The Artifact — Investigation &amp; Truth",
+      "subtitle": "Recent modification · What's inside · How to stop it",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            { "type": "section_head", "text": "What It Appears To Be" },
+            {
+              "type": "discovery",
+              "variant": "gold",
+              "name": "The Centerpiece",
+              "content": [
+                { "type": "paragraph", "text": "A crystalline lantern, mirrored astrolabe, or ornate \"guiding star\" at the center of the carnival. It has been the carnival's most prized possession for years — and for years it appeared to be nothing more than a beautiful, mildly magical object that made performances feel more vivid and audiences more engaged." },
+                { "type": "paragraph", "text": "It caused no harm. No one suffered. The carnival flourished." },
+                { "type": "annotation", "text": "Something changed recently. The artifact itself did not — but something was done to it." }
+              ]
+            },
+            { "type": "section_head", "text": "Investigation — What They Find" },
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "Arcana / Investigation — DC 14",
+              "content": [
+                { "type": "paragraph", "text": "The artifact has been modified. The external casing shows faint tool marks and residue from a recent opening — it has been taken apart and reassembled within the last few months. The magical signature around the seams is slightly misaligned, like a clock that has been wound too tightly." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-high",
+              "name": "Arcana / Investigation — DC 17",
+              "content": [
+                { "type": "paragraph", "text": "Something inside the artifact is doing the actual work. The artifact itself is a conduit — an amplifier — but the parasitic intelligence driving the feeding cycle was inserted into it. The original artifact was genuinely benign. Whatever is inside it now is using it as a shell." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "If Carefully Disassembled",
+              "content": [
+                { "type": "paragraph", "text": "Inside the artifact is a secondary object — a seed, a gem, a coiled thing — that does not belong. It pulses faintly. It is warm. It reacts to proximity by growing slightly brighter." },
+                { "type": "paragraph", "text": "This is the true source. The artifact is innocent. The inserted object is not." }
+              ]
+            }
+          ],
+          "right": [
+            { "type": "section_head", "text": "The Key Question" },
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "Why Did It Only Start Recently?",
+              "content": [
+                { "type": "paragraph", "text": "The artifact has been with the carnival for years without causing harm. The pallor, the insects, the feeding cycle — all of these are recent. A sharp party will notice this and ask why." },
+                { "type": "paragraph", "text": "The answer: the artifact was modified. Someone opened it, inserted something inside, and resealed it. The modification is subtle but detectable on close examination." },
+                {
+                  "type": "list",
+                  "items": [
+                    "Who did this — and when — is a thread for further investigation",
+                    "It was done recently enough that the convoy disruptions and the artifact modification may be connected",
+                    "The same faction engineering regional instability may have also seeded the carnival"
+                  ]
+                },
+                { "type": "annotation", "text": "The artifact is a weapon that was pointed at the carnival from the outside." }
+              ]
+            },
+            { "type": "section_head", "text": "How To Stop It" },
+            {
+              "type": "discovery",
+              "variant": "dc-low",
+              "name": "Break the Artifact",
+              "content": [
+                { "type": "paragraph", "text": "Fastest. If the artifact is destroyed at any point during the Grand Performance — including during the Nightbloom — all creatures immediately die. The feeding cycle collapses instantly." },
+                { "type": "annotation", "text": "Violent magical backlash. May damage the surrounding area." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "Remove or Destroy the Insert",
+              "content": [
+                { "type": "paragraph", "text": "If the party can disassemble the artifact carefully, they can remove the inserted object and destroy it separately. This ends the feeding cycle and preserves the original artifact — which is genuinely valuable and not evil." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "Sever the Resonance",
+              "content": [
+                { "type": "paragraph", "text": "Disrupt the music, lantern patterns, magical harmonics, or emotional amplification. This does not destroy the source but breaks the feeding cycle for the night — a temporary solution." }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "dc-low",
+      "title": "Phase One — Convoy Investigation",
+      "subtitle": "Missing supplies · Kobolds · Tunnels · Link to Eric",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            { "type": "section_head", "text": "Investigation Trail" },
+            {
+              "type": "discovery",
+              "variant": "dc-low",
+              "name": "What the Party Discovers",
+              "content": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Damaged caravans and missing merchants",
+                    "Kobold activity in tunnel systems beneath the region",
+                    "Strange infestations near tunnel entrances",
+                    "Increasingly disturbing signs of corruption deeper in"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "teal",
+              "name": "Link to Eric Huwithakay",
+              "content": [
+                { "type": "paragraph", "text": "The same tunnels and kobold activity that diverted the carnival's convoys are what Eric traced in his investigation. His charcoal map X marks point toward the same tunnel entrances. His final note confirms kobolds and \"someone paying them.\"" },
+                { "type": "paragraph", "text": "Eric likely died investigating the tunnel entrance. The carnival's missing convoys and Eric's investigation are the same thread." }
+              ]
+            }
+          ],
+          "right": [
+            { "type": "section_head", "text": "Purposes of Phase One" },
+            {
+              "type": "discovery",
+              "variant": "dc-low",
+              "name": "What This Arc Accomplishes",
+              "content": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Establishes trust with Chaelynn and carnival characters",
+                    "Introduces combat via kobolds and tunnel encounters",
+                    "Grounds the mystery in practical, solvable stakes",
+                    "Ties the carnival's problems to the regional conspiracy",
+                    "Slowly introduces early pallor symptoms through environmental detail"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "Phase One Resolution",
+              "content": [
+                { "type": "paragraph", "text": "The party recovers the convoy and restores the carnival's supplies. This victory is real and earned. The carnival can finally reopen fully." },
+                { "type": "annotation", "text": "And in doing so, the party unknowingly enables Phase Two." }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "Early Perception Checks — Before the Show",
+      "subtitle": "Subdued carnival · Growing unease · Click rows for detail",
+      "open": false,
+      "content": [
+        { "type": "paragraph", "text": "<em>These checks apply while the carnival is still in Phase One — before the convoy returns and the full show begins. Horror elements remain mostly hidden.</em>" },
+        {
+          "type": "discovery",
+          "variant": "dc-low",
+          "name": "DC 10 · Exhausted Workers · Perception",
+          "content": [
+            { "type": "paragraph", "text": "Several performers appear unusually tired despite trying to remain cheerful. Their smiles don't quite reach their eyes. When asked, they deflect with practiced ease — but the exhaustion is bone-deep, not merely physical. This is not the tiredness of travel." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-low",
+          "name": "DC 10 · Conserved Lanterns · Perception",
+          "content": [
+            { "type": "paragraph", "text": "Many lanterns remain intentionally dimmed or extinguished even after sunset. The carnival feels darker than it should. Workers claim oil is being rationed due to delayed supply convoys — which is true, but there is a secondary reason: some workers are uncomfortable with how the shadows move near brightly lit areas." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-low",
+          "name": "DC 11 · Lantern Insects · Perception",
+          "content": [
+            { "type": "paragraph", "text": "Pale moths and thin-bodied insects gather around lanterns in unusually large numbers. Not a nuisance swarm — something more deliberate. They cluster in overlapping rings around each light source, barely moving. They do not scatter when disturbed." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-low",
+          "name": "DC 12 · Uneven Shadows · Perception",
+          "content": [
+            { "type": "paragraph", "text": "Shadows occasionally seem delayed by a fraction of a second when people move through lantern light. It is subtle — the kind of thing you notice in peripheral vision but cannot confirm when looking directly. The effect is more pronounced near the sealed main tent." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-low",
+          "name": "DC 12 · Closed Tent Hum · Perception",
+          "content": [
+            { "type": "paragraph", "text": "A faint rhythmic hum emanates from the sealed main tent after dark. It is not mechanical. It has no consistent musical pitch — but it is rhythmic, like breathing. Pressing an ear to the canvas makes it stop immediately, as though something inside noticed." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-mid",
+          "name": "DC 13 · Strange Smell · Perception",
+          "content": [
+            { "type": "paragraph", "text": "Some areas smell faintly earthy and damp beneath the carnival perfumes and cooking fires. The smell is strongest near the main tent and near shaded wagon interiors. It is the smell of deep tunnels — of soil that has not seen light in a long time." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-mid",
+          "name": "DC 13 · Nervous Performers · Perception / Insight",
+          "content": [
+            { "type": "paragraph", "text": "Several performers become visibly uncomfortable when discussing reopening the full nighttime show. They change the subject quickly, joke it off, or claim they 'just want the supplies to arrive first.' Their discomfort is genuine — but they cannot or will not articulate why." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-mid",
+          "name": "DC 14 · Performer Spacing Out · Perception / Insight",
+          "content": [
+            { "type": "paragraph", "text": "A performer pauses mid-conversation and stares blankly into space for three to five seconds before continuing normally, as though nothing happened. If pressed, they seem genuinely unaware it occurred. This is an early symptom of memory gap formation — a sign the pallor is already present in some workers." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-mid",
+          "name": "DC 14 · Pale Moths at Main Tent · Perception",
+          "content": [
+            { "type": "paragraph", "text": "Large clusters of pale moths gather specifically around the closed main tent. Unlike the insects near the lanterns, these do not move at all — they cling to the canvas in overlapping layers, perfectly still, all oriented toward the interior. The pattern they form almost resembles a face." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-high",
+          "name": "DC 15 · Pulsing Light from Tent · Perception",
+          "content": [
+            { "type": "paragraph", "text": "A faint pulse of dim light briefly shines beneath the tent canvas — once, slowly, like a heartbeat. It does not repeat immediately. If the party waits and watches, it pulses again approximately 40 seconds later. The light shifts between pale gold and a deep, bruised purple." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-high",
+          "name": "DC 16 · Worker Collapse Near Tent · Perception",
+          "content": [
+            { "type": "paragraph", "text": "A nearby carnival worker briefly becomes dizzy or collapses near the main tent. They recover quickly and insist they are fine — just overworked. This is partially true. But the collapse occurred within fifteen feet of the tent's main entrance, and the worker's skin is noticeably paler than it was earlier in the day." }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Phase Two — The Pallor",
+      "subtitle": "The affliction · The insects · Nighttime symptoms",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            { "type": "section_head", "text": "The Affliction" },
+            {
+              "type": "discovery",
+              "variant": "dc-high",
+              "name": "Pallor Symptoms",
+              "content": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Exhaustion and emotional numbness",
+                    "Insomnia and pale skin",
+                    "Memory gaps and strange dreams",
+                    "Increasing fear of darkness",
+                    "Faint dark discoloration beneath the skin — branching from the chest"
+                  ]
+                },
+                { "type": "annotation", "text": "\"The shadows feel hungry.\"" }
+              ]
+            },
+            { "type": "section_head", "text": "Nighttime Perception Checks" },
+            { "type": "paragraph", "text": "<em>These apply during the nighttime carnival once Phase Two has begun — before the Grand Performance.</em>" },
+            {
+              "type": "discovery",
+              "variant": "dc-high",
+              "name": "DC 15 · Insects Avoid Food · Perception / Investigation",
+              "content": [
+                { "type": "paragraph", "text": "The insects seem drawn toward people and darkness rather than spilled food or refuse. A careful observer notices they cluster most densely around workers showing pallor symptoms — and almost completely ignore unafflicted individuals nearby. They are not feeding on food. They are feeding on something else." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-high",
+              "name": "DC 16 · Bruising Beneath Skin · Medicine / Perception",
+              "content": [
+                { "type": "paragraph", "text": "Afflicted workers display faint dark discoloration beneath the skin — not bruising from impact, but something spreading outward from the chest and collarbone in slow, branching patterns. In lantern light the patterns briefly appear to pulse. Workers are not aware of the discoloration." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "DC 17 · Fear of Darkness · Insight",
+              "content": [
+                { "type": "paragraph", "text": "Several workers refuse to walk through unlit sections of the carnival alone. One quietly admits: 'It is like something is watching from the dark parts. Something that knows you.' This is a late-stage pallor symptom — the creature inside is becoming aware and is pushing instinctive fear through its host's nervous system." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "DC 18 · Insect Formations · Arcana / Investigation",
+              "content": [
+                { "type": "paragraph", "text": "The insects gather into strange spirals and geometric clusters on wagon walls and canvas surfaces. A DC 18 Arcana check identifies faint resonance patterns — the formations mirror the harmonic structure of the artifact's energy field. The insects are orienting themselves relative to the artifact's pulse." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "DC 19 · Missing Time · Insight / Investigation",
+              "content": [
+                { "type": "paragraph", "text": "A worker claims to have lost several hours unexpectedly — they remember working near the main tent at midday, then it was evening. No memory of the interval. The worker is not lying and not drunk. Advanced pallor: the creature inside is consuming contiguous memory, possibly using the gaps to act independently through its host." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "DC 20 · Movement Beneath Skin · Perception / Medicine",
+              "content": [
+                { "type": "paragraph", "text": "Tiny pale insects briefly move beneath an afflicted person's skin before disappearing again. The motion is unmistakable — a small ridge tracking just under the surface, moving with apparent intention, then gone. The host does not react. They cannot feel it. The creature is already deeply integrated with the host's nervous system." }
+              ]
+            }
+          ],
+          "right": [
+            { "type": "section_head", "text": "The Insects" },
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "Behavior &amp; Presence",
+              "content": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Moths, beetles, thin-bodied crawlers, parasitic entities",
+                    "Gather near sleeping areas, shaded wagons, lanterns, emotionally charged spaces",
+                    "Drawn toward people and darkness — not food",
+                    "Behave unnaturally: geometric clustering, unnatural stillness",
+                    "Do not burn when touching open flame near the artifact",
+                    "In late stage: move beneath afflicted skin"
+                  ]
+                }
+              ]
+            },
+            { "type": "section_head", "text": "The Pallor — Key GM Notes" },
+            {
+              "type": "discovery",
+              "variant": "teal",
+              "name": "Why Is This Happening Now?",
+              "content": [
+                { "type": "paragraph", "text": "The artifact is not new. The pallor is. A perceptive party should notice this contradiction and ask why the symptoms are recent." },
+                { "type": "paragraph", "text": "The answer connects to the artifact's modification — something was inserted into it recently, and the pallor has been worsening since. Workers who spend the most time near the artifact are the most afflicted." }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "The Grand Performance — Opening Night",
+      "subtitle": "Act list · Magnus's warning · The Nightbloom · The outbreak",
+      "open": false,
+      "content": [
+        { "type": "section_head", "text": "Center Ring Acts — Main Show" },
+        { "type": "paragraph", "text": "<em>Acts rotate throughout the night. Each act includes GM notes on what the party can observe.</em>" },
+        {
+          "type": "discovery",
+          "variant": "blood",
+          "name": "Act 1 · The Ember Choir · Center Ring",
+          "content": [
+            { "type": "paragraph", "text": "Fire performers who sing in eerie harmony while breathing flame. The act opens the show — lanterns across the carnival ignite in sequence as the Ember Choir takes the stage, their voices blending into something that feels almost devotional." },
+            { "type": "paragraph", "text": "This is when Magnus pulls the party aside. He appears at their shoulder during the crowd's first burst of applause, speaking low and urgent. He has noticed the artifact responding to the crowd's emotion and wants them to look at it closely — but Chaelynn is watching from the wings, and 'you cannot stop the show.'" },
+            { "type": "annotation", "text": "DC 10 — Perception: The lanterns ignite with unnatural synchronization, almost like breathing. DC 12 — Perception: A faint low-frequency hum from the artifact, felt in the chest more than heard. DC 14 — Perception: Whenever the artifact brightens, afflicted workers momentarily appear worse — paler, briefly unfocused." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "blood",
+          "name": "Act 2 · The Wheel of Blades · Center Ring",
+          "content": [
+            { "type": "paragraph", "text": "A knife thrower spins a blindfolded assistant on a massive wheel — and the assistant moves... just slightly. Enough to make it feel wrong. The crowd gasps with each throw." },
+            { "type": "paragraph", "text": "The party has Act 2 to begin investigating the artifact. If they approach it during this act, describe it humming faintly, the external casing showing subtle tool marks on close inspection (DC 14 Investigation). The crowd is too focused on the Wheel of Blades to notice the party moving through the tent's edges." },
+            { "type": "annotation", "text": "DC 13 — Perception: Several audience members stare at the artifact rather than the act, briefly entranced. DC 15 — Arcana: Thin strands of dim light drift from the crowd toward the artifact during sustained gasps." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "blood",
+          "name": "Act 3 · The Moonline Walker · Center Ring",
+          "content": [
+            { "type": "paragraph", "text": "A performer walks impossibly high wires with nothing visible holding him up. He moves with the slow, dreaming confidence of someone who has forgotten gravity is a rule." },
+            { "type": "paragraph", "text": "This is the party's clearest window to examine or attempt to interfere with the artifact. The crowd's attention is fully upward. A DC 17 Arcana check during this act reveals the artifact's internal modification — the magical signature is misaligned, and something inside it does not belong." },
+            { "type": "annotation", "text": "DC 15 — Perception: The Moonline Walker pauses mid-wire and stares at the artifact for a full three seconds before continuing. He shows no sign of remembering it afterward. DC 16 — Perception: Pale moths gather around the artifact's casing and do not burn when contacting nearby flames." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "blood",
+          "name": "Act 4 · Garrock's Distant Cousin (The Stonebreaker) · Center Ring",
+          "content": [
+            { "type": "paragraph", "text": "A massive figure shatters boulders with his fists to thunderous crowd response. The act is raw, loud, and visceral — the crowd roars with each impact." },
+            { "type": "paragraph", "text": "The emotional energy peaks during the Stonebreaker's act. The artifact brightens noticeably with each crowd roar. If the party has been watching it, they will see it physically react — pulsing in time with applause." },
+            { "type": "annotation", "text": "DC 14 — Perception: Several workers near the artifact simultaneously flinch when the crowd roars, as though the sound physically hurts them. DC 16 — Perception: Veins of pale light briefly travel from two afflicted workers toward the artifact during the loudest crowd response." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "blood",
+          "name": "Act 5 · Seraphine and the Thousand Coils · Center Ring",
+          "content": [
+            { "type": "paragraph", "text": "Seraphine dances with a massive serpent that never blinks. The act is hypnotic — slow, silent, deeply unsettling in a way the crowd cannot name. The serpent watches the audience." },
+            { "type": "paragraph", "text": "The last act before the Nightbloom. If the party has not yet acted on the artifact, this is their final window. Seraphine's act produces a different kind of emotional response from the crowd — not joy or excitement but a deep, drifting unease that the artifact feeds on just as readily." },
+            { "type": "annotation", "text": "DC 15 — Perception: The serpent's gaze tracks toward the artifact repeatedly, not toward the crowd. DC 17 — Arcana: The artifact's hum shifts in frequency during this act — lower, slower, almost anticipatory. DC 16 — Perception: Three workers near the stage simultaneously touch their chests and look confused, as though they felt something move inside them." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "blood",
+          "name": "Act 6 · The Levitationist's Secret · Center Ring",
+          "content": [
+            { "type": "paragraph", "text": "A robed figure floats mid-air... but the shadows on the ground suggest something else entirely is holding them up. The act is brief and deeply unsettling." },
+            { "type": "paragraph", "text": "This act may or may not appear on the night depending on your pacing. It can serve as an additional window for the party or be cut if time is short. The shadow element makes it naturally horror-adjacent." }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-top",
+          "name": "UNLISTED · The Nightbloom · Unlisted Finale — The Outbreak",
+          "content": [
+            { "type": "paragraph", "text": "An unlisted act — added by Chaelynn to celebrate the convoy's return. A solo fire dancer who performs without music." },
+            { "type": "paragraph", "text": "The act begins in total silence. She dances with a single torch that splits into many as the performance builds, until the entire center ring is ablaze in coordinated fire that moves as though alive. The crowd is hypnotized rather than merely entertained." },
+            { "type": "paragraph", "text": "At its peak, the flames briefly form shapes — faces, wings, something with too many limbs." },
+            { "type": "annotation", "text": "IF THE ARTIFACT HAS NOT BEEN DESTROYED: The artifact reaches maximum brightness. The performer freezes mid-bow. Her body convulses. The creatures erupt from inside her — and simultaneously from two other afflicted workers in the crowd. The flames keep moving without her. Initially, some audience members think it is part of the act. Then blood hits the stage. Panic spreads. Panic feeds the artifact further." },
+            { "type": "annotation", "text": "IF THE ARTIFACT IS DESTROYED DURING THE NIGHTBLOOM: All creatures die immediately — mid-emergence. The feeding cycle collapses. The flames go out. The performer collapses but survives." },
+            { "type": "annotation", "text": "IF THE ARTIFACT WAS DESTROYED BEFORE THE NIGHTBLOOM: The Nightbloom is simply a fire act. The performer is safe. The crowd is awed. The night ends beautifully." }
+          ]
+        },
+        { "type": "divider" },
+        { "type": "section_head", "text": "The Creatures — If The Outbreak Occurs" },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "What Emerges",
+              "content": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Malformed, newly born, insectoid",
+                    "Wet, screaming, unstable — not elegant monsters",
+                    "Something unfinished. Something wrong.",
+                    "Three hosts: the Nightbloom performer + two workers in the crowd"
+                  ]
+                },
+                { "type": "annotation", "text": "If the artifact is destroyed at any point, all creatures die instantly." }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "discovery",
+              "variant": "dc-high",
+              "name": "Encounter Objectives",
+              "content": [
+                {
+                  "type": "list",
+                  "items": [
+                    "Protect civilians from panicking crowd",
+                    "Prevent further panic (which feeds the artifact if intact)",
+                    "Fight the emerged creatures",
+                    "Destroy or sever the artifact to end the cycle"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "gold",
+      "title": "Encounter Objectives &amp; Possible Endings",
+      "subtitle": "Three resolution paths · Aftermath",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            { "type": "section_head", "text": "Resolution Paths" },
+            {
+              "type": "discovery",
+              "variant": "dc-low",
+              "name": "Destroy the Artifact",
+              "content": [
+                { "type": "paragraph", "text": "Fastest. All creatures die immediately. Violent magical backlash — may damage part of the carnival. Definitive but costly. Chaelynn will grieve the artifact but understand." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "Remove the Insert",
+              "content": [
+                { "type": "paragraph", "text": "If the party disassembled the artifact earlier, they can destroy the inserted object specifically. This ends the cycle and preserves the original artifact — which is genuinely valuable and was never evil. The cleanest ending." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "Sever the Resonance",
+              "content": [
+                { "type": "paragraph", "text": "Disrupt the music, lanterns, or emotional amplification. Breaks the feeding cycle for the night but does not destroy the source. A temporary fix that buys time for a permanent solution." }
+              ]
+            }
+          ],
+          "right": [
+            { "type": "section_head", "text": "Aftermath" },
+            {
+              "type": "discovery",
+              "variant": "teal",
+              "name": "Chaelynn",
+              "content": [
+                { "type": "paragraph", "text": "Whatever happens to the artifact, Chaelynn's reaction should reflect what the party has shown her. If they were honest with her, she is shaken but grateful. If they destroyed the artifact without explanation, she is devastated and furious before she understands." },
+                { "type": "paragraph", "text": "She will want to know who modified the artifact — and why. This thread points outward toward the larger regional conspiracy." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "teal",
+              "name": "The Larger Thread",
+              "content": [
+                { "type": "paragraph", "text": "The same faction engineering regional instability between Elkenquay and Fastingbreak may have seeded the carnival with the artifact modification. The convoy disruption and the artifact modification may share a single origin. This is a thread for further investigation beyond Hollowgate." }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "Links to the Hollowgate Investigation",
+      "subtitle": "Eric · Kobolds · Convoys · Vanya · Jeffrey's reward",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            { "type": "section_head", "text": "Shared Threads" },
+            {
+              "type": "discovery",
+              "variant": "teal",
+              "name": "The Tunnel Connection",
+              "content": [
+                { "type": "paragraph", "text": "The kobold tunnels that diverted the carnival's convoys are the same tunnels Eric traced. His X marks align with tunnel entrances near the city. His final note confirms kobolds and \"someone paying them.\" The carnival's missing convoys are part of the same diversion operation." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "teal",
+              "name": "The 400gp Reward",
+              "content": [
+                { "type": "paragraph", "text": "Jeffrey offered 400gp for the return of the latest missing convoy. Recovering the carnival's supplies and recovering the convoy for Jeffrey may be the same objective — or closely linked ones that reward the party twice for the same investigation." }
+              ]
+            }
+          ],
+          "right": [
+            { "type": "section_head", "text": "Complications" },
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "Vanya's Mission — Still Active",
+              "content": [
+                { "type": "paragraph", "text": "Vanya's faction briefing refers to \"the current gate scribe\" as the target — not Eric. If the party is investigating the carnival arc, Vanya's mission is still running in parallel. Her target is still alive. The carnival arc may bring both threads to a head simultaneously." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "Who Modified the Artifact?",
+              "content": [
+                { "type": "paragraph", "text": "The artifact was modified recently — within the last few months. The same window as the convoy disruptions. Whether the artifact modification and the convoy diversion were carried out by the same actor is an open question — and answering it points toward the larger conspiracy driving the Elkenquay/Fastingbreak tensions." }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "The Pallor Brood — Encounter Overview",
+      "subtitle": "Phase structure · Creature roles · Full encounter reference",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            { "type": "section_head", "text": "Phase One — The False Horror" },
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "The Velvet Husk",
+              "content": [
+                { "type": "paragraph", "text": "A performer whose transformation completed incorrectly. Fast-moving skirmisher. Flickers in dim light, teleports through shadows, pressures isolated targets. The party's first instinct is to focus on this — it is the most visible threat." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-mid",
+              "name": "The Gorged Lanternling",
+              "content": [
+                { "type": "paragraph", "text": "A bloated larval feeder swollen with emotional energy. Slow at first, then frantic below half HP. Area denial, crowd disruption, and a Death Burst that triggers the phase transition when it dies." }
+              ]
+            },
+            { "type": "annotation", "text": "When either creature dies — the artifact pulses. The Broodmother tears into the world." }
+          ],
+          "right": [
+            { "type": "section_head", "text": "Phase Two — The True Horror" },
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "The Lantern Broodmother",
+              "content": [
+                { "type": "paragraph", "text": "The true source of the pallor. Battlefield controller and emotional parasite. Feeds on frightened creatures, spawns mites, drags targets into bite range. Slow but sustained. The crowd's panic literally heals it." }
+              ]
+            },
+            {
+              "type": "discovery",
+              "variant": "dc-high",
+              "name": "Pallid Mites",
+              "content": [
+                { "type": "paragraph", "text": "Three appear at transition. More can be spawned. Individually trivial — in groups they stack disadvantage on Wisdom saves, compounding every other threat on the battlefield." }
+              ]
+            },
+            { "type": "section_head", "text": "The Nuclear Option" },
+            {
+              "type": "discovery",
+              "variant": "dc-top",
+              "name": "Destroy the Artifact",
+              "content": [
+                { "type": "paragraph", "text": "At any point during the encounter — all creatures die instantly. The party may race for it mid-combat if they piece it together. AC 12, HP 15. Magical backlash: DC 12 Dex save, 2d6 force in 10 ft radius." }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "link_row",
+          "links": [
+            { "href": "moonlit_mirage_encounter.html", "text": "Full Encounter Reference →", "color": "blood" }
+          ]
+        }
+      ]
+    }
+  ],
+  "conclusion": {
+    "title": "GM Summary — The Emotional Core",
+    "items": [
+      "The carnival arc works because the players' success causes the horror. This must be earned, not telegraphed.",
+      "Magnus is the party's early warning — he notices something wrong but cannot stop the show alone. Give him a quiet, urgent moment during Act 1.",
+      "The artifact is innocent. What was done to it is not. This distinction matters for Chaelynn and for the larger conspiracy.",
+      "The kobold tunnels tie Phase One directly to the Hollowgate investigation. Same conspiracy, two different faces.",
+      "Phase Two should feel like a betrayal of the joy the players helped create. That is the point."
+    ]
+  }
+}
