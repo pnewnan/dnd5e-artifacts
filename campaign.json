@@ -1785,7 +1785,55 @@
       "key_artifacts": ["heart-seed"],
       "key_locations": ["chronewood", "hollowgate", "dunmore"],
       "campaign_function": "Gives the new leshy character a personal reason to join the party that is not immediately resolved. Gives the party a reason to negotiate with the kobold chieftain. Gives Robyn a reason to travel with the party. Points the group naturally toward Dunmore. Turns the Heart Seed from a missing object into an active living presence. Creates a moral conflict instead of a simple theft recovery.",
-      "hooks_forward": "Hypha joins the party. Robyn accompanies as guide, beginning his arc of earned trust. The Heart Seed travels with Hypha — not as an object but as a presence. The arc's long resolution (the seed's name) waits until approximately level 7."
+      "hooks_forward": "Hypha joins the party. Robyn accompanies as guide, beginning his arc of earned trust. The Heart Seed travels with Hypha — not as an object but as a presence. The arc's long resolution (the seed's name) waits until approximately level 7.",
+      "family_container": true,
+      "children": ["planting-the-seed", "dunmore-heart-seed", "dunmore-greenhouse-encounter"],
+      "location_chips": ["hollowgate", "dunmore"]
+    },
+    {
+      "id": "planting-the-seed",
+      "title": "Planting the Seed",
+      "act": "prologue",
+      "arc_tags": ["prologue", "heart-seed-path"],
+      "location": "hollowgate",
+      "arc_ref": "missing-convoys",
+      "summary": "Kobold fool-claws steal the Heart Seed from the Chronewood, mistaking it for a dragon egg. The chieftain orders it sold fast. Robyn sells it to Auntie Tamsin Vale in Dunmore. Hypha follows the absence out of the grove and onto the road. These events unfold inside the Missing Convoys arc.",
+      "key_npcs": ["hypha", "robyn", "kobold-chieftain", "auntie-tamsin-vale"],
+      "key_artifacts": ["heart-seed"],
+      "key_locations": ["chronewood", "hollowgate"],
+      "gm_notes": "The party learns most of this through Robyn's confession and the chieftain's explanation — not by witnessing it directly. Treat these beats as the underlying truth being slowly revealed, not as scenes the party plays through.",
+      "beats": [
+        {
+          "id": "pts-theft",
+          "label": "The Theft",
+          "type": "scene",
+          "steps": [
+            { "label": "Kobold fool-claws steal the Heart Seed — mistaken for a dragon egg", "type": "scene", "npc_refs": ["kobold-chieftain"] },
+            { "label": "The chieftain recognizes forest magic immediately — orders it sold and removed", "type": "scene", "npc_refs": ["kobold-chieftain"] },
+            { "label": "Robyn sells the seed to Auntie Tamsin Vale — good price, no stabbing, he thinks this is success", "type": "scene", "npc_refs": ["robyn", "auntie-tamsin-vale"] }
+          ]
+        },
+        {
+          "id": "pts-captivity",
+          "label": "The Seed Awakens in Fear",
+          "type": "scene",
+          "steps": [
+            { "label": "Tamsin places the seed in her greenhouse — what begins as miracle becomes horror", "type": "scene", "npc_refs": ["auntie-tamsin-vale"] },
+            { "label": "The seed's fear expresses as biology — the greenhouse becomes a living ecosystem", "type": "revelation" },
+            { "label": "Tamsin understands too late — attempts to move it to open soil, does not reach it in time", "type": "scene", "npc_refs": ["auntie-tamsin-vale"] }
+          ]
+        },
+        {
+          "id": "pts-hypha",
+          "label": "Hypha on Walkabout",
+          "type": "revelation",
+          "steps": [
+            { "label": "Hypha leaves the Chronewood tracking the seed's absence — she believes she is chasing a theft", "type": "scene", "npc_refs": ["hypha"] },
+            { "label": "The Chronewood arranged the theft deliberately — Hypha does not know this", "type": "revelation" },
+            { "label": "Hypha finds the party on the road. Their path and her path are the same path.", "type": "scene", "npc_refs": ["hypha"] }
+          ]
+        }
+      ]
     },
     {
       "id": "dunmore-heart-seed",
@@ -1818,7 +1866,158 @@
       },
       "robyn_beat": "Robyn sees what happened to Tamsin. This is not a good trade. This is bad trade forever. This is the moment Robyn becomes more than a guide.",
       "emotional_core": "Hypha does not recover an artifact. She begins a relationship. The party watches someone they cannot help absorb something they cannot see.",
-      "gm_notes": "This encounter teaches the lesson the Blackglass Laboratory will return to: fighting harder is not the solution. The party learns early that some problems require someone other than them to solve. Hypha is that someone here."
+      "gm_notes": "This encounter teaches the lesson the Blackglass Laboratory will return to: fighting harder is not the solution. The party learns early that some problems require someone other than them to solve. Hypha is that someone here.",
+      "beats": [
+        {
+          "id": "dhs-market",
+          "label": "Beat One — The Market",
+          "type": "scene",
+          "steps": [
+            {
+              "label": "Robyn navigates by sensory memory — wet dirt, flower candy, old plant-lady smell",
+              "type": "scene",
+              "npc_refs": ["robyn"]
+            },
+            {
+              "label": "Tamsin's cart is closed — strange plants flourishing unnaturally around it",
+              "type": "discovery"
+            },
+            {
+              "label": "Vendors describe Tamsin warmly — she hasn't been seen in days",
+              "type": "dialogue",
+              "npc_refs": ["auntie-tamsin-vale"]
+            },
+            {
+              "label": "Brant Vey — last delivery was to a greenhouse outside town",
+              "type": "dialogue"
+            },
+            {
+              "label": "Party marks the greenhouse on their map",
+              "type": "scene"
+            }
+          ]
+        },
+        {
+          "id": "dhs-cottage",
+          "label": "Beat Two — The Cottage",
+          "type": "scene",
+          "steps": [
+            {
+              "label": "Tamsin's cart at the cottage door — something was dragged, not walked",
+              "type": "discovery"
+            },
+            {
+              "label": "Open door. Broken basket. Kettle boiled dry. Tamsin's journal on the table.",
+              "type": "discovery"
+            },
+            {
+              "label": "Cottage creepers — vines animate when provoked (DC 11 save)",
+              "type": "encounter"
+            },
+            {
+              "label": "Tamsin's journal: miracle → horror → realization → final note mid-sentence",
+              "type": "discovery",
+              "npc_refs": ["auntie-tamsin-vale"]
+            },
+            {
+              "label": "Greenhouse key found. Herbicide sprayer and Tamsin's gloves.",
+              "type": "discovery"
+            },
+            {
+              "label": "Robyn at the threshold — 'This is not good trade. This is bad trade forever.'",
+              "type": "revelation",
+              "npc_refs": ["robyn"]
+            }
+          ]
+        },
+        {
+          "id": "dhs-greenhouse",
+          "label": "Beat Three — The Greenhouse",
+          "type": "encounter",
+          "steps": [
+            {
+              "label": "Five rings of plant defense — endless sprouting, the encounter cannot be won by killing",
+              "type": "encounter"
+            },
+            {
+              "label": "Party perception check — the plants have not attacked Hypha",
+              "type": "discovery",
+              "npc_refs": ["hypha"]
+            },
+            {
+              "label": "Party perception check — the plants nearest her are defending her",
+              "type": "revelation",
+              "npc_refs": ["hypha"]
+            },
+            {
+              "label": "Party perception check — the seed is calling her",
+              "type": "revelation",
+              "npc_refs": ["hypha", "heart-seed"]
+            },
+            {
+              "label": "Hypha reaches the center and holds the seed — three rounds",
+              "type": "encounter",
+              "npc_refs": ["hypha"]
+            },
+            {
+              "label": "Round 1: Fear — WIS DC 14, Frightened. Round 2: Grief — 2d6 psychic. Round 3: Recognition — greenhouse stills.",
+              "type": "encounter"
+            },
+            {
+              "label": "Tamsin's body found beneath pale vines — one hand still extended toward the center",
+              "type": "revelation",
+              "npc_refs": ["auntie-tamsin-vale"]
+            },
+            {
+              "label": "The seed chooses to go with Hypha. Hypha does not recover an artifact. She begins a relationship.",
+              "type": "revelation",
+              "npc_refs": ["hypha"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dunmore-greenhouse-encounter",
+      "title": "Tamsin's Glasshouse",
+      "act": "prologue",
+      "arc_tags": ["prologue", "heart-seed-path", "dunmore-arc"],
+      "location": "dunmore",
+      "href": "prologue/dunmore/dunmore_greenhouse_encounter.html",
+      "pages": [
+        { "label": "Greenhouse Encounter", "href": "prologue/dunmore/dunmore_greenhouse_encounter.html" }
+      ],
+      "summary": "Five rings of carnivorous plant defense. The encounter cannot be won by killing — new growth refills every gap. Phase Two: Hypha holds the Heart Seed and all plant damage reflects onto her. The party must earn trust instead of victory. Robyn's confession. The greenhouse finally stills.",
+      "key_npcs": ["hypha", "robyn", "auntie-tamsin-vale"],
+      "key_artifacts": ["heart-seed"],
+      "key_locations": ["dunmore"],
+      "gm_notes": "Phase One teaches the lesson. Phase Two enforces it. The fear rating is Hypha's to answer honestly — the greenhouse responds to what she actually feels, not what the GM decides. The final calm is not triumphant. It is completed.",
+      "beats": [
+        {
+          "id": "dge-phase-one",
+          "label": "Phase One — The Lesson",
+          "type": "encounter",
+          "steps": [
+            { "label": "Five rings of plant defense — new growth appears at the end of every round", "type": "encounter" },
+            { "label": "Killing plants creates more plants — the party must feel the futility before the solution emerges", "type": "revelation" },
+            { "label": "Tamsin's body in the Hunger Beds — one hand still extended toward the center", "type": "discovery", "npc_refs": ["auntie-tamsin-vale"] },
+            { "label": "Hypha's internal checks — the plants guide rather than attack her", "type": "revelation", "npc_refs": ["hypha"] },
+            { "label": "Party perception: the plants are defending Hypha. The seed is calling her.", "type": "discovery", "npc_refs": ["hypha"] }
+          ]
+        },
+        {
+          "id": "dge-phase-two",
+          "label": "Phase Two — The Fear Communion",
+          "type": "revelation",
+          "steps": [
+            { "label": "Hypha holds the Heart Seed — all plant damage reflects onto her", "type": "revelation", "npc_refs": ["hypha"] },
+            { "label": "Fear rating: the greenhouse responds to what Hypha actually feels", "type": "scene", "npc_refs": ["hypha"] },
+            { "label": "Robyn lowers himself to the greenhouse floor. 'Robyn sold you. Robyn is sorry.'", "type": "dialogue", "npc_refs": ["robyn"] },
+            { "label": "The party earns trust — drop weapons, extinguish fire, step back, let Hypha decide", "type": "scene" },
+            { "label": "Final calm — the greenhouse is alive, wounded, watchful. But it is no longer fighting.", "type": "revelation", "npc_refs": ["hypha"] }
+          ]
+        }
+      ]
     }
   ],
   "creatures": [
