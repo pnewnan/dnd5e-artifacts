@@ -284,9 +284,17 @@
 
       case 'portrait_float': {
         var pcls = b.side === 'left' ? 'portrait-float-left' : 'portrait-float';
-        return '<div class="' + pcls + '">'
+        var pwStyle = b.width ? ' style="max-width:' + txt(b.width) + '"' : '';
+        return '<div class="' + pcls + '"' + pwStyle + '>'
           + '<img src="' + txt(b.src) + '" alt="' + esc(b.alt || '') + '">'
           + (b.caption ? '<div class="qr-label" style="margin-top:0.3rem;">' + txt(b.caption) + '</div>' : '')
+          + '</div>';
+      }
+
+      case 'scene_image': {
+        return '<div class="scene-image">'
+          + '<img src="' + txt(b.src) + '" alt="' + esc(b.alt || '') + '">'
+          + (b.caption ? '<div class="scene-caption">' + txt(b.caption) + '</div>' : '')
           + '</div>';
       }
 

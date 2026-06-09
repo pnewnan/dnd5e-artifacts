@@ -1,0 +1,430 @@
+{
+  "meta": {
+    "gm_label": "GM Reference · Dunmore · Greenhouse Encounter",
+    "title": "Tamsin's Glasshouse",
+    "subtitle": "Five rings · Phase One: it cannot be won by killing · Phase Two: the fear communion"
+  },
+  "sections": [
+    {
+      "color": "forest",
+      "title": "The Greenhouse — Overview",
+      "subtitle": "Rings of defense · Endless sprouting · The lesson arrives early",
+      "open": true,
+      "content": [
+        {
+          "type": "scene_image",
+          "src": "../heart_seed/greenhouse.png",
+          "alt": "The overgrown greenhouse interior with carnivorous plants and the Heart Seed glowing at center",
+          "caption": "\"Every plant in the room leans toward it.\""
+        },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Structure — Five Rings" },
+                { "type": "paragraph", "text": "The greenhouse has reorganized itself into concentric rings around the buried Heart Seed. Each ring expresses a different instinct:" },
+                { "type": "list", "items": [
+                  "<strong>Ring 1 — Glasshouse Briars:</strong> Keep threats out. Seals all obvious entry points.",
+                  "<strong>Ring 2 — The Lure Path:</strong> Confuse and slow. False voices, mirror orchids, sticky sundew ground.",
+                  "<strong>Ring 3 — The Hunger Beds:</strong> Bite and trap. Snapblooms, pitcher lilies, lashing vines.",
+                  "<strong>Ring 4 — Strangling Roots:</strong> Restrain and separate. Widowroot creepers, root curtains, sealed paths.",
+                  "<strong>Ring 5 — The Heartroot Cage:</strong> The seed itself. Direct extensions of the Heart Seed's panic."
+                ]},
+                { "type": "heading", "level": 2, "text": "Phase One — The Greenhouse Fights Back" },
+                { "type": "discovery", "variant": "dc-top", "name": "This Encounter Cannot Be Won by Killing", "content": [
+                  { "type": "paragraph", "text": "At the end of each round, new growth appears somewhere in the greenhouse. A Snapbloom sprouts from a cracked pot. Thornlash vines descend from the rafters. Widowroots rise around someone's boots. Glasshouse briars seal a path behind the party." },
+                  { "type": "paragraph", "text": "The new growths are not individually powerful, but they keep coming. The point is not to overwhelm with damage. The point is to show that the greenhouse cannot be cleared by killing every plant." },
+                  { "type": "annotation", "text": "The players should begin to realize: \"We cannot win this by mowing the lawn.\"" }
+                ]},
+                { "type": "discovery", "variant": "dc-mid", "name": "Sproutling Stat Block", "content": [
+                  { "type": "list", "items": [
+                    "<strong>AC:</strong> 10 &nbsp; <strong>HP:</strong> 3",
+                    "<strong>Attack:</strong> +3 to hit · 1d4 piercing or bludgeoning",
+                    "<strong>Special:</strong> If ignored, becomes a nuisance hazard. If killed, another may sprout next round."
+                  ]}
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Entering the Greenhouse" },
+                { "type": "discovery", "variant": "forest", "name": "Options to Get Inside", "content": [
+                  { "type": "list", "items": [
+                    "Use Tamsin's key (east latch — one door, does not remove briars)",
+                    "Cut only dead gray stems",
+                    "Have Hypha ask the briars to part (Sylvan or Terran)",
+                    "Let Robyn squeeze through a lower gap",
+                    "Open roof panels from outside",
+                    "Follow irrigation pipes to a side entrance"
+                  ]},
+                  { "type": "annotation", "text": "Hacking through violently: the plants notice this. It is not impossible — but it sets the tone before the party even enters." }
+                ]},
+                { "type": "heading", "level": 2, "text": "Gentle Approaches — Phase One" },
+                { "type": "discovery", "variant": "teal", "name": "Reduces Encounter Intensity", "content": [
+                  { "type": "list", "items": [
+                    "Speak with Plants or Sylvan/Terran speech",
+                    "Calm behavior, slow movement — Animal Handling equivalent",
+                    "Nature checks to read the ecosystem",
+                    "Druidic magic",
+                    "Opening vents or roof panels — letting fresh air in",
+                    "Stopping the alchemical irrigation system",
+                    "Offering a handful of real outside soil",
+                    "Letting Hypha move first, alone"
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "Tamsin's Body" },
+                { "type": "discovery", "variant": "dc-high", "name": "Found in the Hunger Beds", "content": [
+                  { "type": "narrative_block", "text": "Auntie Tamsin lies beneath a curtain of pale vines, almost gently arranged. White flowers have opened around her shoulders. One hand is still extended toward the center of the greenhouse. She made it further than the party might expect. She almost reached it." },
+                  { "type": "annotation", "text": "She was not trying to destroy it. She knew what it needed. She simply ran out of time." }
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "forest",
+      "title": "The Plant Catalogue",
+      "subtitle": "Eight species · Warning signs · Behavior · Counterplay",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Snapblooms — The Biters" },
+                {
+                  "type": "portrait_float",
+                  "src": "../heart_seed/snapbloom.png",
+                  "alt": "Purple carnivorous snapbloom flowers with toothed petals",
+                  "side": "right",
+                  "width": "260px"
+                },
+                { "type": "discovery", "variant": "dc-mid", "name": "Guard paths, doors, chokepoints", "content": [
+                  { "type": "paragraph", "text": "Large carnivorous flowers with hinged petals lined in thorn-like teeth. They stay still until a creature moves too close, then snap shut with brutal speed." },
+                  { "type": "list", "items": [
+                    "<strong>Warning:</strong> Petals slowly opening and closing · faint clicking · insect wings beneath them · sweet rotten smell",
+                    "<strong>Behavior:</strong> Bite and hold. Smaller roots tug at the victim's legs to keep them in place.",
+                    "<strong>Counterplay:</strong> Move slowly around them · toss food or a dead rat to trigger them · jam the jaws open with a tool · cut the stem from outside reach · calm with druidic magic"
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "Thornlash Vines — The Lashers" },
+                { "type": "discovery", "variant": "dc-mid", "name": "Punish speed and exposed movement", "content": [
+                  { "type": "paragraph", "text": "Hang from rafters, trellises, and overhead beams. Look like dead ropes until something moves beneath them. Then they strike like whips." },
+                  { "type": "list", "items": [
+                    "<strong>Warning:</strong> Vines hanging overhead · thorns angled downward like fishhooks · dead birds suspended in rafters · vines tightening when voices get loud",
+                    "<strong>Behavior:</strong> Lash, trip, hook, and drag toward other plants.",
+                    "<strong>Counterplay:</strong> Watch the ceiling · move beneath tables or shelves · pin vines with arrows or daggers · avoid shouting or sudden movement"
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "Widowroot Creepers — The Stranglers" },
+                { "type": "discovery", "variant": "dc-high", "name": "Restrain and pin", "content": [
+                  { "type": "paragraph", "text": "Pale, cordlike roots that move under soil and broken tiles. They do not strike fast. They coil. Drawn to ankles, wrists, and anything warm pressed close to the ground." },
+                  { "type": "list", "items": [
+                    "<strong>Warning:</strong> Pale roots shifting beneath soil · cracked tiles lifting · roots curled around chair legs · footprints slowly filling with rootlets",
+                    "<strong>Behavior:</strong> Grab, pull prone, constrict. Tighten when victims struggle.",
+                    "<strong>Counterplay:</strong> Stand on benches, tables, stone edging · cut carefully rather than hacking · pour salt, ash, or alcohol · steady pressure rather than frantic struggling"
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "Glasshouse Briars — The Barriers" },
+                { "type": "discovery", "variant": "dc-mid", "name": "Seal doors and paths", "content": [
+                  { "type": "paragraph", "text": "Thick thorned growths that seal entries and divide the greenhouse. The Heart Seed's scar tissue — they grow where it feels most threatened." },
+                  { "type": "list", "items": [
+                    "<strong>Warning:</strong> Doorways sealed with thorny knots · thorns wet with green sap · old paths swallowed by growth",
+                    "<strong>Behavior:</strong> Block passage. Hacking violently: tighten, release thorns, alert the rest of the greenhouse.",
+                    "<strong>Counterplay:</strong> Find another route · cut only dead gray stems · have Hypha ask them to open · let Robyn crawl through gaps"
+                  ]}
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Pitcher Maw Lilies — The Digesters" },
+                {
+                  "type": "portrait_float",
+                  "src": "../heart_seed/pitcherplants.png",
+                  "alt": "Hanging pitcher plants with open mouths in the overgrown greenhouse",
+                  "side": "right",
+                  "width": "240px"
+                },
+                { "type": "discovery", "variant": "dc-high", "name": "Danger zones — other plants push targets toward them", "content": [
+                  { "type": "paragraph", "text": "Bell-shaped flowers big enough to swallow an arm. Their interiors are slick with amber digestive fluid. They hang from beams or grow from large ceramic tubs." },
+                  { "type": "list", "items": [
+                    "<strong>Warning:</strong> Large hanging pitcher flowers · syrup dripping from rims · bones visible through translucent sacs · warm fermented smell",
+                    "<strong>Behavior:</strong> Lure, trap, and digest. They do not chase.",
+                    "<strong>Counterplay:</strong> Avoid standing beneath them · cut them down from a distance · use poles or ropes to pull someone free · neutralize acid with ash or chalk"
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "Sundew Carpets — The Stickers" },
+                { "type": "discovery", "variant": "dc-mid", "name": "Slow the party, trap dropped gear", "content": [
+                  { "type": "paragraph", "text": "Glittering moss covered in jewel-like droplets. The droplets are adhesive, mildly acidic, and narcotic. They are not fast killers. They make escape difficult." },
+                  { "type": "list", "items": [
+                    "<strong>Warning:</strong> Sparkling groundcover · beads of clear fluid · insects trapped in perfect stillness · overly sweet smell near the floor",
+                    "<strong>Behavior:</strong> Stick to boots, hands, clothing, weapons. More struggling means more trapped.",
+                    "<strong>Counterplay:</strong> Step on boards, shields, or cloth · use water to dilute · use oil to reduce sticking · move slowly and deliberately"
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "Mirror Orchids — The Lurers" },
+                { "type": "discovery", "variant": "dc-mid", "name": "Mimic voices, lure off safe paths", "content": [
+                  { "type": "paragraph", "text": "Pale flowers that absorb sounds and repeat them later. They mimic Tamsin humming, Robyn bargaining, the leshy whispering, children laughing at the market cart, or someone calling for help." },
+                  { "type": "list", "items": [
+                    "<strong>Warning:</strong> Repeated phrases from nearby voices · sounds coming from the wrong direction · petals trembling like listening ears",
+                    "<strong>Behavior:</strong> They do not understand language. They repeat emotionally charged sounds to pull intruders toward traps.",
+                    "<strong>Counterplay:</strong> Ask questions the mimic cannot answer · mark the path · let Hypha sense whether a voice is living · compare phrases to Tamsin's journal"
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "Lullaby Poppies — The Pollen Threat" },
+                { "type": "discovery", "variant": "dc-mid", "name": "Attack urgency, not the body", "content": [
+                  { "type": "paragraph", "text": "Tall pale flowers with heavy heads. When disturbed, they release clouds of golden-white pollen — warm, comforting, and dangerously calming. They do not attack the body. They attack urgency." },
+                  { "type": "list", "items": [
+                    "<strong>Warning:</strong> Drooping pale flower heads · pollen dust on shelves and glass · sleeping animals nearby · sudden feelings of warmth or nostalgia",
+                    "<strong>Pollen effect:</strong> When a character violently disturbs a pollen-heavy plant: DC 10 Constitution save. Failure: cannot take reactions until start of next turn.",
+                    "<strong>Counterplay:</strong> Cover mouth and nose · wet cloth masks · vent the greenhouse · avoid striking the flowers"
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "Heartroot Tendrils — The Inner Guardians" },
+                { "type": "discovery", "variant": "dc-top", "name": "Direct extensions of the Heart Seed's panic", "content": [
+                  { "type": "paragraph", "text": "Thin, bright, veined with green-gold light. Unlike the other plants, they seem almost aware. They guard the central planting bed and the root cellar beneath it." },
+                  { "type": "list", "items": [
+                    "<strong>Warning:</strong> Roots pulsing like veins · green-gold light beneath the bark · whispers in Sylvan or Terran · nearby plants becoming still",
+                    "<strong>Behavior:</strong> Restrain, shield, and plead. Their first instinct is to curl around the seed's resting place and prevent anyone from taking it.",
+                    "<strong>Counterplay:</strong> Lower weapons · let Hypha speak first · Robyn kneels and admits fault · place Tamsin's journal nearby · promise the seed will not be sold again"
+                  ]}
+                ]}
+              ]
+            }
+          ]
+        },
+        {
+          "type": "scene_image",
+          "src": "../heart_seed/snapbloom-feedingtime.png",
+          "alt": "Carnivorous plants feeding on raw meat in the greenhouse hunger beds",
+          "caption": "Ring 3 — The Hunger Beds · \"Tamsin brought meat to calm them. It was not enough.\""
+        }
+      ]
+    },
+    {
+      "color": "forest",
+      "title": "Hypha's Internal Experience",
+      "subtitle": "Seven checks · The seed calling through root-memory · Runs alongside the party's perception checks",
+      "open": false,
+      "content": [
+        {
+          "type": "block_wrap",
+          "content": [
+            { "type": "section_head", "text": "How These Work" },
+            { "type": "paragraph", "text": "These checks belong to the <strong>leshy player</strong>. They run simultaneously with the party's outside perception checks. As the party notices Hypha is not being attacked, Hypha is discovering why from the inside. Neither track needs to announce the other — they should converge naturally." }
+          ]
+        },
+        { "type": "divider" },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "check_reveal", "num": 1, "label": "The Plants Do Not Bite Her", "timing": "First time Hypha enters reach of a Snapbloom, Thornlash, or Widowroot.", "content": [
+                  { "type": "paragraph", "text": "<strong>DC 10 Wisdom / Nature / Insight</strong>" },
+                  { "type": "paragraph", "text": "<strong>Success:</strong> The plant turns toward her. Its jaws open. Then it stops. She feels something beneath the fear — recognition." },
+                  { "type": "paragraph", "text": "<strong>Failure:</strong> She only notices it hesitated." }
+                ]},
+                { "type": "check_reveal", "num": 2, "label": "The Roots Are Guiding, Not Grabbing", "timing": "First time creepers or roots touch Hypha.", "content": [
+                  { "type": "paragraph", "text": "<strong>DC 11 Wisdom / Survival / Nature</strong>" },
+                  { "type": "paragraph", "text": "<strong>Success:</strong> The root curls around her ankle — then tugs once, gently, and releases, sliding toward the greenhouse center. Not restraint. Direction." },
+                  { "type": "narrative_block", "text": "The message is not words.\n\nThis way." },
+                  { "type": "paragraph", "text": "<strong>Failure:</strong> She feels the pull but interprets it as frightening." }
+                ]},
+                { "type": "check_reveal", "num": 3, "label": "The Seed's Pulse", "timing": "When the party reaches the middle ring / hunger beds.", "content": [
+                  { "type": "paragraph", "text": "<strong>DC 12 Wisdom save or Perception</strong>" },
+                  { "type": "paragraph", "text": "<strong>Success:</strong> Beneath the noise of snapping flowers and cracking vines — a rhythm. Not in her ears. In her roots. Slow. Frightened. Buried. The Heart Seed is ahead." },
+                  { "type": "paragraph", "text": "<strong>Failure:</strong> The pulse is overwhelming and emotionally confusing. Disadvantage on her next Perception or Investigation check inside the greenhouse." }
+                ]},
+                { "type": "check_reveal", "num": 4, "label": "The Greenhouse Is Afraid", "timing": "After the party kills, burns, or heavily damages one of the plant defenders.", "content": [
+                  { "type": "paragraph", "text": "<strong>DC 12 Insight / Nature</strong>" },
+                  { "type": "paragraph", "text": "<strong>Success:</strong> The greenhouse is not just hostile. It is afraid. Every injury tells the seed the same thing: hands cut. Blades take. Fire follows." },
+                  { "type": "paragraph", "text": "<strong>Failure:</strong> She feels pain and agitation but cannot fully interpret it." }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "check_reveal", "num": 5, "label": "The Path Opens Only for Her", "timing": "When the party reaches the inner ring / strangling roots.", "content": [
+                  { "type": "paragraph", "text": "<strong>DC 10 Nature — or no roll required</strong>" },
+                  { "type": "narrative_block", "text": "The roots ahead are too dense for the others. But as you step closer, some of them loosen.\n\nNot enough for everyone.\n\nEnough for you." },
+                  { "type": "paragraph", "text": "Ask: <em>Do you tell the party what you're feeling?</em>" }
+                ]},
+                { "type": "check_reveal", "num": 6, "label": "The Call to Touch the Seed", "timing": "When Hypha reaches the Heartroot Ring and can see or feel the buried Heart Seed.", "content": [
+                  { "type": "paragraph", "text": "<strong>DC 13 Wisdom saving throw</strong>" },
+                  { "type": "paragraph", "text": "<strong>Success:</strong> She feels the call and chooses how to respond." },
+                  { "type": "narrative_block", "text": "The Heart Seed is beneath the central bed, glowing through the soil like a heart behind skin.\n\nIt calls to you without words.\n\nNot command.\n\nNeed.\n\nIt wants to be held by someone who understands roots." },
+                  { "type": "paragraph", "text": "<strong>Failure:</strong> The call is overwhelming. She must use her next movement to approach the seed if able. She can still speak. An ally can steady her with words or touch if she allows it." }
+                ]},
+                { "type": "check_reveal", "num": 7, "label": "The Moment of Contact", "timing": "When the leshy touches or lifts the Heart Seed.", "content": [
+                  { "type": "paragraph", "text": "<strong>DC 13 Wisdom / Insight / Nature</strong>" },
+                  { "type": "paragraph", "text": "<strong>Success:</strong> She understands the fear communion clearly enough to explain it." },
+                  { "type": "narrative_block", "text": "Claws. Sack-dark. Coin-sound. Glass sky. Bitter herbicide. Shears set down. Old hands trembling. Roots cut. Meat placed gently. Hunger. Panic.\n\nThen the party comes back into focus.\n\nArmed. Sap-covered. Breathing hard.\n\nThe greenhouse is listening through your fear." },
+                  { "type": "paragraph", "text": "<strong>Success:</strong> She can feel the plants will react to what she feels next. <strong>Failure:</strong> Phase Two begins at Fear 2 instead of Fear 1." }
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Phase Two — The Fear Communion",
+      "subtitle": "Shared pain · Fear rating · The party must earn trust instead of victory",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Shared Pain Rule" },
+                { "type": "discovery", "variant": "dc-top", "name": "Any plant damage reflects onto Hypha", "content": [
+                  { "type": "paragraph", "text": "Once the leshy holds the Heart Seed, any damage dealt to a <strong>living plant creature or living plant hazard</strong> also deals <strong>half that damage</strong> (round down, minimum 1) to Hypha." },
+                  { "type": "narrative_block", "text": "Your blade cuts through the vine.\n\nGreen-gold sap spills across the floor.\n\nAt the center of the greenhouse, the leshy gasps and clutches her arm.\n\nA red line opens across her skin in the same place your blade cut the plant.\n\nThe Heart Seed pulses faster." },
+                  { "type": "annotation", "text": "The party should immediately understand: \"We have to stop attacking.\"" },
+                  { "type": "paragraph", "text": "<strong>Dead growth exception:</strong> Cutting already-dead or severed vines deals no reflected damage." }
+                ]},
+                { "type": "heading", "level": 2, "text": "The Herbicide Sprayer in Phase Two" },
+                { "type": "discovery", "variant": "dc-top", "name": "Now Catastrophic", "content": [
+                  { "type": "paragraph", "text": "After bonding, using the sprayer also increases the greenhouse fear level by 1 in addition to reflected damage." },
+                  { "type": "narrative_block", "text": "The bitter spray hits the vines.\n\nThey blacken instantly.\n\nAt the center, the leshy screams.\n\nFor a moment, she tastes it too: bitter rain, dead roots, green going silent.\n\nThe Heart Seed's pulse becomes frantic." }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Fear Rating" },
+                { "type": "paragraph", "text": "After the Moment of Contact, ask the leshy's player: <em>\"As you hold the Heart Seed and feel what it felt — how afraid are you of the party right now?\"</em> Let the player answer honestly. Use this as the greenhouse's emotional state." },
+                { "type": "discovery", "variant": "teal", "name": "Fear 0 — Trust", "content": [
+                  { "type": "list", "items": [
+                    "Plants pause. Roots loosen.",
+                    "No new sproutlings appear.",
+                    "Party can approach slowly."
+                  ]}
+                ]},
+                { "type": "discovery", "variant": "dc-low", "name": "Fear 1 — Uneasy", "content": [
+                  { "type": "list", "items": [
+                    "Plants stay tense. Vines watch weapons.",
+                    "Roots hold but do not crush.",
+                    "The party needs to reassure her."
+                  ]}
+                ]},
+                { "type": "discovery", "variant": "dc-mid", "name": "Fear 2 — Afraid", "content": [
+                  { "type": "list", "items": [
+                    "Roots restrain party members.",
+                    "Exits seal. Sproutlings emerge.",
+                    "Plants attack only if the party advances or raises weapons."
+                  ]}
+                ]},
+                { "type": "discovery", "variant": "dc-top", "name": "Fear 3 — Panic", "content": [
+                  { "type": "list", "items": [
+                    "Active plant defense resumes.",
+                    "Heartroot Tendrils pull Hypha away.",
+                    "Snapblooms bite anyone advancing.",
+                    "Thornlash Vines strike weapons and torches first.",
+                    "All plant damage still reflects onto Hypha."
+                  ]}
+                ]}
+              ]
+            }
+          ]
+        },
+        { "type": "divider" },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Good Actions — Lower Fear" },
+                { "type": "discovery", "variant": "teal", "name": "Reward these immediately", "content": [
+                  { "type": "paragraph", "text": "When a player stops fighting, reward it immediately and visibly:" },
+                  { "type": "list", "items": [
+                    "\"I drop my sword.\" → The vine around your ankle stops tightening.",
+                    "\"We won't take it from you.\" → The Snapbloom nearest you closes one petal.",
+                    "\"I put out the torch.\" → The Thornlash Vines above you withdraw into the rafters.",
+                    "\"I step back with open hands.\" → A root near your foot slowly uncoils.",
+                    "\"I offer water to the plants.\" → A trembling vine near you goes still."
+                  ]}
+                ]},
+                { "type": "discovery", "variant": "forest", "name": "Robyn's Confession", "content": [
+                  { "type": "narrative_block", "text": "Robyn slowly lowers himself to the greenhouse floor, both hands open.\n\n\"Robyn sold you.\"\n\n\"Robyn did not know.\"\n\n\"Robyn knows now.\"\n\n\"Robyn is sorry.\"\n\n\"Robyn will not touch. Robyn will not sell. Robyn will help carry home, if wanted.\"\n\nThe Heart Seed pulses in the leshy's hands.\n\nThe vines do not forgive him.\n\nBut they stop reaching for his throat." }
+                ]},
+                { "type": "discovery", "variant": "forest", "name": "Tamsin's Journal", "content": [
+                  { "type": "paragraph", "text": "If someone reads Tamsin's final note aloud, the leshy feels one memory soften — Tamsin's hands, old and shaking, setting down the shears. Not all hands were teeth. That helps complicate the seed's memory of Tamsin." }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Resolution Conditions" },
+                { "type": "discovery", "variant": "forest", "name": "The Heart Seed Calms — Three or More of These", "content": [
+                  { "type": "list", "items": [
+                    "Party stops attacking living plants",
+                    "Drops or sheathes weapons",
+                    "Extinguishes all fire",
+                    "Robyn apologizes",
+                    "Hypha communicates what the seed needs",
+                    "Someone promises not to take the seed from her",
+                    "Someone offers water, soil, or open sky",
+                    "Someone reads Tamsin's final note",
+                    "Someone chooses to guard the exit instead of approaching",
+                    "The party lets Hypha decide whether to carry, transplant, or pause"
+                  ]}
+                ]},
+                { "type": "discovery", "variant": "forest", "name": "Final Calm", "content": [
+                  { "type": "narrative_block", "text": "The leshy's breathing slows.\n\nThe Heart Seed pulses once against her chest.\n\nThen again.\n\nThe roots around the party loosen.\n\nThe Snapblooms close.\n\nThe Thornlash Vines withdraw into the rafters.\n\nThe greenhouse remains alive, wounded, and watchful.\n\nBut it is no longer fighting.\n\nFor now, that is trust." }
+                ]},
+                { "type": "discovery", "variant": "dc-top", "name": "If They Keep Fighting", "content": [
+                  { "type": "paragraph", "text": "Do not TPK automatically. Let consequences be obvious. The leshy takes reflected damage. Fear escalates. The seed tries to root into her arms or retreat into the floor. Robyn may physically get between the party and the plants." },
+                  { "type": "annotation", "text": "\"Every cut you make opens on her too. The greenhouse is not punishing you. It is showing you what you are doing.\"" }
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "arc_nav": {
+    "prev": { "href": "dunmore_heart_seed.html", "text": "Heart Seed Arc Reference" },
+    "next": { "href": "dunmore_arc.html", "text": "Dunmore Arc" }
+  },
+  "conclusion": {
+    "title": "GM Summary — Running the Greenhouse",
+    "items": [
+      "Phase One teaches the lesson. New growth every round. Killing plants creates more plants. The party should feel the futility before Hypha reaches the seed.",
+      "The party's perception checks (see arc reference) and Hypha's internal checks run simultaneously. Neither track announces the other. They should converge naturally until everyone knows what has to happen.",
+      "The fear communion is not a punishment mechanic. It is a revelation mechanic. The moment a party member takes reflected damage, the table understands: the problem is not the plants.",
+      "The fear rating is Hypha's, not a GM meter. Ask the player directly. Let the answer be honest. The greenhouse responds to what she actually feels — not to what the GM decides.",
+      "Robyn's confession is one of the cleanest solutions available. It costs nothing mechanically. It is pure character. Give it space.",
+      "The greenhouse does not need to be killed, cleared, or collapsed. It needs to believe them. The final calm is not triumphant. It is completed."
+    ]
+  }
+}

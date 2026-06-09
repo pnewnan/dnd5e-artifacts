@@ -157,6 +157,12 @@
           "desc": "Tamsin's cart · The cottage · Greenhouse encounter · Three perception checks · The three-round hold · Robyn's moment",
           "href": "prologue/dunmore/dunmore_heart_seed.html",
           "type": "gm"
+        },
+        {
+          "name": "Tamsin's Glasshouse — Greenhouse Encounter",
+          "desc": "Five rings · Eight plant types · Phase One endless sprouting · Hypha's seven internal checks · Phase Two fear communion",
+          "href": "prologue/dunmore/dunmore_greenhouse_encounter.html",
+          "type": "gm"
         }
       ]
     },
