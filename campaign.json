@@ -931,13 +931,13 @@
       "id": "the-rusty-bin",
       "name": "The Rusty Bin",
       "nation": "fastingbreak",
-      "type": "salvage yard with back drinking room",
+      "type": "salvage yard with attached drinking room",
       "arc_tags": ["prologue", "briar-cup-thread"],
-      "description": "A working salvage yard on the eastern edge of Dunmore \u2014 wagon parts, scrap iron, tools, salvaged timber, broken harnesses. The front of the operation is entirely legitimate. The back room, accessible through a gate in the yard's eastern fence, is a low-ceilinged drinking space with mismatched furniture, a bar that is really just a table with bottles on it, and four or five regulars who are never the same people twice.",
-      "operator": "Seren Vale runs the yard. She is, as far as anyone can tell, simply a woman who buys and sells salvage and occasionally lets people drink in her back room. This is exactly how she prefers it.",
-      "as_meeting_space": "The Rusty Bin is noisier than The Briar Cup and deliberately so. Conversations at the back-room tables are masked by the sounds of the yard \u2014 metal on metal, rolling wheels, shouted transactions. Seren conducts debriefs here because ambient noise is privacy.",
-      "significance": "Vanya's debrief location. Where the information from Ilyra gets passed up the chain. The first place the Gilded Veil's broader operation becomes visible \u2014 not through exposition, but through Seren's careful questions and what she doesn't ask.",
-      "gm_notes": "The Rusty Bin should feel ordinary in a way that is quietly intentional. Everything in the yard has a practical purpose. The back room has exactly what it needs and nothing decorative. Seren does not make the space comfortable \u2014 she makes it functional. That is the point."
+      "description": "Dunmore's Premier Salvage Yard \u2014 the sign at the gate says so, unironically. A massive operation on the eastern edge of the city: wagon wheels, scrap iron, broken cranes, hoists, timber, tools, harnesses, anything with remaining use. The entrance gate is a timber-and-chain affair with a gear wheel at the crown and a sign on the left post reading 'BUY SELL TRADE' and below it, in smaller letters: 'EVERYTHING HAS A USE. EVEN YOU.' The drinking room \u2014 the Ale & Accounts \u2014 is a wood-plank building right at the gate, first structure on the right. Signs: 'GOOD ALE. FAIR DEALS. SHARP TONGUES WELCOME.'",
+      "operator": "Seren Vale runs the yard. Her name is on no signage \u2014 she is simply the woman who runs the operation. She is not hiding. The Rusty Bin is a fully legitimate, openly trading salvage yard. Whatever else happens here is transacted inside a business that has nothing to hide and has been here for years.",
+      "as_meeting_space": "The Ale & Accounts is public-facing, not concealed. Debrief conversations happen there because a salvage yard's clientele is loud, transactional, and entirely uninterested in each other's business. Seren sits at the same table. She is a regular. So is everyone else.",
+      "significance": "Vanya's debrief location. Where the information from Ilyra gets passed up the chain. The Gilded Veil's broader operation surfaces here \u2014 not through exposition, but through Seren's careful questions and what she doesn't ask.",
+      "gm_notes": "The Rusty Bin should feel functional and unapologetically public. Seren Vale does not operate from shadows \u2014 she operates from a place so ordinary and visible that nobody looks twice. 'Everything has a use. Even you.' is the philosophy of the yard and of the woman who runs it. Image available as rusty_bin_exterior.png."
     }
   ],
   "artifacts": [

@@ -292,7 +292,12 @@
       "content": [
         {
           "type": "narrative_block",
-          "text": "The Rusty Bin is easy to find if you know what you're looking for — a working salvage yard on the eastern edge of the city, wagon parts and scrap iron stacked against the fence. There's a gate in the east wall and a back room that isn't on any signage."
+          "text": "The Rusty Bin is not hard to find. It announces itself. The gate sign reads 'The Rusty Bin' in rusted iron letters hung on chains from a timber frame with a gear wheel at the crown. To the left: 'BUY SELL TRADE. EVERYTHING HAS A USE. EVEN YOU.' To the right, the first building inside the gate: 'ALE & ACCOUNTS. GOOD ALE. FAIR DEALS. SHARP TONGUES WELCOME.' Dunmore's Premier Salvage Yard. The sign says so."
+        },
+        {
+          "type": "scene_image",
+          "src": "rusty_bin_exterior.png",
+          "caption": "The Rusty Bin — eastern Dunmore"
         },
         {
           "type": "two_col",
@@ -300,14 +305,14 @@
             {
               "type": "block_wrap",
               "content": [
-                { "type": "section_head", "text": "The Space" },
+                { "type": "section_head", "text": "The Ale & Accounts" },
                 {
                   "type": "discovery",
                   "variant": "dc-high",
-                  "name": "The Back Room",
+                  "name": "The Drinking Room",
                   "content": [
-                    { "type": "paragraph", "text": "Mismatched furniture. A table being used as a bar — bottles, no labels on some of them. Four or five people at various tables who are never quite the same people twice. The ambient noise from the yard — metal on metal, rolling wheels, shouted transactions — fills the room well enough to mask anything said below a shout." },
-                    { "type": "paragraph", "text": "Seren Vale sits at the same table every time. She does not greet. She waits." }
+                    { "type": "paragraph", "text": "Right at the gate, first building on the right. Wood-plank walls, mismatched furniture, a proper bar this time — bottles with labels, a man behind it who does not ask questions. The clientele is salvage yard clientele: loud, transactional, entirely uninterested in each other's business." },
+                    { "type": "paragraph", "text": "The noise from the yard bleeds in. It never fully stops." }
                   ]
                 },
                 {
@@ -315,8 +320,9 @@
                   "variant": "dc-high",
                   "name": "Seren Vale",
                   "content": [
-                    { "type": "paragraph", "text": "Not warm. Not cold. Precise. She runs the salvage yard legitimately — the records are clean, the employees are real, the business turns a small profit. Everything else runs through the back room." },
-                    { "type": "paragraph", "text": "She will not ask Vanya how she is. She will not make small talk. She will ask three questions." }
+                    { "type": "paragraph", "text": "She sits at the same table. She is a regular in her own establishment, which means nobody looks at her. She does not greet. She waits." },
+                    { "type": "paragraph", "text": "Not warm. Not cold. Precise. The yard is legitimate — records clean, employees real, business profitable. She does not hide behind it. She simply operates inside it." },
+                    { "type": "paragraph", "text": "She will not ask Vanya how she is. She will ask three questions." }
                   ]
                 }
               ]
@@ -419,7 +425,7 @@
       "Ilyra Marr is not hostile. She is cautious and then practical. The recognition phrase is ritual — let it land before she speaks. Her 'he's dead, isn't he' should feel inevitable, not dramatic.",
       "Seren Vale's three questions are the whole debrief. Do not add warmth or humor. She is thorough and efficient. The manifests going 'up the chain' is final — the party doesn't follow them from here.",
       "The payload of this arc is one sentence from Seren: 'The Concord doesn't appear to know either.' The party now knows there is a layer of activity in Dunmore that both the Concord and the Gilded Veil are blind to. That is the hook forward.",
-      "The Rusty Bin is a recurring location. The Gilded Veil is a recurring presence. The contact protocol Seren hands over is a real door — Vanya can use it later. Let the party know this matters without telling them why yet."
+      "The Rusty Bin is a recurring location and it announces itself — 'Dunmore's Premier Salvage Yard.' Seren Vale does not hide. The contact protocol she hands over is a real door. The sign on the gate post says 'Everything has a use. Even you.' That is both the yard's philosophy and Seren's operating principle. Let the party absorb it."
     ]
   }
 }
