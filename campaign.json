@@ -93,6 +93,17 @@
       "methods": "Infiltrates governments, cults, and organizations worldwide. Operates entirely in secret. Members are bound by pacts \u2014 power in exchange for service, often requiring sacrifice of something precious: a soul, a loved one, one's sanity.",
       "ultimate_goal": "Summon Zarathrax fully into the material plane.",
       "connection_to_campaign": "Dreknar is aligned with or a member of the Order. His guidance of the party \u2014 delivering the Book to Slynn's Grey and the sarcophagus to Havenford \u2014 serves the Order's broader agenda. The corruption of Slynn's Grey and the demon release at Havenford are Order operations conducted through unwitting proxies."
+    },
+    {
+      "id": "gilded-veil",
+      "name": "The Gilded Veil",
+      "type": "intelligence and information brokerage network",
+      "base": "Primarily a neighboring country \u2014 fringe elements within Fastingbreak, centered in Dunmore",
+      "description": "A covert intelligence and information network that trades in manifests, cargo records, personnel movements, and shipping routes. Operates through a hierarchy of contacts, handlers, and couriers. Recruits people already embedded in logistics and trade infrastructure \u2014 customs agents, dock workers, caravan overseers, apothecary owners.",
+      "methods": "Asset recruitment through existing trade contacts. Dead drops and recognition phrases for secure communication. Information brokered in layers \u2014 assets rarely know who ultimately receives what they report. Meeting locations embedded in ordinary commerce: back rooms, underground establishments, salvage yards.",
+      "relationship_to_concord": "The Gilded Veil has no knowledge of the Concord's existence. The Concord is aware of the Gilded Veil and tolerates it \u2014 the Veil operates primarily in a neighboring country, and its Fastingbreak presence is fringe. It is not seen as a threat to Concord operations. The two organizations have never intersected directly.",
+      "dunmore_presence": "Two known Dunmore assets: Ilyra Marr, operating from a modest apothecary on Tallow Street above The Briar Cup; Seren Vale, handler and courier, using The Rusty Bin salvage yard as a cover. Eric Huwithakay was in contact with Ilyra \u2014 she was his source on unusual manifests and altered shipping records. His death closed that line of communication before anything could be passed up the chain.",
+      "gm_notes": "The Gilded Veil is not the main antagonist. It is the texture of a world that has more moving parts than the party can see. Eric's connection to Ilyra is evidence that someone was already paying attention to the same shipping irregularities the party uncovered \u2014 and that he got close enough to die for it. The Veil's reaction to Eric's death and what Ilyra knows about who might have ordered it is the thread Vanya is meant to pull."
     }
   ],
   "entities": [
@@ -228,8 +239,8 @@
       ],
       "party_knowledge": "known \u2014 personal contact, found dead in the tunnels",
       "description": "Not merely a contact \u2014 a Sarynthian intelligence operative embedded in Hollowgate, tracking unusual tariffs, altered manifests, and missing cargo. He got close enough to the truth that he was killed. The party finds his body in the kobold tunnels while escaping \u2014 already dead, satchel still on him. He never filed his final report.",
-      "what_is_found": "A bronze signet stamp \u2014 Sarynthian, though most party members won't recognize it immediately. A hand-drawn partial tunnel map, more detailed than Krobb's \u2014 he had been here before. A final note in tight, careful handwriting: 'Kobolds. Someone is paying them.' That is all he had time to write.",
-      "cause_of_death": "Not immediately clear. Not kobold weapons. The party may or may not connect this to the cavehopper on their own.",
+      "what_is_found": "A bronze signet stamp \u2014 Sarynthian, though most party members won't recognize it immediately. A hand-drawn partial tunnel map, more detailed than Krobb's \u2014 he had been here before. A final note in tight, careful handwriting: 'Kobolds. Someone is paying them.' That is all he had time to write. A second, private note tucked inside the satchel's inner fold \u2014 separate, hidden: 'DM. The Briar Cup. Tell her the western road remained dry.'",
+      "cause_of_death": "Stabbed just below the sternum and pushed into the abandoned well shaft. Not kobold weapons \u2014 the wound angle and instrument don't match. Not the Gilded Veil \u2014 they needed him alive. A third party reached him first. Who ordered it and why remains unknown.",
       "connection_to_aurelia": "Princess Aurelia (a PC) knows Eric was Sarynthia's contact in Hollowgate. His correspondence stopped. She has been waiting for news that hasn't come. The party now carries it.",
       "role_in_story": "His death is the personal hook that pulls the party into the Hollowgate investigation. Finding him in the tunnels is the moment the convoy problem stops being a local nuisance and becomes something larger. Tomas Vale may have known him by name through customs work \u2014 a thread the party could pull.",
       "gm_notes": "Eric never knew the full scope of what he was uncovering. His death should feel like the cost of asking the right questions in a place where the wrong people were watching. The moment the party finds him should land with weight."
@@ -901,6 +912,30 @@
       "true_nature": "The Chronewood sensed what is coming \u2014 the war, and the deeper darkness beyond it. It understood that Hypha is not prepared for what she will need to face, and that the grove alone cannot prepare her. It sent her away the only way a forest can: by taking something she would have to follow.",
       "relationship_to_witherwood": "The Chronewood's intent is that Hypha reach Witherwood \u2014 a forest at the conjunction of three ley lines in Elkenquay. That is where she needs to be when the darkness comes. The forest does not explain this to her. It trusts the path.",
       "gm_notes": "The Chronewood should feel ancient and deliberate \u2014 not sinister, but willing to cause harm in service of a longer purpose. Tamsin's death is an indirect consequence of the forest's choice. Whether Hypha ever learns the forest arranged the theft is a decision for late in the campaign."
+    },
+    {
+      "id": "the-briar-cup",
+      "name": "The Briar Cup",
+      "nation": "fastingbreak",
+      "type": "underground meeting space",
+      "arc_tags": ["prologue", "briar-cup-thread"],
+      "description": "A small underground drinking room beneath a modest apothecary on Tallow Street in Dunmore, operated by Ilyra Marr. The Briar Cup does not advertise. You find it because someone who knows tells you where to look. Stone walls, low ceiling, three tables, oil lamp in each corner. It smells of dried herbs from the apothecary above and old wood from the barrels along the back wall.",
+      "access": "Through the apothecary's back storeroom. A narrow stair, unlit, leads down to a heavy door with an iron handle shaped like a vine. Ilyra locks it from the inside when meetings are in progress.",
+      "atmosphere": "Quiet in the way that means deliberate \u2014 no music, no crowd noise, no windows. Conversations here stay here. The Gilded Veil uses it precisely because nothing about it suggests a meeting place. It looks like storage.",
+      "significance": "The contact point between Vanya and Ilyra Marr. The recognition phrase exchange happens here. The manifest copies are passed here. Eric Huwithakay knew this location by name \u2014 the note in his satchel was addressed to it.",
+      "gm_notes": "The Briar Cup should feel like a space that has heard things. Not dangerous \u2014 contained. When the party arrives here, everything should be slightly too quiet and slightly too tidy. Ilyra runs the meeting like a professional: what you need to know, in the order you need to know it, and nothing more."
+    },
+    {
+      "id": "the-rusty-bin",
+      "name": "The Rusty Bin",
+      "nation": "fastingbreak",
+      "type": "salvage yard with back drinking room",
+      "arc_tags": ["prologue", "briar-cup-thread"],
+      "description": "A working salvage yard on the eastern edge of Dunmore \u2014 wagon parts, scrap iron, tools, salvaged timber, broken harnesses. The front of the operation is entirely legitimate. The back room, accessible through a gate in the yard's eastern fence, is a low-ceilinged drinking space with mismatched furniture, a bar that is really just a table with bottles on it, and four or five regulars who are never the same people twice.",
+      "operator": "Seren Vale runs the yard. She is, as far as anyone can tell, simply a woman who buys and sells salvage and occasionally lets people drink in her back room. This is exactly how she prefers it.",
+      "as_meeting_space": "The Rusty Bin is noisier than The Briar Cup and deliberately so. Conversations at the back-room tables are masked by the sounds of the yard \u2014 metal on metal, rolling wheels, shouted transactions. Seren conducts debriefs here because ambient noise is privacy.",
+      "significance": "Vanya's debrief location. Where the information from Ilyra gets passed up the chain. The first place the Gilded Veil's broader operation becomes visible \u2014 not through exposition, but through Seren's careful questions and what she doesn't ask.",
+      "gm_notes": "The Rusty Bin should feel ordinary in a way that is quietly intentional. Everything in the yard has a practical purpose. The back room has exactly what it needs and nothing decorative. Seren does not make the space comfortable \u2014 she makes it functional. That is the point."
     }
   ],
   "artifacts": [
@@ -969,6 +1004,46 @@
       "encounter_mechanic": "The seed cannot be recovered by force. Hypha must reach the center and hold the seed for three rounds while the greenhouse continues fighting around her. Each round she holds it, she feels what the seed has felt \u2014 Round 1: Fear (WIS save or frightened); Round 2: Grief (psychic damage, the seed's loneliness); Round 3: Recognition (the seed feels her back, goes still, greenhouse calms). The party protects her.",
       "long_arc": "The seed will not introduce itself to Hypha until approximately level 7. When it does, its name will reflect her destiny \u2014 the darkness the Chronewood sent her to face.",
       "gm_notes": "The Heart Seed is a character, not an artifact. It has interiority, memory, and an arc. It is not ready to communicate yet \u2014 only to call. The three perception check reveal should not be hinted at early. Let the battle breathe. Let the party struggle. The truth emerges from what is already visible."
+    },
+    {
+      "id": "vanya",
+      "name": "Vanya",
+      "status": "alive",
+      "affiliations": ["gilded-veil"],
+      "arc_tags": ["prologue", "briar-cup-thread"],
+      "party_knowledge": "party member \u2014 PC",
+      "description": "A PC. Vanya's mission in Hollowgate was not random \u2014 she was tasked with making contact with Eric Huwithakay, a Sarynthian intelligence operative who had been feeding the Gilded Veil information about altered manifests and missing cargo. Eric never showed. When the party finds his body in the kobold tunnels, Vanya understands before anyone else: he was already dead before she arrived. The information he was carrying died with him \u2014 or so she thought.",
+      "handler": "seren-vale",
+      "contact_in_dunmore": "ilyra-marr",
+      "mission": "Recover whatever Eric Huwithakay was working on. Make contact with Ilyra Marr at The Briar Cup using the recognition phrase Eric used: 'The western road remained dry.' From there: receive Eric's last known manifest analysis, determine what he found, and report back to Seren Vale at The Rusty Bin.",
+      "what_vanya_knows": "Eric was a Gilded Veil contact embedded in Hollowgate. He was tracking unusual tariffs and altered manifests. He missed his last three check-ins. Vanya's handler Seren Vale gave her Eric's recognition phrase and told her to find Ilyra Marr in Dunmore if the Hollowgate contact was unresponsive. The note on Eric's body \u2014 'DM. The Briar Cup. Tell her the western road remained dry.' \u2014 was written for Vanya.",
+      "gm_notes": "Vanya's arc is a slow burn. This is not her personal arc \u2014 it is the beginning of the evidence that says 'don't forget about Eric Huwithakay.' The Briar Cup thread should feel like an intelligence mission, not a dungeon run. Everything goes through careful meeting protocols, coded language, and layered information reveals. Vanya's involvement is the reason the party is paying attention to what the Gilded Veil knows \u2014 and what they don't."
+    },
+    {
+      "id": "ilyra-marr",
+      "name": "Ilyra Marr",
+      "status": "alive",
+      "affiliations": ["gilded-veil"],
+      "arc_tags": ["prologue", "briar-cup-thread"],
+      "party_knowledge": "unknown \u2014 to be met at The Briar Cup",
+      "description": "Gilded Veil asset embedded in Dunmore. Operates a modest apothecary on Tallow Street as legitimate cover. The real meeting space \u2014 The Briar Cup \u2014 is underground, directly beneath the apothecary. She escaped a trafficking network through a chain of contacts she never fully knew, and has been watching routes and manifests ever since. She can read altered shipping documents by instinct.",
+      "role": "Eric's Dunmore contact. She was receiving information about altered cargo manifests \u2014 route changes, false customs stamps, cargo switched between convoys. She never met Eric in person. Their communication was through the Veil's dead-drop system.",
+      "what_ilyra_knows": "The altered manifests Eric found follow a pattern: specific cargo consistently rerouted through Dunmore's secondary customs gate during shift transitions. Three shipments over six months involved cargo with no legitimate destination \u2014 offloaded to an unmarked warehouse on the east dock, never claimed. She has copies of two of the manifests. She was waiting for Eric's confirmation before passing them up the chain.",
+      "recognition_phrase": "Contact approaches and says: 'The western road remained dry.' Ilyra responds: 'Then you came in from the east.' This exchange confirms identity on both sides.",
+      "gm_notes": "Ilyra is cautious but not hostile. She has been waiting. When Vanya arrives with the correct recognition phrase, Ilyra knows Eric is dead \u2014 he would have come himself if he could. She will ask how. She does not need to hear the details. Her response is practical: she has information, she needs it to go somewhere, and Vanya is now the chain."
+    },
+    {
+      "id": "seren-vale",
+      "name": "Seren Vale",
+      "status": "alive",
+      "affiliations": ["gilded-veil"],
+      "arc_tags": ["prologue", "briar-cup-thread"],
+      "party_knowledge": "unknown \u2014 Vanya's handler",
+      "description": "Vanya's Gilded Veil handler. Operates from The Rusty Bin, a salvage yard in Dunmore with a back drinking room that functions as a semi-public meeting space with plausible deniability. Seren is methodical, unreadable, and careful \u2014 not warm. She debrief Vanya at The Rusty Bin and determines whether what Ilyra passed up the chain is actionable.",
+      "role": "Handler and courier. She receives information from field assets and determines where it goes next. She knows more about the Gilded Veil's broader operation than she reveals \u2014 including why the Veil originally wanted Eric's information and which interests beyond Fastingbreak benefit from knowing about the altered manifests.",
+      "what_seren_knows": "The Gilded Veil wanted Eric's information because the cargo pattern he identified is significant beyond the local level. The altered manifests are not Concord operations \u2014 the Veil knows that much. Someone else is using Dunmore's logistics infrastructure for something, and the Concord doesn't appear to know either. This is the detail Seren does not share at the first meeting. It surfaces only if the party gives her reason to trust them further.",
+      "debrief_protocol": "Vanya reports to The Rusty Bin. Seren asks three questions: What did you find. Who else knows. What was lost. She does not ask about the details of Eric's death unless Vanya raises it. She is not sentimental about assets \u2014 but she is thorough.",
+      "gm_notes": "Seren is not an ally. She is a resource with conditions. The party gains access to Veil-level information only if they are useful to the Veil. Seren will offer payment for the manifest copies and a vague 'we'll be in touch' that is not a threat \u2014 it is simply the truth. She operates in Dunmore. The party will be in Dunmore. She will hear about what they do."
     }
   ],
   "arcs": [
@@ -1132,8 +1207,15 @@
               "type": "encounter"
             },
             {
-              "label": "Eric's body in the tunnels \u2014 not kobold wounds. Final note: 'Kobolds. Someone is paying them.'",
+              "label": "Eric's body in the tunnels \u2014 stabbed below the sternum, not kobold weapons. His satchel is still on him.",
               "type": "revelation",
+              "npc_refs": [
+                "eric-huwithakay"
+              ]
+            },
+            {
+              "label": "In the satchel: partial tunnel map, a note \u2014 'Kobolds. Someone is paying them.' And tucked inside the inner fold, separate: 'DM. The Briar Cup. Tell her the western road remained dry.'",
+              "type": "discovery",
               "npc_refs": [
                 "eric-huwithakay"
               ]
@@ -2015,6 +2097,161 @@
             { "label": "Robyn lowers himself to the greenhouse floor. 'Robyn sold you. Robyn is sorry.'", "type": "dialogue", "npc_refs": ["robyn"] },
             { "label": "The party earns trust — drop weapons, extinguish fire, step back, let Hypha decide", "type": "scene" },
             { "label": "Final calm — the greenhouse is alive, wounded, watchful. But it is no longer fighting.", "type": "revelation", "npc_refs": ["hypha"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "briar-cup-thread",
+      "title": "Ink Must Not Speak",
+      "act": "prologue",
+      "location": "hollowgate",
+      "href": "prologue/briar_cup/briar_cup_arc.html",
+      "pages": [
+        { "label": "Arc Reference", "href": "prologue/briar_cup/briar_cup_arc.html" }
+      ],
+      "summary": "Eric Huwithakay — scribe, intelligence operative, the man who had almost written down enough — is found dead in an abandoned well shaft outside Hollowgate. Stabbed below the sternum. Not by kobolds. Someone made sure the ink stopped moving. For Vanya, this is not the end of Eric's mission. The private note in his satchel makes that clear: 'DM. The Briar Cup. Tell her the western road remained dry.' The thread runs from a well to an underground drinking room to a salvage yard on Dunmore's eastern edge.",
+      "what_actually_happened": "Eric was killed by an unknown third party before Vanya arrived — someone who reached him before the kobolds, or after, or never involved them at all. The Gilded Veil doesn't know who ordered it. The Concord didn't do it. The gap between what Eric found and who killed him for it is the thread Vanya is meant to pull.",
+      "what_party_knows": "Eric is dead. The wound doesn't match kobold weapons. He had a private note on him addressed to Dunmore. Vanya knows where that note was meant to go.",
+      "key_npcs": ["vanya", "ilyra-marr", "seren-vale", "eric-huwithakay"],
+      "key_locations": ["the-briar-cup", "the-rusty-bin"],
+      "campaign_function": "This is not a personal arc. It is the beginning of the evidence that says: don't forget about Eric Huwithakay. It is still something to pay attention to. The thread does not resolve here — it opens. Vanya surfaces a layer of the world the party didn't know existed, and Seren Vale makes sure they understand that the Gilded Veil noticed too.",
+      "hooks_forward": "The altered manifests Ilyra hands over are the first real evidence that the convoy irregularities go beyond kobold opportunism. Someone is using Dunmore's logistics infrastructure for something the Concord itself doesn't appear to know about. That is the detail that matters. The Rusty Bin will be in touch.",
+      "family_container": true,
+      "children": ["abandoned-well", "briar-cup-contact", "rusty-bin-debrief"],
+      "location_chips": ["hollowgate", "dunmore"]
+    },
+    {
+      "id": "abandoned-well",
+      "title": "The Abandoned Well",
+      "act": "prologue",
+      "arc_tags": ["prologue", "briar-cup-thread"],
+      "location": "hollowgate",
+      "arc_ref": "missing-convoys",
+      "href": "prologue/briar_cup/briar_cup_arc.html",
+      "summary": "Eric Huwithakay's body is recovered from the abandoned well shaft outside Hollowgate. The wound tells the party he was murdered before he could report — and not by kobolds. His satchel is intact. Inside it, layered with his other documents, is a private note written for someone in Dunmore.",
+      "key_npcs": ["eric-huwithakay", "vanya"],
+      "key_locations": ["hollowgate"],
+      "gm_notes": "This arc beat lives inside the Missing Convoys escape sequence — the party finds Eric while getting out. The private note is separate from the 'Kobolds. Someone is paying them.' note. It is folded smaller, tucked inside the inner fold of the satchel. Players who search the satchel carefully find it. It is addressed to no one. It contains only two sentences. That is intentional.",
+      "beats": [
+        {
+          "id": "aw-body",
+          "label": "Eric's Body",
+          "type": "revelation",
+          "steps": [
+            { "label": "Eric Huwithakay found in the well shaft — already dead, satchel still on him", "type": "revelation", "npc_refs": ["eric-huwithakay"] },
+            { "label": "Wound below the sternum — not a kobold weapon. The angle is wrong. The blade was different.", "type": "discovery" },
+            { "label": "He was pushed in. Someone reached him before the kobolds did, or after, or neither.", "type": "revelation", "npc_refs": ["eric-huwithakay"] }
+          ]
+        },
+        {
+          "id": "aw-satchel",
+          "label": "The Satchel",
+          "type": "discovery",
+          "steps": [
+            { "label": "Bronze Sarynthian signet stamp. Partial tunnel map, more detailed than Krobb's — he had been here before.", "type": "discovery", "npc_refs": ["eric-huwithakay"] },
+            { "label": "Final note: 'Kobolds. Someone is paying them.' That is all he had time to write.", "type": "discovery" },
+            { "label": "Inner fold of the satchel — a second note, smaller, separate: 'DM. The Briar Cup. Tell her the western road remained dry.'", "type": "revelation", "npc_refs": ["eric-huwithakay", "vanya"] }
+          ]
+        },
+        {
+          "id": "aw-thread",
+          "label": "The Thread",
+          "type": "revelation",
+          "steps": [
+            { "label": "Vanya recognizes the note. 'DM' — dead man. This was written to be found after he died.", "type": "revelation", "npc_refs": ["vanya"] },
+            { "label": "The Briar Cup is in Dunmore. Eric knew he might not make it. He left the thread for someone to follow.", "type": "revelation" },
+            { "label": "The party is going to Dunmore. The thread goes to Dunmore.", "type": "scene" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "briar-cup-contact",
+      "title": "The Briar Cup",
+      "act": "prologue",
+      "arc_tags": ["prologue", "briar-cup-thread"],
+      "location": "dunmore",
+      "href": "prologue/briar_cup/briar_cup_arc.html",
+      "summary": "Vanya locates the apothecary on Tallow Street and finds the door below it. The Briar Cup is underground, quiet, and smells of dried herbs and old wood. Ilyra Marr is waiting. She has been waiting. The recognition phrase confirms everything she feared: Eric isn't coming.",
+      "key_npcs": ["vanya", "ilyra-marr"],
+      "key_locations": ["the-briar-cup"],
+      "gm_notes": "The recognition phrase exchange should feel ritual — Vanya says the first line, Ilyra finishes it. No elaboration. Just: it worked. Ilyra's reaction to knowing Eric is dead is not grief in the conventional sense. It is the adjustment of a careful person who has to decide, in the next few seconds, whether to trust the person in front of her with something dangerous.",
+      "beats": [
+        {
+          "id": "bcc-finding",
+          "label": "Finding It",
+          "type": "scene",
+          "steps": [
+            { "label": "Tallow Street — modest apothecary, no signage, easy to walk past", "type": "scene" },
+            { "label": "The back storeroom. A narrow stair, unlit. A heavy door with an iron vine handle.", "type": "discovery" },
+            { "label": "The Briar Cup — three tables, four oil lamps, no windows. Ilyra Marr behind the last table.", "type": "scene", "npc_refs": ["ilyra-marr"] }
+          ]
+        },
+        {
+          "id": "bcc-phrase",
+          "label": "The Recognition Phrase",
+          "type": "dialogue",
+          "steps": [
+            { "label": "Vanya: 'The western road remained dry.'", "type": "dialogue", "npc_refs": ["vanya"] },
+            { "label": "Ilyra: 'Then you came in from the east.' — she sets down what she was holding.", "type": "dialogue", "npc_refs": ["ilyra-marr"] },
+            { "label": "Ilyra: 'He's dead, isn't he.' — not a question.", "type": "revelation", "npc_refs": ["ilyra-marr", "eric-huwithakay"] }
+          ]
+        },
+        {
+          "id": "bcc-manifests",
+          "label": "The Manifests",
+          "type": "discovery",
+          "steps": [
+            { "label": "Ilyra explains what she found: specific cargo rerouted through the secondary customs gate during shift transitions. Three shipments over six months. No legitimate destination.", "type": "revelation", "npc_refs": ["ilyra-marr"] },
+            { "label": "Offloaded to an unmarked warehouse on the east dock — never claimed. She has copies of two of the manifests.", "type": "discovery", "npc_refs": ["ilyra-marr"] },
+            { "label": "She was waiting for Eric's confirmation before passing them up the chain. He never sent it. She passes them to Vanya instead.", "type": "revelation", "npc_refs": ["ilyra-marr", "vanya"] },
+            { "label": "Handout: two altered manifest copies — cargo reclassified, customs stamps mismatched, destination overwritten", "type": "discovery" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rusty-bin-debrief",
+      "title": "The Rusty Bin",
+      "act": "prologue",
+      "arc_tags": ["prologue", "briar-cup-thread"],
+      "location": "dunmore",
+      "href": "prologue/briar_cup/briar_cup_arc.html",
+      "summary": "Seren Vale operates from the back room of a Dunmore salvage yard. Vanya reports. Seren asks three questions. What was found. Who else knows. What was lost. She does not ask how Eric died. She doesn't need to. The Gilded Veil has resources, methods, and patience — and Vanya has just become useful.",
+      "key_npcs": ["vanya", "seren-vale"],
+      "key_locations": ["the-rusty-bin"],
+      "gm_notes": "The Rusty Bin is louder than The Briar Cup. The yard sounds cover the back room. Seren Vale is not warm. She is thorough. The debrief is short. Her three questions are the whole conversation, structurally. What Seren does not say — that the Veil doesn't know who killed Eric, and that the manifest pattern doesn't match any known Concord operation — is the detail the party should sense without being told directly.",
+      "beats": [
+        {
+          "id": "rbd-arrival",
+          "label": "The Rusty Bin",
+          "type": "scene",
+          "steps": [
+            { "label": "Eastern edge of Dunmore — salvage yard, working, legitimate. Wagon parts, scrap iron, broken harnesses.", "type": "scene" },
+            { "label": "Gate in the eastern fence. Back room — mismatched furniture, bottles on a table, four regulars who are never the same people twice.", "type": "scene" },
+            { "label": "Seren Vale. She does not greet. She sits. She waits.", "type": "scene", "npc_refs": ["seren-vale"] }
+          ]
+        },
+        {
+          "id": "rbd-debrief",
+          "label": "The Debrief",
+          "type": "dialogue",
+          "steps": [
+            { "label": "Question one: 'What did you find.'", "type": "dialogue", "npc_refs": ["seren-vale"] },
+            { "label": "Question two: 'Who else knows.'", "type": "dialogue", "npc_refs": ["seren-vale"] },
+            { "label": "Question three: 'What was lost.' — she means Eric. She is asking what intelligence died with him.", "type": "dialogue", "npc_refs": ["seren-vale", "eric-huwithakay"] },
+            { "label": "Seren examines the manifest copies. She does not react. 'This goes up the chain. You don't need to know where.'", "type": "revelation", "npc_refs": ["seren-vale"] }
+          ]
+        },
+        {
+          "id": "rbd-resolution",
+          "label": "The Veil's Interest",
+          "type": "revelation",
+          "steps": [
+            { "label": "Seren: 'The Veil wanted Eric's information because the pattern isn't local. Someone is using Dunmore's infrastructure. The Concord doesn't appear to know either.'", "type": "revelation", "npc_refs": ["seren-vale"] },
+            { "label": "She does not explain further. 'You've been useful. Payment is standard.' She slides a folded note across the table — not money. A contact protocol.", "type": "scene", "npc_refs": ["seren-vale", "vanya"] },
+            { "label": "Seren: 'We'll be in touch.' — not a threat. Simply the truth. She operates in Dunmore. The party will be in Dunmore. She will hear what they do.", "type": "revelation", "npc_refs": ["seren-vale"] }
           ]
         }
       ]

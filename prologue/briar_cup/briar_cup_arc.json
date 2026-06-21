@@ -1,0 +1,419 @@
+{
+  "meta": {
+    "gm_label": "GM Reference · Prologue Arc",
+    "title": "Ink Must Not Speak",
+    "subtitle": "Hollowgate → Dunmore · Vanya's thread · Eric Huwithakay · The Gilded Veil"
+  },
+  "sections": [
+    {
+      "color": "teal",
+      "title": "Core Truth — What This Arc Is",
+      "subtitle": "Not a personal arc · Evidence that persists · The gap nobody has filled",
+      "open": true,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "What This Arc Is (GM Only)" },
+                {
+                  "type": "discovery",
+                  "variant": "teal",
+                  "name": "Not a Personal Arc",
+                  "content": [
+                    { "type": "paragraph", "text": "This is not Vanya's backstory arc. It is not a dungeon. It is not a mystery with a clean resolution. It is the beginning of the evidence that says: don't forget about Eric Huwithakay. It is still something to pay attention to." },
+                    { "type": "paragraph", "text": "What Vanya surfaces here — the altered manifests, Ilyra Marr, Seren Vale's careful non-answers — is a layer of the world that existed before the party arrived. It will still be there when they leave Dunmore. The Rusty Bin will be in touch." }
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "teal",
+                  "name": "The Gap Nobody Has Filled",
+                  "content": [
+                    { "type": "paragraph", "text": "Eric Huwithakay was killed by an unknown third party before Vanya arrived. Not the kobolds — the wound doesn't match their weapons. Not the Gilded Veil — they needed him alive. Someone else reached him first." },
+                    { "type": "paragraph", "text": "The Concord didn't order it. The Veil doesn't know who did. The gap between what Eric found and who killed him for it is the real thread here — and nobody is close to filling it." },
+                    { "type": "forest_note", "text": "Do not answer this question yet. The party surfaces it. The answer waits." }
+                  ]
+                }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "Relationships & Stakes" },
+                {
+                  "type": "discovery",
+                  "variant": "dc-low",
+                  "name": "Vanya",
+                  "content": [{ "type": "paragraph", "text": "PC. Her mission was to make contact with Eric in Hollowgate. He never showed. When the party finds his body, she understands before anyone else: he was already dead before she arrived. The note on his body was written for her." }]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "dc-low",
+                  "name": "Ilyra Marr",
+                  "content": [{ "type": "paragraph", "text": "Gilded Veil asset, Tallow Street apothecary. Eric's Dunmore contact. She was receiving his information about altered manifests and waiting for his confirmation to pass it up the chain. When Vanya arrives with the correct phrase, Ilyra knows Eric is dead without being told." }]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "dc-low",
+                  "name": "Seren Vale",
+                  "content": [{ "type": "paragraph", "text": "Vanya's handler. Operates from The Rusty Bin salvage yard. Methodical, unreadable. Receives the manifests. Asks three questions. Does not mourn Eric. Does not need to — she processes what was lost and adjusts." }]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "dc-low",
+                  "name": "The Gilded Veil",
+                  "content": [{ "type": "paragraph", "text": "Intelligence network, primarily operating in a neighboring country. Fringe Fastingbreak presence. Has no knowledge of the Concord's existence. The Concord is aware of the Veil and tolerates it. The two organizations have never intersected directly — until, perhaps, now." }]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "dc-mid",
+      "title": "Part One — The Abandoned Well",
+      "subtitle": "Hollowgate · Occurs during the Missing Convoys escape sequence",
+      "open": true,
+      "content": [
+        {
+          "type": "narrative_block",
+          "text": "The kobold tunnels are mostly dark and mostly quiet by the time the party reaches the far end. The well shaft appears between two collapsed support beams — not a cave feature, a structure. Old. Not kobold work. Something heavy has been dropped into it recently."
+        },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "The Body" },
+                {
+                  "type": "discovery",
+                  "variant": "blood",
+                  "name": "Eric Huwithakay",
+                  "content": [
+                    { "type": "paragraph", "text": "Male, mid-forties. Well-dressed for tunnel work — he planned to be here, had been here before. Satchel still strapped across his chest. He was pushed in. The fall didn't kill him." },
+                    { "type": "paragraph", "text": "Wound below the sternum. Thin, precise, upward angle — not a kobold spear, not a claw. A blade. Handled by someone who knew where to put it." },
+                    { "type": "forest_note", "text": "He was stabbed before the kobolds reached him, or after they passed, or someone came through the tunnels behind him. Establish the impossibility gently — let the party feel the gap before they can articulate it." }
+                  ]
+                },
+                {
+                  "type": "check_reveal",
+                  "dc": 12,
+                  "skill": "Medicine",
+                  "label": "Medicine DC 12",
+                  "reveal": "The wound angle is consistent with a right-handed attacker facing him — stabbed from the front. He saw it coming or turned toward it. The blade was thinner than a shortsword. This was deliberate."
+                }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "The Satchel" },
+                {
+                  "type": "discovery",
+                  "variant": "dc-mid",
+                  "name": "What's Inside",
+                  "content": [
+                    { "type": "list", "items": [
+                      "A bronze signet stamp — Sarynthian design. Most party members won't recognize it immediately. Aurelia will.",
+                      "A partial tunnel map, hand-drawn — more detailed than Krobb's. He had been here before.",
+                      "A note in tight, careful handwriting: 'Kobolds. Someone is paying them.' That is all he had time to write."
+                    ]}
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "blood",
+                  "name": "The Private Note",
+                  "content": [
+                    { "type": "paragraph", "text": "Tucked inside the inner fold of the satchel — smaller, folded twice, separate from the other documents. Easy to miss if you're not looking. Not addressed to anyone. Two sentences only." },
+                    { "type": "journal_entry", "text": "DM. The Briar Cup. Tell her the western road remained dry." },
+                    { "type": "forest_note", "text": "For Vanya: 'DM' means dead man's note — written to be found after he didn't return. 'Tell her' is the instruction. The western road remained dry is the recognition phrase for Ilyra Marr at The Briar Cup in Dunmore." }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "teal",
+          "name": "What Vanya Understands (GM Note)",
+          "content": [
+            { "type": "paragraph", "text": "Vanya recognizes the format immediately: this is a dead man's protocol. Eric knew he might not make it back. He prepared a fallback. 'Tell her' means someone specific — Ilyra Marr, his Dunmore contact, whose location is The Briar Cup." },
+            { "type": "paragraph", "text": "The party doesn't need to know what Vanya understands in real time. She can stay quiet about it. But the player should know: Vanya's mission did not end in Hollowgate. It transferred." }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "Part Two — The Briar Cup",
+      "subtitle": "Dunmore · Tallow Street · Underground",
+      "open": true,
+      "content": [
+        {
+          "type": "narrative_block",
+          "text": "Tallow Street is not dramatic. A chandler, a dry goods counter, a narrow apothecary with no signage that you could easily walk past twice. Vanya doesn't walk past it."
+        },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "Finding It" },
+                {
+                  "type": "discovery",
+                  "variant": "teal",
+                  "name": "The Apothecary",
+                  "content": [
+                    { "type": "paragraph", "text": "Modest. No signage. Herbs in the window — dried, labeled with small cards in careful handwriting. The kind of shop that serves people who already know it's there." },
+                    { "type": "paragraph", "text": "Ilyra Marr works the counter. She is not visibly nervous. She is not visibly anything. She is waiting." }
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "teal",
+                  "name": "The Door Below",
+                  "content": [
+                    { "type": "paragraph", "text": "Back storeroom. Shelving, sacks, the smell of dried sage and old wood. A narrow stair, unlit, going down. A heavy door at the bottom with an iron handle shaped like a vine." },
+                    { "type": "paragraph", "text": "The Briar Cup: three tables, four oil lamps, no windows. It smells of herbs from above and old stone from below. Whatever conversations have happened here stayed here." }
+                  ]
+                },
+                {
+                  "type": "forest_note",
+                  "text": "The space should feel contained, not threatening. Ilyra chose it because it has no sightlines to the street and the ambient noise from the apothecary above masks sound. It is professionally selected."
+                }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "The Meeting" },
+                {
+                  "type": "discovery",
+                  "variant": "teal",
+                  "name": "Recognition Phrase Exchange",
+                  "content": [
+                    { "type": "paragraph", "text": "Vanya says: \"The western road remained dry.\"" },
+                    { "type": "paragraph", "text": "Ilyra sets down what she was holding. She says: \"Then you came in from the east.\"" },
+                    { "type": "paragraph", "text": "A pause. Then: \"He's dead, isn't he.\" Not a question." },
+                    { "type": "forest_note", "text": "Do not rush this moment. Ilyra is recalibrating in real time — from waiting for news to processing the absence of it. She is professional. Her response is practical. But let it breathe." }
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "dc-mid",
+                  "name": "Ilyra's Question",
+                  "content": [
+                    { "type": "paragraph", "text": "She will ask how. Not out of grief — out of operational necessity. The manner of death changes what she reports up the chain. If the party is honest: she listens, adjusts, does not react visibly." },
+                    { "type": "paragraph", "text": "If they tell her about the wound — below the sternum, not a kobold weapon — she will say: \"That's what I was afraid of. That means it wasn't them.\"" },
+                    { "type": "paragraph", "text": "She does not explain who 'them' refers to. She moves on." }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "The Manifests" },
+                {
+                  "type": "discovery",
+                  "variant": "teal",
+                  "name": "What Ilyra Found",
+                  "content": [
+                    { "type": "paragraph", "text": "Eric was tracking unusual tariffs and altered shipping records. Ilyra is the one who sourced the data — she can read manifests by instinct, trained by years of watching what gets declared and what doesn't." },
+                    { "type": "list", "items": [
+                      "Specific cargo rerouted through Dunmore's secondary customs gate during shift transitions — three times in six months.",
+                      "Each time: cargo with no legitimate destination. Offloaded to an unmarked warehouse on the east dock. Never claimed.",
+                      "Two manifests have been altered: cargo reclassified mid-route, customs stamps mismatched with the issuing gate's records, destination field overwritten."
+                    ]}
+                  ]
+                }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "What She Passes On" },
+                {
+                  "type": "discovery",
+                  "variant": "teal",
+                  "name": "The Handoff",
+                  "content": [
+                    { "type": "paragraph", "text": "She was waiting for Eric's confirmation before passing the manifests up the chain. He never sent it." },
+                    { "type": "paragraph", "text": "She has copies of two manifests. She will pass them to Vanya instead. \"Someone has to carry this forward. That's you now.\"" }
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "dc-mid",
+                  "name": "Handout — Manifest Copies",
+                  "content": [
+                    { "type": "paragraph", "text": "Two documents on thin paper, clearly copied in Ilyra's handwriting from originals. Fields of note: cargo type (reclassified from 'dry goods' to 'equipment parts'), origin gate (primary) vs. routing gate (secondary), destination left blank, two different customs stamps from the same checkpoint." },
+                    { "type": "forest_note", "text": "The manifests are evidence, not a puzzle to solve immediately. The party may not understand their significance for several sessions. That is correct. Ilyra doesn't fully understand them either — she knows they're wrong. What they point to is Seren Vale's question to answer." }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "dc-high",
+      "title": "Part Three — The Rusty Bin",
+      "subtitle": "Dunmore · Eastern edge · Salvage yard with a back room",
+      "open": true,
+      "content": [
+        {
+          "type": "narrative_block",
+          "text": "The Rusty Bin is easy to find if you know what you're looking for — a working salvage yard on the eastern edge of the city, wagon parts and scrap iron stacked against the fence. There's a gate in the east wall and a back room that isn't on any signage."
+        },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "The Space" },
+                {
+                  "type": "discovery",
+                  "variant": "dc-high",
+                  "name": "The Back Room",
+                  "content": [
+                    { "type": "paragraph", "text": "Mismatched furniture. A table being used as a bar — bottles, no labels on some of them. Four or five people at various tables who are never quite the same people twice. The ambient noise from the yard — metal on metal, rolling wheels, shouted transactions — fills the room well enough to mask anything said below a shout." },
+                    { "type": "paragraph", "text": "Seren Vale sits at the same table every time. She does not greet. She waits." }
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "dc-high",
+                  "name": "Seren Vale",
+                  "content": [
+                    { "type": "paragraph", "text": "Not warm. Not cold. Precise. She runs the salvage yard legitimately — the records are clean, the employees are real, the business turns a small profit. Everything else runs through the back room." },
+                    { "type": "paragraph", "text": "She will not ask Vanya how she is. She will not make small talk. She will ask three questions." }
+                  ]
+                }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "The Debrief — Three Questions" },
+                {
+                  "type": "discovery",
+                  "variant": "blood",
+                  "name": "Question One: 'What did you find.'",
+                  "content": [
+                    { "type": "paragraph", "text": "She means: what information came out of Hollowgate. Not Eric's death — what he had, what the party recovered, what Ilyra passed on. Vanya reports. Seren listens without interrupting." }
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "blood",
+                  "name": "Question Two: 'Who else knows.'",
+                  "content": [
+                    { "type": "paragraph", "text": "She means: who in the party understands the significance of what they're carrying. She is doing threat assessment. Her expression does not change regardless of the answer." }
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "blood",
+                  "name": "Question Three: 'What was lost.'",
+                  "content": [
+                    { "type": "paragraph", "text": "She means Eric. Not the person — the operational capacity. What intelligence died with him. What the chain no longer has access to." },
+                    { "type": "paragraph", "text": "She does not ask how he died unless Vanya raises it. She is not sentimental about assets. She adjusts." }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "What Seren Shares" },
+                {
+                  "type": "discovery",
+                  "variant": "dc-high",
+                  "name": "The Veil's Interest",
+                  "content": [
+                    { "type": "paragraph", "text": "After examining the manifest copies: \"The Veil wanted Eric's information because the pattern isn't local. Someone is using Dunmore's logistics infrastructure for something. We don't know who. The Concord doesn't appear to know either — and they watch this city.\"" },
+                    { "type": "paragraph", "text": "She does not elaborate. She does not need to. The party now knows there is something happening in Dunmore that two separate intelligence networks have noticed and neither can identify." },
+                    { "type": "forest_note", "text": "This is the hook forward. Do not resolve it here. The manifests are evidence. The unmarked warehouse is a location that exists. Seren knows where it is. She does not share that yet." }
+                  ]
+                }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "section_head", "text": "How It Ends" },
+                {
+                  "type": "discovery",
+                  "variant": "dc-high",
+                  "name": "Payment and Contact Protocol",
+                  "content": [
+                    { "type": "paragraph", "text": "Seren slides a folded note across the table. Not money — a contact protocol. A location in Dunmore, a time of day, a phrase to use if Vanya needs to reach her. Standard Veil procedure." },
+                    { "type": "paragraph", "text": "\"You've been useful. Payment is standard.\" She stands, which means the meeting is over." }
+                  ]
+                },
+                {
+                  "type": "discovery",
+                  "variant": "teal",
+                  "name": "Seren's Final Line",
+                  "content": [
+                    { "type": "paragraph", "text": "\"We'll be in touch.\"" },
+                    { "type": "paragraph", "text": "Not a threat. Not a promise. Simply true. She operates in Dunmore. The party will be in Dunmore. She will hear what they do." },
+                    { "type": "forest_note", "text": "The Rusty Bin stays in the world. This is not a one-time location. If the party does something visible in Dunmore — solves the propaganda investigation, confronts the monstrosity — Seren Vale notices. The Veil notices. That is the texture of a world with moving parts." }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "arc_nav": {
+    "prev": { "href": "../missing_convoys/missing_convoys_arc.html", "text": "Missing Convoys Arc" },
+    "next": { "href": "../dunmore/dunmore_arc.html", "text": "Dunmore Arc" }
+  },
+  "conclusion": {
+    "title": "GM Summary — Running This Arc",
+    "items": [
+      "This arc is not a dungeon. It is not a mystery with a clean resolution. Run it like a briefing that opens more questions than it closes.",
+      "The abandoned well discovery happens inside the Missing Convoys escape beat — no separate scene needed. The satchel search is the moment. Let Vanya's player decide how much to share with the party in real time.",
+      "Ilyra Marr is not hostile. She is cautious and then practical. The recognition phrase is ritual — let it land before she speaks. Her 'he's dead, isn't he' should feel inevitable, not dramatic.",
+      "Seren Vale's three questions are the whole debrief. Do not add warmth or humor. She is thorough and efficient. The manifests going 'up the chain' is final — the party doesn't follow them from here.",
+      "The payload of this arc is one sentence from Seren: 'The Concord doesn't appear to know either.' The party now knows there is a layer of activity in Dunmore that both the Concord and the Gilded Veil are blind to. That is the hook forward.",
+      "The Rusty Bin is a recurring location. The Gilded Veil is a recurring presence. The contact protocol Seren hands over is a real door — Vanya can use it later. Let the party know this matters without telling them why yet."
+    ]
+  }
+}
