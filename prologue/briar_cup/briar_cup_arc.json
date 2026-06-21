@@ -164,7 +164,12 @@
       "content": [
         {
           "type": "narrative_block",
-          "text": "Tallow Street is not dramatic. A chandler, a dry goods counter, a narrow apothecary with no signage that you could easily walk past twice. Vanya doesn't walk past it."
+          "text": "Tallow Street is not dramatic. A chandler, a dry goods counter, a narrow apothecary with no signage that you could walk past twice. The stair in the back storeroom goes down further than it should."
+        },
+        {
+          "type": "scene_image",
+          "src": "briar_cup_interior.png",
+          "caption": "The Briar Cup — entry room, Tallow Street, Dunmore"
         },
         {
           "type": "two_col",
@@ -178,7 +183,7 @@
                   "variant": "teal",
                   "name": "The Apothecary",
                   "content": [
-                    { "type": "paragraph", "text": "Modest. No signage. Herbs in the window — dried, labeled with small cards in careful handwriting. The kind of shop that serves people who already know it's there." },
+                    { "type": "paragraph", "text": "Modest. No signage. Herbs in the window, labeled in careful handwriting. The kind of shop that serves people who already know it's there." },
                     { "type": "paragraph", "text": "Ilyra Marr works the counter. She is not visibly nervous. She is not visibly anything. She is waiting." }
                   ]
                 },
@@ -187,13 +192,11 @@
                   "variant": "teal",
                   "name": "The Door Below",
                   "content": [
-                    { "type": "paragraph", "text": "Back storeroom. Shelving, sacks, the smell of dried sage and old wood. A narrow stair, unlit, going down. A heavy door at the bottom with an iron handle shaped like a vine." },
-                    { "type": "paragraph", "text": "The Briar Cup: three tables, four oil lamps, no windows. It smells of herbs from above and old stone from below. Whatever conversations have happened here stayed here." }
+                    { "type": "paragraph", "text": "Back storeroom, narrow stair, unlit. A heavy door at the bottom with an iron handle shaped like a vine. It opens into something larger than the building above suggests is possible." },
+                    { "type": "paragraph", "text": "Stone-vaulted ceilings. Moroccan lanterns, dozens of them. A grand arch leading deeper. Orcs and elves and dwarves on cushions around brass hookahs. Serving staff with trays of glowing fruit. The sign above the arch reads 'The Briar Cup' in gilt. This is a real venue with real regulars. Nobody looks up when a new face comes through the door." },
+                    { "type": "paragraph", "text": "Turn left or right past the bar and the room changes. Stone-carved alcove booths set into the walls — curved bench seating built into the rock, one candle per table, much darker. A gnoll asleep at one table. A group in the far booth who have been there for hours. This is where Ilyra meets people." },
+                    { "type": "forest_note", "text": "The deep room is the point. The entry room's noise and crowd are the cover that makes the back possible. Ilyra is already in her alcove when the party arrives — has been there long enough that her presence reads as furniture." }
                   ]
-                },
-                {
-                  "type": "forest_note",
-                  "text": "The space should feel contained, not threatening. Ilyra chose it because it has no sightlines to the street and the ambient noise from the apothecary above masks sound. It is professionally selected."
                 }
               ]
             }
@@ -203,6 +206,7 @@
               "type": "block_wrap",
               "content": [
                 { "type": "section_head", "text": "The Meeting" },
+                { "type": "scene_image", "src": "briar_cup_deep.png", "caption": "The deep room — carved stone booths, past the bar" },
                 {
                   "type": "discovery",
                   "variant": "teal",

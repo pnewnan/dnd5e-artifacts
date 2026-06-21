@@ -917,13 +917,15 @@
       "id": "the-briar-cup",
       "name": "The Briar Cup",
       "nation": "fastingbreak",
-      "type": "underground meeting space",
+      "type": "underground establishment",
       "arc_tags": ["prologue", "briar-cup-thread"],
-      "description": "A small underground drinking room beneath a modest apothecary on Tallow Street in Dunmore, operated by Ilyra Marr. The Briar Cup does not advertise. You find it because someone who knows tells you where to look. Stone walls, low ceiling, three tables, oil lamp in each corner. It smells of dried herbs from the apothecary above and old wood from the barrels along the back wall.",
-      "access": "Through the apothecary's back storeroom. A narrow stair, unlit, leads down to a heavy door with an iron handle shaped like a vine. Ilyra locks it from the inside when meetings are in progress.",
-      "atmosphere": "Quiet in the way that means deliberate \u2014 no music, no crowd noise, no windows. Conversations here stay here. The Gilded Veil uses it precisely because nothing about it suggests a meeting place. It looks like storage.",
-      "significance": "The contact point between Vanya and Ilyra Marr. The recognition phrase exchange happens here. The manifest copies are passed here. Eric Huwithakay knew this location by name \u2014 the note in his satchel was addressed to it.",
-      "gm_notes": "The Briar Cup should feel like a space that has heard things. Not dangerous \u2014 contained. When the party arrives here, everything should be slightly too quiet and slightly too tidy. Ilyra runs the meeting like a professional: what you need to know, in the order you need to know it, and nothing more."
+      "description": "A proper underground venue beneath Tallow Street in Dunmore \u2014 stone-vaulted, lantern-lit, with a grand arch leading from the entry chamber into deeper rooms behind red curtains. Moroccan-style hanging lanterns fill the ceiling. Rich carpets run the center. Orcs, elves, dwarves, and stranger things lounge on cushions around brass hookah pipes while serving staff move between them carrying trays of glowing fruit. The sign over the arch reads 'The Briar Cup' in gilt script. This is not a back room. It is an establishment with regulars, atmosphere, and its own economy of discretion.",
+      "access": "Through Ilyra Marr's apothecary on Tallow Street \u2014 back storeroom, narrow stair, heavy door with an iron vine handle. The stair opens into the entry chamber. The Briar Cup is larger than the apothecary above suggests is possible.",
+      "atmosphere": "Louder than it should be for a place used for intelligence work \u2014 which is precisely the point. The ambient noise of a full room covers conversation. The clientele is varied enough that no single face is remarkable. Everyone here is minding their own business, professionally.",
+      "layout": "Two distinct spaces. The entry room: grand, opulent, Moroccan lanterns, open floor with cushions and mixed clientele. Turn left or right past the bar and the space changes entirely \u2014 stone-carved booth alcoves set into the walls, much darker, a candle on each table, curved bench seating built into the rock. This is where the real conversations happen. A gnoll asleep at one table does not notice anything. A group in the far booth has been there for hours.",
+      "private_meeting": "Ilyra meets contacts in the deep room \u2014 one of the carved stone alcoves, where the booth walls muffle sound and the darkness makes faces harder to read from across the room. She is already there when you arrive. She has been there long enough that her presence is unremarkable.",
+      "significance": "The contact point for the Ink Must Not Speak arc. The recognition phrase exchange happens in Ilyra's alcove. The manifest copies are passed here. Eric Huwithakay knew this location by name \u2014 the note in his satchel pointed here.",
+      "gm_notes": "The Briar Cup should feel alive \u2014 not quiet, not contained. The discretion here comes from volume and variety, not emptiness. The party walks past orcs and elves to reach Ilyra's alcove. Nobody looks up. That is the point. The main room image is available as briar_cup_interior.png."
     },
     {
       "id": "the-rusty-bin",
