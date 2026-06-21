@@ -20,21 +20,22 @@
                 { "type": "section_head", "text": "What This Arc Is (GM Only)" },
                 {
                   "type": "discovery",
-                  "variant": "teal",
-                  "name": "Not a Personal Arc",
+                  "variant": "blood",
+                  "name": "Vanya's Contract (GM Only)",
                   "content": [
-                    { "type": "paragraph", "text": "This is not Vanya's backstory arc. It is not a dungeon. It is not a mystery with a clean resolution. It is the beginning of the evidence that says: don't forget about Eric Huwithakay. It is still something to pay attention to." },
-                    { "type": "paragraph", "text": "What Vanya surfaces here — the altered manifests, Ilyra Marr, Seren Vale's careful non-answers — is a layer of the world that existed before the party arrived. It will still be there when they leave Dunmore. The Rusty Bin will be in touch." }
+                    { "type": "paragraph", "text": "Vanya was given her first true contract: a gate scribe in Hollowgate had begun noticing inconsistencies in convoy records — questions that were becoming dangerous. She was to secure any relevant records or notes he carried, then remove him. Cleanly. Quietly. Without drawing attention to the work." },
+                    { "type": "paragraph", "text": "She arrived and found him already dead in the kobold tunnels. Someone else got there first. The contract's outcome is technically complete — the scribe is silenced — but she did not do it, does not know who did, and is now holding her target's satchel." },
+                    { "type": "forest_note", "text": "The party does not know this. When Vanya takes the satchel, it reads as recovering evidence. Keep the player's knowledge distinct from the party's." }
                   ]
                 },
                 {
                   "type": "discovery",
                   "variant": "teal",
-                  "name": "The Gap Nobody Has Filled",
+                  "name": "The Complication",
                   "content": [
-                    { "type": "paragraph", "text": "Eric Huwithakay was killed by an unknown third party before Vanya arrived. Not the kobolds — the wound doesn't match their weapons. Not the Gilded Veil — they needed him alive. Someone else reached him first." },
-                    { "type": "paragraph", "text": "The Concord didn't order it. The Veil doesn't know who did. The gap between what Eric found and who killed him for it is the real thread here — and nobody is close to filling it." },
-                    { "type": "forest_note", "text": "Do not answer this question yet. The party surfaces it. The answer waits." }
+                    { "type": "paragraph", "text": "Inside the satchel: records, maps, a final note. And tucked into the inner fold, a personal notation pointing to Dunmore — a location called The Briar Cup, a recognition phrase, and the instruction to 'tell her.' Vanya was not given this phrase. She found it on the man she was sent to kill." },
+                    { "type": "paragraph", "text": "The Gilded Veil's contract was to silence Eric and recover his intel. The note in his satchel points to Dunmore — a location, a recognition phrase, someone waiting. The Veil doesn't know this exists. Following it is Vanya's own call, because it's how you actually find out what he knew and who else knew it." },
+                    { "type": "forest_note", "text": "The woman at The Briar Cup will believe Eric sent Vanya. He did not. Vanya found the phrase on her target's body. That gap is the tension of the scene — not a test anyone designed, just the consequence of Vanya doing the job properly." }
                   ]
                 }
               ]
@@ -49,7 +50,7 @@
                   "type": "discovery",
                   "variant": "dc-low",
                   "name": "Vanya",
-                  "content": [{ "type": "paragraph", "text": "PC. Her mission was to make contact with Eric in Hollowgate. He never showed. When the party finds his body, she understands before anyone else: he was already dead before she arrived. The note on his body was written for her." }]
+                  "content": [{ "type": "paragraph", "text": "PC. Her first true contract: silence a gate scribe asking inconvenient questions. Arrive, recover his records, remove him. She arrived and found him already dead. She took the satchel anyway — that was the job. The note inside it pointed to Dunmore. The recognition phrase written there was not given to her by anyone. She found it on her target." }]
                 },
                 {
                   "type": "discovery",
@@ -136,7 +137,7 @@
                   "content": [
                     { "type": "paragraph", "text": "Tucked inside the inner fold of the satchel — smaller, folded twice, separate from the other documents. Easy to miss if you're not looking. Not addressed to anyone. Two sentences only." },
                     { "type": "journal_entry", "text": "DM. The Briar Cup. Tell her the western road remained dry." },
-                    { "type": "forest_note", "text": "For Vanya: 'DM' means dead man's note — written to be found after he didn't return. 'Tell her' is the instruction. The western road remained dry is the recognition phrase for Ilyra Marr at The Briar Cup in Dunmore." }
+                    { "type": "forest_note", "text": "For Vanya: 'DM' is Eric's personal shorthand for Dunmore — his notation system for his own notes. 'Tell her' is the instruction. The western road remained dry is the recognition phrase for Ilyra Marr at The Briar Cup in Dunmore." }
                   ]
                 }
               ]
@@ -145,11 +146,12 @@
         },
         {
           "type": "discovery",
-          "variant": "teal",
-          "name": "What Vanya Understands (GM Note)",
+          "variant": "blood",
+          "name": "What Vanya Understands (GM Only)",
           "content": [
-            { "type": "paragraph", "text": "Vanya recognizes the format immediately: this is a dead man's protocol. Eric knew he might not make it back. He prepared a fallback. 'Tell her' means someone specific — Ilyra Marr, his Dunmore contact, whose location is The Briar Cup." },
-            { "type": "paragraph", "text": "The party doesn't need to know what Vanya understands in real time. She can stay quiet about it. But the player should know: Vanya's mission did not end in Hollowgate. It transferred." }
+            { "type": "paragraph", "text": "'DM' is Eric's notation for Dunmore — his shorthand, for his own notes. The Briar Cup is somewhere in Dunmore. 'Tell her the western road remained dry' is a recognition phrase, pointed at a woman who was waiting for him to arrive. He didn't arrive. He won't." },
+            { "type": "paragraph", "text": "Vanya was sent to make sure he never arrived anywhere again. The note is addressed to no one. It was never meant for her. She's going to use it anyway." },
+            { "type": "forest_note", "text": "Ilyra Marr will believe Eric sent Vanya. He did not. Vanya will walk into that meeting carrying credentials she took from her target's body. The GM should hold this tension carefully — Ilyra trusts the protocol. The protocol has been compromised in a way neither of them can see." }
           ]
         }
       ]
@@ -207,19 +209,19 @@
                   "name": "Recognition Phrase Exchange",
                   "content": [
                     { "type": "paragraph", "text": "Vanya says: \"The western road remained dry.\"" },
-                    { "type": "paragraph", "text": "Ilyra sets down what she was holding. She says: \"Then you came in from the east.\"" },
-                    { "type": "paragraph", "text": "A pause. Then: \"He's dead, isn't he.\" Not a question." },
-                    { "type": "forest_note", "text": "Do not rush this moment. Ilyra is recalibrating in real time — from waiting for news to processing the absence of it. She is professional. Her response is practical. But let it breathe." }
+                    { "type": "paragraph", "text": "Ilyra sets down what she was holding. \"Then you came in from the east.\"" },
+                    { "type": "paragraph", "text": "The protocol is satisfied. Ilyra has never met Eric in person — dead-drop only. She knows his handwriting. She does not know his face, his voice, or his sex. The phrase is the only verification she has, and it worked." },
+                    { "type": "forest_note", "text": "This opens a genuine player choice. Vanya can present as a contact Eric sent — straightforward, lower risk. Or she can attempt to present as Eric directly. Difficult: Ilyra may ask questions only Eric would know, and Vanya's knowledge comes only from his satchel. But Ilyra has no face to check the claim against. If Vanya goes this route, let Ilyra's questions come naturally from the conversation — don't announce the skill check. Let the player feel the tightrope." }
                   ]
                 },
                 {
                   "type": "discovery",
                   "variant": "dc-mid",
-                  "name": "Ilyra's Question",
+                  "name": "Ilyra's First Question",
                   "content": [
-                    { "type": "paragraph", "text": "She will ask how. Not out of grief — out of operational necessity. The manner of death changes what she reports up the chain. If the party is honest: she listens, adjusts, does not react visibly." },
-                    { "type": "paragraph", "text": "If they tell her about the wound — below the sternum, not a kobold weapon — she will say: \"That's what I was afraid of. That means it wasn't them.\"" },
-                    { "type": "paragraph", "text": "She does not explain who 'them' refers to. She moves on." }
+                    { "type": "paragraph", "text": "What she asks depends on how Vanya presents. If Vanya implies Eric sent her: \"He usually comes himself when he can. What kept him?\" If Vanya attempts to present as Eric: \"You're not what I expected from your handwriting.\" — said neutrally, curious rather than suspicious. She has never seen Eric. She has no face to compare. She is reading the situation, not yet alarmed." },
+                    { "type": "paragraph", "text": "Either path converges: Ilyra needs to know what she's working with before she passes anything on. She is reading Vanya the entire time and will not announce that she's doing it." },
+                    { "type": "forest_note", "text": "If Eric's death surfaces — volunteered or pressed — Ilyra goes quiet. \"How.\" Told about the wound, below the sternum, not kobold weapons: \"That means it wasn't them.\" She does not explain who 'them' is. She moves on. She does not know what Vanya was contracted to do. She may never find out. The information she's about to hand over was meant for Eric — it's going to the party through the person who was sent to remove him." }
                   ]
                 }
               ]
