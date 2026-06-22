@@ -159,6 +159,12 @@
           "type": "gm"
         },
         {
+          "name": "The Gourdmire Maw — Market Encounter",
+          "desc": "Dunmore marketplace · Beat Two · Disaster encounter · Civilian complications · Rooted Fury · Death Burst",
+          "href": "prologue/dunmore/dunmore_market_encounter.html",
+          "type": "gm"
+        },
+        {
           "name": "Tamsin's Glasshouse — Greenhouse Encounter",
           "desc": "Five rings · Eight plant types · Phase One endless sprouting · Hypha's seven internal checks · Phase Two fear communion",
           "href": "prologue/dunmore/dunmore_greenhouse_encounter.html",

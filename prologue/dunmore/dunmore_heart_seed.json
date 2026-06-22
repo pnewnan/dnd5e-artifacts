@@ -2,13 +2,13 @@
   "meta": {
     "gm_label": "GM Reference · Dunmore · Heart Seed Arc",
     "title": "Unearthing the Heart Seed",
-    "subtitle": "The market · The cottage · The greenhouse · A sidequest that begins a long relationship"
+    "subtitle": "The marketplace · The Gourdmire Maw · Following the thread · The cottage · The greenhouse"
   },
   "sections": [
     {
       "color": "dc-mid",
-      "title": "Beat One — The Market Investigation",
-      "subtitle": "Robyn's memory · Strange plants · Vendor testimony · Brant Vey the butcher",
+      "title": "Beat One — The Market",
+      "subtitle": "Arrival in Dunmore · Tamsin's empty stall · Meet Fanger · The marketplace breathes",
       "open": true,
       "content": [
         {
@@ -17,33 +17,25 @@
             {
               "type": "block_wrap",
               "content": [
-                { "type": "heading", "level": 2, "text": "Robyn's Navigation" },
-                { "type": "discovery", "variant": "forest", "name": "He Remembers the Smell", "content": [
-                  { "type": "paragraph", "text": "Robyn does not know Tamsin's name. He navigates by sensory memory — wet soil, herbs, flowers, honey candy, old plant-lady cart. He becomes immediately useful. He is not just a witness. He is the only map they have." },
-                  { "type": "forest_note", "text": "\"This way. Robyn remembers smell. Wet dirt. Flower candy. Old plant-lady cart.\"" }
-                ]},
-                { "type": "heading", "level": 2, "text": "Tamsin's Usual Spot" },
-                { "type": "discovery", "variant": "dc-low", "name": "The Cart Is Gone", "content": [
-                  { "type": "paragraph", "text": "Robyn leads the party to the right lane. But when they arrive, the cart is not there. Only the signs of it remain: two dark wheel ruts in the market stones, spilled soil near the wall, hooks where herb bundles used to hang, a crooked painted sign — <strong>Tamsin Vale — Cuttings, Curatives, and Kindly Advice</strong>. A few abandoned pots sit beneath it. Their roots have broken through the clay and into the cobblestones." }
-                ]},
-                { "type": "heading", "level": 2, "text": "Strange Plants Left Behind" },
-                { "type": "discovery", "variant": "dc-low", "name": "Too Large. Too Healthy. Too Hungry.", "content": [
-                  { "type": "paragraph", "text": "Tamsin took her cart but left plants too rooted or too dangerous to move. The effect is beautiful before it is wrong:" },
+                { "type": "heading", "level": 2, "text": "Arrival in Dunmore" },
+                { "type": "discovery", "variant": "dc-low", "name": "A Town That's Still Standing", "content": [
+                  { "type": "paragraph", "text": "Dunmore is alive. Not in the precarious way of Hollowgate — alive in the way of a town that doesn't know it should be worried yet. The market runs full." },
                   { "type": "list", "items": [
-                    "Herbs growing thick between cobblestones",
-                    "Flower heads turning slowly toward motion",
-                    "Roots cracked through several pots",
-                    "Moss spread from spilled soil",
-                    "A few plants have crawled beyond their trays",
-                    "Bits of raw meat lie near one pot — not dropped. Placed there."
+                    "Fresh produce stacked in bright rows",
+                    "A baker shouting prices over the noise",
+                    "A blacksmith's hammer rhythm two streets over",
+                    "Livestock being traded near the east gate",
+                    "Children weaving between carts at full speed",
+                    "Townsfolk greeting each other by name"
                   ]},
-                  { "type": "annotation", "text": "This is not a combat encounter. It is the first clear warning that the greenhouse problem has leaked into town." }
+                  { "type": "annotation", "text": "This is the contrast that matters later. The market is healthy and ordinary and full of people who do not know what is growing at the edge of town." }
                 ]},
-                { "type": "heading", "level": 2, "text": "The Little Carnivorous Plant" },
-                { "type": "discovery", "variant": "dc-mid", "name": "Something Is Wrong With It", "content": [
-                  { "type": "paragraph", "text": "One plant used to be a harmless novelty — a small carnivorous plant in a clay pot to catch flies. Now it has several little heads, each about two inches wide. A tiny green maw with a red interior and soft lips edged with needle-like teeth. It is still small enough to be pathetic. It is also clearly wrong." },
-                  { "type": "narrative_block", "text": "A strip of dark red meat lies beside one of the cracked pots. At first, you think it has been dropped by accident. Then one of the little plant heads bends toward it. Thin roots pull against the cobblestones. The whole pot scrapes forward with a soft clay rasp. Another head opens. Then another. The meat twitches as rootlets hook into it. The tiny mouths begin to eat." },
-                  { "type": "paragraph", "text": "The plants are mobile. They are hungry. Someone has been feeding them. The problem is escalating." }
+                { "type": "heading", "level": 2, "text": "Robyn's Role" },
+                { "type": "discovery", "variant": "forest", "name": "He Knows This Market", "content": [
+                  { "type": "paragraph", "text": "Robyn is useful here without being the solution to anything. He can answer practical questions — where the general store is, which stalls sell food, where the blacksmith works, where common supplies are. Shopkeepers know him. He has a reputation for fair trades and unusual rocks." },
+                  { "type": "forest_note", "text": "\"Robyn! Haven't seen you in a few weeks.\"" },
+                  { "type": "forest_note", "text": "\"Got any shiny rocks for me today?\"" },
+                  { "type": "paragraph", "text": "Some acknowledge him warmly. Some barely notice him. No one treats him like a local celebrity. He belongs here the way a regular traveler belongs — recognized, not famous." }
                 ]}
               ]
             }
@@ -52,41 +44,60 @@
             {
               "type": "block_wrap",
               "content": [
-                { "type": "heading", "level": 2, "text": "What the Vendors Say" },
-                { "type": "paragraph", "text": "<em>Introduce Tamsin warmly through other people's love before the party knows she is dead. They are going to question a harmless old woman. These vendors confirm it.</em>" },
-                { "type": "discovery", "variant": "dc-low", "name": "Vendor Lines", "content": [
+                { "type": "heading", "level": 2, "text": "Tamsin's Herbs & Garden" },
+                { "type": "discovery", "variant": "dc-low", "name": "Just Missed Her", "content": [
+                  { "type": "paragraph", "text": "A stall near the center of the market bears a painted sign: <strong>Tamsin's Herbs & Garden</strong>. The stall is mostly packed up. A few empty crates remain. Nothing seems alarming. The neighboring vendor can explain:" },
+                  { "type": "forest_note", "text": "\"You just missed her. Packed up early today. Heat was getting to her.\"" },
+                  { "type": "paragraph", "text": "Nothing about this seems unusual. Tamsin is simply another local merchant who left early. The stall is a thread — not yet a clue." }
+                ]},
+                { "type": "discovery", "variant": "dc-low", "name": "Who Tamsin Is — Through Other People", "content": [
+                  { "type": "paragraph", "text": "<em>Introduce Tamsin through other people's warmth before the party knows she is dead. They should like her before they meet her.</em>" },
                   { "type": "list", "items": [
                     "\"Auntie Tamsin? Sweetest woman in the market. Gives honey candies to children and lectures grown men about overwatering mint.\"",
-                    "\"She left early three days ago. Packed up in a rush. Didn't even finish arguing with Old Renn about basil prices — and she loves arguing about basil.\"",
-                    "\"She hasn't been back since.\"",
-                    "\"Her plants have been strange lately. Bigger. Brighter. Too lively.\"",
-                    "\"That little biting one used to catch flies. Now it eats meat.\"",
-                    "\"She kept asking whether the butcher had fresh cuts. Said scraps weren't enough anymore.\"",
-                    "\"Plants needing meat is not normal, friend.\""
+                    "\"She's been here twenty years. Knows every plant in the region by name.\"",
+                    "\"She always packs up at noon. Today was earlier.\"",
+                    "\"Plants were looking strange lately, though. Bigger than they should be.\"",
+                    "\"She seemed distracted this morning. Kept looking at the road.\""
                   ]}
+                ]}
+              ]
+            }
+          ]
+        },
+        { "type": "divider" },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Meet Fanger" },
+                { "type": "discovery", "variant": "dc-mid", "name": "\"Little Guy's Got Teeth\"", "content": [
+                  { "type": "paragraph", "text": "Nearby, a market-goer is proudly showing off a small carnivorous plant they bought from Tamsin earlier that morning. The plant is about the size of a teacup — potted, covered in tiny leaves and small snapping mouths. Charming, even. Clearly purchased as a novelty." },
+                  { "type": "forest_note", "text": "\"I call him Fanger.\"" },
+                  { "type": "paragraph", "text": "If any player character gets too close, the plant snaps at their finger. <strong>1 point of piercing damage.</strong> A small bead of blood appears. The plant's mouths seem unusually interested in it — orienting toward the hand before the blood is fully visible." },
+                  { "type": "forest_note", "text": "\"See? Told you.\"" },
+                  { "type": "annotation", "text": "Most people find it amusing. The owner is proud. Let the scene breathe. This is not yet a warning — it is a novelty. The horror is in how ordinary it all seems." }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "One Person Isn't Laughing" },
+                { "type": "discovery", "variant": "dc-low", "name": "The Uncomfortable Vendor", "content": [
+                  { "type": "paragraph", "text": "One nearby vendor watches the Fanger demonstration with visible unease. They do not explain themselves readily. If the party notices and asks:" },
+                  { "type": "forest_note", "text": "\"Tamsin didn't think it was funny.\"" },
+                  { "type": "paragraph", "text": "That is all they say right now. They do not elaborate. They go back to their stall." },
+                  { "type": "annotation", "text": "This moment becomes significant after the Gourdmire Maw attack. Plant it now so it lands later." }
                 ]},
-                { "type": "discovery", "variant": "dc-low", "name": "The Butcher Lead", "content": [
-                  { "type": "paragraph", "text": "One vendor points the party toward Brant Vey:" },
-                  { "type": "forest_note", "text": "\"You want to know what happened? Ask Brant at the butcher's. She stopped there before she left. Bought enough meat to feed a kennel.\"" }
-                ]},
-                { "type": "heading", "level": 2, "text": "Brant Vey — Lower Market Butcher" },
-                { "type": "discovery", "variant": "dc-mid", "name": "Practical Key to the Cottage", "content": [
-                  { "type": "paragraph", "text": "A broad man with a red apron, thick forearms, and the wary expression of someone who has learned not to question strange orders in Dunmore." },
-                  { "type": "list", "items": [
-                    "Tamsin normally buys bone meal, fish scraps, and offal for gardening.",
-                    "Last week: hearts, livers, eel, butcher's trim, fresh blood.",
-                    "\"I joked she was feeding wolves. She did not laugh.\"",
-                    "She said: <em>\"Plants are gentler if they are not hungry.\"</em>",
-                    "\"That is not a sentence a butcher forgets.\"",
-                    "His shop delivers to her cottage. He can mark it on the map."
-                  ]}
-                ]},
-                { "type": "discovery", "variant": "dc-mid", "name": "The Last Delivery", "content": [
-                  { "type": "paragraph", "text": "Brant sent a boy yesterday. No one answered. The boy left the parcel at the gate." },
-                  { "type": "forest_note", "text": "\"He came back pale. Said something pulled the parcel through the gate after he set it down.\"" }
-                ]},
-                { "type": "discovery", "variant": "dc-low", "name": "Marking the Map", "content": [
-                  { "type": "narrative_block", "text": "Brant wipes his hands, takes the map, and plants one thick finger near the edge of Dunmore. \"Here. East road, past the last proper houses. Old orchard lane. White cottage, blue shutters, big glasshouse behind it.\" He pauses. \"If you're going there, don't go at night.\"" }
+                { "type": "heading", "level": 2, "text": "Market Exploration" },
+                { "type": "discovery", "variant": "dc-low", "name": "Let Them Settle In", "content": [
+                  { "type": "paragraph", "text": "Give the players genuine time in the market. This is a shopping and roleplay opportunity — buy supplies, gather rumors, talk to merchants, identify herbs, meet Dunmore as a place." },
+                  { "type": "paragraph", "text": "Let them begin to forget about Fanger. Not completely. Just enough." },
+                  { "type": "annotation", "text": "The longer the market exploration, the more effective the pumpkin attack. Do not rush this beat." }
                 ]}
               ]
             }
@@ -96,7 +107,140 @@
     },
     {
       "color": "blood",
-      "title": "Beat Two — Tamsin's Overrun Cottage",
+      "title": "Beat Two — The Gourdmire Maw",
+      "subtitle": "The pumpkin splits · Vines erupt · The marketplace becomes a disaster",
+      "open": false,
+      "content": [
+        {
+          "type": "narrative_block",
+          "text": "Shouting erupts from the far end of the market. People begin screaming. A crowd scatters. A produce cart overturns — cabbages rolling, a woman pulling her child backward, an old man frozen in the road.\n\nA large pumpkin at the center of the cart begins to split.\n\nVines erupt outward.\n\nThe pumpkin unfolds."
+        },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "The Encounter" },
+                { "type": "discovery", "variant": "blood", "name": "A Disaster, Not a Fight", "content": [
+                  { "type": "paragraph", "text": "The Gourdmire Maw is a serious encounter. It should feel dangerous. The marketplace is not a dungeon room — it is a living, endangered space. The party is protecting people, not simply fighting a monster." },
+                  { "type": "list", "items": [
+                    "Civilians in the direct path of the vines",
+                    "Market stalls being destroyed as the creature moves",
+                    "Animals panicking and pulling carts loose",
+                    "Produce exploding underfoot as difficult terrain spreads",
+                    "Children frozen in the middle of the street"
+                  ]},
+                  { "type": "annotation", "text": "Each round, introduce one complication. Every character should have an opportunity to contribute beyond attacking — protect someone, calm a horse, clear a path, pull someone free from rubble." }
+                ]},
+                { "type": "heading", "level": 2, "text": "Round Complications" },
+                { "type": "discovery", "variant": "dc-mid", "name": "Choose One Per Round", "content": [
+                  { "type": "list", "items": [
+                    "<strong>Civilian in Danger:</strong> A merchant trapped beneath a fallen stall. A child frozen in fear directly in the creature's path. An elderly shopper who cannot move fast enough.",
+                    "<strong>Panicked Animal:</strong> A horse breaks free and bolts through the crowd. Livestock scatter and knock over neighboring stalls.",
+                    "<strong>Property Damage:</strong> A stall collapses into the street and creates difficult terrain. Produce explodes underfoot. A cart overturns and blocks movement for the round."
+                  ]}
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Gourdmire Maw — Quick Reference" },
+                { "type": "discovery", "variant": "blood", "name": "Stat Summary", "content": [
+                  { "type": "paragraph", "text": "<strong>Medium Plant, Unaligned</strong> · A grotesque corruption of an ordinary pumpkin, dragging itself on thick vine-roots, splitting stalls as it moves. Its rind splits open into an impossibly wide mouth lined with jagged teeth and a long muscular tongue." },
+                  { "type": "paragraph", "text": "AC 13 (Thick Rind) · HP 55 · Speed 20 ft., climb 20 ft." },
+                  { "type": "paragraph", "text": "STR 18 (+4) · DEX 8 (−1) · CON 16 (+3) · INT 2 (−4) · WIS 10 (+0) · CHA 3 (−4)" },
+                  { "type": "paragraph", "text": "<strong>Resistances:</strong> Piercing · <strong>Immunities:</strong> Charmed, Frightened" }
+                ]},
+                { "type": "discovery", "variant": "blood", "name": "Actions", "content": [
+                  { "type": "list", "items": [
+                    "<strong>Rampaging Vines (passive):</strong> Difficult terrain within 10 ft. of the Maw.",
+                    "<strong>Bite:</strong> +5 to hit, reach 10 ft. — 2d6+4 piercing. Medium or smaller: DC 13 STR save or Grappled.",
+                    "<strong>Vine Lash:</strong> +5 to hit, reach 15 ft. — 1d8+3 bludgeoning. Target pulled 10 ft. toward the Maw.",
+                    "<strong>Unhinging Maw (Recharge 5–6):</strong> Rind splits impossibly wide — nearly one and a half times the creature's own height. All within 10 ft.: DC 12 WIS save or Frightened until end of next turn. Immediately makes one Bite attack."
+                  ]}
+                ]},
+                { "type": "discovery", "variant": "dc-top", "name": "Threshold Mechanics", "content": [
+                  { "type": "list", "items": [
+                    "<strong>Rooted Fury (at 27 HP):</strong> The pumpkin shell cracks apart. Writhing roots burst through the rind. The players realize the pumpkin was only the fruiting body. AC rises to 15. Advantage on checks to maintain Grapples. Occurs once only.",
+                    "<strong>Death Burst (on 0 HP):</strong> Body ruptures. Black seeds scatter 10 ft. DC 13 DEX save — Failure: 1d6 acid damage + Restrained by writhing vines until start of next turn."
+                  ]}
+                ]},
+                { "type": "link_row", "links": [
+                  { "href": "dunmore_market_encounter.html", "text": "→ Full Market Encounter Reference", "color": "blood" }
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "Beat Three — Following the Thread",
+      "subtitle": "Cart owner · Return to Fanger · The apothecary · The cottage marked on the map",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "The Cart Owner" },
+                { "type": "discovery", "variant": "dc-mid", "name": "\"It Was Just a Pumpkin\"", "content": [
+                  { "type": "paragraph", "text": "The owner of the overturned produce cart is shaken. They are looking at what remains of their livelihood scattered across the street. When the party approaches:" },
+                  { "type": "forest_note", "text": "\"I bought that yesterday. It was just sitting there. It wasn't moving.\"" },
+                  { "type": "paragraph", "text": "This is the critical detail. The creature did not arrive as a monster. It was purchased as ordinary produce and transformed afterward. The corruption is spreading through Tamsin's plants <em>after they leave the greenhouse</em> — sold before the change manifests." }
+                ]},
+                { "type": "heading", "level": 2, "text": "Return to Fanger" },
+                { "type": "discovery", "variant": "dc-mid", "name": "The Tone Has Changed", "content": [
+                  { "type": "paragraph", "text": "When the party returns to the customer with the small carnivorous plant, the owner is no longer amused. They have seen the pumpkin attack. Fanger does not look charming anymore. When pressed, the full story comes out:" },
+                  { "type": "forest_note", "text": "\"Yesterday. Under the stall. Fanger bit something. I thought it was a rat.\"" },
+                  { "type": "paragraph", "text": "But Tamsin had been there and seen it. She became visibly concerned. She immediately tried to buy the plant back — not for what the customer paid. For double. The customer refused. They thought she was joking, or regretting the sale." },
+                  { "type": "forest_note", "text": "\"After that she just... got distracted. Kept looking at the plant. Then she packed up and left.\"" },
+                  { "type": "annotation", "text": "The uncomfortable vendor from earlier fills in now if pressed: \"That's what I meant. Tamsin didn't think it was funny. She never thought the biting ones were funny.\"" }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "The Apothecary" },
+                { "type": "discovery", "variant": "teal", "name": "She Was Here Earlier Today", "content": [
+                  { "type": "paragraph", "text": "Any vendor in the market can point the party to the local apothecary. When they arrive and mention Tamsin's name, the apothecary recognizes it immediately." },
+                  { "type": "forest_note", "text": "\"She was here earlier today.\"" },
+                  { "type": "paragraph", "text": "What did she buy?" },
+                  { "type": "forest_note", "text": "\"Herbicide.\"" },
+                  { "type": "paragraph", "text": "That should feel wrong. Nobody buys herbicide for healthy plants." }
+                ]},
+                { "type": "discovery", "variant": "dc-mid", "name": "What the Apothecary Observed", "content": [
+                  { "type": "list", "items": [
+                    "\"She seemed worried. More worried than I've ever seen her.\"",
+                    "\"She didn't stop to talk. She just needed it and had to get home.\"",
+                    "\"She bought enough to treat a full greenhouse.\"",
+                    "\"I asked if she was alright. She said the plants were getting ahead of her.\"",
+                    "\"That's not something Tamsin says. She's been growing things in this town for twenty years.\""
+                  ]}
+                ]},
+                { "type": "discovery", "variant": "dc-low", "name": "Marking the Cottage", "content": [
+                  { "type": "narrative_block", "text": "The apothecary pauses. \"You're going out there, aren't you.\" It is not quite a question. She takes the map, marks a spot east of the last proper houses on old orchard lane. \"White cottage. Blue shutters. Big glasshouse behind it.\" She caps her ink. \"Go before dark.\"" },
+                  { "type": "annotation", "text": "The apothecary's concern carries weight — she is a professional who knows Tamsin, and she recognized that Tamsin's worry was not ordinary." }
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Beat Four — Tamsin's Overrun Cottage",
       "subtitle": "The cart abandoned · The house claimed by growth · Hazards · Evidence · Her body",
       "open": false,
       "content": [
@@ -202,6 +346,7 @@
                 { "type": "discovery", "variant": "dc-top", "name": "Where the Herbicide Was Used", "content": [
                   { "type": "paragraph", "text": "In the back hallway, a wide black stain spreads across one wall. The vines within it are shriveled and brittle, curled into themselves like fingers in a fire. Leaves crumble underfoot. The air smells sharp and chemical beneath the wet earth scent." },
                   { "type": "paragraph", "text": "On the floor: Tamsin's thick gardening gloves, patched at the thumb, stained with soil and green-gold sap. Beside them: a brass-and-glass sprayer, tank half-full, nozzle uncapped. The living ivy grows around the dead area but does not enter it. Roots approach the edge, then curl away." },
+                  { "type": "annotation", "text": "The party already knows she bought herbicide from the apothecary. Now they see what she did with it — and that she stopped." },
                   { "type": "forest_note", "text": "If Hypha is present: she feels a pulse from deeper in the house — pain · bitter rain · old hands shaking · green going silent · do not let them spray again." }
                 ]},
                 { "type": "discovery", "variant": "dc-mid", "name": "Herbicide Sprayer — Mechanics", "content": [
@@ -243,7 +388,7 @@
     },
     {
       "color": "forest",
-      "title": "Beat Three — The Greenhouse",
+      "title": "Beat Five — The Greenhouse",
       "subtitle": "A living dungeon · Rings of fear · Communion · The seed goes with Hypha",
       "open": false,
       "content": [
@@ -468,7 +613,12 @@
   "conclusion": {
     "title": "GM Summary — Running This Arc",
     "items": [
-      "The market beat works through gossip toward a concrete lead. Brant Vey is the pivot — he knows where Tamsin lives because his shop delivers there. Do not hand the party the address early.",
+      "The market sequence establishes Dunmore as a living, healthy place before it becomes a crisis zone. Do not rush Beats One through Three — the longer the players settle in, the more effective the Gourdmire Maw attack will be.",
+      "Tamsin should feel warm and loved before the party ever meets her. Every vendor line, every mention of honey candy and basil arguments, is load-bearing. When they find her body, they should already feel the loss.",
+      "Fanger is not immediately alarming. It should feel like a novelty act. The uncomfortable vendor's one line — 'Tamsin didn't think it was funny' — is a seed that only flowers after the Gourdmire Maw fight.",
+      "The Gourdmire Maw is a disaster encounter, not a dungeon fight. Every round should introduce a civilian, animal, or property complication. Players should feel like they are managing a crisis, not clearing a room.",
+      "The thread through Beat Three runs in any order: cart owner → Fanger owner → apothecary. All three roads lead to the cottage. Let players find them naturally.",
+      "The apothecary is the map-provider and carries more weight than a simple trade connection — she is someone who knew Tamsin well enough to recognize that worry was out of character for her.",
       "The cottage is a dungeon in miniature. Creepers restrain careless characters. Rats attack only the restrained. The herbicide sprayer is available but has consequences. Everything points toward the same solution: do not cut, do not burn, let it know your hands.",
       "The greenhouse cannot be won by killing. Let the combat teach them. Do not make it obvious.",
       "The three perception checks give the party the outside view. They run alongside Hypha's internal experience detailed in the encounter reference. The GM never announces that Hypha is not being attacked — the party figures it out.",

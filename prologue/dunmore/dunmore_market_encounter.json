@@ -1,0 +1,357 @@
+{
+  "meta": {
+    "gm_label": "GM Reference · Dunmore Market · Encounter",
+    "title": "The Gourdmire Maw",
+    "subtitle": "Dunmore Market · Beat Two of the Heart Seed Arc · A produce cart that should not be moving"
+  },
+  "sections": [
+    {
+      "color": "blood",
+      "title": "The Setup",
+      "subtitle": "What the party knows · What they're about to learn",
+      "open": true,
+      "content": [
+        {
+          "type": "scene_image",
+          "src": "../heart_seed/gourdmire_maw.png",
+          "alt": "The Gourdmire Maw erupts from a produce cart in Dunmore's market, jaws split impossibly wide, thick vine-roots tearing through cobblestones and stalls",
+          "caption": "Dunmore Market · The pumpkin was purchased yesterday · It was not moving"
+        },
+        {
+          "type": "narrative_block",
+          "text": "Shouting erupts from the far end of the market. People begin screaming. A crowd scatters. A produce cart overturns — cabbages rolling, a woman pulling her child backward, an old man frozen in the road.\n\nA large pumpkin at the center of the cart begins to split.\n\nVines erupt outward.\n\nThe pumpkin unfolds."
+        },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "What This Encounter Is" },
+                { "type": "discovery", "variant": "blood", "name": "A Disaster, Not a Fight", "content": [
+                  { "type": "paragraph", "text": "The Gourdmire Maw is the first major sign that something has gone terribly wrong at Tamsin's greenhouse. It is not a creature that attacked the market. It is a pumpkin that was purchased as produce yesterday and transformed overnight." },
+                  { "type": "paragraph", "text": "The party is not clearing a room. They are managing a crisis in a crowded public space. Every round should feel like controlled chaos — choices about who to protect, what to stabilize, how to limit harm." },
+                  { "type": "annotation", "text": "The corruption spreads through Tamsin's plants after they leave the greenhouse — sold as normal produce, transformed before anyone could stop it. This detail is the thread that leads back to the cottage." }
+                ]},
+                { "type": "heading", "level": 2, "text": "Scene Description" },
+                { "type": "discovery", "variant": "dc-low", "name": "The Market in Chaos", "content": [
+                  { "type": "paragraph", "text": "Set the scene before initiative. The players should have a few seconds to register what they're looking at:" },
+                  { "type": "list", "items": [
+                    "A produce cart in the center of the market road, overturned",
+                    "Cabbages and root vegetables rolling across cobblestones",
+                    "A broad crack splitting a large pumpkin — the color wrong, too dark",
+                    "Vines erupting outward from the crack, each easily two inches thick",
+                    "Stall owners scrambling backward — some abandoning their goods entirely",
+                    "A child standing frozen ten feet from the cart, mother screaming from twenty feet away"
+                  ]},
+                  { "type": "annotation", "text": "Roll initiative after this image lands. Give it a breath first." }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "What the Party Already Knows" },
+                { "type": "discovery", "variant": "dc-mid", "name": "Connecting the Thread", "content": [
+                  { "type": "paragraph", "text": "The party has already met Fanger — the small carnivorous plant purchased from Tamsin's stall this morning. They have already heard one vendor say: <em>\"Tamsin didn't think it was funny.\"</em>" },
+                  { "type": "paragraph", "text": "They may or may not connect those threads right now. That is fine. The connection is more powerful when it arrives after the fight — when they return to ask questions." }
+                ]},
+                { "type": "heading", "level": 2, "text": "Encounter Goals" },
+                { "type": "discovery", "variant": "teal", "name": "What Success Looks Like", "content": [
+                  { "type": "list", "items": [
+                    "Destroy or incapacitate the Gourdmire Maw",
+                    "Prevent civilian casualties — or limit them",
+                    "Keep the fire from spreading to stalls",
+                    "Control the Death Burst impact at the end"
+                  ]},
+                  { "type": "annotation", "text": "There is no 'perfect' outcome. The market takes damage. Some stalls are destroyed. The goal is to minimize harm — and the party's effort to protect people is what earns them Dunmore's goodwill for the rest of the arc." }
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Gourdmire Maw — Full Stat Block",
+      "subtitle": "Medium Plant, Unaligned · AC 13 · HP 55 · Speed 20 ft., climb 20 ft.",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Core Statistics" },
+                { "type": "discovery", "variant": "blood", "name": "Ability Scores", "content": [
+                  { "type": "paragraph", "text": "STR 18 (+4) · DEX 8 (−1) · CON 16 (+3) · INT 2 (−4) · WIS 10 (+0) · CHA 3 (−4)" }
+                ]},
+                { "type": "discovery", "variant": "dc-low", "name": "Defenses", "content": [
+                  { "type": "list", "items": [
+                    "<strong>Armor Class:</strong> 13 (Thick Rind)",
+                    "<strong>Hit Points:</strong> 55",
+                    "<strong>Damage Resistances:</strong> Piercing",
+                    "<strong>Condition Immunities:</strong> Charmed, Frightened"
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "Passive Trait" },
+                { "type": "discovery", "variant": "blood", "name": "Rampaging Vines", "content": [
+                  { "type": "paragraph", "text": "The area within 10 feet of the Gourdmire Maw is difficult terrain. The creature drags itself forward on thick roots and vines that splinter wood, pull apart crates, and crack cobblestones. It does not move — it tears through." }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Actions" },
+                { "type": "discovery", "variant": "blood", "name": "Bite", "content": [
+                  { "type": "paragraph", "text": "<strong>Melee Weapon Attack:</strong> +5 to hit · Reach 10 ft." },
+                  { "type": "paragraph", "text": "<strong>Hit:</strong> 2d6 + 4 piercing damage." },
+                  { "type": "paragraph", "text": "If the target is Medium or smaller, it must succeed on a <strong>DC 13 Strength saving throw</strong> or become <strong>Grappled</strong> (escape DC 13). The Maw can have up to two targets Grappled at once." }
+                ]},
+                { "type": "discovery", "variant": "blood", "name": "Vine Lash", "content": [
+                  { "type": "paragraph", "text": "<strong>Melee Weapon Attack:</strong> +5 to hit · Reach 15 ft." },
+                  { "type": "paragraph", "text": "<strong>Hit:</strong> 1d8 + 3 bludgeoning damage." },
+                  { "type": "paragraph", "text": "The target is <strong>pulled up to 10 feet toward the Gourdmire Maw</strong>." }
+                ]},
+                { "type": "discovery", "variant": "dc-top", "name": "Unhinging Maw (Recharge 5–6)", "content": [
+                  { "type": "paragraph", "text": "The creature's rind splits apart far beyond what should be physically possible. Its mouth opens to nearly one and a half times its own height. The sound is wrong." },
+                  { "type": "paragraph", "text": "<strong>Every creature within 10 feet</strong> must succeed on a <strong>DC 12 Wisdom saving throw</strong> or become <strong>Frightened</strong> until the end of their next turn." },
+                  { "type": "paragraph", "text": "The Gourdmire Maw then <strong>immediately makes one Bite attack</strong> as part of this action." }
+                ]}
+              ]
+            }
+          ]
+        },
+        { "type": "divider" },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Rooted Fury" },
+                { "type": "discovery", "variant": "dc-top", "name": "At 27 HP — The Shell Cracks", "content": [
+                  { "type": "narrative_block", "text": "The pumpkin shell cracks apart. Writhing roots burst through the rind. The players realize the pumpkin was merely the fruiting body — something far worse has been growing inside." },
+                  { "type": "paragraph", "text": "<strong>Effects (occurs once only):</strong>" },
+                  { "type": "list", "items": [
+                    "AC increases from 13 to <strong>15</strong>",
+                    "The Gourdmire Maw gains <strong>Advantage on all checks made to maintain Grapples</strong>"
+                  ]},
+                  { "type": "annotation", "text": "Describe the transformation visually before announcing the AC change. Let players notice the rind is gone and the thing underneath is harder and faster." }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Death Burst" },
+                { "type": "discovery", "variant": "blood", "name": "On 0 HP — The Body Ruptures", "content": [
+                  { "type": "narrative_block", "text": "Its body ruptures. Black seeds scatter across the marketplace in every direction. They are not the seeds you plant. They are something else entirely." },
+                  { "type": "paragraph", "text": "<strong>Every creature within 10 feet</strong> must succeed on a <strong>DC 13 Dexterity saving throw.</strong>" },
+                  { "type": "list", "items": [
+                    "<strong>Failure:</strong> Takes 1d6 acid damage and becomes <strong>Restrained by writhing vines</strong> until the start of their next turn.",
+                    "<strong>Success:</strong> Takes no damage and is not Restrained."
+                  ]},
+                  { "type": "annotation", "text": "The black seeds do not take root or cause further problems — the creature is dead. But the visual of seeds scattering through a crowded market should linger. What else has Tamsin's greenhouse sold?" }
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "dc-mid",
+      "title": "Running the Encounter",
+      "subtitle": "Round-by-round structure · Complication table · Battlefield layout",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Battlefield Layout" },
+                { "type": "discovery", "variant": "dc-low", "name": "The Market Road", "content": [
+                  { "type": "paragraph", "text": "The market road is wide enough for two carts abreast — roughly 30 feet across, with stalls on both sides. Use a simple grid:" },
+                  { "type": "list", "items": [
+                    "<strong>Center:</strong> The overturned produce cart — starting position of the Maw",
+                    "<strong>North/South flanks:</strong> Market stalls — difficult terrain once collapsed",
+                    "<strong>East end:</strong> The crowd scatter direction — civilians fleeing this way",
+                    "<strong>West end:</strong> More stalls, the blacksmith's lane two streets over"
+                  ]},
+                  { "type": "annotation", "text": "You do not need a precise grid. The key is: the Maw is in the middle of a public thoroughfare with civilians on all sides. Movement choices matter." }
+                ]},
+                { "type": "heading", "level": 2, "text": "Round-by-Round Framework" },
+                { "type": "discovery", "variant": "dc-mid", "name": "Structure for a 4–5 Round Fight", "content": [
+                  { "type": "list", "items": [
+                    "<strong>Round 1:</strong> Establish chaos. Introduce the first civilian complication immediately. Players are reacting.",
+                    "<strong>Round 2:</strong> The Maw uses Vine Lash to pull someone in. Unhinging Maw if recharged. Introduce a panicked animal.",
+                    "<strong>Round 3:</strong> Rooted Fury threshold if HP is approaching 27. AC change surprises the party. Property damage complication.",
+                    "<strong>Round 4:</strong> The fight is nearly over — but Death Burst is coming. Position matters. Give players the chance to push through or position around the burst.",
+                    "<strong>Round 5 (if needed):</strong> The Maw goes down. Death Burst resolves. Scene ends with the market in ruins and everyone breathing hard."
+                  ]}
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "Complication Table" },
+                { "type": "discovery", "variant": "dc-mid", "name": "One Per Round — Choose or Roll 1d6", "content": [
+                  { "type": "list", "items": [
+                    "<strong>1 — The Frozen Child:</strong> A child stands ten feet from the Maw, rooted in fear. DC 12 Athletics or Acrobatics to reach and pull them clear before the creature's next move.",
+                    "<strong>2 — The Trapped Merchant:</strong> A stall collapses on a vendor. They are pinned but alive. DC 13 Strength check as an action to free them.",
+                    "<strong>3 — The Bolting Horse:</strong> A cart horse breaks its harness and bolts through the battlefield. All creatures in a 30-foot line: DC 11 Dexterity save or knocked prone.",
+                    "<strong>4 — Fire Risk:</strong> The Maw's vines tip an oil lantern from a stall. A small fire starts. It spreads to adjacent stalls at the start of the next round if not extinguished (a bonus action with water or a blanket).",
+                    "<strong>5 — The Scattered Elderly:</strong> Two elderly townsfolk are directly in the Maw's movement path for next round. No check — a player simply needs to act or they take 1d6 bludgeoning from the vines.",
+                    "<strong>6 — Stall Collapse:</strong> A market stall buckles and crashes into the street. The area becomes difficult terrain in a 10-foot square. Debris rains — DC 10 DEX save for anyone in the square or 1d4 bludgeoning."
+                  ]}
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "After the Fight",
+      "subtitle": "Aftermath · What the players learn · The threads that lead forward",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "The Immediate Aftermath" },
+                { "type": "discovery", "variant": "dc-low", "name": "The Market Breathes Again", "content": [
+                  { "type": "paragraph", "text": "The fight ends. The Gourdmire Maw is dead. Black seed remnants dissolve into the cobblestones within a few minutes — they do not take root. The market road is wrecked." },
+                  { "type": "list", "items": [
+                    "Two or three stalls are destroyed entirely",
+                    "Produce is scattered the full length of the road",
+                    "The produce cart is in splinters",
+                    "Townsfolk begin creeping back to assess the damage"
+                  ]}
+                ]},
+                { "type": "heading", "level": 2, "text": "The Dunmore Response" },
+                { "type": "discovery", "variant": "dc-low", "name": "What the Town Thinks of the Party", "content": [
+                  { "type": "paragraph", "text": "How the party fought matters here. Did they protect civilians? Pull people out of the way? Keep the fire from spreading? Dunmore notices." },
+                  { "type": "forest_note", "text": "If civilians were protected: \"I don't know who you are. But you didn't run.\"" },
+                  { "type": "forest_note", "text": "If property was saved: \"That stall's been in my family for thirty years. You didn't have to do that.\"" },
+                  { "type": "annotation", "text": "The party has earned goodwill in Dunmore that will pay off in later scenes. Do not narrate this — let players feel it through how NPCs treat them." }
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "heading", "level": 2, "text": "The Cart Owner" },
+                { "type": "discovery", "variant": "dc-mid", "name": "\"It Was Just a Pumpkin\"", "content": [
+                  { "type": "paragraph", "text": "The owner of the overturned cart approaches the party once the Maw is dead. They are shaken. They have been selling produce at this market for years." },
+                  { "type": "forest_note", "text": "\"I bought that yesterday. It was just sitting there. It wasn't moving.\"" },
+                  { "type": "paragraph", "text": "Where did they buy it? From the market. A vendor who bought Tamsin's produce on her behalf while she was packing up. The corruption spread after the purchase — after the plant left the greenhouse." },
+                  { "type": "annotation", "text": "This is the key investigative thread. The Maw was not a monster someone sold. It was a vegetable that became a monster. Something is very wrong at the source." }
+                ]},
+                { "type": "heading", "level": 2, "text": "What to Investigate Next" },
+                { "type": "discovery", "variant": "teal", "name": "Three Threads", "content": [
+                  { "type": "list", "items": [
+                    "<strong>Return to Fanger:</strong> The carnivorous plant's owner is no longer amused. The full story of what happened yesterday comes out.",
+                    "<strong>The Uncomfortable Vendor:</strong> The one vendor who wasn't laughing earlier. They have more to say now.",
+                    "<strong>The Apothecary:</strong> Tamsin was here this morning. She bought herbicide. She seemed more worried than anyone had ever seen her."
+                  ]},
+                  { "type": "annotation", "text": "All three threads lead to the same place: the cottage east of town, old orchard lane, white walls and blue shutters and a big glasshouse behind it." }
+                ]},
+                { "type": "link_row", "links": [
+                  { "href": "dunmore_heart_seed.html", "text": "← Back to Heart Seed Arc Reference", "color": "teal" }
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "color": "dc-mid",
+      "title": "GM Notes",
+      "subtitle": "What this encounter is for · How to run it · What not to do",
+      "open": false,
+      "content": [
+        {
+          "type": "block_wrap",
+          "content": [
+            { "type": "section_head", "text": "Design Intent" },
+            { "type": "paragraph", "text": "The Gourdmire Maw exists to transform Dunmore from a comfortable destination into a place with a problem. The party arrived in a healthy market town. They bought supplies. They met a charming little carnivorous plant. They started to relax. Then something that was a vegetable yesterday tried to eat someone's grandmother." },
+            { "type": "paragraph", "text": "The encounter is also structurally important: it gives every character type meaningful choices. The paladin has civilians to protect. The rogue has chaos to move through. The ranger has clear sightlines. The druid has plant-adjacent flavor that lands differently once Hypha's arc begins to unfold." }
+          ]
+        },
+        { "type": "divider" },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "discovery", "variant": "forest", "name": "What to Do", "content": [
+                  { "type": "list", "items": [
+                    "Introduce at least one complication per round — the marketplace is alive and dangerous beyond the Maw itself",
+                    "Describe the Rooted Fury transformation visually before any mechanical announcement",
+                    "Let the Death Burst positioning matter — players should have a moment to react",
+                    "Track whether civilians were protected — this affects how Dunmore treats the party in later scenes",
+                    "End the scene with silence before the cart owner approaches — let the players breathe"
+                  ]}
+                ]}
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                { "type": "discovery", "variant": "dc-top", "name": "What Not to Do", "content": [
+                  { "type": "list", "items": [
+                    "Do not run this as a straightforward combat without complications — it becomes forgettable",
+                    "Do not telegraph the investigation threads during the fight — let them emerge naturally in the aftermath",
+                    "Do not skip the cart owner scene — \"It was just a pumpkin\" is the first thread leading to the cottage",
+                    "Do not have the seeds cause further problems after death — the horror is in what the Maw was, not what the seeds will become"
+                  ]}
+                ]}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "arc_nav": {
+    "prev": { "href": "dunmore_heart_seed.html", "text": "Heart Seed Arc Reference" },
+    "next": { "href": "dunmore_greenhouse_encounter.html", "text": "Greenhouse Encounter" }
+  },
+  "conclusion": {
+    "title": "GM Summary — The Gourdmire Maw",
+    "items": [
+      "This is a disaster encounter, not a dungeon fight. Complications matter as much as the Maw's stat block.",
+      "The Rooted Fury transformation at 27 HP should land as a visual reveal before a mechanical one — describe the rind cracking open before telling players the AC changed.",
+      "Death Burst positioning is the most tactically interesting moment of the fight. Players who have been paying attention will react. Players who haven't will be Restrained.",
+      "The cart owner's line — 'I bought that yesterday. It was just a pumpkin.' — is the most important line in the aftermath. Everything that follows runs through it.",
+      "Dunmore's goodwill is earned here. Protect people, save stalls, help the elderly shopper. The town will remember.",
+      "Three threads lead from this fight to the cottage: the cart owner, Fanger's owner, and the apothecary. Let players find them in any order."
+    ]
+  }
+}
