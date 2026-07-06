@@ -1,5 +1,8 @@
 (function(){
-  var _B='https://pnewnan.github.io/dnd5e-artifacts/';
+  var _B = window.AEL_BASE || (window.location.hostname === 'pnewnan.github.io' ? '/dnd5e-artifacts' : (function(){
+    var p = window.location.pathname.split('/').filter(Boolean); p.pop();
+    return p.length ? p.map(function(){ return '..'; }).join('/') : '.';
+  })()) + '/';
   var _N=_B+'nav.json';
   var _T={
     player:['rgba(30,95,95,0.15)','#4aafaf','rgba(30,95,95,0.3)'],

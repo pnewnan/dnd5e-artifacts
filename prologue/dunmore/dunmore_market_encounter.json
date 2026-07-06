@@ -279,7 +279,8 @@
                   { "type": "annotation", "text": "All three threads lead to the same place: the cottage east of town, old orchard lane, white walls and blue shutters and a big glasshouse behind it." }
                 ]},
                 { "type": "link_row", "links": [
-                  { "href": "dunmore_heart_seed.html", "text": "← Back to Heart Seed Arc Reference", "color": "teal" }
+                  { "href": "dunmore_heart_seed.html", "text": "← Back to Heart Seed Arc Reference", "color": "teal" },
+                  { "href": "https://www.dndbeyond.com/monsters/6553889-gourdmire-maw", "text": "↗ Gourdmire Maw on D&D Beyond", "color": "blood" }
                 ]}
               ]
             }

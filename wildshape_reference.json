@@ -1,0 +1,954 @@
+{
+  "meta": {
+    "gm_label": "Player Resource · House Rule Reference",
+    "title": "Wild Shape Animal List by Environment",
+    "subtitle": "Coniferous forest, mountain, cave, and grounded bird forms — CR 1 and under",
+    "back_link": {
+      "href": "index.html",
+      "text": "← Table of Contents"
+    }
+  },
+  "intro": [
+    "This table is meant to help a player choose forms during play."
+  ],
+  "statRule": {
+    "title": "Wild Shape Stat Rule",
+    "lead": "When you Wild Shape, you use the beast’s:",
+    "useBeast": [
+      "STR",
+      "DEX",
+      "CON",
+      "AC",
+      "HP",
+      "speed",
+      "attacks",
+      "senses",
+      "physical traits"
+    ],
+    "keepLead": "You keep your druid’s:",
+    "keepDruid": [
+      "INT",
+      "WIS",
+      "CHA",
+      "personality",
+      "memories",
+      "decision-making",
+      "class/racial features if the form can physically use them"
+    ],
+    "note": "For saving throws and ability checks, use the beast’s physical stats, but keep the druid’s mental stats. So if the animal has bad Wisdom, that usually does not matter. The druid keeps their own Wisdom while Wild Shaped."
+  },
+  "envs": [
+    {
+      "id": "coniferous-forest",
+      "label": "Coniferous Forest",
+      "title": "Coniferous Forest Animals"
+    },
+    {
+      "id": "mountain-cliff",
+      "label": "Mountain / Cliff",
+      "title": "Mountain / Cliff Animals"
+    },
+    {
+      "id": "cave-ruin",
+      "label": "Cave / Ruin / Underground",
+      "title": "Cave / Ruin / Underground Animals"
+    },
+    {
+      "id": "grounded-birds",
+      "label": "Grounded Birds",
+      "title": "Grounded Bird Forms Before Flight",
+      "note": "These bird forms are allowed for shape and flavor, but they do not grant functional flight until the druid unlocks flying Wild Shape."
+    }
+  ],
+  "creatures": [
+    {
+      "name": "Wolf",
+      "cr": "1/4",
+      "hp": "11",
+      "ac": "13",
+      "speed": "40 ft",
+      "mods": "STR +1, DEX +2, CON +1",
+      "use": "Combat, tracking, predator form",
+      "attack": "Bite +4, 2d4+2 piercing; possible prone",
+      "traits": "Perception, Stealth; Keen Hearing/Smell; Pack Tactics",
+      "whereSeen": "Deep woods, hunting trails, snowy forest paths",
+      "envs": [
+        "coniferous-forest"
+      ]
+    },
+    {
+      "name": "Dire Wolf",
+      "cr": "1",
+      "hp": "37",
+      "ac": "14",
+      "speed": "50 ft",
+      "mods": "STR +3, DEX +2, CON +2",
+      "use": "Strong combat predator",
+      "attack": "Bite +5, 2d6+3 piercing; possible prone",
+      "traits": "Perception, Stealth; Keen Hearing/Smell; Pack Tactics",
+      "whereSeen": "Old-growth forest, dangerous hunting grounds, monster-haunted woods",
+      "envs": [
+        "coniferous-forest"
+      ]
+    },
+    {
+      "name": "Boar",
+      "cr": "1/4",
+      "hp": "11",
+      "ac": "11",
+      "speed": "40 ft",
+      "mods": "STR +1, DEX +0, CON +1",
+      "use": "Charging, forest bruiser",
+      "attack": "Tusk +3, 1d6+1 slashing",
+      "traits": "Charge; Relentless",
+      "whereSeen": "Dense brush, muddy clearings, forest floor",
+      "envs": [
+        "coniferous-forest"
+      ]
+    },
+    {
+      "name": "Brown Bear",
+      "cr": "1",
+      "hp": "34",
+      "ac": "11",
+      "speed": "40 ft, climb 30 ft",
+      "mods": "STR +4, DEX +0, CON +3",
+      "use": "Major combat form, strength, intimidation",
+      "attack": "Bite +5, 1d8+4; Claws +5, 2d6+4",
+      "traits": "Perception; Keen Smell; Multiattack",
+      "whereSeen": "Deep forest, caves, berry patches, salmon rivers if present",
+      "envs": [
+        "coniferous-forest"
+      ]
+    },
+    {
+      "name": "Black Bear",
+      "cr": "1/2",
+      "hp": "19",
+      "ac": "11",
+      "speed": "40 ft, climb 30 ft",
+      "mods": "STR +2, DEX +0, CON +2",
+      "use": "Combat, climbing, forest predator",
+      "attack": "Bite +3, 1d6+2; Claws +3, 2d4+2",
+      "traits": "Perception; Keen Smell; Multiattack",
+      "whereSeen": "Forested slopes, dens, berry thickets, logging trails",
+      "envs": [
+        "coniferous-forest"
+      ]
+    },
+    {
+      "name": "Panther",
+      "cr": "1/4",
+      "hp": "13",
+      "ac": "12",
+      "speed": "50 ft, climb 40 ft",
+      "mods": "STR +2, DEX +2, CON +0",
+      "use": "Stealth, climbing, ambush",
+      "attack": "Bite +4, 1d6+2; Claw +4, 1d4+2",
+      "traits": "Perception, Stealth; Keen Smell; Pounce",
+      "whereSeen": "Dense fantasy woodland, rocky forest slopes, shadowed woods",
+      "envs": [
+        "coniferous-forest"
+      ]
+    },
+    {
+      "name": "Chipmunk",
+      "cr": "0 / DM",
+      "hp": "1",
+      "ac": "12–13",
+      "speed": "25–30 ft, climb 20–30 ft",
+      "mods": "STR very low, DEX high, CON low",
+      "use": "Tiny scouting, hiding, squeezing",
+      "attack": "Usually 1 damage bite",
+      "traits": "Use rat-style tiny beast",
+      "whereSeen": "Roots, stones, fallen logs, forest floor",
+      "envs": [
+        "coniferous-forest"
+      ]
+    },
+    {
+      "name": "Pine Marten",
+      "cr": "0 / DM",
+      "hp": "3–5",
+      "ac": "13",
+      "speed": "30–40 ft, climb 30 ft",
+      "mods": "STR low, DEX high, CON average",
+      "use": "Climbing predator, stealth, tree movement",
+      "attack": "Light bite, usually 1d4-ish",
+      "traits": "Use toned-down giant weasel stats",
+      "whereSeen": "Tree hollows, branches, snowy forests",
+      "envs": [
+        "coniferous-forest"
+      ]
+    },
+    {
+      "name": "Raccoon",
+      "cr": "0 / DM",
+      "hp": "2–4",
+      "ac": "12",
+      "speed": "30 ft, climb 20–30 ft",
+      "mods": "STR low, DEX moderate/high, CON average",
+      "use": "Climbing, scavenging, object interaction",
+      "attack": "Bite/claws, usually 1 damage",
+      "traits": "Use cat/rat-style stats; good object-interaction flavor",
+      "whereSeen": "Camps, riversides, cabins, forest edges",
+      "envs": [
+        "coniferous-forest"
+      ]
+    },
+    {
+      "name": "Porcupine",
+      "cr": "0 / DM",
+      "hp": "3–5",
+      "ac": "10–12",
+      "speed": "20 ft",
+      "mods": "STR low, DEX low, CON decent",
+      "use": "Defensive forest form, unusual disguise",
+      "attack": "Bite; quills by DM ruling",
+      "traits": "Defensive flavor, not strong combat",
+      "whereSeen": "Forest floor, rocky dens, tree bases",
+      "envs": [
+        "coniferous-forest"
+      ]
+    },
+    {
+      "name": "Goat",
+      "cr": "0",
+      "hp": "4",
+      "ac": "10",
+      "speed": "40 ft",
+      "mods": "STR +1, DEX +0, CON +0",
+      "use": "Cliffs, ledges, mountain paths",
+      "attack": "Ram +3, 1d4+1 bludgeoning",
+      "traits": "Charge; Sure-Footed",
+      "whereSeen": "Cliffs, ledges, rocky slopes, mountain trails",
+      "envs": [
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Giant Goat",
+      "cr": "1/2",
+      "hp": "19",
+      "ac": "11",
+      "speed": "40 ft",
+      "mods": "STR +3, DEX +0, CON +2",
+      "use": "Strong cliff/mountain combat form",
+      "attack": "Ram +5, 2d4+3 bludgeoning",
+      "traits": "Charge; Sure-Footed",
+      "whereSeen": "High cliffs, alpine slopes, dangerous mountain trails",
+      "envs": [
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Mule",
+      "cr": "1/8",
+      "hp": "11",
+      "ac": "10",
+      "speed": "40 ft",
+      "mods": "STR +2, DEX +0, CON +1",
+      "use": "Pack animal, rough terrain, trade routes",
+      "attack": "Hooves +2, 1d4+2 bludgeoning",
+      "traits": "Beast of Burden; Sure-Footed",
+      "whereSeen": "Pack trails, caravan roads, cliff paths, mining routes",
+      "envs": [
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Pony",
+      "cr": "1/8",
+      "hp": "11",
+      "ac": "10",
+      "speed": "40 ft",
+      "mods": "STR +2, DEX +0, CON +1",
+      "use": "Small mount, mountain travel",
+      "attack": "Hooves +4, 2d4+2 bludgeoning",
+      "traits": "Travel utility",
+      "whereSeen": "Mountain settlements, small farms, rough trails",
+      "envs": [
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Draft Horse",
+      "cr": "1/4",
+      "hp": "19",
+      "ac": "10",
+      "speed": "40 ft",
+      "mods": "STR +4, DEX +0, CON +1",
+      "use": "Hauling, carrying, blending with caravans",
+      "attack": "Hooves +6, 2d4+4 bludgeoning",
+      "traits": "Very strong carrying capacity",
+      "whereSeen": "Trade roads, logging roads, caravan routes",
+      "envs": [
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Riding Horse",
+      "cr": "1/4",
+      "hp": "13",
+      "ac": "10",
+      "speed": "60 ft",
+      "mods": "STR +3, DEX +0, CON +1",
+      "use": "Fast road travel, scouts, messengers",
+      "attack": "Hooves +5, 2d4+3 bludgeoning",
+      "traits": "High speed",
+      "whereSeen": "Roads, scouts, messengers, guards, travelers",
+      "envs": [
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Warhorse",
+      "cr": "1/2",
+      "hp": "19",
+      "ac": "11",
+      "speed": "60 ft",
+      "mods": "STR +4, DEX +1, CON +1",
+      "use": "Combat mount, caravan guard animal",
+      "attack": "Hooves +6, 2d6+4 bludgeoning",
+      "traits": "Trampling Charge",
+      "whereSeen": "Armed caravans, military roads, guarded trade routes",
+      "envs": [
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Lion",
+      "cr": "1",
+      "hp": "26",
+      "ac": "12",
+      "speed": "50 ft",
+      "mods": "STR +3, DEX +2, CON +1",
+      "use": "Ambush predator, combat",
+      "attack": "Bite +5, 1d8+3; Claw +5, 1d6+3",
+      "traits": "Perception, Stealth; Keen Smell; Pack Tactics; Pounce",
+      "whereSeen": "Dry highlands, rocky foothills, open mountain passes if region supports it",
+      "envs": [
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Tiger",
+      "cr": "1",
+      "hp": "37",
+      "ac": "12",
+      "speed": "40 ft",
+      "mods": "STR +3, DEX +2, CON +2",
+      "use": "Strong stealth predator",
+      "attack": "Bite +5, 1d10+3; Claw +5, 1d8+3",
+      "traits": "Perception, Stealth; Keen Smell; Pounce",
+      "whereSeen": "Forested mountains, cold fantasy highlands, dense alpine woods if region supports it",
+      "envs": [
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Hare / Rabbit",
+      "cr": "0 / DM",
+      "hp": "1–3",
+      "ac": "12–13",
+      "speed": "40 ft",
+      "mods": "STR very low, DEX high, CON low",
+      "use": "Fast escape, hiding in brush",
+      "attack": "Usually none or 1 bite",
+      "traits": "Speed/hiding focus",
+      "whereSeen": "Alpine meadows, scrub, forest edges",
+      "envs": [
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Raven",
+      "cr": "0",
+      "hp": "1",
+      "ac": "12",
+      "speed": "10 ft; flying disabled by house rule",
+      "mods": "STR -4, DEX +2, CON -1",
+      "use": "Spooky scouting, mimicry, omen flavor",
+      "attack": "Beak +4, 1 piercing",
+      "traits": "Perception; Mimicry; no functional flight",
+      "whereSeen": "Cliffs, forests, battlefields, settlements, carrion sites",
+      "envs": [
+        "grounded-birds"
+      ]
+    },
+    {
+      "name": "Crow",
+      "cr": "0 / DM",
+      "hp": "1",
+      "ac": "12",
+      "speed": "10 ft; flying disabled by house rule",
+      "mods": "STR -4, DEX +2, CON -1",
+      "use": "Common bird disguise, scavenger flavor",
+      "attack": "Beak, 1 piercing",
+      "traits": "Use raven stat block; no functional flight",
+      "whereSeen": "Forests, farms, roads, settlements, carrion sites",
+      "envs": [
+        "grounded-birds"
+      ]
+    },
+    {
+      "name": "Jay",
+      "cr": "0 / DM",
+      "hp": "1",
+      "ac": "12",
+      "speed": "10 ft; flying disabled by house rule",
+      "mods": "STR very low, DEX high, CON low",
+      "use": "Forest bird disguise, noise-making",
+      "attack": "Beak, 1 piercing",
+      "traits": "Use raven-style stats; no functional flight",
+      "whereSeen": "Coniferous forests, branches, woodland edges",
+      "envs": [
+        "grounded-birds"
+      ]
+    },
+    {
+      "name": "Magpie",
+      "cr": "0 / DM",
+      "hp": "1",
+      "ac": "12",
+      "speed": "10 ft; flying disabled by house rule",
+      "mods": "STR very low, DEX high, CON low",
+      "use": "Clever bird, shiny-object flavor",
+      "attack": "Beak, 1 piercing",
+      "traits": "Use raven-style stats; no functional flight",
+      "whereSeen": "Forest edges, roads, settlements, camps",
+      "envs": [
+        "grounded-birds"
+      ]
+    },
+    {
+      "name": "Grouse",
+      "cr": "0 / DM",
+      "hp": "1–2",
+      "ac": "10–12",
+      "speed": "20 ft; flying disabled by house rule",
+      "mods": "STR low, DEX moderate, CON low",
+      "use": "Ground bird disguise, hiding",
+      "attack": "Beak, 1 piercing",
+      "traits": "Ground-bird flavor; no functional flight",
+      "whereSeen": "Forest floor, brush, snowy woods",
+      "envs": [
+        "grounded-birds"
+      ]
+    },
+    {
+      "name": "Ptarmigan",
+      "cr": "0 / DM",
+      "hp": "1–2",
+      "ac": "10–12",
+      "speed": "20 ft; flying disabled by house rule",
+      "mods": "STR low, DEX moderate, CON low",
+      "use": "Snow camouflage, alpine disguise",
+      "attack": "Beak, 1 piercing",
+      "traits": "Cold-weather ground-bird flavor; no functional flight",
+      "whereSeen": "Alpine snowfields, high meadows, rocky slopes",
+      "envs": [
+        "grounded-birds"
+      ]
+    },
+    {
+      "name": "Owl",
+      "cr": "0",
+      "hp": "1",
+      "ac": "11",
+      "speed": "5 ft; flying disabled by house rule",
+      "mods": "STR -4, DEX +1, CON -1",
+      "use": "Night scouting flavor, eerie presence",
+      "attack": "Talons +3, 1 slashing",
+      "traits": "Perception, Stealth; Keen Hearing/Sight; Flyby ignored until flight allowed",
+      "whereSeen": "Pine forests, ruins, caves, night woods",
+      "envs": [
+        "grounded-birds"
+      ]
+    },
+    {
+      "name": "Hawk",
+      "cr": "0",
+      "hp": "1",
+      "ac": "13",
+      "speed": "10 ft; flying disabled by house rule",
+      "mods": "STR -3, DEX +3, CON -1",
+      "use": "Sharp sight, cliff/aerie flavor",
+      "attack": "Talons +5, 1 slashing",
+      "traits": "Perception; Keen Sight; no functional flight",
+      "whereSeen": "Cliffs, open slopes, forest edges, high perches",
+      "envs": [
+        "grounded-birds"
+      ]
+    },
+    {
+      "name": "Falcon",
+      "cr": "0 / DM",
+      "hp": "1",
+      "ac": "13",
+      "speed": "10 ft; flying disabled by house rule",
+      "mods": "STR very low, DEX high, CON low",
+      "use": "Cliff bird flavor, noble/scout form",
+      "attack": "Talons/beak, 1 slashing or piercing",
+      "traits": "Use hawk stat block; no functional flight",
+      "whereSeen": "Cliffs, mountain aeries, open sky above passes",
+      "envs": [
+        "grounded-birds"
+      ]
+    },
+    {
+      "name": "Vulture",
+      "cr": "0 / DM",
+      "hp": "1–3",
+      "ac": "10–12",
+      "speed": "10 ft; flying disabled by house rule",
+      "mods": "STR low, DEX moderate, CON low",
+      "use": "Carrion bird disguise, ominous flavor",
+      "attack": "Beak, 1 piercing",
+      "traits": "Use raven/hawk-style stats; no functional flight",
+      "whereSeen": "Cliffs, battlefields, carrion sites, dry passes",
+      "envs": [
+        "grounded-birds"
+      ]
+    },
+    {
+      "name": "Elk",
+      "cr": "1/4",
+      "hp": "13",
+      "ac": "10",
+      "speed": "50 ft",
+      "mods": "STR +3, DEX +0, CON +1",
+      "use": "Travel, speed, charging",
+      "attack": "Ram +5, 1d6+3; Hooves vs prone 2d4+3",
+      "traits": "Charge",
+      "whereSeen": "Forest edges, valleys, riversides, mountain meadows; mountain valleys, forested slopes, alpine meadows",
+      "envs": [
+        "coniferous-forest",
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Deer",
+      "cr": "0",
+      "hp": "4",
+      "ac": "13",
+      "speed": "50 ft",
+      "mods": "STR +0, DEX +3, CON +0",
+      "use": "Blending in, fleeing, prey disguise, speed, escape",
+      "attack": "Bite +2, 1d4 piercing",
+      "traits": "Fast, alert, non-threatening",
+      "whereSeen": "Pinewoods, clearings, woodland trails; forested slopes, mountain clearings, foothills",
+      "envs": [
+        "coniferous-forest",
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Giant Badger",
+      "cr": "1/4",
+      "hp": "13",
+      "ac": "10",
+      "speed": "30 ft, burrow 10 ft",
+      "mods": "STR +1, DEX +0, CON +2",
+      "use": "Digging, tunnels, underground movement",
+      "attack": "Bite +3, 1d6+1; Claws +3, 2d4+1",
+      "traits": "Keen Smell; Multiattack; burrow speed",
+      "whereSeen": "Burrows, root systems, hillsides, old dens; root tunnels, cave mouths",
+      "envs": [
+        "coniferous-forest",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Badger",
+      "cr": "0",
+      "hp": "3",
+      "ac": "10",
+      "speed": "20 ft, burrow 5 ft",
+      "mods": "STR -1, DEX +0, CON +1",
+      "use": "Small burrower, den scouting, scent tracking",
+      "attack": "Bite +2, 1 piercing",
+      "traits": "Keen Smell; burrow speed",
+      "whereSeen": "Forest floor, rocky dens, burrows; dens, shallow caves",
+      "envs": [
+        "coniferous-forest",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Giant Weasel",
+      "cr": "1/8",
+      "hp": "9",
+      "ac": "13",
+      "speed": "40 ft",
+      "mods": "STR +0, DEX +3, CON +0",
+      "use": "Stealth, squeezing, hunting, scouting",
+      "attack": "Bite +5, 1d4+3 piercing",
+      "traits": "Perception, Stealth; Keen Hearing/Smell",
+      "whereSeen": "Hollow logs, snowy brush, hunting grounds; larger tunnels, dens, abandoned structures",
+      "envs": [
+        "coniferous-forest",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Weasel",
+      "cr": "0",
+      "hp": "1",
+      "ac": "13",
+      "speed": "30 ft",
+      "mods": "STR -4, DEX +3, CON +0",
+      "use": "Tiny scouting, squeezing, hiding, stealth",
+      "attack": "Bite +5, 1 piercing",
+      "traits": "Perception, Stealth; Keen Hearing/Smell",
+      "whereSeen": "Brush, burrows, cabins, woodpiles; ruins, root tunnels, rocky cracks",
+      "envs": [
+        "coniferous-forest",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Giant Wolf Spider",
+      "cr": "1/4",
+      "hp": "11",
+      "ac": "13",
+      "speed": "40 ft, climb 40 ft",
+      "mods": "STR +1, DEX +3, CON +1",
+      "use": "Climbing, wall/ceiling movement, ambush, creepy scouting",
+      "attack": "Bite +3, 1d6+1 piercing plus poison",
+      "traits": "Perception, Stealth; blindsight 10 ft, darkvision 60 ft; Spider Climb, Web Sense",
+      "whereSeen": "Dark woods, hollow trees, ruins, caves, deadfalls; ceilings, crevices",
+      "envs": [
+        "coniferous-forest",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Spider",
+      "cr": "0",
+      "hp": "1",
+      "ac": "12",
+      "speed": "20 ft, climb 20 ft",
+      "mods": "STR -4, DEX +2, CON -1",
+      "use": "Tiny infiltration, scouting, webs, hiding",
+      "attack": "Bite +4, 1 piercing plus poison",
+      "traits": "Darkvision 30 ft; Spider Climb, Web Sense",
+      "whereSeen": "Webs, tree bark, cabins, ruins, caves; cracks, tunnels, corners",
+      "envs": [
+        "coniferous-forest",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Cat",
+      "cr": "0",
+      "hp": "2",
+      "ac": "12",
+      "speed": "40 ft, climb 30 ft",
+      "mods": "STR -4, DEX +2, CON +0",
+      "use": "Settlement scouting, stealth, climbing",
+      "attack": "Claws +0, 1 slashing",
+      "traits": "Perception, Stealth; Keen Smell",
+      "whereSeen": "Villages, camps, barns, cabins, settlements; ruins, abandoned buildings",
+      "envs": [
+        "coniferous-forest",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Rat",
+      "cr": "0",
+      "hp": "1",
+      "ac": "10",
+      "speed": "20 ft",
+      "mods": "STR -4, DEX +0, CON -1",
+      "use": "Tiny infiltration, scavenging, food stores, tiny spaces",
+      "attack": "Bite +0, 1 piercing",
+      "traits": "Darkvision 30 ft; Keen Smell",
+      "whereSeen": "Cabins, ruins, food stores, camps, sewers; storage rooms",
+      "envs": [
+        "coniferous-forest",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Mouse",
+      "cr": "0 / DM",
+      "hp": "1",
+      "ac": "10–12",
+      "speed": "20 ft",
+      "mods": "STR very low, DEX moderate/high, CON low",
+      "use": "Tiny infiltration, cracks, hiding",
+      "attack": "Usually no meaningful attack or 1 damage bite",
+      "traits": "Use rat as base; tiny and fragile",
+      "whereSeen": "Cabins, roots, grain stores, hollow logs; cracks, food stores, tunnels",
+      "envs": [
+        "coniferous-forest",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Squirrel",
+      "cr": "0 / DM",
+      "hp": "1–2",
+      "ac": "12–13",
+      "speed": "30 ft, climb 30 ft",
+      "mods": "STR very low, DEX high, CON low",
+      "use": "Climbing trees, hiding, branch movement, scrambling",
+      "attack": "Usually 1 damage bite",
+      "traits": "Use rat/cat as base; climb-focused",
+      "whereSeen": "Pine trees, branches, campsites, forest canopy; cliffside trees, rocky woods",
+      "envs": [
+        "coniferous-forest",
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Fox",
+      "cr": "0 / DM",
+      "hp": "3–5",
+      "ac": "12–13",
+      "speed": "40 ft",
+      "mods": "STR low, DEX high, CON average",
+      "use": "Stealth, tracking, clever scouting",
+      "attack": "Light bite, usually 1d4-ish",
+      "traits": "Use jackal/cat/wolf-lite stats",
+      "whereSeen": "Forest edges, dens, snowy clearings, trails; foothills, snowy slopes",
+      "envs": [
+        "coniferous-forest",
+        "mountain-cliff"
+      ]
+    },
+    {
+      "name": "Giant Lizard",
+      "cr": "1/4",
+      "hp": "19",
+      "ac": "12",
+      "speed": "30 ft, climb 30 ft",
+      "mods": "STR +2, DEX +1, CON +1",
+      "use": "Climbing cliffs, rugged terrain",
+      "attack": "Bite +4, 1d8+2 piercing",
+      "traits": "Climb speed; sturdy",
+      "whereSeen": "Cliff faces, ruins, warm stone slopes, caves; cave walls, tunnels, rocky slopes",
+      "envs": [
+        "mountain-cliff",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Lizard",
+      "cr": "0",
+      "hp": "2",
+      "ac": "10",
+      "speed": "20 ft, climb 20 ft",
+      "mods": "STR -4, DEX +0, CON +0",
+      "use": "Tiny cliff/rock scouting, wall movement",
+      "attack": "Bite +0, 1 piercing",
+      "traits": "Climb speed",
+      "whereSeen": "Rocks, walls, ruins, warm cliff faces; stone walls, cracks, cave entrances",
+      "envs": [
+        "mountain-cliff",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Hyena",
+      "cr": "0",
+      "hp": "5",
+      "ac": "11",
+      "speed": "50 ft",
+      "mods": "STR +0, DEX +1, CON +0",
+      "use": "Scavenger disguise, pack animal",
+      "attack": "Bite +2, 1d6 piercing",
+      "traits": "Pack Tactics",
+      "whereSeen": "Dry foothills, carrion sites, trade roads, battlefields; bone piles, cave mouths",
+      "envs": [
+        "mountain-cliff",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Giant Hyena",
+      "cr": "1",
+      "hp": "45",
+      "ac": "12",
+      "speed": "50 ft",
+      "mods": "STR +3, DEX +2, CON +2",
+      "use": "Durable combat scavenger",
+      "attack": "Bite +5, 2d6+3 piercing",
+      "traits": "Rampage",
+      "whereSeen": "Dangerous foothills, carrion grounds, monster-haunted roads; ruins, monster lairs",
+      "envs": [
+        "mountain-cliff",
+        "cave-ruin"
+      ]
+    },
+    {
+      "name": "Bat",
+      "cr": "0",
+      "hp": "1",
+      "ac": "12",
+      "speed": "5 ft; flying disabled by house rule",
+      "mods": "STR -4, DEX +2, CON -1",
+      "use": "Cave disguise, echolocation flavor",
+      "attack": "Bite +0, 1 piercing",
+      "traits": "Blindsight 60 ft; Keen Hearing; no functional flight until allowed",
+      "whereSeen": "Caves, ruins, rafters, dark tunnels",
+      "envs": [
+        "cave-ruin",
+        "grounded-birds"
+      ]
+    }
+  ],
+  "dm_note": {
+    "title": "DM Note on Grounded Birds",
+    "intro": "A grounded bird form may:",
+    "may": [
+      "hop",
+      "walk or clamber",
+      "perch if it can reach the perch normally",
+      "peck",
+      "flap for balance, intimidation, display, or flavor",
+      "look and behave like a normal bird while grounded"
+    ],
+    "may_not_intro": "A grounded bird form may not:",
+    "may_not": [
+      "take off from the ground",
+      "gain altitude by flapping",
+      "cross gaps by flying",
+      "hover",
+      "safely glide down meaningful distances",
+      "ignore fall damage",
+      "function as Feather Fall",
+      "escape combat by flying away"
+    ],
+    "footer": "At most, the bird may flutter enough to handle a very short drop, such as 10 feet or less, at the DM’s discretion."
+  },
+  "quickGuide": [
+    {
+      "title": "Best Combat Forms",
+      "rows": [
+        {
+          "form": "Dire Wolf",
+          "why": "Strong CR 1 combat predator; good HP, prone chance, Pack Tactics"
+        },
+        {
+          "form": "Brown Bear",
+          "why": "Great damage and HP; strong brute form"
+        },
+        {
+          "form": "Tiger",
+          "why": "Strong stealth predator; pounce and high damage"
+        },
+        {
+          "form": "Giant Hyena",
+          "why": "Very high HP for CR 1; durable combat scavenger"
+        },
+        {
+          "form": "Wolf",
+          "why": "Good low-CR combat form; stealth, tracking, Pack Tactics"
+        },
+        {
+          "form": "Giant Wolf Spider",
+          "why": "Climb speed, stealth, poison, cave/ruin utility"
+        }
+      ]
+    },
+    {
+      "title": "Best Travel Forms",
+      "rows": [
+        {
+          "form": "Riding Horse",
+          "why": "Very fast land speed"
+        },
+        {
+          "form": "Elk",
+          "why": "Fast, natural forest/mountain form"
+        },
+        {
+          "form": "Mule",
+          "why": "Pack trails and sure-footed movement"
+        },
+        {
+          "form": "Draft Horse",
+          "why": "Carrying and hauling"
+        },
+        {
+          "form": "Pony",
+          "why": "Smaller mountain-settlement travel form"
+        }
+      ]
+    },
+    {
+      "title": "Best Stealth / Scouting Forms",
+      "rows": [
+        {
+          "form": "Cat",
+          "why": "Stealth, climbing, settlement scouting"
+        },
+        {
+          "form": "Rat / Mouse",
+          "why": "Tiny infiltration"
+        },
+        {
+          "form": "Spider",
+          "why": "Tiny climbing and hiding"
+        },
+        {
+          "form": "Giant Weasel",
+          "why": "Strong stealthy scout form"
+        },
+        {
+          "form": "Squirrel / Chipmunk",
+          "why": "Tree movement, hiding, harmless appearance"
+        },
+        {
+          "form": "Raven / Crow",
+          "why": "Disguise and spooky flavor, but no flight yet"
+        }
+      ]
+    },
+    {
+      "title": "Best Climbing / Vertical Terrain Forms",
+      "rows": [
+        {
+          "form": "Giant Wolf Spider",
+          "why": "Best wall/ceiling movement"
+        },
+        {
+          "form": "Giant Lizard",
+          "why": "Sturdy climber with good HP"
+        },
+        {
+          "form": "Black Bear",
+          "why": "Strong climber and combat-capable"
+        },
+        {
+          "form": "Panther",
+          "why": "Fast climbing ambusher"
+        },
+        {
+          "form": "Cat",
+          "why": "Small climber"
+        },
+        {
+          "form": "Squirrel",
+          "why": "Tiny tree climber"
+        }
+      ]
+    },
+    {
+      "title": "Best Digging / Burrowing Forms",
+      "rows": [
+        {
+          "form": "Giant Badger",
+          "why": "Best digging option"
+        },
+        {
+          "form": "Badger",
+          "why": "Small burrower"
+        }
+      ]
+    }
+  ]
+}

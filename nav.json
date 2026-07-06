@@ -51,6 +51,12 @@
           "type": "gm"
         },
         {
+          "name": "The Story So Far",
+          "desc": "Player-facing chronicle · Eight sessions · Hollowgate to the bottom of a well · Cinematic narrative timeline",
+          "href": "story_so_far.html",
+          "type": "player"
+        },
+        {
           "name": "It Happened A Long Time Ago",
           "desc": "Opening prose · Hollowgate · 13 Amberfell, Year 313",
           "href": "hollowgate_opening.html",
@@ -209,6 +215,12 @@
           "name": "Leshy of the Cronewood",
           "desc": "Custom race/class · Cronewood Gifts · Circle of Spores · Fey guardian · Mycelial network · Slavic fairy-tale roots",
           "href": "leshy_reference.html",
+          "type": "player"
+        },
+        {
+          "name": "Wild Shape Animal List by Environment",
+          "desc": "House rule reference · Coniferous forest, mountain, and cave beasts · CR 1 and under · Grounded bird forms",
+          "href": "wildshape_reference.html",
           "type": "player"
         }
       ]

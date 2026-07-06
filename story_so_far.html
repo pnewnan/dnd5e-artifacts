@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Story So Far — Hands That Hold the Line</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #f2e8c9;
+    --ink-dim:    #c8b99a;
+    --ink-faint:  #7a6a52;
+    --bg:         #0a0806;
+    --bg-warm:    #110d09;
+    --rule:       #3a2e22;
+    --accent-teal:   #5b9fa8;
+    --accent-blood:  #8b2a2a;
+    --accent-forest: #4a7c59;
+    --accent-gold:   #c9a84c;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'IM Fell English', serif;
+    font-size: 17px;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .chronicle-page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4rem 2rem 8rem;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    text-align: center;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 4rem;
+  }
+
+  .masthead .campaign-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1.2rem;
+  }
+
+  .masthead h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    color: var(--accent-gold);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .masthead .subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--ink-dim);
+    font-size: 1rem;
+  }
+
+  /* ── CHAPTER ── */
+  .chapter {
+    margin-bottom: 5rem;
+  }
+
+  .chapter-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .chapter-number {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-top: 0.15em;
+  }
+
+  .chapter-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .chapter-date {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    margin-bottom: 1.6rem;
+  }
+
+  .chapter p {
+    margin-bottom: 1.2em;
+    color: var(--ink);
+  }
+
+  .chapter p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── RULE BETWEEN SECTIONS ── */
+  .chapter-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 4rem 0;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 2rem 0;
+    padding: 1.2rem 1.8rem;
+    border-left: 3px solid var(--accent-gold);
+    background: rgba(201, 168, 76, 0.04);
+    font-style: italic;
+    color: var(--ink-dim);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .pull-quote cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ── DISCOVERY MARKER ── */
+  .discovery {
+    margin: 1.6rem 0;
+    padding: 1rem 1.4rem;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent-teal);
+    background: rgba(91, 159, 168, 0.04);
+    font-size: 0.95rem;
+    color: var(--ink-dim);
+  }
+
+  .discovery.blood {
+    border-left-color: var(--accent-blood);
+    background: rgba(139, 42, 42, 0.04);
+  }
+
+  .discovery.forest {
+    border-left-color: var(--accent-forest);
+    background: rgba(74, 124, 89, 0.04);
+  }
+
+  .discovery .discovery-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.4rem;
+  }
+
+  /* ── NAMES ── */
+  strong { color: var(--ink); font-weight: normal; font-style: italic; }
+  em { color: var(--ink-dim); }
+
+  /* ── CURRENT POSITION ── */
+  .current-position {
+    margin-top: 5rem;
+    padding: 2rem;
+    border: 1px solid var(--accent-gold);
+    background: rgba(201, 168, 76, 0.04);
+    text-align: center;
+  }
+
+  .current-position .position-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .current-position p {
+    font-style: italic;
+    color: var(--ink-dim);
+    margin-bottom: 0.6em;
+  }
+
+  .current-position p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── NAV BACK ── */
+  .back-nav {
+    margin-top: 4rem;
+    text-align: center;
+  }
+
+  .back-nav a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .back-nav a:hover {
+    color: var(--ink-dim);
+    border-color: var(--ink-faint);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .chronicle-page { padding: 2.5rem 1.2rem 6rem; }
+    .chapter-header { flex-direction: column; gap: 0.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="chronicle-page">
+
+  <header class="masthead">
+    <div class="campaign-label">Hands That Hold the Line &nbsp;·&nbsp; Year 313, 13 Amberfell</div>
+    <h1>The Story So Far</h1>
+    <div class="subtitle">A chronicle of what has passed &nbsp;·&nbsp; Eight sessions &nbsp;·&nbsp; Hollowgate to the bottom of a well</div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- CHAPTER ONE -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <span class="chapter-number">Chapter One</span>
+      <h2 class="chapter-title">Three Strangers Come to a Hungry Town</h2>
+    </div>
+    <div class="chapter-date">April 12–18, 2026 &nbsp;·&nbsp; Sessions 1–2</div>
+
+    <p>They did not arrive together. They did not know each other's names. They came to Hollowgate from three separate directions and for three separate reasons, and for one evening they moved through the same small town without exchanging a single word.</p>
+
+    <p><strong>Vanya</strong> came first and came watching. She surveilled the town's guards — light armor, inconsistent routes, one man asleep at his post — and drew her own conclusions about what kind of place this was. The innkeeper at the Crooked Lantern gave her the rest: Elkenquay was taxing every wagon entering Fastingbreak to strangle the border towns. Food convoys had been going missing for weeks. Coyotes had moved into the fields. Children weren't safe near the tree line.</p>
+
+    <p><strong>Brynn</strong> arrived hidden in the back of a supply wagon and nested in hay at the Stable before the wheels had stopped turning. She hadn't been there an hour before she overheard a man — bruised, furious, still bleeding from the road — describe what happened to his convoy. He was beaten and left for dead. Everything was taken. He demanded action at the Mayor's House. He demanded action at the tavern. No one moved fast enough to satisfy him.</p>
+
+    <p><strong>Aurelia</strong> followed the sound of hammering and found a carnival setting up at the edge of town. Colorful tents, a troll hauling timber, a tiefling in a star-patterned blue coat entertaining children. And there, among the performers — a face she recognized. The ringmaster. <strong>Chaelynn</strong>, someone from her homeland. Chaelynn saw her too, and immediately turned away.</p>
+
+    <div class="pull-quote">
+      The carnival was setting up. Hollowgate was going hungry. And somewhere in the town's records, a scribe named Eric Huwithakay had stopped filing reports two weeks ago.
+    </div>
+
+    <p>The next evening the carnival opened and the three strangers found each other. Brynn met <strong>Magnus Eillin</strong> — the ringleader, wearing a coat with stories sewn into it — who mentioned that his own show was running short of supplies because the convoys heading to Hollowgate kept disappearing. Aurelia introduced herself to Brynn. Vanya bought hunting supplies at the trading post, then introduced herself to both of them. The three agreed to speak privately and walked to a mill near the tree line.</p>
+
+    <p>At the gatehouse on the way, Aurelia and Vanya asked a guard named <strong>Jeffrey</strong> about the town's missing scribe. Jeffrey told them: Eric Huwithakay had vanished two weeks ago. His belongings were still at his house, marked C6 on the town map. Nobody knew where he'd gone.</p>
+  </section>
+
+  <hr class="chapter-rule">
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- CHAPTER TWO -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <span class="chapter-number">Chapter Two</span>
+      <h2 class="chapter-title">The Harpy in the Loft</h2>
+    </div>
+    <div class="chapter-date">April 18–26, 2026 &nbsp;·&nbsp; Sessions 2–3</div>
+
+    <p>In the mill loft, away from the carnival noise and the tavern and the guards asleep at their posts, Brynn showed them what she was. Bird-like features. Wings she usually kept hidden. She was a harpy, and she had been traveling for days, and she had not yet found what she was looking for.</p>
+
+    <p>They were three strangers with three different reasons to be in the same failing town. None of them said everything. But they agreed that working together served all of them — and that was enough to start.</p>
+
+    <p>Vanya had a contract with a town contact requiring her to show evidence of something at the tree line. She arranged to take Jeffrey out to address what she framed as a coyote problem. The group went together: Vanya, Brynn, Aurelia after she'd gathered food, and Jeffrey.</p>
+
+    <p>A coyote appeared at the tree line. Brynn lunged at it instinctively — and fell, wings spreading wide. Vanya killed it on the second arrow. They carried the carcass back to the mill. Brynn proposed that they each say why they were really here. Aurelia agreed. A formal alliance formed over a coyote carcass on the mill floor.</p>
+
+    <div class="discovery">
+      <div class="discovery-label">Known</div>
+      Eric Huwithakay has been missing from Hollowgate for two weeks. His belongings are at his house. Nobody has gone in. He stopped filing reports.
+    </div>
+
+    <p>Aurelia had already gotten into the Scribe's Office and searched for Eric's correspondence. She found a stairwell and another passage — not the papers she was looking for. But notes she did find made her feel relieved about his character. Whatever Eric had been doing, he was not a bad man.</p>
+  </section>
+
+  <hr class="chapter-rule">
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- CHAPTER THREE -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <span class="chapter-number">Chapter Three</span>
+      <h2 class="chapter-title">What the Dead Man Left Behind</h2>
+    </div>
+    <div class="chapter-date">May 10, 2026 &nbsp;·&nbsp; Session 4</div>
+
+    <p>They had permission to enter Eric's house at any time. They waited until the carnival was running — noise to cover their movement — and went in through a broken window.</p>
+
+    <p>The house had been searched before them. Someone else had come through, and they had been careful about it, and they had left almost no trace. Almost. The party found a burn tray filled with the ash of destroyed correspondence. They found a <em>Date-Based Cipher Key</em> that could decode notes Eric had disguised as ordinary scribe entries. They found a <em>Hidden Correspondence Slot</em> in the wall — a channel for sending reports back to Sarynthia. They found a board cross-referencing convoy routes and disappearances. And they found a go-bag, concealed, untouched — Eric had packed it and never come back for it.</p>
+
+    <div class="discovery">
+      <div class="discovery-label">Recovered from Eric's house</div>
+      Notes seized from Aurelia's cloak confirmed it: Eric had been investigating the supply disruptions, not causing them. Six wagons from Harrowfield never arrived. A caravan from the Southern Coast was stalled. An iron tool shipment was held at the Elkenquay Checkpoint.
+    </div>
+
+    <p>Brynn had also formally told the group what she was: a harpy. The wings in the mill loft had been an accident. This was a choice.</p>
+
+    <p>While they were still in the house, Brynn spotted two carnival workers approaching the door and invited them inside. <strong>Magnus Eillin</strong> was one of them. He shattered a window with his elbow and rolled out into the night rather than be questioned. The remaining workers explained that the carnival couldn't hold its evening show without food — the mayor had posted a reward for anyone who recovered the missing convoy contents. Then they went back to the Carnival Grounds and left the party standing in Eric's living room.</p>
+
+    <div class="pull-quote">
+      Eric had not left. He had not run. He had stopped reporting — and before he stopped, he had coded his last notes and packed a bag and hidden it where only he would think to look.
+    </div>
+  </section>
+
+  <hr class="chapter-rule">
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- CHAPTER FOUR -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <span class="chapter-number">Chapter Four</span>
+      <h2 class="chapter-title">The Wagon Driver and the Map</h2>
+    </div>
+    <div class="chapter-date">May 18, 2026 &nbsp;·&nbsp; Session 5</div>
+
+    <p>They found the convoy driver from Session One — the Bruised, Furious Man — in the inn-tavern. The bartender <strong>Terry</strong> knew him: <strong>McCoy</strong>, a regular wagon runner, staying upstairs. Brynn rented the room next to his and knocked.</p>
+
+    <p>McCoy's entire wagon had been taken about ten miles west of town. The attackers were kobolds — small, with spears. He showed his bruising. Brynn gave him a magical berry for it. McCoy explained what the road west had become: dangerous, unpredictable, wagon after wagon gone. Hollowgate depended on that road. The central settlements were better supplied. Out here, every missing convoy was felt.</p>
+
+    <div class="discovery">
+      <div class="discovery-label">Intelligence</div>
+      The maps they'd reviewed earlier — from Eric's board — pointed to a site in the forest north of town. The timing of the thefts correlated with the carnival's schedule. No new convoy was expected that night.
+    </div>
+
+    <p>The group had already linked the carnival's movements to the timing of the thefts. They weren't sure yet what that meant. What they did know: there were kobolds in the forest north of Hollowgate, wagons in a clearing, and a Mayor who would pay four hundred gold to get them back.</p>
+
+    <p>They went to the Mayor's office. He offered the bounty. He confirmed the food shortages. Brynn suspected he was withholding something — but saw no malicious intent. They decided not to tell him about the kobolds. The bounty was theirs to claim.</p>
+  </section>
+
+  <hr class="chapter-rule">
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- CHAPTER FIVE -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <span class="chapter-number">Chapter Five</span>
+      <h2 class="chapter-title">The Forest Guardian</h2>
+    </div>
+    <div class="chapter-date">May 31, 2026 &nbsp;·&nbsp; Session 6</div>
+
+    <p>They found her at the edge of the forest. Eight feet tall, antler-like branches rising from her head, moss and fungi growing where another creature might have hair, robes the color of earth and bark. A staff in her hand. She was moving through the trees with the certainty of something that belonged there.</p>
+
+    <p><strong>Hypha of Chronewood</strong> was searching for something stolen.</p>
+
+    <div class="pull-quote">
+      "I am one of the guardians of the wood."
+      <cite>— Hypha of Chronewood, Session 6</cite>
+    </div>
+
+    <p>The kobolds had taken the <em>Heart Seed</em> from the Grove — a sacred, rune-marked acorn essential for the next life cycle of the Cronewood. Hypha connected to the mycelial network beneath their feet for guidance on where the kobolds had gone. The party formed a loose alliance with her and moved into the trees.</p>
+
+    <p>They found a hidden path, then a clearing. Two wagons. A kobold guard. Brynn spotted a second kobold moving inside one of the wagons and the ambush began. Vanya's arrow flew. Hypha's thorn whip cracked. Aurelia used a guiding bolt and dropped prone to attack under the wagon. The last kobold threw down its spear. A second, unarmed kobold emerged from the front wagon, confused by what it had walked into.</p>
+
+    <div class="discovery forest">
+      <div class="discovery-label">Recovered</div>
+      The stolen wagons — the ones McCoy and the convoy driver described — were here in the clearing. Four hundred gold waited at the Mayor's office.
+    </div>
+  </section>
+
+  <hr class="chapter-rule">
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- CHAPTER SIX -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <span class="chapter-number">Chapter Six</span>
+      <h2 class="chapter-title">Grubb's Warren</h2>
+    </div>
+    <div class="chapter-date">June 7, 2026 &nbsp;·&nbsp; Session 7</div>
+
+    <p>The surrendered kobold — when pressed — revealed that the chieftain had ordered him to unload boxes into a cave nearby. A second kobold approached while Brynn held the wounded one pinned to the ground. This one gave his name as <strong>Robyn</strong>. He had appraised and sold the goods from the stolen wagons, he said. He claimed not to have known they were stolen.</p>
+
+    <p>Vanya seized Robyn by the scruff and pointed him toward the cave. Hypha demanded the location of the Heart Seed from the wounded kobold and threw him against the cave wall when he hesitated.</p>
+
+    <p>Inside the cave, Brynn found a <em>Partial Map</em> on a sleeping guard's table — the Warren's tunnel layout, marked traps, a Cheese Trap, a pit. Hypha magically enlarged a guard's lantern until it lit the whole passage. The guard woke, confirmed the chieftain was deeper in, and was persuaded by Hypha's presence to cooperate.</p>
+
+    <p>They navigated traps through the tunnels. They passed the chieftain's pet in an alcove — a creature Robyn identified, warning them not to provoke it. They reached a larger chamber.</p>
+
+    <p><strong>Chieftain Grubb</strong>: adorned with jewelry, flanked by fourteen kobolds. He regarded the party with curiosity and disdain in equal measure. Brynn asked why they had been stealing the convoys. Grubb denied having the Heart Seed. He proposed a trade deal — food in exchange for limited information about the missing cargo. Then he had a kobold bring in a mostly eaten corpse. The corpse was a messenger, he explained. This was what had happened to the last person who tried to renegotiate.</p>
+
+    <div class="discovery blood">
+      <div class="discovery-label">What Grubb admitted</div>
+      The kobolds were being paid to steal the convoys. They did not care about the food itself. Someone else wanted the wagons disrupted — and had the means to pay for it.
+    </div>
+
+    <p>The session ended with the trade proposal still on the table and the consequences of the last trade standing in the middle of the room.</p>
+  </section>
+
+  <hr class="chapter-rule">
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- CHAPTER SEVEN -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <span class="chapter-number">Chapter Seven</span>
+      <h2 class="chapter-title">The Bottom of a Well</h2>
+    </div>
+    <div class="chapter-date">June 22, 2026 &nbsp;·&nbsp; Session 8</div>
+
+    <p>The negotiations ended when Vanya shot the chieftain.</p>
+
+    <p>Before that happened, Grubb had admitted one more thing: he had sold the Heart Seed. It was not here. He had sold it to someone else, and he offered to take the party to the buyer. He demanded entertainment in exchange — a contest of strength. Hypha cast magic on the chieftain's pet and made it friendly. Then Vanya's arrow crossed the room.</p>
+
+    <p>Chaos. Hypha's thorn whip killed a kobold. Brynn stepped forward and cast Thunder Wave — a fifteen-foot cube of compressed sound that slammed into the kobolds and the guard Krob and left them staggering. The chieftain charged at Vanya, tackled her, overpowered her. She was pinned and bleeding.</p>
+
+    <div class="pull-quote">
+      "Are you entertained?"
+      <cite>— Vanya, pinned under Chieftain Grubb, Session 8</cite>
+    </div>
+
+    <p>Grubb laughed. He pulled out his spear and said: <em>For that, I will let you live.</em> He waved her off. His own pet, made friendly by Hypha's magic, turned on him. The Warren broke into noise and movement.</p>
+
+    <p>Robyn called out. He had found something. The party followed him through the chaos, down a passage, to a small silty chamber at the bottom of a well.</p>
+
+    <p>In the chamber: a corpse in a blue tunic.</p>
+
+    <p><strong>Aurelia</strong> examined the body. She had seen this sigil before. She knew what it meant. She looked up at the others.</p>
+
+    <div class="discovery blood">
+      <div class="discovery-label">Confirmed</div>
+      The dead man in the blue tunic was an Espionage Agent of the Crown of Sarynthia.
+    </div>
+
+    <p>The party confirmed he was dead. They looked up. Above the chamber, clearly visible: a stable wooden ladder, leading up and out of the well.</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- CURRENT POSITION -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="current-position">
+    <div class="position-label">Where Things Stand</div>
+    <p>The party is in a small silty chamber at the bottom of a well somewhere in the kobold cave system beneath the forest north of Hollowgate.</p>
+    <p>A dead man lies at their feet. A ladder leads up. Robyn is with them. The Heart Seed has been sold to an unknown buyer. The chieftain's warren is in chaos above.</p>
+    <p>They have been in Hollowgate for seventy-one days.</p>
+  </div>
+
+  <div class="back-nav">
+    <a href="index.html">← Table of Contents</a>
+    &emsp;
+    <a href="chronicles.html">The Chronicles</a>
+    &emsp;
+    <a href="campaign_storyboard.html">Campaign Storyboard</a>
+  </div>
+
+</div>
+
+</body>
+</html>

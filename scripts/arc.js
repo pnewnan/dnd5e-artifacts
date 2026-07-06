@@ -491,8 +491,12 @@
         injectNavButton();
         // Load nav.js after render so it can index the page
         if (!document.querySelector('script[src*="nav.js"]')) {
+          var navBase = window.AEL_BASE || (window.location.hostname === 'pnewnan.github.io' ? '/dnd5e-artifacts' : (function(){
+            var p = window.location.pathname.split('/').filter(Boolean); p.pop();
+            return p.length ? p.map(function(){ return '..'; }).join('/') : '.';
+          })()) + '/';
           var s = document.createElement('script');
-          s.src = 'https://pnewnan.github.io/dnd5e-artifacts/nav.js';
+          s.src = navBase + 'nav.js';
           document.body.appendChild(s);
         }
       })

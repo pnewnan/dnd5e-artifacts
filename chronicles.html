@@ -352,6 +352,11 @@
 </head>
 <body>
 
+<script>
+  window.AEL_BASE = (window.location.hostname === 'pnewnan.github.io' ? '/dnd5e-artifacts' : (function(){var p=location.pathname.split('/').filter(Boolean);p.pop();return p.length?p.map(function(){return '..';}).join('/'):'.';})()) + '/';
+  document.write('<scr' + 'ipt src="' + AEL_BASE + 'nav.js"><\/scr' + 'ipt>');
+</script>
+
 <div class="page-wrap">
 
   <div class="header-ornament">
@@ -377,7 +382,8 @@
         <div class="entry-title">Hold the Line</div>
         <p class="entry-desc">The world before the story begins. A fault line in the Gulf of Everroth. Two powers, a quiet tension, and the morning it all started.</p>
         <div class="audio-player">
-          <audio id="audio-intro" src="https://pnewnan.github.io/dnd5e-artifacts/audio/Intro to hold the line (en) v4.mp3" preload="none"></audio>
+          <audio id="audio-intro" preload="none"></audio>
+          <script>document.getElementById('audio-intro').src = window.AEL_BASE + 'audio/Intro to hold the line (en) v4.mp3';</script>
           <div class="player-ui">
             <div class="play-btn" id="btn-intro" onclick="togglePlay('intro')">▶</div>
             <div class="player-track">
@@ -401,7 +407,8 @@
         <div class="entry-title">The Beginnings</div>
         <p class="entry-desc">Hollowgate. The thirteenth day of Amberfell. What happened, what was found, and what the road ahead may hold.</p>
         <div class="audio-player">
-          <audio id="audio-s1" src="https://pnewnan.github.io/dnd5e-artifacts/audio/Session 1 - The Beginnings (en) v2.mp3" preload="none"></audio>
+          <audio id="audio-s1" preload="none"></audio>
+          <script>document.getElementById('audio-s1').src = window.AEL_BASE + 'audio/Session 1 - The Beginnings (en) v2.mp3';</script>
           <div class="player-ui">
             <div class="play-btn" id="btn-s1" onclick="togglePlay('s1')">▶</div>
             <div class="player-track">
@@ -498,6 +505,5 @@
   <!-- NAV PANEL -->
   <div id="aelNavPanel" style="display:none;position:fixed;inset:0 0 0 auto;z-index:1000;width:min(300px,90vw);background:rgba(8,6,3,0.97);border-left:1px solid rgba(180,140,60,0.3);overflow-y:auto;padding:1.5rem 1.2rem;transform:translateX(100%);transition:transform 0.28s cubic-bezier(0.22,1,0.36,1);"></div>
   <div id="aelNavBtn" onclick="aelNavOpen()" style="position:fixed;bottom:1rem;right:1rem;z-index:1001;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(13,10,6,0.88);border:1px solid rgba(180,140,60,0.4);padding:0.45rem 0.9rem;color:rgba(242,232,200,0.7);cursor:pointer;user-select:none;transition:color 0.2s;" onmouseover="this.style.color='rgba(242,232,200,1)'" onmouseout="this.style.color='rgba(242,232,200,0.7)'">&#9776; All Pages</div>
-  <script src="https://pnewnan.github.io/dnd5e-artifacts/nav.js"></script>
 </body>
 </html>
