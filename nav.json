@@ -142,8 +142,14 @@
       "entries": [
         {
           "name": "The Hollow Road — Arc Reference",
-          "desc": "Hollowgate to Dunmore · Levels 1–2 · Relief convoy · Durgan Valeforge · The fake claw marks · The hoarder · Dunmore",
+          "desc": "Hollowgate to Dunmore · Levels 1–2 · Relief convoy · Durgan Valeforge · The fake claw marks · Fen Farm · Corbin Farm · Dunmore",
           "href": "prologue/hollow_road_arc.html",
+          "type": "gm"
+        },
+        {
+          "name": "Corbin Farm — Basement Encounter",
+          "desc": "Drugged hospitality · Midnight disturbance · Dire wolf release · Basement rescue · Full stat blocks",
+          "href": "prologue/corbin_farm_encounter.html",
           "type": "gm"
         }
       ]

@@ -5,14 +5,36 @@
     "subtitle": "Hollowgate to Dunmore · One of the foundational arcs of the campaign",
     "act_band": "blood",
     "level_badge": "Levels 1–2",
-    "back_link": { "href": "../prologue_arc.html", "text": "← The Prologue" }
+    "back_link": {
+      "href": "../prologue_arc.html",
+      "text": "The Prologue"
+    }
   },
   "quick_ref": [
-    { "label": "Starting Location", "value": "Hollowgate" },
-    { "label": "Destination", "value": "Dunmore" },
-    { "label": "Tone", "value": "Grounded · Cold · Muddy · Uncertain · Human" },
-    { "label": "Threat", "value": "Banditry · Fear · Coordinated hoarding — not monsters" },
-    { "label": "Emotional Core", "value": "The players should help people. That hope matters." }
+    {
+      "label": "Starting Location",
+      "value": "Hollowgate"
+    },
+    {
+      "label": "Destination",
+      "value": "Dunmore"
+    },
+    {
+      "label": "Core Locations",
+      "value": "Hollowgate · Hollow Road · Fen Farm · Ashfall Watch Blockade · Destroyed Wagon · Corbin Farm · Dunmore"
+    },
+    {
+      "label": "Tone",
+      "value": "Grounded · Cold · Muddy · Uncertain · Human"
+    },
+    {
+      "label": "Primary Threat",
+      "value": "Fear · Greed · Staged beast attacks · Local predation — not supernatural evil"
+    },
+    {
+      "label": "Emotional Core",
+      "value": "The players should help people. That hope matters."
+    }
   ],
   "sections": [
     {
@@ -24,171 +46,1105 @@
         {
           "type": "narrative_block",
           "content": [
-            { "type": "paragraph", "text": "The Hollow Road Arc serves as one of the foundational story arcs of the campaign. Its primary purpose is to humanize the world, emotionally attach the players to ordinary people, establish political instability, introduce fear and paranoia, and slowly reveal that the kingdom is beginning to fracture under pressure." },
-            { "type": "paragraph", "text": "The players are not yet dealing with ancient evils, world-ending threats, or legendary artifacts. They are helping ordinary people survive during a period of growing instability. This emotional grounding is critical — because later, wars begin, cities are erased, kingdoms collapse, and buried horrors emerge. The players must first understand what is worth protecting." }
+            {
+              "type": "paragraph",
+              "text": "The Hollow Road Arc humanizes the world, emotionally attaches the players to ordinary people, establishes political instability, introduces fear and paranoia, and reveals that the road between Hollowgate and Dunmore is collapsing under pressure."
+            },
+            {
+              "type": "paragraph",
+              "text": "The players are not yet dealing with ancient evils, world-ending threats, or legendary artifacts. They are helping ordinary people survive during a period of growing instability. This emotional grounding is critical — later, wars begin, cities are erased, kingdoms collapse, and buried horrors emerge. The players must first understand what is worth protecting."
+            },
+            {
+              "type": "paragraph",
+              "text": "The road is failing because convoys have gone missing, patrols are scared, supplies are not arriving, and rumor is doing as much damage as violence. The party should discover that some of the &ldquo;beast attacks&rdquo; are staged by ordinary people exploiting the crisis."
+            },
+            {
+              "type": "paragraph",
+              "text": "This arc is not about monsters on the road. It is about what people become when they believe no one is coming to help.",
+              "style": "font-style:italic;"
+            },
+            {
+              "type": "prose_list",
+              "items": [
+                "The Fen family becomes generous, desperate, and brave.",
+                "The Corbin family becomes greedy, violent, and cruel.",
+                "Durgan Valeforge becomes cautious and paralyzed.",
+                "The party gets to become the reason hope still works."
+              ]
+            }
           ]
         },
-        { "type": "divider" }
-      ]
-    },
-    {
-      "color": "blood",
-      "title": "Fear Spreads Faster Than Truth",
-      "subtitle": "Nobody fully understands what is happening. The uncertainty itself becomes dangerous.",
-      "open": false,
-      "content": [
-        { "type": "paragraph", "text": "Nobody fully understands what is happening along the Hollow Road. Rumors spread constantly: Elkenquayan raiders, bandit attacks, strange creatures, foreign saboteurs, missing patrols, burned farms. Most people only know that something is wrong." },
-        { "type": "paragraph", "text": "The uncertainty itself becomes dangerous. As information fails, communities fill the gap with fear. Each rumor generates three more. Each missing patrol spawns a dozen theories. The players should encounter this information collapse directly — and begin to understand that the real threat is not what is happening but what people believe is happening." },
-        { "type": "annotation", "text": "\"The road isn't this dangerous because of what is on it. It is this dangerous because everyone believes it is impassable.\"" }
+        {
+          "type": "divider"
+        }
       ]
     },
     {
       "color": "gold",
-      "title": "Ordinary People Suffer First",
-      "subtitle": "Farmers. Refugees. Exhausted militia. Children. Struggling settlements.",
+      "title": "Themes to Play Up",
+      "subtitle": "",
       "open": false,
       "content": [
-        { "type": "paragraph", "text": "This arc focuses heavily on farmers, refugees, exhausted militia, healers, children, and struggling settlements. The stakes are personal. The players should repeatedly feel: <em>\"These are real people.\"</em> Not abstractions. Not NPCs serving a quest function. People with specific faces, specific fears, specific names." },
-        { "type": "paragraph", "text": "Linger on them. Give them enough time that the players remember them. These connections are the emotional architecture that makes every later revelation land with its full weight." }
+        {
+          "type": "section_head",
+          "text": "Fear Spreads Faster Than Truth"
+        },
+        {
+          "type": "paragraph",
+          "text": "Nobody fully understands what is happening along the Hollow Road. Rumors spread constantly — Elkenquayan raiders, bandit attacks, strange creatures, foreign saboteurs, missing patrols, burned farms. The uncertainty itself becomes dangerous. Each rumor generates three more."
+        },
+        {
+          "type": "annotation",
+          "text": "&ldquo;The road isn&rsquo;t this dangerous because of what is on it. It is this dangerous because everyone believes it is impassable.&rdquo;"
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Ordinary People Suffer First"
+        },
+        {
+          "type": "paragraph",
+          "text": "Farmers, refugees, exhausted militia, healers, children, struggling settlements. The stakes are personal. Players should repeatedly feel: <em>these are real people</em> — not abstractions, not quest-function NPCs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Linger on the ordinary people long enough that the players remember them. These connections are the emotional architecture that makes later revelations land."
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Small Acts Matter"
+        },
+        {
+          "type": "paragraph",
+          "text": "Distributing food, healing civilians, rescuing survivors, recovering medicine — these victories matter emotionally. Hope here is not naive. It is a deliberate choice."
+        },
+        {
+          "type": "annotation",
+          "text": "&ldquo;Because later, hope becomes fragile. Give them something to lose first.&rdquo;"
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Civilization Is Fragile"
+        },
+        {
+          "type": "paragraph",
+          "text": "Roads, supply lines, communication, confidence — once fear spreads, communities isolate, rumors become reality, violence escalates, and ordinary people turn against each other. This is a system failing from the inside: a slow dissolution, not a dramatic collapse."
+        },
+        {
+          "type": "paragraph",
+          "text": "By the time anyone declares a crisis, it has already been one for months."
+        }
       ]
     },
     {
       "color": "teal",
-      "title": "Small Acts Matter",
-      "subtitle": "Distribute food. Heal civilians. Rescue survivors. Hope is important in this arc.",
-      "open": false,
+      "title": "Core Story Summary",
+      "subtitle": "",
+      "open": true,
       "content": [
-        { "type": "paragraph", "text": "The players distribute food, heal civilians, rescue survivors, protect roads, and restore stability. These victories matter emotionally. Hope is important in this arc — not as a naive emotion but as a deliberate choice. The players should feel, genuinely, that they improved things. That their presence made a difference." },
-        { "type": "annotation", "text": "\"Because later: hope becomes fragile. Give them something to lose first.\"" }
-      ]
-    },
-    {
-      "color": "slate",
-      "title": "Civilization Is Fragile",
-      "subtitle": "Roads. Supply lines. Communication. Confidence. Once fear spreads, communities isolate.",
-      "open": false,
-      "content": [
-        { "type": "paragraph", "text": "The Hollow Road Arc quietly establishes one of the campaign's core truths: civilization survives on trust and stability. Roads. Supply lines. Communication. Confidence. Once fear spreads, communities isolate, rumors become reality, violence escalates, and ordinary people begin turning against each other." },
-        { "type": "paragraph", "text": "The players are watching a system fail from the inside. Not a dramatic collapse — a slow dissolution. The kind that happens when people stop trusting the roads, stop sending wagons, stop believing help is coming. By the time anyone declares a crisis, it has already been a crisis for months." }
+        {
+          "type": "narrative_block",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The party leaves Hollowgate amid reports of missing convoys, burned farms, vanished patrols, and a road that people increasingly believe is cursed, infested, or sabotaged."
+            },
+            {
+              "type": "paragraph",
+              "text": "They join or accompany a relief effort heading toward Dunmore. Along the way, they encounter <strong>Fen Farm</strong>, where someone is seriously sick and the needed medicine can only be obtained from Dunmore. The family's son, <strong>Tovin Fen</strong>, left toward Dunmore to get medicine and never returned. The family dog, <strong>Barley</strong>, followed him."
+            },
+            {
+              "type": "paragraph",
+              "text": "Farther along the road, the party reaches a blockade maintained by <strong>Commander Durgan Valeforge</strong>, who refuses to let the relief convoy pass because patrols and wagons keep disappearing. He is not cruel — he is exhausted, frightened, and unwilling to send civilians into an unknown threat."
+            },
+            {
+              "type": "paragraph",
+              "text": "The party investigates a destroyed wagon and finds claw marks that look wrong: too even, too deliberate, too perfect. Someone is staging beast attacks."
+            },
+            {
+              "type": "paragraph",
+              "text": "The trail leads to <strong>Corbin Farm</strong>, a seemingly normal but deeply tense homestead. The Corbins are not supernatural villains and not professional traffickers. They are greedy farmers who began stealing from damaged wagons, escalated into active robbery, captured witnesses, and now use a chained dire wolf to stage &ldquo;beast attacks&rdquo; and disappear evidence."
+            },
+            {
+              "type": "paragraph",
+              "text": "During dinner, the party hears loud scratching and whining from beneath the farmhouse. The Corbins claim it is their dog. If pressed, they parade out Barley — who is not actually their dog — then put him back in the basement. The meal is drugged."
+            },
+            {
+              "type": "paragraph",
+              "text": "The party sleeps in the barn loft. In the middle of the night, they wake groggy and possibly exhausted. Someone is stealing their gear below. The dog begins barking from the farmhouse. One of the prisoners has gotten loose. The family panics. The dire wolf starts pulling at its chains in the farmhouse basement."
+            },
+            {
+              "type": "paragraph",
+              "text": "The party must choose what to do: recover gear, investigate the loft, stop the Corbins, rescue prisoners, deal with the dire wolf, expose the staged attacks, and recover the medicine."
+            },
+            {
+              "type": "paragraph",
+              "text": "If they rescue Tovin and recover the medicine, he can return to Fen Farm and save his family member. The party can then return to the blockade with evidence, allowing Durgan to reopen or secure the route to Dunmore."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
       ]
     },
     {
       "color": "blood",
-      "title": "Story Structure",
-      "subtitle": "",
+      "title": "Story Structure — Overview",
+      "subtitle": "The full route at a glance",
       "open": true,
       "content": [
+        {
+          "type": "link_row",
+          "links": [
+            { "href": "corbin_farm_encounter.html", "text": "↗ Corbin Farm Basement Encounter — Full Stat Blocks, Maps, Round-by-Round", "color": "blood" }
+          ]
+        },
         {
           "type": "beat_list",
           "beats": [
             {
-              "label": "Hollowgate — The Situation",
-              "type_tag": "Opening Scene",
-              "detail": "News arrives that farms along the road to Dunmore have been attacked, burned, or abandoned. Ashfall Watch has failed to respond. Travelers report patrols vanishing, supply wagons disappearing, violence on the roads. Refugees arrive carrying burns, injuries, missing family members, and terrifying stories.\n\nThe town atmosphere becomes increasingly tense: militia patrols increase, supplies are rationed, people begin hoarding food, and public arguments break out. The players become involved because they choose to help — not because they are asked, though they may be. The distinction matters.",
+              "label": "Hollowgate",
+              "type_tag": "Opening",
+              "detail": "Rumors, missing convoys, relief convoy forms.",
               "dot_color": "blood"
             },
             {
-              "label": "The Relief Convoy",
-              "type_tag": "Transition",
-              "detail": "A small emergency relief convoy is assembled: grain, medicine, tools, healing supplies, and civilian volunteers. The players join. The caravan should feel vulnerable, underprepared, and emotionally real — not heroic. People are scared. The NPCs here are the emotional heart of the arc.",
-              "dot_color": "blood"
-            },
-            {
-              "label": "The Hollow Road — Signs of Collapse",
+              "label": "The Hollow Road",
               "type_tag": "Atmosphere",
-              "detail": "The journey toward Dunmore should focus heavily on atmosphere, conversations, emotional immersion, and growing instability. The players encounter burned farmland, abandoned wagons, smoke on distant hills, frightened travelers, militia checkpoints, and increasing signs of collapse. The world should feel strained. Not destroyed. Yet.",
+              "detail": "Signs of collapse — smoke, abandoned carts, rumors of burned farms.",
               "dot_color": "blood"
+            },
+            {
+              "label": "Fen Farm",
+              "type_tag": "Emotional Hook",
+              "detail": "Sick family, missing Tovin, missing Barley, medicine needed from Dunmore.",
+              "dot_color": "teal"
             },
             {
               "label": "Ashfall Watch Blockade",
               "type_tag": "Obstacle",
-              "detail": "Approximately twenty miles from Ashfall Watch, the convoy encounters a military blockade. The acting commander refuses to allow the convoy to continue. He is not irrational — he is exhausted and afraid. Every time he sends people toward the keep, they disappear. Or come back missing half their number. Sometimes it's bandits. Sometimes survivors swear it was Elkenquayan scouts. Sometimes nobody sees anything at all.\n\n\"Until I know what's on that road, I'm not sending civilians and the last of our supplies to vanish with them.\"\n\nThe players should understand: his logic makes sense. The roads are becoming impossible to trust. The blockade is not a villain encounter. It is a frightened man making a defensible decision. The correct response is not to overpower him — it is to solve the problem he is describing.",
+              "detail": "Durgan refuses passage until the road threat is understood.",
               "dot_color": "blood"
             },
             {
-              "label": "Helping the Burned Farm",
-              "type_tag": "Major Victory",
-              "detail": "Immediately beyond the blockade lies one of the burned farmsteads. The players can distribute food, heal burns, stabilize wounded civilians, and materially improve conditions. This is one of the most important emotional moments in the early campaign.\n\nKey images: children finally eating. Exhausted responders collapsing after receiving aid. Militia finally receiving medical treatment. Burned farmers crying with relief. Do not rush these moments. Let them breathe. The players should walk away feeling \"we actually helped people.\"",
-              "dot_color": "blood"
-            },
-            {
-              "label": "The Destroyed Wagon — What Doesn't Add Up",
+              "label": "Destroyed Wagon",
               "type_tag": "Investigation",
-              "detail": "After stabilizing the immediate situation, the players can investigate why patrols vanish and wagons disappear. One key discovery: a destroyed militia wagon farther down the road. Bodies are missing. Some appear to have been dragged into nearby woods. Claw marks carved into wood, wagon panels, and trees suggest creature attacks.\n\nOn a high Investigation check: the claw marks are wrong. Too even, too symmetrical, too consistent, cut at identical depth and angle. Real animals slip, vary pressure, tear unpredictably. These marks look intentionally manufactured. Closer inspection may reveal faint metal scoring, repeated strike patterns, and signs the marks were created deliberately.\n\n\"Someone is staging violence.\"",
+              "detail": "False claw marks, missing bodies, possible apothecary clue.",
               "dot_color": "blood"
             },
             {
-              "label": "Dunmore — The Road Reopened",
+              "label": "Corbin Farm — Arrival & Dinner",
+              "type_tag": "Social Trap",
+              "detail": "Tense hospitality; scratching below; Barley paraded as cover; drugged meal.",
+              "dot_color": "purple"
+            },
+            {
+              "label": "Corbin Farm — Barn Loft",
+              "type_tag": "Clue",
+              "detail": "Party sleeps; loft contains the forged beast-mark tool if investigated.",
+              "dot_color": "purple"
+            },
+            {
+              "label": "Corbin Farm — Night Incident",
+              "type_tag": "Turning Point",
+              "detail": "Party wakes groggy/exhausted while gear is stolen; Barley barks; a prisoner gets loose; the family panics.",
+              "dot_color": "purple"
+            },
+            {
+              "label": "Corbin Farm — Confrontation",
+              "type_tag": "Climax",
+              "detail": "Recover gear, cross the yard, rescue prisoners, deal with the dire wolf, confront the Corbins.",
+              "dot_color": "purple"
+            },
+            {
+              "label": "Medicine Recovery",
+              "type_tag": "Payoff",
+              "detail": "The black-briar-sealed apothecary crate is found.",
+              "dot_color": "teal"
+            },
+            {
+              "label": "Fen Farm — Payoff",
               "type_tag": "Resolution",
-              "detail": "The players stabilize the route, expose or negotiate with the hoarder, rescue survivors, secure the roads, and restore enough confidence for the convoy to continue. The convoy finally reaches Dunmore. This moment should feel emotionally meaningful — not triumphant, not celebratory, but meaningful. People survive because of the players.",
+              "detail": "Tovin returns with Barley and the medicine.",
+              "dot_color": "teal"
+            },
+            {
+              "label": "Blockade — Resolution",
+              "type_tag": "Resolution",
+              "detail": "Evidence convinces Durgan to reopen or secure the road.",
+              "dot_color": "blood"
+            },
+            {
+              "label": "Dunmore — Arrival",
+              "type_tag": "Resolution",
+              "detail": "The convoy arrives. Hope survives, but the kingdom feels fragile.",
               "dot_color": "blood"
             }
           ]
         },
-        { "type": "divider" }
+        {
+          "type": "divider"
+        }
       ]
     },
     {
-      "color": "slate",
-      "title": "Key NPCs",
-      "subtitle": "",
-      "open": true,
+      "color": "blood",
+      "title": "1. Hollowgate — The Situation",
+      "subtitle": "Establish urgency, instability, and the importance of the road.",
+      "open": false,
       "content": [
+        {
+          "type": "paragraph",
+          "text": "Hollowgate is under pressure. Convoys are missing. Food and medicine are delayed. Travelers report attacks, vanished patrols, burned farms, and strange claw marks. Nobody agrees on what is happening."
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Some blame Elkenquayan raiders.",
+            "Some blame bandits.",
+            "Some blame beasts.",
+            "Some blame Ashfall Watch or the local fort for failing to respond.",
+            "Some are beginning to hoard supplies."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The party should understand that the road to Dunmore matters. It is not just a travel route. It is a supply line."
+        },
+        {
+          "type": "section_head",
+          "text": "Hollowgate / Convoy NPCs"
+        },
         {
           "type": "npc_grid",
           "cards": [
             {
-              "name": "Commander Durgan Valeforge",
-              "role": "Ashfall Watch · Dwarven Militia Commander",
-              "desc": "Rational, disciplined, practical, and visibly exhausted. He refuses to let the convoy through because he genuinely believes sending civilians forward without securing the road would be murder. He respects competence and calm leadership. He has not slept properly in days and remembers every patrol he has lost.",
-              "note": "He is willing to listen. One of the first examples in the campaign of a fundamentally good person trapped inside a collapsing situation. He was fed a false threat report — he does not know it is false.",
-              "color": "slate"
-            },
-            {
-              "name": "Berry Underbough",
-              "role": "Ashfall Watch · Young Halfling Militiaman",
-              "desc": "Eager, nervous, compassionate. Desperately wants to accompany the party when they begin investigating the road. Commander Valeforge refuses every time — not because Berry is incompetent, but because Durgan does not want to send another frightened young soldier to die. Berry's aunt owns a farm farther down the road. He has not heard from her since the fires began.",
-              "note": "The tension between his idealism, his fear, and Durgan's protective refusal is a small human story running beneath the investigation.",
-              "color": "teal"
-            },
-            {
               "name": "Mara Vell",
-              "role": "Wagon Leader · The One Holding It Together",
-              "desc": "Middle-aged. Practical. Exhausted. Gruff but kind. She is doing what she always does: holding things together with sheer willpower and the refusal to admit she doesn't know if it will work.",
+              "role": "Relief Wagon Leader",
+              "desc": "Middle-aged, practical, exhausted, gruff but kind. Holding things together through sheer willpower and the refusal to admit she doesn't know if it will work.",
               "note": "Play her as someone who has stopped expecting help and learned to be grateful when it arrives anyway.",
               "color": "slate"
             },
             {
               "name": "Edrin Holt",
               "role": "Militia Volunteer · Nineteen Years Old",
-              "desc": "Clearly inexperienced. Trying very hard not to appear afraid. He joined up because the situation seemed like it required it. He is now less certain that was wise, and too committed to admit it.",
+              "desc": "Clearly inexperienced, trying very hard not to look afraid. Joined because the situation seemed to require it; now less certain that was wise, too committed to admit it.",
               "note": "Let him grow. If the players protect him, he becomes better. If they ignore him, he becomes a statistic.",
               "color": "slate"
             },
             {
-              "name": "Sella &amp; Brin",
-              "role": "Refugee Siblings · Separated From Their Parents",
-              "desc": "They became emotionally important very quickly. Sella is older and trying to hold it together for Brin's sake. Brin is old enough to know something is very wrong and young enough to still believe it will be okay.",
-              "note": "Do not resolve their story cheaply. Their parents may or may not be found. That ambiguity is the point.",
-              "color": "gold"
-            },
-            {
               "name": "Old Thom",
               "role": "Elderly Farmer · Transporting Salvaged Tools",
-              "desc": "Refuses to abandon his tools. \"If the land survives, so do we.\" He is not delusional — he understands the situation perfectly. He has simply decided that civilization requires someone to act as though it will continue.",
-              "note": "He is the thematic soul of the arc in two sentences. Let him say them.",
+              "desc": "Refuses to abandon his tools. He understands the situation perfectly — he has simply decided civilization requires someone to act as though it will continue.",
+              "note": "\"If the land survives, so do we.\" He is the thematic soul of the arc in two sentences. Let him say them.",
               "color": "teal"
             },
             {
-              "name": "The Landowner — unnamed, or give a name at the table",
-              "role": "The Hoarder · The Human Cause of the Crisis",
-              "desc": "He is frightened, defensive, pragmatic, and morally compromised. He genuinely believes he is protecting his workers, his people, and his future. He hired men to stage creature attacks using forged metal claw implements, spread rumors, and make the roads appear infested — because he believes the kingdom is collapsing and whoever controls grain controls survival.<br><br>\"You think the kingdom's coming to save us?\" Or: \"If the roads die, somebody has to make sure there's still food left.\"",
-              "note": "The players should not fully approve. But they should understand him. That distinction is critical to the campaign's themes. He is not a villain. He is a frightened man who made a terrible, calculated, defensible-in-his-own-mind decision.",
-              "color": "purple"
+              "name": "Sella &amp; Brin",
+              "role": "Refugee Siblings · Separated From Their Parents",
+              "desc": "Sella is older and trying to hold it together for Brin's sake. Brin is old enough to know something is very wrong and young enough to still believe it will be okay.",
+              "note": "Do not resolve their story cheaply. Their parents may or may not be found. That ambiguity is the point.",
+              "color": "gold"
             }
           ]
         },
-        { "type": "divider" }
+        {
+          "type": "gm_block",
+          "label": "What to Play",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The relief convoy should feel vulnerable, underprepared, and emotionally real — not heroic. The players should choose to help because the people are worth helping."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "slate",
+      "title": "2. The Hollow Road — Signs of Collapse",
+      "subtitle": "Make the road feel unsafe before combat happens.",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "As the party travels, they see signs that the region is fraying:"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "abandoned carts",
+            "old blood in the mud",
+            "broken wheels",
+            "travelers turning back",
+            "distant smoke",
+            "frightened farmhands",
+            "empty waystations",
+            "half-burned fence lines",
+            "signs warning travelers away",
+            "rumors of burned farms",
+            "rumors of beast attacks"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The party does <strong>not</strong> need to directly visit burned farms. Burned farms exist as reports, smoke on the horizon, refugee testimony, and evidence of widening instability. The only victim farm the party directly visits is <strong>Fen Farm</strong>."
+        },
+        {
+          "type": "section_head",
+          "text": "Rumors — Use Contradictory Ones"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "“It was wolves. Big ones.”",
+            "“No wolf burns a granary.”",
+            "“Elkenquayan scouts were seen near the south road.”",
+            "“A patrol from Ashfall Watch vanished down there.”",
+            "“The claw marks were as long as a man’s arm.”",
+            "“The farms are doing this to each other now.”"
+          ]
+        },
+        {
+          "type": "annotation",
+          "text": "Design note: the world should feel strained, not destroyed. Yet."
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "3. Fen Farm — The Sick Farm",
+      "subtitle": "Humanize the stakes and create the emotional payoff for later.",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "This is the only victim farm the party directly visits. Fen Farm is modest and struggling. Someone there is seriously sick or injured, and the needed medicine can only be obtained from Dunmore. The road has become too dangerous for ordinary people, but the family had no other option."
+        },
+        {
+          "type": "paragraph",
+          "text": "<strong>Tovin Fen</strong> left toward Dunmore to get medicine. He never returned. <strong>Barley</strong>, the family dog, followed him. Barley also has not returned."
+        },
+        {
+          "type": "paragraph",
+          "text": "The family is frightened, but decent. They may still share water, shelter, or what little food they have."
+        },
+        {
+          "type": "section_head",
+          "text": "Fen Farm NPCs"
+        },
+        {
+          "type": "npc_grid",
+          "cards": [
+            {
+              "name": "Ilsa Fen",
+              "role": "Sick Family Member",
+              "desc": "Mother, grandmother, spouse, or other beloved family member. Needs medicine from Dunmore.",
+              "color": "teal"
+            },
+            {
+              "name": "Harlan Fen",
+              "role": "Worried Spouse / Father",
+              "desc": "Explains that Tovin went toward Dunmore and Barley followed. Trying to remain composed.",
+              "color": "teal"
+            },
+            {
+              "name": "Tovin Fen",
+              "role": "Missing Son",
+              "desc": "Later found as Prisoner Two in the Corbin farmhouse basement.",
+              "color": "gold"
+            },
+            {
+              "name": "Barley",
+              "role": "Fen Family Dog",
+              "desc": "Followed Tovin and is later used by the Corbins as a cover story.",
+              "color": "gold"
+            }
+          ]
+        },
+        {
+          "type": "section_head",
+          "text": "Key Information"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "The medicine is in Dunmore.",
+            "The road is blocked or unsafe.",
+            "Tovin went anyway.",
+            "Barley followed him.",
+            "Neither has returned."
+          ]
+        },
+        {
+          "type": "discovery",
+          "name": "Apothecary Mention",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "“The Dunmore apothecary seals medicine crates with a black briar mark. A briar curled around a little mortar bowl.”"
+            }
+          ]
+        },
+        {
+          "type": "gm_block",
+          "label": "Emotional Function",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Fen Farm should make the party care before they reach the bad farm. Later, when the party finds Tovin, Barley, and the medicine, this scene pays off directly."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "4. Ashfall Watch Blockade",
+      "subtitle": "Show institutional fear, not villainy.",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The relief convoy reaches a military blockade on the road. Commander Durgan Valeforge refuses to let civilians and supplies continue because patrols and wagons have vanished. Durgan is not cruel or stupid — he is exhausted, frightened, and unwilling to send more people to die."
+        },
+        {
+          "type": "section_head",
+          "text": "Ashfall Watch NPCs"
+        },
+        {
+          "type": "npc_grid",
+          "cards": [
+            {
+              "name": "Commander Durgan Valeforge",
+              "role": "Dwarven Militia Commander",
+              "desc": "Rational, disciplined, exhausted. Refuses to let the convoy through because he believes it would be murder without securing the road first.",
+              "note": "He is willing to listen. One of the first examples in the campaign of a fundamentally good person trapped inside a collapsing situation.",
+              "color": "slate"
+            },
+            {
+              "name": "Berry Underbough",
+              "role": "Young Halfling Militiaman",
+              "desc": "Eager, nervous, compassionate. Desperately wants to join the investigation; Durgan refuses every time — not from doubting Berry's competence, but because he does not want to send another frightened young soldier to die.",
+              "note": "Berry's aunt owns a farm farther down the road. He hasn't heard from her since the fires began.",
+              "color": "teal"
+            }
+          ]
+        },
+        {
+          "type": "annotation",
+          "text": "“I don’t care if it’s wolves, raiders, or the Queen’s own ghost. Until I know what is taking people off that road, I am not sending civilians through it.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "His logic makes sense. This is not a villain encounter — it is a frightened man making a defensible decision. The right response is to solve the problem he is describing, not overpower him."
+        },
+        {
+          "type": "section_head",
+          "text": "What Durgan Knows"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Several patrols have failed to return.",
+            "A militia wagon was found destroyed.",
+            "Bodies are missing.",
+            "Some reports mention claw marks.",
+            "Some survivors claim beast attacks; others claim people were involved.",
+            "There are reports of burned farms, but no clear pattern."
+          ]
+        },
+        {
+          "type": "gm_block",
+          "label": "Player Objective",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Give Durgan proof of what is actually happening."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "5. The Destroyed Wagon — What Doesn't Add Up",
+      "subtitle": "Foreshadow Corbin Farm, the dire wolf, and the staged beast attacks.",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The party investigates a destroyed militia wagon or convoy cart farther down the road. They find broken crates, blood, drag marks, claw marks, missing bodies, signs of a struggle, evidence that cargo was removed deliberately, and possibly fragments of apothecary packaging or black wax."
+        },
+        {
+          "type": "paragraph",
+          "text": "At first it looks like a creature attack. But on closer inspection, the claw marks are wrong."
+        },
+        {
+          "type": "investigation_box",
+          "label": "Investigation Detail — The Claw Marks",
+          "reveal": "On a good Investigation check, the marks read as manufactured: too even, too symmetrical, too consistent, identical depth and angle, repeated parallel spacing, faint metal scoring, repeated strike patterns. Real animals slip, vary pressure, and tear unpredictably. These marks were made by a tool. “Someone is staging violence.”"
+        },
+        {
+          "type": "gm_block",
+          "label": "Later Payoff",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "At Corbin Farm, if the party investigates the barn loft, they can find the forged tool used to create these perfect beast marks."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "purple",
+      "title": "6. Corbin Farm — The Bad Farm",
+      "subtitle": "Central adventure location: social trap, investigation, combat, rescue, and moral contrast to Fen Farm.",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Corbin Farm appears normal from the outside: fenced fields, a farmhouse, a barn, a yard, smoke from the chimney, people trying to look like ordinary farmers. But the Corbins are on edge."
+        },
+        {
+          "type": "paragraph",
+          "text": "They are not traffickers. They are not cultists. They are not supernatural. They are greedy farm predators who use a real dire wolf, fake claw tools, and road fear to rob convoys and disappear witnesses."
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "They began as scavengers.",
+            "Then they became thieves.",
+            "Then they became ambushers.",
+            "Then they became murderers."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Now they have prisoners in the basement, stolen medicine, a chained dire wolf, and a party sleeping in their barn loft. They are in for a penny, in for a pound."
+        },
+        {
+          "type": "section_head",
+          "text": "Corbin Farm Layout"
+        },
+        {
+          "type": "paragraph",
+          "style": "white-space:pre-wrap;font-family:'Courier New',Courier,monospace;font-size:0.8rem;line-height:1.6;background:rgba(91,45,142,0.05);border:1px solid rgba(91,45,142,0.2);padding:0.8rem 1rem;display:block;",
+          "text": "Road\n |\n[Farmhouse]\n- dinner table\n- cellar/basement below\n- prisoners hidden below\n- Barley held below\n- dire wolf chained in reinforced basement/undercroft area\n\n[Yard]\n- well\n- chopping block\n- woodpile\n- path between house and barn\n\n[Barn]\n- party sleeps in loft\n- stolen goods hidden under tarps\n- forged beast-mark tool hidden in loft\n- party gear may be searched below during the night"
+        },
+        {
+          "type": "paragraph",
+          "text": "The dire wolf is in the <strong>farmhouse basement/undercroft</strong>, not the barn — the party is in the barn loft, so the wolf should not be directly beneath them."
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "The basement is the horror space.",
+            "The barn loft is the clue space.",
+            "The yard is the danger space between them."
+          ]
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Corbin Family Psychology"
+        },
+        {
+          "type": "paragraph",
+          "text": "The Corbins should not behave like cartoon villains. They are tense because their crimes have become unmanageable. They have stolen too much. They have hurt people. They have prisoners in the basement. They have a dangerous animal under the house. The blockade is nearby. The party is stronger than ordinary travelers."
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "One family member drinks too much.",
+            "One family member is angry.",
+            "One family member wants out.",
+            "One family member wants to kill the party immediately."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "They are not calm criminals. They are cracking."
+        },
+        {
+          "type": "section_head",
+          "text": "Their Moral Logic"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "“We didn’t make the road this way.”",
+            "“Those convoys never cared about farms like ours.”",
+            "“The goods would’ve rotted.”",
+            "“We took what no one could protect.”",
+            "“You think the fort’s hands are clean?”",
+            "“We fed you, didn’t we?”"
+          ]
+        },
+        {
+          "type": "section_head",
+          "text": "Corbin Farm NPCs"
+        },
+        {
+          "type": "npc_grid",
+          "cards": [
+            {
+              "name": "Joryn Corbin",
+              "role": "Farm Father",
+              "desc": "Tired, controlling, self-justifying. Started by “taking abandoned goods.” Still tells himself he is protecting his family.",
+              "color": "purple"
+            },
+            {
+              "name": "Hessa Corbin",
+              "role": "Farm Mother",
+              "desc": "Calm, watchful, and socially dangerous. Notices who eats, who does not, who asks questions, and who looks toward the cellar.",
+              "color": "purple"
+            },
+            {
+              "name": "Corren Corbin",
+              "role": "Adult Son",
+              "desc": "Drunk, angry, reckless. Hates pretending. Wants to kill problems quickly.",
+              "color": "blood"
+            },
+            {
+              "name": "Bram Corbin",
+              "role": "Drunk Uncle",
+              "desc": "Bitter, loose-tongued, says too much at dinner. Useful for tension and accidental clues.",
+              "color": "gold"
+            },
+            {
+              "name": "Nella Corbin",
+              "role": "Younger Family Member",
+              "desc": "Conflicted and frightened. Not innocent, but not fully hardened. May freeze, lie, flee, or help depending on party actions.",
+              "color": "teal"
+            },
+            {
+              "name": "Prisoner One",
+              "role": "Convoy Survivor / Witness",
+              "desc": "Saw enough to identify the Corbins and expose the staged attacks.",
+              "color": "slate"
+            },
+            {
+              "name": "Tovin Fen",
+              "role": "Prisoner Two",
+              "desc": "Missing son from Fen Farm. Tried to get medicine from Dunmore and was captured.",
+              "color": "gold"
+            },
+            {
+              "name": "Barley",
+              "role": "Normal Dog",
+              "desc": "Fen family dog. The Corbins use him as cover for basement noises.",
+              "color": "gold"
+            },
+            {
+              "name": "Dire Wolf",
+              "role": "Chained Beast",
+              "desc": "Abused animal used as weapon, threat, and evidence-destroyer. Dangerous but not evil.",
+              "color": "slate"
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "purple",
+      "title": "Corbin Farm — Beat Order",
+      "subtitle": "Arrival through the basement reveal",
+      "open": false,
+      "content": [
+        {
+          "type": "link_row",
+          "links": [
+            { "href": "corbin_farm_encounter.html", "text": "↗ Full Basement Encounter — Stat Blocks, Maps, Round-by-Round", "color": "blood" }
+          ]
+        },
+        {
+          "type": "beat_list",
+          "beats": [
+            {
+              "label": "Beat A — Arrival",
+              "type_tag": "Social",
+              "detail": "The Corbins try to move the party along. They are polite but tense — the road is dangerous, the party should not linger, the attacks happened farther down the road. Near dusk, they reluctantly offer food and a place to sleep in the barn loft. This should feel like hospitality with something sour underneath.",
+              "dot_color": "purple"
+            },
+            {
+              "label": "Beat B — Dinner",
+              "type_tag": "Social",
+              "detail": "The party eats with the family: stew, bread, cider, a cramped table, mismatched chairs, family tension. Corren drinks too much. Bram mutters things he should not. Hessa watches who eats. Joryn controls the conversation. Nella flinches at noises from below.",
+              "dot_color": "purple"
+            },
+            {
+              "label": "Beat C — The Drugged Meal",
+              "type_tag": "Mechanic",
+              "detail": "The meal contains a mild sedative — not instant knockout poison, and it should not remove player agency. See the Farmhouse Draught rule below.",
+              "dot_color": "purple"
+            },
+            {
+              "label": "Beat D — Sleeping in the Barn Loft",
+              "type_tag": "Clue",
+              "detail": "The family puts the party in the barn loft, not the farmhouse — believable cover: the house is cramped, the children sleep inside, the loft is warmer than the road. In truth, it separates the party from the prisoners in the farmhouse basement. If investigated, the loft holds the forged claw-mark tool.",
+              "dot_color": "purple"
+            },
+            {
+              "label": "Beat E — Middle-of-the-Night Inciting Incident",
+              "type_tag": "Turning Point",
+              "detail": "The party wakes before the Corbins finish their plan — groggy, some possibly exhausted. See the read-aloud passage below.",
+              "dot_color": "purple"
+            },
+            {
+              "label": "Beat F — Combat / Chaos",
+              "type_tag": "Encounter",
+              "detail": "Multiple objectives, not just “kill enemies”: recover gear, investigate the loft tool, cross the yard, rescue prisoners, deal with the dire wolf, stop evidence destruction, recover the medicine.",
+              "dot_color": "blood"
+            },
+            {
+              "label": "Beat G — The Farmhouse Basement",
+              "type_tag": "Reveal",
+              "detail": "The party finds Tovin Fen (alive but weak), Prisoner One, Barley, the dire wolf chained in a reinforced section, stolen goods, stolen medicine, and other evidence.",
+              "dot_color": "blood"
+            },
+            {
+              "label": "Beat H — The Medicine",
+              "type_tag": "Payoff",
+              "detail": "Recoverable but not automatic — hidden in a locked pantry cupboard, basement storage, a smokehouse cache, a stolen wagon under a tarp, or a chest of valuable goods.",
+              "dot_color": "teal"
+            },
+            {
+              "label": "Beat I — Resolution at Fen Farm",
+              "type_tag": "Resolution",
+              "detail": "If the party frees Tovin and recovers the medicine, he can return to Fen Farm. This is the emotional win.",
+              "dot_color": "teal"
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Beat B — The Basement Noise"
+        },
+        {
+          "type": "paragraph",
+          "text": "During dinner, the party hears loud scratching and whining from below the farmhouse — too loud and too distressed to easily ignore. The Corbins say:"
+        },
+        {
+          "type": "annotation",
+          "text": "“That’s just Barley. Old dog hates being shut up during supper.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "If the party presses, one of the Corbins opens the basement door just enough to bring up a normal farm dog, blocking the view down the stairs. Barley is real, Barley is scared, and Barley is not their dog — he belongs to the Fen family. They show him, explain the noise away, then put him back downstairs."
+        },
+        {
+          "type": "section_head",
+          "text": "Clues at Dinner"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Barley does not want to go back down.",
+            "Barley may refuse the stew.",
+            "Barley may go to the kindest party member or the druid.",
+            "The scratches sounded too loud for a normal dog alone.",
+            "The family bolts the cellar afterward.",
+            "A family member reacts too sharply when Barley's name is said.",
+            "If the party remembers Fen Farm, they may realize Barley is the missing dog."
+          ]
+        },
+        {
+          "type": "discovery",
+          "name": "Dinner Tension",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Corren, drunk: <em>“Why are we feeding them?”</em><br>Hessa: <em>“Corren.”</em><br>Bram, too drunk: <em>“Should’ve put that mutt downstairs with the other one.”</em><br>Silence.<br>Hessa: <em>“Bram.”</em>"
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Farmhouse Draught — The Drugged Meal Rule"
+        },
+        {
+          "type": "paragraph",
+          "text": "Any character who eats a full portion of the meal and later sleeps must make a <strong>DC 12 Constitution saving throw</strong>."
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Success — No mechanical penalty, but the character wakes dry-mouthed, nauseated, and aware something was wrong.",
+            "Failure — The character gains 1 level of exhaustion.",
+            "Ate only a little — Roll with advantage.",
+            "Did not eat — No save."
+          ]
+        },
+        {
+          "type": "gm_block",
+          "label": "Rules Note",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Do not add the poisoned condition unless you intentionally want the fight to become much harder. The <strong>poisoned</strong> condition in 5e does not automatically deal damage — it gives disadvantage on attack rolls and ability checks. Poison damage only happens if a specific poison says it deals damage."
+            },
+            {
+              "type": "paragraph",
+              "text": "For this level 2 scene, exhaustion is enough. One level of exhaustion gives disadvantage on ability checks, which affects Stealth, Perception, Investigation, Athletics, Acrobatics, Insight, and Survival. It makes the scene harder without making combat miserable."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Beat D — The Loft Clue"
+        },
+        {
+          "type": "paragraph",
+          "text": "The family's cover for the sleeping arrangement is believable: “The house is cramped.” “The children sleep inside.” “The loft is warmer than the road.” “You'll have privacy.” “The dog snaps at strangers.”"
+        },
+        {
+          "type": "investigation_box",
+          "label": "The Loft — Forged Claw Tool",
+          "reveal": "Under a folded tarp and a pile of old feed sacks, you find a heavy iron tool with two curved prongs set at a fixed distance. The tips are sharpened and stained dark near the edges. When dragged through wood, it would leave two deep, parallel gouges — exactly like the “claw marks” on the wagon. This directly connects Corbin Farm to the destroyed wagon."
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Beat E — Read-Aloud"
+        },
+        {
+          "type": "paragraph",
+          "text": "This is the key moment: they are awake, the Corbins do not know that yet. What do they do? Do not start in initiative unless they immediately attack — let the players choose."
+        },
+        {
+          "type": "discovery",
+          "name": "Read-Aloud Option",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "You wake in the hayloft with your mouth dry and your limbs heavy. The sleep did not restore you. It dragged you under and left something behind.<br><br>Below, in the dark barn, someone is moving through your things. A buckle snaps. Leather slides over wood. One of your packs opens, and a man whispers, &ldquo;Take the blades first. Leave the armor.&rdquo;<br><br>From the farmhouse, Barley starts barking. Not whining now &mdash; barking. Frantic, sharp, terrified.<br><br>A door slams open. Someone shouts, &ldquo;Get him back downstairs!&rdquo;<br><br>Then another voice, drunk and furious, bellows from the yard: &ldquo;We should&rsquo;ve done it before supper!&rdquo;<br><br>A woman snaps, &ldquo;Shut your mouth.&rdquo;<br><br>For a moment, everything goes still.<br><br>Then, from the farmhouse, you hear a stranger scream.<br><br>Below the loft, the figure going through your things freezes. From somewhere beneath the house, something large pulls against its chain. The figure below whispers, &ldquo;They&rsquo;re awake.&rdquo;<br><br>Outside, someone says, &ldquo;Then don&rsquo;t let them reach the cellar.&rdquo;"
+            }
+          ]
+        },
+        {
+          "type": "section_head",
+          "text": "What the Party Can Infer"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "They were drugged.",
+            "Their gear is being stolen.",
+            "There is a prisoner or victim in the farmhouse.",
+            "Barley is connected to the basement.",
+            "The family is panicking.",
+            "The dire wolf is under the house.",
+            "The cellar is the key location."
+          ]
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Beat F — Objectives in the Chaos"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Recover gear — Barn floor. Party is weakened and partially disarmed.",
+            "Investigate the loft tool — Barn loft. Proves the staged beast marks.",
+            "Cross the yard — Between barn and house. Exposed movement under pressure.",
+            "Rescue prisoners — Farmhouse basement. Human stakes and key testimony.",
+            "Deal with the dire wolf — Farmhouse basement/undercroft. Main physical threat, dangerous but not evil.",
+            "Stop evidence destruction — Smokehouse/pantry/yard. The Corbins may burn or hide stolen goods.",
+            "Recover medicine — House storage/pantry/stolen crate. Saves Fen Farm."
+          ]
+        },
+        {
+          "type": "gm_block",
+          "label": "Level 2 Encounter Guidance",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "A level 2 party can fight a dire wolf, but do not overload the encounter. Recommended: <strong>1 dire wolf</strong> as the main danger, <strong>Joryn or Corren</strong> as an armed human threat (bandit or thug-lite behavior), <strong>Hessa</strong> trying to silence prisoners or destroy evidence, <strong>Bram</strong> as drunk interference or a wild card, and <strong>Nella</strong> who may flee, freeze, lie, or help depending on party actions."
+            },
+            {
+              "type": "paragraph",
+              "text": "Do not have every family member fight optimally — they are panicking. The dire wolf is dangerous, but it is not evil. It has been chained, starved, and used."
+            },
+            {
+              "type": "paragraph",
+              "text": "<strong>If the dire wolf feels too punishing</strong> for a smaller or fragile level 2 party, weaken it slightly: reduce HP from 37 to 28–30, remove Pack Tactics since it is fighting alone, have it attack whoever hurt or controlled it most recently, and allow Animal Handling, Speak with Animals, food, or broken chains to redirect it."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Beat G — What Is Below"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Tovin Fen — alive but weak",
+            "Prisoner One — a convoy survivor or witness",
+            "Barley — frantic and protective",
+            "The dire wolf — chained in a reinforced section or undercroft",
+            "Stolen goods",
+            "Stolen medicine",
+            "Rope, bloodied cloth, discarded uniforms, or other evidence"
+          ]
+        },
+        {
+          "type": "discovery",
+          "name": "Prisoner One's Testimony",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "“It wasn’t beasts. Not at first. People stopped the wagon. The wolf came after.” They saw the Corbins attack or stage the aftermath and can identify the family."
+            }
+          ]
+        },
+        {
+          "type": "discovery",
+          "name": "Tovin's Testimony",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "“I got the medicine. I was almost home. They took me near the road. The crate is here.” This confirms Tovin reached a Dunmore medicine source and was captured on the return journey."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Beat H — The Apothecary Seal"
+        },
+        {
+          "type": "paragraph",
+          "text": "The medicine crate carries a wax seal. Describe it exactly as it appears — do not name or explain the connection. Let the players notice it, remember it, and draw the line themselves, later."
+        },
+        {
+          "type": "discovery",
+          "name": "Read-Aloud",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The crate bears a cracked black wax seal: a thorned briar curling around a mortar and pestle. Beneath it, stamped in small block letters, are the words: DUNMORE APOTHECARY."
+            }
+          ]
+        },
+        {
+          "type": "gm_block",
+          "label": "GM Note — Do Not Say Aloud",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "This seal is the same mark that hangs above the entrance to The Briar Cup in Dunmore — Ilyra Marr's apothecary, and a Gilded Veil location tied to the Ink Must Not Speak arc. The connection is intentional foreshadowing, not a coincidence."
+            },
+            {
+              "type": "paragraph",
+              "text": "Do not say the word &ldquo;briar&rdquo; meaningfully or draw attention to the seal beyond its physical description above. No NPC should say anything like &ldquo;that's the Briar Cup's mark.&rdquo; If a player has a good eye (or takes notes), let them recognize it themselves when they actually reach The Briar Cup later. The payoff is in the recognition, not the narration."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Beat I — Fen Farm Payoff"
+        },
+        {
+          "type": "paragraph",
+          "text": "If the party frees Tovin and recovers the medicine, he can return to Fen Farm. This is the emotional win. Maybe the party escorts him. Maybe they send him with Barley. Maybe he insists on going immediately. Maybe they return later and see lanterns lit, Ilsa stabilized, Harlan crying with relief, and Barley curled beside the bed."
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "The party met suffering people.",
+            "They learned Tovin and Barley were missing.",
+            "They found both alive.",
+            "They recovered the medicine.",
+            "They made a concrete difference."
+          ]
+        }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "7. Return to the Blockade & Dunmore Arrival",
+      "subtitle": "Convert personal victory into regional progress.",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The party can bring evidence back to Commander Durgan: stolen convoy goods, the forged claw-mark tool, testimony from Prisoner One, Tovin's rescue, the recovery of Dunmore medicine, and proof the Corbins staged the beast attacks."
+        },
+        {
+          "type": "paragraph",
+          "text": "Durgan can now justify reopening or securing the road. He should not become triumphant — he should be angry, ashamed, and relieved."
+        },
+        {
+          "type": "annotation",
+          "text": "“I was holding the road against a monster. Turns out the monster had a dinner table.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "The relief convoy can proceed toward Dunmore. Supplies arrive. Some people live because the party acted. This is meaningful but not clean — the world is still unstable, the fort/watch failed, rumors will not vanish overnight. The road is safer, but not healed."
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "“We helped people.”",
+            "And also: “Something is deeply wrong in this kingdom.”"
+          ]
+        },
+        {
+          "type": "divider"
+        }
       ]
     },
     {
@@ -197,42 +1153,46 @@
       "subtitle": "",
       "open": true,
       "content": [
-        { "type": "paragraph", "text": "The road instability is not caused by a single enemy. Several overlapping problems are occurring simultaneously — which is exactly why it has been so difficult to diagnose." },
+        {
+          "type": "paragraph",
+          "text": "The road instability is not caused by a single enemy. Several overlapping problems are occurring simultaneously — which is exactly why it has been so difficult to diagnose."
+        },
         {
           "type": "layer_stack",
           "layers": [
             {
               "label": "Layer One — Ordinary Banditry",
-              "content": "Ordinary criminals are taking advantage of collapsing security. They attack isolated travelers, damaged caravans, and unprotected refugees. They are opportunistic, not organized. They are making a bad situation worse, but they are not the cause of it.",
+              "content": "Criminals are taking advantage of collapsing security. They attack isolated travelers, damaged caravans, and unprotected refugees. Opportunistic, not organized — they make things worse, but they are not the cause.",
               "variant": "l1"
             },
             {
               "label": "Layer Two — Fear and Rumor",
-              "content": "Panicked survivors increasingly blame Elkenquay, foreign infiltrators, or monsters. Rumors spread faster than truth. The public narrative becomes increasingly unstable. This layer is dangerous not because it involves actual enemies, but because it creates a perception of threat that feels more real than the threat itself — and begins justifying military escalation.",
+              "content": "Panicked survivors increasingly blame Elkenquay, foreign infiltrators, or monsters. Rumors spread faster than truth. Dangerous not because of real enemies, but because the perception of threat starts justifying military escalation.",
               "variant": "l2"
             },
             {
-              "label": "Layer Three — Coordinated Hoarding and Staged Attacks",
-              "content": "The landowner has secretly begun intercepting and redirecting supplies. He hired men to stage attacks, frighten caravans, and spread rumors — manufacturing the appearance of creature infestation using forged metal claw implements. The tools may eventually be discovered hidden on his property. He is not purely greedy. He is terrified. That distinction matters enormously.",
+              "label": "Layer Three — The Corbin Family",
+              "content": "The Corbins are the grounded human cause of the immediate crisis. They have been intercepting supplies, staging beast attacks, stealing goods, capturing witnesses, and using a chained dire wolf to support the lie that something monstrous is haunting the road. They are not masterminds, not a trafficking ring, not supernatural agents — they are local people who discovered they could profit from fear and kept choosing worse.",
               "variant": "l3"
             }
           ]
-        },
-        {
-          "type": "investigation_box",
-          "label": "Investigation Detail — The Claw Marks",
-          "reveal": "High Investigation DC: These marks were manufactured. Too even. Too symmetrical. Too consistent. Cut at identical depth and angle. Real animals slip, vary pressure, tear unpredictably. These marks show faint metal scoring, repeated strike patterns, and signs of deliberate fabrication. The players should feel the realization land quietly — not as a dramatic reveal, but as a slow, unsettling understanding. Someone went to a lot of effort to make people afraid of the wrong thing."
         }
       ]
     }
   ],
   "emotional_goal": {
     "label": "Emotional Goal — End of Arc",
-    "statement": "\"We helped people. That hope matters.\"",
-    "body": "By the end of the Hollow Road Arc, the players should feel useful, compassionate, protective, emotionally attached to the region, and increasingly worried about the kingdom. Most importantly: they should feel that they helped people. That hope is real. That the world is worth protecting.\n\nThat hope matters. Because later it becomes much harder to hold onto. Build it here, carefully, so that when the campaign asks the players what they're fighting for — they already know.\n\n<em>Narrative Thread — Dunmore &amp; Dunnshire:</em> Dunmore becomes familiar, human, and emotionally important through this arc. Much later — when the players discover the erased ruins of Dunnshire — they will subconsciously understand what was lost there too. The names are not an accident. The parallel is intentional. Do not underline it. Let it arrive on its own."
+    "statement": "“We helped people. That hope matters.”",
+    "body": "By the end of the Hollow Road Arc, the players should feel useful, compassionate, protective, emotionally attached to the region, and increasingly worried about the kingdom. Most importantly: they helped people, the hope is real, the world is worth protecting.\n\nThat hope matters. Because later it becomes much harder to hold onto. Build it here, carefully, so that when the campaign asks the players what they're fighting for — they already know.\n\n<em>Narrative Thread — Dunmore &amp; Dunnshire:</em> Dunmore becomes familiar, human, and emotionally important through this arc. Much later — when the players discover the erased ruins of Dunnshire — they will subconsciously understand what was lost there too. The names are not an accident. The parallel is intentional. Do not underline it. Let it arrive on its own."
   },
   "arc_nav": {
-    "prev": { "href": "../prologue_arc.html", "text": "← The Prologue" },
-    "next": { "href": "campaign_overview.html", "text": "Campaign Overview →" }
+    "prev": {
+      "href": "../prologue_arc.html",
+      "text": "The Prologue"
+    },
+    "next": {
+      "href": "campaign_overview.html",
+      "text": "Campaign Overview"
+    }
   }
 }

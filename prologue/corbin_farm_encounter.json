@@ -1,0 +1,1087 @@
+{
+  "meta": {
+    "gm_label": "GM Reference · The Hollow Road",
+    "title": "Corbin Farm — Basement Encounter",
+    "subtitle": "Drugged hospitality &rarr; midnight disturbance &rarr; basement investigation &rarr; rescue/combat",
+    "act_band": "blood",
+    "level_badge": "5 PCs at Level 2",
+    "back_link": {
+      "href": "hollow_road_arc.html",
+      "text": "The Hollow Road"
+    }
+  },
+  "quick_ref": [
+    {
+      "label": "Arc",
+      "value": "The Hollow Road"
+    },
+    {
+      "label": "Location",
+      "value": "Corbin Farm — farmhouse, basement, yard, barn loft"
+    },
+    {
+      "label": "Encounter Type",
+      "value": "Drugged hospitality → midnight disturbance → basement investigation → rescue/combat"
+    },
+    {
+      "label": "Primary Threat",
+      "value": "Dire wolf released during the confrontation"
+    },
+    {
+      "label": "True Villains",
+      "value": "The Corbin family, not the wolf"
+    }
+  ],
+  "sections": [
+    {
+      "color": "blood",
+      "title": "Encounter Premise",
+      "subtitle": "",
+      "open": true,
+      "content": [
+        {
+          "type": "narrative_block",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The party has been invited to stay at Corbin Farm after a tense dinner with the Corbin family."
+            },
+            {
+              "type": "paragraph",
+              "text": "During dinner, the party heard loud scratching and whining from below the farmhouse. The Corbins claimed it was their dog, Barley. If pressed, they paraded out a normal farm dog, then locked it back in the basement."
+            },
+            {
+              "type": "paragraph",
+              "text": "The party sleeps in the barn loft. The meal was drugged with a mild sedative — not to rob them immediately, but to weaken them in case they investigate or become dangerous. The Corbins are not stupid enough to steal from armed adventurers while they sleep."
+            }
+          ]
+        },
+        {
+          "type": "section_head",
+          "text": "Their Plan"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Keep the party away from the house.",
+            "Let the sedative make them sluggish.",
+            "Finish dealing with the prisoners overnight.",
+            "Send the party on their way in the morning if nothing goes wrong.",
+            "Kill them only if they become a problem."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Something goes wrong.",
+          "style": "font-style:italic;font-weight:600;"
+        },
+        {
+          "type": "paragraph",
+          "text": "One prisoner partially escapes or gets loose enough to make noise. Barley begins barking. The dire wolf reacts violently from its reinforced basement enclosure. A bell rings. The party wakes in the barn loft to the sound of the farm panicking."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the party investigates, they will likely reach the farmhouse basement and be caught trying to free the prisoners. That is where the main encounter begins."
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "purple",
+      "title": "Encounter Goals",
+      "subtitle": "This should not be a simple \"kill the enemies\" fight.",
+      "open": true,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The party has several competing objectives:"
+        },
+        {
+          "type": "npc_grid",
+          "cards": [
+            {
+              "name": "Investigate the noise",
+              "role": "Barn loft / yard / farmhouse",
+              "desc": "The party has to choose whether to intervene.",
+              "color": "purple"
+            },
+            {
+              "name": "Reach the basement",
+              "role": "Farmhouse",
+              "desc": "Discover prisoners, Barley, and the dire wolf.",
+              "color": "purple"
+            },
+            {
+              "name": "Free Tovin Fen",
+              "role": "Basement",
+              "desc": "Emotional payoff from Fen Farm.",
+              "color": "teal"
+            },
+            {
+              "name": "Free Prisoner One",
+              "role": "Basement",
+              "desc": "Witness who can expose the Corbins.",
+              "color": "teal"
+            },
+            {
+              "name": "Stop the dire wolf release",
+              "role": "Basement mechanism / chain gate",
+              "desc": "Prevents the main threat from joining the fight.",
+              "color": "blood"
+            },
+            {
+              "name": "Survive the dire wolf",
+              "role": "Basement / farmhouse / yard",
+              "desc": "Main combat danger.",
+              "color": "blood"
+            },
+            {
+              "name": "Recover medicine",
+              "role": "Pantry, cellar, satchel, or storage crate",
+              "desc": "Allows Tovin to return to Fen Farm.",
+              "color": "teal"
+            },
+            {
+              "name": "Find the claw-mark tool",
+              "role": "Barn loft",
+              "desc": "Proves the beast attacks were staged.",
+              "color": "gold"
+            },
+            {
+              "name": "Preserve evidence",
+              "role": "Basement, barn, pantry",
+              "desc": "Corbins may destroy proof if cornered.",
+              "color": "gold"
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "purple",
+      "title": "Pre-Encounter Setup — The Drugged Meal",
+      "subtitle": "",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The Corbin family served stew, bread, cider, or tea containing a mild sedative. This is not instant knockout poison. It should not remove player agency. It weakens the party if they wake and investigate."
+        },
+        {
+          "type": "section_head",
+          "text": "Farmhouse Draught"
+        },
+        {
+          "type": "paragraph",
+          "text": "Any character who ate a full serving of the meal and later sleeps must make a <strong>DC 12 Constitution saving throw</strong>."
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Success — No mechanical penalty, but the character wakes dry-mouthed, nauseated, and aware something was wrong.",
+            "Failure — The character gains 1 level of exhaustion.",
+            "Ate only a little — Roll with advantage.",
+            "Did not eat — No save."
+          ]
+        },
+        {
+          "type": "gm_block",
+          "label": "Rules Note",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Do not add the poisoned condition. At level 2, 1 level of exhaustion is enough. In 5e (2014 rules), 1 level of exhaustion gives disadvantage on ability checks — this affects Stealth, Perception, Investigation, Athletics, Acrobatics, Insight, and similar checks."
+            },
+            {
+              "type": "paragraph",
+              "text": "The poisoned condition does not automatically deal damage, but it gives disadvantage on attack rolls and ability checks. Combined with exhaustion, that would be too punishing for this encounter."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "slate",
+      "title": "Encounter Map",
+      "subtitle": "",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "style": "white-space:pre-wrap;font-family:'Courier New',Courier,monospace;font-size:0.8rem;line-height:1.6;background:rgba(46,58,74,0.05);border:1px solid rgba(46,58,74,0.25);padding:0.8rem 1rem;display:block;",
+          "text": "                         Road\n                          |\n                    [Farmhouse]\n              dinner table / kitchen\n             cellar + basement below\n          prisoners, Barley, dire wolf\n                          |\n                         Yard\n        well / chopping block / mud / woodpile\n                          |\n                       [Barn]\n               party sleeps in loft\n        forged claw-mark tool hidden in loft"
+        },
+        {
+          "type": "section_head",
+          "text": "Important Layout Notes"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "The party sleeps in the barn loft.",
+            "The prisoners are in the farmhouse basement.",
+            "Barley is in the farmhouse basement.",
+            "The dire wolf is chained in a reinforced area of the farmhouse basement or undercroft.",
+            "The forged claw-mark tool is hidden in the barn loft.",
+            "The Corbins are not trying to rob the party during the night.",
+            "The sedative was used so the Corbins could overpower the party if necessary."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Starting the Encounter",
+      "subtitle": "",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The encounter begins when the party wakes to a sudden disturbance from the farmhouse. The party is in the barn loft. The noises should be confusing but urgent. They hear:"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Barley barking frantically",
+            "a prisoner shouting or screaming",
+            "a heavy impact from below the farmhouse",
+            "the dire wolf slamming into a wall or gate",
+            "a bell ringing",
+            "the Corbin family shouting",
+            "someone yelling about the cellar",
+            "someone ordering the wolf to be released or contained"
+          ]
+        },
+        {
+          "type": "gm_block",
+          "label": "Pacing Note",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "Do not start initiative immediately. Start with tension and a choice."
+            }
+          ]
+        },
+        {
+          "type": "discovery",
+          "name": "Read-Aloud — Waking to the Basement Panic",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "You wake in the hayloft with your mouth dry, your stomach sour, and your limbs heavy.<br><br>For a moment, you are not sure what woke you.<br><br>Then the farmhouse dog starts barking. Not whining. Not scratching. Barking. Frantic, sharp, terrified.<br><br>A voice cries out from somewhere below the house &mdash; not one of the family. A stranger&rsquo;s voice, raw and desperate.<br><br>Then something heavy hits a wall. The sound is deep enough to shake dust from the rafters above you. Another impact follows. Wood cracks. A chain snaps tight.<br><br>From the farmhouse yard, someone shouts, &ldquo;The cellar! The cellar!&rdquo;<br><br>Then a bell begins to ring. Once. Twice. Again and again.<br><br>Inside the house, a woman screams, &ldquo;Do not loose it yet!&rdquo;<br><br>A man answers, &ldquo;Then get them back down!&rdquo;<br><br>The dog keeps barking. The thing below the house hits the wall again.<br><br>You are awake. Something has gone very wrong.<br><br>What do you do?"
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                {
+                  "type": "section_head",
+                  "text": "What the Party Should Know"
+                },
+                {
+                  "type": "prose_list",
+                  "items": [
+                    "They were drugged or weakened.",
+                    "The disturbance is coming from the farmhouse.",
+                    "The cellar or basement matters.",
+                    "Barley is involved.",
+                    "Someone who is not part of the family is in danger.",
+                    "Something large and dangerous is below the house.",
+                    "The bell is part of the family's emergency response.",
+                    "The Corbins are panicking."
+                  ]
+                }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                {
+                  "type": "section_head",
+                  "text": "What They Should Not Know Yet"
+                },
+                {
+                  "type": "prose_list",
+                  "items": [
+                    "How many prisoners there are.",
+                    "Exactly where the dire wolf is chained.",
+                    "Whether the bell releases the wolf or calls the family.",
+                    "Where the medicine is.",
+                    "Who in the family is most dangerous."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "slate",
+      "title": "Immediate Player Choices",
+      "subtitle": "Let the party decide how they respond, before initiative.",
+      "open": false,
+      "content": [
+        {
+          "type": "prose_list",
+          "items": [
+            "Wake everyone quietly — no check unless rushed.",
+            "Listen longer — Perception DC 12–15.",
+            "Identify the animal sound — Nature or Animal Handling DC 13.",
+            "Climb down quickly — no check if using the ladder.",
+            "Jump from the loft — Acrobatics DC 10 or take 1d6 bludgeoning damage.",
+            "Sneak across the yard — Stealth DC 12.",
+            "Rush the farmhouse — no check, but may alert the Corbins.",
+            "Search the loft first — Investigation DC 13 to find the claw-mark tool.",
+            "Grab lanterns / weapons / gear — no check unless hidden or rushed.",
+            "Approach the house quietly — Stealth DC 12.",
+            "Look through the farmhouse window — Perception DC 12.",
+            "Try to calm Barley through the door — Animal Handling DC 12.",
+            "Open the cellar door — may trigger confrontation."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "gold",
+      "title": "The Bell",
+      "subtitle": "Not magical — a farm alarm and training cue.",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The Corbins use it to coordinate during attacks and to agitate or signal the dire wolf. Depending on how you want the scene to run, choose one:"
+        },
+        {
+          "type": "discovery",
+          "name": "Option A — Bell as Wolf Cue",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The bell signals the wolf that violence or feeding is coming. When the bell rings, the dire wolf becomes agitated and begins slamming against its gate."
+            }
+          ]
+        },
+        {
+          "type": "discovery",
+          "name": "Option B — Bell as Family Alarm",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The bell summons family members to the farmhouse and tells them something has gone wrong in the basement."
+            }
+          ]
+        },
+        {
+          "type": "discovery",
+          "name": "Option C — Bell as Release Warning",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The bell means: release the wolf if outsiders interfere. This is the most dramatic option."
+            }
+          ]
+        },
+        {
+          "type": "annotation",
+          "text": "Recommended: Option A + C. The bell agitates the wolf and tells the Corbins to prepare to release it if necessary."
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Likely Scene Progression",
+      "subtitle": "",
+      "open": true,
+      "content": [
+        {
+          "type": "beat_list",
+          "beats": [
+            {
+              "label": "Beat 1 — Wake-Up",
+              "type_tag": "Opening",
+              "detail": "The party wakes in the barn loft to barking, screaming, bell ringing, and the wolf slamming below the house. They are groggy and may be exhausted.",
+              "dot_color": "blood"
+            },
+            {
+              "label": "Beat 2 — Crossing the Yard",
+              "type_tag": "Tension",
+              "detail": "If they investigate, they cross the dark farmyard: mud pulls at their boots, the bell keeps ringing, shadows move in farmhouse windows, Barley barks from below, someone inside shouts orders, the wolf slams again, the farmhouse door may be partly open. Stealth DC 12 to approach unnoticed — failure means someone in the house sees or hears them coming.",
+              "dot_color": "blood"
+            },
+            {
+              "label": "Beat 3 — Farmhouse Entry",
+              "type_tag": "Investigation",
+              "detail": "Inside, the dinner table is disturbed, a chair is knocked over, a lantern swings. The cellar door may be open, barred, or being held shut. Someone is trying to control the situation: Hessa near the cellar door, Joryn trying to regain control, Corren moving toward the wolf release, Bram ringing the bell or yelling, Nella panicking.",
+              "dot_color": "blood"
+            },
+            {
+              "label": "Beat 4 — Basement Discovery",
+              "type_tag": "Reveal",
+              "detail": "The party reaches the basement and sees the truth: Tovin Fen, Prisoner One, Barley, signs of stolen goods, and the dire wolf chained behind a reinforced gate or in an undercroft pen. This is likely where they get caught.",
+              "dot_color": "purple"
+            },
+            {
+              "label": "Beat 5 — Confrontation",
+              "type_tag": "Climax",
+              "detail": "The Corbins realize the party has seen too much. They stop pretending. Combat begins.",
+              "dot_color": "purple"
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "discovery",
+          "name": "Read-Aloud — Basement Discovery",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The cellar air is wet, sour, and cold.<br><br>The stairs descend into a low stone basement lit by a single swinging lantern.<br><br>Barley is there, barking so hard his whole body shakes.<br><br>Against the far wall, two figures are bound. One is older, bloodied, and barely upright. The other is young, pale, and staring at you like he does not believe you are real.<br><br>Beyond them, behind a reinforced wooden gate banded with iron, something huge moves in the dark. A wolf&rsquo;s head pushes into the lantern light. Too large. Too scarred. Too hungry. Its chain pulls tight with a sound like a drawn blade.<br><br>From the stairs behind you, someone says:<br><br>&ldquo;You should have stayed in the barn.&rdquo;"
+            }
+          ]
+        },
+        {
+          "type": "section_head",
+          "text": "Combat Trigger"
+        },
+        {
+          "type": "paragraph",
+          "text": "Combat begins if:"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "the party frees a prisoner",
+            "the party opens the wolf gate",
+            "the Corbins catch the party in the basement",
+            "the party attacks",
+            "the party grabs the medicine",
+            "the prisoners shout for help",
+            "Barley breaks free and reveals Tovin"
+          ]
+        },
+        {
+          "type": "annotation",
+          "text": "Most likely trigger: the party is caught trying to free Tovin or Prisoner One."
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "slate",
+      "title": "Starting Positions — Basement Fight",
+      "subtitle": "",
+      "open": false,
+      "content": [
+        {
+          "type": "prose_list",
+          "items": [
+            "Party — Basement stairs, prisoner area, or near Barley.",
+            "Tovin Fen — Bound or partially freed.",
+            "Prisoner One — Bound, injured, near Tovin.",
+            "Barley — Near Tovin, barking.",
+            "Dire Wolf — Chained behind reinforced gate / undercroft pen.",
+            "Hessa — At basement stairs or behind the party.",
+            "Joryn — Stairs, kitchen doorway, or cellar entrance.",
+            "Corren — Near the wolf release or rushing toward it.",
+            "Bram — Near the bell, cellar entrance, or stumbling downstairs.",
+            "Nella — Kitchen doorway, stairs, or hiding."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Combat Flow — Basement Version",
+      "subtitle": "",
+      "open": false,
+      "content": [
+        {
+          "type": "discovery",
+          "variant": "blood",
+          "name": "Round 1 — Caught",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The Corbins catch the party in the basement. Hessa shouts for someone to block the stairs. Joryn moves to prevent escape. Corren runs for the wolf release. Bram keeps ringing the bell or stumbles toward the release. Nella panics, freezes, or quietly says, &ldquo;Don&rsquo;t loose it.&rdquo; The dire wolf is chained but thrashing."
+            },
+            {
+              "type": "paragraph",
+              "text": "The party has to choose: keep freeing prisoners, stop Corren, block the wolf gate, fight Joryn/Hessa, get Tovin out, calm Barley, calm the wolf, or retreat upstairs."
+            }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-mid",
+          "name": "Round 2 — The Release Attempt",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The wolf release is attempted. A Corbin adjacent to the release mechanism can use an action to release the wolf. The party can interfere."
+            }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-high",
+          "name": "Round 3 — The Wolf Enters",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "If the release is not stopped, the dire wolf enters the fight — emerging into the basement, lunging through a gate, or breaking into the stairwell depending on positioning. Because the wolf is abused and panicked, it may attack the nearest creature, not necessarily the party."
+            }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "teal",
+          "name": "Round 4+ — The Fight Spills Out",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The fight spills through the farmhouse or into the yard. The wolf may chase, flee, or turn on the Corbins. The prisoners may crawl toward safety. Hessa may try to grab the medicine or destroy evidence. Joryn may surrender if things turn. Corren likely fights until dropped."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "purple",
+      "title": "Dire Wolf Release Mechanics",
+      "subtitle": "",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The dire wolf is held by a heavy chain and pin system, latch, or release lever. A Corbin adjacent to the release point can use an <strong>action</strong> to release it. A player can interfere."
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Jam the release — Dexterity check DC 12",
+            "Hold the chain — Strength check DC 14",
+            "Break the lever — Attack vs AC 13, HP 8",
+            "Slam / bar the gate — Strength or Dexterity DC 12",
+            "Calm the wolf briefly — Animal Handling DC 14",
+            "Distract with meat — Animal Handling DC 12",
+            "Use Speak with Animals — Lower Animal Handling DC to 12, or allow advantage",
+            "Attack the releaser — Normal attack; may prevent release if it drops or moves them",
+            "Grapple the releaser — Athletics contest"
+          ]
+        },
+        {
+          "type": "section_head",
+          "text": "Release Result"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Corbin succeeds — Dire wolf enters combat next round, or immediately if dramatically appropriate.",
+            "PC delays release — Wolf release delayed by 1 round.",
+            "PC jams mechanism — Wolf remains chained until someone fixes or breaks it.",
+            "PC calms wolf — Wolf does not immediately attack that PC.",
+            "PC succeeds by 5+ on Animal Handling — Wolf backs away, attacks a Corbin, or tries to flee."
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "purple",
+      "title": "Dire Wolf Behavior",
+      "subtitle": "Dangerous, but not evil. Chained, starved, and used.",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "It should behave like an abused, terrified predator, not a perfectly trained war beast."
+        },
+        {
+          "type": "section_head",
+          "text": "Targeting Priority — When Released"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "The nearest creature blocking its path.",
+            "A creature that just harmed it.",
+            "A creature holding its chain or release mechanism.",
+            "A screaming or bleeding Corbin.",
+            "A PC who attacks it.",
+            "A PC near Tovin or Barley, if it is too panicked to distinguish threats."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The wolf may attack a Corbin if:"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Corren is shouting at it",
+            "Bram drunkenly mishandles the chain",
+            "Hessa uses pain or commands to drive it",
+            "a Corbin is bleeding nearby",
+            "the party succeeds on Animal Handling"
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "blood",
+      "title": "Combatants — Full Stat Blocks",
+      "subtitle": "",
+      "open": true,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "<div style=\"border:1px solid var(--parchment-shadow);background:rgba(255,252,240,0.5);padding:0.9rem 1.1rem;margin-bottom:0.9rem;\"><div style=\"font-family:'Cinzel Decorative',cursive;font-size:1.15rem;color:#4a0f0f;line-height:1.1;margin-bottom:0.1rem;\">Dire Wolf</div><div style=\"font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);font-style:italic;margin-bottom:0.5rem;\">Medium beast, unaligned</div><div style=\"display:flex;gap:0;border:1px solid var(--parchment-shadow);margin-bottom:0.6rem;background:rgba(26,17,8,0.04);flex-wrap:wrap;\"><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">AC</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">14</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">HP</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">37</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">Speed</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">50 ft.</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">CR</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">1</span></div></div><div style=\"display:flex;gap:0.3rem;margin-bottom:0.5rem;flex-wrap:wrap;\"><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">STR</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">17 (+3)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">DEX</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">15 (+2)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">CON</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">15 (+2)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">INT</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">3 (-4)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">WIS</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">12 (+1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">CHA</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">7 (-2)</span></div></div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.1rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Skills</strong> Perception +3, Stealth +4</div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.1rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Senses</strong> passive Perception 13</div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.4rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Challenge</strong> 1 (200 XP)</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;\">Traits</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Keen Hearing and Smell.</span> The wolf has advantage on Wisdom (Perception) checks that rely on hearing or smell.</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Pack Tactics.</span> The wolf has advantage on attack rolls against a creature if at least one of the wolf&rsquo;s allies is within 5 feet of the creature and not incapacitated. <em>For this scene, the Corbin family should not automatically count as reliable pack allies &mdash; the wolf is abused and unstable, not a trained war beast.</em></div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;\">Actions</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Bite.</span> <em>Melee Weapon Attack:</em> +5 to hit, reach 5 ft., one target. <em>Hit:</em> 10 piercing damage. The target must succeed on a <strong>DC 13 Strength saving throw</strong> or be knocked prone.</div></div>"
+        },
+        {
+          "type": "paragraph",
+          "text": "<div style=\"border:1px solid var(--parchment-shadow);background:rgba(255,252,240,0.5);padding:0.9rem 1.1rem;margin-bottom:0.9rem;\"><div style=\"font-family:'Cinzel Decorative',cursive;font-size:1.15rem;color:#4a0f0f;line-height:1.1;margin-bottom:0.1rem;\">Joryn Corbin</div><div style=\"font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);font-style:italic;margin-bottom:0.5rem;\">Medium humanoid, neutral evil</div><div style=\"font-style:italic;font-size:0.85rem;color:var(--faded);margin-bottom:0.6rem;border-left:2px solid var(--parchment-shadow);padding-left:0.7rem;line-height:1.6;\">Farm father. Controlling, cold, defensive. He does not want chaos, but once violence starts, he commits.</div><div style=\"display:flex;gap:0;border:1px solid var(--parchment-shadow);margin-bottom:0.6rem;background:rgba(26,17,8,0.04);flex-wrap:wrap;\"><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">AC</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">12</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">HP</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">18</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">Speed</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">30 ft.</span></div></div><div style=\"display:flex;gap:0.3rem;margin-bottom:0.5rem;flex-wrap:wrap;\"><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">STR</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">13 (+1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">DEX</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">12 (+1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">CON</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">14 (+2)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">INT</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">11 (+0)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">WIS</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">12 (+1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">CHA</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">10 (+0)</span></div></div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.1rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Skills</strong> Deception +2, Insight +3, Intimidation +2</div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.4rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Senses</strong> passive Perception 11</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;\">Traits</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Hold the Line.</span> Once per combat, when a creature moves within 5 feet of Joryn, he may use his reaction to make a melee attack. On a hit, the target&rsquo;s speed is reduced by 10 feet until the end of its turn.</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;\">Actions</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Light Crossbow.</span> +3 to hit, range 80/320 ft. <em>Hit:</em> 5 piercing damage.</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Hooked Farm Blade.</span> +3 to hit, reach 5 ft. <em>Hit:</em> 5 slashing damage.</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Tactics.</span> Tries to keep the party from leaving the basement with witnesses. Fights defensively, blocks stairs, uses cover, and orders others around. Possible shouts: &ldquo;Don&rsquo;t let them out!&rdquo; &middot; &ldquo;Corren, loose the wolf!&rdquo;</div><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Morale.</span> Fights until reduced below <strong>6 HP</strong>, then tries to bargain, surrender, or blame Corren.</div></div>"
+        },
+        {
+          "type": "paragraph",
+          "text": "<div style=\"border:1px solid var(--parchment-shadow);background:rgba(255,252,240,0.5);padding:0.9rem 1.1rem;margin-bottom:0.9rem;\"><div style=\"font-family:'Cinzel Decorative',cursive;font-size:1.15rem;color:#4a0f0f;line-height:1.1;margin-bottom:0.1rem;\">Hessa Corbin</div><div style=\"font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);font-style:italic;margin-bottom:0.5rem;\">Medium humanoid, neutral evil</div><div style=\"font-style:italic;font-size:0.85rem;color:var(--faded);margin-bottom:0.6rem;border-left:2px solid var(--parchment-shadow);padding-left:0.7rem;line-height:1.6;\">Farm mother. Calm, watchful, and more dangerous than she looks.</div><div style=\"display:flex;gap:0;border:1px solid var(--parchment-shadow);margin-bottom:0.6rem;background:rgba(26,17,8,0.04);flex-wrap:wrap;\"><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">AC</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">12</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">HP</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">14</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">Speed</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">30 ft.</span></div></div><div style=\"display:flex;gap:0.3rem;margin-bottom:0.5rem;flex-wrap:wrap;\"><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">STR</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">10 (+0)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">DEX</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">14 (+2)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">CON</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">12 (+1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">INT</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">13 (+1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">WIS</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">14 (+2)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">CHA</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">13 (+1)</span></div></div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.1rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Skills</strong> Deception +3, Insight +4, Medicine +4, Sleight of Hand +4</div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.4rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Senses</strong> passive Perception 12</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;\">Traits</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Dirty Hands.</span> Once per combat, Hessa can use a bonus action to throw ash, boiling water, flour, or lamp oil at a creature within 5 feet. The target must succeed on a <strong>DC 12 Dexterity saving throw</strong> or have disadvantage on its next attack roll before the end of its next turn.</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;\">Actions</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Kitchen Knife.</span> +4 to hit, reach 5 ft. <em>Hit:</em> 4 piercing damage.</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Thrown Knife.</span> +4 to hit, range 20/60 ft. <em>Hit:</em> 4 piercing damage.</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Tactics.</span> Does not want to duel adventurers. Tries to block the stairs, grab the medicine, cut a prisoner loose only to use as leverage, destroy evidence, lock the basement door, order Corren not to release the wolf too early, and flee if the fight turns against her. She is the objective villain, not the biggest damage dealer.</div><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Morale.</span> If Joryn and Corren fall, Hessa tries to flee with incriminating evidence or the medicine.</div></div>"
+        },
+        {
+          "type": "paragraph",
+          "text": "<div style=\"border:1px solid var(--parchment-shadow);background:rgba(255,252,240,0.5);padding:0.9rem 1.1rem;margin-bottom:0.9rem;\"><div style=\"font-family:'Cinzel Decorative',cursive;font-size:1.15rem;color:#4a0f0f;line-height:1.1;margin-bottom:0.1rem;\">Corren Corbin</div><div style=\"font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);font-style:italic;margin-bottom:0.5rem;\">Medium humanoid, chaotic evil</div><div style=\"font-style:italic;font-size:0.85rem;color:var(--faded);margin-bottom:0.6rem;border-left:2px solid var(--parchment-shadow);padding-left:0.7rem;line-height:1.6;\">Adult son. Drunk, angry, reckless.</div><div style=\"display:flex;gap:0;border:1px solid var(--parchment-shadow);margin-bottom:0.6rem;background:rgba(26,17,8,0.04);flex-wrap:wrap;\"><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">AC</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">13</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">HP</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">22</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">Speed</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">30 ft.</span></div></div><div style=\"display:flex;gap:0.3rem;margin-bottom:0.5rem;flex-wrap:wrap;\"><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">STR</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">15 (+2)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">DEX</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">12 (+1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">CON</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">14 (+2)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">INT</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">9 (-1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">WIS</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">9 (-1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">CHA</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">10 (+0)</span></div></div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.1rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Skills</strong> Athletics +4, Intimidation +2</div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.4rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Senses</strong> passive Perception 9</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;\">Traits</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Drunken Fury.</span> The first time Corren is reduced to half HP or lower, he gains advantage on his next melee attack. Attacks against him have advantage until the start of his next turn.</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;\">Actions</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Wood Axe.</span> +4 to hit, reach 5 ft. <em>Hit:</em> 7 slashing damage.</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Heavy Shove.</span> Instead of dealing damage after a successful melee hit, Corren can force the target to make a <strong>DC 12 Strength saving throw</strong>. On a failure, the target is pushed 10 feet or knocked prone.</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Tactics.</span> Wants violence. May run to release the wolf, attack isolated PCs, try to knock someone prone near the wolf, attack a prisoner if desperate, yell incriminating things, and escalate before Joryn or Hessa wants him to. Possible line: &ldquo;Should&rsquo;ve killed them at supper!&rdquo;</div><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Morale.</span> Fights until dropped or restrained. Least likely to surrender.</div></div>"
+        },
+        {
+          "type": "paragraph",
+          "text": "<div style=\"border:1px solid var(--parchment-shadow);background:rgba(255,252,240,0.5);padding:0.9rem 1.1rem;margin-bottom:0.9rem;\"><div style=\"font-family:'Cinzel Decorative',cursive;font-size:1.15rem;color:#4a0f0f;line-height:1.1;margin-bottom:0.1rem;\">Bram Corbin</div><div style=\"font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);font-style:italic;margin-bottom:0.5rem;\">Medium humanoid, neutral evil</div><div style=\"font-style:italic;font-size:0.85rem;color:var(--faded);margin-bottom:0.6rem;border-left:2px solid var(--parchment-shadow);padding-left:0.7rem;line-height:1.6;\">Drunk uncle. Dangerous mostly because he escalates the wrong thing at the wrong time.</div><div style=\"display:flex;gap:0;border:1px solid var(--parchment-shadow);margin-bottom:0.6rem;background:rgba(26,17,8,0.04);flex-wrap:wrap;\"><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">AC</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">10</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">HP</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">9</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">Speed</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">25 ft.</span></div></div><div style=\"display:flex;gap:0.3rem;margin-bottom:0.5rem;flex-wrap:wrap;\"><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">STR</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">12 (+1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">DEX</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">9 (-1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">CON</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">12 (+1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">INT</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">9 (-1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">WIS</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">8 (-1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">CHA</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">10 (+0)</span></div></div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.1rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Skills</strong> Deception +2, Intimidation +2</div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.4rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Senses</strong> passive Perception 9</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;\">Traits</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Drunken Stumble.</span> The first attack against Bram each round has advantage. However, if a melee attack misses Bram, the attacker must make a <strong>DC 10 Dexterity saving throw</strong> or stumble 5 feet in a direction of the GM&rsquo;s choice as Bram lurches unpredictably. <em>Not meant to be powerful &mdash; meant to be chaotic.</em></div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;\">Actions</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Club.</span> +3 to hit, reach 5 ft. <em>Hit:</em> 4 bludgeoning damage.</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Thrown Bottle.</span> +1 to hit, range 20/60 ft. <em>Hit:</em> 3 bludgeoning damage.</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Tactics.</span> Might ring the bell, open the wrong door, yell secrets, attack badly, fall down, accidentally reveal the release mechanism, try to burn evidence and almost burn the house, or release the wolf without understanding the danger.</div><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Morale.</span> Surrenders quickly if injured.</div></div>"
+        },
+        {
+          "type": "paragraph",
+          "text": "<div style=\"border:1px solid var(--parchment-shadow);background:rgba(255,252,240,0.5);padding:0.9rem 1.1rem;margin-bottom:0.9rem;\"><div style=\"font-family:'Cinzel Decorative',cursive;font-size:1.15rem;color:#4a0f0f;line-height:1.1;margin-bottom:0.1rem;\">Nella Corbin</div><div style=\"font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);font-style:italic;margin-bottom:0.5rem;\">Medium humanoid, neutral</div><div style=\"font-style:italic;font-size:0.85rem;color:var(--faded);margin-bottom:0.6rem;border-left:2px solid var(--parchment-shadow);padding-left:0.7rem;line-height:1.6;\">Younger family member. Conflicted, scared, complicit but not hardened. Do not treat Nella as a normal enemy unless the party attacks her or she is forced into it.</div><div style=\"display:flex;gap:0;border:1px solid var(--parchment-shadow);margin-bottom:0.6rem;background:rgba(26,17,8,0.04);flex-wrap:wrap;\"><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">AC</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">10</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">HP</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">7</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">Speed</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">30 ft.</span></div></div><div style=\"display:flex;gap:0.3rem;margin-bottom:0.5rem;flex-wrap:wrap;\"><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">STR</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">9 (-1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">DEX</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">11 (+0)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">CON</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">10 (+0)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">INT</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">11 (+0)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">WIS</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">12 (+1)</span></div><div style=\"text-align:center;flex:1;min-width:42px;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faded);display:block;\">CHA</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">10 (+0)</span></div></div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.1rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Skills</strong> Animal Handling +3, Insight +3</div><div style=\"font-size:0.82rem;color:var(--dim);margin-bottom:0.4rem;\"><strong style=\"font-family:'Cinzel',serif;font-size:0.72rem;color:var(--ink);\">Senses</strong> passive Perception 11</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--blood);border-bottom:1px solid rgba(122,31,31,0.2);padding-bottom:0.2rem;margin-bottom:0.4rem;\">Actions</div><div style=\"margin-bottom:0.4rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.76rem;font-weight:700;color:var(--ink);\">Small Knife.</span> +2 to hit, reach 5 ft. <em>Hit:</em> 2 piercing damage.</div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Tactics.</span> Does not want to fight. May freeze, cry, run, try to stop Bram, beg Hessa not to release the wolf, quietly point toward the cellar, protect Barley, or lie badly if threatened.</div><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Morale.</span> Flees or surrenders immediately if directly threatened. Can become the way the party learns how to stop or calm the wolf.</div></div>"
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "section_head",
+          "text": "Prisoners and Noncombatants"
+        },
+        {
+          "type": "paragraph",
+          "text": "<div style=\"border:1px solid var(--parchment-shadow);background:rgba(255,252,240,0.5);padding:0.9rem 1.1rem;margin-bottom:0.9rem;\"><div style=\"font-family:'Cinzel Decorative',cursive;font-size:1.15rem;color:#4a0f0f;line-height:1.1;margin-bottom:0.1rem;\">Prisoner One</div><div style=\"font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);font-style:italic;margin-bottom:0.5rem;\">Convoy survivor</div><div style=\"display:flex;gap:0;border:1px solid var(--parchment-shadow);margin-bottom:0.6rem;background:rgba(26,17,8,0.04);flex-wrap:wrap;\"><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">AC</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">10</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">HP</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">3</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">Speed</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">15 ft. while injured</span></div></div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Condition.</span> Restrained, exhausted, dehydrated, or wounded until freed.</div><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Role.</span> Can testify, crawl, shout warnings, point toward evidence, identify the Corbins, and explain the staged attacks. Possible line: &ldquo;It wasn&rsquo;t beasts. Not at first. People stopped the wagon. The wolf came after.&rdquo;</div></div>"
+        },
+        {
+          "type": "paragraph",
+          "text": "<div style=\"border:1px solid var(--parchment-shadow);background:rgba(255,252,240,0.5);padding:0.9rem 1.1rem;margin-bottom:0.9rem;\"><div style=\"font-family:'Cinzel Decorative',cursive;font-size:1.15rem;color:#4a0f0f;line-height:1.1;margin-bottom:0.1rem;\">Tovin Fen</div><div style=\"font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);font-style:italic;margin-bottom:0.5rem;\">Missing son of Fen Farm</div><div style=\"display:flex;gap:0;border:1px solid var(--parchment-shadow);margin-bottom:0.6rem;background:rgba(26,17,8,0.04);flex-wrap:wrap;\"><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">AC</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">10</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">HP</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">5</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">Speed</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">20 ft. while injured</span></div></div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Condition.</span> Exhausted, dehydrated, injured.</div><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Role.</span> Can identify the medicine and connect the party back to Fen Farm. Possible line: &ldquo;The medicine. Black briar seal. They hid it.&rdquo;</div></div>"
+        },
+        {
+          "type": "paragraph",
+          "text": "<div style=\"border:1px solid var(--parchment-shadow);background:rgba(255,252,240,0.5);padding:0.9rem 1.1rem;margin-bottom:0.9rem;\"><div style=\"font-family:'Cinzel Decorative',cursive;font-size:1.15rem;color:#4a0f0f;line-height:1.1;margin-bottom:0.1rem;\">Barley</div><div style=\"font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);font-style:italic;margin-bottom:0.5rem;\">Fen family dog</div><div style=\"display:flex;gap:0;border:1px solid var(--parchment-shadow);margin-bottom:0.6rem;background:rgba(26,17,8,0.04);flex-wrap:wrap;\"><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">AC</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">12</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;border-right:1px solid rgba(180,140,60,0.3);\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">HP</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">5</span></div><div style=\"flex:1;min-width:60px;text-align:center;padding:0.4rem 0.3rem;\"><span style=\"font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--faded);display:block;margin-bottom:0.1rem;\">Speed</span><span style=\"font-family:'Cinzel',serif;font-size:0.78rem;font-weight:700;color:var(--ink);display:block;\">40 ft.</span></div></div><hr style=\"border:none;border-top:1px solid var(--parchment-shadow);margin:0.5rem 0;\"><div style=\"margin-bottom:0.35rem;font-size:0.85rem;line-height:1.6;color:var(--dim);\"><span style=\"font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--faded);\">Role.</span> Can bark to reveal danger, lead someone to Tovin, distract a Corbin once, growl at the wolf enclosure, refuse to leave Tovin, and prove the family lied. Do not have enemies attack Barley unless the table is comfortable with that kind of danger &mdash; usually better as tension, not harm.</div></div>"
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "slate",
+      "title": "Terrain Features",
+      "subtitle": "",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                {
+                  "type": "heading",
+                  "level": 2,
+                  "text": "Barn Loft"
+                },
+                {
+                  "type": "prose_list",
+                  "items": [
+                    "10–12 feet high.",
+                    "Ladder access.",
+                    "Half cover from the loft edge.",
+                    "Hay can cushion falls.",
+                    "Jumping down requires Acrobatics DC 10 or the character takes 1d6 bludgeoning damage.",
+                    "A character aiming for loose hay may roll with advantage.",
+                    "The forged claw-mark tool is hidden here."
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "level": 2,
+                  "text": "Yard"
+                },
+                {
+                  "type": "prose_list",
+                  "items": [
+                    "Muddy ground may count as difficult terrain.",
+                    "The well provides cover or a hazard.",
+                    "The woodpile can be knocked over.",
+                    "The chopping block and tools can be improvised weapons.",
+                    "Darkness, rain, or mud can make the fight messier."
+                  ]
+                }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                {
+                  "type": "heading",
+                  "level": 2,
+                  "text": "Farmhouse"
+                },
+                {
+                  "type": "prose_list",
+                  "items": [
+                    "Cramped rooms.",
+                    "Furniture can be overturned for cover.",
+                    "Doors can be barred.",
+                    "Hessa may know shortcuts or hidden storage.",
+                    "The cellar door may be open, barred, or watched."
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "level": 2,
+                  "text": "Basement"
+                },
+                {
+                  "type": "prose_list",
+                  "items": [
+                    "Narrow stairs.",
+                    "Low ceiling.",
+                    "Reinforced wolf enclosure.",
+                    "Prisoner ropes/chains.",
+                    "Storage shelves.",
+                    "Locked medicine crate or satchel.",
+                    "Doors can be barred from either side depending on location.",
+                    "Fighting here should feel dangerous and claustrophobic."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "Medicine Recovery",
+      "subtitle": "",
+      "open": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The medicine from Dunmore may be hidden in:"
+        },
+        {
+          "type": "prose_list",
+          "items": [
+            "Hessa's locked pantry",
+            "a cellar storage cage",
+            "a stolen supply cache",
+            "a satchel taken from Tovin",
+            "a Dunmore-marked apothecary box"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The crate carries a wax seal. <strong>Read this exactly as written and nothing more:</strong>"
+        },
+        {
+          "type": "discovery",
+          "name": "Read-Aloud — Medicine Found",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The crate is smaller than the others and wrapped in oiled cloth. The wax seal is cracked, but still visible: black wax stamped with a briar curling around a mortar bowl. Beneath it, in small block letters: <strong>DUNMORE APOTHECARY</strong>.<br><br>Whatever else the Corbins stole, this was not theirs to take."
+            }
+          ]
+        },
+        {
+          "type": "gm_block",
+          "label": "GM Note — Do Not Say Aloud",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "This seal is the same mark that hangs above the entrance to The Briar Cup in Dunmore &mdash; Ilyra Marr's apothecary, and a Gilded Veil location tied to the Ink Must Not Speak arc. The connection is intentional foreshadowing, not a coincidence."
+            },
+            {
+              "type": "paragraph",
+              "text": "Do not say the word &ldquo;briar&rdquo; meaningfully or draw attention to the seal beyond its physical description above. No NPC should say anything like &ldquo;that's the Briar Cup's mark.&rdquo; The payoff is in the recognition, not the narration."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "gold",
+      "title": "Evidence",
+      "subtitle": "Proving the road attacks were staged.",
+      "open": false,
+      "content": [
+        {
+          "type": "prose_list",
+          "items": [
+            "Forged claw-mark tool — Barn loft",
+            "Stolen convoy goods — Barn, smokehouse, cellar",
+            "Dunmore apothecary medicine — Pantry, cellar, satchel, or cache",
+            "Ropes, gags, bloodied cloth — Basement",
+            "Prisoner testimony — Prisoner One",
+            "Barley recognizing Tovin — Basement",
+            "Scratched-off merchant seals — Crates",
+            "Fake road reports or marked convoy routes — Joryn/Hessa's room",
+            "Bloodied drag marks toward cellar/undercroft — Farmhouse basement"
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "slate",
+      "title": "Difficulty Dial",
+      "subtitle": "For 5 level-2 PCs, start easier and escalate if they are handling it well.",
+      "open": false,
+      "content": [
+        {
+          "type": "two_col",
+          "left": [
+            {
+              "type": "block_wrap",
+              "content": [
+                {
+                  "type": "discovery",
+                  "variant": "dc-low",
+                  "name": "To Make It Easier",
+                  "content": [
+                    {
+                      "type": "list",
+                      "items": [
+                        "Delay the dire wolf until round 4.",
+                        "Have Nella interfere with the release.",
+                        "Have Bram be drunk and useless.",
+                        "Have the wolf attack Corren first.",
+                        "Let the party keep all their gear.",
+                        "Let the loft clue be easy to find.",
+                        "Have Hessa prioritize fleeing over fighting.",
+                        "Let Barley lead the party directly to Tovin."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "right": [
+            {
+              "type": "block_wrap",
+              "content": [
+                {
+                  "type": "discovery",
+                  "variant": "dc-high",
+                  "name": "To Make It Harder",
+                  "content": [
+                    {
+                      "type": "list",
+                      "items": [
+                        "Release the dire wolf on round 2.",
+                        "Let Joryn block the basement stairs.",
+                        "Have Corren shove people prone near the wolf.",
+                        "Have Hessa try to lock PCs in the basement.",
+                        "Let exhaustion affect several characters.",
+                        "Have Bram ring the bell continuously.",
+                        "Have Hessa attempt to destroy the medicine.",
+                        "Have the wolf enter a cramped basement space before the party can reposition."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "annotation",
+          "text": "The dire wolf can drop a level-2 character very quickly — watch the table's HP totals, not just the script."
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "teal",
+      "title": "Resolution Outcomes",
+      "subtitle": "",
+      "open": false,
+      "content": [
+        {
+          "type": "discovery",
+          "variant": "teal",
+          "name": "Best Outcome",
+          "content": [
+            {
+              "type": "list",
+              "items": [
+                "Rescues Tovin",
+                "Rescues Prisoner One",
+                "Recovers the medicine",
+                "Finds the claw-mark tool",
+                "Exposes the Corbins",
+                "Prevents or survives the dire wolf release",
+                "Returns evidence to Durgan",
+                "Helps reopen the road"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-mid",
+          "name": "Partial Success",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The party may rescue Tovin but lose Prisoner One. They may recover the medicine but not find the claw tool. They may expose the Corbins but fail to save all prisoners. They may save the prisoners but the Corbins destroy some evidence."
+            },
+            {
+              "type": "annotation",
+              "text": "Let partial outcomes matter."
+            }
+          ]
+        },
+        {
+          "type": "discovery",
+          "variant": "dc-high",
+          "name": "Failure",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "If the party flees or is defeated, the Corbins may move the prisoners, destroy the medicine, stage another beast attack, blame the party, or flee before Durgan can act."
+            },
+            {
+              "type": "annotation",
+              "text": "Avoid total party kill unless the players make catastrophic choices. Capture, escape, or rescue by Durgan's scouts may be better outcomes if things go badly."
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        }
+      ]
+    },
+    {
+      "color": "dc-mid",
+      "title": "GM Notes",
+      "subtitle": "",
+      "open": false,
+      "content": [
+        {
+          "type": "block_wrap",
+          "content": [
+            {
+              "type": "paragraph",
+              "text": "The Corbins are not tactical masterminds. They are panicking criminals who prepared contingencies. The sedative is not for theft. It is insurance."
+            },
+            {
+              "type": "prose_list",
+              "items": [
+                "Joryn controls.",
+                "Hessa calculates.",
+                "Corren escalates.",
+                "Bram ruins plans.",
+                "Nella hesitates.",
+                "The wolf terrifies everyone."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "The encounter works best when the party discovers the basement and realizes, all at once, that the family, the dog, the prisoners, the medicine, the wolf, and the fake beast attacks are all connected."
+            },
+            {
+              "type": "annotation",
+              "text": "The fight is not just against enemies. It is against time, fear, darkness, mud, locked doors, bad decisions, and ordinary people becoming monstrous."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "conclusion": {
+    "title": "GM Summary — Corbin Farm Basement Encounter",
+    "items": [
+      "This is a rescue-under-pressure encounter, not a straightforward dungeon fight — objectives compete with each other and the party can't do everything at once.",
+      "Do not start initiative the moment the party wakes. Let the panic and the choice of whether to investigate land first.",
+      "The drugged meal creates exhaustion, not the poisoned condition — 1 level of exhaustion is enough pressure for a level 2 table.",
+      "The dire wolf is dangerous but not evil — it's an abused animal being used as a weapon. Its targeting priority should reflect panic, not tactics.",
+      "The apothecary seal must be described physically only — never narrated as a connection to the Briar Cup. The payoff belongs to the players noticing it later.",
+      "Use the Difficulty Dial actively — a dire wolf can drop a level 2 character fast, so start easy and escalate based on how the table is doing."
+    ]
+  },
+  "arc_nav": {
+    "prev": {
+      "href": "hollow_road_arc.html",
+      "text": "The Hollow Road"
+    }
+  }
+}
